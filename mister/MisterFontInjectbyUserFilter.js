@@ -3,7 +3,7 @@ var z = document.getElementById("ctl00_ctl08_lblUserName").innerHTML
 var x = document.getElementById("ctl00_ctl08_lblUserName").innerHTML
 
 //Senior Resource Group
-if (z.includes("Mister")){
+if (z.includes("SierraTucson")){
 
 const googlelink = document.createElement('link');
 googlelink.href = 'https://fonts.googleapis.com';
