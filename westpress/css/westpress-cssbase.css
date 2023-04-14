@@ -108,10 +108,11 @@ font-weight:600!important;
 border-top-left-radius: 20px!important;
 border-top-right-radius: 20px!important;
 height: 130px!important;
-background: url(https://kalebbadger.github.io/marcom/westpress/images/wp-header-final.svg);
+	
+background: url(https://kalebbadger.github.io/marcom/westpress/images/wp-header-final.svg), url(https://kalebbadger.github.io/marcom/westpress/images/wp-header-final.svg);
 background-repeat: no-repeat;
 background-size: auto;
-background-position: top right;
+background-position: top right, top left;
 }
 
 /*Background color to entire Main Nav Bar and remove borders for cleaner look*/
