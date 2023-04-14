@@ -111,7 +111,7 @@ height: 130px!important;
 background: url(https://kalebbadger.github.io/marcom/westpress/images/wp-header-final.svg);
 background-repeat: no-repeat;
 background-size: auto;
-background-position: right;
+background-position: top right;
 }
 
 /*Background color to entire Main Nav Bar and remove borders for cleaner look*/
