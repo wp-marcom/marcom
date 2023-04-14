@@ -1,0 +1,501 @@
+/*Westpress_CustomCSS*/
+
+#PageType01{
+  background-color: #541f46!important;
+}
+#ctl00_ImageControlPageHeader{
+  display: none!important;
+}
+
+a:link{
+  color:#541f46!important;
+}
+a:visited{
+  color:#541f46!important;
+}
+
+.MastHead img{
+  margin:auto!important;
+}
+.TDTable {
+font-family: 'Source Sans Pro:900', sans-serif !important;
+background-color: #FFFFFF!important;
+font-size: 11px !important;
+text-transform: uppercase!important;
+border-color: #f1efee !important;
+padding-bottom:0px !important;
+box-shadow: 0px 1px 11px grey;
+height: 100px !important;
+    display: inline-block !important;
+}
+
+
+.TDTab {
+background-color: #FFFFFF!important;
+font-size: 13px !important;
+text-transform: uppercase!important;
+border-color: #FFFFFF !important;
+font-family: 'source sans pro', sans-serif !important;
+font-weight:700 !important;
+border:0;
+}
+
+
+
+.TDTab:hover, .TDTab a:hover{
+    font-family: 'source sans pro', sans-serif !important;
+font-weight:700 !important;
+background-color: #541f46!important;
+
+    /*background-color: #153c63!important;*/
+    color: #ffffff !important;
+}
+/*.TDTabLeft:hover, .TDTabLeft a:hover{
+    font-family: 'source sans pro', sans-serif !important;
+font-weight:700 !important;
+background-size: 50px !important;
+    background-color: #153c63!important;
+    color: #ffffff !important;*/
+
+}
+
+.TDTab:hover #ctl00_ctl07_CartLink{
+    font-family: 'source sans pro', sans-serif !important;
+font-weight:700 !important;
+    color: #ffffff !important;
+    background-color: #541f46!important;
+    text-decoration: none !important;
+}
+
+
+
+
+.TDTab:hover #ctl00_ctl07_CatalogLink{
+    font-family: 'source sans pro', sans-serif !important;
+font-weight:700 !important;
+    color: #ffffff !important;
+    background-color: #541f46!important;
+    text-decoration: none !important;
+}
+
+
+
+.TDTab #ctl00_ctl07_ReportsLink{
+    font-family: 'source sans pro', sans-serif !important;
+font-weight:700 !important;
+    color: #153c63 !important;
+    text-decoration: none !important;
+}
+
+.TDTab:hover #ctl00_ctl07_OrderManagerLink{
+    font-family: 'source sans pro', sans-serif !important;
+font-weight:700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+.TDTab:hover #ctl00_ctl07_CartLink{
+    font-family: 'source sans pro', sans-serif !important;
+font-weight:700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.TDTab:hover #ctl00_ctl07_ReportsLink{
+    font-family: 'source sans pro', sans-serif !important;
+font-weight:700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+
+}
+
+/*.TDTabLeft:hover{
+   color: transparent !important;
+    Height: 100px !important;
+    width: 535px !important;
+    background-image: url(https://drive.google.com/uc?id=1Tf70-qEHGfy6qRXuOqopLT6mWHtQ6Gq0);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border:0;
+    background-color:#153c63 !important;}*/
+
+.TDActive, .TDActiveLeft {
+background-color: #541f46 !important;
+font-family: 'source sans pro', sans-serif !important;
+font-weight:700 !important;
+color: #FFFFFF !important;
+font-size: 13px !important;
+text-transform: uppercase!important;
+border-color: #f1efee !important;
+text-decoration: none !important;
+border:0;
+
+}
+
+.TDActive a{
+font-family: 'source sans pro', sans-serif !important;
+font-weight:700 !important;
+   color: #FFFFFF !important;
+   text-decoration: none !important;
+   border:0 !important;
+   color: #FFFFFF !important;
+border-bottom:2px solid #FFFFFF !important;
+}
+
+.TDTabRight, .TDSearch, .TDTabLeft{
+font-family: 'source sans pro', sans-serif !important;
+font-weight:700 !important;
+background-color: #FFFFFF !important;
+font-size: 13px !important;
+text-transform: uppercase!important;
+border-color: #FFFFFF !important;
+border:0;
+}
+
+
+
+}
+
+.TDTabRight{
+background-color: #FFFFFF !important;
+font-size: 11px !important;
+text-transform: uppercase!important;
+border-color: #FFFFFF !important;
+}*/
+
+
+
+.TDSearch {
+background-color: #FFFFFF !important;
+font-size: 13px !important;
+text-transform: uppercase!important;
+border-color: #FFFFFF !important;
+}
+
+.TDActiveLeft{
+ color: transparent !important;
+    Height: 100px !important;
+    width: 535px !important;
+    background-image: url(https://westpress.com/MarcomContent/WestPress/Images/Westpress-Header.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border:0;
+    background-color:#153c63 !important;
+
+}
+
+.RadTreeView_Windows7 .rtSelected .rtIn {
+    border-bottom: 2px solid #F9BD38!important;
+    border-top: 0px !important;
+    border-right: 0px !important;
+    border-left: 0px !important;
+    background-color: none !important;
+    background-image: none !important;
+}
+
+.active {
+color: #153c63 !important;
+border-bottom:2px solid #F9BD38 !important;
+}
+
+.pbtn SPAN.pbtn-icon{
+BACKGROUND: url();
+background-size: 109%;}
+
+   .rtHover{
+       border:0px solid #bdd9fb !important;
+       background-color: none !important;
+    background-image: none !important;
+   }
+   .rtSelected{
+       background-color: none !important;
+   }
+    .rtIn{
+       background-color: none !important;
+   }
+
+   .RadTreeView_Windows7{
+       background-color: transparent !important;
+   }
+
+   .RadTreeView_Windows7 .rtHover .rtIn
+{
+	background-color: transparent !important;
+
+}
+  .RadTreeView_Windows7 .rtSelected .rtIn {
+    border-bottom: 2px solid #F9BD38!important;
+    border-top: 0px !important;
+    border-right: 0px !important;
+    border-left: 0px !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+.RadTreeView_Windows7 .rtHover .rtIn{
+    background-color: #153c63 !important;
+    color:#ffffff !important;
+    background-image: none !important;
+    border-top: 0px !important;
+    border-right: 0px !important;
+    border-left: 0px !important;
+    border-bottom: 0px !important;
+}
+
+.rtTop:hover{
+    background-color: #153c63 !important;
+    color:#ffffff !important;
+}
+.rtMid:hover{
+    background-color: #153c63 !important;
+    color:#ffffff !important;
+}
+.rtBot:hover{
+    background-color: #153c63 !important;
+    color:#ffffff !important;
+}
+
+
+/* This is the start of a bunch of stuff to turn off to turn the site back to the old way */
+#ENUSmain {
+
+    width: 100vw !important;
+
+
+}
+
+
+
+#ctl00_content_CtlPager_tblPager
+background-color: #f1efee !important;
+    width: 100% !important;
+
+#ctl00_content_CtlPagerBottom_tblPager
+background-color: #f1efee !important;
+    width: 100% !important;
+
+.TDTable
+    height: 100px !important;
+    display: inline-block !important;
+
+.gridItem {
+    margin: 0px 0px 0px 0px !important;
+
+}
+
+
+.gridRow3Cols {
+    float: left;
+    width: inherit !important;}
+
+.TDTabLeft{
+    color: transparent !important;
+    Height: 100px !important;
+    width: 535px !important;
+    background-image: url(https://westpress.com/MarcomContent/WestPress/Images/Westpress-Header.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border:0;
+    background-color:#ffffff !important;
+
+ }
+
+
+
+.TDTab{
+    border:0;
+}
+
+.TDActive{
+    border:0;
+}
+
+.TDActiveLeft a{
+    border-bottom: 0px !important;
+}
+
+.navBG{
+    background-color: #f1efee!important;
+    width:100% !important;
+}
+.gridItem {
+ margin: 0px 0px 0px 0px !important;
+
+}
+
+.ContentBoxHeaderSmall {
+    background-color: #f1efee !important;
+}
+
+#CtlLogIn{
+
+}
+
+#CtlLogIn input{
+
+}
+
+#CtlLogIn span{
+   font-family: 'source sans pro', sans-serif !important;
+font-weight:700 !important;
+}
+
+#ctl00_content_Login_btnLogin{
+    float:left !important;
+}
+
+.button-orange {
+    height: 14px;
+    width: 130px;
+    display:table;
+text-align: center;
+  background-color: #f58a38;
+  background-image: linear-gradient(to bottom, #f58a38, #f57c20);
+  border: 1px solid #c25706;
+  box-shadow: inset 0 1px 0 #ffb984, inset 0 -1px 0 #db6f1d, inset 0 0 0 1px #f59851, 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+#ctl00_content_CartShipping_CtlAddressSelector_btnSaveAddress{
+     visibility: hidden!important;
+     display: none!important;
+}
+
+#ctl00_content_CartShipping_CtlAddressSelector_rdbCreateNew{
+  visibility: hidden!important;
+    display: none!important;
+}
+
+#ctl00_content_CartShipping_CtlAddressSelector_divOrSeperator {
+    visibility: hidden!important;
+    display: none!important;
+}
+
+
+#ctl00_content_CartShipping_CtlAddressSelector_lblUseNewAddress{
+
+visibility: hidden!important;
+display: none!important;
+}
+
+.highlight{
+    color:white!important;
+    width: 500px;
+height: 500px;
+font-size:9pt!important;
+background-color: #153c63;
+padding:2px;
+border-radius: 5px;
+margin-top:5px;
+}
+
+.highlight  a:link{
+    color:white!important;
+}
+
+.choice {
+    font-size:8pt!important;
+    line-height: 19px!important;
+}
+#ctl00_content_CtlAddToCart_SkuPrototypeSelection_mSkuList_ctl01_SkuSelectDescription{
+    font-size:0pt!important;
+}
+#ctl00_content_CtlAddToCart_SkuPrototypeSelection_mSkuList_ctl02_SkuSelectDescription{
+    font-size:0pt!important;
+}#ctl00_content_CtlAddToCart_SkuPrototypeSelection_mSkuList_ctl03_SkuSelectDescription{
+    font-size:0pt!important;
+}#ctl00_content_CtlAddToCart_SkuPrototypeSelection_mSkuList_ctl04_SkuSelectDescription{
+    font-size:0pt!important;
+}#ctl00_content_CtlAddToCart_SkuPrototypeSelection_mSkuList_ctl05_SkuSelectDescription{
+    font-size:0pt!important;
+}
+
+#ctl00_content_CtlAddToCart_ProductDescription_Stringcontrol2{
+   display:non;
+}
+
+.yellowBubble{
+    width: 674px;
+    background-color: #f9bd38;
+    color: #153c63;
+    padding: 4px;
+    border-radius: 6px;
+
+}
+
+#ctl00_ctl07_HomeLinkLabel{
+    font-size:0pt!important;
+}
+
+/*
+#ctl00_content_CartBilling_CtlAddressSelector_btnSaveAddress{
+     visibility: hidden!important;
+     display: none!important;
+}
+
+#ctl00_content_CartBilling_CtlAddressSelector_rdbCreateNew{
+  visibility: hidden!important;
+    display: none!important;
+}
+
+#ctl00_content_CartBilling_CtlAddressSelector_divOrSeperator {
+    visibility: hidden!important;
+    display: none!important;
+}
+
+
+
+#ctl00_content_CartBilling_CtlAddressSelector_lblUseNewAddress{
+
+visibility: hidden!important;
+display: none!important;
+}
+
+
+.TopMargin6{
+visibility: hidden!important;
+display: none!important;
+}
+*/
+/*#CtlLogIn{
+max-width:100% !important;
+background-image: url(https://drive.google.com/uc?id=1yVM1OKPZaVaUfjpPEY3f8Prcq81jkNty)!important;
+background-repeat: no-repeat !important;
+background-size: contain!important;
+width: 806px !important;
+height: 273px!important;
+background-position: center !important;
+text-align: left !important;
+}
+
+.pbtn btn-s primary{
+    float:left !important;
+}
+
+
+
+
+
+}
+}*/
+/*
+
+
+#CtlLogIn{
+background-image: url(https://drive.google.com/uc?id=1yVM1OKPZaVaUfjpPEY3f8Prcq81jkNty)!important;
+background-repeat: no-repeat !important;
+background-size: contain!important;
+width: 806px !important;
+height: 273px!important;
+background-position: center !important;
+}
+
+
+
+
+
+
+https://drive.google.com/open?id=1yVM1OKPZaVaUfjpPEY3f8Prcq81jkNty

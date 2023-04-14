@@ -1,0 +1,318 @@
+#ENUSmain {
+   background: linear-gradient(to right, #0a1927 0, rgba(125,185,232,0) 100%), url(https://westpress.com/MarcomContent/WestPress/Images/WP-Saguaro-Sunset-Wide-rev.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width:75vw !important;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border: 0px !important;
+}
+
+#PageType01 {
+  background-color: #541f46;
+  background-image: url(none)!important;
+  border: 0px !important;
+}
+
+//NEW ADDED 12/28/2022
+td.NavTop {
+  visibility: hi!important;
+}
+
+#CtlLogIn > div:nth-child(9) {
+  float:none!important;
+  margin:0px!important
+}
+
+#CtlLogIn > table > tbody > tr:nth-child(1){
+
+vertical-align: middle!important
+}
+
+
+#CtlLogIn > table > tbody > tr:nth-child(2){
+
+vertical-align: middle!important
+}
+
+
+#ctl00_content_Login_btnLogin{
+  float:none!important;
+  border-radius: 50px!important;
+}
+
+A.pbtn.primary SPAN {
+  width:300px;
+  height:30px;
+  font-size:16px!important;
+  align-items:center;
+  font-weight: 700 !important;
+}
+
+.pbtn SPAN {
+background: url() no-repeat right top!important;
+background-color: #5a2149!important;
+border-radius: 50px!important;
+color: #fff!important;
+display: flex!important;
+justify-content: center!important;
+letter-spacing: .57px!important;
+line-height: 1.29!important;
+text-align: center!important;
+padding: 8px 0px!important;   
+    
+padding-left:0px!important;
+}
+
+A.pbtn {
+  padding-right:0px!important
+}
+
+.pbtn {
+background: url() no-repeat right top!important;
+}
+
+.CtlSearchGroup {
+  border: 0px!important;
+  background-color: #FFFFFF!important;
+
+}
+
+.CtlSearchGroup td.header{
+    border-right: 0px dotted #999999!important;
+}
+
+#ctl00_content_Login_Stringcontrol2{
+ font-weight: 200!important;
+  color: #5a2149 !important;
+  font-size: 14px!important;
+}
+
+#ctl00_content_Login_txtLoginId{
+  background-position: 95% 57%!important;
+    background-size: 4%!important;
+    border: 2px solid #173654!important;
+    border-radius: 8px!important;
+    height: 5px!important;
+    padding: 12px 5px 12px 10px!important;
+    width: 150px!important;
+}
+
+#ctl00_content_Login_txtPassword {
+   background-position: 95% 57%!important;
+    background-size: 4%!important;
+    border: 2px solid #173654!important;
+    border-radius: 8px!important;
+    height: 5px!important;
+    padding: 12px 5px 12px 10px!important;
+    width: 150px!important;
+}
+
+#ctl00_content_Login_Stringcontrol3{
+  font-weight: 200!important;
+  color: #5a2149 !important;
+  font-size: 14px!important;
+}
+
+
+//NEW ADDED 12/28/2022
+
+
+#newUser{
+  color:black;
+  margin-top:0px!important;
+  position: relative!important;
+  top: 1px!important;
+  font-size: 13px;
+}
+
+h4 {
+    font-size:xx-large !important;
+    z-index: 1;
+}
+
+#CtlFooter td {
+    color: #ffffff !important;
+}
+
+#CtlLogIn {
+       margin-left: 10% !important;
+    margin-top: 10% !important;
+    background-color: rgba(255,255,255,1) !important;
+border-radius: 8px!important;
+   color: #5a2149 !important;
+position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 44px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+
+.NavTop {
+  background-color:transparent !important;
+  background-image: url(none)!important;
+  }
+
+
+#CtlFooter {
+ background-color:transparent !important;
+}
+
+#overlayDiv {
+    margin-left: 19px !important;
+    margin-top: 11px !important;
+    position: absolute !important;
+    width: 76px !important;
+    height: 20px !important;
+    z-index:99 !important;
+
+}
+
+#overlayPas {
+    margin-left: 19px !important;
+    margin-top: 39px !important;
+    position: absolute !important;
+    width: 76px !important;
+    height: 20px !important;
+    z-index:99 !important;
+
+}
+
+#LogoDiv {
+    background:url(https://westpress.com/MarcomContent/WestPress/Images/WPLoginHeader-01.svg
+    );
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+border-radius: 8px 8px 0px 0px!important;
+
+    margin-left: -45px !important;
+    margin-top: -205px !important;
+    position: absolute !important;
+    width: 390px !important;
+    height: 125px !important;
+    z-index:99 !important;
+
+}
+
+
+
+
+
+
+/* Tooltip container for Login Id */
+.tooltip {
+  position: relative;
+  display: inline-block;
+   /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 210px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip .tooltiptext {
+  top: -5px;
+  left: 105%;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%; /* To the left of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+
+/* Tooltip container for Password */
+.tooltippas {
+  position: relative;
+  display: inline-block;
+   /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltippas .tooltiptextpas {
+  visibility: hidden;
+  width: 170px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltippas:hover .tooltiptextpas {
+  visibility: visible;
+}
+
+.tooltippas .tooltiptextpas {
+  top: -5px;
+  left: 105%;
+}
+
+.tooltippas .tooltiptextpas::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%; /* To the left of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+
+
+
+
+
+
+/*
+
+<div class="login">
+	<h1>Login</h1>
+    <form method="post">
+    	<input name="ctl00$content$Login$txtLoginId" type="text" id="ctl00_content_Login_txtLoginId" placeholder="Username" required="required" />
+        <input name="ctl00$content$Login$txtPassword" type="password" id="ctl00_content_Login_txtPassword" placeholder="Password" required="required" />
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+*/
