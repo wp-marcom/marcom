@@ -24,6 +24,6 @@ document.querySelector("link[href='https://kalebbadger.github.io/marcom/westpres
 }
 
 //Senior Resource Group
-else if (z.includes("Senior Resource Groups")){
+else if (z.includes("Senior Resource Group")){
 document.querySelector("link[href='https://kalebbadger.github.io/marcom/westpress/css/westpress-cssbase.css']").href = "https://westpress.com/MarcomContent/WestPressMarketingPromo/CSS/SRG_Catalog.css?v=39";
 }
