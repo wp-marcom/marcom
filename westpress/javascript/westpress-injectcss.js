@@ -6,3 +6,8 @@ var x = document.getElementById("ctl00_ctl08_lblUserName").innerHTML
 if (z.includes("Vantage")){
 document.querySelector("#vantage_stylesheet").removeAttribute('disabled');
 }
+
+//CSS Base
+else {
+document.querySelector("#Defaultstylesheet").removeAttribute('disabled');
+}
