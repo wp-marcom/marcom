@@ -4,7 +4,7 @@ var x = document.getElementById("ctl00_ctl08_lblUserName").innerHTML
 
 //Vantage West
 if (z.includes("Vantage")){
-document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress-cssbase.css']").href = "https://wp-marcom.github.io/marcom/westpress/css/vwcu-catalog.css";}
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress-cssbase.css']").href = "https://wp-marcom.github.io/marcom/westpress/css/westpress-cssbase.css";}
 
 //Pima Federal
 else if (z.includes("Pima Federal")){
