@@ -40,7 +40,7 @@ border-radius: 8px!important;
 .pbtn SPAN {
 margin-right: -9px!important;
 background: url(none) no-repeat right top!important;
-background-color: #ab0520!important;
+background-color: #0c234b!important;
 border-radius: 8px!important;
 color: #fff!important;
 display: flex!important;
@@ -74,7 +74,7 @@ background-color: #FFFFFF!important;
 /* Style the words 'Username' 'Password' */
 #ctl00_content_Login_Stringcontrol2, #ctl00_content_Login_Stringcontrol3{
 font-weight: 600!important;
-color: #ab0520 !important;
+color: #0c234b !important;
 font-size: 14px!important;
 }
 
@@ -82,7 +82,7 @@ font-size: 14px!important;
 #ctl00_content_Login_txtLoginId, #ctl00_content_Login_txtPassword {
 background-position: 95% 57%!important;
   background-size: 4%!important;
-  border: 2px solid #ab0520!important;
+  border: 2px solid #0c234b!important;
   border-radius: 8px!important;
   height: 5px!important;
   padding: 12px 5px 12px 10px!important;
@@ -104,7 +104,7 @@ margin-left: 35% !important;
 margin-top: 5% !important;
 background-color: rgba(255,255,255,1) !important;
 border-radius: 8px!important;
-color: #ab0520 !important;
+color: #0c234b !important;
 position: relative;
 z-index: 1;
 background: #FFFFFF;
@@ -140,7 +140,7 @@ visibility: hidden;
 /* Style the Login Header Element - the HTML for this exists in the Custom Content section */
 
 #LogoDiv {
-background:url(https://wp-marcom.github.io/marcom/uofa/images/uaredloginheader.svg);
+background:url(https://wp-marcom.github.io/marcom/uofa/images/uablueloginheader.svg);
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center;
