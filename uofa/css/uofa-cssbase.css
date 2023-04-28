@@ -109,7 +109,7 @@ border-top-left-radius: 20px!important;
 border-top-right-radius: 20px!important;
 height: 130px!important;
 
-background: url(https://kalebbadger.github.io/marcom/westpress/images/wp-header-left.svg), url(https://kalebbadger.github.io/marcom/westpress/images/wp-header-right.svg);
+background: url(https://wp-marcom.github.io/marcom/westpress/images/wp-header-left.svg), url(https://wp-marcom.github.io/marcom/westpress/images/wp-header-right.svg);
 background-repeat: no-repeat;
 background-size: auto;
 background-position: top left, top right;
