@@ -279,7 +279,7 @@ filter: invert(0);
 }
 
 .gridRow3Cols {
-  float:left!important;
+  float:none!important;
     margin: 0px!important;
     width: inherit!important;
 }
