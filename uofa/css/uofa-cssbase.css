@@ -240,10 +240,6 @@ img.NavTopSpacer {
 filter: invert(1);
 }
 
-.gridRow3Cols{
-margin-right: 5px;
-}
-
 /*Style the button that says how a product is sold (Sold in packs of...)*/
 .button-orange {
   height: 16px;
@@ -259,6 +255,45 @@ margin-right: 5px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-tbody tr td {
+/*Below this line are attempts to control the item grid thumbnails*/
 
+.bottom-left {
+    position: absolute;
+    top: 105px;
+    left: 209px;
+    font-family: 'Figtree', sans-serif !important;
+    font-size: 51px;
+    color: white;
+    font-weight: 700;
 }
+
+#buisnessCardHeader{
+  background-color: red;
+  height:100px;
+  width:80vw;
+  background: url(https://westpress.com/MarcomContent/UofA/Images/HeaderBanner-Cards.png);
+  background-repeat: no-repeat;
+  background-position: top left;
+  border-top-left-radius: 20px!important;
+    border-top-right-radius: 20px!important;
+}
+
+.gridRow3Cols {
+  float:left!important;
+    margin: 0px!important;
+    width: inherit!important;
+}
+
+.gridItem {
+    margin: 0px 0px 0px 0px !important;
+}
+
+.threedots_ellipsis{
+  font-size:12px;
+  letter-spacing: 0px!important;
+}
+
+img.itemDescriptionIcon, img.itemDescriptionIconLast {
+height:0px!important;
+}
+
