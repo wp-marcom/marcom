@@ -237,7 +237,7 @@ color:#fff!important;
 }
 /*Change color of Spacers in the top left area to white(1) or black(0) (inverting the black image)*/
 img.NavTopSpacer {
-filter: invert(1);
+filter: invert(0);
 }
 
 /*Style the button that says how a product is sold (Sold in packs of...)*/
