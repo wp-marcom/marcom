@@ -279,9 +279,13 @@ filter: invert(0);
 }
 
 .gridRow3Cols {
-  float:none!important;
+  float:left!important;
     margin: 0px!important;
     width: inherit!important;
+}
+
+.clearLeft {
+    clear: none!important;
 }
 
 .gridItem {
