@@ -290,7 +290,7 @@ filter: invert(0);
 }
 
 .gridItem {
-    margin: 0px 0px 0px 0px !important;
+    margin: 2px 2px 2px 1px !important;
 }
 
 .threedots_ellipsis{
