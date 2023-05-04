@@ -278,6 +278,18 @@ filter: invert(0);
   border-top-left-radius: 20px!important;
     border-top-right-radius: 20px!important;
 }
+
+#letterheadHeader{
+  background-color: red;
+  height:100px;
+  width:80vw;
+  background: url(https://wp-marcom.github.io/marcom/uofa/images/headerbanner-letterheads.png);
+  background-repeat: no-repeat;
+  background-position: top left;
+  border-top-left-radius: 20px!important;
+    border-top-right-radius: 20px!important;
+}
+
 /*Below this line are attempts to control the item grid thumbnails*/
 
 /*Each set of 3 products*/
