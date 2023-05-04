@@ -260,11 +260,11 @@ filter: invert(0);
 
 .bottom-left {
     position: absolute;
-    top: 105px;
-    left: 209px;
+    top: 111px;
+    left: 240px;
     font-family: 'Figtree', sans-serif !important;
     font-size: 51px;
-    color: white;
+    color: white!important;
     font-weight: 700;
 }
 
