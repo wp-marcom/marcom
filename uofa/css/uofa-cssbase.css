@@ -256,7 +256,7 @@ filter: invert(0);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/*Below this line are attempts to control the item grid thumbnails*/
+
 
 .bottom-left {
     position: absolute;
@@ -278,26 +278,28 @@ filter: invert(0);
   border-top-left-radius: 20px!important;
     border-top-right-radius: 20px!important;
 }
+/*Below this line are attempts to control the item grid thumbnails*/
 
+/*Each set of 3 products*/
 .gridRow3Cols {
   float:left!important;
     margin: 0px!important;
     width: inherit!important;
 }
-
+/*Not sure what this does, but changing it to none allowed me to align the products to the left without random gaps*/
 .clearLeft {
     clear: none!important;
 }
-
+/*Each item has a margin around it. Will add random spaces between rows of products if messed with*/
 .gridItem {
     margin: 2px 2px 2px 1px !important;
 }
-
+/*Scaling the 3 dots after a product name if it is longer than the field*/
 .threedots_ellipsis{
   font-size:12px;
   letter-spacing: 0px!important;
 }
-
+/*This hides the info icon by each product name hiding it allowed for better product alignment in the catalog*/
 img.itemDescriptionIcon, img.itemDescriptionIconLast {
 height:0px!important;
 }
