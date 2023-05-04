@@ -260,8 +260,8 @@ filter: invert(0);
 
 .bottom-left {
     position: absolute;
-    top: 104px;
-    left: 215px;
+    top: 102px;
+    left: 205px;
     font-family: 'Figtree', sans-serif !important;
     font-size: 51px;
     color: white!important;
