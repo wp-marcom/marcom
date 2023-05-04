@@ -2,12 +2,12 @@
 
 /*Main color is #0c234b (AZBlue), Secondary Color is #ab0520(AZRed)*/
 
-/*Body Text and Heading Defaults
+/*Body Text and Heading Defaults*/
 body, p, div, span, td, li, ol, bl, input, select, textarea {
   font-family: 'Figtree', Arial, Helvetica, sans-serif;
   letter-spacing: .57px!important;
   color:#0c234b!important;
-}*/
+}
 
 /*The next 3 items below receive styling for a secondary "Headline" type font for some users - default is the same family as everything else*/
 
@@ -74,6 +74,7 @@ font-weight: 600;
 /*Center the directory title/*/
 .ellipsis_text{
       font-family: 'Figtree', serif!important;
+  font-size:11.5px!important
 }
 
 /*Color and style of items when you HOVER over them in the left side catalog menu/*/
