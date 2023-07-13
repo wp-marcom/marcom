@@ -46,7 +46,7 @@ body, p, div, span, td, li, ol, bl, input, select, textarea {
   
   #PageType01 {
     background-color: #ffd100!important;
-    background-image: url(https://westpress.com/MarcomContent/WestPress/Images/VantageWest_Pattern.png);
+    background-image: url(https://wp-marcom.github.io/marcom/westpress/images/vwcu_pattern_bg.png);
   }
   
   /*Set the width/border of the center catalog bar and how wide the elements beneath spread*/
@@ -109,7 +109,7 @@ body, p, div, span, td, li, ol, bl, input, select, textarea {
   border-top-left-radius: 20px!important;
   border-top-right-radius: 20px!important;
   height: 130px!important;
-  background: url(https://westpress.com/MarcomContent/WestPress/Images/VWCU-Head-4.svg);
+  background: url(https://wp-marcom.github.io/marcom/westpress/images/vwcu-header.svg);
   background-repeat: no-repeat;
   background-size: auto;
   background-position: right;
