@@ -8,7 +8,7 @@ document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/
 
 //Pima Federal
 else if (z.includes("Pima Federal")){
-document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_catalog_base.css']").href = "https://westpress.com/MarcomContent/WestPress/CSS/PFCUs_Catalog.css?v=1";}
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_catalog_base.css']").href = "https://wp-marcom.github.io/marcom/westpress/css/pfcu_catalog.css";}
 
 //Sierra Tucson
 else if (z.includes("Sierra Tucson")){
