@@ -16,7 +16,7 @@ document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/
 
 //Cochise College
 else if (z.includes("Cochise College")){
-document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_catalog_base.css']").href = "https://westpress.com/MarcomContent/WestPress/CSS/CochiseCollege_Catalog.css?v=1";}
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_catalog_base.css']").href = "https://wp-marcom.github.io/marcom/westpress/css/cochisecollege_catalog.css";}
 
 //Cochise County
 else if (z.includes("Cochise County")){
