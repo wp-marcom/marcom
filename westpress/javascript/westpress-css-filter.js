@@ -20,5 +20,5 @@ document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/
 
 //Cochise County
 else if (z.includes("Cochise County")){
-document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_catalog_base.css']").href = "https://westpress.com/MarcomContent/WestPress/CSS/CochiseCounty_Catalog.css?v=2";
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_catalog_base.css']").href = "https://wp-marcom.github.io/marcom/westpress/css/cochisecounty_catalog.css";
 }
