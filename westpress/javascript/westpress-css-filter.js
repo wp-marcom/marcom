@@ -12,7 +12,7 @@ document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/
 
 //Sierra Tucson
 else if (z.includes("Sierra Tucson")){
-document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_catalog_base.css']").href = "https://westpress.com/MarcomContent/WestPress/CSS/SIET_Catalog.css?v=1";}
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_catalog_base.css']").href = "https://wp-marcom.github.io/marcom/westpress/css/sierratucson_catalog.css";}
 
 //Cochise College
 else if (z.includes("Cochise College")){
