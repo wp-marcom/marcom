@@ -219,7 +219,7 @@ body, p, div, span, td, li, ol, bl, input, select, textarea {
   
   /*Change color of elements in the top right corner Username etc.*/
   #ctl00_ctl08_lblUserName, #ctl00_ctl08_btnMyProfile,#ctl00_ctl08_btnLogOut{
-  color:#000!important;
+  color:#955f27!important;
   }
   
   /*Change color of Add to Cart Button text*/
