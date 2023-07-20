@@ -240,6 +240,15 @@ background-position: top left, top right;
   img.NavTopSpacer {
   filter: invert(0);
   }
+/*Style the word PREVIEW*/
+#btnPreview > span{
+color:#FFFFFF!important;
+}
+
+#ctl00_content_ctl00_InteractivityContainer_ctl00_pf3Html5Preview_strHtmlViewerPreviewBtn{
+  color:#FFFFFF!important;
+}
+
   /*Style the button that says how a product is sold (Sold in packs of...)*/
 .button-orange {
     height: 16px;
