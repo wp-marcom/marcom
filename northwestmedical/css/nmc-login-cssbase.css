@@ -1,0 +1,217 @@
+/*Main color is #005587 (DK Blue), Secondary Color is #6BBBAD(Teal)*/
+
+
+/* Style the Large background image and the container that holds it */
+
+#ENUSmain {
+  background:url(https://wp-marcom.github.io/marcom/northwestmedical/images/login_nmc_desert.png);
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width:80vw !important;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border: 0px !important;
+}
+
+/* Style the Main Background color and overide background image if set in Catalog CSS */
+
+#PageType01 {
+background-color: #005587;
+background-image: url(none)!important;
+border: 0px !important;
+}
+
+
+
+/* Vertically align 'Username' 'Password' */
+
+#CtlLogIn > table > tbody > tr:nth-child(1), #CtlLogIn > table > tbody > tr:nth-child(2){
+vertical-align: middle!important;
+}
+
+/* Round the corners on the right side of the Login button */
+#ctl00_content_Login_btnLogin{
+float:none!important;
+border-radius: 8px!important;
+}
+
+/* Style the the Login button */
+.pbtn SPAN {
+margin-right: -9px!important;
+background: url(none) no-repeat right top!important;
+background-color: #005587!important;
+border-radius: 8px!important;
+color: #fff!important;
+display: flex!important;
+justify-content: center!important;
+letter-spacing: .57px!important;
+line-height: 1.29!important;
+text-align: center!important;
+padding: 8px 0px!important;   
+padding-left:0px!important;
+width:300px;
+height:30px;
+font-size:16px!important;
+align-items:center;
+font-weight: 700 !important;
+}
+/* Center the login button */
+A.pbtn {
+padding-right:0px!important
+}
+/* Style the the Login details surrounding box 'Username' 'Password' */
+.CtlSearchGroup {
+border: 0px!important;
+background-color: #FFFFFF!important;
+}
+
+/* Remove the dotted line divider inside the login details box 'Username' 'Password' */
+.CtlSearchGroup td.header{
+  border-right: 0px;
+}
+
+/* Style the words 'Username' 'Password' */
+#ctl00_content_Login_Stringcontrol2, #ctl00_content_Login_Stringcontrol3{
+font-weight: 600!important;
+color: #005587 !important;
+font-size: 14px!important;
+}
+
+/* Style the entry/input fields for 'Username' 'Password' */
+#ctl00_content_Login_txtLoginId, #ctl00_content_Login_txtPassword {
+background-position: 95% 57%!important;
+  background-size: 4%!important;
+  border: 2px solid #005587!important;
+  border-radius: 8px!important;
+  height: 5px!important;
+  padding: 12px 5px 12px 10px!important;
+  width: 150px!important;
+}
+
+
+
+/* Style the greeting above the login details "Hello!" "Welcome" */
+
+h4 {
+  font-size:xx-large !important;
+  z-index: 1;
+}
+
+/* Style the primary login box color/placement/effects*/
+#CtlLogIn {
+margin-left: 35% !important;
+margin-top: 5% !important;
+background-color: rgba(255,255,255,1) !important;
+border-radius: 8px!important;
+color: #005587 !important;
+position: relative;
+z-index: 1;
+background: #FFFFFF;
+max-width: 360px;
+margin: 0 auto 100px;
+padding: 44px;
+text-align: center;
+box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 -110px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+/* Hide the header graphic that is added to the top bar by login info */
+.NavTop {
+background-color:transparent !important;
+background-image: url(none)!important;
+height: 130px!important;
+border-top-left-radius: 20px!important;
+border-top-right-radius: 20px!important;
+}
+
+/* Hide the white footer bar */
+#CtlFooter {
+background-color:transparent !important;
+}
+/* Hide the security metrics image from the footer area */
+#ctl00_content_FooterLayout_ImageControl1{
+visibility: hidden;
+}
+/* Hide the Copyright info for PTI/MARCOM */
+#copyright{
+visibility: hidden;
+}
+
+/* Style the Login Header Element - the HTML for this exists in the Custom Content section */
+
+#LogoDiv {
+background:url(https://wp-marcom.github.io/marcom/northwestmedical/images/nmc-login-header.svg);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+border-radius: 8px 8px 0px 0px!important;
+
+margin-left: -45px !important;
+margin-top: -205px !important;
+position: absolute !important;
+width: 390px !important;
+height: 125px !important;
+z-index:99 !important;
+}
+
+/* I do not know what this does */
+
+#overlayDiv {
+margin-left: 19px !important;
+margin-top: 11px !important;
+position: absolute !important;
+width: 76px !important;
+height: 20px !important;
+z-index:99 !important;
+
+}
+
+#overlayPas {
+margin-left: 19px !important;
+margin-top: 39px !important;
+position: absolute !important;
+width: 76px !important;
+height: 20px !important;
+z-index:99 !important;
+
+}
+
+#CtlFooter td {
+color: #ffffff !important;
+}
+
+#newUser{
+color:black;
+margin-top:0px!important;
+position: relative!important;
+top: 1px!important;
+font-size: 13px;
+}
+
+
+
+.pbtn {
+background: url() no-repeat right top!important;
+}
+
+#CtlLogIn > div:nth-child(9) {
+float:none!important;
+margin:0px!important
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
