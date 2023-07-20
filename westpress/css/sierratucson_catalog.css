@@ -239,6 +239,15 @@ body, p, div, span, td, li, ol, bl, input, select, textarea {
   img.NavTopSpacer {
   filter: invert(0);
   }
+/*Style the word PREVIEW*/
+#btnPreview > span{
+color:#FFFFFF!important;
+}
+
+#ctl00_content_ctl00_InteractivityContainer_ctl00_pf3Html5Preview_strHtmlViewerPreviewBtn{
+  color:#FFFFFF!important;
+}
+
   /*Style the button that says how a product is sold (Sold in packs of...)*/
 .button-orange {
     height: 16px;
