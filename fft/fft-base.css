@@ -363,33 +363,31 @@ color: #a10121!important;
 
 
 
-/* RED WARNING */
+/* RED WARNING BOX THAT POPS UP TO CHOOSE AN OPTION */
 
 .composite_form .component_message, .woocommerce .woocommerce-error {
 
 	color:#fff!important;
 
-	border: 1px solid #541f46!important;
+	border: 0px solid #541f46!important;
 
 	border-radius: 5px;
 
-	padding:15px;
-
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a20122+0,a81739+50,a20122+51,ed0229+100 */
+	padding:5px;
 
 	background: #a20122; /* Old browsers */
 
-	background: -moz-linear-gradient(top,  #a20122 0%, #a81739 50%, #a20122 51%, #ed0229 100%)!important; /* FF3.6-15 */
+	background: #a20122; /* FF3.6-15 */
 
-	background: -webkit-linear-gradient(top,  #a20122 0%,#a81739 50%,#a20122 51%,#ed0229 100%)!important; /* Chrome10-25,Safari5.1-6 */
+	background: #a20122; /* Chrome10-25,Safari5.1-6 */
 
-	background: linear-gradient(to bottom,  #a20122 0%,#a81739 50%,#a20122 51%,#ed0229 100%)!important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	background: #a20122; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a20122', endColorstr='#ed0229',GradientType=0 ); /* IE6-9 */
 
-	-webkit-box-shadow: 0 0 10px 2px #969696!important;
+/* 	-webkit-box-shadow: 0 0 10px 2px #969696!important; */
 
-	box-shadow: 0 0 10px 2px #969696!important;
+/* 	box-shadow: 0 0 10px 2px #969696!important; */
 
 }
 
