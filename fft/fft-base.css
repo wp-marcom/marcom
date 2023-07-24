@@ -407,6 +407,7 @@ color: #a10121!important;
 
 
 
+/* DropDown Colors for product choices */
 .component .variations select, .component .component_options_select {
 
 	appearance: none!important;
@@ -421,21 +422,19 @@ color: #a10121!important;
 
 	padding:15px;
 
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffbf00+0,ffcb3d+50,ffbf00+51,fff200+100 */
+	background: #ffbf00!important; /* Old browsers */
 
-	background: #ffbf00; /* Old browsers */
+	background: #ffbf00; /* FF3.6-15 */
 
-	background: -moz-linear-gradient(top,  #ffbf00 0%, #ffcb3d 50%, #ffbf00 51%, #fff200 100%); /* FF3.6-15 */
+	background: #ffbf00; /* Chrome10-25,Safari5.1-6 */
 
-	background: -webkit-linear-gradient(top,  #ffbf00 0%,#ffcb3d 50%,#ffbf00 51%,#fff200 100%); /* Chrome10-25,Safari5.1-6 */
-
-	background: linear-gradient(to bottom,  #ffbf00 0%,#ffcb3d 50%,#ffbf00 51%,#fff200 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	background: #ffbf00; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffbf00', endColorstr='#fff200',GradientType=0 ); /* IE6-9 */
 
-	-webkit-box-shadow: 0 0 10px 2px #969696;
+/* 	-webkit-box-shadow: 0 0 10px 2px #969696; */
 
-	box-shadow: 0 0 10px 2px #969696;
+/* 	box-shadow: 0 0 10px 2px #969696; */
 
 }
 
