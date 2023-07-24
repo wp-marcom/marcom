@@ -1,0 +1,543 @@
+/*
+
+Global Styles for Service for Life, In Good Hands and Fuel for Thought
+
+*/
+
+
+
+.no-shadow { text-shadow: none!important; }
+
+p.demo_store {
+
+	background-color: #551e48;
+
+}
+
+
+
+#main-header, .et-fixed-header {
+
+	border: 1px solid #541f46;
+
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffbf00+0,ffcb3d+50,ffbf00+51,fff200+100 */
+
+	background: #ffbf00; /* Old browsers */
+
+	background: -moz-linear-gradient(top,  #ffbf00 0%, #ffcb3d 50%, #ffbf00 51%, #fff200 100%); /* FF3.6-15 */
+
+	background: -webkit-linear-gradient(top,  #ffbf00 0%,#ffcb3d 50%,#ffbf00 51%,#fff200 100%); /* Chrome10-25,Safari5.1-6 */
+
+	background: linear-gradient(to bottom,  #ffbf00 0%,#ffcb3d 50%,#ffbf00 51%,#fff200 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffbf00', endColorstr='#fff200',GradientType=0 ); /* IE6-9 */
+
+	-webkit-box-shadow: 0 0 10px 2px #969696;
+
+	box-shadow: 0 0 10px 2px #969696;
+
+}
+
+
+
+#et_top_search { display: none;}
+
+
+
+#footer-info {
+
+	float:none;
+
+	text-align: center;
+
+}
+
+.hard-light {
+
+	mix-blend-mode: hard-light;
+
+}
+
+.overlay {
+
+	mix-blend-mode: overlay;
+
+}
+
+.text-shadow{
+
+	text-shadow: 0px 0px 4px #000000!important;
+
+}
+
+
+
+.big-shadow {
+
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.45+25,0.45+75,0+100 */
+
+background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 25%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+
+background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 25%,rgba(0,0,0,0.45) 75%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+
+background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 25%,rgba(0,0,0,0.45) 75%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+
+
+
+}
+
+
+
+.et_pb_slide_description h2, .et_pb_slide_description p, .et_pb_slide_description a {
+
+	text-shadow: 0px 0px 2px #000000;
+
+}
+
+
+
+.et_pb_bg_layout_light .et_pb_slide_description h2, .et_pb_bg_layout_light .et_pb_slide_description p, .et_pb_bg_layout_light .et_pb_slide_description a{
+
+	text-shadow: 0px 0px 2px #FFFFFF;
+
+}
+
+
+
+.et_pb_slide_content {
+
+	padding-bottom: 35px;
+
+	padding-right: 50px;
+
+}
+
+
+
+.et_pb_slider .et_pb_slide {
+
+	min-height: 350px;
+
+}
+
+
+
+h2.large_header {
+
+	font-size: 70px;
+
+}
+
+.post-meta a, .et_project_categories a{
+
+	color: #2ea3f2!important;
+
+}
+
+
+
+h3.comment-reply-title { clear: both; padding-top: 15px; }
+
+.et_pb_testimonial_meta a { display: block; }
+
+
+
+
+
+/*File Upload Styles */
+
+a.del_file, a.add_a_file {
+
+	height: 30px;
+
+	width: 30px;
+
+	display: inline-block;
+
+	box-shadow: 0 0 5px #000;
+
+	border-radius: 5px;
+
+}
+
+a.del_file {
+
+	background-image: url('images/remove-icon.png');
+
+	margin-bottom:35px;
+
+}
+
+a.add_a_file {
+
+	background-image: url('images/add-icon.png');
+
+	margin-bottom:-10px;
+
+}
+
+
+
+/*WooCommerce Adjustments */
+
+
+
+.woocommerce-message {display:none;}
+
+.woocommerce-info {color:#fff;}
+
+.woocommerce-info a {color:#541f46;}
+
+.product_meta {display: none;}
+
+.images {display: none;}
+
+.woocommerce div.product h1.product_title {display: none!important;}
+
+.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
+
+	width:100%!important;
+
+	float:left!important;
+
+}
+
+.composite_button .quantity {display: none!important;}
+
+.composite_form .composite_pagination {margin-bottom:0px!important;}
+
+label.selected_option_label {display:none;}
+
+.post-8 .woocommerce .woocommerce-error {
+
+	background:#fea1a1!important;
+
+}
+
+
+
+#add_payment_method table.cart .product-thumbnail, .woocommerce-cart table.cart .product-thumbnail, .woocommerce-checkout table.cart .product-thumbnail { display: none;}
+
+
+
+.composite_form .component_message.top .woocommerce-info ul { padding:0!important; }
+
+
+
+.woocommerce .woocommerce-info, .woocommerce .woocommerce-message {
+
+	background:none!important;
+
+}
+
+/*ul.woocommerce-error {color:#541f46!important;}*/
+
+.composite_wrap .composite_price {display: none!important;}
+
+.composite_wrap .composite_button {float:right!important;}
+
+.woocommerce-error li {color: #fff!important;}
+
+
+
+/* Add to Cart */
+
+.woocommerce div.product form.cart .button {
+
+    padding: 16px 35px;
+
+    font-weight: bolder;
+
+    text-transform: uppercase;
+
+}
+
+
+
+/* Product Add-Ons Adjustments */
+
+.product-addon-upload-your-files label {
+
+	display: inline-block!important;
+
+	width: 50%;
+
+}
+
+
+
+/*.composite_data .product-addon {
+
+    padding: 10px 0;
+
+    width: 45%;
+
+    float: left;
+
+    margin-right: 5%!important;
+
+}*/
+
+
+
+input[type=text].addon { width: 45%!important; }
+
+
+
+/* Product Bundle Adjustments */
+
+table.bundled_products td.bundled_item_images_col {display: none;}
+
+
+
+.addon-wrap-1443197452-please-mail-the-newsletter-for-me-0 label, .addon-wrap-1443197452-please-mail-the-newsletter-for-me-0 input.addon {width:10%!important;}
+
+
+
+/* Composite Product Adjustments */
+
+.clear_component_options_wrapper {height:20px;}
+
+.composite_form .step_title_wrapper { margin-bottom: 0!important; }
+
+
+
+.composite_form .composite_navigation .page_button, #top-header, .woocommerce button.button.alt, .woocommerce button.button, .woocommerce-page button.button, .woocommerce-page button.button.alt, .woocommerce button.button.alt:hover, .woocommerce button.button:hover, .woocommerce-page button.button:hover, .woocommerce-page button.button.alt:hover {
+
+	border: 1px solid #541f46;
+
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#551e48+0,72335b+50,682554+51,7f436f+100 */
+
+	background: #551e48; /* Old browsers */
+
+	background: -moz-linear-gradient(top,  #551e48 0%, #72335b 50%, #682554 51%, #7f436f 100%); /* FF3.6+ */
+
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#551e48), color-stop(50%,#72335b), color-stop(51%,#682554), color-stop(100%,#7f436f)); /* Chrome,Safari4+ */
+
+	background: -webkit-linear-gradient(top,  #551e48 0%,#72335b 50%,#682554 51%,#7f436f 100%); /* Chrome10+,Safari5.1+ */
+
+	background: -o-linear-gradient(top,  #551e48 0%,#72335b 50%,#682554 51%,#7f436f 100%); /* Opera 11.10+ */
+
+	background: -ms-linear-gradient(top,  #551e48 0%,#72335b 50%,#682554 51%,#7f436f 100%); /* IE10+ */
+
+	background: linear-gradient(to bottom,  #551e48 0%,#72335b 50%,#682554 51%,#7f436f 100%); /* W3C */
+
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#551e48', endColorstr='#7f436f',GradientType=0 ); /* IE6-9 */
+
+	-webkit-box-shadow: 0 0 10px 2px #969696;
+
+	box-shadow: 0 0 10px 2px #969696;
+
+	color: #fff!important;
+
+}
+
+.woocommerce-button button woocommerce-form-login__submit{
+
+color: #a10121!important;
+
+}
+
+
+
+
+
+.composite_form .composite_navigation .page_button {
+
+	color:#fff;
+
+	border-radius: 5px;
+
+	padding:15px;
+
+}
+
+
+
+.woocommerce div.product .component_title.product_title { margin-bottom: 0!important; }
+
+.component .component_description { margin-bottom: 0!important;}
+
+.bundled_item_images_head {display: none;}
+
+
+
+/* RED WARNING */
+
+.composite_form .component_message, .woocommerce .woocommerce-error {
+
+	color:#fff!important;
+
+	border: 1px solid #541f46!important;
+
+	border-radius: 5px;
+
+	padding:15px;
+
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a20122+0,a81739+50,a20122+51,ed0229+100 */
+
+	background: #a20122; /* Old browsers */
+
+	background: -moz-linear-gradient(top,  #a20122 0%, #a81739 50%, #a20122 51%, #ed0229 100%)!important; /* FF3.6-15 */
+
+	background: -webkit-linear-gradient(top,  #a20122 0%,#a81739 50%,#a20122 51%,#ed0229 100%)!important; /* Chrome10-25,Safari5.1-6 */
+
+	background: linear-gradient(to bottom,  #a20122 0%,#a81739 50%,#a20122 51%,#ed0229 100%)!important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a20122', endColorstr='#ed0229',GradientType=0 ); /* IE6-9 */
+
+	-webkit-box-shadow: 0 0 10px 2px #969696!important;
+
+	box-shadow: 0 0 10px 2px #969696!important;
+
+}
+
+
+
+.woocommerce .woocommerce-error, .woocommerce .woocommerce-info, .woocommerce .woocommerce-message {margin-bottom: 0!important;}
+
+.validation_message.woocommerce-info {padding: 0px !important;}
+
+
+
+.composite_navigation .page_button.inactive {display:none;}
+
+.composite_form .composite_navigation .next::after {color:#541f46;}
+
+.composite_form .composite_navigation .prev::before {color:#541f46;}
+
+
+
+.component .variations select, .component .component_options_select {
+
+	appearance: none!important;
+
+	margin-bottom: 0px!important;
+
+	color:#541f46;
+
+	border: 1px solid #541f46!important;
+
+	border-radius: 5px;
+
+	padding:15px;
+
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffbf00+0,ffcb3d+50,ffbf00+51,fff200+100 */
+
+	background: #ffbf00; /* Old browsers */
+
+	background: -moz-linear-gradient(top,  #ffbf00 0%, #ffcb3d 50%, #ffbf00 51%, #fff200 100%); /* FF3.6-15 */
+
+	background: -webkit-linear-gradient(top,  #ffbf00 0%,#ffcb3d 50%,#ffbf00 51%,#fff200 100%); /* Chrome10-25,Safari5.1-6 */
+
+	background: linear-gradient(to bottom,  #ffbf00 0%,#ffcb3d 50%,#ffbf00 51%,#fff200 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffbf00', endColorstr='#fff200',GradientType=0 ); /* IE6-9 */
+
+	-webkit-box-shadow: 0 0 10px 2px #969696;
+
+	box-shadow: 0 0 10px 2px #969696;
+
+}
+
+
+
+.component .component_options_select {margin-left: 6px;}
+
+
+
+
+
+/* Variations adjustments */
+
+.woocommerce div.product form.cart .variations select { min-width: 35%; }
+
+
+
+.orderby, .woocommerce div.product form.cart .variations td select {
+
+    padding: 10px 10px;
+
+    font-size: 14px;
+
+}
+
+
+
+.woocommerce div.product form.cart .variations td {   padding: 0!important;}
+
+
+
+/*h4.composited_product_title { padding: 25px 0px!important;}*/
+
+
+
+.woocommerce div.product form.cart .variations { margin-top: 1em;}
+
+
+
+
+
+/* Bundled Products Tabular Layout Adjustments */
+
+table.cart th, #main-content table.cart th, table.cart td, #main-content table.cart td, table.cart tr, #main-content table.cart tr, #content-area table tr, #content-area table td, #content-area table th {max-width:400px;}
+
+
+
+/*p.price, span.amount, span.from {
+
+	display: none!important;
+
+}*/
+
+/*.component .composited_product_images {
+
+	display: none;
+
+}*/
+
+
+
+/*remove shipping area of cart*/
+
+tr.shipping {
+
+	display:none!important;
+
+}
+
+
+
+/*@media only screen and ( max-width: 479px ) {*/
+
+@media only screen and ( max-width: 767px ) {
+
+	.subscribe-2 { width:100%; }
+
+	.posts-grid .et_pb_post { margin-right: 0%;	width: 100%; }
+
+	.et_pb_post { margin-bottom: 60px; margin-right: 0%; width: 100%; }
+
+	h2.large_header { font-size: 45px; }
+
+	/*.wpcf7-form .split p { width:100%; }*/
+
+	.et_pb_fullwidth_header { padding: 14px 0; }
+
+	.et_pb_section_parallax .et_pb_parallax_css { background-attachment: scroll; }
+
+}
+
+
+
+@media only screen and ( min-width: 768px ) {
+
+	.mobile-only {
+
+		display: none;
+
+	}
+
+}
