@@ -10,7 +10,7 @@ document.getElementById("ctl00_content_CartBilling_txtClientPONumber").removeAtt
 
 document.getElementById("ctl00_content_CartBilling_CtlCartItemList_CtlCartItems_ctl02_txtItemClientPONumber").removeAttribute("required");
 
-document.getElementById("ctl00_content_CartBilling_divClientPONumberDisplay").defaultValue = "Enter"; 
-document.getElementById("ctl00_content_CartBilling_txtClientPONumber").defaultValue = "Enter"; 
-document.getElementById("ctl00_content_CartBilling_CtlCartItemList_CtlCartItems_ctl02_txtItemClientPONumber").defaultValue = "Enter"; 
+document.getElementById("ctl00_content_CartBilling_divClientPONumberDisplay").defaultValue = " "; 
+document.getElementById("ctl00_content_CartBilling_txtClientPONumber").defaultValue = " "; 
+document.getElementById("ctl00_content_CartBilling_CtlCartItemList_CtlCartItems_ctl02_txtItemClientPONumber").defaultValue = " "; 
 document.getElementById("myText").defaultValue = "Goofy"; 
