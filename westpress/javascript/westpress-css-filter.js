@@ -19,7 +19,7 @@ document.getElementById('ctl00_content_CartShipping_CtlAddressSelector_ctlAddres
 //document.getElementById("ctl00_content_CartShipping_CtlAddressSelector_ctlAddressForm_txtCompany").className += " required";
 
 document.getElementById("ctl00_content_CartShipping_btnContinue").onclick = function() { 
-    var x = document.getElementById("ctl00_content_CartShipping_CtlAddressSelector_ctlAddressForm_txtCompany").value
+    var x = document.getElementById("ctl00_content_CartShipping_CtlCartItemList_CtlCartItems_ctl02_txtShippingInstructions").value
     if (x == "") {
         alert("Purchase Order must be filled out");
         return false;
