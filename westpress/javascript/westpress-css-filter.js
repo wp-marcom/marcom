@@ -21,7 +21,7 @@ document.getElementById('ctl00_content_CartShipping_CtlAddressSelector_ctlAddres
 document.getElementById("ctl00_content_CartShipping_btnContinue").onclick = function() { 
     var x = document.getElementById("ctl00_content_CartShipping_CtlAddressSelector_ctlAddressForm_txtCompany").value
     if (x == "") {
-        alert("Name must be filled out");
+        alert("Purchase Order must be filled out");
         return false;
       }
 
