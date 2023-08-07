@@ -16,7 +16,16 @@ document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/
 document.getElementById('ctl00_content_CartShipping_CtlAddressSelector_ctlAddressForm_lblCompany').innerHTML = 'Purchase Order:';
 //document.getElementById("ctl00_content_CartShipping_CtlAddressSelector_ctlAddressForm_txtCompany").required = true;
 //document.getElementById("ctl00_content_CartShipping_CtlAddressSelector_ctlAddressForm_txtCompany").setAttribute('required', '');
-document.getElementById("ctl00_content_CartShipping_CtlAddressSelector_ctlAddressForm_txtCompany").className += " required";
+//document.getElementById("ctl00_content_CartShipping_CtlAddressSelector_ctlAddressForm_txtCompany").className += " required";
+
+document.getElementById("ctl00_content_CartShipping_btnContinue").onclick = function() { 
+    var x = document.getElementById("ctl00_content_CartShipping_CtlAddressSelector_ctlAddressForm_txtCompany").value
+    if (x == "") {
+        alert("Name must be filled out");
+        return false;
+      }
+
+};
 }
 
 //Cochise College
