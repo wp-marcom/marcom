@@ -23,3 +23,8 @@ document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/
 else if (z.includes("Cochise County")){
 document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_catalog_base.css']").href = "https://wp-marcom.github.io/marcom/westpress/css/cochisecounty_catalog.css";
 }
+
+//Flowing Wells Unified School District
+else if (z.includes("FWUSD")){
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_catalog_base.css']").href = "https://wp-marcom.github.io/marcom/westpress/css/fwusd_catalog.css";
+}
