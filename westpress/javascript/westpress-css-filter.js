@@ -14,6 +14,7 @@ document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/
 else if (z.includes("Sierra Tucson")){
 document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_catalog_base.css']").href = "https://wp-marcom.github.io/marcom/westpress/css/sierratucson_catalog.css";
 document.getElementById('ctl00_content_CartShipping_CtlCartItemList_CtlCartItems_ctl01_Stringcontrol3').innerHTML = 'Purchase Order:';
+document.getElementById("ctl00_content_CartShipping_CtlCartItemList_CtlCartItems_ctl02_txtShippingInstructions").defaultValue = ""; 
 document.getElementById("ctl00_content_CartShipping_btnContinue").onclick = function() { 
     var x = document.getElementById("ctl00_content_CartShipping_CtlCartItemList_CtlCartItems_ctl02_txtShippingInstructions").value
 
