@@ -1,6 +1,6 @@
-var y = window.userId
-var z = document.getElementById("ctl00_ctl08_lblUserName").innerHTML
-var x = document.getElementById("ctl00_ctl08_lblUserName").innerHTML
+var y = window.userId;
+var z = document.getElementById("ctl00_ctl08_lblUserName").innerHTML;
+var x = document.getElementById("ctl00_ctl08_lblUserName").innerHTML;
 
 //Mister
 if (z.includes("Kaleb Badger")){
