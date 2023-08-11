@@ -272,7 +272,7 @@ filter: invert(0);
 
 /*Each set of 3 products*/
 .gridRow3Cols {
-  float:none!important;
+  float:left!important;
     margin: 0px!important;
     width: inherit!important;
 }
