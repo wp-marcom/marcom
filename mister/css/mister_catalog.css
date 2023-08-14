@@ -294,3 +294,53 @@ img.itemDescriptionIcon, img.itemDescriptionIconLast {
 height:0px!important;
 }
 
+/*Below this line are attempts to control the item grid thumbnails- with the new catalog layout 8-14-23*/
+
+.ellipsis_text {
+  font-size: 90%!important;
+  overflow: clip!important;
+  text-overflow: ellipsis!important;
+  word-wrap: break-word!important;
+  display: block!important;
+  line-height: 1.0em!important; /* a */
+  max-height: 2em!important; /* a x number of line to show (ex : 2 line)  */
+  max-width: 98%!important;
+}
+
+#CtlBody > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3){
+  background-color: white!important;
+}
+
+div.gridRow3Cols {
+  float: left !important;
+  margin: 0px !important;
+  width: 33% !important;
+  margin-right: -45px!important;
+  margin-left:4px!important;
+}
+
+.pti-cc-folderGridItem{
+  width:31%!important;
+}
+.gridItem{
+  width:30%!important;
+}
+
+.gridItemImageCell{
+width:100%!important;
+height:100%!important;
+max-width:150px!important;
+max-height:150px!important;
+min-height:150px!important;
+min-width:150px!important;
+}
+
+.gridItem_thumb img, .gridItem_thumb{
+height:100%!important;
+width:100%!important;
+max-width:150px!important;
+max-height:150px!important;
+min-height:150px!important;
+min-width:100%!important;
+
+ }
