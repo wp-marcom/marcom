@@ -327,7 +327,7 @@ div.gridRow3Cols {
 }
 
 .gridItemImageCell{
-width:100%!important;
+width:150px;
 height:150px;
 max-width:150px!important;
 max-height:150px!important;
@@ -337,8 +337,7 @@ min-width:150px!important;
 
 .gridItem_thumb img, .gridItem_thumb{
 height:auto!important;
-width:100%!important;
+width:auto!important;
 max-width:150px!important;
 max-height:150px!important;
-min-width:100%!important;
  }
