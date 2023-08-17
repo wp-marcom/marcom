@@ -314,8 +314,8 @@ height:0px!important;
 div.gridRow3Cols {
   float: left !important;
   margin: 0px !important;
-  width: 31rem !important;
-  margin-right: -7px!important;
+  width: 29.5rem !important;
+  margin-right: -12px!important;
   margin-left:0px!important;
 }
 
@@ -323,7 +323,7 @@ div.gridRow3Cols {
   width:29%!important;
 }
 .gridItem{
-  width:32%!important;
+  width:9.375rem!important;
 }
 
 .gridItemImageCell{
@@ -345,3 +345,4 @@ max-height:9.375rem!important;
 .gridItemImageTable {
   width: 95%!important;
 }
+
