@@ -315,15 +315,15 @@ div.gridRow3Cols {
   float: left !important;
   margin: 0px !important;
   width: 33% !important;
-  margin-right: -45px!important;
-  margin-left:4px!important;
+  margin-right: -7px!important;
+  margin-left:0px!important;
 }
 
 .pti-cc-folderGridItem{
-  width:31%!important;
+  width:29%!important;
 }
 .gridItem{
-  width:30%!important;
+  width:32%!important;
 }
 
 .gridItemImageCell{
