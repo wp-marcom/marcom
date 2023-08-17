@@ -314,7 +314,7 @@ height:0px!important;
 div.gridRow3Cols {
   float: left !important;
   margin: 0px !important;
-  width: 33% !important;
+  width: 31rem !important;
   margin-right: -7px!important;
   margin-left:0px!important;
 }
@@ -327,17 +327,21 @@ div.gridRow3Cols {
 }
 
 .gridItemImageCell{
-width:150px;
-height:150px;
-max-width:150px!important;
-max-height:150px!important;
-min-height:150px!important;
-min-width:150px!important;
+width:9.375rem;
+height:9.375rem;
+max-width:9.375rem!important;
+max-height:9.375rem!important;
+min-height:9.375rem!important;
+min-width:9.375rem!important;
 }
 
 .gridItem_thumb img, .gridItem_thumb{
 height:auto!important;
 width:auto!important;
-max-width:150px!important;
-max-height:150px!important;
+max-width:9.375rem!important;
+max-height:9.375rem!important;
  }
+
+.gridItemImageTable {
+  width: 95%!important;
+}
