@@ -297,7 +297,7 @@ height:0px!important;
 /*Below this line are attempts to control the item grid thumbnails- with the new catalog layout 8-14-23*/
 
 .ellipsis_text {
-  font-size: 90%!important;
+  font-size: .98em!important;
   overflow: clip!important;
   text-overflow: ellipsis!important;
   word-wrap: break-word!important;
