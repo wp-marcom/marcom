@@ -14,7 +14,7 @@ var animation = bodymovin.loadAnimation({
   renderer: 'svg',
   loop: true,
   autoplay: true,
-  path: 'https://lottie.host/d6baa922-327a-4396-9063-1f101457e9ef/7cBrRDdq3t.json'
+  path: 'https://labs.nearpod.com/bodymovin/demo/markus/isometric/markus2.json'
 })
   
   
