@@ -1,5 +1,5 @@
 var animation = lottie.loadAnimation({
-    container: document.getElementById('bm'),
+    container: document.getElementById('LogoDiv'),
     renderer: 'svg',
     loop: true,
     autoplay: true,
