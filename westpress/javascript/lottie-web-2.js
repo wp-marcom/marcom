@@ -1,5 +1,5 @@
 var animation = bodymovin.loadAnimation({
-  container: document.getElementById('LogoDiv'),
+  container: document.querySelector(".NavTop"),  
   path: 'https://lottie.host/d6baa922-327a-4396-9063-1f101457e9ef/7cBrRDdq3t.json',
   renderer: 'svg',
   loop: true,
