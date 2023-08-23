@@ -9,15 +9,13 @@ document.querySelector("link[href='https://westpress.com/MarcomContent/MCW/CSS/M
 const boxes = document.getElementsByTagName("div");
 boxes[0].classList.remove("gridRow3Cols");
 
-var animData = {
-        container: document.getElementById('container'),
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: 'https://labs.nearpod.com/bodymovin/demo/2016/data.json'
-    };
-    var anim = bodymovin.loadAnimation(animData);
-
+var animation = bodymovin.loadAnimation({
+  container: document.getElementById('container'),
+  renderer: 'svg',
+  loop: true,
+  autoplay: true,
+  path: 'https://lottie.host/d6baa922-327a-4396-9063-1f101457e9ef/7cBrRDdq3t.json'
+})
   
   
 }
