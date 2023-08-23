@@ -8,5 +8,16 @@ document.querySelector("link[href='https://westpress.com/MarcomContent/MCW/CSS/M
   
 const boxes = document.getElementsByTagName("div");
 boxes[0].classList.remove("gridRow3Cols");
+
+var animData = {
+        container: document.getElementById('container'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'https://labs.nearpod.com/bodymovin/demo/2016/data.json'
+    };
+    var anim = bodymovin.loadAnimation(animData);
+
+  
   
 }
