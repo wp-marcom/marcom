@@ -10,7 +10,7 @@ const boxes = document.getElementsByTagName("div");
 boxes[0].classList.remove("gridRow3Cols");
 
 var animation = bodymovin.loadAnimation({
-  container: document.getElementById('ctl00_ctl08_lblUserName'),
+  container: document.getElementById('container'),
   renderer: 'svg',
   loop: true,
   autoplay: true,
