@@ -8,14 +8,5 @@ document.querySelector("link[href='https://westpress.com/MarcomContent/MCW/CSS/M
   
 const boxes = document.getElementsByTagName("div");
 boxes[0].classList.remove("gridRow3Cols");
-
-var animation = lottie.loadAnimation({
-  container: document.getElementById('container'),
-  renderer: 'svg',
-  loop: true,
-  autoplay: true,
-  path: 'https://labs.nearpod.com/bodymovin/demo/markus/isometric/markus2.json'
-})
-  
   
 }
