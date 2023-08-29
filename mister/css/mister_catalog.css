@@ -102,18 +102,18 @@ color:white!important;
 
 /*Add an image to the inside of the Nav element that contains the login username and information at the top*/
 
-.NavTop {
+/*.NavTop {
 color:#fff!important;
 font-size: 13px!important;
 font-weight:600!important;
 border-top-left-radius: 20px!important;
 border-top-right-radius: 20px!important;
-/*height: 130px!important;*/
+height: 130px!important;
 
 background: url(https://wp-marcom.github.io/marcom/mister/images/mister-header-placeholder.svg), url();
 background-repeat: no-repeat;
 background-size: auto;
-background-position: top left, top right;
+background-position: top left, top right;*/
 }
 
 /*Background color to entire Main Nav Bar and remove borders for cleaner look*/
