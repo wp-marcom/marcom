@@ -1,6 +1,6 @@
 var animation = bodymovin.loadAnimation({
   container: document.querySelector(".NavTop"),  
-  path: 'https://lottie.host/4641822c-c941-4d96-bc8d-e972a92cb8ce/FyrSP6jyKN.json',
+  path: 'https://lottie.host/83fcc8b0-83d8-4cf4-b5df-5a27b993680c/AOhKp3Pddg.json',
   renderer: 'svg',
   loop: true,
   autoplay: true,
