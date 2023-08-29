@@ -100,6 +100,10 @@ color:white!important;
 
 /*Change details of the Main Nav Bar at the top*/
 
+.NavTop > div:nth-child(1){
+  height:10px;
+}
+
 /*Add an image to the inside of the Nav element that contains the login username and information at the top*/
 
 .NavTop {
