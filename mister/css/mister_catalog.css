@@ -108,7 +108,7 @@ font-size: 13px!important;
 font-weight:600!important;
 border-top-left-radius: 20px!important;
 border-top-right-radius: 20px!important;
-height: 0px!important;
+height: 100%!important;
 /*
 background: url(https://wp-marcom.github.io/marcom/mister/images/mister-header-placeholder.svg), url();
 background-repeat: no-repeat;
