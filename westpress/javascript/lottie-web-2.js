@@ -1,6 +1,6 @@
 var animation = bodymovin.loadAnimation({
   container: document.querySelector(".NavTop"),  
-  path: 'https://lottie.host/7d65b150-33ef-43dd-8c89-8c2479b1187c/teZvzw12fP.json',
+  path: 'https://wp-marcom.github.io/marcom/mister/javascript/mister-header-spraydrive.json',
   renderer: 'svg',
   loop: true,
   autoplay: true,
