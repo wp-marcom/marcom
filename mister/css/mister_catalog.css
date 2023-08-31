@@ -350,3 +350,136 @@ max-height:9.375rem!important;
   width: 95%!important;
 }
 
+/*Hide the extra Billing fields so Mister can provide "Billing Code"*/
+
+#ctl00_content_CartBilling_CtlAddressSelector_lblUseNewAddress{
+visibility: hidden!important;
+display: none!important;
+}
+
+#ctl00_content_CartBilling_CtlAddressSelector_rdbCreateNew
+{
+visibility: hidden!important;
+display: none!important;
+}
+
+#ctl00_content_CartBilling_CtlAddressSelector_btnSaveAddress{
+visibility: hidden!important;
+display: none!important;
+}
+
+#ctl00_content_CartBilling_CtlAddressSelector_ctlAddressForm_Stringcontrol2{
+visibility: hidden!important;
+display: none!important;
+}
+
+#ctl00_content_CartBilling_CtlAddressSelector_divOrSeperator{
+visibility: hidden!important;
+display: none!important;
+}
+
+/*Hide the extra Shipping fields*/
+
+textarea[id$="txShippingInstructions"] {
+visibility: hidden!important;
+display: none!important;
+}
+
+
+.TopMargin6{
+visibility: hidden!important;
+display: none!important;
+}
+
+.AddrForm{
+visibility: hidden!important;
+display: none!important;
+}
+
+
+
+#ctl00_content_CartShipping_CtlAddressSelector_divCreateNewAddress{
+visibility: hidden!important;
+display: none!important;
+}
+#ctl00_content_CartShipping_CtlAddressSelector_ctlAddressForm_txtCompanys{
+ border: 0px!important;
+}
+
+/*Style the popup that tells user about Shipping on the SHOPPING CART page*/
+.box {
+  width: 40%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 35px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+z-index: 99;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility:visible;
+  
+  : visible;
+  opacity: 1;
+}
+.overlay:target {
+  
+  : visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #003660;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #003660;
+}
+.popup .close:hover {
+  color: #003660;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+  color: #003660;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+
+
+
