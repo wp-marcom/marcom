@@ -8,6 +8,12 @@ body, p, div, span, td, li, ol, bl, input, select, textarea {
   letter-spacing: .57px!important;
   color:#173654!important;
 }
+/*Hide the OR separator on the shipping page*/
+#ctl00_content_CartShipping_CtlAddressSelector_divOrSeperator {
+    visibility: hidden!important;
+    display: none!important;
+}
+
 
 /*The next 3 items below receive styling for a secondary "Headline" type font for some users - default is the same family as everything else*/
 
