@@ -4,14 +4,9 @@ var modal = document.getElementById('popup1');
 
 var span = document.getElementsByClassName("close")[0];
 
-
-setTimeout(function () {
-     document.getElementById('popup1').style.visibility = "visible";
-         },10000);
-
-// window.onload = function () {
-//     document.getElementById('popup1').style.visibility = "visible";
-//};
+window.onload = function () {
+document.getElementById('popup1').style.visibility = "visible";
+};
 
 window.onclick = function(event) {
   if (event.target == modal) {
