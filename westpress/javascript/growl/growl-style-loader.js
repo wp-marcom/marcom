@@ -12,8 +12,8 @@ sheetLinkLight.href = 'https://wp-marcom.github.io/marcom/westpress/css/growl/li
 sheetLinkLight.rel = 'stylesheet';
 
 const sheetScript = document.createElement('script');
-sheetLinkLight.type = 'text/javascript';
-sheetLinkLight.src = 'https://wp-marcom.github.io/marcom/westpress/javascript/growl/growl-notification.min.js';
+sheetScript.type = 'text/javascript';
+sheetScript.src = 'https://wp-marcom.github.io/marcom/westpress/javascript/growl/growl-notification.min.js';
 
 
 document.getElementsByTagName('head')[0].appendChild(sheetLinkColor);
