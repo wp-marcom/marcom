@@ -13,7 +13,7 @@ sheetLinkLight.rel = 'stylesheet';
 
 const sheetScript = document.createElement('script');
 sheetScript.type = 'text/javascript';
-sheetScript.src = 'https://wp-marcom.github.io/marcom/westpress/javascript/growl/growl-notification.min.js';
+sheetScript.src = 'https://js-libraries.pages.dev/growl-notification.min.js';
 
 
 document.getElementsByTagName('head')[0].appendChild(sheetLinkColor);
