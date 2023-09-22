@@ -16,7 +16,9 @@ sheetScript.type = 'text/javascript';
 sheetScript.src = 'https://js-libraries.pages.dev/growl-notification.min.js';
 
 const jqScript = document.createElement('script');
-jqScript.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js';
+jqScript.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
+jqScript.integrity = 'sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=';
+jqScript.crossorigin = 'anonymous';
 
 
 document.getElementsByTagName('head')[0].appendChild(sheetLinkColor);
