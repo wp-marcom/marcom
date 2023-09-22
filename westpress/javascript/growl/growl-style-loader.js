@@ -15,8 +15,13 @@ const sheetScript = document.createElement('script');
 sheetScript.type = 'text/javascript';
 sheetScript.src = 'https://js-libraries.pages.dev/growl-notification.min.js';
 
+const jqScript = document.createElement('script');
+jqScript.type = 'text/javascript';
+jqScript.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js';
+
 
 document.getElementsByTagName('head')[0].appendChild(sheetLinkColor);
 document.getElementsByTagName('head')[0].appendChild(sheetLinkDark);
 document.getElementsByTagName('head')[0].appendChild(sheetLinkLight);
 document.getElementsByTagName('head')[0].appendChild(sheetScript);
+document.getElementsByTagName('head')[0].appendChild(jqScript);
