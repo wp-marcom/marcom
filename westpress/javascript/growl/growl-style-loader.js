@@ -16,7 +16,6 @@ sheetScript.type = 'text/javascript';
 sheetScript.src = 'https://js-libraries.pages.dev/growl-notification.min.js';
 
 const jqScript = document.createElement('script');
-jqScript.type = 'text/javascript';
 jqScript.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js';
 
 
