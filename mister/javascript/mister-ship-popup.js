@@ -1,17 +1,15 @@
 
 // Get the modal
+
+///LEGACY
+
+// Get the modal
 var modal = document.getElementById('popup1');
 
 var span = document.getElementsByClassName("close")[0];
 
 window.onload = function () {
-document.getElementById('popup1').style.visibility = "visible";
-
-
-setTimeout(function(){ 
-document.getElementById('popup1').style.visibility = "hidden"
- }, 3000);
-    
+     document.getElementById('popup1').style.visibility = "visible";
 };
 
 window.onclick = function(event) {
