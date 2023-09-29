@@ -7,9 +7,16 @@ var modal = document.getElementById('growlPopup1');
 var closeButt = document.getElementsByClassName("growl-notification__close")[0];
 var okayButt = document.getElementsByClassName("growl-notification__button")[0];
 
-window.onload = function () {
-     document.getElementById('popup1').style.visibility = "visible";
-};
+var queuePop = document.querySelectorAll('[threedots="Marketing"]');
+
+//window.onload = function () {
+//     document.getElementById('popup1').style.visibility = "visible";
+//};
+
+queuePop.onclick = function() {
+  document.getElementById('growlPopup1').style.visibility = "visible";
+}
+
 
 window.onclick = function(event) {
   if (event.target == modal) {
