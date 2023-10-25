@@ -1,0 +1,287 @@
+/*WestPress Single Portal-UNIVERSAL SETTINGS*/
+
+
+/*Body Text and Heading Defaults*/
+body, p, div, span, td, li, ol, bl, input, select, textarea {
+  font-family: 'Figtree', Arial, Helvetica, sans-serif;
+  letter-spacing: .57px!important;
+}
+/*Hide the OR separator on the shipping page*/
+#ctl00_content_CartShipping_CtlAddressSelector_divOrSeperator {
+    visibility: hidden!important;
+    display: none!important;
+}
+
+
+/*The next 3 items below receive styling for a secondary "Headline" type font for some users - default is the same family as everything else*/
+
+/* Product Title when viewing an individual product*/
+#productTitle{
+font-family: 'Figtree', Arial, Helvetica, sans-serif!important;
+}
+
+/* Folder and Directory Name and Primary Product Name styling*/
+.ProductName {
+  font-family: 'Figtree', Arial, Helvetica, sans-serif!important;
+  padding-top: 32px!important;
+}
+
+/*Headlines*/
+h1, h2, h3, h4, h5, h6{
+font-family: 'Figtree', Arial, Helvetica, sans-serif!important;
+letter-spacing: .57px!important;
+
+}
+
+/*Primary Catalog Width - How Wide are the store pages?*/
+#ENUSmain {
+  width: 90vw !important;
+  border: 0px!important;
+  border-radius: 20px!important;
+}
+
+
+/*Set the width/border of the center catalog bar and how wide the elements beneath spread*/
+table.nav{
+width:100%!important;
+border: 1px solid #d8dadb!important;
+}
+
+/*Set the background color of the main catalog bars/*/
+.navBG{
+background-color:#f0f0f0!important;
+}
+
+/*Set the Font weight and color of the Main Catalog Bars*/
+ul.nav li, .nav_cell{
+font-weight: 600;
+}
+
+/*Center the directory title/*/
+.ellipsis_text{
+      font-family: 'Figtree', serif!important;
+  letter-spacing: 0px!important;
+}
+
+
+/*Color and style of items when you SELECT/ACTIVE over them in the left side catalog menu/*/
+.RadTreeView_Windows7 .rtSelected .rtIn{
+font-weight: 700!important;
+}
+
+/*Change details of the Main Nav Bar at the top*/
+
+.NavTop > div:nth-child(1){
+  height:20px;
+}
+
+/*Add an image to the inside of the Nav element that contains the login username and information at the top*/
+
+.NavTop {
+color:#fff!important;
+font-size: 13px!important;
+font-weight:600!important;
+border-top-left-radius: 20px!important;
+border-top-right-radius: 20px!important;
+height: 100%!important;
+}
+
+/*Background color to entire Main Nav Bar and remove borders for cleaner look*/
+
+.TDTab, .TDTabLeft, .TDTabRight, .navBarEnhancedBackgroundColor.customColorOverridable{
+background-color: #fff!important;
+border:none!important;
+}
+
+/*Change height width and color of the buttons in the main nav bar* "Catalog" etc*/
+
+.TDTab {
+height:37px!important;
+width:100px!important;
+}
+
+/*Make sure no styling changes to Main Nav bar text if the links have been visited. Also adds spacing between letters for readability "Catalog" etc*/
+
+.TDTab a, .TDTab a:link, .TDTab a:visited, .TDTabLeft a, .TDTabLeft a:link, .TDTabLeft a:visited{
+letter-spacing: .57px!important;
+font-size:14px!important;
+font-weight:600!important;
+}
+
+/*Adds the cool underline effect when you over over a link on the Main Nav bar*/
+
+.TDTab a:hover, .TDTabLeft a:hover{
+cursor: pointer!important;
+}
+
+/*Adds the cool underline effect when you over over a link in the Catalog AND Grid Area if Grid layout is selected*/
+.gridItem_title a:hover, .ProductName a:hover{
+cursor: pointer!important;
+}
+/*Remove the cool underline effect from an Active button in the Main Nav bar (doesn't need it)*/
+.TDActive a:hover{
+text-decoration: none!important;
+}
+
+
+
+
+/*Change what happens when a button in the main nav bar is selected/active "Catalog" etc*/
+
+.TDActive {
+width:100px!important;
+border:none!important;
+font-size:14px!important;
+font-weight:600!important;
+border-radius: 8px!important;
+}
+
+/*Change what happens to the text inside the button in the main nav bar is selected/active "Catalog" etc*/
+.TDActive a{
+color:white!important;
+}
+
+/*Hide the Home Link from the Nav Bar*/
+
+.TDTabLeft{
+width:0px!important;
+border:none!important;
+font-size:14px!important;
+font-weight:600!important;
+}
+
+.TDActiveLeft {
+width:0px!important;
+border:none!important;
+font-size:0px!important;
+font-weight:0!important;
+}
+
+
+#ctl00_ctl07_HomeLinkLabel{
+font-size: 0px!important;
+}
+
+/*Add Space around the top image in the NavTop Element*/
+
+.TDTable{
+margin-top: 7px!important;
+margin-bottom: 7px!important;
+}
+
+/*Add styling to the Search Box*/
+.TDSearchBox {
+width:100px!important;
+background-position: 95% 57%!important;
+background-size: 4%!important;
+border-radius: 8px!important;
+height: 1px!important;
+padding: 12px 5px 12px 10px!important; 
+}
+
+/*Style the button that says how a product is sold (Sold in packs of...)*/
+.button-orange {
+  height: 16px;
+  padding:5px;
+  width: 130px;
+  display: table;
+  text-align: center;
+  background-color: #f58a38;
+  background-image: linear-gradient(to bottom, #f58a38, #f57c20);
+  border: 0px solid #c25706;
+  box-shadow: inset 0 1px 0 #ffb984, inset 0 -1px 0 #db6f1d, inset 0 0 0 1px #f59851, 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #fff!important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.bottom-left {
+    position: absolute;
+    top: 102px;
+    left: 205px;
+    font-family: 'Figtree', sans-serif !important;
+    font-size: 51px;
+    color: white!important;
+    font-weight: 700;
+}
+
+/*Below this line are attempts to control the item grid thumbnails*/
+
+/*Each set of 3 products*/
+.gridRow3Cols {
+  float:left!important;
+    margin: 0px!important;
+    width: inherit!important;
+}
+/*Not sure what this does, but changing it to none allowed me to align the products to the left without random gaps*/
+.clearLeft {
+    clear: none!important;
+}
+/*Each item has a margin around it. Will add random spaces between rows of products if messed with*/
+.gridItem {
+    margin: 2px 2px 2px 1px !important;
+}
+/*Scaling the 3 dots after a product name if it is longer than the field*/
+.threedots_ellipsis{
+  font-size:12px;
+  letter-spacing: 0px!important;
+}
+/*This hides the info icon by each product name hiding it allowed for better product alignment in the catalog*/
+img.itemDescriptionIcon, img.itemDescriptionIconLast {
+height:0px!important;
+}
+
+/*Below this line are attempts to control the item grid thumbnails- with the new catalog layout 8-14-23*/
+
+.ellipsis_text {
+  font-size: .98em!important;
+  overflow: clip!important;
+  text-overflow: ellipsis!important;
+  word-wrap: break-word!important;
+  display: block!important;
+  line-height: 1.0em!important; /* a */
+  max-height: 2em!important; /* a x number of line to show (ex : 2 line)  */
+  max-width: 98%!important;
+}
+
+#CtlBody > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3){
+  background-color: white!important;
+}
+
+div.gridRow3Cols {
+  float: left !important;
+  margin: 0px !important;
+  width: 29.5rem !important;
+  margin-right: -12px!important;
+  margin-left:0px!important;
+}
+
+.pti-cc-folderGridItem{
+  width:29%!important;
+}
+.gridItem{
+  width:9.375rem!important;
+}
+
+.gridItemImageCell{
+width:9.375rem;
+height:9.375rem;
+max-width:9.375rem!important;
+max-height:9.375rem!important;
+min-height:9.375rem!important;
+min-width:9.375rem!important;
+}
+
+.gridItem_thumb img, .gridItem_thumb{
+height:auto!important;
+width:auto!important;
+max-width:9.375rem!important;
+max-height:9.375rem!important;
+ }
+
+.gridItemImageTable {
+  width: 95%!important;
+}
+
+
