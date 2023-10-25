@@ -1,0 +1,240 @@
+/*Mister_CustomCSS*/
+
+/*Main color is #173654 (DKBlue), Secondary Color is #F8BD37(Yellow)*/
+
+/*Body Text and Heading Defaults*/
+body, p, div, span, td, li, ol, bl, input, select, textarea {
+color:#173654!important;
+}
+
+/*Headlines*/
+h1, h2, h3, h4, h5, h6{
+color:#173654!important;
+}
+
+
+/*Body Link Color Defaults*/
+a, a:link, a:focus, .CtlListTable a, .CtlListTable a:link {
+color: #173654!important; 
+} 
+
+/*Primary Catalog Background Color/*/
+
+#PageType01 {
+  background-color: #173654!important;
+}
+
+/*Set the Font weight and color of the Main Catalog Bars*/
+ul.nav li, .nav_cell{
+color:#173654!important;
+}
+
+.ContentBoxHeaderSmall {
+  background-color: #f0f0f0 !important;
+  color:#173654!important;
+  border-bottom: 1px solid #d8dadb!important;
+}
+
+/*Color and style of items when you HOVER over them in the left side catalog menu/*/
+.RadTreeView_Windows7 .rtHover .rtIn{
+background-color:#F8BD37!important;
+border: 0px solid #d8dadb!important;
+border-radius: 3px!important;
+padding: 3px!important;
+color:white!important;
+}
+
+/*Color and style of items when you SELECT/ACTIVE over them in the left side catalog menu/*/
+.RadTreeView_Windows7 .rtSelected .rtIn{
+background-color:#F8BD37!important;
+background-image: url()!important;
+border: 0px solid #d8dadb!important;
+border-radius: 3px!important;
+padding: 3px!important;
+color:white!important;
+}
+
+
+/*Change height width and color of the buttons in the main nav bar* "Catalog" etc*/
+
+.TDTab {
+color:#173654!important;
+}
+
+/*Make sure no styling changes to Main Nav bar text if the links have been visited. Also adds spacing between letters for readability "Catalog" etc*/
+
+.TDTab a, .TDTab a:link, .TDTab a:visited, .TDTabLeft a, .TDTabLeft a:link, .TDTabLeft a:visited{
+color:#173654!important;
+}
+
+/*Adds the cool underline effect when you over over a link on the Main Nav bar*/
+
+.TDTab a:hover, .TDTabLeft a:hover{
+text-decoration: underline 3px #F8BD37!important;
+text-underline-offset: 10px!important;
+}
+
+/*Adds the cool underline effect when you over over a link in the Catalog AND Grid Area if Grid layout is selected*/
+.gridItem_title a:hover, .ProductName a:hover{
+text-decoration: underline 2px #F8BD37!important;
+text-underline-offset: 2px!important;
+}
+
+
+/*Change what happens when a button in the main nav bar is selected/active "Catalog" etc*/
+
+.TDActive {
+background-color: #173654!important;
+}
+
+
+/*Add styling to the Search Box*/
+.TDSearchBox {
+border: 2px solid #173654!important;
+}
+
+/*Change color of elements in the top right corner Username etc.*/
+#ctl00_ctl08_lblUserName, #ctl00_ctl08_btnMyProfile,#ctl00_ctl08_btnLogOut{
+color:#173654!important;
+}
+
+/*Change color of Add to Cart Button text*/
+A.pbtn.btn-l-green SPAN, A.pbtn.btn-l-green:hover SPAN{
+color:#fff!important;
+}
+
+/*Change color of Product Info and Order Info underlines*/
+.ColorPromptText, .BluePromptText, .QuickFillPrompt {
+  border-bottom: solid 1px #F8BD37!important;
+}
+/*Change color of Product Info and Order Info Text*/
+#ctl00_content_ctl00_mHeaderNote_lblProductHeaderNote, #ctl00_content_ctl00_ProductOrderInfoController_mHeaderNote_lblOrderInfoHeaderNote{
+  color:#F8BD37!important;
+}
+/*Change color of Spacers in the top left area to white(1) or black(0) (inverting the black image)*/
+img.NavTopSpacer {
+filter: invert(0);
+}
+
+/*Hide the extra Billing fields so Mister can provide "Billing Code"*/
+
+#ctl00_content_CartBilling_CtlAddressSelector_lblUseNewAddress{
+visibility: hidden!important;
+display: none!important;
+}
+
+#ctl00_content_CartBilling_CtlAddressSelector_rdbCreateNew
+{
+visibility: hidden!important;
+display: none!important;
+}
+
+#ctl00_content_CartBilling_CtlAddressSelector_btnSaveAddress{
+visibility: hidden!important;
+display: none!important;
+}
+
+#ctl00_content_CartBilling_CtlAddressSelector_ctlAddressForm_Stringcontrol2{
+visibility: hidden!important;
+display: none!important;
+}
+
+#ctl00_content_CartBilling_CtlAddressSelector_divOrSeperator{
+visibility: hidden!important;
+display: none!important;
+}
+
+/*Hide the extra Shipping fields*/
+
+textarea[id$="txShippingInstructions"] {
+visibility: hidden!important;
+display: none!important;
+}
+
+
+
+#ctl00_content_CartShipping_CtlAddressSelector_divCreateNewAddress{
+visibility: hidden!important;
+display: none!important;
+}
+#ctl00_content_CartShipping_CtlAddressSelector_ctlAddressForm_txtCompanys{
+ border: 0px!important;
+}
+
+/*Style the popup that tells user about Shipping on the SHOPPING CART page*/
+.box {
+  width: 40%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 35px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+z-index: 99;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility:visible;
+  
+  : visible;
+  opacity: 1;
+}
+.overlay:target {
+  
+  : visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #003660;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #003660;
+}
+.popup .close:hover {
+  color: #003660;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+  color: #003660;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+
+
+
