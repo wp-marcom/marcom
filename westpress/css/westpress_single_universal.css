@@ -141,6 +141,12 @@ border-radius: 8px!important;
 color:white!important;
 }
 
+/*Hide the Security Metrics image from the footer*/
+ctl00_FooterLayout_ImageControl1{
+height:0px!important;
+}
+
+
 /*Hide the Home Link from the Nav Bar*/
 
 .TDTabLeft{
