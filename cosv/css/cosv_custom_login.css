@@ -15,13 +15,16 @@
         background-color: #007db8!important;
         color: #fff!important;     
  }
-/* Next two styles the footer data */
+/* Next three styles the footer data */
 
 #CtlFooter div{
-  color:white!important;
+  color:#fff!important;
 }
 #CtlFooter span{
-  color:white!important;
+  color:#fff!important;
+}
+#CtlFooter a{
+  color:#fff!important;
 }
 
  /* Style the words 'Username' 'Password' */
