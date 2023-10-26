@@ -12,6 +12,11 @@ body, p, div, span, td, li, ol, bl, input, select, textarea {
     display: none!important;
 }
 
+/* Hide the Copyright info for PTI/MARCOM */
+#copyright{
+visibility: hidden;
+}
+
 
 /*The next 3 items below receive styling for a secondary "Headline" type font for some users - default is the same family as everything else*/
 
