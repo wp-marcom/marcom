@@ -12,6 +12,12 @@
   border: 0px !important;
 }
 
+/*Body Text and Heading Defaults*/
+body, p, div, span, td, li, ol, bl, input, select, textarea {
+  font-family: 'Figtree', Arial, Helvetica, sans-serif;
+  letter-spacing: .57px!important;
+}
+
 /* Style the Main Background color and overide background image if set in Catalog CSS */
 
 #PageType01 {
