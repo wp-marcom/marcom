@@ -20,6 +20,10 @@
 #ctl00_content_Login_Stringcontrol2, #ctl00_content_Login_Stringcontrol3{
     color: #0c234b !important;
     }
+/* Style the footer content */
+#footer{
+    color: #fff!important;
+}
 
 /* Style the entry/input fields for 'Username' 'Password' */
 #ctl00_content_Login_txtLoginId, #ctl00_content_Login_txtPassword {
