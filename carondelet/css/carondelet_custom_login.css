@@ -15,6 +15,18 @@
         background-color: #f68c2c!important;
         color: #fff!important;     
  }
+/* Next three styles the footer data */
+
+#CtlFooter div{
+  color:#fff!important;
+}
+#CtlFooter span{
+  color:#fff!important;
+}
+#CtlFooter a{
+  text-decoration: underline!important;
+  color:#fff!important;
+}
 
  /* Style the words 'Username' 'Password' */
 #ctl00_content_Login_Stringcontrol2, #ctl00_content_Login_Stringcontrol3{
