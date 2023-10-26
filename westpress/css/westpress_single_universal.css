@@ -17,8 +17,12 @@ body, p, div, span, td, li, ol, bl, input, select, textarea {
 visibility: hidden;
 }
 
-/* Make the "Preview" button for variable items white */
+/* The next two make the "Preview" button text and symbol for variable items white */
 #ctl00_content_ctl00_InteractivityContainer_ctl00_pf3Html5Preview_strHtmlViewerPreviewBtn{
+  color: #fff!important;
+}
+
+.fa-refresh{
   color: #fff!important;
 }
 
