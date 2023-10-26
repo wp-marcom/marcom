@@ -142,7 +142,7 @@ color:white!important;
 }
 
 /*Hide the Security Metrics image from the footer*/
-ctl00_FooterLayout_ImageControl1{
+#ctl00_FooterLayout_ImageControl1{
 height:0px!important;
 }
 
