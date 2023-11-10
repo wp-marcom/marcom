@@ -50,6 +50,11 @@ color:#fff!important;
   background: #FFFFFF;
   background: rgba(8,126,137,0.6) !important;
   }
+/* Style the main "SIGN IN" text*/
+#CtlLogIn > h4:nth-child(1) > strong:nth-child(1) > span:nth-child(1){
+color: #FFFFFF !important;
+}
+
 
 /* Style the Login Header Element - the HTML for this exists in the Custom Content section */
 
