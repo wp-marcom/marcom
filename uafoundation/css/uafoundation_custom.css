@@ -1,0 +1,129 @@
+/*UAfoundation_CustomCSS*/
+
+/*Main color is #0c234b (AZBlue), Secondary Color is #ab0520(AZRed)*/
+
+/*Body Text and Heading Defaults*/
+body, p, div, span, td, li, ol, bl, input, select, textarea {
+color:#0c234b!important;
+}
+
+/*Headlines*/
+h1, h2, h3, h4, h5, h6{
+color:#0c234b!important;
+}
+
+
+/*Body Link Color Defaults*/
+a, a:link, a:focus, .CtlListTable a, .CtlListTable a:link {
+color: #0c234b!important; 
+} 
+
+/*Primary Catalog Background Color/*/
+
+#PageType01 {
+  background-color: #0c234b!important;
+}
+
+/*Set the Font weight and color of the Main Catalog Bars*/
+ul.nav li, .nav_cell{
+color:#0c234b!important;
+}
+
+.ContentBoxHeaderSmall {
+  background-color: #f0f0f0 !important;
+  color:#0c234b!important;
+  border-bottom: 1px solid #d8dadb!important;
+}
+
+/*Color and style of items when you HOVER over them in the left side catalog menu/*/
+.RadTreeView_Windows7 .rtHover .rtIn{
+    background-color:#ab0520!important;
+    background-image: url()!important;
+    border: 0px solid #d8dadb!important;
+    border-radius: 3px!important;
+    padding: 3px!important;
+    color:white!important;
+    }
+
+/*Color and style of items when you SELECT/ACTIVE over them in the left side catalog menu/*/
+.RadTreeView_Windows7 .rtSelected .rtIn{
+    background-color:#ab0520!important;
+    background-image: url()!important;
+    border: 0px solid #d8dadb!important;
+    border-radius: 3px!important;
+    padding: 3px!important;
+    font-weight: 700!important;
+    color:white!important;
+    }
+
+/*Add an image to the inside of the Nav element that contains the login username and information at the top*/
+
+.NavTop {
+    background: url(https://wp-marcom.github.io/marcom/uafoundation/images/uafoundation-header.svg), url();
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: top left, top right;
+    height: 130px!important;
+    }
+
+
+/*Change height width and color of the buttons in the main nav bar* "Catalog" etc*/
+
+.TDTab {
+color:#0c234b!important;
+}
+
+/*Make sure no styling changes to Main Nav bar text if the links have been visited. Also adds spacing between letters for readability "Catalog" etc*/
+
+.TDTab a, .TDTab a:link, .TDTab a:visited, .TDTabLeft a, .TDTabLeft a:link, .TDTabLeft a:visited{
+color:#0c234b!important;
+}
+
+/*Adds the cool underline effect when you over over a link on the Main Nav bar*/
+
+.TDTab a:hover, .TDTabLeft a:hover{
+text-decoration: underline 3px #ab0520!important;
+text-underline-offset: 10px!important;
+}
+
+/*Adds the cool underline effect when you over over a link in the Catalog AND Grid Area if Grid layout is selected*/
+.gridItem_title a:hover, .ProductName a:hover{
+text-decoration: underline 2px #ab0520!important;
+text-underline-offset: 2px!important;
+}
+
+
+/*Change what happens when a button in the main nav bar is selected/active "Catalog" etc*/
+
+.TDActive {
+background-color: #0c234b!important;
+}
+
+
+/*Add styling to the Search Box*/
+.TDSearchBox {
+border: 2px solid #0c234b!important;
+}
+
+/*Change color of elements in the top right corner Username etc.*/
+#ctl00_ctl08_lblUserName, #ctl00_ctl08_btnMyProfile,#ctl00_ctl08_btnLogOut{
+color:#0c234b!important;
+}
+
+/*Change color of Add to Cart Button text*/
+A.pbtn.btn-l-green SPAN, A.pbtn.btn-l-green:hover SPAN{
+color:#fff!important;
+}
+
+/*Change color of Product Info and Order Info underlines*/
+.ColorPromptText, .BluePromptText, .QuickFillPrompt {
+    border-bottom: solid 1px #ab0520!important;
+  }
+/*Change color of Product Info and Order Info Text*/
+#ctl00_content_ctl00_mHeaderNote_lblProductHeaderNote, #ctl00_content_ctl00_ProductOrderInfoController_mHeaderNote_lblOrderInfoHeaderNote{
+    color:#ab0520!important;
+}
+/*Change color of Spacers in the top left area to white(1) or black(0) (inverting the black image)*/
+img.NavTopSpacer {
+filter: invert(0);
+}
