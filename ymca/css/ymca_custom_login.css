@@ -13,7 +13,7 @@
 /* Style the the Login button */
 .pbtn SPAN {
     background-color: #fff!important;
-      color: #00aeef!important;     
+      color: #0089d0!important;     
 }
 /* Next three styles the footer data */
 
@@ -39,7 +39,7 @@ color:#fff!important;
 
 /* Style the entry/input fields for 'Username' 'Password' */
 #ctl00_content_Login_txtLoginId, #ctl00_content_Login_txtPassword {
-    border: 2px solid #00aeef!important;
+    border: 2px solid #0089d0!important;
   }
 
 /* Style the primary login box color/placement/effects*/
@@ -53,6 +53,24 @@ color:#fff!important;
 #CtlLogIn > h4:nth-child(1) > strong:nth-child(1) > span:nth-child(1){
 color: #FFFFFF !important;
 }
+/* Style the SELF REG LINK*/
+#ctl00_content_SelfRegLinkSection_SelfRegLinkSectionLayout_lnkSelfReg{
+    color: #FFFFFF !important;
+}
+/* Style the FORGOT PASSWORD LINK*/
+#ctl00_content_Login_btnRecoverPassword{
+    color: #FFFFFF !important;
+}
+
+#newUser {
+    color: #fff;
+    margin-top: 0px !important;
+    position: relative !important;
+    top: 1px !important;
+    font-size: 13px;
+    font-weight: 700 !important;
+  }
+
 
 
 /* Style the Login Header Element - the HTML for this exists in the Custom Content section */
