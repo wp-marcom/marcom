@@ -72,8 +72,9 @@ font-weight: 600;
 
 /*Center the directory title/*/
 .ellipsis_text{
-      font-family: 'Figtree', serif!important;
+  font-family: 'Figtree', serif!important;
   letter-spacing: 0px!important;
+  font-weight: 600 !important;
 }
 
 
