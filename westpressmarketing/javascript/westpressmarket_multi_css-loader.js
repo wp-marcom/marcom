@@ -7,7 +7,7 @@ document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/
 }
 
 //OneAZ Credit Union
-if (userName.includes("OneAZ Credit Union")){
+else if (userName.includes("OneAZ Credit Union")){
   
 document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpressmarketing/css/one_az_multi_custom.css";
 }
