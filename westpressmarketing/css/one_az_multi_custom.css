@@ -11,18 +11,18 @@ body, p, div, span, td, li, ol, bl, input, select, textarea {
 
 /* Product Title when viewing an individual product*/
 #productTitle{
-    font-family: 'Arvo', serif!important;
+    font-family: 'Domine', serif!important;
   }
     
 /* Folder and Directory Name and Primary Product Name styling*/
 .ProductName {
-    font-family: 'Arvo', serif!important;
+    font-family: 'Domine', serif!important;
     padding-top: 32px!important;
     }
 
 /*Headlines*/
 h1, h2, h3, h4, h5, h6{
-    font-family: 'Arvo', serif!important;
+    font-family: 'Domine', serif!important;
     color:#1a2f59!important;
 }
 
