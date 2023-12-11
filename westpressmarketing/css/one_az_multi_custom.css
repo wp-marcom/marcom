@@ -46,14 +46,14 @@ ul.nav li, .nav_cell{
 .ContentBoxHeaderSmall {
   background-color: #f0f0f0 !important;
   color:#1a2f59!important;
-  border-bottom: 1px solid #eee!important;
+  border-bottom: 1px solid #d8dadb!important;
 }
 
 /*Color and style of items when you HOVER over them in the left side catalog menu/*/
 .RadTreeView_Windows7 .rtHover .rtIn{
   background-color:#02bfe7!important;
   background-image: url()!important;
-  border: 0px solid #eee!important;
+  border: 0px solid #d8dadb!important;
   border-radius: 3px!important;
   padding: 3px!important;
   color:white!important;
@@ -63,7 +63,7 @@ ul.nav li, .nav_cell{
 .RadTreeView_Windows7 .rtSelected .rtIn{
   background-color:#02bfe7!important;
 background-image: url()!important;
-border: 0px solid #eee!important;
+border: 0px solid #d8dadb!important;
 border-radius: 3px!important;
 padding: 3px!important;
 font-weight: 700!important;
