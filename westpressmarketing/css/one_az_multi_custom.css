@@ -100,12 +100,12 @@ color:white!important;
   text-underline-offset: 10px!important;
 }
 
-/*Adds the cool underline effect when you over over a link in the Catalog AND Grid Area if Grid layout is selected
+/*Adds the cool underline effect when you over over a link in the Catalog AND Grid Area if Grid layout is selected*/
 .gridItem_title a:hover, .ProductName a:hover{
   color:#02bfe7!important;
   text-decoration: underline 2px #02bfe7!important;
   text-underline-offset: 2px!important;
-}*/
+}
       
 /*Changes text color to secondary color on hover over a link in the Catalog AND Grid Area if Grid layout is selected*/
 .ellipsis_text:hover{
