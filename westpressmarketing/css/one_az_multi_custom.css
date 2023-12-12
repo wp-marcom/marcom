@@ -61,7 +61,7 @@ ul.nav li, .nav_cell{
 
 /*Color and style of items when you SELECT/ACTIVE over them in the left side catalog menu/*/
 .RadTreeView_Windows7 .rtSelected .rtIn{
-  background-color:#02bfe7!important;
+background-color:#02bfe7!important;
 background-image: url()!important;
 border: 0px solid #d8dadb!important;
 border-radius: 3px!important;
