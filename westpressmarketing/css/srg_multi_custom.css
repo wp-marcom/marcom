@@ -103,7 +103,6 @@ color:white!important;
 /*Adds the cool underline effect when you over over a link in the Catalog AND Grid Area if Grid layout is selected*/
 .gridItem_title a:hover, .ProductName a:hover{
   text-decoration: underline 2px #e7a723!important;
-  text-underline-offset: 2px!important;
 }
 
 
