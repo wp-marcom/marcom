@@ -44,8 +44,9 @@ padding: 3px!important;
 color:white!important;
 }
 
+
 /*Color and style of items when you SELECT/ACTIVE over them in the left side catalog menu/*/
-.RadTreeView_Windows7 .rtSelected .rtIn{
+.RadTreeView_Windows7, .rtSelected, .rtIn{
 background-color:#F8BD37!important;
 background-image: url()!important;
 border: 0px solid #d8dadb!important;
