@@ -259,7 +259,7 @@ height:0px!important;
   overflow: clip!important;
   text-overflow: ellipsis!important;
   word-wrap: break-word!important;
-  display: block!important;
+  /*display: block!important;*/
   line-height: 1.0em!important; /* a */
   max-height: 2em!important; /* a x number of line to show (ex : 2 line)  */
   max-width: 98%!important;
