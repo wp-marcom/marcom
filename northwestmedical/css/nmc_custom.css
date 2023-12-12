@@ -86,10 +86,10 @@ text-decoration: underline 3px #6BBBAD!important;
 text-underline-offset: 10px!important;
 }
 
-/*Adds the cool underline effect when you over over a link in the Catalog AND Grid Area if Grid layout is selected*/
-.gridItem_title a:hover, .ProductName a:hover{
-text-decoration: underline 2px #6BBBAD!important;
-text-underline-offset: 2px!important;
+
+/*Changes the color of the cool animated underline effect when you over over a link in the Catalog AND Grid Area if Grid layout is selected*/      
+.gridItem_title a:after, .ProductName a:after {
+  background-color: #6BBBAD!important;
 }
 
 
