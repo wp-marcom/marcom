@@ -88,6 +88,10 @@ A.pbtn {
     width: 150px!important;
 }
 
+#WPFooter,#WPFooter a, #WPFooter span {
+  color:white!important;;
+}
+
 
 
 /* Style the greeting above the login details "Hello!" "Welcome" */
