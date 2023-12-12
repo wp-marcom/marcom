@@ -1,4 +1,4 @@
-/*Mister_CustomCSS*/
+/*Carondelet_CustomCSS*/
 
 /*Main color is #256092 (CarondeletBlue), Secondary Color is #f68c2c(Orange)*/
 
@@ -86,11 +86,12 @@ text-decoration: underline 3px #f68c2c!important;
 text-underline-offset: 10px!important;
 }
 
-/*Adds the cool underline effect when you over over a link in the Catalog AND Grid Area if Grid layout is selected*/
-.gridItem_title a:hover, .ProductName a:hover{
-text-decoration: underline 2px #f68c2c!important;
-text-underline-offset: 2px!important;
+
+/*Changes the color of the cool animated underline effect when you over over a link in the Catalog AND Grid Area if Grid layout is selected*/      
+.gridItem_title a:after, .ProductName a:after {
+  background-color: #f68c2c!important;
 }
+
 
 
 /*Change what happens when a button in the main nav bar is selected/active "Catalog" etc*/
