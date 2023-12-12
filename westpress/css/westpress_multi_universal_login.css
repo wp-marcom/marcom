@@ -87,7 +87,7 @@ A.pbtn {
     padding: 12px 5px 12px 10px!important;
     width: 150px!important;
 }
-
+/* Style the Footer contact data */
 #WPFooter,#WPFooter a, #WPFooter span {
   color:white!important;;
 }
