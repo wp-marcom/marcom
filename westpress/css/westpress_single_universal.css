@@ -138,6 +138,9 @@ cursor: pointer!important;
   display: inline-block!important;
   position: relative!important;
 }
+.gridItem_title a:hover,.ProductName a:hover {
+ text-decoration: none!important;
+}
 
 .gridItem_title a:after, .ProductName a:after {
   content: '';
