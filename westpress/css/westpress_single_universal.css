@@ -132,6 +132,33 @@ cursor: pointer!important;
 .gridItem_title a:hover, .ProductName a:hover{
 cursor: pointer!important;
 }
+
+/*Next 3 Adds the cool ANIMATED underline effect when you over over a link in the Catalog AND Grid Area if Grid layout is selected*/
+.gridItem_title a, .ProductName a{  
+  display: inline-block!important;
+  position: relative!important;
+}
+
+.gridItem_title a:after, .ProductName a:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.gridItem_title a:hover:after,.ProductName a:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+
+
 /*Remove the cool underline effect from an Active button in the Main Nav bar (doesn't need it)*/
 .TDActive a:hover{
 text-decoration: none!important;
