@@ -35,7 +35,7 @@ a, a:link, a:focus, .CtlListTable a, .CtlListTable a:link {
 /*Primary Catalog Background Color/*/
 
 #PageType01 {
-  margin-bottom:200px!important
+  margin-bottom:200px!important;
   background: rgb(111,206,231)!important;
   background: linear-gradient(41deg, rgba(111,206,231,1) 0%, rgba(36,139,203,1) 29%, rgba(28,55,100,1) 100%)!important;
 }
