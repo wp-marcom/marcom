@@ -96,11 +96,10 @@ color:white!important;
   color:#1a2f59!important;
 }
 
-/*Adds the cool underline effect when you over over a link on the Main Nav bar*/
 
-.TDTab a:hover, .TDTabLeft a:hover{
-  text-decoration: underline 3px #02bfe7!important;
-  text-underline-offset: 10px!important;
+/*Changes the color of the cool ANIMATED underline effect when you over over a link on the Main Nav bar*/
+.TDTab:after {
+background-color: #02bfe7!important;
 }
 
 
