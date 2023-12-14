@@ -72,6 +72,7 @@ font-weight: 700!important;
 color:white!important;
     }
 
+
 /*Add an image to the inside of the Nav element that contains the login username and information at the top*/
 
 .NavTop {
@@ -106,6 +107,10 @@ color:white!important;
 /*Changes the color of the cool animated underline effect when you over over a link in the Catalog AND Grid Area if Grid layout is selected*/      
 .gridItem_title a:after, .ProductName a:after {
   background-color: #02bfe7!important;
+}
+/*Changes the color of the border around product thumbnails - note the half opacity*/
+.gridItemImageCell{
+border: 1px solid rgba(36,139,203,.5)!important;
 }
 
 
