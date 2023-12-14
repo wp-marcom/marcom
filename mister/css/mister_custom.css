@@ -69,11 +69,9 @@ color:#173654!important;
 color:#173654!important;
 }
 
-/*Adds the cool underline effect when you over over a link on the Main Nav bar*/
-
-.TDTab a:hover, .TDTabLeft a:hover{
-text-decoration: underline 3px #F8BD37!important;
-text-underline-offset: 10px!important;
+/*Changes the color of the cool ANIMATED underline effect when you over over a link on the Main Nav bar*/
+.TDTab:after {
+background-color: #F8BD37!important;
 }
 
 /*Changes the color of the cool animated underline effect when you over over a link in the Catalog AND Grid Area if Grid layout is selected*/      
