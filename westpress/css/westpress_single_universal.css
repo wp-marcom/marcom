@@ -112,6 +112,7 @@ border:none!important;
 .TDTab {
 height:37px!important;
 width:100px!important;
+position: relative!important;
 }
 
 /*Make sure no styling changes to Main Nav bar text if the links have been visited. Also adds spacing between letters for readability "Catalog" etc*/
@@ -120,6 +121,7 @@ width:100px!important;
 letter-spacing: .57px!important;
 font-size:14px!important;
 font-weight:600!important;
+text-decoration: none!important;
 }
 
 /*Adds the cool underline effect when you over over a link on the Main Nav bar*/
@@ -127,6 +129,26 @@ font-weight:600!important;
 .TDTab a:hover, .TDTabLeft a:hover{
 cursor: pointer!important;
 }
+
+/*Adds the cool ANIMATED underline effect when you over over a link on the Main Nav bar*/
+.TDTab:after {
+  content: ''!important;
+  position: absolute!important;
+  width: 90%!important;
+  transform: scaleX(0)!important;
+  height: 3px!important;
+  bottom: 5px!important;
+  left: 6px!important;
+  transform-origin: center!important;
+  transition: transform 0.25s ease-out!important;
+}
+
+.TDTab:hover:after {
+  transform: scaleX(1)!important;
+  transform-origin: center!important;
+}
+
+
 
 /*Adds the cool underline effect when you over over a link in the Catalog AND Grid Area if Grid layout is selected*/
 .gridItem_title a:hover, .ProductName a:hover{
