@@ -303,11 +303,11 @@ height:0px!important;
   word-wrap: break-word !important;
   max-height: 2em !important;
   max-width: 98% !important;
-  display: block;
-  width: 128px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  display: block!important;
+  width: 128px!important;
+  overflow: hidden!important;
+  white-space: nowrap!important;
+  text-overflow: ellipsis!important;
 }
 
 #CtlBody > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3){
