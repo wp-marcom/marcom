@@ -71,7 +71,7 @@ font-weight: 600;
 }
 
 /*Center the directory title/*/
-.ellipsis_text{
+ellipsis_text{
   font-family: 'Figtree', serif!important;
   letter-spacing: 0px!important;
   font-weight: 600 !important;
@@ -283,8 +283,8 @@ padding: 12px 5px 12px 10px!important;
 }
 /*Hide the 3 dots after a product name if it is longer than the field-display none added 12/14/23*/
 .threedots_ellipsis{
-  font-size:12px;
-  letter-spacing: 0px!important;
+  /*font-size:12px;*/
+  /*letter-spacing: 0px!important;*/
   display: none!important;
 }
 /*This hides the info icon by each product name hiding it allowed for better product alignment in the catalog*/
@@ -308,6 +308,9 @@ height:0px!important;
   overflow: hidden!important;
   white-space: nowrap!important;
   text-overflow: ellipsis!important;
+  font-family: 'Figtree', serif!important;
+  letter-spacing: 0px!important;
+  font-weight: 600 !important;
 }
 
 #CtlBody > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3){
