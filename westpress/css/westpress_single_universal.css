@@ -160,8 +160,17 @@ cursor: pointer!important;
   transform-origin: bottom left;
 }
 
-
-
+/*Next 1 Adds the cool ANIMATED SCALING effect when you HOVER over product thumbnails a link in the Catalog*/
+.gridItem:hover{
+  transform: scale(1.1); 
+background:rgba(255,255,255,0);
+transition: all .2s ease-in-out;
+z-index:555555!important;
+}
+/*Next 1 Adds changes the background color of the thumbnail image cell so when it grows, it overlaps other nearby thumbnails correctly*/
+.gridItemImageCell{
+background:#fff;
+}
 /*Remove the cool underline effect from an Active button in the Main Nav bar (doesn't need it)*/
 .TDActive a:hover{
 text-decoration: none!important;
@@ -272,10 +281,11 @@ padding: 12px 5px 12px 10px!important;
 .gridItem {
     margin: 2px 2px 2px 1px !important;
 }
-/*Scaling the 3 dots after a product name if it is longer than the field*/
+/*Hide the 3 dots after a product name if it is longer than the field-display none added 12/14/23*/
 .threedots_ellipsis{
   font-size:12px;
   letter-spacing: 0px!important;
+  display: none!important;
 }
 /*This hides the info icon by each product name hiding it allowed for better product alignment in the catalog*/
 img.itemDescriptionIcon, img.itemDescriptionIconLast {
@@ -284,15 +294,20 @@ height:0px!important;
 
 /*Below this line are attempts to control the item grid thumbnails- with the new catalog layout 8-14-23*/
 
+/*Next one is the older version of this class, should be commented out*/
+
+/*.ellipsis_text {font-size: .98em!important;overflow: clip!important;text-overflow: ellipsis!important;word-wrap: break-word!important;/*display: block!important;*/line-height: 1.0em!important; /* a */max-height: 2em!important; /* a x number of line to show (ex : 2 line)  */max-width: 98%!important;}*/
+/*Next one is the new version of this class, created 12/14/23*/
 .ellipsis_text {
-  font-size: .98em!important;
-  overflow: clip!important;
-  text-overflow: ellipsis!important;
-  word-wrap: break-word!important;
-  /*display: block!important;*/
-  line-height: 1.0em!important; /* a */
-  max-height: 2em!important; /* a x number of line to show (ex : 2 line)  */
-  max-width: 98%!important;
+  font-size: .98em !important;
+  word-wrap: break-word !important;
+  max-height: 2em !important;
+  max-width: 98% !important;
+  display: block;
+  width: 128px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 #CtlBody > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3){
