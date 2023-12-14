@@ -1,0 +1,154 @@
+/*Westpress_Sierra Tucson_CustomCSS*/
+
+/*Main color is #764116 (LT Brown), Secondary Color is #e3d0a5(DK BEIGE)*/
+
+:root {
+  --primarycolor: #764116;
+  --secondarycolor: #e3d0a5;
+  --titlefont: 'Figtree';
+}
+
+/*Body Text and Heading Defaults*/
+body, p, div, span, td, li, ol, bl, input, select, textarea {
+  color:var(--primarycolor)!important;
+}
+
+/*The next 3 items below receive styling for a secondary "Headline" type font for some users - default is the same family as everything else*/
+
+/* Product Title when viewing an individual product*/
+#productTitle{
+    font-family: var(--titlefont), serif!important;
+  }
+    
+/* Folder and Directory Name and Primary Product Name styling*/
+.ProductName {
+    font-family: var(--titlefont), serif!important;
+    padding-top: 32px!important;
+    }
+
+/*Headlines*/
+h1, h2, h3, h4, h5, h6{
+    font-family: var(--titlefont), serif!important;
+    color:var(--primarycolor)!important;
+}
+
+
+/*Body Link Color Defaults*/
+a, a:link, a:focus, .CtlListTable a, .CtlListTable a:link {
+  color:var(--primarycolor)!important;
+} 
+
+/*Primary Catalog Background Color/*/
+
+#PageType01 {
+  margin-bottom:600px!important;
+  background-color: var(--primarycolor)!important;
+}
+
+/*Set the Font weight and color of the Main Catalog Bars*/
+ul.nav li, .nav_cell{
+  color:var(--primarycolor)!important;
+}
+
+.ContentBoxHeaderSmall {
+  background-color: #f0f0f0 !important;
+  color:var(--primarycolor)!important;
+  border-bottom: 1px solid #d8dadb!important;
+}
+
+/*Color and style of items when you HOVER over them in the left side catalog menu/*/
+.RadTreeView_Windows7 .rtHover .rtIn{
+  background-color:var(--secondarycolor)!important;
+  background-image: url()!important;
+  border: 0px solid #d8dadb!important;
+  border-radius: 3px!important;
+  padding: 3px!important;
+  color:white!important;
+    }
+
+/*Color and style of items when you SELECT/ACTIVE over them in the left side catalog menu/*/
+.RadTreeView_Windows7 .rtSelected .rtIn{
+background-color:var(--secondarycolor)!important;
+background-image: url()!important;
+border: 0px solid #d8dadb!important;
+border-radius: 3px!important;
+padding: 3px!important;
+font-weight: 700!important;
+color:white!important;
+    }
+
+
+/*Add an image to the inside of the Nav element that contains the login username and information at the top*/
+
+.NavTop {
+    background: url(https://wp-marcom.github.io/marcom/westpress/siet/images/sierratucson-header.svg), url();
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: top left, top right;
+    height: 130px!important;
+    }
+
+
+/*Change height width and color of the buttons in the main nav bar* "Catalog" etc*/
+
+.TDTab {
+  color:var(--primarycolor)!important;
+}
+
+/*Make sure no styling changes to Main Nav bar text if the links have been visited. Also adds spacing between letters for readability "Catalog" etc*/
+
+.TDTab a, .TDTab a:link, .TDTab a:visited, .TDTabLeft a, .TDTabLeft a:link, .TDTabLeft a:visited{
+  color:var(--primarycolor)!important;
+}
+
+
+/*Changes the color of the cool ANIMATED underline effect when you over over a link on the Main Nav bar*/
+.TDTab:after {
+background-color: var(--secondarycolor)!important;
+}
+
+
+/*Changes the color of the cool animated underline effect when you over over a link in the Catalog AND Grid Area if Grid layout is selected*/      
+.gridItem_title a:after, .ProductName a:after {
+  background-color: var(--secondarycolor)!important;
+}
+/*Changes the color of the border around product thumbnails - note the half opacity*/
+.gridItemImageCell{
+border: 1px solid var(--secondarycolor)!important;
+}
+
+
+/*Change what happens when a button in the main nav bar is selected/active "Catalog" etc*/
+
+.TDActive {
+  background-color: var(--primarycolor)!important;
+}
+
+
+/*Add styling to the Search Box*/
+.TDSearchBox {
+  border: 2px solid var(--secondarycolor)!important;
+}
+
+/*Change color of elements in the top right corner Username etc.*/
+#ctl00_ctl08_lblUserName, #ctl00_ctl08_btnMyProfile,#ctl00_ctl08_btnLogOut{
+  color:var(--primarycolor)!important;
+}
+
+/*Change color of Add to Cart Button text*/
+A.pbtn.btn-l-green SPAN, A.pbtn.btn-l-green:hover SPAN{
+color:#fff!important;
+}
+
+/*Change color of Product Info and Order Info underlines*/
+.ColorPromptText, .BluePromptText, .QuickFillPrompt {
+  border-bottom: solid 1px var(--secondarycolor)!important;
+  }
+/*Change color of Product Info and Order Info Text*/
+#ctl00_content_ctl00_mHeaderNote_lblProductHeaderNote, #ctl00_content_ctl00_ProductOrderInfoController_mHeaderNote_lblOrderInfoHeaderNote{
+  color:var(--secondarycolor)!important;
+}
+/*Change color of Spacers in the top left area to white(1) or black(0) (inverting the black image)*/
+img.NavTopSpacer {
+filter: invert(0);
+}
