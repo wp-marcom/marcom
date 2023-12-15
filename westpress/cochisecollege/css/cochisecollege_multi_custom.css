@@ -81,7 +81,7 @@ color:white!important;
 /*Add an image to the inside of the Nav element that contains the login username and information at the top*/
 
 .NavTop {
-    background: url(https://wp-marcom.github.io/marcom/westpress/images/cochisecollege-header.svg), url();
+    background: url(https://wp-marcom.github.io/marcom/westpress/cochisecollege/images/cochisecollege-header.svg), url();
     background-repeat: no-repeat;
     background-size: auto;
     background-position: top left, top right;
