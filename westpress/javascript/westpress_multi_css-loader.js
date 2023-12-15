@@ -2,27 +2,27 @@ var userName = document.getElementById("ctl00_ctl08_lblUserName").innerHTML
 
 //Vantage West
 if (userName.includes("Vantage")){
-document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpress/css/vwcu_catalog_rebrand.css";}
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpress/vwcu/css/vwcu_multi_custom.css";}
 
 //Pima Federal
 else if (userName.includes("Pima Federal")){
-document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpress/css/pfcu_catalog.css";}
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpress/pfcu/css/pfcu_multi_custom.css";}
 
 //Sierra Tucson
 else if (userName.includes("Sierra Tucson")){
-document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpress/css/sierratucson_catalog.css";
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpress/siet/css/siet_multi_custom.css";
 }
 
 //Cochise College
 else if (userName.includes("Cochise College")){
-document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpress/css/cochisecollege_catalog.css";}
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpress/cochisecollege/css/cochisecollege_multi_custom.css";}
 
 //Cochise County
 else if (userName.includes("Cochise County")){
-document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpress/css/cochisecounty_catalog.css";
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpress/cochisecounty/css/cochisecounty_multi_custom.css";
 }
 
 //Flowing Wells Unified School District
 else if (userName.includes("FWUSD")){
-document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpress/css/fwusd_catalog.css";
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpress/fwusd/css/fwusd_multi_custom.css";
 }
