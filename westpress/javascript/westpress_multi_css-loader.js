@@ -26,3 +26,15 @@ document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/
 else if (userName.includes("FWUSD")){
 document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpress/fwusd/css/fwusd_multi_custom.css";
 }
+
+//Senior Resource Group
+else if (userName.includes("Senior Resource Group")){
+  
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpressmarketing/srg/css/srg_multi_custom.css";
+}
+
+//OneAZ Credit Union
+else if (userName.includes("OneAZ Credit Union")){
+  
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpressmarketing/oneaz/css/one_az_multi_custom.css";
+}
