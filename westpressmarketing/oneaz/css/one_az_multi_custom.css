@@ -115,7 +115,7 @@ background-color: var(--secondarycolor)!important;
 }
 /*Changes the color of the border around product thumbnails - note the half opacity*/
 .gridItemImageCell{
-border: 1px solid var(--secondarycolor)!important;
+border: 1px solid #d8dadb!important;
 }
 
 
