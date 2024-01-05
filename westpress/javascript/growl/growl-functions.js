@@ -2,6 +2,7 @@
 var modal = document.getElementById('popupContainer');
 
 var span = document.getElementsByClassName("growl-notification__close-icon")[0];
+var body = document.getElementsByClassName("growl-notification__body")[0];
 
 window.onload = function () {
      document.getElementById('popupContainer').style.visibility = "visible";
@@ -15,5 +16,9 @@ window.onclick = function(event) {
   }
 }
 span.onclick = function() {
+  modal.style.display = "none";
+}
+
+body.onclick = function() {
   modal.style.display = "none";
 }
