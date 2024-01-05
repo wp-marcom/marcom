@@ -1,3 +1,34 @@
+/*Style the growl notification elements that are present in Marcom*/
+
+.overlay {
+  position: fixed;
+width: 600px;
+top: 30%;
+  left: calc(50% - 300px);
+z-index: 99;
+  background: rgba(0, 0, 0, 0.0);
+  transition: opacity 500ms;
+  visibility:visible;
+  
+  : visible;
+  opacity: 1;
+}
+.overlay:target {
+  
+  : visible;
+  opacity: 1;
+}
+
+#popupBody {
+animation: fade-in .9s forwards;
+  opacity: 0;
+animation-delay: 1.5s;
+border-radius: 4px;
+border-left: 5px solid rgba(0,0,0,.2);
+
+}
+/*BELOW THIS LINE STYLING FOR ELEMENTS FROM GROWL ADDON*/
+
 .growl-notification{
     background:#fff;
     border-radius:4px;
