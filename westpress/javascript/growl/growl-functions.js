@@ -16,3 +16,4 @@ window.onclick = function(event) {
 }
 span.onclick = function() {
   modal.style.display = "none";
+}
