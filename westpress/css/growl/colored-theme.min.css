@@ -90,7 +90,7 @@
     z-index:1055
 }
 .growl-notification__title{
-    color:#fff;
+    color:#fff!important;
     font-size:18px;
     font-weight:600;
     margin-top:-2px
@@ -99,7 +99,7 @@
     color:#fff
 }
 .growl-notification__title+.growl-notification__desc{
-    color:hsla(0,0%,100%,.9)
+    color:hsla(0,0%,100%,.9)!important;
 }
 .growl-notification--close-on-click{
     cursor:pointer
