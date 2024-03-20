@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Google Apps Script</title>
+</head>
+<body>
+    <h1>Embedded Google Apps Script</h1>
+    <p>Here is the embedded web app:</p>
+    <iframe src="https://script.google.com/macros/s/AKfycbwNOFNWqIYcwelWVJo_f7FN31Yne_r032mGTaTUyxZkCBXBRP4cFuQ6m148tvJq2N7A/exec" width="600" height="400" frameborder="0"></iframe>
+</body>
+</html>
