@@ -20,7 +20,7 @@
     <!--<script src="https://wp-marcom.github.io/marcom/inventorytrackers/mister/javascript.html"></script>-->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Display Data from Google Sheets</title>
+  <title>Mister Car Wash Inventory Snapshot</title>
   <!-- Include necessary CSS files for DataTables -->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
 
@@ -122,7 +122,7 @@
          getLastModifiedTime()
             .then(modifiedTime => {
                 const formattedTime = new Date(modifiedTime).toLocaleString();
-                document.getElementById('last-modified').textContent = `Last modified: ${formattedTime}`;
+                document.getElementById('last-modified').textContent = `Current as of: ${formattedTime}`;
             })
             .catch(error => {
                 console.error('Error:', error);
