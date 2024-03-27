@@ -47,27 +47,29 @@ function showData(dataArray) {
   });
 }
 
-// Function to get the last modified date of the Google Sheet and update HTML content
-function updateLastModifiedDate() {
-  var formattedDate = getLastModifiedDate();
-  document.getElementById('last-modified').textContent = formattedDate;
-}
+// Get the last time the spreadsheet was modified
 
-// Function to get the last modified date of the Google Sheet
-function getLastModifiedDate() {
-    var spreadSheetId = "14JGNtRb-hxjKowzYMEQe0UObFE2sED5KUCYhnaIX1jI"; //CHANGE
-    var apiKey = "AIzaSyD6pzfDZqNZNcwmj3wNlyJ-oXmVXFL93fI"; //CHANGE
+function getLastModifiedTime() {
+    const spreadsheetId = "14JGNtRb-hxjKowzYMEQe0UObFE2sED5KUCYhnaIX1jI";
+    const apiKey = "AIzaSyD6pzfDZqNZNcwmj3wNlyJ-oXmVXFL93fI";
+    const url = `https://www.googleapis.com/drive/v3/files/${spreadsheetId}?fields=modifiedTime&key=${apiKey}`;
 
-    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadSheetId}?fields=properties&key=${apiKey}`)
-        .then(response => response.json())
+    return fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch file metadata');
+            }
+            return response.json();
+        })
         .then(data => {
-            var lastModifiedTime = data.properties.modifiedTime;
-            var formattedDate = new Date(lastModifiedTime).toLocaleString("en-US", {timeZone: "America/Phoenix"});
-            console.log("Last modified date:", formattedDate);
-            return formattedDate;
+            const modifiedTime = data.modifiedTime;
+            if (!modifiedTime) {
+                throw new Error('Modified time not found in response');
+            }
+            return modifiedTime;
         })
         .catch(error => {
-            console.error('Error fetching last modified date:', error);
+            console.error('Error fetching or parsing last modified time:', error);
             return null;
         });
 }
