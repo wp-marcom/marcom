@@ -47,6 +47,12 @@ function showData(dataArray) {
   });
 }
 
+// Function to get the last modified date of the Google Sheet and update HTML content
+function updateLastModifiedDate() {
+  var formattedDate = getLastModifiedDate();
+  document.getElementById('last-modified').textContent = formattedDate;
+}
+
 // Function to get the last modified date of the Google Sheet
 function getLastModifiedDate() {
   var spreadSheetId = "14JGNtRb-hxjKowzYMEQe0UObFE2sED5KUCYhnaIX1jI"; //CHANGE
