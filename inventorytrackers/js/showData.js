@@ -46,3 +46,16 @@ function showData(dataArray) {
     }
   });
 }
+
+// Function to get the last modified date of the Google Sheet
+function getLastModifiedDate() {
+  var spreadSheetId = "14JGNtRb-hxjKowzYMEQe0UObFE2sED5KUCYhnaIX1jI"; //CHANGE
+
+  var file = DriveApp.getFileById(spreadSheetId);
+  var lastUpdated = file.getLastUpdated();
+
+  // Convert the date to Arizona time zone
+  var formattedDate = Utilities.formatDate(lastUpdated, "America/Phoenix", "MM/dd/yyyy HH:mm:ss");
+
+  return formattedDate;
+}
