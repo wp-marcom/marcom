@@ -55,13 +55,19 @@ function updateLastModifiedDate() {
 
 // Function to get the last modified date of the Google Sheet
 function getLastModifiedDate() {
-  var spreadSheetId = "14JGNtRb-hxjKowzYMEQe0UObFE2sED5KUCYhnaIX1jI"; //CHANGE
+    var spreadSheetId = "14JGNtRb-hxjKowzYMEQe0UObFE2sED5KUCYhnaIX1jI"; //CHANGE
+    var apiKey = "AIzaSyD6pzfDZqNZNcwmj3wNlyJ-oXmVXFL93fI"; //CHANGE
 
-  var file = DriveApp.getFileById(spreadSheetId);
-  var lastUpdated = file.getLastUpdated();
-
-  // Convert the date to Arizona time zone
-  var formattedDate = Utilities.formatDate(lastUpdated, "America/Phoenix", "MM/dd/yyyy HH:mm:ss");
-
-  return formattedDate;
+    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadSheetId}?fields=properties&key=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            var lastModifiedTime = data.properties.modifiedTime;
+            var formattedDate = new Date(lastModifiedTime).toLocaleString("en-US", {timeZone: "America/Phoenix"});
+            console.log("Last modified date:", formattedDate);
+            return formattedDate;
+        })
+        .catch(error => {
+            console.error('Error fetching last modified date:', error);
+            return null;
+        });
 }
