@@ -121,16 +121,18 @@ function getLastModifiedTime() {
             return null;
         });
 }
-// Function to send email
 function sendEmail(productName) {
+    // Extract SKU from productName
+    var sku = extractSkuFromProductName(productName);
+
     // Construct the email body with labels only
-    var emailBody = "Product Name: " + productName + "\n" +
-                    "SKU:\n" +
-                    "QUANTITY RECEIVED:\n" +
-                    "WP OWNED OVERS RECEIVED:\n" +
-                    "QUANTITY ON HAND:\n" +
-                    "BACKORDERS:\n" +
-                    "LOCATION:\n" +
+    var emailBody = "Product Name: " + productName + "\n\n" +
+                    "SKU: " + sku + "\n\n" +
+                    "QUANTITY RECEIVED:\n\n" +
+                    "WP OWNED OVERS RECEIVED:\n\n" +
+                    "QUANTITY ON HAND:\n\n" +
+                    "BACKORDERS:\n\n" +
+                    "LOCATION:\n\n" +
                     "NOTES:";
 
     // Construct the email subject
@@ -145,3 +147,14 @@ function sendEmail(productName) {
     window.location.href = emailLink;
 }
 
+// Function to extract SKU from productName
+function extractSkuFromProductName(productName) {
+    var lastParenIndex = productName.lastIndexOf(")");
+    if (lastParenIndex !== -1) {
+        var start = productName.lastIndexOf("(", lastParenIndex - 1);
+        if (start !== -1) {
+            return productName.substring(start + 1, lastParenIndex);
+        }
+    }
+    return ""; // Return empty string if no SKU found
+}
