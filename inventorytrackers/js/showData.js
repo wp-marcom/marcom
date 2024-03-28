@@ -126,9 +126,15 @@ function getLastModifiedTime() {
 }
 // Function to send email
 function sendEmail(productName) {
+    // Find the matching record in the JSON data
+    var matchingRecord = jsonData.rows.find(record => record.cell[4] === productName);
+
+    // Extract SKU from the matching record
+    var sku = matchingRecord ? matchingRecord.cell[1] : '';
+
     // Construct the email body with labels only
     var emailBody = "Product Name: " + productName + "\n" +
-                    "SKU:\n" +
+                    "SKU: " + sku + "\n" +
                     "QUANTITY RECEIVED:\n" +
                     "WP OWNED OVERS RECEIVED:\n" +
                     "QUANTITY ON HAND:\n" +
@@ -147,5 +153,6 @@ function sendEmail(productName) {
     // Open the email client
     window.location.href = emailLink;
 }
+
 
 
