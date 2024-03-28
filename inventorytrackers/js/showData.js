@@ -36,25 +36,28 @@ function showData(dataArray) {
         {targets: [0, 1, 2, 3, 4, 5, 6, 7, 8], className: 'text-nowrap'}, // Apply 'text-nowrap' class to columns 0 to 8
         {
           targets: 0, // Target the Product Name column
-          render: function (data, type, row, meta) {
-            if (type === 'display') {
-              var productName = data;
-              // Find the matching record in the JSON data
-              var matchingRecord = jsonData.rows.find(record => record.cell[4] === productName);
-              if (matchingRecord) {
-                // Retrieve the URL from the matching record
-                var imageUrl = matchingRecord.cell[2];
-                // Prepend "https://images.printable.com" to the URL
-                var fullImageUrl = "https://images.printable.com" + imageUrl;
-                // Return the full image URL as a clickable link
-                return '<a href="' + fullImageUrl + '" target="_blank">' + productName + '</a>';
-              } else {
-                // If no match found, return the original Product Name
-                return productName;
-              }
-            } else {
-              // Return original data for other types (sorting, filtering, etc.)
-              return data;
+  render: function (data, type, row, meta) {
+    if (type === 'display') {
+      var productName = data;
+      // Find the matching record in the JSON data
+      var matchingRecord = jsonData.rows.find(record => record.cell[4] === productName);
+      if (matchingRecord) {
+        // Retrieve the URL from the matching record
+        var imageUrl = matchingRecord.cell[2];
+        // Prepend "https://images.printable.com" to the URL
+        var fullImageUrl = "https://images.printable.com" + imageUrl;
+        // Generate a unique identifier for the image preview
+        var previewId = "preview_" + meta.row;
+        // Return the full image URL as a clickable link with a data-preview attribute
+        return '<a href="' + fullImageUrl + '" target="_blank" data-preview="' + previewId + '">' + productName + '</a>' +
+               '<div class="image-preview" id="' + previewId + '"><img src="' + fullImageUrl + '" alt="' + productName + '"></div>';
+      } else {
+        // If no match found, return the original Product Name
+        return productName;
+      }
+    } else {
+      // Return original data for other types (sorting, filtering, etc.)
+      return data;
             }
           }
         },
