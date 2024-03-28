@@ -48,8 +48,9 @@ render: function (data, type, row, meta) {
             var fullImageUrl = "https://images.printable.com" + imageUrl;
             // Create the link with the productName and attach onclick event
             var productNameLink = '<a href="' + fullImageUrl + '" target="_blank">' + productName + '</a>';
+            var strippedProductName = productName.replace(/<[^>]*>/g, ''); // Remove HTML tags from productName
             // Create the link for the "Refill" text to trigger the sendEmail function
-            var refillLink = '<a href="#" onclick="sendEmail(\'' + productName + '\'); return false;">• Refill</a>';
+            var refillLink = '<a href="#" onclick="sendEmail(\'' + strippedProductName + '\'); return false;">• Refill</a>'
             // Return the combined content of productName link and refillLink
             return productNameLink + ' ' + refillLink;
         } else {
