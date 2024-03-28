@@ -136,7 +136,7 @@ function sendEmail(productName) {
                     "NOTES:";
 
     // Construct the email subject
-    var subject = encodeURIComponent(productName + " - Refill");
+    var subject = encodeURIComponent(productName + " - Refill - INVOICE NUMBER:");
 
     // Construct the email link with subject and body
     var emailLink = "mailto:kaleb@westpress.com" +
