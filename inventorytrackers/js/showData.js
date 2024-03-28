@@ -52,7 +52,7 @@ render: function (data, type, row, meta) {
             // Create the link with the productName and attach onclick event
             var productNameLink = '<a href="' + fullImageUrl + '" target="_blank">' + productName + '</a>';
             // Create the link for the "Refill" text to trigger the sendEmail function
-            var refillLink = '<a href="#" onclick="sendEmail(\'' + productName + '\'); return false;">• Refill</a>';
+            var refillLink = '<a href="#" onclick="sendEmail(\'' + productName + '\', jsonData); return false;">• Refill</a>';
             // Return the combined content of productName link and refillLink
             return productNameLink + ' ' + refillLink;
         } else {
@@ -125,7 +125,7 @@ function getLastModifiedTime() {
         });
 }
 // Function to send email
-function sendEmail(productName) {
+function sendEmail(productName, jsonData) {
     // Find the matching record in the JSON data
     var matchingRecord = jsonData.rows.find(record => record.cell[4] === productName);
 
@@ -153,6 +153,5 @@ function sendEmail(productName) {
     // Open the email client
     window.location.href = emailLink;
 }
-
 
 
