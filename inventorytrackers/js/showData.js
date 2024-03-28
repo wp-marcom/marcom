@@ -1,5 +1,8 @@
 // showData.js
 
+// Declare jsonData at a higher scope
+var jsonData;
+
 function showData(dataArray) {
   // Fetch the JSON data asynchronously
   async function fetchJsonData() {
