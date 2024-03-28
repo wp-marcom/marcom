@@ -127,7 +127,8 @@ function getLastModifiedTime() {
 // Function to send email
 function sendEmail(productName) {
     // Construct the email body with labels only
-    var emailBody = "SKU:\n" +
+    var emailBody = "Product Name: " + productName + "\n" +
+                    "SKU:\n" +
                     "QUANTITY RECEIVED:\n" +
                     "WP OWNED OVERS RECEIVED:\n" +
                     "QUANTITY ON HAND:\n" +
@@ -146,4 +147,5 @@ function sendEmail(productName) {
     // Open the email client
     window.location.href = emailLink;
 }
+
 
