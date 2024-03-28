@@ -124,3 +124,26 @@ function getLastModifiedTime() {
             return null;
         });
 }
+// Function to send email
+function sendEmail(productName) {
+    // Construct the email body with labels only
+    var emailBody = "SKU:\n" +
+                    "QUANTITY RECEIVED:\n" +
+                    "WP OWNED OVERS RECEIVED:\n" +
+                    "QUANTITY ON HAND:\n" +
+                    "BACKORDERS:\n" +
+                    "LOCATION:\n" +
+                    "NOTES:";
+
+    // Construct the email subject
+    var subject = encodeURIComponent(productName + " - Refill");
+
+    // Construct the email link with subject and body
+    var emailLink = "mailto:kaleb@westpress.com" +
+                    "?subject=" + subject +
+                    "&body=" + encodeURIComponent(emailBody);
+
+    // Open the email client
+    window.location.href = emailLink;
+}
+
