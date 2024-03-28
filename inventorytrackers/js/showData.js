@@ -1,8 +1,5 @@
 // showData.js
 
-// Declare jsonData at a higher scope
-var jsonData;
-
 function showData(dataArray) {
   // Fetch the JSON data asynchronously
   async function fetchJsonData() {
@@ -52,7 +49,7 @@ render: function (data, type, row, meta) {
             // Create the link with the productName and attach onclick event
             var productNameLink = '<a href="' + fullImageUrl + '" target="_blank">' + productName + '</a>';
             // Create the link for the "Refill" text to trigger the sendEmail function
-            var refillLink = '<a href="#" onclick="sendEmail(\'' + productName + '\', jsonData); return false;">• Refill</a>';
+            var refillLink = '<a href="#" onclick="sendEmail(\'' + productName + '\'); return false;">• Refill</a>';
             // Return the combined content of productName link and refillLink
             return productNameLink + ' ' + refillLink;
         } else {
@@ -125,16 +122,10 @@ function getLastModifiedTime() {
         });
 }
 // Function to send email
-function sendEmail(productName, jsonData) {
-    // Find the matching record in the JSON data
-    var matchingRecord = jsonData.rows.find(record => record.cell[4] === productName);
-
-    // Extract SKU from the matching record
-    var sku = matchingRecord ? matchingRecord.cell[1] : '';
-
+function sendEmail(productName) {
     // Construct the email body with labels only
     var emailBody = "Product Name: " + productName + "\n" +
-                    "SKU: " + sku + "\n" +
+                    "SKU:\n" +
                     "QUANTITY RECEIVED:\n" +
                     "WP OWNED OVERS RECEIVED:\n" +
                     "QUANTITY ON HAND:\n" +
@@ -153,5 +144,4 @@ function sendEmail(productName, jsonData) {
     // Open the email client
     window.location.href = emailLink;
 }
-
 
