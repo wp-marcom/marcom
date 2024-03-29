@@ -38,9 +38,16 @@ function showData(dataArray) {
           targets: 0, // Target the Product Name column
 render: function (data, type, row, meta) {
     if (type === 'display') {
-        var productName = data;
-        // Find the matching record in the JSON data
-        var matchingRecord = jsonData.rows.find(record => record.cell[4] === productName);
+        var originalProductName = data;
+        var productName = originalProductName;
+
+        // Truncate productName to 67 characters including spaces
+        if (productName.length > 67) {
+            productName = productName.substring(0, 67) + '...';
+        }
+
+        // Find the matching record in the JSON data using originalProductName
+        var matchingRecord = jsonData.rows.find(record => record.cell[4] === originalProductName);
         if (matchingRecord) {
             // Retrieve the URL from the matching record
             var imageUrl = matchingRecord.cell[2];
@@ -48,13 +55,14 @@ render: function (data, type, row, meta) {
             var fullImageUrl = "https://images.printable.com" + imageUrl;
             // Create the link with the productName and attach onclick event
             var productNameLink = '<a href="' + fullImageUrl + '" target="_blank">' + productName + '</a>';
+            // Use truncated productName for strippedProductName
             var strippedProductName = productName.replace(/<[^>]*>/g, ''); // Remove HTML tags from productName
             // Create the link for the "Refill" text to trigger the sendEmail function
             var refillLink = '<a href="#" onclick="sendEmail(\'' + strippedProductName + '\'); return false;">• Refill</a>'
             // Return the combined content of productName link and refillLink
             return productNameLink + ' ' + refillLink;
         } else {
-            // If no match found, return the original Product Name
+            // If no match found, return the truncated Product Name
             return productName;
         }
     } else {
