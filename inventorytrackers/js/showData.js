@@ -170,7 +170,7 @@ function sendLocationEmail(productName) {
                     "NOTES:";
 
     // Construct the email subject
-    var subject = encodeURIComponent(productName + " - LOCATION CHANGE:");
+    var subject = encodeURIComponent(productName + " - LOCATION CHANGE");
 
     // Construct the email link with subject and body
     var emailLink = "mailto:kaleb@westpress.com" +
