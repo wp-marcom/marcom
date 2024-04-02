@@ -28,6 +28,8 @@ function showData(dataArray) {
                 { "title": "Status" },
                 { "title": "Notes" }
             ],
+            scrollX: false, // Disable horizontal scrolling
+            autoWidth: true, // Enable automatic width calculation based on container size
             order: [], // Disable initial sorting
             pageLength: 100, // Set default number of entries per page to 100
             columnDefs: [
