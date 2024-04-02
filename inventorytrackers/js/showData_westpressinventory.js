@@ -157,6 +157,27 @@ function sendEmail(productName) {
     // Open the email client
     window.location.href = emailLink;
 }
+function sendLocationEmail(productName) {
+    // Extract SKU from productName
+    var sku = extractSkuFromProductName(productName);
+
+    // Construct the email body with labels only
+    var emailBody = "Product Name: " + productName + "\n\n" +
+                    "SKU: " + sku + "\n\n" +
+                    "NEW LOCATION:\n\n" +
+                    "NOTES:";
+
+    // Construct the email subject
+    var subject = encodeURIComponent(productName + " - LOCATION CHANGE");
+
+    // Construct the email link with subject and body
+    var emailLink = "mailto:kaleb@westpress.com" +
+                    "?subject=" + subject +
+                    "&body=" + encodeURIComponent(emailBody);
+
+    // Open the email client
+    window.location.href = emailLink;
+}
 
 // Function to extract SKU from productName
 function extractSkuFromProductName(productName) {
