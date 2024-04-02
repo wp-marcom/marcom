@@ -143,10 +143,22 @@
         });
 
     $(document).ready(function() {
-    $('#data-table').DataTable({
-        "scrollX": true, // Enable horizontal scrolling if needed
-        "autoWidth": true // Enable automatic width calculation based on container size
-    });
+    // Check if DataTable is already initialized on the table
+    if (!$.fn.DataTable.isDataTable('#data-table')) {
+        // If not initialized, initialize DataTable
+        $('#data-table').DataTable({
+            "scrollX": true, // Enable horizontal scrolling if needed
+            "autoWidth": true // Enable automatic width calculation based on container size
+        });
+    } else {
+        // If already initialized, destroy existing DataTable and then initialize
+        $('#data-table').DataTable().destroy();
+        $('#data-table').DataTable({
+            "scrollX": true, // Enable horizontal scrolling if needed
+            "autoWidth": true // Enable automatic width calculation based on container size
+        });
+    }
+});
 });
     
 </script>
