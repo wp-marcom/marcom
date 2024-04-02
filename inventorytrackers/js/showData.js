@@ -60,7 +60,7 @@ render: function (data, type, row, meta) {
             // Create the link for the "Refill" icon image to trigger the sendRefillEmail function
             var refillLink = '<a href="#" onclick="sendRefillEmail(\'' + strippedProductName + '\'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>';
           // Create the link for the "Location Change" icon image to trigger the sendLocationEmail function
-            var locationLink = '<a href="#" onclick="sendLocationEmail(\'' + strippedProductName + '\'); return false;"><i class="fa-map-marker" aria-hidden="true"></i></a>';
+            var locationLink = '<a href="#" onclick="sendLocationEmail(\'' + strippedProductName + '\'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>';
             // Return the combined content of productName link and refillLink
             return productNameLink + ' ' + refillLink + ' ' + locationLink;
 
