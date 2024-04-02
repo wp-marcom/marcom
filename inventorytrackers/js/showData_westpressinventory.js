@@ -57,8 +57,8 @@ render: function (data, type, row, meta) {
             var productNameLink = '<a href="' + fullImageUrl + '" target="_blank">' + productName + '</a>';
             // Use truncated productName for strippedProductName
             var strippedProductName = productName.replace(/<[^>]*>/g, ''); // Remove HTML tags from productName
-            // Create the link for the "Refill" text to trigger the sendEmail function
-            var refillLink = '<a href="#" onclick="sendEmail(\'' + strippedProductName + '\'); return false;">• Refill</a>'
+           // Create the link for the "Refill" icon image to trigger the sendRefillEmail function
+            var refillLink = '<a href="#" onclick="sendRefillEmail(\'' + strippedProductName + '\'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>';
              // Create the link for the "Location Change" icon image to trigger the sendLocationEmail function
             var locationLink = '<a href="#" onclick="sendLocationEmail(\'' + strippedProductName + '\'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>';
             // Return the combined content of productName link and refillLink
