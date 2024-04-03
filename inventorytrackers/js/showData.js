@@ -48,7 +48,8 @@ function showData(dataArray) {
                             var matchingRecord = jsonData.rows.find(record => record.cell[4] === originalProductName);
                             if (matchingRecord) {
                                 // Use truncated productName for strippedProductName
-                                var strippedProductName = productName.replace(/<[^>]*>/g, ''); // Remove HTML tags from productName
+                                //original//var strippedProductName = productName.replace(/<[^>]*>/g, ''); // Remove HTML tags from productName
+                                var strippedProductName = productName.replace(/[^\w\s-]/g, '');
                                 // Retrieve the URL from the matching record
                                 var imageUrl = matchingRecord.cell[2];
                                 // Prepend "https://images.printable.com" to the URL
