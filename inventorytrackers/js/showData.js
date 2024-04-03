@@ -48,7 +48,7 @@ function showData(dataArray) {
                             var matchingRecord = jsonData.rows.find(record => record.cell[4] === originalProductName);
                             if (matchingRecord) {
                                  //use original productName without HTML tags for sending emails
-                                var emailProductName = '${originalProductName}'.replace(/<[^>]*>/g, ''); // Remove HTML tags ONLY from productName for emailing only
+                                var emailProductName = originalProductName.replace(/<[^>]*>/g, '').replace(/[^\w\s()-\.]/g, ''); // Remove HTML tags ONLY from productName for emailing only
                                 // Use truncated productName for strippedProductName
                                 var strippedProductName = productName.replace(/<[^>]*>/g, '').replace(/[^\w\s()-\.]/g, ''); // Remove HTML/misc tags from productName for display only
                                 // Retrieve the URL from the matching record
