@@ -22,6 +22,22 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
 
     <style>
+        /* THESE TWO HIDE THE REFILL/LOCATION BUTTONS for the NON-ADMIN version */
+.fa.fa-arrow-circle-up {
+  display: none; /* Hide the arrow icon */
+  pointer-events: none; /* Disable pointer events */
+  cursor: default; /* Set cursor to default */
+}
+
+.fa fa-map-marker {
+      display: none; /* Hide the arrow icon */
+  pointer-events: none; /* Disable pointer events */
+  cursor: default; /* Set cursor to default */
+}
+        
+        /* THESE TWO ABOVE HIDE THE REFILL/LOCATION BUTTONS for the NON-ADMIN version */
+
+        
         a {
             color: inherit; /* Inherit color from parent element */
             text-decoration: none; /* Remove underline */
