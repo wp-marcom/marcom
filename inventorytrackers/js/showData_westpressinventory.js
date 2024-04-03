@@ -86,12 +86,19 @@ function showData(dataArray) {
                         }
                     }
                 },
-                {
+              {
         targets: 9, // Target the Notes column
         render: function (data, type, row, meta) {
             if (type === 'display') {
-                // Render the speech bubble icon
-                return '<span class="tooltip-icon" title="' + data + '"><i class="fa fa-comment" aria-hidden="true"></i></span>';
+                // Check if the cell content contains actual words
+                var hasWords = /\w+/.test(data);
+                if (hasWords) {
+                    // Render the speech bubble icon with tooltip
+                    return '<span class="tooltip-icon" title="' + data + '"><i class="fa fa-comment" aria-hidden="true"></i></span>';
+                } else {
+                    // Return empty string if cell content does not contain words
+                    return '';
+                }
             } else {
                 return data; // Return original data for other types (sorting, filtering, etc.)
             }
