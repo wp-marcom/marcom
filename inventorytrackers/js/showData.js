@@ -49,7 +49,7 @@ function showData(dataArray) {
                             if (matchingRecord) {
                                 // Use truncated productName for strippedProductName
                                 //original//var strippedProductName = productName.replace(/<[^>]*>/g, ''); // Remove HTML tags from productName
-                                var strippedProductName = productName.replace(/[^\w\s-]/g, '');
+                                var strippedProductName = productName.replace(/[^\w\s()-]/g, '');
                                 // Retrieve the URL from the matching record
                                 var imageUrl = matchingRecord.cell[2];
                                 // Prepend "https://images.printable.com" to the URL
