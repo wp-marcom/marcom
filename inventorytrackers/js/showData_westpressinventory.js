@@ -85,7 +85,18 @@ function showData(dataArray) {
                             return data; // Return original data for other types (sorting, filtering, etc.)
                         }
                     }
-                }
+                },
+                {
+        targets: 9, // Target the Notes column
+        render: function (data, type, row, meta) {
+            if (type === 'display') {
+                // Render the speech bubble icon
+                return '<span class="tooltip-icon" title="' + data + '"><i class="fa fa-comment" aria-hidden="true"></i></span>';
+            } else {
+                return data; // Return original data for other types (sorting, filtering, etc.)
+            }
+        }
+    }
             ]
         });
 
