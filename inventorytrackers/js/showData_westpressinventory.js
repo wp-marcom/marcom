@@ -42,9 +42,9 @@ function showData(dataArray) {
                             var productName = originalProductName;
 
                             // Truncate productName to 67 characters including spaces
-                            if (productName.length > 67) {
-                                productName = productName.substring(0, 67) + '...';
-                            }
+                            //if (productName.length > 67) {
+                            //    productName = productName.substring(0, 67) + '...';
+                           // }
 
                             // Find the matching record in the JSON data using originalProductName
                             var matchingRecord = jsonData.rows.find(record => record.cell[4] === originalProductName);
