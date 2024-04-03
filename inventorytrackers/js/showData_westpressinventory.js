@@ -41,7 +41,7 @@ function showData(dataArray) {
                             var originalProductName = data;
                             var productName = originalProductName;
 
-                             Truncate productName to 67 characters including spaces
+                           //  Truncate productName to 67 characters including spaces
                             if (productName.length > 67) {
                                 productName = productName.substring(0, 67) + '...';
                             }
