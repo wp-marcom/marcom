@@ -50,7 +50,7 @@ function showData(dataArray) {
                             var matchingRecord = jsonData.rows.find(record => record.cell[4] === originalProductName);
                             if (matchingRecord) {
                                 // Use truncated productName for strippedProductName
-                                var strippedProductName = productName.replace(/<[^>]*>/g, ''); // Remove HTML tags from productName
+                                var strippedProductName = productName.replace(/<[^>]*>/g, '').replace(/[^\w\s()-]/g, ''); // Remove HTML tags from productName
                                 // Retrieve the URL from the matching record
                                 var imageUrl = matchingRecord.cell[2];
                                 // Prepend "https://images.printable.com" to the URL
@@ -59,9 +59,9 @@ function showData(dataArray) {
                                 var productNameLink = '<a href="' + fullImageUrl + '" target="_blank">' + strippedProductName + '</a>';
 
                                 // Create the link for the "Refill" icon image to trigger the sendRefillEmail function
-                                var refillLink = '<a href="#" onclick="sendRefillEmail(\'' + strippedProductName + '\'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>';
+                                var refillLink = `<a href="#" onclick="sendRefillEmail('${strippedProductName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
                                 // Create the link for the "Location Change" icon image to trigger the sendLocationEmail function
-                                var locationLink = '<a href="#" onclick="sendLocationEmail(\'' + strippedProductName + '\'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>';
+                                var locationLink = `<a href="#" onclick="sendLocationEmail('${strippedProductName}'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
                                 // Return the combined content of productName link and refillLink
                                 return productNameLink + ' ' + refillLink + ' ' + locationLink;
 
