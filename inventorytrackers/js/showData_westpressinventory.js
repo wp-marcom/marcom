@@ -49,8 +49,10 @@ function showData(dataArray) {
                             // Find the matching record in the JSON data using originalProductName
                             var matchingRecord = jsonData.rows.find(record => record.cell[4] === originalProductName);
                             if (matchingRecord) {
+                                 //use original productName without HTML tags for sending emails
+                                var emailProductName = originalProductName.replace(/<[^>]*>/g, ''); // Remove HTML tags ONLY from productName for emailing only
                                 // Use truncated productName for strippedProductName
-                                var strippedProductName = productName.replace(/<[^>]*>/g, '').replace(/[^\w\s()-\.]/g, ''); // Remove HTML tags from productName
+                                var strippedProductName = productName.replace(/<[^>]*>/g, '').replace(/[^\w\s()-\.]/g, ''); // Remove HTML/misc tags from productName for display only
                                 // Retrieve the URL from the matching record
                                 var imageUrl = matchingRecord.cell[2];
                                 // Prepend "https://images.printable.com" to the URL
@@ -59,9 +61,9 @@ function showData(dataArray) {
                                 var productNameLink = '<a href="' + fullImageUrl + '" target="_blank">' + strippedProductName + '</a>';
 
                                 // Create the link for the "Refill" icon image to trigger the sendRefillEmail function
-                                var refillLink = `<a href="#" onclick="sendRefillEmail('${strippedProductName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
+                                var refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
                                 // Create the link for the "Location Change" icon image to trigger the sendLocationEmail function
-                                var locationLink = `<a href="#" onclick="sendLocationEmail('${strippedProductName}'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
+                                var locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
                                 // Return the combined content of productName link and refillLink
                                 return productNameLink + ' ' + refillLink + ' ' + locationLink;
 
