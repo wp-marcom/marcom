@@ -41,16 +41,16 @@ function showData(dataArray) {
                             var originalProductName = data;
                             var productName = originalProductName;
 
-                            // Truncate productName to 67 characters including spaces
-                            //if (productName.length > 67) {
-                            //    productName = productName.substring(0, 67) + '...';
-                           // }
+                             Truncate productName to 67 characters including spaces
+                            if (productName.length > 67) {
+                                productName = productName.substring(0, 67) + '...';
+                            }
 
                             // Find the matching record in the JSON data using originalProductName
                             var matchingRecord = jsonData.rows.find(record => record.cell[4] === originalProductName);
                             if (matchingRecord) {
                                 // Use truncated productName for strippedProductName
-                                var strippedProductName = productName.replace(/<[^>]*>/g, '').replace(/[^\w\s()-]/g, ''); // Remove HTML tags from productName
+                                var strippedProductName = productName.replace(/<[^>]*>/g, '').replace(/[^\w\s()-\.]/g, ''); // Remove HTML tags from productName
                                 // Retrieve the URL from the matching record
                                 var imageUrl = matchingRecord.cell[2];
                                 // Prepend "https://images.printable.com" to the URL
