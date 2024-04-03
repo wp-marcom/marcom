@@ -58,7 +58,9 @@ function showData(dataArray) {
                                 // Prepend "https://images.printable.com" to the URL
                                 var fullImageUrl = "https://images.printable.com" + imageUrl;
                                 // Create the link with the productName and attach onclick event
-                                var productNameLink = '<a href="' + fullImageUrl + '" target="_blank">' + strippedProductName + '</a>';
+                                // Create the link with the productName and attach onclick event
+                                var productNameLink = '<a href="' + fullImageUrl + '" target="_blank" title="' + emailProductName + '">' + strippedProductName + '</a>';
+
 
                                 // Create the link for the "Refill" icon image to trigger the sendRefillEmail function
                                 var refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
