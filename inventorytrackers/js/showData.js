@@ -57,7 +57,7 @@ function showData(dataArray) {
                                 var productNameLink = '<a href="' + fullImageUrl + '" target="_blank">' + strippedProductName + '</a>';
 
                                 // Create the link for the "Refill" icon image to trigger the sendRefillEmail function
-                               original// var refillLink = '<a href="#" onclick="sendRefillEmail(\'' + strippedProductName + '\'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>';
+                               //original// var refillLink = '<a href="#" onclick="sendRefillEmail(\'' + strippedProductName + '\'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>';
                              // var refillLink = '<a href="#" onclick="sendRefillEmail(' + JSON.stringify(strippedProductName) + '); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>';
                                 
                                 var refillLink = `<a href="#" onclick="sendRefillEmail('${strippedProductName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
