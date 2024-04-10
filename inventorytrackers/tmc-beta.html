@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        
+        /* Style for header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+            background-color: #fff;
+            padding-left: 20px;
+            z-index: 997;
+            position: relative;
+        }
+
+        /* Style for buttons */
+        .header button {
+            margin: 0 10px;
+            background-color: #153c63;
+            color: #fff;
+            padding: 0.375rem 0.75rem;
+            border: none;
+            border-radius: 5px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .header button:hover,
+        .header button.active {
+            background-color: #0b5ed7;
+        }
+
+        /* Style for iframe */
+        iframe {
+            width: 100%;
+            height: calc(100vh - 60px); /* Subtracting header height */
+            border: none;
+            display: none; /* Hide iframes by default */
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with buttons -->
+    <section class="header">
+        <button id="button1">TMC Forms</button>
+        <button id="button2">Vantage West</button>
+        <!-- Add more buttons as needed -->
+    </section>
+
+    <!-- Iframes -->
+    <iframe id="iframe1" src="https://wp-marcom.github.io/marcom/inventorytrackers/tmc/tmc-forms.html"></iframe>
+    <iframe id="iframe2" src="https://wp-marcom.github.io/marcom/inventorytrackers/vantagewest-admin.html"></iframe>
+    <!-- Add more iframes as needed -->
+
+    <script>
+        // Get buttons and iframes
+        const buttons = document.querySelectorAll('.header button');
+        const iframes = document.querySelectorAll('iframe');
+
+        // Function to toggle iframe visibility
+        function toggleIframeVisibility(index) {
+            // Hide all iframes
+            iframes.forEach((iframe) => {
+                iframe.style.display = 'none';
+            });
+            // Show the selected iframe
+            iframes[index].style.display = 'block';
+        }
+
+        // Add event listeners to buttons
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                toggleIframeVisibility(index);
+                // Mark the clicked button as active
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        // Show the first iframe initially
+        toggleIframeVisibility(0);
+    </script>
+</body>
+</html>
