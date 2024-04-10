@@ -1,358 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>TMC Inventory Snapshot</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        
+        /* Style for header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+            background-color: #fff;
+            padding-left: 20px;
+            z-index: 997;
+            position: relative;
+        }
 
-.collapsible {
-  background-color: #153c63;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 98%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
+        /* Style for buttons */
+        .header button {
+            margin: 0 10px;
+            background-color: #153c63;
+            color: #fff;
+            padding: 0.375rem 0.75rem;
+            border: none;
+            border-radius: 5px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
 
-.active, .collapsible:hover {
-  background-color: #555;
-}
+        .header button:hover,
+        .header button.active {
+            background-color: #0b5ed7;
+        }
 
-.content {
-  padding: 0 8px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #f1f1f1;
-}
-
-
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
-
-/* Style buttons */
-.btn {
-  background-color: #153c63;
-  border: none;
-  color: white;
-  padding: 12px 30px;
-  cursor: pointer;
-  font-size: 15px;
-  border-radius:5px;
-}
-button {
-    margin: 8px!important;
-}
-a{
-background-color:transparent;
-text-decoration: none;
-padding-left: 5px;
-}
-a:active,a:hover{outline-width:0}
-
-/* Darker background on mouse-over */
-.btn:hover {
-  background-color: RoyalBlue;
-}
-
-
-</style>
+        /* Style for iframe */
+        iframe {
+            width: 100%;
+            height: calc(100vh - 60px); /* Subtracting header height */
+            border: none;
+            display: none; /* Hide iframes by default */
+            z-index: 1;
+        }
+    </style>
 </head>
-<body class="w3-light-grey">
-<!-- TMC FORMS -->
-<button class="collapsible">TMC Forms I/S</button>
-<div class="content">
+<body>
+    <!-- Header with buttons -->
+    <section class="header">
+        <button id="button1">TMC Forms</button>
+        <button id="button2">TMC Comm Outreach PRINT</button>
+        <button id="button3">TMC Comm Outreach PROMO</button>
+        <button id="button4">TMC Comms</button>
+        <button id="button5">TMC Foundation</button>
+         <button id="button6">TMC Seniors</button>
+        <button id="button7">TMC Wellness</button>
+        <button id="button7">TMC Women & Children</button>
+        <!-- Add more buttons as needed -->
+    </section>
 
-
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1800px;">
-
-  <!-- The Grid -->
-  <div class="w3-row-padding">
+    <!-- Iframes -->
+    <iframe id="iframe1" src="https://wp-marcom.github.io/marcom/inventorytrackers/tmc/tmc-forms.html"></iframe>
+    <iframe id="iframe2" src="https://wp-marcom.github.io/marcom/inventorytrackers/tmc/tmc-comm-out-print.html"></iframe>
+    <iframe id="iframe3" src="https://wp-marcom.github.io/marcom/inventorytrackers/tmc/tmc-comm-out-promo.html"></iframe>
+    <iframe id="iframe4" src="https://wp-marcom.github.io/marcom/inventorytrackers/tmc/tmc-comms.html"></iframe>
+    <iframe id="iframe5" src="https://wp-marcom.github.io/marcom/inventorytrackers/tmc/tmc-found.html"></iframe>
+    <iframe id="iframe6" src="https://wp-marcom.github.io/marcom/inventorytrackers/tmc/tmc-seniors.html"></iframe>
+    <iframe id="iframe7" src="https://wp-marcom.github.io/marcom/inventorytrackers/tmc/tmc-wellness.html"></iframe>
+    <iframe id="iframe8" src="https://wp-marcom.github.io/marcom/inventorytrackers/tmc/tmc-wc.html"></iframe>
+    
   
     
+    <!-- Add more iframes as needed -->
 
-    
-    <div class="w3-twothrd">
-    
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
-            <button class="btn"><i class="fa fa-download"></i><a href="https://docs.google.com/spreadsheets/d/1WxGASPVd93vZY8IO58tU-HctKUZ2AH9bMsZGikBVNhk/export?format=xlsx&gid=1283376388">Download</a></button>
-            <div class="w3-container">
-            <iframe height="800" style="width:1700px;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ51sseF5yBfhKN6Jk6XO25NwXyJHGbXOVDUAD7QL3Nor3r6lFnRIG5VGYlncwv40XNqyXKwo2Ejr7Y/pubhtml?gid=1283376388&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-              <h5 class="w3-opacity"><b></b></h5>
-    
-          <hr>
-        </div>
-        
-      </div>
+    <script>
+        // Get buttons and iframes
+        const buttons = document.querySelectorAll('.header button');
+        const iframes = document.querySelectorAll('iframe');
 
-     
+        // Function to toggle iframe visibility
+        function toggleIframeVisibility(index) {
+            // Hide all iframes
+            iframes.forEach((iframe) => {
+                iframe.style.display = 'none';
+            });
+            // Show the selected iframe
+            iframes[index].style.display = 'block';
+        }
 
-    
-    </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
-</div>
-</div>
-<!-- End TMC FORMS -->
-<!-- TMC Comm Outreach PRINT -->
-<button class="collapsible">TMC Comm Outreach PRINT</button>
-<div class="content">
+        // Add event listeners to buttons
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                toggleIframeVisibility(index);
+                // Mark the clicked button as active
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
 
-
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1800px;">
-
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    
-
-    
-    <div class="w3-twothrd">
-    
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
-            <button class="btn"><i class="fa fa-download"></i><a href="https://docs.google.com/spreadsheets/d/1WxGASPVd93vZY8IO58tU-HctKUZ2AH9bMsZGikBVNhk/export?format=xlsx&gid=596664652">Download</a></button>
-            <div class="w3-container">
-            <iframe height="800" style="width:1700px;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ51sseF5yBfhKN6Jk6XO25NwXyJHGbXOVDUAD7QL3Nor3r6lFnRIG5VGYlncwv40XNqyXKwo2Ejr7Y/pubhtml?gid=596664652&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-              <h5 class="w3-opacity"><b></b></h5>
-    
-          <hr>
-        </div>
-        
-      </div>
-
-     
-
-    
-    </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
-</div>
-</div>
-<!-- END TMC Comm Outreach PRINT -->
-<!-- TMC Comm Outreach PROMO -->
-<button class="collapsible">TMC Comm Outreach PROMO</button>
-<div class="content">
-
-
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1800px;">
-
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    
-
-    
-    <div class="w3-twothrd">
-    
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
-            <button class="btn"><i class="fa fa-download"></i><a href="https://docs.google.com/spreadsheets/d/1WxGASPVd93vZY8IO58tU-HctKUZ2AH9bMsZGikBVNhk/export?format=xlsx&gid=1706473418">Download</a></button>
-            <div class="w3-container">
-            <iframe height="800" style="width:1700px;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ51sseF5yBfhKN6Jk6XO25NwXyJHGbXOVDUAD7QL3Nor3r6lFnRIG5VGYlncwv40XNqyXKwo2Ejr7Y/pubhtml?gid=1706473418&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-              <h5 class="w3-opacity"><b></b></h5>
-    
-          <hr>
-        </div>
-        
-      </div>
-
-     
-
-    
-    </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
-</div>
-</div>
-<!-- END TMC Comm Outreach PROMO -->
-<!-- TMC Women & Childrens -->
-<button class="collapsible">TMC Women & Children</button>
-<div class="content">
-
-
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1800px;">
-
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    
-
-    
-    <div class="w3-twothrd">
-    
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
-            <button class="btn"><i class="fa fa-download"></i><a href="https://docs.google.com/spreadsheets/d/1WxGASPVd93vZY8IO58tU-HctKUZ2AH9bMsZGikBVNhk/export?format=xlsx&gid=2068487227">Download</a></button>
-            <div class="w3-container">
-            <iframe height="800" style="width:1700px;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ51sseF5yBfhKN6Jk6XO25NwXyJHGbXOVDUAD7QL3Nor3r6lFnRIG5VGYlncwv40XNqyXKwo2Ejr7Y/pubhtml?gid=2068487227&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-              <h5 class="w3-opacity"><b></b></h5>
-    
-          <hr>
-        </div>
-        
-      </div>
-
-     
-
-    
-    </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
-</div>
-</div>
-<!-- END TMC Women & Childrens -->
-<!-- TMC Communications -->
-<button class="collapsible">TMC Communications</button>
-<div class="content">
-
-
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1800px;">
-
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    
-
-    
-    <div class="w3-twothrd">
-    
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
-            <button class="btn"><i class="fa fa-download"></i><a href="https://docs.google.com/spreadsheets/d/1WxGASPVd93vZY8IO58tU-HctKUZ2AH9bMsZGikBVNhk/export?format=xlsx&gid=509750881">Download</a></button>
-            <div class="w3-container">
-            <iframe height="800" style="width:1700px;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ51sseF5yBfhKN6Jk6XO25NwXyJHGbXOVDUAD7QL3Nor3r6lFnRIG5VGYlncwv40XNqyXKwo2Ejr7Y/pubhtml?gid=509750881&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-              <h5 class="w3-opacity"><b></b></h5>
-    
-          <hr>
-        </div>
-        
-      </div>
-
-     
-
-    
-    </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
-</div>
-</div>
-<!-- END TMC Communications -->
-<!-- TMC Foundation -->
-<button class="collapsible">TMC Foundation</button>
-<div class="content">
-
-
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1800px;">
-
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    
-
-    
-    <div class="w3-twothrd">
-    
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
-            <button class="btn"><i class="fa fa-download"></i><a href="https://docs.google.com/spreadsheets/d/1WxGASPVd93vZY8IO58tU-HctKUZ2AH9bMsZGikBVNhk/export?format=xlsx&gid=1234408442">Download</a></button>
-            <div class="w3-container">
-            <iframe height="800" style="width:1700px;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ51sseF5yBfhKN6Jk6XO25NwXyJHGbXOVDUAD7QL3Nor3r6lFnRIG5VGYlncwv40XNqyXKwo2Ejr7Y/pubhtml?gid=1234408442&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-              <h5 class="w3-opacity"><b></b></h5>
-    
-          <hr>
-        </div>
-        
-      </div>
-
-     
-
-    
-    </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
-</div>
-</div>
-<!-- END TMC Foundation -->
-<!-- TMC Seniors -->
-<button class="collapsible">TMC Seniors</button>
-<div class="content">
-
-
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1800px;">
-
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    
-
-    
-    <div class="w3-twothrd">
-    
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
-            <button class="btn"><i class="fa fa-download"></i><a href="https://docs.google.com/spreadsheets/d/1WxGASPVd93vZY8IO58tU-HctKUZ2AH9bMsZGikBVNhk/export?format=xlsx&gid=99026327">Download</a></button>
-            <div class="w3-container">
-            <iframe height="800" style="width:1700px;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ51sseF5yBfhKN6Jk6XO25NwXyJHGbXOVDUAD7QL3Nor3r6lFnRIG5VGYlncwv40XNqyXKwo2Ejr7Y/pubhtml?gid=99026327&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-              <h5 class="w3-opacity"><b></b></h5>
-    
-          <hr>
-        </div>
-        
-      </div>
-
-     
-
-    
-    </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
-</div>
-</div>
-<!-- END TMC Seniors -->
-<script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-    
-    for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.maxHeight){
-          content.style.maxHeight = null;
-        } else {
-          content.style.maxHeight = content.scrollHeight + "px";
-        } 
-      });
-    }
+        // Show the first iframe initially
+        toggleIframeVisibility(0);
     </script>
 </body>
 </html>
