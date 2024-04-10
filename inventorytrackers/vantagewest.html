@@ -1,88 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Vantage West Inventory Snapshot</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+    <base target="_top">
 
-/* Style buttons */
-.btn {
-  background-color: #153c63;
-  border: none;
-  color: white;
-  padding: 12px 30px;
-  cursor: pointer;
-  font-size: 15px;
-  border-radius:5px;
-}
-button {
-    margin: 16px!important;
-}
-a{
-background-color:transparent;
-text-decoration: none;
-padding-left: 5px;
-}
-a:active,a:hover{outline-width:0}
+    <!-- INCLUDE REQUIRED EXTERNAL JAVASCRIPT AND CSS LIBRARIES -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include DataTables library -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <!-- Include DataTables Bootstrap 4 integration -->
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- INCLUDE Link to ShowData js FILE -->
+    <script src="https://wp-marcom.github.io/marcom/inventorytrackers/js/showData_westpressinventory.js"></script>
+    <!--<script src="https://wp-marcom.github.io/marcom/inventorytrackers/mister/javascript.html"></script>-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VWCU Inventory Snapshot</title>
+    <!-- Include necessary CSS files for DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
 
-/* Darker background on mouse-over */
-.btn:hover {
-  background-color: RoyalBlue;
+    <style>
+                /* THESE TWO HIDE THE REFILL/LOCATION BUTTONS for the NON-ADMIN version */
+.fa.fa-arrow-circle-up {
+  display: none; /* Hide the arrow icon */
+  pointer-events: none; /* Disable pointer events */
+  cursor: default; /* Set cursor to default */
 }
 
-
-</style>
-</head>
-<body class="w3-light-grey">
-
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1800px;">
-
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    
-
-    <!-- Right Column -->
-    <div class="w3-twothrd">
-    
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
-        <button class="btn"><i class="fa fa-download"></i><a href="https://docs.google.com/spreadsheets/d/1WxGASPVd93vZY8IO58tU-HctKUZ2AH9bMsZGikBVNhk/export?format=xlsx&gid=1130602805">Download</a></button>
-        <div class="w3-container">
-        <iframe height="800" style="width:1700px;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ51sseF5yBfhKN6Jk6XO25NwXyJHGbXOVDUAD7QL3Nor3r6lFnRIG5VGYlncwv40XNqyXKwo2Ejr7Y/pubhtml?gid=1130602805&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-          <h5 class="w3-opacity"><b></b></h5>
-    
-          <hr>
-        </div>
+.fa.fa-map-marker {
+      display: none; /* Hide the arrow icon */
+  pointer-events: none; /* Disable pointer events */
+  cursor: default; /* Set cursor to default */
+}
         
-      </div>
+        /* THESE TWO ABOVE HIDE THE REFILL/LOCATION BUTTONS for the NON-ADMIN version */
+        a {
+            color: inherit; /* Inherit color from parent element */
+            text-decoration: none; /* Remove underline */
+        }
 
-     
+        .row {
+            margin-right: 0px!important;
+            margin-left: 0px!important;
+            justify-content: center!important;; /* Center horizontally */
+            align-items: center!important;; /* Center vertically */
+        }
 
-    <!-- End Right Column -->
+        /* Style buttons */
+        .btn {
+            background-color: #153c63;
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            cursor: pointer;
+            font-size: 15px;
+            border-radius: 5px;
+        }
+
+        button {
+            margin: 16px!important;
+        }
+
+        .btn a {
+            background-color: transparent;
+            text-decoration: none;
+            padding-left: 5px;
+            color: #fff;
+        }
+
+        a:active, a:hover {
+            outline-width: 0
+        }
+
+        /* Darker background on mouse-over */
+        .btn:hover {
+            background-color: RoyalBlue;
+        }
+
+        table.dataTable {
+            border-radius: 5px;
+            box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+        }
+
+        .backorder td {
+            background-color: rgba(220, 53, 69, 0.8) !important; /* Adjust opacity as needed */
+            color: #fff;/* Text color */
+        }
+
+        .below-minimum td {
+            background-color: rgba(254, 225, 43, 0.8) !important; /* Adjust opacity as needed */
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #C0C0C0; /* Set your preferred color for odd rows */
+        }
+
+        body {
+            background: #f6f9ff!important;
+        }
+
+    </style>
+</head>
+<body>
+<!-- Header image and last modified date container -->
+<div style="display: flex; align-items: center;">
+    <!-- Header image with link to SVG image -->
+    <a href="#" onclick="return false;" style="margin-left: 103px;">
+        <img src="https://wp-marcom.github.io/marcom/inventorytrackers/vantagewest/images/vwcu-inventory-tracker.svg"
+             alt="Header Image" style="height: 109px;">
+    </a> 
+    <!-- Last modified date -->
+    <div style="margin-left: auto; margin-right: 6rem;">
+        <p id="last-modified"></p><!-- Element to display last modified date -->
+        <button class="btn"><i class="fa fa-download"></i><a href="https://docs.google.com/spreadsheets/d/1acivEXx27H-DZ19QriSuJU_yrZywyPJl0dWooVnzL2o/export?format=xlsx&gid=1623357079">Download</a></button>
     </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
 </div>
-<!--
-<footer class="w3-container w3-teal w3-center w3-margin-top">
-  <p>Find me on social media.</p>
-  <i class="fa fa-facebook-official w3-hover-opacity"></i>
-  <i class="fa fa-instagram w3-hover-opacity"></i>
-  <i class="fa fa-snapchat w3-hover-opacity"></i>
-  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-  <i class="fa fa-twitter w3-hover-opacity"></i>
-  <i class="fa fa-linkedin w3-hover-opacity"></i>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer>
--->
+<div class="container">
+    <br>
+    <div class="row">
+        <table id="data-table" class="table table-striped table-sm table-hover table-borderless">
+            <!-- TABLE DATA IS ADDED BY THE showData() JAVASCRIPT FUNCTION BELOW -->
+        </table>
+    </div>
+</div>
+
+<script>
+    // Fetch data from Google Sheets API
+    fetch("https://sheets.googleapis.com/v4/spreadsheets/1acivEXx27H-DZ19QriSuJU_yrZywyPJl0dWooVnzL2o/values/VWCU!A2:J?alt=json&key=AIzaSyD6pzfDZqNZNcwmj3wNlyJ-oXmVXFL93fI")
+        .then(response => response.json())
+        .then(data => {
+            const rows = data.values || []; // Extract rows from the response (if available)
+            showData(rows); // Call the showData function with the extracted data
+            updateLastModifiedDate(); // Update last modified date
+        })
+        .catch(error => {
+            // Handle error
+            console.error('There was a problem with the fetch operation:', error);
+        });
+
+    // Use getLastModifiedTime() function from the linked JavaScript file
+    getLastModifiedTime()
+        .then(modifiedTime => {
+            const formattedTime = new Date(modifiedTime).toLocaleString();
+            document.getElementById('last-modified').textContent = `Current as of: ${formattedTime}`;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+</script>
 </body>
 </html>
