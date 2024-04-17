@@ -187,7 +187,7 @@ function extractSkuFromProductName(productName) {
 }
 
 function updateGoogleSheet(rowIndex, packedStatus) {
-  var scriptUrl = 'https://script.google.com/macros/s/AKfycbwPayvTEP0GgSBa4RoF5NMYBiv35WeVnbcgOinE7KbEmAD_dT_j8BO1_-yXtFuCPoT0bw/exec';
+  var scriptUrl = 'https://script.google.com/macros/s/AKfycbw1skmaRfciDxIw6qNnf7-G_udVoiH0IV5BvMJpJyK5p3DROvYhM13ktovjBo8nfhsdcA/exec';
     
   // Convert the data to JSON format
   var payload = JSON.stringify({
