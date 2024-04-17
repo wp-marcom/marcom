@@ -38,47 +38,22 @@ function showData(dataArray) {
             columnDefs: [
                 { targets: [0, 1, 2, 3, 4, 5, 6, 7, 8], className: 'text-nowrap' }, // Apply 'text-nowrap' class to columns 0 to 8
                 {
-                    targets: 0, // Target the Product Name column
-                    render: function (data, type, row, meta) {
-                        if (type === 'display') {
-                            var originalProductName = data;
-                            var productName = originalProductName;
+    targets: 0, // Target the Packed Status column
+    render: function (data, type, row, meta) {
+        if (type === 'display') {
+            // Check if the data value is 'Yes'
+            var isChecked = data.toLowerCase() === 'yes';
 
-                            // Truncate productName to 67 characters including spaces
-                            if (productName.length > 67) {
-                                productName = productName.substring(0, 67) + '...';
-                            }
+            // Create the checkbox HTML
+            var checkboxHtml = '<input type="checkbox" ' + (isChecked ? 'checked' : '') + '>';
 
-                            // Find the matching record in the JSON data using originalProductName
-                            var matchingRecord = jsonData.rows.find(record => record.cell[4] === originalProductName);
-                            if (matchingRecord) {
-                                 //use original productName without HTML tags for sending emails
-                                var emailProductName = originalProductName.replace(/<[^>]*>/g, '').replace(/[^\w\s()-\.]/g, ''); // Remove HTML tags ONLY from productName for emailing only
-                                // Use truncated productName for strippedProductName
-                                var strippedProductName = productName.replace(/<[^>]*>/g, '').replace(/[^\w\s()-\.]/g, ''); // Remove HTML/misc tags from productName for display only
-                                // Retrieve the URL from the matching record
-                                var imageUrl = matchingRecord.cell[2];
-                                // Prepend "https://images.printable.com" to the URL
-                                var fullImageUrl = "https://images.printable.com" + imageUrl;
-                                // Create the link with the productName and attach onclick event
-                                // Create the link with the productName and attach onclick event
-                                var productNameLink = '<a href="' + fullImageUrl + '" target="_blank" title="' + emailProductName + '">' + strippedProductName + '</a>';
-                                // Create the link for the "Refill" icon image to trigger the sendRefillEmail function
-                                var refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
-                                // Create the link for the "Location Change" icon image to trigger the sendLocationEmail function
-                                var locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
-                                // Return the combined content of productName link and refillLink
-                                return productNameLink + ' ' + refillLink + ' ' + locationLink;
-                            } else {
-                                // If no match found, return the truncated Product Name
-                                return productName;
-                            }
-                        } else {
-                            // Return original data for other types (sorting, filtering, etc.)
-                            return data;
-                        }
-                    }
-                },
+            return checkboxHtml;
+        } else {
+            // For other types like sorting or filtering, return the data as is
+            return data;
+        }
+    }
+},
                 {
                     targets: 1, // Target the SKU column
                     render: function (data, type, row, meta) {
