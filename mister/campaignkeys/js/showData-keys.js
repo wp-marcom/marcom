@@ -44,8 +44,8 @@ function showData(dataArray) {
             // Check if the data value is 'Yes'
             var isChecked = data.toLowerCase() === 'yes';
 
-            // Create the checkbox HTML
-            var checkboxHtml = '<input type="checkbox" ' + (isChecked ? 'checked' : '') + '>';
+            // Create the checkbox HTML with an event listener
+            var checkboxHtml = '<input type="checkbox" ' + (isChecked ? 'checked' : '') + ' onchange="updateGoogleSheet(' + meta.row + ', this.checked ? \'Yes\' : \'No\')">';
 
             return checkboxHtml;
         } else {
