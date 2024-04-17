@@ -185,3 +185,24 @@ function extractSkuFromProductName(productName) {
     }
     return ""; // Return empty string if no SKU found
 }
+
+function updateGoogleSheet(rowIndex, packedStatus) {
+  var scriptUrl = 'https://script.google.com/macros/s/AKfycbxGfWJ8E0UX3MGptP5VyXnU22O9mqAemiNrq8Jg8_gDU_FJOVMreFm_Hc1YGvgvIMdUnQ/exec';
+  var payload = {
+    "rowIndex": rowIndex,
+    "packedStatus": packedStatus
+  };
+
+  $.ajax({
+    url: scriptUrl,
+    method: "POST",
+    data: payload,
+    success: function(response) {
+      console.log(response);
+    },
+    error: function(xhr, status, error) {
+      console.error(status, error);
+    }
+  });
+}
+
