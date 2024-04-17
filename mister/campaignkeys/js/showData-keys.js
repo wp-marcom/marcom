@@ -17,16 +17,20 @@ function showData(dataArray) {
         var table = $('#data-table').DataTable({
             data: dataArray,
             columns: [
-                { "title": "Product Name" }, // Disable sorting for the first column
-                { "title": "SKU" },
-                { "title": "Location" },
-                { "title": "Unit" },
-                { "title": "Unit Qty" },
-                { "title": "Min Qty" },
-                { "title": "Refill Qty" },
-                { "title": "QOS" },
-                { "title": "Status" },
-                { "title": "Notes" }
+                { "title": "Region" },
+    { "title": "CC" },
+    { "title": "Store #" },
+    { "title": "Type" },
+    { "title": "Location Name" },
+    { "title": "General Manager" },
+    { "title": "Address" },
+    { "title": "City" },
+    { "title": "State" },
+    { "title": "Zip Code" },
+    { "title": "Phone Number" },
+    { "title": "Google Review Window Cling" },
+    { "title": "Google Review Vacuum Hose Sign" },
+    { "title": "Box Sticker" }
             ],
             order: [], // Disable initial sorting
             pageLength: 100, // Set default number of entries per page to 100
