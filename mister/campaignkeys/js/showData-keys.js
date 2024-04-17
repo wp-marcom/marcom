@@ -17,6 +17,7 @@ function showData(dataArray) {
         var table = $('#data-table').DataTable({
             data: dataArray,
             columns: [
+                { "title": "Packed?" },
                 { "title": "Region" },
     { "title": "CC" },
     { "title": "Store #" },
