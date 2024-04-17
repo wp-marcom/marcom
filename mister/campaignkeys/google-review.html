@@ -111,21 +111,22 @@
 <div style="display: flex; align-items: center;">
     <!-- Header image with link to SVG image -->
     <a href="#" onclick="return false;" style="margin-left: 103px;">
-        <img src="null.svg"
-             alt="Google Review Campaign Key" style="height: 109px;">
+        <img src="null.svg" alt="Google Review Campaign Key" style="height: 109px;">
     </a>
-    <!-- Last modified date -->
+    <!-- Dropdown filter for states -->
+    <select id="stateFilter" style="margin-right: 1rem;">
+        <option value="">All States</option>
+        <!-- This dropdown will be populated dynamically -->
+    </select>
+    <!-- Last modified date and Download button -->
     <div style="margin-left: auto; margin-right: 6rem;">
-        <select id="stateFilter">
-    <option value="">All States</option>
-    <!-- This dropdown will be populated dynamically -->
-</select>
         <p id="last-modified"></p><!-- Element to display last modified date -->
         <button class="btn"><i class="fa fa-download"></i><a
                 href="https://docs.google.com/spreadsheets/d/14JGNtRb-hxjKowzYMEQe0UObFE2sED5KUCYhnaIX1jI/export?format=xlsx&gid=904075607">Download</a>
         </button>
     </div>
 </div>
+
 <div class="container">
     <br>
     <div class="row">
