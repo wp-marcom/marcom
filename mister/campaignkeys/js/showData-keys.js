@@ -1,4 +1,13 @@
 function showData(dataArray) {
+    
+    // Preprocess dataArray to replace empty cell values with zeros
+    dataArray.forEach(function(row) {
+        row.forEach(function(cell, index) {
+            if (cell === null || cell === "") {
+                row[index] = 0;
+            }
+        });
+    });
     // Fetch the JSON data asynchronously
     async function fetchJsonData() {
         var jsonDataUrl = 'https://wp-marcom.github.io/marcom/inventorytrackers/json/product-thumbsource.json';
