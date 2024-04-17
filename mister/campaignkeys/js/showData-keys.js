@@ -188,10 +188,12 @@ function extractSkuFromProductName(productName) {
 
 function updateGoogleSheet(rowIndex, packedStatus) {
   var scriptUrl = 'https://script.google.com/macros/s/AKfycbwPayvTEP0GgSBa4RoF5NMYBiv35WeVnbcgOinE7KbEmAD_dT_j8BO1_-yXtFuCPoT0bw/exec';
-  var payload = {
+    
+  // Convert the data to JSON format
+  var payload = JSON.stringify({
     "rowIndex": rowIndex,
     "packedStatus": packedStatus
-  };
+  });
 
   $.ajax({
     url: scriptUrl,
