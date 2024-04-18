@@ -23,7 +23,8 @@ function showData(dataArray) {
                 {
                     extend: 'pdfHtml5',
                     orientation: 'landscape',
-                    pageSize: 'TABLOID'
+                    pageSize: 'TABLOID',
+                    fontSize: 10
                 }
            ]
         }
