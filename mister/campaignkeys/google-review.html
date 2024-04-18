@@ -183,23 +183,7 @@
         .catch(error => {
             console.error('Error:', error);
         });
- $(document).ready(function() {
-            var table = $('#data-table').DataTable({
-                // DataTables configuration options
-                dom: 'Bfrtip', // Add Buttons extension
-                buttons: ['pdf', 'excel'] // Enable PDF and Excel buttons
-            });
 
-            // Export to PDF
-            $('#export-pdf').on('click', function() {
-                table.buttons.exportData({ format: 'pdf' });
-            });
-
-            // Export to Excel
-            $('#export-excel').on('click', function() {
-                table.buttons.exportData({ format: 'excel' });
-            });
-        });
     
 </script>
 </body>
