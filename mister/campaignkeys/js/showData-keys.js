@@ -62,7 +62,7 @@ function showData(dataArray) {
             pageLength: 100, // Set default number of entries per page to 100
             scrollX: true, // Enable horizontal scrolling
             columnDefs: [
-                { targets: [0, 1, 2, 3, 4, 5, 6, 7, 8], className: 'text-nowrap' }, // Apply 'text-nowrap' class to columns 0 to 8
+                { targets: '_all', className: 'text-nowrap'  }, // Apply 'text-nowrap' class to columns 0 to 8
                 {
     targets: 0, // Target the Packed Status column
     render: function (data, type, row, meta) {
