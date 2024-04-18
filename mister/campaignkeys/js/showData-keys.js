@@ -71,9 +71,9 @@ function showData(dataArray) {
             var isChecked = data.toLowerCase() === 'yes';
 
             // Create the checkbox HTML with an event listener
-            var checkboxHtml = '<input type="checkbox" ' + (isChecked ? 'checked' : '') + ' onchange="updateGoogleSheet(' + meta.row + ', this.checked ? \'Yes\' : \'No\')">';
-
-            return checkboxHtml;
+            //var checkboxHtml = '<input type="checkbox" ' + (isChecked ? 'checked' : '') + ' onchange="updateGoogleSheet(' + meta.row + ', this.checked ? \'Yes\' : \'No\')">';
+           return data;
+            //return checkboxHtml;
         } else {
             // For other types like sorting or filtering, return the data as is
             return data;
