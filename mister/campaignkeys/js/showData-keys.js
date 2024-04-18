@@ -104,7 +104,7 @@ function showData(dataArray) {
          // Apply filter when dropdown selection changes
          stateFilter.on('change', function() {
              var selectedState = $(this).val();
-             table.column(9).search(selectedState).draw();
+             table.column(1).search(selectedState).draw();
          });
         
 
