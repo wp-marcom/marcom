@@ -24,7 +24,7 @@ function showData(dataArray) {
                     extend: 'pdfHtml5',
                     orientation: 'landscape',
                     pageSize: 'TABLOID',
-                    fontSize: 10
+                    customize: function (doc) {doc.defaultStyle.fontSize = 10;}
                 }
            ]
         }
