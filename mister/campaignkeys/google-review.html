@@ -124,12 +124,15 @@
         <!-- This dropdown will be populated dynamically -->
     </select>
     <!-- Last modified date and Download button -->
-    <div style="margin-left: auto; margin-right: 6rem;">
-        <p id="last-modified"></p><!-- Element to display last modified date -->
-        <button class="btn"><i class="fa fa-download"></i><a
-                href="https://docs.google.com/spreadsheets/d/14JGNtRb-hxjKowzYMEQe0UObFE2sED5KUCYhnaIX1jI/export?format=xlsx&gid=904075607">Download</a>
-        </button>
-    </div>
+          <div style="margin-left: auto; margin-right: 6rem;">
+            <p id="last-modified"></p><!-- Element to display last modified date -->
+            <button class="btn"><i class="fa fa-download"></i><a
+                    href="https://docs.google.com/spreadsheets/d/14JGNtRb-hxjKowzYMEQe0UObFE2sED5KUCYhnaIX1jI/export?format=xlsx&gid=904075607">Download</a>
+            </button>
+            <!-- Export buttons -->
+            <button class="btn" id="export-pdf">Export to PDF</button>
+            <button class="btn" id="export-excel">Export to Excel</button>
+        </div>
 </div>
 
 <div class="container">
@@ -164,6 +167,24 @@
         .catch(error => {
             console.error('Error:', error);
         });
+ $(document).ready(function() {
+            var table = $('#myTable').DataTable({
+                // DataTables configuration options
+                dom: 'Bfrtip', // Add Buttons extension
+                buttons: ['pdf', 'excel'] // Enable PDF and Excel buttons
+            });
+
+            // Export to PDF
+            $('#export-pdf').on('click', function() {
+                table.buttons.exportData({ format: 'pdf' });
+            });
+
+            // Export to Excel
+            $('#export-excel').on('click', function() {
+                table.buttons.exportData({ format: 'excel' });
+            });
+        });
+    
 </script>
 </body>
 </html>
