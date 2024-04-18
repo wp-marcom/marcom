@@ -60,6 +60,7 @@ function showData(dataArray) {
 ],
             order: [], // Disable initial sorting
             pageLength: 100, // Set default number of entries per page to 100
+            scrollX: true, // Enable horizontal scrolling
             columnDefs: [
                 { targets: [0, 1, 2, 3, 4, 5, 6, 7, 8], className: '' }, // Apply 'text-nowrap' class to columns 0 to 8
                 {
