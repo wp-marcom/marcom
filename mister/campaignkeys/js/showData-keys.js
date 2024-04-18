@@ -29,6 +29,8 @@ function showData(dataArray) {
    customize: function(doc) {
       doc.defaultStyle.fontSize = 10; //<-- set fontsize to 16 instead of 10
       doc.title.fontSize = 10; //<-- set fontsize to 16 instead of 10
+      margin: [0, 0, 0, 0];
+      alignment: 'center';
    }  
                 }
            ]
