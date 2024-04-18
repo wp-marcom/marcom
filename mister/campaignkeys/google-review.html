@@ -14,17 +14,10 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <!-- Include DataTables Buttons CSS and JS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.js"></script>
-<script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.dataTables.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.print.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js"></script>
     <!-- INCLUDE Link to ShowData js FILE -->
     <script src="https://wp-marcom.github.io/marcom/mister/campaignkeys/js/showData-keys.js"></script>
     <!--<script src="https://wp-marcom.github.io/marcom/inventorytrackers/mister/javascript.html"></script>-->
@@ -131,15 +124,12 @@
         <!-- This dropdown will be populated dynamically -->
     </select>
     <!-- Last modified date and Download button -->
-          <div style="margin-left: auto; margin-right: 6rem;">
-            <p id="last-modified"></p><!-- Element to display last modified date -->
-            <button class="btn"><i class="fa fa-download"></i><a
-                    href="https://docs.google.com/spreadsheets/d/14JGNtRb-hxjKowzYMEQe0UObFE2sED5KUCYhnaIX1jI/export?format=xlsx&gid=904075607">Download</a>
-            </button>
-            <!-- Export buttons -->
-            <button class="btn" id="export-pdf">Export to PDF</button>
-            <button class="btn" id="export-excel">Export to Excel</button>
-        </div>
+    <div style="margin-left: auto; margin-right: 6rem;">
+        <p id="last-modified"></p><!-- Element to display last modified date -->
+        <button class="btn"><i class="fa fa-download"></i><a
+                href="https://docs.google.com/spreadsheets/d/14JGNtRb-hxjKowzYMEQe0UObFE2sED5KUCYhnaIX1jI/export?format=xlsx&gid=904075607">Download</a>
+        </button>
+    </div>
 </div>
 
 <div class="container">
@@ -174,8 +164,6 @@
         .catch(error => {
             console.error('Error:', error);
         });
-
-    
 </script>
 </body>
 </html>
