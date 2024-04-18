@@ -18,7 +18,13 @@ function showData(dataArray) {
         var table = $('#data-table').DataTable({
          layout: {
         topStart: {
-            buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+            //buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+         buttons: [
+                {
+                    extend: 'pdfHtml5',
+                    orientation: 'landscape',
+                    pageSize: 'LEGAL'
+                }
         }
     },      
             data: dataArray,
