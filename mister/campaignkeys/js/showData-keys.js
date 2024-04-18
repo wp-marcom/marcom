@@ -24,8 +24,11 @@ function showData(dataArray) {
                     extend: 'pdfHtml5',
                     orientation: 'landscape',
                     pageSize: 'TABLOID',
-                    fontSize: '10',
-                    customize: function (doc) {doc.defaultStyle.fontSize = 10;}
+                    header: true,
+                    title: 'My Table Title',
+   customize: function(doc) {
+      doc.defaultStyle.fontSize = 16; //<-- set fontsize to 16 instead of 10 
+   }  
                 }
            ]
         }
