@@ -27,7 +27,8 @@ function showData(dataArray) {
                     header: true,
                     title: 'Key - Custom Output',
    customize: function(doc) {
-      doc.defaultStyle.fontSize = 10; //<-- set fontsize to 16 instead of 10 
+      doc.defaultStyle.fontSize = 10; //<-- set fontsize to 16 instead of 10
+      doc.title.fontSize = 10; //<-- set fontsize to 16 instead of 10
    }  
                 }
            ]
