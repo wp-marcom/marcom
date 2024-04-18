@@ -93,8 +93,8 @@ function showData(dataArray) {
             ]
         });
 
-         // Populate dropdown with unique values from column 9 (State)
-         var states = table.column(9).data().unique().sort();
+         // Populate dropdown with unique values from column 1 (State)
+         var states = table.column(1).data().unique().sort();
          var stateFilter = $('#stateFilter');
          stateFilter.append($('<option>').val("").text("All States")); // Add option for all states
          $.each(states, function(i, state) {
