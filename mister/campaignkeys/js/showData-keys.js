@@ -25,7 +25,7 @@ function showData(dataArray) {
                     orientation: 'landscape',
                     pageSize: 'TABLOID',
                     header: true,
-                    title: 'My Table Title',
+                    title: 'Key - Custom Output',
    customize: function(doc) {
       doc.defaultStyle.fontSize = 10; //<-- set fontsize to 16 instead of 10 
    }  
