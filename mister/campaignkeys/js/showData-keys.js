@@ -16,6 +16,11 @@ function showData(dataArray) {
     // Render the DataTable after fetching JSON data
     fetchJsonData().then(jsonData => {
         var table = $('#data-table').DataTable({
+         layout: {
+        topStart: {
+            buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+        }
+    },      
             data: dataArray,
             columns: [
   { "title": "Store#" },
