@@ -25,7 +25,7 @@ function showData(dataArray) {
                     orientation: 'landscape',
                     pageSize: 'LEGAL'
                 }
-        }
+        
     },      
             data: dataArray,
             columns: [
