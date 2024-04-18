@@ -27,7 +27,7 @@ function showData(dataArray) {
                     header: true,
                     title: 'My Table Title',
    customize: function(doc) {
-      doc.defaultStyle.fontSize = 16; //<-- set fontsize to 16 instead of 10 
+      doc.defaultStyle.fontSize = 10; //<-- set fontsize to 16 instead of 10 
    }  
                 }
            ]
