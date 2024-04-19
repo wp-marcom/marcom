@@ -30,8 +30,6 @@ function showData(dataArray) {
       doc.defaultStyle.fontSize = 10; //<-- set fontsize to 16 instead of 10
       doc.title.fontSize = 10; //<-- set fontsize to 16 instead of 10
       doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
-      doc.defaultStyle.alignment = 'center';
-      doc.styles.tableHeader.alignment = 'center';
    }  
                 }
            ]
