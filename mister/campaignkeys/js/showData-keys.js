@@ -78,7 +78,7 @@ function showData(dataArray) {
             scrollX: true, // Enable horizontal scrolling
             headerCallback: function(thead, data, start, end, display) {
     $(thead).find('th').each(function(index) {
-        $(this).attr('data-rotate', 'your_value_here');
+        $(this).attr('data-rotate', '');
     });
 },
             columnDefs: [
