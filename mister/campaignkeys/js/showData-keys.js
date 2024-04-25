@@ -253,4 +253,104 @@ function updateGoogleSheet(rowIndex, packedStatus) {
     }
   });
 }
+function rotateHeadCell(tableId) {
+    'use strict';
+    var table, p;
+    //********************************************
+    //  locate table
+    //*******************************************
+    if (typeof tableId === 'string') {
+        table = document.getElementById(tableId);
+    } else if (typeof tableId === 'object') {
+        table = tableId;
+    }
+    if (table === null) {
+        return;
+    }
+    //********************************************
+    //  locate cells to rotate
+    //*******************************************
+    p = table.querySelectorAll('[data-rotate]');
+    p.forEach((th) => {
+        var div, w, h;
+        //********************************************
+        //  wrap content with a DIV, append to cell
+        //*******************************************
+        div = document.createElement('DIV');
+        div.innerHTML = th.innerHTML;
+        div.style.display = 'inline-block';
+        th.innerHTML = '';
+        th.appendChild(div);
+        //********************************************
+        //  get current height and width
+        //*******************************************
+        h = div.clientHeight;
+        w = div.clientWidth;
+        //********************************************
+        //  rotate
+        //*******************************************
+        div.style.transformOrigin = 'top left';
+        div.style.transform = 'rotate(-90deg)';
+        div.style.whiteSpace = 'nowrap';
+        //********************************************
+        //  swap height and width then repostion content in cell
+        //*******************************************
+        div.style.width = h + 'px';
+        div.style.height = w + 'px';
+        div.style.position = 'relative';
+        div.style.top = div.clientHeight + 'px';
+        //********************************************
+        //  don't know why but it works :-)
+        //*******************************************
+        div.querySelector('IMG') ? '' : div.style.display = 'flex'; // shaky ?
+    });
+}
+function rotateHeadCell(tableId) {
+    'use strict';
+
+    // Locate the table based on the input tableId
+    const table = typeof tableId === 'string' ? document.getElementById(tableId) : tableId;
+    // If the table is not found, return early
+    if (!table) {
+        return;
+    }
+    table.style.visibility = 'hidden';
+    // Loop through each header cell
+    table.querySelectorAll('[data-rotate]').forEach(th => {
+        // Create a div to wrap the content of the header cell
+        const div = document.createElement('div');
+        div.innerHTML = th.innerHTML;
+        div.style.display = 'inline-block';
+
+
+        // Clear the content of the header cell and append the content wrapper
+        th.innerHTML = '';
+        th.appendChild(div);
+
+        // Store the initial height and width of the content wrapper
+        const initialHeight = div.clientHeight;
+        const initialWidth = div.clientWidth;
+
+        // Apply rotation to the content wrapper
+        div.style.transformOrigin = 'top left';
+        div.style.transform = 'rotate(-90deg)';
+        div.style.whiteSpace = 'nowrap';
+
+        // Swap height and width to reflect the rotation
+        div.style.width = initialHeight + 'px';
+        div.style.height = initialWidth + 'px';
+
+        div.style.position = 'relative';
+        div.style.top = div.clientHeight + 'px';
+
+        // Adjust vertical alignment for rotated content
+        th.style.verticalAlign = 'bottom';
+
+        // If the content wrapper contains an image, use flex display
+        if (div.querySelector('img')) {
+            div.style.display = 'flex';
+        }
+    });
+    table.style.visibility = '';
+}
 
