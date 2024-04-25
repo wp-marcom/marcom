@@ -77,6 +77,8 @@ function showData(dataArray) {
             pageLength: 100, // Set default number of entries per page to 100
             scrollX: true, // Enable horizontal scrolling
             columnDefs: [
+             { "width": "5px", "targets": [0, 1] }, // Set width for first two columns
+            { "width": "5px", "targets": [2, 3, 4, 5, 6, 7, 8, 9] }, // Set width for specific columns
                 { targets: '_all', className: 'text-nowrap'  }, // Apply 'text-nowrap' class to columns 0 to 8
                 {
     targets: 0, // Target the Packed Status column
