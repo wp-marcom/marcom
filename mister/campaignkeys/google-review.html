@@ -115,6 +115,26 @@
         body {
             background: #f6f9ff!important;
         }
+/* Attempts at vertical column headers */
+        .dt-scroll-headInner > table >thead> tr> th {
+  /* Something you can count on */
+  height: 220px;
+  white-space: nowrap;
+   transform: 
+    /* Magic Numbers */
+    translate(25px, 5px)
+    /* 45 is really 360 - 45 */
+    rotate(270deg);
+}
+
+.dt-scroll-headInner > table >thead> tr> th> span{
+    transform: 
+    /* Magic Numbers */
+    translate(25px, 0px)
+    /* 45 is really 360 - 45 */
+    rotate(270deg);
+  
+}
 
     </style>
 </head>
