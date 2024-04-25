@@ -76,6 +76,11 @@ function showData(dataArray) {
             order: [], // Disable initial sorting
             pageLength: 100, // Set default number of entries per page to 100
             scrollX: true, // Enable horizontal scrolling
+            headerCallback: function(thead, data, start, end, display) {
+    $(thead).find('th').each(function(index) {
+        $(this).attr('data-rotate', 'your_value_here');
+    });
+},
             columnDefs: [
                 { targets: '_all', className: 'text-nowrap'  }, // Apply 'text-nowrap' class to columns 0 to 8
                 {
