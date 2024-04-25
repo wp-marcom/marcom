@@ -172,8 +172,11 @@
         .catch(error => {
             console.error('Error:', error);
         });
-// Use rotateHeadCell(''); function from the linked JavaScript file
+/ Add an event listener for the 'load' event
+window.addEventListener('load', function() {
+    // Call the rotateHeadCell function with the argument 'data-table'
     rotateHeadCell('data-table');
+});
 </script>
 </body>
 </html>
