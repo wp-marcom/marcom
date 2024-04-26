@@ -32,6 +32,7 @@ function showData(dataArray) {
       //doc.title.fontSize = 10; //<-- set fontsize to 16 instead of 10
     doc.styles.tableHeader.fontSize = 6;
     doc.defaultStyle.alignment = 'center'
+    doc.content.layout = 'Borders'
       doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
    }  
                 }
@@ -86,6 +87,7 @@ function showData(dataArray) {
 },
             columnDefs: [
                 { targets: '_all', className: 'text-nowrap'  }, // Apply 'text-nowrap' class to columns 0 to 8
+                { targets: '_all', className: 'table-bordered'  },
                 {
     targets: 0, // Target the Packed Status column
     render: function (data, type, row, meta) {
