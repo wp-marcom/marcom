@@ -116,7 +116,44 @@
             background: #f6f9ff!important;
         }
 
+/* Try to center column headers */
+        span.dt-column-title {
+  display: inline-block;
+  transform-origin: left top 0px;
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  width: 10px;
+  height: 46px;
+  position: relative;
+  top: 46px;
+}
 
+span.dt-column-order {
+  display:none;
+  transform-origin: left top 0px;
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  width: 48px;
+  height: 46px;
+  position: relative;
+  top: 46px;
+}
+
+table{
+  height:220px;
+}
+
+table.dataTable td.dt-type-numeric {
+  text-align:center;
+}
+
+table.dataTable thead th{
+  text-align: center;
+}
+
+body {
+  text-align: center; 
+}
     </style>
 </head>
 <body>
