@@ -32,7 +32,12 @@ function showData(dataArray) {
       //doc.title.fontSize = 10; //<-- set fontsize to 16 instead of 10
     doc.styles.tableHeader.fontSize = 6;
     doc.defaultStyle.alignment = 'center'
-    doc.content[1].layout = "borders";
+        var objLayout = {};
+						objLayout['hLineWidth'] = function(i) { return .5; };
+						objLayout['vLineWidth'] = function(i) { return .5; };
+						objLayout['hLineColor'] = function(i) { return '#d12626'; };
+						objLayout['vLineColor'] = function(i) { return '#aaa'; };
+						doc.content[1].layout = objLayout;
       doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
    }  
                 }
