@@ -92,7 +92,6 @@ function showData(dataArray) {
 },
             columnDefs: [
                 { targets: '_all', className: 'text-nowrap'  }, // Apply 'text-nowrap' class to columns 0 to 8
-                { targets: '_all', className: 'cell-border'  },
                 {
     targets: 0, // Target the Packed Status column
     render: function (data, type, row, meta) {
@@ -263,56 +262,4 @@ function updateGoogleSheet(rowIndex, packedStatus) {
       console.error(status, error);
     }
   });
-}
-function rotateHeadCell(tableId) {
-    'use strict';
-    var table, p;
-    //********************************************
-    //  locate table
-    //*******************************************
-    if (typeof tableId === 'string') {
-        table = document.getElementById(tableId);
-    } else if (typeof tableId === 'object') {
-        table = tableId;
-    }
-    if (table === null) {
-        return;
-    }
-    //********************************************
-    //  locate cells to rotate
-    //*******************************************
-    p = table.querySelectorAll('[data-rotate]');
-    p.forEach((th) => {
-        var div, w, h;
-        //********************************************
-        //  wrap content with a DIV, append to cell
-        //*******************************************
-        div = document.createElement('DIV');
-        div.innerHTML = th.innerHTML;
-        div.style.display = 'inline-block';
-        th.innerHTML = '';
-        th.appendChild(div);
-        //********************************************
-        //  get current height and width
-        //*******************************************
-        h = div.clientHeight;
-        w = div.clientWidth;
-        //********************************************
-        //  rotate
-        //*******************************************
-        div.style.transformOrigin = 'top left';
-        div.style.transform = 'rotate(-90deg)';
-        div.style.whiteSpace = 'nowrap';
-        //********************************************
-        //  swap height and width then repostion content in cell
-        //*******************************************
-        div.style.width = h + 'px';
-        div.style.height = w + 'px';
-        div.style.position = 'relative';
-        div.style.top = div.clientHeight + 'px';
-        //********************************************
-        //  don't know why but it works :-)
-        //*******************************************
-        div.querySelector('IMG') ? '' : div.style.display = 'flex'; // shaky ?
-    });
 }
