@@ -87,7 +87,7 @@ function showData(dataArray) {
 },
             columnDefs: [
                 { targets: '_all', className: 'text-nowrap'  }, // Apply 'text-nowrap' class to columns 0 to 8
-                { targets: '_all', className: 'table-bordered'  },
+                { targets: '_all', className: 'cell-border'  },
                 {
     targets: 0, // Target the Packed Status column
     render: function (data, type, row, meta) {
