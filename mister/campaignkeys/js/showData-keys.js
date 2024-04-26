@@ -114,10 +114,6 @@ function showData(dataArray) {
             ]
         });
 
-     // Call rotateHeadCell function after rendering the table
-rotateHeadCell($('#data-table')); // Pass the jQuery object representing the table
-
-
 
          // Populate dropdown with unique values from column 1 (State)
          var states = table.column(1).data().unique().sort();
