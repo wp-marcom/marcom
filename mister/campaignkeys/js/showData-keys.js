@@ -30,6 +30,8 @@ function showData(dataArray) {
    customize: function(doc) {
       //doc.defaultStyle.fontSize = 10; //<-- set fontsize to 16 instead of 10
       //doc.title.fontSize = 10; //<-- set fontsize to 16 instead of 10
+    doc.styles.tableHeader.fontSize = 6;
+    doc.defaultStyle.alignment = 'center'
       doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
    }  
                 }
