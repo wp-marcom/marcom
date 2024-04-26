@@ -24,6 +24,7 @@ function showData(dataArray) {
                     extend: 'pdfHtml5',
                     orientation: 'landscape',
                     pageSize: 'TABLOID',
+                    pageMargins: [ 40, 60, 40, 60 ],
                     header: true,
                     title: 'Key - Custom Output',
    customize: function(doc) {
