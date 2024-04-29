@@ -32,7 +32,11 @@ function showData(dataArray) {
       //doc.title.fontSize = 10; //<-- set fontsize to 16 instead of 10
     doc.styles.tableHeader.fontSize = 6;
     doc.defaultStyle.alignment = 'center'
-doc.content[1].table.body[1].forEach(function(h) {h.fillColor = 'yellow';});
+doc.content[1].table.body.forEach(function(row) {
+    row.forEach(function(cell) {
+        cell.fillColor = 'yellow';
+    });
+});
         var objLayout = {};
 objLayout['hLineWidth'] = function(i) { return .3; };
 objLayout['vLineWidth'] = function(i) { return .3; };
