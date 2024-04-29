@@ -35,7 +35,7 @@ function showData(dataArray) {
 doc.content[1].table.body.forEach(function(row, index) {
     if (index !== 0 && index % 2 !== 0) {
         row.forEach(function(cell) {
-            cell.fillColor = 'yellow';
+            cell.fillColor = '#e9e9ed';
         });
     }
 });
