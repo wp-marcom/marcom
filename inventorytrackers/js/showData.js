@@ -1,7 +1,7 @@
 function showData(dataArray) {
     // Fetch the JSON data asynchronously
     async function fetchJsonData() {
-        var jsonDataUrl = 'https://wp-marcom.github.io/marcom/inventorytrackers/json/product-thumbsource.json';
+        var jsonDataUrl = 'https://wp-marcom.github.io/marcom/inventorytrackers/json/mister-producthumbsource.json';
         try {
             var response = await fetch(jsonDataUrl);
             var jsonData = await response.json();
