@@ -8,6 +8,10 @@
   --titlefont: 'Arvo';
 }
 
+#popupContainer{
+opacity:0!important;
+}
+
 /*Body Text and Heading Defaults*/
 body, p, div, span, td, li, ol, bl, input, select, textarea {
   color:var(--primarycolor)!important;
