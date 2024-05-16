@@ -7,9 +7,9 @@
   --secondarycolor: #e7a723;
   --titlefont: 'Arvo';
 }
-
-#popupContainer{
-opacity:0!important;
+.tierraantigua_notification{
+  display:none;
+  opacity:0!important;
 }
 
 /*Body Text and Heading Defaults*/
