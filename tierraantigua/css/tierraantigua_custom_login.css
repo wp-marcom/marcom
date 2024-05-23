@@ -1,0 +1,62 @@
+/* Style the Large background image and the container that holds it */
+
+#ENUSmain {
+  background:url(https://wp-marcom.github.io/marcom/tmcOne/images/Cactusfield.jpg);
+}
+
+
+/* Style the Main Background color and overide background image if set in Catalog CSS */
+#PageType01 {
+    background-color: #2C2159!important;
+  }
+
+/* Style the the Login button */
+.pbtn SPAN {
+    background-color: #fff!important;
+      color: #2C2159!important;     
+}
+/* Next three styles the footer data */
+
+#CtlFooter div{
+color:#fff!important;
+}
+#CtlFooter span{
+color:#fff!important;
+}
+#CtlFooter a{
+text-decoration: underline!important;
+color:#fff!important;
+}
+
+/* Style the words 'Username' 'Password' */
+#ctl00_content_Login_Stringcontrol2, #ctl00_content_Login_Stringcontrol3{
+    color: #FFFFFF !important;
+  }
+
+  .CtlSearchGroup{
+    background-color: rgba(255,255,255,0) !important;
+  }
+
+/* Style the entry/input fields for 'Username' 'Password' */
+#ctl00_content_Login_txtLoginId, #ctl00_content_Login_txtPassword {
+    border: 2px solid #2C2159!important;
+  }
+
+/* Style the primary login box color/placement/effects*/
+#CtlLogIn {
+  background-color: rgba(255,255,255,1) !important;
+  color: #FFFFFF!important;
+  background: #FFFFFF;
+  background: rgba(44,33,89,0.6) !important;
+  }
+/* Style the main "SIGN IN" text*/
+#CtlLogIn > h4:nth-child(1) > strong:nth-child(1) > span:nth-child(1){
+color: #FFFFFF !important;
+}
+
+
+/* Style the Login Header Element - the HTML for this exists in the Custom Content section */
+
+#LogoDiv {
+  background:url(https://wp-marcom.github.io/marcom/tmcOne/images/tmcHealthLoginHeader);
+}
