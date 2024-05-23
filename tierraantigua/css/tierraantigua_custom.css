@@ -1,21 +1,21 @@
 /*TierraAntigua_CustomCSS*/
 
-/*Main color is #2C2159 (DK Purple), Secondary Color is #FFC629(Yellow)*/
+/*Main color is #2C2159 (DK Purple), Secondary Color is #000(Black)*/
 
 /*Body Text and Heading Defaults*/
 body, p, div, span, td, li, ol, bl, input, select, textarea {
-color:#FFC629!important;
+color:#000!important;
 }
 
 /*Headlines*/
 h1, h2, h3, h4, h5, h6{
-color:#FFC629!important;
+color:#000!important;
 }
 
 
 /*Body Link Color Defaults*/
 a, a:link, a:focus, .CtlListTable a, .CtlListTable a:link {
-color: #FFC629!important; 
+color: #000!important; 
 } 
 
 /*Primary Catalog Background Color/*/
@@ -26,12 +26,12 @@ color: #FFC629!important;
 
 /*Set the Font weight and color of the Main Catalog Bars*/
 ul.nav li, .nav_cell{
-color:#FFC629!important;
+color:#000!important;
 }
 
 .ContentBoxHeaderSmall {
   background-color: #f0f0f0 !important;
-  color:#FFC629!important;
+  color:#000!important;
   border-bottom: 1px solid #d8dadb!important;
 }
 
@@ -70,13 +70,13 @@ color:#FFC629!important;
 /*Change height width and color of the buttons in the main nav bar* "Catalog" etc*/
 
 .TDTab {
-color:#FFC629!important;
+color:#000!important;
 }
 
 /*Make sure no styling changes to Main Nav bar text if the links have been visited. Also adds spacing between letters for readability "Catalog" etc*/
 
 .TDTab a, .TDTab a:link, .TDTab a:visited, .TDTabLeft a, .TDTabLeft a:link, .TDTabLeft a:visited{
-color:#FFC629!important;
+color:#000!important;
 }
 
 /*Adds the cool underline effect when you over over a link on the Main Nav bar*/
@@ -100,12 +100,12 @@ background-color: #2C2159!important;
 
 /*Add styling to the Search Box*/
 .TDSearchBox {
-border: 2px solid #FFC629!important;
+border: 2px solid #000!important;
 }
 
 /*Change color of elements in the top right corner Username etc.*/
 #ctl00_ctl08_lblUserName, #ctl00_ctl08_btnMyProfile,#ctl00_ctl08_btnLogOut{
-color:#FFC629!important;
+color:#000!important;
 }
 
 /*Change color of Add to Cart Button text*/
