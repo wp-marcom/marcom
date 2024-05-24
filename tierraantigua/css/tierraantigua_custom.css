@@ -1,6 +1,6 @@
 /*TierraAntigua_CustomCSS*/
 
-/*Main color is #2C2159 (DK Purple), Secondary Color is #000(Black)*/
+/*Main color is #2C2159 (DK Purple), Secondary Color is #000(Black)#FFC629*/
 
 /*Body Text and Heading Defaults*/
 body, p, div, span, td, li, ol, bl, input, select, textarea {
@@ -37,7 +37,7 @@ color:#000!important;
 
 /*Color and style of items when you HOVER over them in the left side catalog menu/*/
 .RadTreeView_Windows7 .rtHover .rtIn{
-    background-color:#2C2159!important;
+    background-color:#FFC629!important;
     background-image: url()!important;
     border: 0px solid #d8dadb!important;
     border-radius: 3px!important;
@@ -82,7 +82,7 @@ color:#000!important;
 /*Adds the cool underline effect when you over over a link on the Main Nav bar*/
 
 .TDTab a:hover, .TDTabLeft a:hover{
-text-decoration: underline 3px #2C2159!important;
+text-decoration: underline 3px #FFC629!important;
 text-underline-offset: 10px!important;
 }
 
