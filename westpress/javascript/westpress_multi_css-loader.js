@@ -27,9 +27,9 @@ else if (userName.includes("FWUSD")){
 document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpress/fwusd/css/fwusd_multi_custom.css";
 }
 
-//Tierra Antigua
-else if (userName.includes("Tierra Antigua")){
-document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpressmarketing/tierraantigua/css/tierraantigua_multi_custom.css";
+//Family Life
+else if (userName.includes("Family Life")){
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpressmarketing/familylife/css/familylife_multi_custom.css";
 }
 
 //Senior Resource Group
