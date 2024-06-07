@@ -44,7 +44,7 @@ a, a:link, a:focus, .CtlListTable a, .CtlListTable a:link {
 
 #PageType01 {
   margin-bottom:600px!important;
-  background-color: var(--primarycolor)!important;
+  background-color: var(--secondarycolor)!important;
 }
 
 /*Set the Font weight and color of the Main Catalog Bars*/
@@ -83,7 +83,7 @@ color:white!important;
 /*Add an image to the inside of the Nav element that contains the login username and information at the top*/
 
 .NavTop {
-    background: url(https://wp-marcom.github.io/marcom/westpressmarketing/tierraantigua/images/IntLifeMedia-header.svg), url();
+    background: url(https://wp-marcom.github.io/marcom/westpressmarketing/familylife/images/IntLifeMedia-header.svg), url();
     background-repeat: no-repeat;
     background-size: auto;
     background-position: top left, top right;
