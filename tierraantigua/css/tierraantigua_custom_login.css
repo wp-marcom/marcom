@@ -1,19 +1,19 @@
 /* Style the Large background image and the container that holds it */
 
 #ENUSmain {
-  background:url(https://wp-marcom.github.io/marcom/tierraantigua/images/Cactusfield.jpg);
+  background:url(https://wp-marcom.github.io/marcom/therapypartners/images/therapypartners.jpg);
 }
 
 
 /* Style the Main Background color and overide background image if set in Catalog CSS */
 #PageType01 {
-    background-color: #2C2159!important;
+    background-color: #212221!important;
   }
 
 /* Style the the Login button */
 .pbtn SPAN {
     background-color: #fff!important;
-      color: #2C2159!important;     
+      color: #212221!important;     
 }
 /* Next three styles the footer data */
 
@@ -39,7 +39,7 @@ color:#fff!important;
 
 /* Style the entry/input fields for 'Username' 'Password' */
 #ctl00_content_Login_txtLoginId, #ctl00_content_Login_txtPassword {
-    border: 2px solid #2C2159!important;
+    border: 2px solid #c98b18f2!important;
   }
 
 /* Style the primary login box color/placement/effects*/
@@ -47,7 +47,7 @@ color:#fff!important;
   background-color: rgba(255,255,255,1) !important;
   color: #FFFFFF!important;
   background: #FFFFFF;
-  background: rgba(44,33,89,0.6) !important;
+  background: rgba(33,34,33,0.6) !important;
   }
 /* Style the main "SIGN IN" text*/
 #CtlLogIn > h4:nth-child(1) > strong:nth-child(1) > span:nth-child(1){
