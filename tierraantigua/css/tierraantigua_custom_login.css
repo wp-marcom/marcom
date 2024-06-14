@@ -39,7 +39,7 @@ color:#fff!important;
 
 /* Style the entry/input fields for 'Username' 'Password' */
 #ctl00_content_Login_txtLoginId, #ctl00_content_Login_txtPassword {
-    border: 2px solid #c98b18f2!important;
+    border: 2px solid #FFC629!important;
   }
 
 /* Style the primary login box color/placement/effects*/
