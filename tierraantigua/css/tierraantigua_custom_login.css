@@ -7,13 +7,13 @@
 
 /* Style the Main Background color and overide background image if set in Catalog CSS */
 #PageType01 {
-    background-color: #212221!important;
+    background-color: #2C2159!important;
   }
 
 /* Style the the Login button */
 .pbtn SPAN {
     background-color: #fff!important;
-      color: #212221!important;     
+      color: #2C2159!important;     
 }
 /* Next three styles the footer data */
 
