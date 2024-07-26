@@ -28,7 +28,7 @@ document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/
 }
 
 //Family Life
-else if (userName.includes("Family Life")){
+else if (userName.includes("Intentional Life Media")){
 document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpressmarketing/familylife/css/familylife_multi_custom.css";
 }
 
