@@ -32,6 +32,11 @@ else if (userName.includes("Intentional Life Media")){
 document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpressmarketing/familylife/css/familylife_multi_custom.css";
 }
 
+//Desert Toyota
+else if (userName.includes("Desert Toyota")){
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpressmarketing/deserttoyota/css/deserttoyota_multi_custom.css";
+}
+
 //Senior Resource Group
 else if (userName.includes("Senior Resource Group")){
   
