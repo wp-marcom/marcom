@@ -1,10 +1,10 @@
 /*Westpress_DesertToyota_CustomCSS*/
 
-/*Main color is #d02139 (Red), Secondary Color is #000*/
+/*Main color is #ED1C24 (Red), Secondary Color is #000*/
 
 
 :root {
-  --primarycolor: #d02139;
+  --primarycolor: #ED1C24;
   --secondarycolor: #000;
   --titlefont: 'Figtree';
 }
