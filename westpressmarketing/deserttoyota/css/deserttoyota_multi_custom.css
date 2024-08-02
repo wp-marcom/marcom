@@ -4,8 +4,8 @@
 
 
 :root {
-  --primarycolor: #ED1C24;
-  --secondarycolor: #000;
+  --primarycolor: #000;
+  --secondarycolor: #ED1C24;
   --titlefont: 'Figtree';
 }
 
@@ -44,7 +44,7 @@ a, a:link, a:focus, .CtlListTable a, .CtlListTable a:link {
 
 #PageType01 {
   margin-bottom:600px!important;
-  background-color: var(--primarycolor)!important;
+  background-color: var(--secondarycolor)!important;
 }
 
 /*Set the Font weight and color of the Main Catalog Bars*/
