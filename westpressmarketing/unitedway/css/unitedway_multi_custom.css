@@ -9,6 +9,10 @@
   --titlefont: 'Figtree';
 }
 
+.deserttoyota_notification {
+    display: none !important;
+}
+
 /*Body Text and Heading Defaults*/
 body, p, div, span, td, li, ol, bl, input, select, textarea {
   color:var(--primarycolor)!important;
