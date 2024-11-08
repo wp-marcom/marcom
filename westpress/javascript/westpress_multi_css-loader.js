@@ -37,6 +37,11 @@ else if (userName.includes("Desert Toyota")){
 document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpressmarketing/deserttoyota/css/deserttoyota_multi_custom.css";
 }
 
+//United Way
+else if (userName.includes("United Way")){
+document.querySelector("link[href='https://wp-marcom.github.io/marcom/westpress/css/westpress_multi_custom.css']").href = "https://wp-marcom.github.io/marcom/westpressmarketing/unitedway/css/unitedway_multi_custom.css";
+}
+
 //Senior Resource Group
 else if (userName.includes("Senior Resource Group")){
   
