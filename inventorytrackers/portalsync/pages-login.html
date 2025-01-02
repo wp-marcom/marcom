@@ -134,24 +134,43 @@
 
   <script>
   document.getElementById("loginForm").addEventListener("submit", (e) => {
-  e.preventDefault(); // Prevent the form from refreshing the page
+  e.preventDefault();
 
-  // Get the values from the form
   const username = document.getElementById("yourUsername").value;
   const password = document.getElementById("yourPassword").value;
 
-  // Check if the credentials match any user
   const user = users.find(u => u.username === username && u.password === password);
 
   if (user) {
     alert("Login successful!");
-    // Redirect to a new page or show/hide specific content
-    window.location.href = "index.html"; // Example of redirecting to a new page
+
+    // Save the user role (or username) in session storage
+    sessionStorage.setItem("userRole", user.role);
+
+    // Redirect to the main page or dashboard
+    window.location.href = "index.html";
   } else {
     alert("Invalid credentials. Please try again.");
   }
 });
- 
+
+// On the dashboard page
+window.addEventListener("DOMContentLoaded", () => {
+  const userRole = sessionStorage.getItem("userRole");
+
+  if (userRole) {
+    document.querySelectorAll(".nav-item").forEach(item => {
+      const role = item.getAttribute("data-role");
+      if (role !== userRole && role !== "guest") {
+        item.style.display = "none"; // Hide items not allowed for this role
+      }
+    });
+  } else {
+    alert("No user logged in!");
+    window.location.href = "login.html"; // Redirect back to login
+  }
+});
+
   </script>
 
 </body>
