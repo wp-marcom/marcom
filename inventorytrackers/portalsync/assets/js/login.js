@@ -6,7 +6,7 @@ const users = [
 ];
 
 // Login form submission handler
-document.getElementById("loginForm").addEventListener("submit", (e) => {
+document.getElementById("loginForm")?.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const username = document.getElementById("yourUsername").value;
@@ -28,22 +28,25 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
   }
 });
 
-// On the dashboard page (after page load)
-window.addEventListener("DOMContentLoaded", () => {
-  const userRole = sessionStorage.getItem("userRole");
+// On pages that require a user to be logged in (like the dashboard):
+if (window.location.pathname !== "/pages-login.html") { // Only check if not on login page
+  window.addEventListener("DOMContentLoaded", () => {
+    const userRole = sessionStorage.getItem("userRole");
 
-  if (userRole) {
-    // Show/Hide menu items based on role
-    document.querySelectorAll(".nav-item").forEach(item => {
-      const role = item.getAttribute("data-role");
+    if (userRole) {
+      // Show/Hide menu items based on role
+      document.querySelectorAll(".nav-item").forEach(item => {
+        const role = item.getAttribute("data-role");
 
-      // Hide elements that don't match the role
-      if (role !== userRole && role !== "guest") {
-        item.style.display = "none";
-      }
-    });
-  } else {
-    alert("No user logged in!");
-    window.location.href = "pages-login.html"; // Redirect to login if no user role
-  }
-});
+        // Hide elements that don't match the role
+        if (role !== userRole && role !== "guest") {
+          item.style.display = "none";
+        }
+      });
+    } else {
+      // Redirect to login page if no user role
+      alert("No user logged in!");
+      window.location.href = "pages-login.html"; // Redirect to login if no user role
+    }
+  });
+}
