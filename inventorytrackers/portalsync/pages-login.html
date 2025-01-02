@@ -64,7 +64,8 @@
                     <p class="text-center small">Enter your username & password to login</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form id="loginForm" class="row g-3 needs-validation" novalidate>
+
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Username</label>
@@ -130,6 +131,28 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/login.js"></script>
+
+  <script>
+  document.getElementById("loginForm").addEventListener("submit", (e) => {
+  e.preventDefault(); // Prevent the form from refreshing the page
+
+  // Get the values from the form
+  const username = document.getElementById("yourUsername").value;
+  const password = document.getElementById("yourPassword").value;
+
+  // Check if the credentials match any user
+  const user = users.find(u => u.username === username && u.password === password);
+
+  if (user) {
+    alert("Login successful!");
+    // Redirect to a new page or show/hide specific content
+    window.location.href = "index.html"; // Example of redirecting to a new page
+  } else {
+    alert("Invalid credentials. Please try again.");
+  }
+});
+ 
+  </script>
 
 </body>
 
