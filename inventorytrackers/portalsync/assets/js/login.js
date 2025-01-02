@@ -44,6 +44,6 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   } else {
     alert("No user logged in!");
-    window.location.href = "login.html"; // Redirect to login if no user role
+    window.location.href = "pages-login.html"; // Redirect to login if no user role
   }
 });
