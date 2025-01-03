@@ -71,7 +71,7 @@ document.getElementById("loginForm")?.addEventListener("submit", (e) => {
   const user = users.find(u => u.username === username && u.password === password);
 
   if (user) {
-    alert("Login successful!");
+   // alert("Login successful!");
     sessionStorage.setItem("userRole", user.role);
     sessionStorage.setItem("userFullName", user.fullName); // Save user's full name
     window.location.href = "index.html"; // Redirect to main page
