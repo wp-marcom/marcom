@@ -1,7 +1,8 @@
 // Define users array (you can modify or extend this array as needed)
 const users = [
   { username: "admin", password: "admin123", role: "admin" },
-  { username: "editor", password: "editor123", role: "editor" },
+  { username: "eastwarehouse", password: "eastwarehouse", role: "westpress-admin" },
+  { username: "lprice", password: "lprice", role: "mister" },
   { username: "guest", password: "guest123", role: "guest" }
 ];
 
