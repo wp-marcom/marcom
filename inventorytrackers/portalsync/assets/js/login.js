@@ -83,7 +83,7 @@ function applyRoleBasedVisibility() {
 window.addEventListener("DOMContentLoaded", () => {
   checkAuthentication();
   updateUserDisplayName();
-});
+
 
   if (!window.location.pathname.endsWith("pages-login.html")) {
     applyRoleBasedVisibility();
