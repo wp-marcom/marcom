@@ -8,10 +8,10 @@ const rolePermissions = {
 
 // Define users array
 const users = [
-  { username: "admin", password: "admin123", role: "admin" },
-  { username: "eastwarehouse", password: "eastwarehouse", role: "warehouse" },
-  { username: "lprice", password: "lprice", role: "lprice" },
-  { username: "molson", password: "molson", role: "molson" }
+  { username: "admin", password: "admin123", role: "admin", fullName: "Admin User" },
+  { username: "eastwarehouse", password: "eastwarehouse", role: "warehouse", fullName: "East Warehouse" },
+  { username: "lprice", password: "lprice", role: "lprice", fullName: "Linda" },
+  { username: "molson", password: "molson", role: "molson", fullName: "Marlo" }
 ];
 
 // Check user authentication
@@ -35,13 +35,25 @@ document.getElementById("loginForm")?.addEventListener("submit", (e) => {
   const user = users.find(u => u.username === username && u.password === password);
 
   if (user) {
-    //alert("Login successful!");
+    alert("Login successful!");
     sessionStorage.setItem("userRole", user.role);
+    sessionStorage.setItem("userFullName", user.fullName); // Save user's full name
     window.location.href = "index.html"; // Redirect to main page
   } else {
     alert("Invalid credentials. Please try again.");
   }
 });
+
+// Function to update the username in the header
+function updateUserDisplayName() {
+  const userFullName = sessionStorage.getItem("userFullName");
+
+  if (userFullName) {
+    document.getElementById("userAccount").textContent = userFullName; // Set the username in the element
+  }
+}
+
+
 
 // Apply role-based visibility
 function applyRoleBasedVisibility() {
@@ -67,9 +79,11 @@ function applyRoleBasedVisibility() {
   });
 }
 
-// Initialize on page load
+// On page load, update the username if logged in
 window.addEventListener("DOMContentLoaded", () => {
   checkAuthentication();
+  updateUserDisplayName();
+});
 
   if (!window.location.pathname.endsWith("pages-login.html")) {
     applyRoleBasedVisibility();
