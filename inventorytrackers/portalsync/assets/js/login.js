@@ -14,6 +14,16 @@ const users = [
   { username: "molson", password: "molson", role: "molson", fullName: "Marlo" }
 ];
 
+// Define page permissions
+const pagePermissions = {
+  "admin-page.html": ["admin"], // Only admin can access
+  "warehouse-page.html": ["admin", "warehouse"], // Admin and warehouse roles
+  "lprice-page.html": ["admin", "lprice"], // Admin and lprice roles
+  "molson-page.html": ["admin", "molson"], // Admin and molson roles
+  "index.html": ["admin", "warehouse", "lprice", "molson"], // Accessible to all logged-in users
+};
+
+
 // Check user authentication
 function checkAuthentication() {
   const userRole = sessionStorage.getItem("userRole");
@@ -24,6 +34,29 @@ function checkAuthentication() {
     window.location.href = "pages-login.html";
   }
 }
+
+function checkAuthorization() {
+  const userRole = sessionStorage.getItem("userRole");
+  const currentPage = window.location.pathname.split("/").pop(); // Get the current page name
+
+  // If the current page is the login page, allow access without checking roles
+  if (currentPage === "pages-login.html") {
+    return;
+  }
+
+  // Get allowed roles for the current page
+  const allowedRoles = pagePermissions[currentPage] || [];
+
+  if (!userRole || !allowedRoles.includes(userRole)) {
+    alert("You do not have permission to access this page.");
+    const lastPage = sessionStorage.getItem("lastValidPage") || "index.html";
+    window.location.href = lastPage; // Redirect to the last valid page or default to index.html
+  } else {
+    // Save the current page as the last valid page
+    sessionStorage.setItem("lastValidPage", currentPage);
+  }
+}
+
 
 // Handle login form submission
 document.getElementById("loginForm")?.addEventListener("submit", (e) => {
@@ -82,6 +115,7 @@ function applyRoleBasedVisibility() {
 // On page load, update the username if logged in
 window.addEventListener("DOMContentLoaded", () => {
   checkAuthentication();
+  checkAuthorization()
   updateUserDisplayName();
 
 
