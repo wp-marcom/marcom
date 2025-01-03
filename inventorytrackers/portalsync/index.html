@@ -557,6 +557,15 @@
           <i class="bi bi-cart"></i>
         </div>
         <div class="ps-3">
+
+<div id="insights">
+  <p id="most-ordered">Most Ordered Product: </p>
+  <p id="orders-today">Orders Today: </p>
+  <p id="top-orderer">Top Orderer (Last Month): </p>
+</div>
+
+
+          
           <h6 id="orderCount">145</h6> <!-- Dynamic order count -->
           <span class="text-success small pt-1 fw-bold">12%</span> 
           <span class="text-muted small pt-2 ps-1">increase</span>
@@ -1193,7 +1202,109 @@
 
   <script src="assets/js/login.js"></script>
 
+<script>
+  // Input values for the spreadsheet ID, sheet name, and API key
+  const spreadsheetId = "1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM";
+  const sheetName = "vwcuOrderTracker";
+  const apiKey = "AIzaSyD6pzfDZqNZNcwmj3wNlyJ-oXmVXFL93fI";
+
+  // Construct the fetch URL dynamically
+  const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
+  const range = `${sheetName}!A2:J`; // Define the range
+  const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?key=${apiKey}`;
+
+  // Utility to parse the data and calculate statistics
+  function processData(rows) {
+    const headers = rows[0]; // First row contains column names
+    const data = rows.slice(1); // Remaining rows contain data
+
+    // Ensure required columns exist
+    const productIndex = headers.indexOf("Product Name");
+    const qtyIndex = headers.indexOf("Qty.");
+    const orderDateIndex = headers.indexOf("Order Date");
+    const purchaseByIndex = headers.indexOf("Purchase Order Placed by:");
+
+    if (
+      productIndex === -1 ||
+      qtyIndex === -1 ||
+      orderDateIndex === -1 ||
+      purchaseByIndex === -1
+    ) {
+      throw new Error("Required column(s) missing from the sheet.");
+    }
+
+    // Calculate most ordered product
+    const productCount = data.reduce((acc, row) => {
+      const product = row[productIndex];
+      const qty = parseInt(row[qtyIndex], 10) || 0;
+      acc[product] = (acc[product] || 0) + qty;
+      return acc;
+    }, {});
+
+    const mostOrderedProduct = Object.entries(productCount).reduce(
+      (max, [product, count]) => (count > max.count ? { product, count } : max),
+      { product: null, count: 0 }
+    );
+
+    // Calculate orders placed today
+    const today = new Date().toISOString().split("T")[0]; // Format: YYYY-MM-DD
+    const ordersToday = data.filter(row => row[orderDateIndex] === today).length;
+
+    // Calculate top orderer in the last month
+    const lastMonth = new Date();
+    lastMonth.setMonth(lastMonth.getMonth() - 1);
+    const orderers = data
+      .filter(row => {
+        const orderDate = new Date(row[orderDateIndex]);
+        return !isNaN(orderDate) && orderDate >= lastMonth;
+      })
+      .reduce((acc, row) => {
+        const person = row[purchaseByIndex];
+        acc[person] = (acc[person] || 0) + 1;
+        return acc;
+      }, {});
+
+    const topOrderer = Object.entries(orderers).reduce(
+      (max, [person, count]) => (count > max.count ? { person, count } : max),
+      { person: null, count: 0 }
+    );
+
+    return { mostOrderedProduct, ordersToday, topOrderer };
+  }
+
+  // Fetch data from Google Sheets
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (!data.values || data.values.length === 0) {
+        throw new Error("No data found in the sheet.");
+      }
+      const insights = processData(data.values);
+
+      // Update the DOM with insights
+      document.getElementById("most-ordered").textContent =
+        `Most Ordered Product: ${insights.mostOrderedProduct.product} (${insights.mostOrderedProduct.count})`;
+      document.getElementById("orders-today").textContent =
+        `Orders Today: ${insights.ordersToday}`;
+      document.getElementById("top-orderer").textContent =
+        `Top Orderer (Last Month): ${insights.topOrderer.person} (${insights.topOrderer.count})`;
+    })
+    .catch(error => {
+      console.error("Error fetching data from Google Sheets:", error);
+    });
+</script>
+
+
+
+  
+
   <script>
+   
   document.getElementById("logoutButton").addEventListener("click", () => {
     sessionStorage.clear(); // Clear user session
     window.location.href = "pages-login.html"; // Redirect to login page
