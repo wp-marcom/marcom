@@ -715,6 +715,19 @@ fetch(url)
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+<script src="assets/js/mainADDON.js"></script>
+
+  <script src="assets/js/login.js"></script>
+
+  <script>
+  document.getElementById("logoutButton").addEventListener("click", () => {
+    sessionStorage.clear(); // Clear user session
+    window.location.href = "pages-login.html"; // Redirect to login page
+  });
+</script>
+
+  
+
 </body>
 
 </html>
