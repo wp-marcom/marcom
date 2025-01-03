@@ -10,16 +10,22 @@ window.addEventListener("DOMContentLoaded", () => {
   const userRole = sessionStorage.getItem("userRole");
   console.log("User role from sessionStorage:", userRole);
 
-  document.querySelectorAll(".nav-item").forEach(item => {
-    const rolesAllowed = item.getAttribute("data-role")?.split(",") || [];
-    if (
-      userRole === "admin" || // Admin sees everything
-      (rolePermissions[userRole] && rolePermissions[userRole].some(role => rolesAllowed.includes(role)))
-    ) {
-      item.style.display = ""; // Show item
-    } else {
-      item.style.display = "none"; // Hide item
-    }
-  });
+  document.querySelectorAll("[data-role]").forEach(item => {
+  if (item.classList.contains("always-visible") || item.getAttribute("data-role") === "public") {
+    item.style.display = ""; // Always visible
+    return; // Skip further processing
+  }
+
+  const rolesAllowed = item.getAttribute("data-role")?.split(",") || [];
+  if (
+    userRole === "admin" || 
+    (rolePermissions[userRole] && rolePermissions[userRole].some(role => rolesAllowed.includes(role)))
+  ) {
+    item.style.display = ""; // Show item
+  } else {
+    item.style.display = "none"; // Hide item
+  }
+});
+
 });
 
