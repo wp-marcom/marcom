@@ -1206,12 +1206,12 @@
   // Input values for the spreadsheet ID, sheet name, and API key
   const spreadsheetId = "1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM";
   const sheetName = "vwcuOrderTracker";
-  const apiKey = "AIzaSyD6pzfDZqNZNcwmj3wNlyJ-oXmVXFL93fI";
+  const googleSheetsApiKey = "AIzaSyD6pzfDZqNZNcwmj3wNlyJ-oXmVXFL93fI";
 
   // Construct the fetch URL dynamically
   const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
   const range = `${sheetName}!A2:J`; // Define the range
-  const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?key=${apiKey}`;
+  const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?key=${googleSheetsApiKey}`;
 
   // Utility to parse the data and calculate statistics
   function processData(rows) {
