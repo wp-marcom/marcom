@@ -21,8 +21,7 @@ const pagePermissions = {
   "index.html": ["admin", "warehouse", "lprice", "molson", "acharles"],
   "tracker-mister-admin.html": ["admin", "warehouse", "lprice"], // Admin and lprice roles
   "tracker-tmc-admin.html": ["admin", "warehouse", "molson"], // Admin and molson roles
-  "tracker-vwcu-admin.html": ["admin", "warehouse", "acharles"], // Admin and molson roles
-  "index.html": ["admin", "warehouse", "lprice", "molson"], // Accessible to all logged-in users
+  "tracker-vwcu-admin.html": ["admin", "warehouse", "acharles"], // Admin and molson roles  
   "admin-page.html": ["admin"], // Only admin can access
   "warehouse-page.html": ["admin", "warehouse"], // Admin and warehouse roles
 };
