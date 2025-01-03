@@ -1,4 +1,12 @@
-// Define users array (you can modify or extend this array as needed)
+// Define role permissions
+const rolePermissions = {
+  admin: ["admin", "warehouse", "mister", "tmc"], // Admin sees everything
+  warehouse: ["warehouse", "lprice", "molson"], // Warehouse sees specific roles
+  lprice: ["lprice"], // Sees only what’s assigned to "lprice"
+  molson: ["molson"] // Sees only what’s assigned to "molson"
+};
+
+// Define users array
 const users = [
   { username: "admin", password: "admin123", role: "admin" },
   { username: "eastwarehouse", password: "eastwarehouse", role: "warehouse" },
@@ -6,48 +14,64 @@ const users = [
   { username: "molson", password: "molson", role: "molson" }
 ];
 
-// Login form submission handler
+// Check user authentication
+function checkAuthentication() {
+  const userRole = sessionStorage.getItem("userRole");
+
+  if (!userRole && !window.location.pathname.endsWith("pages-login.html")) {
+    // Redirect to login page if no user is logged in
+    alert("You must be logged in to access this page.");
+    window.location.href = "pages-login.html";
+  }
+}
+
+// Handle login form submission
 document.getElementById("loginForm")?.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const username = document.getElementById("yourUsername").value;
   const password = document.getElementById("yourPassword").value;
 
-  // Find the user from the users array
   const user = users.find(u => u.username === username && u.password === password);
 
   if (user) {
     alert("Login successful!");
-
-    // Save the user role in session storage
     sessionStorage.setItem("userRole", user.role);
-
-    // Redirect to the main page or dashboard
-    window.location.href = "index.html";
+    window.location.href = "index.html"; // Redirect to main page
   } else {
     alert("Invalid credentials. Please try again.");
   }
 });
-console.log(window.location.pathname);
-// On pages that require a user to be logged in (like the dashboard):
-if (!window.location.pathname.endsWith("pages-login.html")) { // Only check if not on login page
-  window.addEventListener("DOMContentLoaded", () => {
-    const userRole = sessionStorage.getItem("userRole");
 
-    if (userRole) {
-      // Show/Hide menu items based on role
-      document.querySelectorAll(".nav-item").forEach(item => {
-        const role = item.getAttribute("data-role");
+// Apply role-based visibility
+function applyRoleBasedVisibility() {
+  const userRole = sessionStorage.getItem("userRole");
+  console.log("User role from sessionStorage:", userRole);
 
-        // Hide elements that don't match the role
-        if (role !== userRole && role !== "guest") {
-          item.style.display = "none";
-        }
-      });
+  document.querySelectorAll("[data-role]").forEach(item => {
+    // Always-visible elements
+    if (item.classList.contains("always-visible") || item.getAttribute("data-role") === "public") {
+      item.style.display = ""; // Show element
+      return; // Skip further processing
+    }
+
+    const rolesAllowed = item.getAttribute("data-role")?.split(",") || [];
+    if (
+      userRole === "admin" || // Admin sees everything
+      (rolePermissions[userRole] && rolePermissions[userRole].some(role => rolesAllowed.includes(role)))
+    ) {
+      item.style.display = ""; // Show element
     } else {
-      // Redirect to login page if no user role
-      alert("No user logged in!");
-      window.location.href = "pages-login.html"; // Redirect to login if no user role
+      item.style.display = "none"; // Hide element
     }
   });
 }
+
+// Initialize on page load
+window.addEventListener("DOMContentLoaded", () => {
+  checkAuthentication();
+
+  if (!window.location.pathname.endsWith("pages-login.html")) {
+    applyRoleBasedVisibility();
+  }
+});
