@@ -7,6 +7,7 @@ const rolePermissions = {
 
 
 window.addEventListener("DOMContentLoaded", () => {
+  checkAuthentication();
   const userRole = sessionStorage.getItem("userRole");
   console.log("User role from sessionStorage:", userRole);
 
@@ -29,3 +30,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
 });
 
+function checkAuthentication() {
+  const userRole = sessionStorage.getItem("userRole");
+
+  if (!userRole && window.location.pathname !== "/pages-login.html") {
+    // Redirect only if not already on the login page
+    alert("You must be logged in to access this page.");
+    window.location.href = "pages-login.html";
+  }
+}
