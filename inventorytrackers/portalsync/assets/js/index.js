@@ -3,11 +3,11 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log("User role from sessionStorage:", userRole);
 
     document.querySelectorAll(".nav-item").forEach(item => {
-        const role = item.getAttribute("data-role");
-        if (role && role !== userRole && role !== "guest") {
-            item.style.display = "none"; // Hide items not allowed for this role
+        const rolesAllowed = item.getAttribute("data-role")?.split(",") || [];
+        if (rolesAllowed.includes(userRole) || userRole === "admin") {
+            item.style.display = ""; // Show item
         } else {
-            item.style.display = ""; // Show allowed items (default display)
+            item.style.display = "none"; // Hide item
         }
     });
 });
