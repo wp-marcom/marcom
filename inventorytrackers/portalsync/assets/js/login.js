@@ -29,7 +29,7 @@ document.getElementById("loginForm")?.addEventListener("submit", (e) => {
 });
 console.log(window.location.pathname);
 // On pages that require a user to be logged in (like the dashboard):
-if (window.location.pathname !== "/pages-login.html") { // Only check if not on login page
+if (!window.location.pathname.endsWith("pages-login.html")) { // Only check if not on login page
   window.addEventListener("DOMContentLoaded", () => {
     const userRole = sessionStorage.getItem("userRole");
 
