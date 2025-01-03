@@ -18,7 +18,7 @@ const users = [
 
 // Define page permissions
 const pagePermissions = {
-  "index.html": ["admin", "warehouse", "lprice", "molson"],
+  "index.html": ["admin", "warehouse", "lprice", "molson", "acharles"],
   "tracker-mister-admin.html": ["admin", "warehouse", "lprice"], // Admin and lprice roles
   "tracker-tmc-admin.html": ["admin", "warehouse", "molson"], // Admin and molson roles
   "tracker-vwcu-admin.html": ["admin", "warehouse", "acharles"], // Admin and molson roles
