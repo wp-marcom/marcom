@@ -1,9 +1,9 @@
 // Define users array (you can modify or extend this array as needed)
 const users = [
   { username: "admin", password: "admin123", role: "admin" },
-  { username: "eastwarehouse", password: "eastwarehouse", role: "westpress-admin" },
-  { username: "lprice", password: "lprice", role: "mister" },
-  { username: "guest", password: "guest123", role: "guest" }
+  { username: "eastwarehouse", password: "eastwarehouse", role: "warehouse" },
+  { username: "lprice", password: "lprice", role: "lprice" },
+  { username: "molson", password: "molson", role: "molson" }
 ];
 
 // Login form submission handler
