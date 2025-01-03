@@ -289,19 +289,19 @@
 
   </header><!-- End Header -->
 
-  <!-- ======= Sidebar ======= -->
+<!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="index.html">
+      <li class="nav-item" data-role="warehouse,lprice,molson">
+        <a class="nav-link " href="index.html">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
-      <li class="nav-item">
+      <li class="nav-item" data-role="admin">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -379,7 +379,7 @@
         </ul>
       </li><!-- End Components Nav -->
 
-      <li class="nav-item">
+      <li class="nav-item" data-role="admin">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -407,33 +407,30 @@
         </ul>
       </li><!-- End Forms Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Inventory Trackers</span><i class="bi bi-chevron-down ms-auto"></i>
+      <li class="nav-item" data-role="warehouse,lprice,molson">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span> Inventory Trackers</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-      <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
-        <li>
-          <a href="tracker-mister-admin.html">
-            <i class="bi bi-circle"></i><span>Mister Car Wash</span>
-          </a>
-        </li>
-        <li>
-          <a href="tracker-vwcu-admin.html" class="active">
-            <i class="bi bi-circle"></i><span>Vantage West</span>
-          </a>
-        </li>
-        <li>
-          <a href="tracker-tmc-admin.html">
-            <i class="bi bi-circle"></i><span>TMC</span>
-          </a>
-        </li>
-      </ul>
-    </li><!-- End Tables Nav -->
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li data-role="warehouse,lprice">
+            <a href="tracker-mister-admin.html">
+              <i class="bi bi-circle"></i><span>Mister Car Wash</span>
+            </a>
+          </li>
+          <li data-role="warehouse,acharles">
+            <a href="tracker-vwcu-admin.html" class="active">
+              <i class="bi bi-circle"></i><span>Vantage West</span>
+            </a>
+          </li>
+          <li data-role="warehouse,molson">
+            <a href="tracker-tmc-admin.html">
+              <i class="bi bi-circle"></i><span>TMC</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
 
-
-
-
-      <li class="nav-item">
+      <li class="nav-item" data-role="admin">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -456,7 +453,7 @@
         </ul>
       </li><!-- End Charts Nav -->
 
-      <li class="nav-item">
+      <li class="nav-item" data-role="admin">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -479,7 +476,7 @@
         </ul>
       </li><!-- End Icons Nav -->
 
-      <li class="nav-heading">Pages</li>
+      <li class="nav-heading" data-role="warehouse,lprice,molson">Pages</li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="users-profile.html">
