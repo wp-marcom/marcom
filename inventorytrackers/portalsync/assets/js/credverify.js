@@ -1,3 +1,10 @@
+// Define user roles and permissions
+const rolePermissions = {
+  admin: ["editor", "guest", "admin"],
+  editor: ["editor", "guest"],
+  guest: ["guest"],
+};
+
 window.addEventListener("DOMContentLoaded", () => {
     const userRole = sessionStorage.getItem("userRole");
     console.log("User role from sessionStorage:", userRole);
