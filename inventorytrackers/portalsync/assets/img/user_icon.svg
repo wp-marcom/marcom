@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>user_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs/>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="user_icon" transform="translate(-8.000000, -8.000000)">
+            <rect id="Rectangle-3" x="0" y="0" width="48" height="48"/>
+            <g transform="translate(12.000000, 12.000000)">
+                <path d="M11.8918919,22.7837838 C17.9073177,22.7837838 22.7837838,17.9073177 22.7837838,11.8918919 C22.7837838,5.8764661 17.9073177,1 11.8918919,1 C5.8764661,1 1,5.8764661 1,11.8918919 C1,17.9073177 5.8764661,22.7837838 11.8918919,22.7837838 Z" id="Path" stroke="#90A4AE" fill="#FFFFFF"/>
+                <path d="M12,13 C9.8,13 8,11.2 8,9 C8,6.8 9.8,5 12,5 C14.2,5 16,6.8 16,9 C16,11.2 14.2,13 12,13 Z M11.9930966,23 C9.72996715,23.1664624 3.37081363,21.209139 3.37081363,19 C3.37081363,16.790861 7.38012448,15 11.9930966,15 C16.6060687,15 20.9425104,16.790861 20.9425104,19 C20.9425104,21.209139 14.256226,22.8335376 11.9930966,23 Z" id="Combined-Shape" fill="#90A4AE"/>
+            </g>
+        </g>
+    </g>
+</svg>
