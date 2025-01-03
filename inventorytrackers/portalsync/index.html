@@ -254,7 +254,7 @@
               <hr class="dropdown-divider">
             </li>
 
-            <li>
+            <li id="logoutButton">
               <a class="dropdown-item d-flex align-items-center" href="#">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
@@ -1192,6 +1192,13 @@
   <script src="assets/js/mainADDON.js"></script>
 
   <script src="assets/js/credverify.js"></script>
+
+  <script>
+  document.getElementById("logoutButton").addEventListener("click", () => {
+    sessionStorage.clear(); // Clear user session
+    window.location.href = "pages-login.html"; // Redirect to login page
+  });
+</script>
 
 </body>
 
