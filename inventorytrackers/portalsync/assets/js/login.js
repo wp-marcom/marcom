@@ -30,9 +30,18 @@ const pagePermissions = {
 // Check user authentication
 function checkAuthentication() {
   const userRole = sessionStorage.getItem("userRole");
+  const currentPage = window.location.pathname.split("/").pop(); // Get the current page name
 
-  if (!userRole && !window.location.pathname.endsWith("pages-login.html")) {
-    // Redirect to login page if no user is logged in
+  // If the user is already logged in and navigates to the login page
+  if (userRole && currentPage === "pages-login.html") {
+    alert("You are already logged in.");
+    const lastPage = sessionStorage.getItem("lastValidPage") || "index.html";
+    window.location.href = lastPage; // Redirect to last valid page or homepage
+    return;
+  }
+
+  // If no user is logged in and not on the login page, redirect to login
+  if (!userRole && currentPage !== "pages-login.html") {
     alert("You must be logged in to access this page.");
     window.location.href = "pages-login.html";
   }
