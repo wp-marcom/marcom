@@ -632,7 +632,7 @@
                           <!-- Download Button -->
                           <button type="button" class="btn btn-primary">
                             <i class="fa fa-download"></i>
-                            <a href="https://docs.google.com/spreadsheets/d/1V6xLsirG0mPr1MrFmJDGwU0vg7zsi5gn7kqlbHrf594/export?format=xlsx&gid=584508590" 
+                            <a href="https://docs.google.com/spreadsheets/d/1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU/export?format=xlsx&gid=584508590" 
                                style="color: white; text-decoration: none;">
                               Download
                             </a>
@@ -703,22 +703,30 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <script>
-
+// Input values for the spreadsheet ID, sheet name, and API key
+const spreadsheetId = "1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU";
+const sheetName = "TMC";
+const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
 // Array of configurations for each Google Sheet and corresponding target element
 const trackers = [
   {
-    spreadsheetId: "1V6xLsirG0mPr1MrFmJDGwU0vg7zsi5gn7kqlbHrf594",
-    sheetName: "All TMC SKUS",
+    spreadsheetId: "1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU",
+    sheetName: "TMC",
     targetElement: "#tracker-table-first",
   },
   {
-    spreadsheetId: "1V6xLsirG0mPr1MrFmJDGwU0vg7zsi5gn7kqlbHrf594",
+    spreadsheetId: "1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU",
     sheetName: "TMC Comm Outreach PRINT",
     targetElement: "#tracker-table-second",
   },
   {
-    spreadsheetId: "anotherSpreadsheetId2",
-    sheetName: "Sheet2",
+    spreadsheetId: "1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU",
+    sheetName: "TMC Comm Outreach PROMO",
+    targetElement: "#tracker-table-third",
+  },
+   {
+    spreadsheetId: "1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU",
+    sheetName: "TMC Communications",
     targetElement: "#tracker-table-third",
   },
   // Add more configurations as needed
@@ -726,7 +734,7 @@ const trackers = [
 
 // Base URL and API key for Google Sheets API
 const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
-const apiKey = "AIzaSyD6pzfDZqNZNcwmj3wNlyJ-oXmVXFL93fI";
+const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
 
 // Function to fetch and load data for a single tracker
 function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
