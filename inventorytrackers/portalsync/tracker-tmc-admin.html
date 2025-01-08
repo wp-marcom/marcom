@@ -779,6 +779,7 @@ const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
 // Function to fetch and load data for a single tracker
 function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
   const range = `${sheetName}!A2:J`;
+  const client = "TMC";
   const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
 
   return fetch(url)
@@ -790,7 +791,7 @@ function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
       }
 
       // Process the row data
-      return adminData(data.values)
+      return adminData(data.values, client)
         .then((processedData) => {
           // Initialize the DataTable
           const datatable = new window.simpleDatatables.DataTable(targetElement, {
