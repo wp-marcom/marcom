@@ -1,11 +1,19 @@
 async function adminData(dataArray,client) {
   try {
 
+    // Declare jsonDataUrl outside the conditional blocks
     let jsonDataUrl;
 
-    if (client === "Mister"){const jsonDataUrl = "https://wp-marcom.github.io/marcom/inventorytrackers/json/mister-producthumbsource.json";}
-    else if (client === "Westpress Inventory"){const jsonDataUrl = "https://wp-marcom.github.io/marcom/inventorytrackers/json/westpressinventory-producthumbsource.json";}
-    else if (client === "TMC"){const jsonDataUrl = "https://wp-marcom.github.io/marcom/inventorytrackers/json/tmc-producthumbsource.json";}
+    // Assign the appropriate URL based on the client value
+    if (client === "Mister") {
+      jsonDataUrl = "https://wp-marcom.github.io/marcom/inventorytrackers/json/mister-producthumbsource.json";
+    } else if (client === "Westpress Inventory") {
+      jsonDataUrl = "https://wp-marcom.github.io/marcom/inventorytrackers/json/westpressinventory-producthumbsource.json";
+    } else if (client === "TMC") {
+      jsonDataUrl = "https://wp-marcom.github.io/marcom/inventorytrackers/json/tmc-producthumbsource.json";
+    } else {
+      throw new Error("Invalid client specified");
+    }
     // Fetch the JSON data asynchronously
     
     const response = await fetch(jsonDataUrl);
