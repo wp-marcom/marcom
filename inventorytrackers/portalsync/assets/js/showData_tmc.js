@@ -1,5 +1,7 @@
-async function adminData(dataArray) {
+async function adminData(dataArray,client) {
   try {
+
+    if (client === "TMC"){console.log("You customized by CLIENT!!")};
     // Fetch the JSON data asynchronously
     const jsonDataUrl = "https://wp-marcom.github.io/marcom/inventorytrackers/json/tmc-producthumbsource.json";
     const response = await fetch(jsonDataUrl);
