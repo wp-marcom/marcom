@@ -1,9 +1,11 @@
 async function adminData(dataArray,client) {
   try {
 
-    if (client === "TMC"){console.log("You customized by CLIENT!!")};
+    if (client === "Mister"){const jsonDataUrl = "https://wp-marcom.github.io/marcom/inventorytrackers/json/tmc-producthumbsource.json";}
+    if (client === "Westpress Inventory"){const jsonDataUrl = "https://wp-marcom.github.io/marcom/inventorytrackers/json/tmc-producthumbsource.json";}
+    if (client === "TMC"){const jsonDataUrl = "https://wp-marcom.github.io/marcom/inventorytrackers/json/tmc-producthumbsource.json";}
     // Fetch the JSON data asynchronously
-    const jsonDataUrl = "https://wp-marcom.github.io/marcom/inventorytrackers/json/tmc-producthumbsource.json";
+    
     const response = await fetch(jsonDataUrl);
     const jsonData = await response.json();
 
