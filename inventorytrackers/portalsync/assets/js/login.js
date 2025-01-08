@@ -52,7 +52,7 @@ function checkAuthorization() {
 
   if (!userRole || !allowedRoles.includes(userRole)) {
     alert("You do not have permission to access this page.");
-    const lastPage = sessionStorage.getItem("lastValidPage") || "index.html";
+    const lastPage = sessionStorage.getItem("lastValidPage") || "pages-login.html";
     window.location.href = lastPage; // Redirect to the last valid page or default to index.html
   } else {
     // Save the current page as the last valid page
