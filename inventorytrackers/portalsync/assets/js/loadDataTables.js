@@ -3,8 +3,7 @@ async function adminData(dataArray,client) {
 
     // Declare jsonDataUrl outside the conditional blocks
     let jsonDataUrl;
- <!-- INCLUDE Link to loadData js FILE -->
-   <script src="assets/json/mister-producthumbsource.json"></script>
+
     // Assign the appropriate URL based on the client value
     if (client === "Mister") {
       jsonDataUrl = "assets/json/mister-producthumbsource.json";
