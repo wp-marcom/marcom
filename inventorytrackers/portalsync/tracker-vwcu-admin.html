@@ -644,6 +644,7 @@ const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
 // Construct the fetch URL dynamically
 const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
 const range = `${sheetName}!A2:J`; // Define the range
+const client = "WestPress Inventory";
 const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
 
 fetch(url)
@@ -655,7 +656,7 @@ fetch(url)
     }
 
     // Process the row data with the adminData function
-    adminData(data.values)
+    adminData(data.values, client)
       .then(processedData => {
         // Initialize the DataTable using simpleDatatables
         const datatable = new window.simpleDatatables.DataTable("#tracker-table", {
