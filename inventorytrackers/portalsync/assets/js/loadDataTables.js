@@ -3,14 +3,15 @@ async function adminData(dataArray,client) {
 
     // Declare jsonDataUrl outside the conditional blocks
     let jsonDataUrl;
-
+ <!-- INCLUDE Link to loadData js FILE -->
+   <script src="assets/json/mister-producthumbsource.json"></script>
     // Assign the appropriate URL based on the client value
     if (client === "Mister") {
-      jsonDataUrl = "https://wp-marcom.github.io/marcom/inventorytrackers/json/mister-producthumbsource.json";
+      jsonDataUrl = "assets/json/mister-producthumbsource.json";
     } else if (client === "Westpress Inventory") {
-      jsonDataUrl = "https://wp-marcom.github.io/marcom/inventorytrackers/json/westpressinventory-producthumbsource.json";
+      jsonDataUrl = "assets/json/westpressinventory-producthumbsource.json";
     } else if (client === "TMC") {
-      jsonDataUrl = "https://wp-marcom.github.io/marcom/inventorytrackers/json/tmc-producthumbsource.json";
+      jsonDataUrl = "assets/json/tmc-producthumbsource.json";
     } else {
       throw new Error("Invalid client specified");
     }
