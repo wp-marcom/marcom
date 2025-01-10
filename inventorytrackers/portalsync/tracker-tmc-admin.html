@@ -57,9 +57,7 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
  <style>
-.tab-content > .tab-pane:not(.active) {
-    display: none !important;
-}
+
 </style> 
   
 </head>
@@ -768,7 +766,21 @@ const trackers = [
 const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
 const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
 
-// Function to fetch and load data for a single tracker
+// Function to show the current table and hide others
+function showActiveTable(targetElement) {
+  // Hide all tracker tables
+  document.querySelectorAll(".tracker-table").forEach((table) => {
+    table.style.display = "none";
+  });
+
+  // Show the target table
+  const activeTable = document.querySelector(targetElement);
+  if (activeTable) {
+    activeTable.style.display = "block";
+  }
+}
+
+// Function to load tracker data and attach visibility logic
 function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
   const range = `${sheetName}!A2:J`;
   const client = "TMC";
@@ -830,9 +842,24 @@ function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
     });
 }
 
+// Event listener to handle tab changes
+document.querySelectorAll('[data-bs-toggle="pill"]').forEach((tabButton) => {
+  tabButton.addEventListener("click", (event) => {
+    const targetTab = event.target.getAttribute("data-bs-target");
+
+    // Find the tracker that matches the clicked tab
+    const tracker = trackers.find((tracker) => tracker.targetElement === targetTab);
+    if (tracker) {
+      showActiveTable(tracker.targetElement);
+    }
+  });
+});
+
 // Iterate over the trackers array and load each tracker
 trackers.forEach(loadTrackerData);
 
+// Initially show the first tab's table
+showActiveTable(trackers[0].targetElement);
   </script>
     
   
