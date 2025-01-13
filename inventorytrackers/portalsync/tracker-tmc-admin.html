@@ -1184,6 +1184,11 @@ trackers.forEach(loadTrackerData);
     sessionStorage.clear(); // Clear user session
     window.location.href = "pages-login.html"; // Redirect to login page
   });
+
+    document.getElementById("logoutButtonSidebar").addEventListener("click", () => {
+    sessionStorage.clear(); // Clear user session
+    window.location.href = "pages-login.html"; // Redirect to login page
+  });
 </script>
 
 </body>
