@@ -42,8 +42,16 @@ async function adminData(dataArray,client) {
         // Create links for the product
         const productNameLink = `<a href="${imageUrl}" target="_blank">${strippedProductName}</a>`;
         //const refillLink = `<a href="#" onclick="sendRefillEmail('${strippedProductName}'); return false;">Refill</a>`;
-        const refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
-        const locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
+        const userRole = sessionStorage.getItem("userRole");
+        if(userRole==='warehouse'||)
+          {
+          const refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
+          const locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
+          }
+        else{
+          const refillLink = ``;
+          const locationLink = ``;
+        }
 
         return { 
           data: [productNameLink + " " + refillLink + " " + locationLink, ...row.slice(1)], 
