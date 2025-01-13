@@ -86,10 +86,17 @@ async function updateLastModifiedTime() {
         }
 
         const formattedTime = new Date(modifiedTime).toLocaleString();
-        document.getElementById('last-modified').textContent = `Current as of: ${formattedTime}`;
+        //document.getElementById('last-modified').textContent = `Current as of: ${formattedTime}`;
+        document.querySelectorAll('.last-modified').forEach((element) => {
+        element.textContent = `Current as of: ${formattedTime}`;
+        });
+
     } catch (error) {
         console.error('Error fetching or updating last modified time:', error);
-        document.getElementById('last-modified').textContent = `Error retrieving last modified time.`;
+        //document.getElementById('last-modified').textContent = `Error retrieving last modified time.`;
+      document.querySelectorAll('.last-modified').forEach((element) => {
+        element.textContent = `Error retrieving last modified time.`;
+        });
     }
 }
 
