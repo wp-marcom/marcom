@@ -33,7 +33,7 @@ function checkAuthentication() {
   const currentPage = window.location.pathname.split("/").pop(); // Get the current page name
 
   // If the user is already logged in and navigates to the login page
-  if (userRole && currentPage === "pages-login.html") {
+  if (userRole && currentPage === "login.html") {
     alert("You are already logged in.");
     const lastPage = sessionStorage.getItem("lastValidPage") || "index.html";
     window.location.href = lastPage; // Redirect to last valid page or homepage
@@ -41,9 +41,9 @@ function checkAuthentication() {
   }
 
   // If no user is logged in and not on the login page, redirect to login
-  if (!userRole && currentPage !== "pages-login.html") {
+  if (!userRole && currentPage !== "login.html") {
     alert("You must be logged in to access this page.");
-    window.location.href = "pages-login.html";
+    window.location.href = "login.html";
   }
 }
 
@@ -52,7 +52,7 @@ function checkAuthorization() {
   const currentPage = window.location.pathname.split("/").pop(); // Get the current page name
 
   // If the current page is the login page, allow access without checking roles
-  if (currentPage === "pages-login.html") {
+  if (currentPage === "login.html") {
     return;
   }
 
@@ -61,7 +61,7 @@ function checkAuthorization() {
 
   if (!userRole || !allowedRoles.includes(userRole)) {
     alert("You do not have permission to access this page.");
-    const lastPage = sessionStorage.getItem("lastValidPage") || "pages-login.html";
+    const lastPage = sessionStorage.getItem("lastValidPage") || "login.html";
     window.location.href = lastPage; // Redirect to the last valid page or default to index.html
   } else {
     // Save the current page as the last valid page
@@ -131,7 +131,7 @@ window.addEventListener("DOMContentLoaded", () => {
   updateUserDisplayName();
 
 
-  if (!window.location.pathname.endsWith("pages-login.html")) {
+  if (!window.location.pathname.endsWith("login.html")) {
     applyRoleBasedVisibility();
   }
 });
