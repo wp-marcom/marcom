@@ -43,9 +43,9 @@ async function adminData(dataArray,client) {
         const productNameLink = `<a href="${imageUrl}" target="_blank">${strippedProductName}</a>`;
         //const refillLink = `<a href="#" onclick="sendRefillEmail('${strippedProductName}'); return false;">Refill</a>`;
         const userRole = sessionStorage.getItem("userRole");
-        const refillLink;
-        const locationLink;
-        if(userRole==='warehouse'||userRole==='admin')
+        let refillLink = "";
+        let locationLink = "";
+        if(userRole === "warehouse" || userRole === "admin")
           {
           refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
           locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
