@@ -609,9 +609,9 @@
         <li class="dropdown-header text-start">
           <h6>Filter</h6>
         </li>
-        <li><a class="dropdown-item" href="#" onclick="filterByPeriod('today')">Today</a></li>
-        <li><a class="dropdown-item" href="#" onclick="filterByPeriod('thisMonth')">This Month</a></li>
-        <li><a class="dropdown-item" href="#" onclick="filterByPeriod('thisYear')">This Year</a></li>
+        <li><a class="dropdown-item" href="#" onclick="fetchOrderCount('today')">Today</a></li>
+        <li><a class="dropdown-item" href="#" onclick="fetchOrderCount('thisMonth')">This Month</a></li>
+        <li><a class="dropdown-item" href="#" onclick="fetchOrderCount('thisYear')">This Year</a></li>
         <li>
           <input type="date" id="startDate" placeholder="Start Date" />
           <input type="date" id="endDate" placeholder="End Date" />
@@ -627,7 +627,7 @@
           <i class="bi bi-cart"></i>
         </div>
         <div class="ps-3">
-          <h6 id="orderCount">145</h6> <!-- Dynamic order count -->
+          <h6 id="orderCount">Loading...</h6> <!-- Dynamic order count -->
           <span class="text-success small pt-1 fw-bold">12%</span> 
           <span class="text-muted small pt-2 ps-1">increase</span>
         </div>
@@ -1702,7 +1702,7 @@ const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
 const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
 
 // Function to fetch and load data for a single tracker
-function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
+function loadKPIData({ spreadsheetId, sheetName, targetElement }) {
   const range = `${sheetName}!A2:J`;
   const client = "TMC";
   const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
@@ -1765,6 +1765,49 @@ function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
 
 // Iterate over the trackers array and load each tracker
 trackers.forEach(loadTrackerData);
+
+  // THIS IS AN ATTEMPT AT FILTERING BASED ON TIME Your Google Sheets ID
+    const SHEET_ID = '1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM';
+    const API_KEY = 'AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs';
+
+    // Fetch data from Google Sheets
+    async function fetchOrderCount(period) {
+      const rangeMap = {
+        today: 'VWCU-KPI!A2',
+        thisMonth: 'VWCU-KPI!A3',
+        thisYear: 'VWCU-KPI!A4',
+      };
+
+      const range = rangeMap[period];
+
+      if (!range) {
+        console.error('Invalid period');
+        return;
+      }
+
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${range}?key=${API_KEY}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data && data.values) {
+          const orderCount = data.values[0][0]; // The value from the cell
+          document.getElementById('orderCount').innerText = orderCount;
+          document.getElementById('filterLabel').innerText = `| ${capitalize(period)}`;
+        } else {
+          console.error('No data found in the specified range');
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    // Utility function to capitalize the first letter
+    function capitalize(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+  
 
   </script>
     
