@@ -1778,14 +1778,19 @@ const sheetMap = {
 
 document.addEventListener('DOMContentLoaded', () => {
   const activeTab = document.querySelector('.nav-pills .active');
-  console.log('Active tab:', `${activeTab}`);
+  console.log('Active Tab:', activeTab);
+  if (activeTab) {
+    const sheetName = sheetMap[activeTab.id];
+    console.log('Mapped Sheet Name:', sheetName);
+}
   currentSheetName = activeTab ? sheetMap[activeTab.id] || 'VWCU-KPI' : 'VWCU-KPI';
+  console.log('Initial Sheet:', currentSheetName);
   fetchOrderCount('today', currentSheetName);
 });
 
 function changeClient(tabId) {
   const newSheetName = sheetMap[tabId];
-
+  console.log('Changing client for tabId:', tabId, 'Sheet Name:', newSheetName);
   if (!newSheetName) {
     console.error(`Unknown or missing tab ID: ${tabId}`);
     return;
@@ -1799,6 +1804,7 @@ function changeClient(tabId) {
  const API_KEY = 'AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs';
 
 async function fetchOrderCount(period, sheetName) {
+  console.log('Fetching for sheetName:', sheetName);
   const rangeMap = {
     today: 'A2',
     thisMonth: 'B2',
