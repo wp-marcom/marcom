@@ -1767,6 +1767,12 @@ function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
 trackers.forEach(loadTrackerData);
 
   // THIS IS AN ATTEMPT AT FILTERING BASED ON TIME Your Google Sheets ID
+
+   document.addEventListener('DOMContentLoaded', () => {
+    // Fetch and display the "Today" data by default
+    fetchOrderCount('today');
+  });
+  
     const SHEET_ID = '1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM';
     const API_KEY = 'AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs';
 
