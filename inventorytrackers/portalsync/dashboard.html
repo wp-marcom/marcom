@@ -1794,6 +1794,9 @@ function changeClient(tabId) {
   fetchOrderCount('today', currentSheetName);
 }
 
+ const SHEET_ID = '1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM';
+ const API_KEY = 'AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs';
+
 async function fetchOrderCount(period, sheetName) {
   const rangeMap = {
     today: 'A2',
