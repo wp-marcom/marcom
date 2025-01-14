@@ -1806,9 +1806,9 @@ function changeClient(tabId) {
 async function fetchOrderCount(period, sheetName) {
   console.log('Fetching for sheetName:', sheetName);
   const rangeMap = {
-    today: 'A2',
-    thisMonth: 'B2',
-    thisYear: 'C2',
+    today: 'B2',
+    thisMonth: 'B3',
+    thisYear: 'B4',
   };
 
   const range = rangeMap[period];
