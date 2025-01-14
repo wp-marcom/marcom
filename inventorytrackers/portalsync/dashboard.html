@@ -1768,43 +1768,32 @@ trackers.forEach(loadTrackerData);
 
   // THIS IS AN ATTEMPT AT FILTERING BASED ON TIME Your Google Sheets ID
 
-let currentSheetName = 'VWCU-KPI'; // Default sheet for the initial tab (e.g., VWCU)
+let currentSheetName = 'VWCU-KPI'; // Default sheet for the initial tab
+
+const sheetMap = {
+  'pills-vwcu-tab': 'VWCU-KPI',
+  'pills-tmcforms-tab': 'TMC-KPI',
+  'pills-client3-tab': 'Client3-KPI',
+};
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Fetch "Today" data by default for the initial tab
+  const activeTab = document.querySelector('.nav-pills .active');
+  currentSheetName = activeTab ? sheetMap[activeTab.id] || 'VWCU-KPI' : 'VWCU-KPI';
   fetchOrderCount('today', currentSheetName);
 });
 
-// Function to change the client and fetch corresponding data
 function changeClient(tabId) {
-  // Map tab IDs to sheet names
-  const sheetMap = {
-    'pills-vwcu-tab': 'VWCU-KPI',
-    'pills-tmcforms-tab': 'TMC-KPI',
-    'pills-client3-tab': 'Client3-KPI',
-  };
-
-  // Determine the sheet name based on the tab ID
   const newSheetName = sheetMap[tabId];
 
   if (!newSheetName) {
-    console.error('Unknown tab ID:', tabId);
+    console.error(`Unknown or missing tab ID: ${tabId}`);
     return;
   }
 
-  // Update the current sheet name
   currentSheetName = newSheetName;
-
-  // Fetch the "Today" data for the newly selected tab
   fetchOrderCount('today', currentSheetName);
 }
-  
-    const SHEET_ID = '1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM';
-    const API_KEY = 'AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs';
 
-    // Fetch data from Google Sheets
-  
-   // Modified function to fetch order count for the selected sheet
 async function fetchOrderCount(period, sheetName) {
   const rangeMap = {
     today: 'A2',
@@ -1812,45 +1801,44 @@ async function fetchOrderCount(period, sheetName) {
     thisYear: 'C2',
   };
 
-      const range = rangeMap[period];
+  const range = rangeMap[period];
 
-      if (!range) {
-        console.error('Invalid period');
-        return;
-      }
+  if (!range) {
+    console.error('Invalid period');
+    return;
+  }
 
-      //const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${range}?key=${API_KEY}`;
-      const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${sheetName}!${range}?key=${API_KEY}`;
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${sheetName}!${range}?key=${API_KEY}`;
 
-try {
+  try {
     console.log('Fetching range:', `${sheetName}!${range}`);
     const response = await fetch(url);
     const data = await response.json();
     console.log('Response Data:', data);
 
-    if (data && data.values && data.values.length > 0) {
-      const orderCount = data.values[0][0];
-      document.getElementById('orderCount').innerText = orderCount;
-      if(period === "today"){
-      document.getElementById('filterLabel').innerText = `Today`;
-      }else if(period === "thisMonth"){
-      document.getElementById('filterLabel').innerText = `This Month`;
-      }else if(period === "thisYear"){
-      document.getElementById('filterLabel').innerText = `This Year`;
-      }else{document.getElementById('filterLabel').innerText = `| ${capitalize(period)}`;}
-    } else {
-      console.error('No data found in the specified range:', range);
-      document.getElementById('orderCount').innerText = '0';
-    }
+    const orderCount = data.values?.[0]?.[0] || '0';
+    document.getElementById('orderCount').innerText = orderCount;
+    updateFilterLabel(period);
   } catch (error) {
     console.error('Error fetching data:', error);
   }
 }
 
+function updateFilterLabel(period) {
+  const periodMap = {
+    today: 'Today',
+    thisMonth: 'This Month',
+    thisYear: 'This Year',
+  };
+
+  const label = periodMap[period] || capitalize(period);
+  document.getElementById('filterLabel').innerText = `| ${label}`;
+}
+
 function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-  
+
 
   </script>
     
