@@ -1817,9 +1817,11 @@ async function fetchOrderCount(period, sheetName) {
     console.error('Invalid period');
     return;
   }
+  const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
 
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${sheetName}!${range}?key=${API_KEY}`;
 
+  //const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${sheetName}!${range}?key=${API_KEY}`;
+  const url = `${baseUrl}/${SHEET_ID}/values/${sheetName}!${range}?alt=json&key=${API_KEY}`;
   try {
     console.log('Fetching range:', `${sheetName}!${range}`);
     const response = await fetch(url);
