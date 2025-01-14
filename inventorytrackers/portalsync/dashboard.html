@@ -559,10 +559,10 @@
               <!-- List of All Tab Names Below -->
               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation" data-role="warehouse,admin,acharles">
-                  <button class="nav-link active" id="pills-vwcu-tab" data-bs-toggle="pill" data-bs-target="#pills-vwcu" type="button" role="tab" aria-controls="pills-vwcu" aria-selected="true">Vantage West</button>
+                  <button class="nav-link active" id="pills-vwcu-tab" data-bs-toggle="pill" data-bs-target="#pills-vwcu" type="button" role="tab" aria-controls="pills-vwcu" aria-selected="true" onclick="changeClient(this.id)">Vantage West</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="pills-tmcforms-tab" data-bs-toggle="pill" data-bs-target="#pills-tmcforms" type="button" role="tab" aria-controls="pills-tmcforms" aria-selected="false">TMC Forms</button>
+                  <button class="nav-link" id="pills-tmcforms-tab" data-bs-toggle="pill" data-bs-target="#pills-tmcforms" type="button" role="tab" aria-controls="pills-tmcforms" aria-selected="false" onclick="changeClient(this.id)">TMC Forms</button>
                 </li>
                 <li class="nav-item" role="presentation">
                   <button class="nav-link" id="pills-tmccommprint-tab" data-bs-toggle="pill" data-bs-target="#pills-tmccommprint" type="button" role="tab" aria-controls="pills-tmccommprint" aria-selected="false">TMC Comm Outreach PRINT</button>
@@ -1768,21 +1768,49 @@ trackers.forEach(loadTrackerData);
 
   // THIS IS AN ATTEMPT AT FILTERING BASED ON TIME Your Google Sheets ID
 
-   document.addEventListener('DOMContentLoaded', () => {
-    // Fetch and display the "Today" data by default
-    fetchOrderCount('today');
-  });
+let currentSheetName = 'VWCU-KPI'; // Default sheet for the initial tab (e.g., VWCU)
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Fetch "Today" data by default for the initial tab
+  fetchOrderCount('today', currentSheetName);
+});
+
+// Function to change the client and fetch corresponding data
+function changeClient(tabId) {
+  // Map tab IDs to sheet names
+  const sheetMap = {
+    'pills-vwcu-tab': 'VWCU-KPI',
+    'pills-tmcforms-tab': 'TMC-KPI',
+    'pills-client3-tab': 'Client3-KPI',
+  };
+
+  // Determine the sheet name based on the tab ID
+  const newSheetName = sheetMap[tabId];
+
+  if (!newSheetName) {
+    console.error('Unknown tab ID:', tabId);
+    return;
+  }
+
+  // Update the current sheet name
+  currentSheetName = newSheetName;
+
+  // Fetch the "Today" data for the newly selected tab
+  fetchOrderCount('today', currentSheetName);
+}
   
     const SHEET_ID = '1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM';
     const API_KEY = 'AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs';
 
     // Fetch data from Google Sheets
-    async function fetchOrderCount(period) {
-      const rangeMap = {
-        today: 'VWCU-KPI!A2',
-        thisMonth: 'VWCU-KPI!B2',
-        thisYear: 'VWCU-KPI!C2',
-      };
+  
+   // Modified function to fetch order count for the selected sheet
+async function fetchOrderCount(period, sheetName) {
+  const rangeMap = {
+    today: 'A2',
+    thisMonth: 'A3',
+    thisYear: 'A4',
+  };
 
       const range = rangeMap[period];
 
@@ -1791,35 +1819,37 @@ trackers.forEach(loadTrackerData);
         return;
       }
 
-      const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${range}?key=${API_KEY}`;
+      //const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${range}?key=${API_KEY}`;
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${sheetName}!${range}?key=${API_KEY}`;
 
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
+try {
+    console.log('Fetching range:', `${sheetName}!${range}`);
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log('Response Data:', data);
 
-        if (data && data.values) {
-          const orderCount = data.values[0][0]; // The value from the cell
-          document.getElementById('orderCount').innerText = orderCount;
-            if(period === "today"){
-              document.getElementById('filterLabel').innerText = `Today`;
-            }else if(period === "thisMonth"){
-              document.getElementById('filterLabel').innerText = `This Month`;
-            }else if(period === "thisYear"){
-              document.getElementById('filterLabel').innerText = `This Year`;
-            }else{document.getElementById('filterLabel').innerText = `| ${capitalize(period)}`;}
-          
-        } else {
-          console.error('No data found in the specified range');
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
+    if (data && data.values && data.values.length > 0) {
+      const orderCount = data.values[0][0];
+      document.getElementById('orderCount').innerText = orderCount;
+      if(period === "today"){
+      document.getElementById('filterLabel').innerText = `Today`;
+      }else if(period === "thisMonth"){
+      document.getElementById('filterLabel').innerText = `This Month`;
+      }else if(period === "thisYear"){
+      document.getElementById('filterLabel').innerText = `This Year`;
+      }else{document.getElementById('filterLabel').innerText = `| ${capitalize(period)}`;}
+    } else {
+      console.error('No data found in the specified range:', range);
+      document.getElementById('orderCount').innerText = '0';
     }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
 
-    // Utility function to capitalize the first letter
-    function capitalize(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
   
 
   </script>
