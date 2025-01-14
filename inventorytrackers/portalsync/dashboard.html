@@ -1800,9 +1800,13 @@ trackers.forEach(loadTrackerData);
         if (data && data.values) {
           const orderCount = data.values[0][0]; // The value from the cell
           document.getElementById('orderCount').innerText = orderCount;
-            if(period === "thisMonth"){
+            if(period === "today"){
+              document.getElementById('filterLabel').innerText = `Today`;
+            }else if(period === "thisMonth"){
               document.getElementById('filterLabel').innerText = `This Month`;
-            } else{document.getElementById('filterLabel').innerText = `| ${capitalize(period)}`;}
+            }else if(period === "thisYear"){
+              document.getElementById('filterLabel').innerText = `This Year`;
+            }else{document.getElementById('filterLabel').innerText = `| ${capitalize(period)}`;}
           
         } else {
           console.error('No data found in the specified range');
