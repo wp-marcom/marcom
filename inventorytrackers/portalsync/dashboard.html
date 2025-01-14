@@ -1778,6 +1778,7 @@ const sheetMap = {
 
 document.addEventListener('DOMContentLoaded', () => {
   const activeTab = document.querySelector('.nav-pills .active');
+  console.log('Active tab:', `${activeTab}`);
   currentSheetName = activeTab ? sheetMap[activeTab.id] || 'VWCU-KPI' : 'VWCU-KPI';
   fetchOrderCount('today', currentSheetName);
 });
