@@ -105,6 +105,11 @@ async function recentSalesData(dataArray,client) {
         productName = productName.substring(0, 67) + "...";
       }
 
+      // Replace "-" in column G (index 6) with the specified <span> element
+      if (row[6] === "-") {
+        row[6] = '<span class="badge bg-warning">Pending</span>';
+      }
+
       // Find the matching record in the JSON data
       const matchingRecord = jsonData.rows.find(record => record.cell[4] === originalProductName);
 
