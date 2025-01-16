@@ -817,10 +817,7 @@
                       <th><b>J</b>ob #</th>
                       <th>Order Date</th>
                       <th>Customer</th>
-                      <th>Product Name</th>
-                      <th>SKU</th>
-                      <th>Qty</th>
-                      <th>Status</th>
+                      <th>Status</th>     
                     </tr>
                   </thead>
               </table>
@@ -1717,7 +1714,7 @@ const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
 
 // Function to fetch and load data for a single tracker
 function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
-  const range = `${sheetName}!A2:G`;
+  const range = `${sheetName}!A2:C,G`;
   const client = "Westpress Inventory";
   const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
 
