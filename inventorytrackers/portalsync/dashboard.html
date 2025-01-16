@@ -1727,7 +1727,7 @@ function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
       }
 
       // Process the row data
-      return adminData(data.values, client)
+      return recentSalesData(data.values, client)
         .then((processedData) => {
           // Initialize the DataTable
           const datatable = new window.simpleDatatables.DataTable(targetElement, {
