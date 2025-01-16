@@ -1712,55 +1712,47 @@ const trackers = [
 const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
 const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
 
-// Function to fetch and load data for a single tracker
 function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
-  
-  // Define the ranges separatelyasync function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
   const client = "Westpress Inventory";
 
-  // Define the ranges separately
   const range1 = `${sheetName}!A2:C`;
   const range2 = `${sheetName}!G2:G`;
 
-  // Build URLs for both ranges
   const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
   const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
 
-  try {
-    // Fetch data for each range
-    const [response1, response2] = await Promise.all([
-      fetch(url1).then(res => res.json()),
-      fetch(url2).then(res => res.json()),
-    ]);
+  return Promise.all([
+    fetch(url1).then((res) => res.json()),
+    fetch(url2).then((res) => res.json()),
+  ])
+    .then(([response1, response2]) => {
+      const combinedData = response1.values.map((row, index) => {
+        const colGValue = response2.values[index]?.[0] || '';
+        return [...row, colGValue];
+      });
 
-    // Combine the data from both responses
-    const combinedData = response1.values.map((row, index) => {
-      const colGValue = response2.values[index]?.[0] || ''; // Handle missing rows gracefully
-      return [...row, colGValue]; // Append the G column value
+      const uniqueData = Array.from(
+        new Map(
+          combinedData.map((row) => [row.slice(0, 3).join('|'), row])
+        ).values()
+      );
+
+      return recentSalesData(uniqueData, client);
+    })
+    .then((processedData) => {
+      const datatable = new window.simpleDatatables.DataTable(targetElement, {
+        data: {
+          data: processedData.map((row) => row.data),
+        },
+      });
+
+      console.log("DataTable initialized with processed data.");
+    })
+    .catch((error) => {
+      console.error("Error loading tracker data:", error);
     });
-
-    // Remove duplicates based on A-C columns
-    const uniqueData = Array.from(
-      new Map(
-        combinedData.map((row) => [row.slice(0, 3).join('|'), row]) // Use A-C as the unique key
-      ).values()
-    );
-
-    // Process the unique rows with recentSalesData
-    const processedData = await recentSalesData(uniqueData, client);
-
-    // Initialize the DataTable
-    const datatable = new window.simpleDatatables.DataTable(targetElement, {
-      data: {
-        data: processedData.map((row) => row.data), // Use the processed rows
-      },
-    });
-
-    console.log("DataTable initialized with processed data.");
-  } catch (error) {
-    console.error("Error loading tracker data:", error);
-  }
 }
+
 
 
 // Iterate over the trackers array and load each tracker
