@@ -96,7 +96,7 @@ async function recentSalesData(dataArray,client) {
     // Process the dataArray (Google Sheets data)
     return dataArray.map(row => {
       let rowClass = ""; // Default: No special class
-
+      console.log(row)
       const originalProductName = row[0];
       let productName = originalProductName;
 
@@ -106,8 +106,8 @@ async function recentSalesData(dataArray,client) {
       }
 
       // Replace "-" in column G (index 6) with the specified <span> element
-      if (row[6] === "-") {
-        row[6] = '<span class="badge bg-warning">Pending</span>';
+      if (row[3] === "-") {
+        row[3] = '<span class="badge bg-warning">Pending</span>';
       }
 
       // Find the matching record in the JSON data
