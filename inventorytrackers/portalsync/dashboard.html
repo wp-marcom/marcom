@@ -1659,7 +1659,7 @@
 <script>
 
 // Array of configurations for each Google Sheet and corresponding target element
-const trackers = [
+const recentSales = [
   {
     spreadsheetId: "1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM",
     sheetName: "VWCU",
@@ -1712,7 +1712,7 @@ const trackers = [
 const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
 const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
 
-function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
+function loadRecentSalesData({ spreadsheetId, sheetName, targetElement }) {
   const client = "Westpress Inventory";
 
   const range1 = `${sheetName}!A2:C`;
@@ -1756,7 +1756,7 @@ function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
 
 
 // Iterate over the trackers array and load each tracker
-trackers.forEach(loadTrackerData);
+recentSales.forEach(loadRecentSalesData);
 
   // THIS IS AN ATTEMPT AT FILTERING BASED ON TIME Your Google Sheets ID
 
