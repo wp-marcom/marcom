@@ -86,7 +86,7 @@ async function recentSalesData(dataArray, client) {
       }
 
       // Replace "-" in column G (index 3) with the specified <span> element
-      if (row[3] === "") {
+      if (row[3] === "-") {
         row[3] = '<span class="badge bg-warning">Order Received</span>';
       }
 
