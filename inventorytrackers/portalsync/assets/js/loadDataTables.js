@@ -107,7 +107,7 @@ async function recentSalesData(dataArray,client) {
 
       // Replace "-" in column G (index 6) with the specified <span> element
       if (row[3] === "-") {
-        row[3] = '<span class="badge bg-warning">Pending</span>';
+        row[3] = '<span class="badge bg-warning">Order Received</span>';
       }
 
       // Find the matching record in the JSON data
