@@ -20,6 +20,7 @@ const users = [
 const pagePermissions = {
   "index.html": ["admin", "warehouse", "lprice", "molson", "acharles"],
   "tracker-mister.html": ["admin", "warehouse", "lprice"], // Admin and lprice roles
+  "tracker-siet.html": ["admin", "warehouse", "lprice"], // Admin and lprice roles
   "tracker-tmc.html": ["admin", "warehouse", "molson"], // Admin and molson roles
   "tracker-nmc.html": ["admin", "warehouse", "ctapia"], // Admin and 
   "tracker-vwcu.html": ["admin", "warehouse", "acharles"], // Admin and 
