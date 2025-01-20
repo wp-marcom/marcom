@@ -72,31 +72,11 @@ async function adminData(dataArray,client) {
   }
 }
 
-async function recentSalesData(dataArray,client) {
+async function recentSalesData(dataArray, client) {
   try {
-
-    // Declare jsonDataUrl outside the conditional blocks
-    let jsonDataUrl;
-
-    // Assign the appropriate URL based on the client value
-    if (client === "Mister") {
-      jsonDataUrl = "assets/json/mister-producthumbsource.json";
-    } else if (client === "Westpress Inventory") {
-      jsonDataUrl = "assets/json/westpressinventory-producthumbsource.json";
-    } else if (client === "TMC") {
-      jsonDataUrl = "assets/json/tmc-producthumbsource.json";
-    } else {
-      throw new Error("Invalid client specified");
-    }
-    // Fetch the JSON data asynchronously
-    
-    const response = await fetch(jsonDataUrl);
-    const jsonData = await response.json();
-
     // Process the dataArray (Google Sheets data)
     return dataArray.map(row => {
       let rowClass = ""; // Default: No special class
-      console.log(row)
       const originalProductName = row[0];
       let productName = originalProductName;
 
@@ -105,49 +85,19 @@ async function recentSalesData(dataArray,client) {
         productName = productName.substring(0, 67) + "...";
       }
 
-      // Replace "-" in column G (index 6) with the specified <span> element
+      // Replace "-" in column G (index 3) with the specified <span> element
       if (row[3] === "-") {
         row[3] = '<span class="badge bg-warning">Order Received</span>';
       }
 
-      // Find the matching record in the JSON data
-      const matchingRecord = jsonData.rows.find(record => record.cell[4] === originalProductName);
-
-      if (matchingRecord) {
-        const imageUrl = "https://images.printable.com" + matchingRecord.cell[2];
-        const strippedProductName = productName.replace(/<[^>]*>/g, "").replace(/[^\w\s()-\.]/g, "");
-        var emailProductName = originalProductName.replace(/<[^>]*>/g, '').replace(/[^\w\s()-\.]/g, ''); // Remove HTML tags ONLY from productName for emailing only
-
-        // Create links for the product
-        const productNameLink = `<a href="${imageUrl}" target="_blank">${strippedProductName}</a>`;
-        //const refillLink = `<a href="#" onclick="sendRefillEmail('${strippedProductName}'); return false;">Refill</a>`;
-        const userRole = sessionStorage.getItem("userRole");
-        let refillLink = "";
-        let locationLink = "";
-        if(userRole === "warehouse" || userRole === "admin")
-          {
-          refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
-          locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
-          }
-        else{
-          refillLink = ``;
-          locationLink = ``;
-        }
-
-        return { 
-          data: [productNameLink + " " + refillLink + " " + locationLink, ...row.slice(1)], 
-          rowClass 
-        };
-      } else {
-        // If no match found, return the truncated Product Name
-        return { 
-          data: [productName, ...row.slice(1)], 
-          rowClass 
-        };
-      }
+      // Return the processed row with productName
+      return {
+        data: [productName, ...row.slice(1)],
+        rowClass
+      };
     });
   } catch (error) {
-    console.error("Error fetching JSON data:", error);
+    console.error("Error processing data:", error);
   }
 }
 
