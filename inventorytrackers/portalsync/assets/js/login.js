@@ -11,6 +11,8 @@ const rolePermissions = {
 const users = [
   { username: "admin", password: "admin123", role: "admin", fullName: "Admin User" },
   { username: "eastwarehouse", password: "eastwarehouse", role: "warehouse", fullName: "East Warehouse" },
+  { username: "east1", password: "east1", role: "warehouse", fullName: "East Warehouse 1" },
+  { username: "east2", password: "east2", role: "warehouse", fullName: "East Warehouse 2" },
   { username: "lprice", password: "lprice", role: "lprice", fullName: "Linda" },
   { username: "acharles", password: "acharles", role: "acharles", fullName: "Andy" },
   { username: "molson", password: "molson", role: "molson", fullName: "Marlo" }
