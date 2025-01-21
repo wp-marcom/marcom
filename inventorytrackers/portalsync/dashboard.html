@@ -1717,7 +1717,8 @@ function loadRecentSalesData({ spreadsheetId, sheetName, targetElement }) {
           combinedData.map((row) => [row.slice(0, 3).join('|'), row])
         ).values()
       );
-
+console.log("Combined Data:", combinedData);
+console.log("Unique Data:", uniqueData);
       return recentSalesData(uniqueData, client);
     })
     .then((processedData) => {
