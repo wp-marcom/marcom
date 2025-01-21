@@ -1703,7 +1703,12 @@ function loadRecentSalesData({ spreadsheetId, sheetName, targetElement }) {
   ])
     .then(([response1, response2]) => {
       const combinedData = response1.values.map((row, index) => {
-        const colGValue = response2.values[index]?.[0] || '';
+        // Ensure colGValue is either a valid value or a safe default
+        let colGValue = response2.values[index]?.[0];
+        if (colGValue == null || colGValue.trim() === "") {
+          colGValue = ""; // Default to empty string if it's null, undefined, or empty
+        }
+
         return [...row, colGValue];
       });
 
