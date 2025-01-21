@@ -88,9 +88,10 @@ async function recentSalesData(dataArray, client) {
       }
 
       // Check if column G (index 3) is empty, blank, or null, and insert the <span> element
-      if (!row[3] || row[3].trim() === "") {
-        row[3] = '<span class="badge bg-warning">Order Received</span>';
-      } 
+     if (row[3] == null || row[3].trim() === "") {
+  row[3] = '<span class="badge bg-warning">Order Received</span>';
+}
+
 
 
       // Return the processed row with productName
