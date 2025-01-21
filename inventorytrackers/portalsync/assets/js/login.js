@@ -18,7 +18,6 @@ const users = [
 
 // Define page permissions
 const pagePermissions = {
-  "index.html": ["admin", "warehouse", "lprice", "molson", "acharles"],
   "tracker-mister.html": ["admin", "warehouse", "lprice"], // Admin and lprice roles
   "tracker-siet.html": ["admin", "warehouse", "lprice"], // Admin and lprice roles
   "tracker-tmc.html": ["admin", "warehouse", "molson"], // Admin and molson roles
@@ -40,7 +39,7 @@ function checkAuthentication() {
   // If the user is already logged in and navigates to the login page
   if (userRole && currentPage === "login.html") {
     alert("You are already logged in.");
-    const lastPage = sessionStorage.getItem("lastValidPage") || "index.html";
+    const lastPage = sessionStorage.getItem("lastValidPage") || "dashboard.html";
     window.location.href = lastPage; // Redirect to last valid page or homepage
     return;
   }
@@ -67,7 +66,7 @@ function checkAuthorization() {
   if (!userRole || !allowedRoles.includes(userRole)) {
     alert("You do not have permission to access this page.");
     const lastPage = sessionStorage.getItem("lastValidPage") || "login.html";
-    window.location.href = lastPage; // Redirect to the last valid page or default to index.html
+    window.location.href = lastPage; // Redirect to the last valid page or default to dashboard.html
   } else {
     // Save the current page as the last valid page
     sessionStorage.setItem("lastValidPage", currentPage);
@@ -88,7 +87,7 @@ document.getElementById("loginForm")?.addEventListener("submit", (e) => {
    // alert("Login successful!");
     sessionStorage.setItem("userRole", user.role);
     sessionStorage.setItem("userFullName", user.fullName); // Save user's full name
-    window.location.href = "index.html"; // Redirect to main page
+    window.location.href = "dashboard.html"; // Redirect to main page
   } else {
     alert("Invalid credentials. Please try again.");
   }
