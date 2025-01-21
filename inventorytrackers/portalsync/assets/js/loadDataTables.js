@@ -11,6 +11,8 @@ async function adminData(dataArray,client) {
       jsonDataUrl = "assets/json/westpressinventory-producthumbsource.json";
     } else if (client === "TMC") {
       jsonDataUrl = "assets/json/tmc-producthumbsource.json";
+    } else if (client === "Northwest Medical Center") {
+      jsonDataUrl = "assets/json/nmc-producthumbsource.json";
     } else {
       throw new Error("Invalid client specified");
     }
