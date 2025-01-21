@@ -85,11 +85,14 @@ async function recentSalesData(dataArray, client) {
         productName = productName.substring(0, 67) + "...";
       }
 
-      // Replace "-" in column G (index 3) with the specified <span> element
-      if (row[3] === "") {
-        row[3] = '<span class="badge bg-warning">Order Received</span>';
-      }
-      else{row[3] = '-';}
+      // Check if column G (index 3) is empty, blank, or null, and insert the <span> element
+if (!row[3] || row[3].trim() === "") {
+  row[3] = '<span class="badge bg-warning">Order Received</span>';
+} else {
+  // If the cell is not empty, blank, or null, leave it as is or perform other logic
+  row[3] = '-';
+}
+
 
       // Return the processed row with productName
       return {
