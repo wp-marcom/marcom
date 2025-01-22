@@ -1652,11 +1652,11 @@ const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
 function loadRecentSalesData({ spreadsheetId, sheetName, targetElement }) {
   const client = "Westpress Inventory";
 
-  const range1 = `${sheetName}!A2:C`;
-  const range2 = `${sheetName}!G2:G`;
+  const range1 = ${sheetName}!A2:C;
+  const range2 = ${sheetName}!G2:G;
 
-  const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
-  const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
+  const url1 = ${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey};
+  const url2 = ${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey};
 
   return Promise.all([
     fetch(url1).then((res) => res.json()),
@@ -1664,12 +1664,7 @@ function loadRecentSalesData({ spreadsheetId, sheetName, targetElement }) {
   ])
     .then(([response1, response2]) => {
       const combinedData = response1.values.map((row, index) => {
-        // Ensure colGValue is either a valid value or a safe default
-        let colGValue = response2.values[index]?.[0];
-        if (colGValue == null || colGValue.trim() === "") {
-          colGValue = ""; // Default to empty string if it's null, undefined, or empty
-        }
-
+        const colGValue = response2.values[index]?.[0] || '';
         return [...row, colGValue];
       });
 
@@ -1678,8 +1673,7 @@ function loadRecentSalesData({ spreadsheetId, sheetName, targetElement }) {
           combinedData.map((row) => [row.slice(0, 3).join('|'), row])
         ).values()
       );
-console.log("Combined Data:", combinedData);
-console.log("Unique Data:", uniqueData);
+
       return recentSalesData(uniqueData, client);
     })
     .then((processedData) => {
