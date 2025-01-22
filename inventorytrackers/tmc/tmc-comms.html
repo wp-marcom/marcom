@@ -114,7 +114,7 @@
     <!-- Last modified date -->
     <div style="margin-left: auto; margin-right: 6rem;">
         <p id="last-modified"></p><!-- Element to display last modified date -->
-        <button class="btn"><i class="fa fa-download"></i><a href="https://docs.google.com/spreadsheets/d/1V6xLsirG0mPr1MrFmJDGwU0vg7zsi5gn7kqlbHrf594/export?format=xlsx&gid=458349679">Download</a></button>
+        <button class="btn"><i class="fa fa-download"></i><a href="https://docs.google.com/spreadsheets/d/1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU/export?format=xlsx&gid=1796953901">Download</a></button>
     </div>
 </div>
 <div class="container">
@@ -127,8 +127,17 @@
 </div>
 
 <script>
+       const spreadsheetId = "1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU";
+const sheetName = "TMC Communications";
+const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
+
+// Construct the fetch URL dynamically
+const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
+const range = `${sheetName}!A2:J`; // Define the range
+const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
+    
     // Fetch data from Google Sheets API
-    fetch("https://sheets.googleapis.com/v4/spreadsheets/1V6xLsirG0mPr1MrFmJDGwU0vg7zsi5gn7kqlbHrf594/values/TMC Communications!A2:J?alt=json&key=AIzaSyD6pzfDZqNZNcwmj3wNlyJ-oXmVXFL93fI")
+    fetch(url)
         .then(response => response.json())
         .then(data => {
             const rows = data.values || []; // Extract rows from the response (if available)
