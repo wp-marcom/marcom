@@ -90,9 +90,26 @@ async function recentSalesData(dataArray, client) {
       }
 
       // Check if column G (index 3) is empty, blank, or null, and insert the <span> element
-     if (row[3].trim() === "Order Received") {
-  row[3] = '<span class="badge bg-warning">Order Received</span>';
+    if (row[3].trim() === "Order Received") {
+    row[3] = '<span class="badge bg-warning">Order Received</span>';
+    }
+ else if (/\d/.test(row[3].trim())) {
+  // Split the value into individual numbers using "," as the delimiter
+  const numbers = row[3].trim().split(",");
+
+  // Map each number to a clickable link wrapped in the desired span
+  const links = numbers.map(number => {
+    const trimmedNumber = number.trim();
+    return `<a href="https://www.fedex.com/fedextrack/?trknbr=${trimmedNumber}" target="_blank">
+              <span class="bi bi-archive-fill">${trimmedNumber}</span>
+            </a>`;
+  });
+
+  // Join the links with a comma (or any other separator you prefer)
+  row[3] = links.join(", ");
 }
+
+
 
 
 
