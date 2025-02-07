@@ -29,9 +29,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .panel-title {
     padding: 1rem 3rem 3.25rem;
     border-radius: 10px;
     background: #fff;
-    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,104,180,0.35);
-    -moz-box-shadow: 0px 3px 5px 0px rgba(0,104,180,0.35);
-    box-shadow: 0px 3px 5px 0px rgba(0,104,180,0.35);
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(84,31,70,0.4);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(84,31,70,0.4);
+    box-shadow: 0px 3px 5px 0px rgba(84,31,70,0.4);
 }
 .form-signin .form-signin-heading, .form-signin .checkbox {
     position: relative;
