@@ -60,12 +60,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .panel-title {
 .form-signin h2.custom-heading {
     margin: 1.5rem auto;
     padding: 1.5rem 0;
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     text-align: center;
-    text-transform: uppercase;
-    color: #003764;
-    border-top: 1px solid #e7e7e7;
-    border-bottom: 1px solid #e7e7e7;
+    color: #541f46;
 }
 
 a[href^="/SelfRegistration/"] {
@@ -129,8 +126,8 @@ textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
 
 .btn-primary {
     position: relative;
-    background-color: #236198;
-    border-color: #236198;
+    background-color: #541f46;
+    border-color: #541f46;
     width: 60%;
     margin: auto;
     border-radius: 5px;
@@ -188,7 +185,7 @@ footer.page-footer {
 }
 footer.page-footer:before {
     display: inline;
-    content: "Â© Copyright 2023 Company Name. All Rights Reserved.";
+    content: "WestPress. All Rights Reserved.";
 }
 footer.page-footer > a {
     display: none;
