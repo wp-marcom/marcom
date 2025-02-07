@@ -71,8 +71,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .panel-title {
 }
 .form-signin h2.custom-heading {
     margin: 1.5rem auto;
-    padding: 1.5rem 0;
-    font-size: 1.7rem;
+    padding: 0rem 0;
+    font-size: 1.8rem;
     text-align: center;
     color: #541f46;
 }
