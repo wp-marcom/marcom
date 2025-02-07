@@ -53,7 +53,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .panel-title {
     height: 0;
     overflow: hidden;
     margin: .35em auto 1em;
-    padding: 60px 0 0;
+    padding: 0px 0 0;
     text-align: center;
     color: #003764;
 }
