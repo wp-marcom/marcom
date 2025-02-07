@@ -1,0 +1,196 @@
+@charset "UTF-8";
+
+body {
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    color: #545454;
+}
+/*site headings*/
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .panel-title {
+    font-weight: 600;
+    color: #003764;
+}
+
+.container {
+    max-width: none;
+    height: calc(100vh - 95px);
+    min-height: 460px;
+    position: relative;
+}
+.form-signin {
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
+    max-width: 450px;
+    margin: 2.5em auto;
+    padding: 1rem 3rem 3.25rem;
+    border-radius: 10px;
+    background: #fff;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,104,180,0.35);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,104,180,0.35);
+    box-shadow: 0px 3px 5px 0px rgba(0,104,180,0.35);
+}
+.form-signin .form-signin-heading, .form-signin .checkbox {
+    position: relative;
+    z-index: 2;
+}
+.form-signin .form-signin-heading {
+    height: 0;
+    overflow: hidden;
+    margin: .35em auto 1em;
+    padding: 60px 0 0;
+    text-align: center;
+    color: #003764;
+}
+.form-signin-heading:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    max-height: 60px;
+    content: "";
+    background: url("../img/common/westpress_login_logo.svg") no-repeat top center / contain;
+    z-index: 5;
+}
+.form-signin h2.custom-heading {
+    margin: 1.5rem auto;
+    padding: 1.5rem 0;
+    font-size: 1.4rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: #003764;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+a[href^="/SelfRegistration/"] {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+a[href^="/SelfRegistration/"] > span {
+    display: none;
+}
+a[href^="/SelfRegistration/"]:before {
+    display: inline-block;
+    content: "Register";
+}
+a[href^="/SelfRegistration/"]:hover:before {
+    text-decoration: underline;
+}
+
+input#Username {
+    margin-bottom: 10px;
+}
+
+.form-control {
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #f3f3f3;
+    border-radius: 5px !important;
+    color: #777;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #f3f3f3 inset !important;
+    /*use inset box-shadow to cover background-color*/
+    -webkit-text-fill-color: #777 !important;
+    /*use text fill color to cover font color*/
+}
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #777;
+  opacity: 1; /* Firefox */
+}
+.form-control:focus {
+    background-color: #f3f3f3;
+    border-color: #b1d1e5;
+    box-shadow: 0 0 0 0.2rem rgba(0,104,180,.25);
+    color: #003764;
+}
+input:-webkit-autofill:focus input:-webkit-autofill,
+input:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:hover,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
+    -webkit-text-fill-color: #003764;
+    -webkit-box-shadow: 0 0 0 1000px #f3f3f3 inset;
+    transition: background-color 5000s ease-in-out;
+}
+.form-control.danger.focus, .form-control.danger:focus, .is-invalid .form-control.focus, .is-invalid .form-control:focus {
+    box-shadow: 0 0 6px 0.1rem rgb(204 17 79 / 30%) !important;
+}
+
+.btn-primary {
+    position: relative;
+    background-color: #236198;
+    border-color: #236198;
+    width: 60%;
+    margin: auto;
+    border-radius: 5px;
+}
+.btn-primary.hover, .btn-primary:hover {
+    background: #003764;
+    border-color: #003764;
+}
+
+.btn-primary.focus, .btn-primary:focus, .btn-primary:not([disabled]):not(.disabled).active, .btn-primary:not([disabled]):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+    background-color: #003764;
+    border-color: #003764;
+    box-shadow: 0 0 0 0.2rem rgba(0,104,180,.35);
+}
+
+button[type="submit"]+a {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
+a {color:#236198}
+a:hover {color:#003764}
+
+
+.login_footer {
+    position: absolute;
+    bottom: -200px;
+    left: 0;
+    right: 0;
+    background: #ececec;
+}
+.foot_text {
+    margin: auto;
+    padding: 3em 2em;
+}
+.foot_text h3 {
+    position: relative;
+    font-size: 2.25em;
+    text-align: center;
+    text-transform: uppercase;
+    color: #333;
+}
+.foot_text p {text-align: center;}
+.foot_text a.btn {max-width: 250px;}
+
+
+/*footer*/
+footer.page-footer {
+    display: block !important;
+    position: relative;
+    background-color: transparent !important;
+    color: #8a8a8a !important;
+    font-size: .75rem;
+    padding: 15px;
+}
+footer.page-footer:before {
+    display: inline;
+    content: "Â© Copyright 2023 Company Name. All Rights Reserved.";
+}
+footer.page-footer > a {
+    display: none;
+}
+
