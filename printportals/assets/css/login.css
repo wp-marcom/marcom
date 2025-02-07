@@ -14,6 +14,18 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .panel-title {
     color: #003764;
 }
 
+.floating-logo {
+    content: "";
+    position: absolute;
+    top: -80px; /* Moves logo above the container */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;  /* Adjust logo size */
+    height: 60px;
+    background: url("../img/common/westpress_login_logo.svg") no-repeat center / contain;
+    z-index: 10;
+}
+
 .container {
     max-width: none;
     height: calc(100vh - 95px);
