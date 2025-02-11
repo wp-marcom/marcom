@@ -1,6 +1,8 @@
 @charset "UTF-8";
-
 body {
+  background: url('https://www.toptal.com/designers/subtlepatterns/uploads/crossword.png') repeat; /* Replace with your actual image URL */
+  background-size: 400px 400px; /* Ensures the pattern repeats properly */
+  position: relative;
     padding-top: 0;
     padding-bottom: 0;
     font-size: 14px;
@@ -8,6 +10,19 @@ body {
     text-rendering: optimizeLegibility;
     color: #545454;
 }
+
+/* Tint overlay that ONLY affects the background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: #541F46; /* Tint color */
+  opacity: 0.1; /* Adjust intensity */
+  pointer-events: none; /* Prevents interaction */
+  z-index: -1; /* Keeps it behind all content */
+}
+
+
 /*site headings*/
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .panel-title {
     font-weight: 600;
