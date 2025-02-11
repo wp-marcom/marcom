@@ -145,8 +145,8 @@ textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
     border-radius: 5px;
 }
 .btn-primary.hover, .btn-primary:hover {
-    background: #2A1023;
-    border-color: #2A1023;
+    background: #431938;
+    border-color: #431938;
 }
 
 .btn-primary.focus, .btn-primary:focus, .btn-primary:not([disabled]):not(.disabled).active, .btn-primary:not([disabled]):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
