@@ -118,9 +118,9 @@ select:-webkit-autofill {
   opacity: 1; /* Firefox */
 }
 .form-control:focus {
-    background-color: #f3f3f3;
-    border-color: #b1d1e5;
-    box-shadow: 0 0 0 0.2rem rgba(0,104,180,.25);
+  background-color: #F7E9E9;
+  border-color: #E1A6A8;
+  box-shadow: 0 0 0 0.2rem rgba(179,32,37,.35);
     color: #003764;
 }
 input:-webkit-autofill:focus input:-webkit-autofill,
