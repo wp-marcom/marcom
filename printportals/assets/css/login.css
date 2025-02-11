@@ -1,4 +1,13 @@
 @charset "UTF-8";
+
+:root {
+  --primary-color: #541F46;  /* Change this per client */
+  --primary-color-rgb: 84, 31, 70;  /* RGB version */
+  --secondary-color: #B32025;
+  --secondary-color-rgb: 179, 32, 37;  /* RGB version */
+}
+
+
 body {
   background: url('https://www.toptal.com/designers/subtlepatterns/uploads/crossword.png') repeat; /* Replace with your actual image URL */
   background-size: 400px 400px; /* Ensures the pattern repeats properly */
@@ -8,7 +17,7 @@ body {
     font-size: 14px;
     font-weight: 400;
     text-rendering: optimizeLegibility;
-    color: #545454;
+    color: var(--primary-color);
 }
 
 /* Tint overlay that ONLY affects the background */
@@ -16,7 +25,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: #541F46; /* Tint color */
+  background: var(--primary-color); /* Tint color */
   opacity: 0.1; /* Adjust intensity */
   pointer-events: none; /* Prevents interaction */
   z-index: -1; /* Keeps it behind all content */
@@ -56,9 +65,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .panel-title {
     padding: 1rem 3rem 3.25rem;
     border-radius: 10px;
     background: #fff;
-    -webkit-box-shadow: 0px 3px 5px 0px rgba(84,31,70,0.4);
-    -moz-box-shadow: 0px 3px 5px 0px rgba(84,31,70,0.4);
-    box-shadow: 0px 3px 5px 0px rgba(84,31,70,0.4);
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(var(--primary-color-rgb), 0.4);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(var(--primary-color-rgb), 0.4);
+    box-shadow: 0px 3px 5px 0px rgba(var(--primary-color-rgb), 0.4);
 }
 .form-signin .form-signin-heading, .form-signin .checkbox {
     position: relative;
@@ -89,7 +98,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .panel-title {
     padding: 0rem 0;
     font-size: 1.8rem;
     text-align: center;
-    color: #541f46;
+    color: var(--primary-color);
 }
 
 a[href^="/SelfRegistration/"] {
@@ -116,7 +125,7 @@ input#Username {
 .form-control {
     margin: 10px auto;
     padding: 10px 20px;
-    background-color: #EEE9ED;
+    background-color: rgba(var(--primary-color-rgb), 0.1);
     border-radius: 5px !important;
     color: #777;
 }
@@ -133,9 +142,9 @@ select:-webkit-autofill {
   opacity: 1; /* Firefox */
 }
 .form-control:focus {
-  background-color: #F7E9E9;
-  border-color: #E1A6A8;
-  box-shadow: 0 0 0 0.2rem rgba(179,32,37,.25);
+  background-color: rgba(var(--secondary-color-rgb), 0.1);
+  border-color: rgba(var(--secondary-color-rgb), 0.4);
+  box-shadow: 0 0 0 0.2rem rgba(var(--secondary-color-rgb), 0.25);
     color: #003764;
 }
 input:-webkit-autofill:focus input:-webkit-autofill,
@@ -153,15 +162,15 @@ textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
 
 .btn-primary {
     position: relative;
-    background-color: #541f46;
-    border-color: #541f46;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
     width: 60%;
     margin: auto;
     border-radius: 5px;
 }
 .btn-primary.hover, .btn-primary:hover {
-    background: #431938;
-    border-color: #431938;
+    background: rgba(var(--primary-color-rgb), 0.8);
+    border-color: rgba(var(--primary-color-rgb), 0.8);
 }
 
 .btn-primary.focus, .btn-primary:focus, .btn-primary:not([disabled]):not(.disabled).active, .btn-primary:not([disabled]):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
