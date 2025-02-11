@@ -120,7 +120,7 @@ select:-webkit-autofill {
 .form-control:focus {
   background-color: #F7E9E9;
   border-color: #E1A6A8;
-  box-shadow: 0 0 0 0.2rem rgba(179,32,37,.35);
+  box-shadow: 0 0 0 0.2rem rgba(179,32,37,.25);
     color: #003764;
 }
 input:-webkit-autofill:focus input:-webkit-autofill,
