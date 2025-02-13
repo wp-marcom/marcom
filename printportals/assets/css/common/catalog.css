@@ -338,31 +338,7 @@ carousel.categories-carousel {
 }
 @media (min-width: 992px) {
 
-/* This stuff below controls folders inside of folders */
-.custom-category-card.col-lg-4 {
-    -ms-flex: 0 0 16.66%;
-    -webkit-box-flex: 0;
-    flex: 0 0 16.66%;
-    max-width: 16.66%;
-}
 
-[class*="mcc-parent-folder"] .card-img-holder {
-    min-height: 45px;
-}
-
-[class*="mcc-parent-folder"] .category-card .card-title {
-  display: -webkit-box;
-    -webkit-line-clamp: 2; /* Number of lines before truncating */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-height: 8rem; /* Adjust based on font size */
-    line-height: 1rem; /* Adjust spacing between lines */
-  
-  font-size: .9rem
-
-} 
-/* This stuff above controls folders inside of folders */
 	
     
     .card-title {
@@ -435,6 +411,35 @@ display: -webkit-box;
         background-color:transparent;
         border: none;
     }
+
+/* This stuff below controls folders inside of folders */
+.custom-category-card.col-lg-4 {
+    -ms-flex: 0 0 16.66%;
+    -webkit-box-flex: 0;
+    flex: 0 0 16.66%;
+    max-width: 16.66%;
+}
+
+[class*="mcc-parent-folder"] .card-img-holder {
+    min-height: 45px;
+}
+
+[class*="mcc-parent-folder"] .category-card .card-title {
+  display: -webkit-box;
+    -webkit-line-clamp: 2; /* Number of lines before truncating */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 8rem; /* Adjust based on font size */
+    line-height: 1rem; /* Adjust spacing between lines */
+  
+  font-size: .9rem
+
+} 
+/* This stuff above controls folders inside of folders */
+
+
+	
 }
 
 /* LIVE category card photo image backgrounds and icons */
