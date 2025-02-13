@@ -406,7 +406,10 @@ display: -webkit-box;
         height: 1px;
         background-color: #ebebeb;
     }
-    .product-card .card-title {font-size: 1.15rem}
+    .product-card .card-title {
+	    font-size: 1rem;
+	    line-height: 1rem;
+    }
     mcc-sorting-and-paging .page-link {
         background-color:transparent;
         border: none;
