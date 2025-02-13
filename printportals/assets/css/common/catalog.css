@@ -412,7 +412,7 @@ display: -webkit-box;
         border: none;
     }
 
-/* This stuff below controls folders inside of folders */
+/* This stuff below controls folders inside of folders 
 .custom-category-card.col-lg-4 {
     -ms-flex: 0 0 16.66%;
     -webkit-box-flex: 0;
@@ -426,12 +426,12 @@ display: -webkit-box;
 
 [class*="mcc-parent-folder"] .category-card .card-title {
   display: -webkit-box;
-    -webkit-line-clamp: 2; /* Number of lines before truncating */
+    -webkit-line-clamp: 2; /* Number of lines before truncating 
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-height: 8rem; /* Adjust based on font size */
-    line-height: 1rem; /* Adjust spacing between lines */
+    max-height: 8rem; /* Adjust based on font size 
+    line-height: 1rem; /* Adjust spacing between lines 
   
   font-size: .9rem
 
