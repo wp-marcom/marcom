@@ -153,8 +153,8 @@ mcc-category-card .card-body {
 .product-card .card-infobox {
     height: 100%;
     position: relative;
-    margin-bottom: 30px;
-    padding-bottom: 30px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 mcc-ratings-read-only {
     position: absolute;
