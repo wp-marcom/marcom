@@ -334,7 +334,7 @@ carousel.categories-carousel {
         width: 40px;
         height: 40px;
     }
-    mcc-category-card .category-card .card-title {font-size: 1.0rem;}
+    mcc-category-card .category-card .card-title {font-size: 1.1rem;}
 }
 @media (min-width: 992px) {
     
@@ -345,7 +345,7 @@ display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
     max-height: 4rem; /* Adjust based on font size */
-    line-height: 1.2rem; /* Adjust spacing between lines */
+    line-height: 1.5rem; /* Adjust spacing between lines */
 }
     
     
@@ -375,7 +375,7 @@ display: -webkit-box;
     }
 
     .category-card .card-img-holder {
-        max-height: 50px;
+        max-height: 45px;
     }
     .category-card .card-img-holder img {
         max-height: 120px;
