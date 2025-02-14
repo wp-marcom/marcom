@@ -447,23 +447,23 @@ display: -webkit-box;
 
 /* LIVE category card photo image backgrounds and icons */
 /* brochures & flyers */
-.mcc-folder-1875219 .category-card {background: #5c6977 url(../images/categories/photos/Brochures-&-Flyers.jpg) no-repeat bottom left / cover;}
-.mcc-folder-1875219 .category-card .card-img-holder:before {background-image: url(../images/categories/brochures_and_flyers_v1.svg?v=1.2)}
+.mcc-folder-3156991 .category-card {background: #5c6977 url(../images/categories/photos/Brochures-&-Flyers.jpg) no-repeat bottom left / cover;}
+.mcc-folder-3156991 .category-card .card-img-holder:before {background-image: url(../../../img/common/folder.svg)}
 /* presentations */
-.mcc-folder-1875222 .category-card {background: #5c6977 url(../images/categories/photos/Presentations.jpg) no-repeat center / cover;}
-.mcc-folder-1875222 .category-card .card-img-holder:before {background-image: url(../images/categories/presentations_v1.svg?v=1.2)}
+.mcc-folder-2956766 .category-card {background: #5c6977 url(../images/categories/photos/Presentations.jpg) no-repeat center / cover;}
+.mcc-folder-2956766 .category-card .card-img-holder:before {background-image: url(../../../img/common/folder.svg)}
 /* digital delivery */
 .mcc-folder-1875221 .category-card {background: #5c6977 url(../images/categories/photos/Digital-Deliveries.jpg) no-repeat top center / cover;}
-.mcc-folder-1875221 .category-card .card-img-holder:before {background-image: url(../images/categories/digital_deliveries_v1.svg?v=1.2)}
+.mcc-folder-1875221 .category-card .card-img-holder:before {background-image: url(../../../img/common/folder.svg)}
 /* emails */
 .mcc-folder-1875223 .category-card {background: #5c6977 url(../images/categories/photos/Email.jpg) no-repeat bottom right / cover;}
-.mcc-folder-1875223 .category-card .card-img-holder:before {background-image: url(../images/categories/email_v1.svg?v=1.2)}
+.mcc-folder-1875223 .category-card .card-img-holder:before {background-image: url(../../../img/common/folder.svg)}
 /* direct mail */
 .mcc-folder-1875230 .category-card {background: #5c6977 url(../images/categories/photos/Direct-Mail-Campaigns.jpg) no-repeat center right / cover;}
-.mcc-folder-1875230 .category-card .card-img-holder:before {background-image: url(../images/categories/direct_mail_v1.svg?v=1.2)}
+.mcc-folder-1875230 .category-card .card-img-holder:before {background-image: url(../../../img/common/folder.svg)}
 /* salesforce */
 .mcc-folder-1875254 .category-card {background: #5c6977 url(../images/categories/photos/Salesforce-Enabled.jpg) no-repeat top center / cover;}
-.mcc-folder-1875254 .category-card .card-img-holder:before {background-image: url(../images/categories/salesforce_enabled_v1.svg?v=1.2)}
+.mcc-folder-1875254 .category-card .card-img-holder:before {background-image: url(../../../img/common/folder.svg)}
 /* online & print ads */
 .mcc-folder-1875241 .category-card {background: #5c6977 url(../images/categories/photos/Online-&-Print-ADS.jpg) no-repeat center right / cover;}
 .mcc-folder-1875241 .category-card .card-img-holder:before {background-image: url(../images/categories/online_print_ads_v1.svg?v=1.3)}
