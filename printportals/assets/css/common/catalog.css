@@ -12,6 +12,39 @@ mcc-category-card .category-card .card-meta {font-size: .85rem; color: #dbdbdb}
 mcc-category-card .category-card:hover .card-text, mcc-category-card .category-card:hover .card-meta {color: #f2f2fa}
 .product-card:hover .card-text, .product-card:hover .card-meta {color: #545454}
 
+:root {
+  --primary-color: #541F46;  /* Change this per client */
+  --primary-color-rgb: 84, 31, 70;  /* RGB version */
+  --secondary-color: #B32025;
+  --secondary-color-rgb: 179, 32, 37;  /* RGB version */
+}
+
+
+body {
+  background: url('../../img/common/crossword.png') repeat; /* Replace with your actual image URL */
+  background-size: 400px 400px; /* Ensures the pattern repeats properly */
+  position: relative;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    color: var(--primary-color);
+}
+
+/* Tint overlay that ONLY affects the background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--primary-color); /* Tint color */
+  opacity: 0.1; /* Adjust intensity */
+  pointer-events: none; /* Prevents interaction */
+  z-index: -1; /* Keeps it behind all content */
+}
+
+
+
 .card-slider-item, mcc-category-card, .category-search--category-card {
     flex: auto;
     display: flex;
