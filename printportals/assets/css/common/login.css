@@ -46,7 +46,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .panel-title {
     transform: translateX(-50%);
     width: 250px;  /* Adjust logo size */
     height: 60px;
-    background: url("../img/common/westpress_login_logo.svg") no-repeat center / contain;
+    background: url("../../img/common/westpress_login_logo.svg") no-repeat center / contain;
     z-index: 10;
 }
 
