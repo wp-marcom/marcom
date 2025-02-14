@@ -134,10 +134,10 @@ mcc-category-card .category-card:after {
     height: 100%;
     max-height: 100%;
     border-radius: 7px;
-    background: rgb(255 255 255 / 55%);
+    background: rgba(var(--primary-color-rgb), 0.72);
 }
 mcc-category-card .category-card:focus:after, mcc-category-card .category-card:hover:after {
-    background: rgba(46,42,224,0.75);
+    background: rgba(var(--secondary-color-rgb), 0.72);
 }
 
 .product-card {height: 100%}
