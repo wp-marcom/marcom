@@ -74,7 +74,7 @@ mcc-category-card, .category-search--category-card {
 }
 
 mcc-category-card .category-card {
-    background-color: #5c6977;
+    background-color: var(--primary-color);
 }
 .category-card, .product-card {
     border: none;
@@ -112,7 +112,7 @@ mcc-category-card .category-card {
     background-position: top left;
     background-size: contain;
     background: url(../../img/common/standard-folder.svg) no-repeat center / contain;
-    transform: scale(0.8); /* Scale the background image */
+    transform: scale(0.7); /* Scale the background image */
     transform-origin: top left; /* Ensures scaling is anchored at top-left */
 }
 .category-card .card-img-holder img.card-img[src="https://images.printable.com/application/folder.png"], .category-card .card-img-holder img.card-img[src="https://images.printable.com/application/default_product_image.jpg"] {
@@ -134,10 +134,10 @@ mcc-category-card .category-card:after {
     height: 100%;
     max-height: 100%;
     border-radius: 7px;
-    background: rgb(0 0 0 / 55%);
+    background: rgba(var(--primary-color-rgb), 0.75);
 }
 mcc-category-card .category-card:focus:after, mcc-category-card .category-card:hover:after {
-    background: rgba(46,42,224,0.75);
+    background: rgba(var(--secondary-color-rgb), 0.75);
 }
 
 .product-card {height: 100%}
@@ -482,107 +482,107 @@ display: -webkit-box;
 
 /* LIVE category card photo image backgrounds and icons */
 /* brochures & flyers */
-.mcc-folder-3156991 .category-card {background: #5c6977 url(../images/categories/photos/Brochures-&-Flyers.jpg) no-repeat bottom left / cover;}
+.mcc-folder-3156991 .category-card {background: var(--primary-color); url(../images/categories/photos/Brochures-&-Flyers.jpg) no-repeat bottom left / cover;}
 .mcc-folder-3156991 .category-card .card-img-holder:before {background-image: url(../../img/common/folder.svg)}
 /* presentations */
-.mcc-folder-2956766 .category-card {background: #5c6977 url(https://images.printable.com/printonelogos/images/895/5913/folders/2956766/de665160-b21b-4859-88c2-cd85d0131f40.png) no-repeat center / cover;}
+.mcc-folder-2956766 .category-card {background: var(--primary-color); url(https://images.printable.com/printonelogos/images/895/5913/folders/2956766/de665160-b21b-4859-88c2-cd85d0131f40.png) no-repeat center / cover;}
 .mcc-folder-2956766 .category-card .card-img-holder:before {background-image: url(../../img/common/folder.svg)}
 /* digital delivery */
-.mcc-folder-1875221 .category-card {background: #5c6977 url(../images/categories/photos/Digital-Deliveries.jpg) no-repeat top center / cover;}
+.mcc-folder-1875221 .category-card {background: var(--primary-color); url(../images/categories/photos/Digital-Deliveries.jpg) no-repeat top center / cover;}
 .mcc-folder-1875221 .category-card .card-img-holder:before {background-image: url(../../img/common/folder.svg)}
 /* emails */
-.mcc-folder-1875223 .category-card {background: #5c6977 url(../images/categories/photos/Email.jpg) no-repeat bottom right / cover;}
+.mcc-folder-1875223 .category-card {background: var(--primary-color); url(../images/categories/photos/Email.jpg) no-repeat bottom right / cover;}
 .mcc-folder-1875223 .category-card .card-img-holder:before {background-image: url(../../img/common/folder.svg)}
 /* direct mail */
-.mcc-folder-1875230 .category-card {background: #5c6977 url(../images/categories/photos/Direct-Mail-Campaigns.jpg) no-repeat center right / cover;}
+.mcc-folder-1875230 .category-card {background: var(--primary-color); url(../images/categories/photos/Direct-Mail-Campaigns.jpg) no-repeat center right / cover;}
 .mcc-folder-1875230 .category-card .card-img-holder:before {background-image: url(../../img/common/folder.svg)}
 /* salesforce */
-.mcc-folder-1875254 .category-card {background: #5c6977 url(../images/categories/photos/Salesforce-Enabled.jpg) no-repeat top center / cover;}
+.mcc-folder-1875254 .category-card {background: var(--primary-color); url(../images/categories/photos/Salesforce-Enabled.jpg) no-repeat top center / cover;}
 .mcc-folder-1875254 .category-card .card-img-holder:before {background-image: url(../../img/common/folder.svg)}
 /* online & print ads */
-.mcc-folder-1875241 .category-card {background: #5c6977 url(../images/categories/photos/Online-&-Print-ADS.jpg) no-repeat center right / cover;}
+.mcc-folder-1875241 .category-card {background: var(--primary-color); url(../images/categories/photos/Online-&-Print-ADS.jpg) no-repeat center right / cover;}
 .mcc-folder-1875241 .category-card .card-img-holder:before {background-image: url(../images/categories/online_print_ads_v1.svg?v=1.3)}
 /* stationery */
-.mcc-folder-1875246 .category-card {background: #5c6977 url(../images/categories/photos/Stationery.jpg) no-repeat center right / cover;}
+.mcc-folder-1875246 .category-card {background: var(--primary-color); url(../images/categories/photos/Stationery.jpg) no-repeat center right / cover;}
 .mcc-folder-1875246 .category-card .card-img-holder:before {background-image: url(../images/categories/stationery_v1.svg?v=1.3)}
 /* kits */
-.mcc-folder-1875248 .category-card {background: #5c6977 url(../images/categories/photos/Kits.jpg) no-repeat top center / cover;}
+.mcc-folder-1875248 .category-card {background: var(--primary-color); url(../images/categories/photos/Kits.jpg) no-repeat top center / cover;}
 .mcc-folder-1875248 .category-card .card-img-holder:before {background-image: url(../images/categories/kits_v1.svg?v=1.3)}
 /* social media */
-.mcc-folder-1875243 .category-card {background: #5c6977 url(../images/categories/photos/Social-Media.jpg) no-repeat top center / cover;}
+.mcc-folder-1875243 .category-card {background: var(--primary-color); url(../images/categories/photos/Social-Media.jpg) no-repeat top center / cover;}
 .mcc-folder-1875243 .category-card .card-img-holder:before {background-image: url(../images/categories/social_media_v1.svg?v=1.3)}
 /* promotional products */
-.mcc-folder-1875244 .category-card {background: #5c6977 url(../images/categories/photos/Promotional-Products.jpg) no-repeat top center / cover;}
+.mcc-folder-1875244 .category-card {background: var(--primary-color); url(../images/categories/photos/Promotional-Products.jpg) no-repeat top center / cover;}
 .mcc-folder-1875244 .category-card .card-img-holder:before {background-image: url(../images/categories/promotional_v1.svg?v=1.3)}
 /* proposals */
-.mcc-folder-1875264 .category-card {background: #5c6977 url(../images/categories/photos/Proposals.jpg?v=1.2) no-repeat top center / cover;}
+.mcc-folder-1875264 .category-card {background: var(--primary-color); url(../images/categories/photos/Proposals.jpg?v=1.2) no-repeat top center / cover;}
 .mcc-folder-1875264 .category-card .card-img-holder:before {background-image: url(../images/categories/proposals_v1.svg?v=1.3)}
 /* upload your design */
-.mcc-folder-1875249 .category-card {background: #5c6977 url(../images/categories/photos/Upload-Design.jpg) no-repeat top center / cover;}
+.mcc-folder-1875249 .category-card {background: var(--primary-color); url(../images/categories/photos/Upload-Design.jpg) no-repeat top center / cover;}
 .mcc-folder-1875249 .category-card .card-img-holder:before {background-image: url(../images/categories/upload_design_v1.svg?v=1.3)}
 /* examples */
-.mcc-folder-1875255 .category-card {background: #5c6977 url(../images/categories/photos/Examples.jpg?v=1.2) no-repeat top center / cover;}
+.mcc-folder-1875255 .category-card {background: var(--primary-color); url(../images/categories/photos/Examples.jpg?v=1.2) no-repeat top center / cover;}
 .mcc-folder-1875255 .category-card .card-img-holder:before {background-image: url(../images/categories/examples_v1.svg?v=1.3)}
 /* video */
-.mcc-folder-1875252 .category-card {background: #5c6977 url(../images/categories/photos/Video.jpg) no-repeat top center / cover;}
+.mcc-folder-1875252 .category-card {background: var(--primary-color); url(../images/categories/photos/Video.jpg) no-repeat top center / cover;}
 .mcc-folder-1875252 .category-card .card-img-holder:before {background-image: url(../images/categories/video_v1.svg?v=1.3)}
 /* product request */
-.mcc-folder-1875247 .category-card {background: #5c6977 url(../images/categories/photos/Product-Request.jpg?v=1.2) no-repeat top center / cover;}
+.mcc-folder-1875247 .category-card {background: var(--primary-color); url(../images/categories/photos/Product-Request.jpg?v=1.2) no-repeat top center / cover;}
 .mcc-folder-1875247 .category-card .card-img-holder:before {background-image: url(../images/categories/product_request_v1.svg?v=1.3)}
 /* faqs */
-.mcc-folder-3063625 .category-card {background: #5c6977 url(../images/categories/photos/FAQs.jpg) no-repeat top center / cover;}
+.mcc-folder-3063625 .category-card {background: var(--primary-color); url(../images/categories/photos/FAQs.jpg) no-repeat top center / cover;}
 .mcc-folder-3063625 .category-card .card-img-holder:before {background-image: url(../images/categories/FAQs_v1.svg?v=1.3)}
 
 
 /* SANDBOX category card photo image backgrounds and icons */
 /* brochures & flyers */
-.mcc-folder-2923067 .category-card {background: #5c6977 url(../images/categories/photos/Brochures-&-Flyers.jpg) no-repeat bottom left / cover;}
+.mcc-folder-2923067 .category-card {background: var(--primary-color); url(../images/categories/photos/Brochures-&-Flyers.jpg) no-repeat bottom left / cover;}
 .mcc-folder-2923067 .category-card .card-img-holder:before {background-image: url(../images/categories/brochures_and_flyers_v1.svg?v=1.2)}
 /* presentations */
-.mcc-folder-2923068 .category-card {background: #5c6977 url(../images/categories/photos/Presentations.jpg) no-repeat center / cover;}
+.mcc-folder-2923068 .category-card {background: var(--primary-color); url(../images/categories/photos/Presentations.jpg) no-repeat center / cover;}
 .mcc-folder-2923068 .category-card .card-img-holder:before {background-image: url(../images/categories/presentations_v1.svg?v=1.2)}
 /* digital delivery */
-.mcc-folder-2923070 .category-card {background: #5c6977 url(../images/categories/photos/Digital-Deliveries.jpg) no-repeat top center / cover;}
+.mcc-folder-2923070 .category-card {background: var(--primary-color); url(../images/categories/photos/Digital-Deliveries.jpg) no-repeat top center / cover;}
 .mcc-folder-2923070 .category-card .card-img-holder:before {background-image: url(../images/categories/digital_deliveries_v1.svg?v=1.2)}
 /* emails */
-.mcc-folder-2923069 .category-card {background: #5c6977 url(../images/categories/photos/Email.jpg) no-repeat bottom right / cover;}
+.mcc-folder-2923069 .category-card {background: var(--primary-color); url(../images/categories/photos/Email.jpg) no-repeat bottom right / cover;}
 .mcc-folder-2923069 .category-card .card-img-holder:before {background-image: url(../images/categories/email_v1.svg?v=1.2)}
 /* direct mail */
-.mcc-folder-2923071 .category-card {background: #5c6977 url(../images/categories/photos/Direct-Mail-Campaigns.jpg) no-repeat center right / cover;}
+.mcc-folder-2923071 .category-card {background: var(--primary-color); url(../images/categories/photos/Direct-Mail-Campaigns.jpg) no-repeat center right / cover;}
 .mcc-folder-2923071 .category-card .card-img-holder:before {background-image: url(../images/categories/direct_mail_v1.svg?v=1.2)}
 /* salesforce */
-.mcc-folder-2923085 .category-card {background: #5c6977 url(../images/categories/photos/Salesforce-Enabled.jpg) no-repeat top center / cover;}
+.mcc-folder-2923085 .category-card {background: var(--primary-color); url(../images/categories/photos/Salesforce-Enabled.jpg) no-repeat top center / cover;}
 .mcc-folder-2923085 .category-card .card-img-holder:before {background-image: url(../images/categories/salesforce_enabled_v1.svg?v=1.2)}
 /* online and print */
-.mcc-folder-2923072 .category-card {background: #5c6977 url(../images/categories/photos/Online-&-Print-ADS.jpg) no-repeat center right / cover;}
+.mcc-folder-2923072 .category-card {background: var(--primary-color); url(../images/categories/photos/Online-&-Print-ADS.jpg) no-repeat center right / cover;}
 .mcc-folder-2923072 .category-card .card-img-holder:before {background-image: url(../images/categories/online_print_ads_v1.svg?v=1.3)}
 /* stationery */
-.mcc-folder-2923078 .category-card {background: #5c6977 url(../images/categories/photos/Stationery.jpg) no-repeat center right / cover;}
+.mcc-folder-2923078 .category-card {background: var(--primary-color); url(../images/categories/photos/Stationery.jpg) no-repeat center right / cover;}
 .mcc-folder-2923078 .category-card .card-img-holder:before {background-image: url(../images/categories/stationery_v1.svg?v=1.3)}
 /* kits */
-.mcc-folder-2923082 .category-card {background: #5c6977 url(../images/categories/photos/Kits.jpg) no-repeat top center / cover;}
+.mcc-folder-2923082 .category-card {background: var(--primary-color); url(../images/categories/photos/Kits.jpg) no-repeat top center / cover;}
 .mcc-folder-2923082 .category-card .card-img-holder:before {background-image: url(../images/categories/kits_v1.svg?v=1.3)}
 /* social media */
-.mcc-folder-2923076 .category-card {background: #5c6977 url(../images/categories/photos/Social-Media.jpg) no-repeat top center / cover;}
+.mcc-folder-2923076 .category-card {background: var(--primary-color); url(../images/categories/photos/Social-Media.jpg) no-repeat top center / cover;}
 .mcc-folder-2923076 .category-card .card-img-holder:before {background-image: url(../images/categories/social_media_v1.svg?v=1.3)}
 /* promotional products */
-.mcc-folder-2923077 .category-card {background: #5c6977 url(../images/categories/photos/Promotional-Products.jpg) no-repeat top center / cover;}
+.mcc-folder-2923077 .category-card {background: var(--primary-color); url(../images/categories/photos/Promotional-Products.jpg) no-repeat top center / cover;}
 .mcc-folder-2923077 .category-card .card-img-holder:before {background-image: url(../images/categories/promotional_v1.svg?v=1.3)}
 /* proposals */
-.mcc-folder-2923087 .category-card {background: #5c6977 url(../images/categories/photos/Proposals.jpg?v=1.2) no-repeat top center / cover;}
+.mcc-folder-2923087 .category-card {background: var(--primary-color); url(../images/categories/photos/Proposals.jpg?v=1.2) no-repeat top center / cover;}
 .mcc-folder-2923087 .category-card .card-img-holder:before {background-image: url(../images/categories/proposals_v1.svg?v=1.3)}
 /* upload your design */
-.mcc-folder-2923083 .category-card {background: #5c6977 url(../images/categories/photos/Upload-Design.jpg) no-repeat top center / cover;}
+.mcc-folder-2923083 .category-card {background: var(--primary-color); url(../images/categories/photos/Upload-Design.jpg) no-repeat top center / cover;}
 .mcc-folder-2923083 .category-card .card-img-holder:before {background-image: url(../images/categories/upload_design_v1.svg?v=1.3)}
 /* examples */
-.mcc-folder-2923086 .category-card {background: #5c6977 url(../images/categories/photos/Examples.jpg?v=1.2) no-repeat top center / cover;}
+.mcc-folder-2923086 .category-card {background: var(--primary-color); url(../images/categories/photos/Examples.jpg?v=1.2) no-repeat top center / cover;}
 .mcc-folder-2923086 .category-card .card-img-holder:before {background-image: url(../images/categories/examples_v1.svg?v=1.3)}
 /* video */
-.mcc-folder-2923084 .category-card {background: #5c6977 url(../images/categories/photos/Video.jpg) no-repeat top center / cover;}
+.mcc-folder-2923084 .category-card {background: var(--primary-color); url(../images/categories/photos/Video.jpg) no-repeat top center / cover;}
 .mcc-folder-2923084 .category-card .card-img-holder:before {background-image: url(../images/categories/video_v1.svg?v=1.3)}
 /* product request */
-.mcc-folder-2923079 .category-card {background: #5c6977 url(../images/categories/photos/Product-Request.jpg?v=1.2) no-repeat top center / cover;}
+.mcc-folder-2923079 .category-card {background: var(--primary-color); url(../images/categories/photos/Product-Request.jpg?v=1.2) no-repeat top center / cover;}
 .mcc-folder-2923079 .category-card .card-img-holder:before {background-image: url(../images/categories/product_request_v1.svg?v=1.3)}
 /* faqs */
-.mcc-folder-3063539 .category-card {background: #5c6977 url(../images/categories/photos/FAQs.jpg) no-repeat top center / cover;}
+.mcc-folder-3063539 .category-card {background: var(--primary-color); url(../images/categories/photos/FAQs.jpg) no-repeat top center / cover;}
 .mcc-folder-3063539 .category-card .card-img-holder:before {background-image: url(../images/categories/FAQs_v1.svg?v=1.3)}
