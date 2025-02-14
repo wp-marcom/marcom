@@ -369,7 +369,7 @@ carousel.categories-carousel {
         width: 40px;
         height: 40px;
     }
-    mcc-category-card .category-card .card-title {font-size: 1.13rem}
+    mcc-category-card .category-card .card-title {font-size: 1.0rem}
 }
 @media (min-width: 992px) {
 
