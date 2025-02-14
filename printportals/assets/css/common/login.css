@@ -9,7 +9,7 @@
 
 
 body {
-  background: url('../img/common/crossword.png') repeat; /* Replace with your actual image URL */
+  background: url('../../img/common/crossword.png') repeat; /* Replace with your actual image URL */
   background-size: 400px 400px; /* Ensures the pattern repeats properly */
   position: relative;
     padding-top: 0;
