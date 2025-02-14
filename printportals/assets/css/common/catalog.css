@@ -112,6 +112,8 @@ mcc-category-card .category-card {
     background-position: top left;
     background-size: contain;
     background: url(../../img/common/standard-folder.svg) no-repeat center / contain;
+    transform: scale(0.8); /* Scale the background image */
+    transform-origin: top left; /* Ensures scaling is anchored at top-left */
 }
 .category-card .card-img-holder img.card-img[src="https://images.printable.com/application/folder.png"], .category-card .card-img-holder img.card-img[src="https://images.printable.com/application/default_product_image.jpg"] {
     padding: 50%;
