@@ -127,7 +127,7 @@ mcc-category-card .card-body {
     z-index: 1;
 }
 
-.card-slider-item .card-title, mcc-categories .card-title {padding-bottom: 5px}
+.card-slider-item .card-title, mcc-categories .card-title {padding-bottom: 0px}
 .category-card .card-title {
     overflow-wrap: break-word;
     word-break: break-word;
