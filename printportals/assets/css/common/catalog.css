@@ -78,7 +78,7 @@ mcc-category-card .category-card {
     background-repeat: no-repeat;
     background-position: top left;
     background-size: contain;
-    background: url(../images/categories/folder.svg) no-repeat center / contain;
+    background: url(../../../img/common/folder.svg) no-repeat center / contain;
 }
 .category-card .card-img-holder img.card-img[src="https://images.printable.com/application/folder.png"], .category-card .card-img-holder img.card-img[src="https://images.printable.com/application/default_product_image.jpg"] {
     padding: 50%;
