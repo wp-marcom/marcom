@@ -1,18 +1,16 @@
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("Script is running!"); // Check if this appears in Console
-});
+(function() {
+    // Wait for the DOM to be fully loaded before running the code
+    document.addEventListener("DOMContentLoaded", function() {
+        // Example company value (this could be dynamically set based on login data)
+        var company = "company1";
+        
+        // Log to verify that the script is running
+        console.log("Setting company to:", company);
 
-document.addEventListener("DOMContentLoaded", function () {
-    // List of image URLs to hide
-    const blockedImages = [
-        "https://images.printable.com/printonelogos/images/895/5913/folders/2956766/de665160-b21b-4859-88c2-cd85d0131f40.png",
-        "https://images.printable.com/some-other-image.jpg"
-    ];
+        // Set the data-company attribute on the body element
+        document.body.setAttribute("data-company", company);
 
-    document.querySelectorAll("img").forEach(img => {
-        if (blockedImages.includes(img.src)) {
-            img.style.display = "none"; // Hide the image
-            img.alt = ""; // Remove alt text
-        }
+        // Log to verify that the attribute is set
+        console.log("data-company attribute set to:", document.body.getAttribute("data-company"));
     });
-});
+})();
