@@ -413,7 +413,7 @@ display: -webkit-box;
     }
 	
     .category-card .card-img-holder {
-        max-height: 40px;
+        max-height: 60px;
     }
     .category-card .card-img-holder img {
         max-height: 120px;
