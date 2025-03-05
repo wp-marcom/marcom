@@ -43,6 +43,17 @@ body::before {
   z-index: -1; /* Keeps it behind all content */
 }
 
+.btn-primary {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.btn-primary.focus, .btn-primary.hover, .btn-primary:focus, .btn-primary:hover, .btn-primary:not([disabled]):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    background: rgba(var(--primary-color-rgb), 0.8);
+    border-color: rgba(var(--primary-color-rgb), 0.8);
+    box-shadow: 0 0 0 0.2rem rgba(255,102,0,.35);
+}
+
 
 
 .card-slider-item, mcc-category-card, .category-search--category-card {
