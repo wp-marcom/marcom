@@ -55,7 +55,7 @@ body::before {
 }
 
 #scrollToTopBtn {color:var(--primary-color); !important;}
-#scrollToTopBtn:hover {var(--secondary-color) !important;}
+#scrollToTopBtn:hover {color:var(--secondary-color); !important;}
 
 
 
