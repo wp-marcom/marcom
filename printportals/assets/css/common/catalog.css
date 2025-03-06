@@ -20,6 +20,21 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
 
 .product-card:hover .card-title {color: var(--secondary-color);}
 
+.navbar-brand {
+    display: block;
+    width: 300px; /* Adjust width to fit the logo */
+    height: 40px; /* Matches the existing height */
+    background-image: url('../../img/common/wp-header.svg'); /* Replace with your logo URL */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Hide the default <img> inside the .navbar-brand if needed */
+.navbar-brand img {
+    display: none;
+}
+
 
 body {
   background: url('../../img/common/crossword.png') repeat; /* Replace with your actual image URL */
