@@ -3,7 +3,6 @@
 .category-card-title, .product-card .card-title {color: #242424}
 mcc-category-card .category-card .card-title {color: #fff}
 mcc-category-card .category-card:hover .card-title {color: #fff}
-.product-card:hover .card-title {color: #2e2ae0}
 .product-card .card-title {font-size: 1.15rem;}
 .product-card .card-title>a:hover {text-decoration: none}
 .card-meta, .card-text {color: #616771}
@@ -18,6 +17,8 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
   --secondary-color: #B32025;
   --secondary-color-rgb: 179, 32, 37;  /* RGB version */
 }
+
+.product-card:hover .card-title {color: var(--secondary-color);}
 
 
 body {
@@ -42,21 +43,6 @@ body::before {
   pointer-events: none; /* Prevents interaction */
   z-index: -1; /* Keeps it behind all content */
 }
-
-.btn-primary {
-    color: #fff;
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-.btn-primary.focus, .btn-primary.hover, .btn-primary:focus, .btn-primary:hover, .btn-primary:not([disabled]):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
-    background: rgba(var(--primary-color-rgb), 0.8);
-    border-color: rgba(var(--primary-color-rgb), 0.8);
-    box-shadow: 0 0 0 0.2rem rgba(255,102,0,.35);
-}
-
-#scrollToTopBtn {color:var(--primary-color) !important;}
-#scrollToTopBtn:hover {color:var(--secondary-color) !important;}
-
 
 
 .card-slider-item, mcc-category-card, .category-search--category-card {
