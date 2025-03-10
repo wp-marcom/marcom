@@ -17,14 +17,28 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
   --secondary-color: #B32025;
   --secondary-color-rgb: 179, 32, 37;  /* RGB version */
 }
+/* Alternate nav bar below delete to see normal */
+.site-header {
+  background-color: var(--primary-color);
+}
+
+.navbar-hamburger .fa-bars{color:white;}
+.nav-item-cart .fa-shopping-cart{color:white;}
+
+/* Alternate nav bar above delete to see normal */
+
+ .navbar-hamburger:hover .fa-bars {color: var(--secondary-color);}
+
+.badge{background-color: var(--secondary-color)!important;}
 
 .product-card:hover .card-title {color: var(--secondary-color);}
+
 
 .navbar-brand {
     display: block;
     width: 300px; /* Adjust width to fit the logo */
     height: 40px; /* Matches the existing height */
-    background-image: url('../../img/common/wp-header.svg'); /* Replace with your logo URL */
+    background-image: url('../../img/common/wp-header-white.svg'); /* Replace with your logo URL */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
