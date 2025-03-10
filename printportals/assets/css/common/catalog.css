@@ -23,6 +23,7 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
 }
 
 .navbar-hamburger .fa-bars{color:white;}
+.navbar-hamburger{background-color: var(--primary-color);}
 .nav-item-cart .fa-shopping-cart{color:white;}
 
 /* Alternate nav bar above delete to see normal */
