@@ -529,7 +529,7 @@ display: -webkit-box;
 /* pima federal */
 .mcc-folder-1627879 .category-card {background: #5c6977 url(../../img/common/pimafederal-main.jpg) no-repeat top center / cover;}
 .mcc-folder-1627879 .category-card .card-img-holder:before {background-image: url(../../img/common/pima-folder.svg)}
-.mcc-folder-1627879 > a:nth-child(1):after{background: rgba(93,151,65, 1)}
+.mcc-folder-1627879 > a:nth-child(1):after{background: rgba(93,151,65, .75)}
 /* sierra tucson */
 .mcc-folder-1629938 .category-card {background: #5c6977 url(../../img/common/sierratucson-main.png) no-repeat center right / cover;}
 .mcc-folder-1629938 .category-card .card-img-holder:before {background-image: url(../images/categories/online_print_ads_v1.svg?v=1.3)}
