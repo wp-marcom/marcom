@@ -17,6 +17,50 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
   --secondary-color: #B32025;
   --secondary-color-rgb: 179, 32, 37;  /* RGB version */
 }
+
+/* Formally ALL CATALOG SECTION Below */
+
+mcc-category-search .site-sidebar {display:none}
+
+.card-text {display:none}
+.card-meta {display:none}
+
+/* HIDE OLD STYLE THUMBNAILS */
+.mcc-folder-2680297 > a:nth-child(1) > div:nth-child(1) > img:nth-child(1),.mcc-folder-2956766 > a:nth-child(1) > div:nth-child(1) > img:nth-child(1),.mcc-folder-1627879 > a:nth-child(1) > div:nth-child(1) > img:nth-child(1),.mcc-folder-1629938 > a:nth-child(1) > div:nth-child(1) > img:nth-child(1){visibility: hidden;}
+
+.site-main-left{flex: 0 0 100%;
+    max-width: 100%;}
+
+@media (min-width:992px) {
+  
+  .product-card.grid .card-img-holder,
+  .product-card:not(.list) .card-img-holder {
+    max-width:100%;
+    height:8.28571rem;
+    flex:0 0 8.28571rem;
+    border-top-left-radius:7px;
+    border-top-right-radius:7px;
+    margin-right:0
+  }
+
+  .product-card .card-title {
+    font-size: .8rem;
+    line-height: 1.0rem;
+  }
+
+  .card-body {
+    padding-top: 0.5em!important;
+  }
+
+}
+/* Formally ALL CATALOG SECTION ABOVE */
+
+
+
+
+
+
+
 /* Alternate nav bar below delete to see normal */
 .site-header {
   background-color: var(--primary-color);
