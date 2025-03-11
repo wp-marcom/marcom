@@ -28,6 +28,12 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
 
 /* Alternate nav bar above delete to see normal */
 
+.notif-indicator[_ngcontent-ngl-c148]{
+    color: var(--primary-color);
+}
+
+.dropdown-item.active, .dropdown-item:active, .dropdown-item:focus, .dropdown-item:hover {background-color: var(--secondary-color); color:#fffff;}
+
  .navbar-hamburger:hover .fa-bars {color: var(--secondary-color);}
 
 .badge{background-color: var(--secondary-color)!important;}
