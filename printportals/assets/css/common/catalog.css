@@ -540,8 +540,8 @@ display: -webkit-box;
 /* sierra tucson */
 .mcc-folder-1629938 .category-card {background: #5c6977 url(../../img/common/sierratucson-main.png) no-repeat center right / cover;}
 .mcc-folder-1629938 .category-card .card-img-holder:before {background-image: url(../../img/common/sierratucson-folder.svg)}
-.mcc-folder-1629938 > a:nth-child(1):after{background: rgba(118,65,22, .75)}
-.mcc-folder-1629938 .category-card:focus:after, .mcc-folder-1629938 .category-card:hover:after {background: rgba(227,208,165,.72);}
+.mcc-folder-1629938 > a:nth-child(1):after{background: rgba(96,80,77, .75)}
+.mcc-folder-1629938 .category-card:focus:after, .mcc-folder-1629938 .category-card:hover:after {background: rgba(178,92,26,.72);}
 /* vantage west */
 .mcc-folder-2680297 .category-card {background: #5c6977 url(../../img/common/vantagewest-main.jpg) no-repeat center right / cover;}
 .mcc-folder-2680297 .category-card .card-img-holder:before {background-image: url(../../img/common/vantage-folder.svg)}
