@@ -28,7 +28,7 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
 
 /* Alternate nav bar above delete to see normal */
 .loader-wrap {color: var(--primary-color) !important;}
-.notif-indicator[_ngcontent-ngl-c148]{
+.dropdown-item[_ngcontent-tyk-c148] .notif-indicator[_ngcontent-tyk-c148]{
     color: var(--primary-color);
 }
 
