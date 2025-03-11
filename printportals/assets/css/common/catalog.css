@@ -523,7 +523,7 @@ display: -webkit-box;
 /* cochise college */
 .mcc-folder-2956766 .category-card {background: #5c6977 url(../../img/common/cochisecollege-main.jpg) no-repeat center / cover;}
 .mcc-folder-2956766 .category-card .card-img-holder:before {background-image: url(../../img/common/cochisecollege-folder.svg)}
-.mcc-folder-2956766 > a:nth-child(1):after{background: rgba(255,255,255, .75)}
+.mcc-folder-2956766 > a:nth-child(1):after{background: rgba(0,0,0, .6)}
 .mcc-folder-2956766 .category-card:focus:after, .mcc-folder-2956766 .category-card:hover:after {background: rgba(229,24,55,.72);}
 /* cochise county */
 .mcc-folder-3158471 .category-card {background: #5c6977 url(../../img/common/cochisecounty-main.png) no-repeat top center / cover;}
