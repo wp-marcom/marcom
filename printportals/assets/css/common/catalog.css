@@ -42,12 +42,12 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
 }
 
 #scrollToTopBtn:hover {
-    color: var(--primary-color) !important;
+    color: var(--secondary-color) !important;
 }
 
 
 /* This controls all site links */
-.page-link {color: var(--secondary-color)!important;}
+.page-link {color: var(--primary-color)!important;}
 
 
 
