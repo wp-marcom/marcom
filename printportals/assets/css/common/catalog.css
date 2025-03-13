@@ -38,16 +38,16 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
 
 /* Scroll-to-top button styles */
 #scrollToTopBtn {
-    color: #541F46 !important;
+    color: var(--primary-color) !important;
 }
 
 #scrollToTopBtn:hover {
-    color: #B32025 !important;
+    color: var(--primary-color) !important;
 }
 
 
 /* This controls all site links */
-.page-link {color: var(--primary-color)!important;}
+.page-link {color: var(--secondary-color)!important;}
 
 
 
