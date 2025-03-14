@@ -101,6 +101,7 @@ mcc-category-search .site-sidebar {display:none}
 .card-meta {display:none}
 
 /* HIDE OLD STYLE THUMBNAILS */
+[class*="mcc-folder-"] .card-img {visibility: hidden;}
 .mcc-folder-2680297 > a:nth-child(1) > div:nth-child(1) > img:nth-child(1),.mcc-folder-2956766 > a:nth-child(1) > div:nth-child(1) > img:nth-child(1),.mcc-folder-1627879 > a:nth-child(1) > div:nth-child(1) > img:nth-child(1),.mcc-folder-1629938 > a:nth-child(1) > div:nth-child(1) > img:nth-child(1){visibility: hidden;}
 
 .site-main-left{flex: 0 0 100%;
