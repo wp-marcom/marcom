@@ -27,4 +27,4 @@ body:has(div.Vantage.West) .navbar-brand {
 
 .mcc-folder-2695839 .category-card {background: #5c6977 url(../../img/common/vantagewest-main.jpg) no-repeat center right / cover;}
 .mcc-folder-2695839 .category-card:focus:after, .mcc-folder-2695839 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72);}
-.card-img{visibility: hidden;}
+[class*="mcc-folder-"] .card-img {visibility: hidden;}
