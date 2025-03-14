@@ -1,1 +1,21 @@
 
+body:has(div.Vantage.West) {
+--primary-color: #022e4a;  /* Change this per client */
+  --primary-color-rgb: 2, 46, 74;  /* RGB version */
+  --secondary-color: #ffcb05;
+  --secondary-color-rgb: 255, 203, 5;  /* RGB version */
+   
+}
+body:has(div.Vantage.West) .navbar-brand {
+ display: block;
+    width: 300px; /* Adjust width to fit the logo */
+    height: 40px; /* Matches the existing height */
+    background-image: url('https://wp-marcom.github.io/marcom/printportals/assets/img/common/vantagewest-header-white.svg'); /* Replace with your logo URL */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+
