@@ -32,9 +32,9 @@ body:has(div.Vantage.West) [class*="mcc-folder-"] .category-card:hover:after {
 
 /* vantage west */
 .mcc-folder-2680297 .category-card {background: #5c6977 url(../../img/common/vantagewest-main.jpg) no-repeat center right / cover;}
-.mcc-folder-2680297 .category-card:focus:after, .mcc-folder-2680297 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72);}
+.mcc-folder-2680297 .category-card:focus:after, .mcc-folder-2680297 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 
 .mcc-folder-2695839 .category-card {background: #5c6977 url(../../img/common/vantagewest-main.jpg) no-repeat center right / cover;}
-.mcc-folder-2695839 .category-card:focus:after, .mcc-folder-2695839 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72);}
+.mcc-folder-2695839 .category-card:focus:after, .mcc-folder-2695839 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
