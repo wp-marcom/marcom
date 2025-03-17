@@ -78,18 +78,33 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
 
 mcc-category-search .site-sidebar {display:none}
 
-.card-text .title,
-.card-text .fa-exclamation-triangle,
-.card-text .extra-info {
-  display: none; /* Hides both the title and extra text */
+/* Hide elements when in card view (default "row product-list") */
+.row.product-list:not(.list-view) .card-text .title,
+.row.product-list:not(.list-view) .card-text .fa-exclamation-triangle,
+.row.product-list:not(.list-view) .card-text .extra-info {
+    display: none;
 }
 
-.card-text .button-orange {
+.row.product-list:not(.list-view) .card-text .button-orange {
   color: #fff;
   background-color: var(--secondary-color);
   border: 1px solid var(--secondary-color);
   font-size: .7rem;
   width: 10.5em;
+  padding: 0.1em 0.5em;
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
+  gap: 0.5rem; /* Adjust spacing between icon and text */
+  text-align: center; /* Ensure text is centered */
+}
+
+.row.product-list.list-view .card-text .button-orange {
+  color: #fff;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  font-size: .7rem;
+  width: 14.5em;
   padding: 0.1em 0.5em;
   display: flex; /* Use flexbox for alignment */
   align-items: center; /* Vertically center items */
