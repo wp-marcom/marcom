@@ -25,6 +25,16 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
     border-color: var(--primary-color);
 }
 
+a {
+ color: var(--primary-color);
+}
+
+a:hover {color: var(--secondary-color);}
+
+.btn-link {color: var(--primary-color);}
+
+.btn-link:hover {color: var(--secondary-color);}
+
 .button-orange {
   color: #fff;
   background-color: var(--secondary-color);
@@ -75,6 +85,8 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
 
 
 /* Formally ALL CATALOG SECTION Below */
+
+.product-price{color: var(--secondary-color);}
 
 mcc-category-search .site-sidebar {display:none}
 
