@@ -142,7 +142,11 @@ mcc-category-search .site-sidebar {display:none}
     max-width: 100%;}
 
 @media (min-width:992px) {
-    
+
+.product-card.list .card-body-footer > :not(.card-controls) {
+    display: block;
+  }
+	
     .site-header.has-search .navbar-row {
     align-items: center;
     height: 81px;
