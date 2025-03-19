@@ -31,6 +31,21 @@ body:has(div.Vantage.West) [class*="mcc-folder-"] .category-card:hover:after {
     background: rgba(var(--secondary-color-rgb), 1.0);
 }
 
+body:has(div.Vantage.West) .product-price-note{display: none;}
+
+/* HIDE THIS TEXT DURING CHECKOUT "(Does not include shipping and sales tax)"*/
+
+body:has(div.Vantage.West) .product-price-note {
+  display: none !important;
+}
+
+/* HIDE THIS TEXT DURING CHECKOUT "Ship to multiple locations"*/
+
+body:has(div.Vantage.West) .col-md-4:nth-child(1) > mcc-shipping-info:nth-child(1) > section:nth-child(1) > article:nth-child(3) > a:nth-child(2){
+  display: none !important;
+}
+
+
 /* vantage west main */
 .mcc-folder-2680297 .category-card {background: #5c6977 url(../../img/common/vantagewest-main.jpg) no-repeat center right / cover;}
 .mcc-folder-2680297 .category-card:focus:after, .mcc-folder-2680297 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
