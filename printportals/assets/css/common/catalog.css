@@ -38,7 +38,7 @@ a {
  color: var(--primary-color);
 }
 
-a:hover {color: var(--secondary-color);}
+a:hover {color: var(--secondary-color)!important;}
 
 .btn-link {color: var(--primary-color);}
 
