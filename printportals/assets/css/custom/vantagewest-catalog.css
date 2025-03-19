@@ -14,6 +14,7 @@ body:has(div.Vantage.West) .navbar-brand {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  margin-left: 25px;
 }
 
 /* Apply styles only when body has a div with class "Vantage West" */
