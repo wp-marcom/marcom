@@ -22,6 +22,9 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
     padding: 1rem 0;
 }
 
+/* Make Sierra Tucson Folder Text bigger so icon stays square"*/
+.mcc-folder-1629938 > a:nth-child(1) > div:nth-child(2) > div:nth-child(1) > h4:nth-child(2){font-size:1.1rem;}
+
 /* HIDE THIS TEXT DURING CHECKOUT "Secure Payment"*/
 
 a.text-muted{display: none !important;}
