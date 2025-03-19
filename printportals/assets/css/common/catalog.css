@@ -22,6 +22,10 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
     padding: 1rem 0;
 }
 
+/* HIDE THIS TEXT DURING CHECKOUT "Secure Payment"*/
+
+a.text-muted{display: none !important;}
+
 
 /* This controls all site buttons and the scroll-to-top button */
 .btn-primary {
