@@ -211,6 +211,18 @@ mcc-category-search .site-sidebar {display:none}
 
 .dropdown-item.active, .dropdown-item:active, .dropdown-item:focus, .dropdown-item:hover {background-color: var(--secondary-color); color:#fffff;}
 
+.dropdown-item.active .notif-indicator,
+.dropdown-item:active .notif-indicator,
+.dropdown-item:focus .notif-indicator,
+.dropdown-item:hover .notif-indicator {
+  color: #fff!important; /* Change to white */
+}
+
+.nav-filters .nav-link.active {
+  border-bottom: 2px solid var(--secondary-color);
+  color: var(--secondary-color);
+}
+
  .navbar-hamburger:hover .fa-bars {color: var(--secondary-color);}
 
 .badge{background-color: var(--secondary-color)!important;}
