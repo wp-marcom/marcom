@@ -93,6 +93,8 @@ a:hover {color: var(--secondary-color);}
 
 .product-price{color: var(--secondary-color);}
 
+.panel-detail-total{color: var(--secondary-color);}
+
 mcc-category-search .site-sidebar {display:none}
 
 /* Hide elements when in card view (default "row product-list") */
