@@ -1,0 +1,55 @@
+
+body:has(div.Sierra.Tucson) {
+--primary-color: #60504d;  /* Change this per client */
+  --primary-color-rgb: 96, 80, 77;  /* RGB version */
+  --secondary-color: #b25c1a;
+  --secondary-color-rgb: 178,92,26;  /* RGB version */
+   
+}
+body:has(div.Sierra.Tucson) .navbar-brand {
+  display: block;
+  width: 440px;
+  height: 60px;
+  background-image: url('../../img/custom/vantagewest-header-white-ss.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 25px;
+}
+
+/* Apply styles only when body has a div with class "Sierra Tucson" */
+body:has(div.Sierra.Tucson) [class*="mcc-folder-"] .category-card .card-img-holder:before {
+    background-image: url(../../img/common/sierratucson-folder.svg);
+}
+
+body:has(div.Sierra.Tucson) [class*="mcc-folder-"] > a:nth-child(1):after {
+    background: rgba(var(--primary-color-rgb), 0.75);
+}
+
+body:has(div.Sierra.Tucson) [class*="mcc-folder-"] .category-card:focus:after, 
+body:has(div.Sierra.Tucson) [class*="mcc-folder-"] .category-card:hover:after {
+    background: rgba(var(--secondary-color-rgb), 1.0);
+}
+
+body:has(div.Sierra.Tucson) .product-price-note{display: none;}
+
+/* HIDE THIS TEXT DURING CHECKOUT "(Does not include shipping and sales tax)"*/
+
+body:has(div.Sierra.Tucson) .product-price-note {
+  display: none !important;
+}
+
+/* HIDE THIS TEXT DURING CHECKOUT "Ship to multiple locations"*/
+
+body:has(div.Sierra.Tucson) .col-md-4:nth-child(1) > mcc-shipping-info:nth-child(1) > section:nth-child(1) > article:nth-child(3) > a:nth-child(2){
+  display: none !important;
+}
+
+
+/* sierra tucson main */
+.mcc-folder-1629938 .category-card {background: #5c6977 url(../../img/common/sierratucson-main.png) no-repeat center right / cover;}
+.mcc-folder-1629938 .category-card:focus:after, .mcc-folder-1629938 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
+
+.mcc-folder-2695839 .category-card {background: #5c6977 url(../../img/common/vantagewest-main.jpg) no-repeat center right / cover;}
+.mcc-folder-2695839 .category-card:focus:after, .mcc-folder-2695839 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
+
