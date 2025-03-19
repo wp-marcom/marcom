@@ -174,7 +174,9 @@ mcc-category-search .site-sidebar {display:none}
 }
 /* Formally ALL CATALOG SECTION ABOVE */
 
-
+.control-avatar:hover {
+  border-color: var(--secondary-color);
+}
 
 
 
