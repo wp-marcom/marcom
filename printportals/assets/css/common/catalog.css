@@ -135,6 +135,15 @@ mcc-category-search .site-sidebar {display:none}
     max-width: 100%;}
 
 @media (min-width:992px) {
+    
+    .site-header.has-search .navbar-row {
+    align-items: center;
+    height: 81px;
+  }
+
+.site-header.has-search .navbar-controls, .site-header.has-search .navbar-controls-main {
+    width: 50%;
+  }
   
   .product-card.grid .card-img-holder,
   .product-card:not(.list) .card-img-holder {
@@ -189,14 +198,16 @@ mcc-category-search .site-sidebar {display:none}
 
 
 .navbar-brand {
-    display: block;
-    width: 300px; /* Adjust width to fit the logo */
-    height: 40px; /* Matches the existing height */
-    background-image: url('../../img/common/wp-header-white.svg'); /* Replace with your logo URL */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+  display: block;
+  width: 440px;
+  height: 60px;
+  background-image: url('../../img/common/wp-header-white.svg'); /* Replace with your logo URL */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+
+
 
 /* Hide the default <img> inside the .navbar-brand if needed */
 .navbar-brand img {
