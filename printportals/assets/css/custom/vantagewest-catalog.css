@@ -7,13 +7,13 @@ body:has(div.Vantage.West) {
    
 }
 body:has(div.Vantage.West) .navbar-brand {
- display: block;
-    width: 300px; /* Adjust width to fit the logo */
-    height: 40px; /* Matches the existing height */
-    background-image: url('../../img/custom/vantagewest-header-white.svg'); /* Replace with your logo URL */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+  display: block;
+  width: 440px;
+  height: 60px;
+  background-image: url('../../img/custom/vantagewest-header-white-ss.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 /* Apply styles only when body has a div with class "Vantage West" */
