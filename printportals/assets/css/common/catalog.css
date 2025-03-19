@@ -42,6 +42,7 @@ a {
 }
 
 a:hover {color: var(--secondary-color)!important;}
+.dropdown-item a:hover {color: white!important;}
 
 .btn-link {color: var(--primary-color);}
 
