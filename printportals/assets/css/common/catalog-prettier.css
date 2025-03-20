@@ -60,28 +60,16 @@ mcc-category-card .category-card:hover .card-meta {
   padding: 1rem 0;
 }
 
-.checkout-card {
-  color: var(--primary-color) !important;
-}
-
-.panel-detail-header {
-  color: var(--primary-color) !important;
-}
-
-.panel-detail-info-total {
-  color: var(--primary-color) !important;
-}
-
-.sortArrows {
-  color: var(--secondary-color) !important;
-}
-
-.btn-icon:hover {
-  color: var(--secondary-color) !important;
-}
-
+.checkout-card,
+.panel-detail-header,
+.panel-detail-info-total,
 .fa-circle {
   color: var(--primary-color) !important;
+}
+
+.sortArrows,
+.btn-icon:hover {
+  color: var(--secondary-color) !important;
 }
 
 /* Make Sierra Tucson Folder Text bigger so icon stays square"*/
