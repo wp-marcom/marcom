@@ -173,7 +173,7 @@ mcc-category-search .site-sidebar {
 .row.product-list:not(.list-view) .card-text .extra-info {
   display: none;
 }
-
+/* Style of "Sold In packs of" text when NOT in list view (Grid)*/
 .row.product-list:not(.list-view) .card-text .button-orange {
   color: #fff;
   background-color: var(--secondary-color);
@@ -188,6 +188,7 @@ mcc-category-search .site-sidebar {
   text-align: center; /* Ensure text is centered */
 }
 
+/* Style of "Sold in packs of" text when in list view */
 .row.product-list.list-view .card-text .button-orange {
   color: #fff;
   background-color: var(--secondary-color);
