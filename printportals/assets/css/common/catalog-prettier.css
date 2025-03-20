@@ -63,6 +63,7 @@ mcc-category-card .category-card:hover .card-meta {
 .checkout-card,
 .panel-detail-header,
 .panel-detail-info-total,
+.form-select::before,
 .fa-circle {
   color: var(--primary-color) !important;
 }
