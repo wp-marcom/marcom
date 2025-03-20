@@ -24,6 +24,10 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
 
 .checkout-card {color: var(--primary-color)!important;}
 
+.panel-detail-header {color: var(--primary-color)!important;}
+
+.panel-detail-info-total {color: var(--primary-color)!important;}
+
 .sortArrows {color: var(--secondary-color)!important;}
 
 .btn-icon:hover {color: var(--secondary-color)!important;}
