@@ -4,39 +4,50 @@
 .product-card .card-title {
   color: #242424;
 }
+/* Catalog Directory name */
 mcc-category-card .category-card .card-title {
   color: #fff;
 }
+
+/* Catalog Directory name HOVER */
 mcc-category-card .category-card:hover .card-title {
   color: #fff;
 }
+/* Product Name DEFAULT. Overidden below */
 .product-card .card-title {
   font-size: 1.15rem;
 }
+/* Product Name DEFAULT. Overidden below */
 .product-card .card-title > a:hover {
   text-decoration: none;
 }
+/* Product Name DEFAULT. Overidden below */
 .card-meta,
 .card-text {
   color: #616771;
 }
+/* Product Card info DEFAULT. Overidden below */
 .category-card .card-meta {
   font-size: 0.85rem;
   color: #5c6977;
 }
+/* Product Card info DEFAULT. Overidden below */
 mcc-category-card .category-card .card-meta {
   font-size: 0.85rem;
   color: #dbdbdb;
 }
+/* Product Card HOVER DEFAULT. Overidden below */
 mcc-category-card .category-card:hover .card-text,
 mcc-category-card .category-card:hover .card-meta {
   color: #f2f2fa;
 }
+/* Product Card HOVER DEFAULT. Overidden below */
 .product-card:hover .card-text,
 .product-card:hover .card-meta {
   color: #545454;
 }
 
+/* West Press Changes - ALL Customizations below this line*/
 :root {
   --primary-color: #541f46; /* Change this per client */
   --primary-color-rgb: 84, 31, 70; /* RGB version */
