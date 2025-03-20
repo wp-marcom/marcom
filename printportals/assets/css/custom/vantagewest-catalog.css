@@ -110,6 +110,3 @@ body:has(div.Vantage.West) .col-md-4:nth-child(1) > mcc-shipping-info:nth-child(
 .mcc-folder-2839156 .category-card {background: #5c6977 url(../../img/custom/vantagewest-seanwood.jpg) no-repeat center right / cover;}
 .mcc-folder-2839156 .category-card:focus:after, .mcc-folder-2839156 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
-.mcc-folder-2695839 .category-card {background: #5c6977 url(../../img/common/vantagewest-main.jpg) no-repeat center right / cover;}
-.mcc-folder-2695839 .category-card:focus:after, .mcc-folder-2695839 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
-
