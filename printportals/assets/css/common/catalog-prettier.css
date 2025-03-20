@@ -55,6 +55,7 @@ mcc-category-card .category-card:hover .card-meta {
   --secondary-color-rgb: 179, 32, 37; /* RGB version */
 }
 
+/* This is the white box behind the add to cart button - padding reduced to match header bar height*/
 .utility-footer {
   padding: 1rem 0;
 }
