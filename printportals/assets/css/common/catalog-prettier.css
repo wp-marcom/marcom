@@ -68,6 +68,8 @@ mcc-category-card .category-card:hover .card-meta {
 }
 
 .sortArrows,
+.product-price,
+.panel-detail-total,
 .btn-icon:hover {
   color: var(--secondary-color) !important;
 }
@@ -94,23 +96,19 @@ a.text-muted {
   border-color: var(--primary-color);
 }
 
-a {
-  color: var(--primary-color);
+a,
+.page-link,
+.btn-link {
+  color: var(--primary-color) !important;
 }
 
-a:hover {
+a:hover,
+.btn-link:hover {
   color: var(--secondary-color) !important;
 }
+
 .dropdown-item a:hover {
   color: white !important;
-}
-
-.btn-link {
-  color: var(--primary-color);
-}
-
-.btn-link:hover {
-  color: var(--secondary-color);
 }
 
 .button-orange {
@@ -153,23 +151,20 @@ a:hover {
   color: var(--secondary-color) !important;
 }
 
-/* This controls all site links */
-.page-link {
-  color: var(--primary-color) !important;
-}
+
 
 /* Formally ALL CATALOG SECTION Below */
 
-.product-price {
-  color: var(--secondary-color);
-}
 
-.panel-detail-total {
-  color: var(--secondary-color);
-}
-
+/* Hide the SIDEBAR */
 mcc-category-search .site-sidebar {
   display: none;
+}
+
+/* This centers all the stuff inside a directory AFTER the SIDEBAR IS HIDDEN */
+.site-main-left {
+  flex: 0 0 100%;
+  max-width: 100%;
 }
 
 /* Hide elements when in card view (default "row product-list") */
@@ -206,7 +201,7 @@ mcc-category-search .site-sidebar {
   gap: 0.5rem; /* Adjust spacing between icon and text */
   text-align: center; /* Ensure text is centered */
 }
-
+/* Hide card metadata like modified date etc */
 .card-meta {
   display: none;
 }
@@ -222,10 +217,6 @@ mcc-category-search .site-sidebar {
   visibility: hidden;
 }
 
-.site-main-left {
-  flex: 0 0 100%;
-  max-width: 100%;
-}
 
 @media (min-width: 992px) {
   .product-card.list .card-body-footer > :not(.card-controls) {
@@ -267,22 +258,22 @@ mcc-category-search .site-sidebar {
   border-color: var(--secondary-color);
 }
 
-/* Alternate nav bar below delete to see normal */
+/* DARK nav bar below delete to see normal */
 .site-header {
   background-color: var(--primary-color);
 }
 
 .navbar-hamburger .fa-bars {
-  color: white;
+  color: #ffffff;
 }
 .navbar-hamburger {
   background-color: var(--primary-color);
 }
 .nav-item-cart .fa-shopping-cart {
-  color: white;
+  color: #ffffff;
 }
 
-/* Alternate nav bar above delete to see normal */
+/* DARK nav bar above delete to see normal */
 .loader-wrap {
   color: var(--primary-color) !important;
 }
@@ -302,7 +293,7 @@ mcc-category-search .site-sidebar {
 .dropdown-item:active .notif-indicator,
 .dropdown-item:focus .notif-indicator,
 .dropdown-item:hover .notif-indicator {
-  color: #fff !important; /* Change to white */
+  color: #ffffff !important; /* Change to white */
 }
 
 .nav-filters .nav-link.active {
@@ -321,7 +312,7 @@ mcc-category-search .site-sidebar {
 .product-card:hover .card-title {
   color: var(--secondary-color);
 }
-
+/* HEADER BAR LOGO */
 .navbar-brand {
   display: block;
   width: 440px;
@@ -337,7 +328,7 @@ mcc-category-search .site-sidebar {
 .navbar-brand img {
   display: none;
 }
-
+/* Background image */
 body {
   background: url("../../img/common/crossword.png") repeat; /* Replace with your actual image URL */
   background-size: 400px 400px; /* Ensures the pattern repeats properly */
@@ -350,7 +341,7 @@ body {
   color: var(--primary-color);
 }
 
-/* Tint overlay that ONLY affects the background */
+/* Tint overlay that ONLY affects the background image */
 body::before {
   content: "";
   position: fixed;
