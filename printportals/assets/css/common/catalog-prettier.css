@@ -139,7 +139,7 @@ a:hover,
 .show > .btn-primary.dropdown-toggle {
   background: var(--secondary-color);
   border-color: var(--secondary-color);
-  box-shadow: 0 0 0 0.2rem rgba(255, 102, 0, 0.35);
+  box-shadow: 0 0 0 0.2rem rgba(var(--secondary-color-rgb), 0.35);
 }
 
 /* Scroll-to-top button styles */
