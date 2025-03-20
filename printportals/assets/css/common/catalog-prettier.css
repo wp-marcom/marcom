@@ -71,6 +71,12 @@ mcc-category-card .category-card:hover .card-meta {
 /* Sidebar in versioned product templates"*/
 .fixed-sidebar-header {background-color: var(--primary-color);}
 
+/* ZOOM control in versioned product templates"*/
+.form-control:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 0.2rem rgba(var(--secondary-color-rgb), 0.35);
+}
+
 .sortArrows,
 .product-price,
 .panel-detail-total,
