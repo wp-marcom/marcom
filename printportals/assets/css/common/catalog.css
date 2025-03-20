@@ -22,6 +22,8 @@ mcc-category-card .category-card:hover .card-text, mcc-category-card .category-c
     padding: 1rem 0;
 }
 
+.checkout-card {color: var(--primary-color)!important;}
+
 .sortArrows {color: var(--secondary-color)!important;}
 
 .btn-icon:hover {color: var(--secondary-color)!important;}
