@@ -67,6 +67,9 @@ mcc-category-card .category-card:hover .card-meta {
   color: var(--primary-color) !important;
 }
 
+/* Sidebar in versioned product templates"*/
+.fixed-sidebar-header {background-color: var(--primary-color);}
+
 .sortArrows,
 .product-price,
 .panel-detail-total,
