@@ -99,6 +99,22 @@ a.text-muted {
   display: none !important;
 }
 
+/* Order Confirmation Page items */
+.order-confirmation-icon{
+  background-color: var(--primary-color);
+}
+
+.order-confirmation-wrap{
+ background-color: rgba(var(--secondary-color-rgb), 0.25);
+}
+/* Back to Catalog button on checkout page */
+.btn.btn-primary.btn-back-catalog {color:#ffffff!important;}
+
+/* List of products below on checkout page */
+.site-section .list-group {
+  width: 100%; /* Ensure it fills the parent width */
+}
+
 /* This controls all site buttons and the scroll-to-top button */
 .btn-primary {
   color: #fff;
