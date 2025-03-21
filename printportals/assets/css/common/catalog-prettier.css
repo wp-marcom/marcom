@@ -115,6 +115,11 @@ a.text-muted {
   width: 100%; /* Ensure it fills the parent width */
 }
 
+/* List of prices and quantity on product page */
+.site-section .panel .list-group {
+  width: fit-content;
+}
+
 /* This controls all site buttons and the scroll-to-top button */
 .btn-primary {
   color: #fff;
