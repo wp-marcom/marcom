@@ -33,6 +33,11 @@ body:has(div.Pima.Federal) [class*="mcc-folder-"] .category-card:hover:after {
 
 body:has(div.Pima.Federal) .product-price-note{display: none;}
 
+/* HIDE THE SHIPPING INSTRUCTIONS BOX DURING CHECKOUT*/
+body:has(div.Pima.Federal) div.mt-4:nth-child(6){
+  display:none;
+}
+
 /* HIDE THIS TEXT DURING CHECKOUT "(Does not include shipping and sales tax)"*/
 
 body:has(div.Pima.Federal) .product-price-note {
