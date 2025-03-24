@@ -861,7 +861,7 @@ carousel.categories-carousel {
 /* LIVE category card photo image backgrounds and icons */
 /* acquire */
 .mcc-folder-3156991 .category-card {
-  background: #5c6977 url(../../img/common/acquire-main.jpg)
+  background: var(--primary-color) url(../../img/common/acquire-main.jpg)
     no-repeat bottom left / cover;
 }
 .mcc-folder-3156991 .category-card .card-img-holder:before {
@@ -869,7 +869,7 @@ carousel.categories-carousel {
 }
 /* cochise college */
 .mcc-folder-2956766 .category-card {
-  background: #5c6977 url(../../img/common/cochisecollege-main.jpg) no-repeat
+  background: var(--primary-color) url(../../img/common/cochisecollege-main.jpg) no-repeat
     center / cover;
 }
 .mcc-folder-2956766 .category-card .card-img-holder:before {
@@ -884,7 +884,7 @@ carousel.categories-carousel {
 }
 /* cochise county */
 .mcc-folder-3158471 .category-card {
-  background: #5c6977 url(../../img/common/cochisecounty-main.png) no-repeat top
+  background: var(--primary-color) url(../../img/common/cochisecounty-main.png) no-repeat top
     center / cover;
 }
 .mcc-folder-3158471 .category-card .card-img-holder:before {
@@ -899,7 +899,7 @@ carousel.categories-carousel {
 }
 /* flowing wells */
 .mcc-folder-3378251 .category-card {
-  background: #5c6977 url(../../img/common/flowingwells-main.png) no-repeat
+  background: var(--primary-color) url(../../img/common/flowingwells-main.png) no-repeat
     bottom right / cover;
 }
 .mcc-folder-3378251 .category-card .card-img-holder:before {
@@ -907,7 +907,7 @@ carousel.categories-carousel {
 }
 /* mariposa community */
 .mcc-folder-3341472 .category-card {
-  background: #5c6977 url(../../img/common/mchc-main.png) no-repeat center right /
+  background: var(--primary-color) url(../../img/common/mchc-main.png) no-repeat center right /
     cover;
 }
 .mcc-folder-3341472 .category-card .card-img-holder:before {
@@ -915,7 +915,7 @@ carousel.categories-carousel {
 }
 /* pima federal */
 .mcc-folder-1627879 .category-card {
-  background: #5c6977 url(../../img/common/pimafederal-main.jpg) no-repeat top
+  background: var(--primary-color) url(../../img/common/pimafederal-main.jpg) no-repeat top
     center / cover;
 }
 .mcc-folder-1627879 .category-card .card-img-holder:before {
@@ -930,7 +930,7 @@ carousel.categories-carousel {
 }
 /* sierra tucson */
 .mcc-folder-1629938 .category-card {
-  background: #5c6977 url(../../img/common/sierratucson-main.png) no-repeat
+  background: var(--primary-color) url(../../img/common/sierratucson-main.png) no-repeat
     center right / cover;
 }
 .mcc-folder-1629938 .category-card .card-img-holder:before {
@@ -945,7 +945,7 @@ carousel.categories-carousel {
 }
 /* vantage west */
 .mcc-folder-2680297 .category-card {
-  background: #5c6977 url(../../img/common/vantagewest-main.jpg) no-repeat
+  background: var(--primary-color) url(../../img/common/vantagewest-main.jpg) no-repeat
     center right / cover;
 }
 .mcc-folder-2680297 .category-card .card-img-holder:before {
