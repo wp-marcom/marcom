@@ -52,66 +52,66 @@ body:has(div.Vantage.West) .col-md-4:nth-child(1) > mcc-shipping-info:nth-child(
 
 
 /* vantage west main */
-.mcc-folder-2680297 .category-card {background: #5c6977 url(../../img/common/vantagewest-main.jpg) no-repeat center right / cover;}
+.mcc-folder-2680297 .category-card {background: var(--primary-color) url(../../img/common/vantagewest-main.jpg) no-repeat center right / cover;}
 .mcc-folder-2680297 .category-card:focus:after, .mcc-folder-2680297 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* member materials */
-.mcc-folder-2695839 .category-card {background: #5c6977 url(../../img/custom/vantagewest-membermaterials.jpg) no-repeat center right / cover;}
+.mcc-folder-2695839 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-membermaterials.jpg) no-repeat center right / cover;}
 .mcc-folder-2695839 .category-card:focus:after, .mcc-folder-2695839 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* home loans */
-.mcc-folder-2695840 .category-card {background: #5c6977 url(../../img/custom/vantagewest-homeloans.jpg) no-repeat center right / cover;}
+.mcc-folder-2695840 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-homeloans.jpg) no-repeat center right / cover;}
 .mcc-folder-2695840 .category-card:focus:after, .mcc-folder-2695840 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* wealth management */
-.mcc-folder-2695842 .category-card {background: #5c6977 url(../../img/custom/vantagewest-wealthmanagement.jpg) no-repeat center right / cover;}
+.mcc-folder-2695842 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-wealthmanagement.jpg) no-repeat center right / cover;}
 .mcc-folder-2695842 .category-card:focus:after, .mcc-folder-2695842 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* super saver */
-.mcc-folder-2836370 .category-card {background: #5c6977 url(../../img/custom/vantagewest-supersaver.jpg) no-repeat center right / cover;}
+.mcc-folder-2836370 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-supersaver.jpg) no-repeat center right / cover;}
 .mcc-folder-2836370 .category-card:focus:after, .mcc-folder-2836370 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* business banking */
-.mcc-folder-2695841 .category-card {background: #5c6977 url(../../img/custom/vantagewest-businessbanking.jpg) no-repeat center right / cover;}
+.mcc-folder-2695841 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-businessbanking.jpg) no-repeat center right / cover;}
 .mcc-folder-2695841 .category-card:focus:after, .mcc-folder-2695841 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* promo items */
-.mcc-folder-2854743 .category-card {background: #5c6977 url(../../img/custom/vantagewest-promoitems.jpg) no-repeat center right / cover;}
+.mcc-folder-2854743 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-promoitems.jpg) no-repeat center right / cover;}
 .mcc-folder-2854743 .category-card:focus:after, .mcc-folder-2854743 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* stationery & prepaid */
-.mcc-folder-2916995 .category-card {background: #5c6977 url(../../img/custom/vantagewest-stationeryprepaid.jpg) no-repeat center right / cover;}
+.mcc-folder-2916995 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-stationeryprepaid.jpg) no-repeat center right / cover;}
 .mcc-folder-2916995 .category-card:focus:after, .mcc-folder-2916995 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* diannelopez.jpg */
-.mcc-folder-3517449 .category-card {background: #5c6977 url(../../img/custom/vantagewest-diannelopez.jpg) no-repeat center right / cover;}
+.mcc-folder-3517449 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-diannelopez.jpg) no-repeat center right / cover;}
 .mcc-folder-3517449 .category-card:focus:after, .mcc-folder-3517449 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* jessicapiccirillo.jpg */
-.mcc-folder-3591607 .category-card {background: #5c6977 url(../../img/custom/vantagewest-jessicapiccirillo.jpg) no-repeat center right / cover;}
+.mcc-folder-3591607 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-jessicapiccirillo.jpg) no-repeat center right / cover;}
 .mcc-folder-3591607 .category-card:focus:after, .mcc-folder-3591607 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* kristrosper.jpg */
-.mcc-folder-3591606 .category-card {background: #5c6977 url(../../img/custom/vantagewest-kristrosper.jpg) no-repeat center right / cover;}
+.mcc-folder-3591606 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-kristrosper.jpg) no-repeat center right / cover;}
 .mcc-folder-3591606 .category-card:focus:after, .mcc-folder-3591606 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* mercedesschlicht.jpg */
-.mcc-folder-3576676 .category-card {background: #5c6977 url(../../img/custom/vantagewest-mercedesschlicht.jpg) no-repeat center right / cover;}
+.mcc-folder-3576676 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-mercedesschlicht.jpg) no-repeat center right / cover;}
 .mcc-folder-3576676 .category-card:focus:after, .mcc-folder-3576676 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* monicavarela.jpg */
-.mcc-folder-2839082 .category-card {background: #5c6977 url(../../img/custom/vantagewest-monicavarela.jpg) no-repeat center right / cover;}
+.mcc-folder-2839082 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-monicavarela.jpg) no-repeat center right / cover;}
 .mcc-folder-2839082 .category-card:focus:after, .mcc-folder-2839082 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* samrahim.jpg */
-.mcc-folder-2839155 .category-card {background: #5c6977 url(../../img/custom/vantagewest-samrahim.jpg) no-repeat center right / cover;}
+.mcc-folder-2839155 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-samrahim.jpg) no-repeat center right / cover;}
 .mcc-folder-2839155 .category-card:focus:after, .mcc-folder-2839155 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* scottdillon.jpg */
-.mcc-folder-3510586 .category-card {background: #5c6977 url(../../img/custom/vantagewest-scottdillon.jpg) no-repeat center right / cover;}
+.mcc-folder-3510586 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-scottdillon.jpg) no-repeat center right / cover;}
 .mcc-folder-3510586 .category-card:focus:after, .mcc-folder-3510586 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* seanwood.jpg */
-.mcc-folder-2839156 .category-card {background: #5c6977 url(../../img/custom/vantagewest-seanwood.jpg) no-repeat center right / cover;}
+.mcc-folder-2839156 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-seanwood.jpg) no-repeat center right / cover;}
 .mcc-folder-2839156 .category-card:focus:after, .mcc-folder-2839156 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
