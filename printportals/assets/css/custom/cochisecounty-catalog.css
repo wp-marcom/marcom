@@ -19,7 +19,7 @@ body:has(div.Cochise.County) .navbar-brand {
 
 /* Apply styles only when body has a div with class "Pima Federal" */
 body:has(div.Cochise.County) [class*="mcc-folder-"] .category-card .card-img-holder:before {
-    background-image: url(../../img/common/cochisecounty-folder.svg);
+    background-image: url(../../img/common/folder.svg);
 }
 
 body:has(div.Cochise.County) [class*="mcc-folder-"] > a:nth-child(1):after {
