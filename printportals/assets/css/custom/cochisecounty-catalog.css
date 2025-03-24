@@ -1,0 +1,50 @@
+
+body:has(div.Cochise.County) {
+--primary-color: #991b41;  /* Change this per client */
+  --primary-color-rgb: 153, 27, 65;  /* RGB version */
+  --secondary-color: #008ea8;
+  --secondary-color-rgb: 0,142,168;  /* RGB version */
+   
+}
+body:has(div.Cochise.County) .navbar-brand {
+  display: block;
+  width: 440px;
+  height: 60px;
+  background-image: url('../../img/custom/cochiseccounty-header-white-ss.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 25px;
+}
+
+/* Apply styles only when body has a div with class "Pima Federal" */
+body:has(div.Cochise.County) [class*="mcc-folder-"] .category-card .card-img-holder:before {
+    background-image: url(../../img/common/cochisecounty-folder.svg);
+}
+
+body:has(div.Cochise.County) [class*="mcc-folder-"] > a:nth-child(1):after {
+    background: rgba(var(--primary-color-rgb), 0.75);
+}
+
+body:has(div.Cochise.County) [class*="mcc-folder-"] .category-card:focus:after, 
+body:has(div.Cochise.County) [class*="mcc-folder-"] .category-card:hover:after {
+    background: rgba(var(--secondary-color-rgb), 1.0);
+}
+
+body:has(div.Cochise.County) .product-price-note{display: none;}
+
+/* HIDE THE SHIPPING INSTRUCTIONS BOX DURING CHECKOUT*/
+body:has(div.Cochise.County) div.mt-4:nth-child(6){
+  display:none;
+}
+
+/* HIDE THIS TEXT DURING CHECKOUT "(Does not include shipping and sales tax)"*/
+
+body:has(div.Cochise.County) .product-price-note {
+  display: none !important;
+}
+
+/* pima federal main */
+.mcc-folder-3158471 .category-card {background: #5c6977 url(../../img/common/cochisecounty-main.jpg) no-repeat center right / cover;}
+.mcc-folder-3158471 .category-card:focus:after, .mcc-folder-3158471 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
+
