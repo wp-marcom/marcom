@@ -10,7 +10,7 @@ body:has(div.Cochise.County) .navbar-brand {
   display: block;
   width: 440px;
   height: 60px;
-  background-image: url('../../img/custom/cochiseccounty-header-white-ss.svg');
+  background-image: url('../../img/custom/cochisecounty-header-white-ss.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
