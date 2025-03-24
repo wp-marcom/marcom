@@ -47,5 +47,5 @@ body:has(div.Sierra.Tucson) .col-md-4:nth-child(1) > mcc-shipping-info:nth-child
 
 
 /* sierra tucson main */
-.mcc-folder-1629938 .category-card {background: #5c6977 url(../../img/common/sierratucson-main.png) no-repeat center right / cover;}
+.mcc-folder-1629938 .category-card {background: var(--primary-color) url(../../img/common/sierratucson-main.png) no-repeat center right / cover;}
 .mcc-folder-1629938 .category-card:focus:after, .mcc-folder-1629938 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
