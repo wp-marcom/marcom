@@ -45,6 +45,6 @@ body:has(div.Cochise.County) .product-price-note {
 }
 
 /* pima federal main */
-.mcc-folder-3158471 .category-card {background: #5c6977 url(../../img/common/cochisecounty-main.jpg) no-repeat center right / cover;}
+.mcc-folder-3158471 .category-card {background: var(--primary-color) url(../../img/common/cochisecounty-main.jpg) no-repeat center right / cover;}
 .mcc-folder-3158471 .category-card:focus:after, .mcc-folder-3158471 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
