@@ -45,6 +45,6 @@ body:has(div.Pima.Federal) .product-price-note {
 }
 
 /* pima federal main */
-.mcc-folder-1627879 .category-card {background: #5c6977 url(../../img/common/pimafederal-main.jpg) no-repeat center right / cover;}
+.mcc-folder-1627879 .category-card {background: var(--primary-color) url(../../img/common/pimafederal-main.jpg) no-repeat center right / cover;}
 .mcc-folder-1627879 .category-card:focus:after, .mcc-folder-1627879 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
