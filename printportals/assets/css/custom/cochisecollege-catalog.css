@@ -45,6 +45,6 @@ body:has(div.Cochise.College) .product-price-note {
 }
 
 /* pima federal main */
-.mcc-folder-2956766 .category-card {background: #5c6977 url(../../img/common/cochisecollege-main.jpg) no-repeat center right / cover;}
+.mcc-folder-2956766 .category-card {background: var(--primary-color) url(../../img/common/cochisecollege-main.jpg) no-repeat center right / cover;}
 .mcc-folder-2956766 .category-card:focus:after, .mcc-folder-2956766 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
