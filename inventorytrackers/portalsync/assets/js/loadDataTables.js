@@ -227,7 +227,7 @@ function sendGetLowEmail(productName) {
                     "NOTES:";
 
     // Construct the email subject
-    var subject = encodeURIComponent(productName + " - LOW INVENTORY COUNTY");
+    var subject = encodeURIComponent(productName + " - LOW INVENTORY");
 
     // Construct the email link with subject and body
     var emailLink = "mailto:kaleb@westpress.com,lprice@westpress.com" +
