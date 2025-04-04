@@ -53,6 +53,7 @@ async function adminData(dataArray,client) {
           {
           refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
           locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
+          getLowLink = `<a href="#" onclick="sendGetLowEmail('${emailProductName}'); return false;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>`;
           }
         else{
           refillLink = ``;
@@ -60,7 +61,7 @@ async function adminData(dataArray,client) {
         }
 
         return { 
-          data: [productNameLink + " " + refillLink + " " + locationLink, ...row.slice(1)], 
+          data: [productNameLink + " " + refillLink + " " + locationLink + " " + getLowLink, ...row.slice(1)], 
           rowClass 
         };
       } else {
@@ -214,6 +215,29 @@ function sendLocationEmail(productName) {
     // Open the email client
     window.location.href = emailLink;
 }
+
+function sendGetLowEmail(productName) {
+    // Extract SKU from productName
+    var sku = extractSkuFromProductName(productName);
+
+    // Construct the email body with labels only
+    var emailBody = "Product Name: " + productName + "\n\n" +
+                    "SKU: " + sku + "\n\n" +
+                    "CURRENT QUANTITY ON HAND:\n\n" +
+                    "NOTES:";
+
+    // Construct the email subject
+    var subject = encodeURIComponent(productName + " - LOW INVENTORY COUNTY");
+
+    // Construct the email link with subject and body
+    var emailLink = "mailto:kaleb@westpress.com,lprice@westpress.com" +
+                    "?subject=" + subject +
+                    "&body=" + encodeURIComponent(emailBody);
+
+    // Open the email client
+    window.location.href = emailLink;
+}
+
 
 // Function to extract SKU from productName
 function extractSkuFromProductName(productName) {
