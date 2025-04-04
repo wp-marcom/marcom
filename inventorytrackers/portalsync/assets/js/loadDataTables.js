@@ -49,6 +49,7 @@ async function adminData(dataArray,client) {
         const userRole = sessionStorage.getItem("userRole");
         let refillLink = "";
         let locationLink = "";
+        
         if(userRole === "warehouse" || userRole === "admin")
           {
           refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
@@ -217,6 +218,14 @@ function sendLocationEmail(productName) {
 }
 
 function sendGetLowEmail(productName) {
+var currentUrl = window.location.href;
+var salesEmail = "";
+if (currentUrl.includes("mister")) {
+    // Do something special for the "mister" tracker page
+    salesEmail = "lprice@westpress.com";
+}
+
+  
     // Extract SKU from productName
     var sku = extractSkuFromProductName(productName);
 
@@ -229,8 +238,11 @@ function sendGetLowEmail(productName) {
     // Construct the email subject
     var subject = encodeURIComponent(productName + " - LOW INVENTORY");
 
+  // Build recipient list
+   var recipients = salesEmail ? salesEmail + ",kaleb@westpress.com" : "kaleb@westpress.com";
+
     // Construct the email link with subject and body
-    var emailLink = "mailto:kaleb@westpress.com,lprice@westpress.com" +
+    var emailLink = "mailto:" + recipients +
                     "?subject=" + subject +
                     "&body=" + encodeURIComponent(emailBody);
 
