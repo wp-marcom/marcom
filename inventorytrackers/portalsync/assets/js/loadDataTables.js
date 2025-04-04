@@ -199,11 +199,10 @@ function sendLocationEmail(productName) {
     var sku = extractSkuFromProductName(productName);
 
     // Construct the email body with labels only
-    var emailBody = "On shelf inventory is currently low on:" + "\n\n" +
-                    "Product Name: " + productName + "\n\n" +
+    var emailBody = "Product Name: " + productName + "\n\n" +
                     "SKU: " + sku + "\n\n" +
-                    "NOTES:";
-                    
+                    "NEW LOCATION:\n\n" +
+                    "NOTES:";                    
 
     // Construct the email subject
     var subject = encodeURIComponent(productName + " - LOCATION CHANGE");
@@ -222,9 +221,9 @@ function sendGetLowEmail(productName) {
     var sku = extractSkuFromProductName(productName);
 
     // Construct the email body with labels only
-    var emailBody = "Product Name: " + productName + "\n\n" +
+    var emailBody = "On shelf inventory is currently low on:" + "\n\n" +
+                    "Product Name: " + productName + "\n\n" +
                     "SKU: " + sku + "\n\n" +
-                    "CURRENT QUANTITY ON HAND:\n\n" +
                     "NOTES:";
 
     // Construct the email subject
