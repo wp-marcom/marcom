@@ -1719,6 +1719,8 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
       return recentSalesData(uniqueData, client);
     })
     .then((processedData) => {
+      console.log("Processed Data:", processedData); // Add this to see if line items are loaded correctly
+      
       const datatable = new window.simpleDatatables.DataTable(targetElement, {
         data: {
           data: processedData.map((row) => row.data),
