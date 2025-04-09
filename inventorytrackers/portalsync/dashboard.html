@@ -1741,44 +1741,49 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
       });
 
       // Add click event to handle accordion rows
-   datatable.on("click", (event) => {
-  const tr = event.target.closest("tr");
-  if (!tr || tr.classList.contains("details-row")) return;
+      datatable.on("click", (event) => {
+        const tr = event.target.closest("tr");
+        if (!tr || tr.classList.contains("details-row")) return;
 
-  // Log the clicked row for debugging
-  console.log("Row clicked:", tr);
-  
-  const rowIndex = tr.rowIndex - 1;
-  const clickedOrder = datatable.data.data[rowIndex][0];
-  const lineItems = processedData.find((d) => d.orderNumber === clickedOrder)?.details || [];
+        // Log the clicked row for debugging
+        console.log("Row clicked:", tr);
+        
+        const rowIndex = tr.rowIndex - 1;
+        const clickedOrder = datatable.data.data[rowIndex][0];
+        const lineItems = processedData.find((d) => d.orderNumber === clickedOrder)?.details || [];
 
-  const nextRow = tr.nextSibling;
-  if (nextRow && nextRow.classList.contains("details-row")) {
-    nextRow.remove(); // Toggle close
-    return;
-  }
+        const nextRow = tr.nextSibling;
+        if (nextRow && nextRow.classList.contains("details-row")) {
+          nextRow.remove(); // Toggle close
+          return;
+        }
 
-  // Close other open detail rows
-  document.querySelectorAll(".details-row").forEach((el) => el.remove());
+        // Close other open detail rows
+        document.querySelectorAll(".details-row").forEach((el) => el.remove());
 
-  // Insert the accordion row after the clicked row
-  tr.insertAdjacentHTML('afterend', `
-    <tr class="details-row">
-      <td colspan="3">
-        <div class="accordion-content">
-          <strong>Line Items:</strong>
-          <ul>
-            ${lineItems.map((item) => `<li>${item.join(" | ")}</li>`).join("")}
-          </ul>
-        </div>
-      </td>
-    </tr>
-  `);
+        // Insert the accordion row after the clicked row
+        tr.insertAdjacentHTML('afterend', `
+          <tr class="details-row">
+            <td colspan="3">
+              <div class="accordion-content">
+                <strong>Line Items:</strong>
+                <ul>
+                  ${lineItems.map((item) => `<li>${item.join(" | ")}</li>`).join("")}
+                </ul>
+              </div>
+            </td>
+          </tr>
+        `);
 
-  console.log("Accordion row inserted.");
-});
-
+        console.log("Accordion row inserted.");
+      });
+    })
+    .catch((error) => {
+      console.error("Error loading tracker data:", error);
+    });
 }
+
+
 
 
 // Iterate over the trackers array and load each tracker
