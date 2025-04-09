@@ -1692,10 +1692,10 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 }
 
 function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
-  const client = "Westpress Inventory";
+ const client = "Westpress Inventory";
 
   const range1 = `${sheetName}!A2:C`; // Order info: Order #, Name, Date
-  const range2 = `${sheetName}!G2:G`; // Line item info
+  const range2 = `${sheetName}!G2:G`; // Column G (4th column)
 
   const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
   const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
@@ -1706,55 +1706,37 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
   ])
     .then(([response1, response2]) => {
       const combinedData = response1.values.map((row, index) => {
-        const colGValue = response2.values[index]?.[0] || '';
-        return [...row, colGValue]; // [Order #, Name, Date, Line Item]
+        const colGValue = response2.values[index]?.[0] || ''; // Add the 4th column data (Column G)
+        return [...row, colGValue]; // Add column G to the row data
       });
 
-      // Group full data by Order Number
-      const groupedOrders = combinedData.reduce((acc, row) => {
-        const orderNumber = row[0];
-        if (!acc[orderNumber]) acc[orderNumber] = [];
-        acc[orderNumber].push(row);
-        return acc;
-      }, {});
-
-      // Get unique orders based on Order Number
       const uniqueData = Array.from(
         new Map(
-          combinedData.map((row) => [row[0], row])
+          combinedData.map((row) => [row.slice(0, 3).join('|'), row]) // Unique based on the first 3 columns (Order #, Name, Date)
         ).values()
       );
 
-      // Prepare data for the table with access to line items
-      const processedData = uniqueData.map((row) => ({
-        orderNumber: row[0],
-        data: [row[0], row[1], row[2]], // Just Order #, Name, Date for main row
-        details: groupedOrders[row[0]] || [], // All line items
-      }));
-
-      // Initialize datatable
+      return recentSalesData(uniqueData, client);
+    })
+    .then((processedData) => {
       const datatable = new window.simpleDatatables.DataTable(targetElement, {
         data: {
-          headings: ["Order #", "Name", "Date"],
           data: processedData.map((row) => row.data),
         },
       });
 
       // Add click event to handle accordion rows
       datatable.on("click", (event) => {
-        const tr = event.target.closest("tr");
-        if (!tr || tr.classList.contains("details-row")) return;
+        const tr = event.target.closest("tr"); // Get the clicked row
+        if (!tr || tr.classList.contains("details-row")) return; // Avoid clicking on an already expanded row
 
-        // Log the clicked row for debugging
-        console.log("Row clicked:", tr);
-        
-        const rowIndex = tr.rowIndex - 1;
-        const clickedOrder = datatable.data.data[rowIndex][0];
-        const lineItems = processedData.find((d) => d.orderNumber === clickedOrder)?.details || [];
+        const rowIndex = tr.rowIndex - 1; // Get the clicked row index
+        const clickedOrder = datatable.data.data[rowIndex][0]; // Get the order number from the row
+        const lineItems = processedData.find((d) => d.orderNumber === clickedOrder)?.details || []; // Get line items
 
-        const nextRow = tr.nextSibling;
+        const nextRow = tr.nextSibling; // Check if there's already an expanded row below
         if (nextRow && nextRow.classList.contains("details-row")) {
-          nextRow.remove(); // Toggle close
+          nextRow.remove(); // Toggle close if the row is already expanded
           return;
         }
 
@@ -1778,7 +1760,7 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
         console.log("Accordion row inserted.");
       });
 
-      console.log("DataTable initialized with processed data.");
+      console.log("DataTable initialized with clickable rows.");
     })
     .catch((error) => {
       console.error("Error loading tracker data:", error);
