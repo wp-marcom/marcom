@@ -1691,10 +1691,102 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
     });
 }
 
+function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
+  const client = "Westpress Inventory";
+
+  const range1 = `${sheetName}!A2:C`; // Order info: Order #, Name, Date
+  const range2 = `${sheetName}!G2:G`; // Line item info
+
+  const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
+  const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
+
+  return Promise.all([
+    fetch(url1).then((res) => res.json()),
+    fetch(url2).then((res) => res.json()),
+  ])
+    .then(([response1, response2]) => {
+      const combinedData = response1.values.map((row, index) => {
+        const colGValue = response2.values[index]?.[0] || '';
+        return [...row, colGValue]; // [Order #, Name, Date, Line Item]
+      });
+
+      // Group full data by Order Number
+      const groupedOrders = combinedData.reduce((acc, row) => {
+        const orderNumber = row[0];
+        if (!acc[orderNumber]) acc[orderNumber] = [];
+        acc[orderNumber].push(row);
+        return acc;
+      }, {});
+
+      // Get unique orders based on Order Number
+      const uniqueData = Array.from(
+        new Map(
+          combinedData.map((row) => [row[0], row])
+        ).values()
+      );
+
+      // Prepare data for the table with access to line items
+      const processedData = uniqueData.map((row) => ({
+        orderNumber: row[0],
+        data: [row[0], row[1], row[2]], // Just Order #, Name, Date for main row
+        details: groupedOrders[row[0]] || [], // All line items
+      }));
+
+      // Initialize datatable
+      const datatable = new window.simpleDatatables.DataTable(targetElement, {
+        data: {
+          headings: ["Order #", "Name", "Date"],
+          data: processedData.map((row) => row.data),
+        },
+      });
+
+      // Add click event to handle accordion rows
+      datatable.on("click", (event) => {
+        const tr = event.target.closest("tr");
+        if (!tr || tr.classList.contains("details-row")) return;
+
+        const rowIndex = tr.rowIndex - 1;
+        const clickedOrder = datatable.data.data[rowIndex][0];
+        const lineItems = processedData.find((d) => d.orderNumber === clickedOrder)?.details || [];
+
+        const nextRow = tr.nextSibling;
+        if (nextRow && nextRow.classList.contains("details-row")) {
+          nextRow.remove(); // Toggle close
+          return;
+        }
+
+        // Close other open detail rows
+        document.querySelectorAll(".details-row").forEach((el) => el.remove());
+
+        // Create accordion row
+        const detailsRow = document.createElement("tr");
+        detailsRow.classList.add("details-row");
+        const td = document.createElement("td");
+        td.colSpan = 3;
+        td.innerHTML = `
+          <div class="accordion-content">
+            <strong>Line Items:</strong>
+            <ul>
+              ${lineItems.map((item) => `<li>${item.join(" | ")}</li>`).join("")}
+            </ul>
+          </div>
+        `;
+        detailsRow.appendChild(td);
+        tr.parentNode.insertBefore(detailsRow, tr.nextSibling);
+      });
+
+      console.log("DataTable initialized with clickable rows.");
+    })
+    .catch((error) => {
+      console.error("Error loading tracker data:", error);
+    });
+}
 
 
 // Iterate over the trackers array and load each tracker
-recentSales.forEach(loadRecentSalesData);
+//recentSales.forEach(loadRecentSalesData);
+
+  recentSales.forEach(loadRecentSalesDataRows);
 
   // THIS IS AN ATTEMPT AT FILTERING BASED ON TIME Your Google Sheets ID
 
