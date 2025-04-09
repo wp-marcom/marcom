@@ -1777,6 +1777,8 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
 
         console.log("Accordion row inserted.");
       });
+
+      console.log("DataTable initialized with processed data.");
     })
     .catch((error) => {
       console.error("Error loading tracker data:", error);
