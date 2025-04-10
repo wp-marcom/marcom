@@ -1692,95 +1692,101 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 }
 
 function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
-  const range = `${sheetName}!A2:G`;
+   const client = "Westpress Inventory";
+  const range = `${sheetName}!A2:G`; // Pulls all relevant columns
   const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
 
   fetch(url)
-    .then(res => res.json())
-    .then(response => {
-      const rawData = response.values;
+    .then((res) => res.json())
+    .then((response) => {
+      const rawData = response.values || [];
 
-      // Group rows by Order Number (column A)
+      // Group full data by Order Number (Column A)
       const groupedOrders = rawData.reduce((acc, row) => {
-        const orderNum = row[0];
-        if (!acc[orderNum]) acc[orderNum] = [];
-        acc[orderNum].push(row);
+        const orderNumber = row[0];
+        if (!acc[orderNumber]) acc[orderNumber] = [];
+        acc[orderNumber].push(row);
         return acc;
       }, {});
 
-      // Create parent rows with first entry and status (column G)
-      const processedData = Object.entries(groupedOrders).map(([orderNum, group]) => {
-        const first = group[0];
+      // Get one row per order (the first of each group)
+      const uniqueData = Object.entries(groupedOrders).map(([orderNum, rows]) => {
+        const firstRow = rows[0];
+        const status = firstRow[6] || '';
+        const statusHTML = getStatusBadge(status);
         return {
           orderNumber: orderNum,
-          data: [
-            first[0], // Order Number
-            first[1], // Order Date
-            first[2], // Placed By
-            first[6] || "" // Status (formatted HTML)
-          ],
-          details: group.map(row => {
-            const productName = row[3] || "";
-            const sku = row[4] || "";
-            const qty = row[5] || "";
-            const lowerName = productName.toLowerCase?.() || "";
-            const fulfillment = (lowerName.endsWith("lf") || lowerName.endsWith("dig")) ? "On-Demand" : "Pick";
-            return [productName, sku, qty, fulfillment];
-          })
+          data: [firstRow[0], firstRow[1], firstRow[2], statusHTML],
+          details: rows,
         };
       });
+
+      console.log("Processed Data:", uniqueData);
 
       const datatable = new window.simpleDatatables.DataTable(targetElement, {
         data: {
           headings: ["Order #", "Date", "Client", "Status"],
-          data: processedData.map(row => row.data),
+          data: uniqueData.map((row) => row.data),
         },
         columns: [
-          { select: 3, render: data => data }, // Render HTML in Status column
+          { select: 3, render: (data) => data }, // Render HTML for Status
         ],
       });
 
+      // Add click event for accordion behavior
       datatable.on("click", (event) => {
         const tr = event.target.closest("tr");
         if (!tr || tr.classList.contains("details-row")) return;
 
         const rowIndex = tr.rowIndex - 1;
         const clickedOrder = datatable.data.data[rowIndex][0];
-        const match = processedData.find(d => d.orderNumber === clickedOrder);
-        if (!match) return;
+        const orderData = uniqueData.find((d) => d.orderNumber === clickedOrder);
+        if (!orderData) return;
 
         const nextRow = tr.nextSibling;
         if (nextRow && nextRow.classList.contains("details-row")) {
-          nextRow.remove(); // Close
+          nextRow.remove(); // Toggle closed
           return;
         }
 
-        document.querySelectorAll(".details-row").forEach(row => row.remove());
+        // Close any open detail rows
+        document.querySelectorAll(".details-row").forEach((el) => el.remove());
 
-        const detailHTML = `
+        // Generate detail rows
+        const lineItemsHTML = orderData.details.map((item) => {
+          const productName = item[3] || '';
+          const sku = item[4] || '';
+          const qty = item[5] || '';
+          const fulfillment = /LF$|DIG$/i.test(productName.trim()) ? "On-Demand" : "Pick";
+          return `<tr>
+              <td>${productName}</td>
+              <td>${sku}</td>
+              <td>${qty}</td>
+              <td>${fulfillment}</td>
+          </tr>`;
+        }).join("");
+
+        const detailRowHTML = `
           <tr class="details-row">
             <td colspan="4">
               <div class="accordion-content">
-                <strong>Line Items:</strong>
-                <table style="margin-top: 8px;">
+                <table class="accordion-table">
                   <thead>
                     <tr><th>Product Name</th><th>SKU</th><th>Qty</th><th>Fulfillment</th></tr>
                   </thead>
-                  <tbody>
-                    ${match.details.map(d => `<tr><td>${d[0]}</td><td>${d[1]}</td><td>${d[2]}</td><td>${d[3]}</td></tr>`).join("")}
-                  </tbody>
+                  <tbody>${lineItemsHTML}</tbody>
                 </table>
               </div>
             </td>
-          </tr>
-        `;
-        tr.insertAdjacentHTML("afterend", detailHTML);
+          </tr>`;
+
+        tr.insertAdjacentHTML("afterend", detailRowHTML);
       });
 
-      console.log("DataTable initialized with accordion functionality.");
+      console.log("✅ DataTable initialized with accordion functionality.");
     })
-    .catch(error => {
-      console.error("Error loading tracker data:", error);
+    .catch((error) => {
+      console.error("❌ Error loading tracker data:", error);
     });
 }
 
