@@ -1693,7 +1693,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 
 function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
    const client = "Westpress Inventory";
-  const range = `${sheetName}!A2:G`; // Pulls all relevant columns
+  const range = `${sheetName}!A2:G`;
   const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
 
   fetch(url)
@@ -1701,7 +1701,7 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
     .then((response) => {
       const rawData = response.values || [];
 
-      // Group full data by Order Number (Column A)
+      // Group all rows by Order Number
       const groupedOrders = rawData.reduce((acc, row) => {
         const orderNumber = row[0];
         if (!acc[orderNumber]) acc[orderNumber] = [];
@@ -1709,11 +1709,19 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
         return acc;
       }, {});
 
-      // Get one row per order (the first of each group)
       const uniqueData = Object.entries(groupedOrders).map(([orderNum, rows]) => {
         const firstRow = rows[0];
-        const status = firstRow[6] || '';
-        const statusHTML = getStatusBadge(status);
+        const rawStatus = (firstRow[6] || "").toLowerCase();
+        let statusHTML = firstRow[6] || "";
+
+        if (rawStatus.includes("received")) {
+          statusHTML = `<span class='badge bg-warning'>${firstRow[6]}</span>`;
+        } else if (rawStatus.includes("shipped")) {
+          statusHTML = `<span class='badge bg-success'>${firstRow[6]}</span>`;
+        } else if (rawStatus.includes("cancelled")) {
+          statusHTML = `<span class='badge bg-danger'>${firstRow[6]}</span>`;
+        }
+
         return {
           orderNumber: orderNum,
           data: [firstRow[0], firstRow[1], firstRow[2], statusHTML],
@@ -1729,11 +1737,10 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
           data: uniqueData.map((row) => row.data),
         },
         columns: [
-          { select: 3, render: (data) => data }, // Render HTML for Status
+          { select: 3, render: (data) => data }, // Render raw HTML in status column
         ],
       });
 
-      // Add click event for accordion behavior
       datatable.on("click", (event) => {
         const tr = event.target.closest("tr");
         if (!tr || tr.classList.contains("details-row")) return;
@@ -1752,7 +1759,6 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
         // Close any open detail rows
         document.querySelectorAll(".details-row").forEach((el) => el.remove());
 
-        // Generate detail rows
         const lineItemsHTML = orderData.details.map((item) => {
           const productName = item[3] || '';
           const sku = item[4] || '';
@@ -1783,7 +1789,7 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
         tr.insertAdjacentHTML("afterend", detailRowHTML);
       });
 
-      console.log("✅ DataTable initialized with accordion functionality.");
+      console.log("✅ DataTable initialized with inline status formatting and accordion.");
     })
     .catch((error) => {
       console.error("❌ Error loading tracker data:", error);
