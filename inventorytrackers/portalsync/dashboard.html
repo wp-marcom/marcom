@@ -1692,40 +1692,34 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 }
 
 function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
-  const client = "Westpress Inventory";
+ const client = "Westpress Inventory";
 
-  const range1 = `${sheetName}!A2:C`;
-  const range2 = `${sheetName}!G2:G`;
+  const range1 = `${sheetName}!A2:F`; // Now includes columns D, E, F
+  const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
 
-  const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
-  const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((response) => {
+      const rawData = response.values;
 
-  return Promise.all([
-    fetch(url1).then((res) => res.json()),
-    fetch(url2).then((res) => res.json()),
-  ])
-    .then(([response1, response2]) => {
-      const combinedData = response1.values.map((row, index) => {
-        const colGValue = response2.values[index]?.[0] || '';
-        return [...row, colGValue];
-      });
-
-      const groupedOrders = combinedData.reduce((acc, row) => {
-        const orderKey = row[0]; // Assuming first column is unique per order
-        if (!acc[orderKey]) acc[orderKey] = [];
-        acc[orderKey].push(row);
+      // Group full data by Order Number
+      const groupedOrders = rawData.reduce((acc, row) => {
+        const orderNumber = row[0];
+        if (!acc[orderNumber]) acc[orderNumber] = [];
+        acc[orderNumber].push(row);
         return acc;
       }, {});
 
+      // Get unique display rows (first entry per order)
       const uniqueData = Array.from(
         new Map(
-          combinedData.map((row) => [row[0], row])
+          rawData.map((row) => [row[0], row])
         ).values()
       );
 
       const processedData = uniqueData.map((row) => ({
         orderNumber: row[0],
-        data: [...row],
+        data: [row[0], row[1], row[2], row[5]], // Keep status (column F) with HTML
         details: groupedOrders[row[0]] || [],
       }));
 
@@ -1733,12 +1727,15 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
 
       const datatable = new window.simpleDatatables.DataTable(targetElement, {
         data: {
-          headings: ["Order #", "Date", "Name", "Status"],
+          headings: ["Order #", "Date", "Client", "Status"],
           data: processedData.map((row) => row.data),
         },
+        columns: [
+          { select: 3, render: (data) => data }, // Ensure HTML is rendered in Status
+        ],
       });
 
-      // Add click-to-expand logic
+      // Enable clickable row accordion
       datatable.on("click", (event) => {
         const tr = event.target.closest("tr");
         if (!tr || tr.classList.contains("details-row")) return;
@@ -1753,26 +1750,25 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
           return;
         }
 
-        // Close all others
+        // Remove any open accordion rows
         document.querySelectorAll(".details-row").forEach((el) => el.remove());
 
-        const lineItemHtml = lineItems
-          .map((item) => `<li>${item.join(" | ")}</li>`)
-          .join("");
-
-        const accordionRow = document.createElement("tr");
-        accordionRow.classList.add("details-row");
-        accordionRow.innerHTML = `
-          <td colspan="4">
-            <div class="accordion-content">
-              <strong>Line Items:</strong>
-              <ul>${lineItemHtml}</ul>
-            </div>
-          </td>
+        // Inject detail row
+        const detailHTML = `
+          <tr class="details-row">
+            <td colspan="4">
+              <div class="accordion-content">
+                <strong>Line Items:</strong>
+                <ul>
+                  ${lineItems
+                    .map((item) => `<li>${item[3] || ''} | ${item[4] || ''} | ${item[5] || ''}</li>`)
+                    .join("")}
+                </ul>
+              </div>
+            </td>
+          </tr>
         `;
-
-        tr.parentNode.insertBefore(accordionRow, tr.nextSibling);
-        console.log("Accordion row inserted.");
+        tr.insertAdjacentHTML("afterend", detailHTML);
       });
 
       console.log("DataTable initialized with clickable rows.");
