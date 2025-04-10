@@ -1692,10 +1692,10 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 }
 
 function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
- const client = "Westpress Inventory";
+  const client = "Westpress Inventory";
 
-  const range1 = `${sheetName}!A2:C`; // Order info: Order #, Name, Date
-  const range2 = `${sheetName}!G2:G`; // Column G (4th column)
+  const range1 = `${sheetName}!A2:C`;
+  const range2 = `${sheetName}!G2:G`;
 
   const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
   const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
@@ -1706,59 +1706,72 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
   ])
     .then(([response1, response2]) => {
       const combinedData = response1.values.map((row, index) => {
-        const colGValue = response2.values[index]?.[0] || ''; // Add the 4th column data (Column G)
-        return [...row, colGValue]; // Add column G to the row data
+        const colGValue = response2.values[index]?.[0] || '';
+        return [...row, colGValue];
       });
+
+      const groupedOrders = combinedData.reduce((acc, row) => {
+        const orderKey = row[0]; // Assuming first column is unique per order
+        if (!acc[orderKey]) acc[orderKey] = [];
+        acc[orderKey].push(row);
+        return acc;
+      }, {});
 
       const uniqueData = Array.from(
         new Map(
-          combinedData.map((row) => [row.slice(0, 3).join('|'), row]) // Unique based on the first 3 columns (Order #, Name, Date)
+          combinedData.map((row) => [row[0], row])
         ).values()
       );
 
-      return recentSalesData(uniqueData, client);
-    })
-    .then((processedData) => {
-      console.log("Processed Data:", processedData); // Add this to see if line items are loaded correctly
-      
+      const processedData = uniqueData.map((row) => ({
+        orderNumber: row[0],
+        data: [...row],
+        details: groupedOrders[row[0]] || [],
+      }));
+
+      console.log("Processed Data:", processedData);
+
       const datatable = new window.simpleDatatables.DataTable(targetElement, {
         data: {
+          headings: ["Order #", "Date", "Name", "Status"],
           data: processedData.map((row) => row.data),
         },
       });
 
-      // Add click event to handle accordion rows
+      // Add click-to-expand logic
       datatable.on("click", (event) => {
-        const tr = event.target.closest("tr"); // Get the clicked row
-        if (!tr || tr.classList.contains("details-row")) return; // Avoid clicking on an already expanded row
+        const tr = event.target.closest("tr");
+        if (!tr || tr.classList.contains("details-row")) return;
 
-        const rowIndex = tr.rowIndex - 1; // Get the clicked row index
-        const clickedOrder = datatable.data.data[rowIndex][0]; // Get the order number from the row
-        const lineItems = processedData.find((d) => d.orderNumber === clickedOrder)?.details || []; // Get line items
+        const rowIndex = tr.rowIndex - 1;
+        const clickedOrder = datatable.data.data[rowIndex][0];
+        const lineItems = processedData.find((d) => d.orderNumber === clickedOrder)?.details || [];
 
-        const nextRow = tr.nextSibling; // Check if there's already an expanded row below
+        const nextRow = tr.nextSibling;
         if (nextRow && nextRow.classList.contains("details-row")) {
-          nextRow.remove(); // Toggle close if the row is already expanded
+          nextRow.remove(); // Toggle close
           return;
         }
 
-        // Close other open detail rows
+        // Close all others
         document.querySelectorAll(".details-row").forEach((el) => el.remove());
 
-        // Insert the accordion row after the clicked row
-        tr.insertAdjacentHTML('afterend', `
-          <tr class="details-row">
-            <td colspan="3">
-              <div class="accordion-content">
-                <strong>Line Items:</strong>
-                <ul>
-                  ${lineItems.map((item) => `<li>${item.join(" | ")}</li>`).join("")}
-                </ul>
-              </div>
-            </td>
-          </tr>
-        `);
+        const lineItemHtml = lineItems
+          .map((item) => `<li>${item.join(" | ")}</li>`)
+          .join("");
 
+        const accordionRow = document.createElement("tr");
+        accordionRow.classList.add("details-row");
+        accordionRow.innerHTML = `
+          <td colspan="4">
+            <div class="accordion-content">
+              <strong>Line Items:</strong>
+              <ul>${lineItemHtml}</ul>
+            </div>
+          </td>
+        `;
+
+        tr.parentNode.insertBefore(accordionRow, tr.nextSibling);
         console.log("Accordion row inserted.");
       });
 
