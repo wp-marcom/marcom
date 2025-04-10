@@ -1692,92 +1692,84 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 }
 
 function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
-  const client = "Westpress Inventory";
-  const range1 = `${sheetName}!A2:F`; // Columns A to F (includes Order Number, Date, etc.)
-  const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
+  const range = `${sheetName}!A2:G`;
+  const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
 
   fetch(url)
-    .then((res) => res.json())
-    .then((response) => {
+    .then(res => res.json())
+    .then(response => {
       const rawData = response.values;
 
-      // Group full data by Order Number
+      // Group rows by Order Number (column A)
       const groupedOrders = rawData.reduce((acc, row) => {
-        const orderNumber = row[0];
-        if (!acc[orderNumber]) acc[orderNumber] = [];
-        acc[orderNumber].push(row);
+        const orderNum = row[0];
+        if (!acc[orderNum]) acc[orderNum] = [];
+        acc[orderNum].push(row);
         return acc;
       }, {});
 
-      // Get unique display rows (first entry per order)
-      const uniqueData = Array.from(
-        new Map(
-          rawData.map((row) => [row[0], row])
-        ).values()
-      );
-
-      // Process each order row and format the status
-      const processedData = uniqueData.map((row) => {
-        // Format Status
-        const formattedStatus = row[6] && row[6].toLowerCase().includes("received") 
-          ? "<span class='badge bg-warning'>Order Received</span>" 
-          : "<span class='badge bg-success'>Order Shipped</span>";
-
+      // Create parent rows with first entry and status (column G)
+      const processedData = Object.entries(groupedOrders).map(([orderNum, group]) => {
+        const first = group[0];
         return {
-          orderNumber: row[0],
-          data: [row[0], row[1], row[2], formattedStatus], // Parent row: Order #, Date, PO Placed By, Status (formatted)
-          details: groupedOrders[row[0]] || [],
+          orderNumber: orderNum,
+          data: [
+            first[0], // Order Number
+            first[1], // Order Date
+            first[2], // Placed By
+            first[6] || "" // Status (formatted HTML)
+          ],
+          details: group.map(row => {
+            const productName = row[3] || "";
+            const sku = row[4] || "";
+            const qty = row[5] || "";
+            const lowerName = productName.toLowerCase?.() || "";
+            const fulfillment = (lowerName.endsWith("lf") || lowerName.endsWith("dig")) ? "On-Demand" : "Pick";
+            return [productName, sku, qty, fulfillment];
+          })
         };
       });
 
-      console.log("Processed Data:", processedData);
-
       const datatable = new window.simpleDatatables.DataTable(targetElement, {
         data: {
-          headings: ["Order #", "Order Date", "PO Placed By", "Status"],
-          data: processedData.map((row) => row.data),
+          headings: ["Order #", "Date", "Client", "Status"],
+          data: processedData.map(row => row.data),
         },
         columns: [
-          { select: 3, render: (data) => data }, // Ensure HTML is rendered in Status column
+          { select: 3, render: data => data }, // Render HTML in Status column
         ],
       });
 
-      // Enable clickable row accordion for line items
       datatable.on("click", (event) => {
         const tr = event.target.closest("tr");
         if (!tr || tr.classList.contains("details-row")) return;
 
         const rowIndex = tr.rowIndex - 1;
         const clickedOrder = datatable.data.data[rowIndex][0];
-        const lineItems = processedData.find((d) => d.orderNumber === clickedOrder)?.details || [];
+        const match = processedData.find(d => d.orderNumber === clickedOrder);
+        if (!match) return;
 
         const nextRow = tr.nextSibling;
         if (nextRow && nextRow.classList.contains("details-row")) {
-          nextRow.remove(); // Toggle close
+          nextRow.remove(); // Close
           return;
         }
 
-        // Remove any open accordion rows
-        document.querySelectorAll(".details-row").forEach((el) => el.remove());
+        document.querySelectorAll(".details-row").forEach(row => row.remove());
 
-        // Inject detail row with Product Name, SKU, Qty, and On-Demand/Pick value
         const detailHTML = `
           <tr class="details-row">
             <td colspan="4">
               <div class="accordion-content">
                 <strong>Line Items:</strong>
-                <ul>
-                  ${lineItems
-                    .map((item) => {
-                      // On-Demand or Pick based on Product Name (ensure it's a string before calling toLowerCase)
-                      const productName = item[3] || ''; // Safely get Product Name (D)
-                      const productType = (productName.toLowerCase().endsWith("lf") || productName.toLowerCase().endsWith("dig"))
-                        ? "On-Demand"
-                        : "Pick";
-                      return `<li>${item[3] || ''} | ${item[4] || ''} | ${item[5] || ''} | ${productType}</li>`;
-                    })
-                    .join("")}
-                </ul>
+                <table style="margin-top: 8px;">
+                  <thead>
+                    <tr><th>Product Name</th><th>SKU</th><th>Qty</th><th>Fulfillment</th></tr>
+                  </thead>
+                  <tbody>
+                    ${match.details.map(d => `<tr><td>${d[0]}</td><td>${d[1]}</td><td>${d[2]}</td><td>${d[3]}</td></tr>`).join("")}
+                  </tbody>
+                </table>
               </div>
             </td>
           </tr>
@@ -1785,9 +1777,9 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
         tr.insertAdjacentHTML("afterend", detailHTML);
       });
 
-      console.log("DataTable initialized with clickable rows.");
+      console.log("DataTable initialized with accordion functionality.");
     })
-    .catch((error) => {
+    .catch(error => {
       console.error("Error loading tracker data:", error);
     });
 }
