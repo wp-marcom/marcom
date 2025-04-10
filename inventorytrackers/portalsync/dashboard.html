@@ -1692,7 +1692,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 }
 
 function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
-const client = "Westpress Inventory";
+  const client = "Westpress Inventory";
   const range1 = `${sheetName}!A2:F`; // Columns A to F (includes Order Number, Date, etc.)
   const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
 
@@ -1769,9 +1769,10 @@ const client = "Westpress Inventory";
                 <ul>
                   ${lineItems
                     .map((item) => {
-                      // On-Demand or Pick based on Product Name
-                      const productType = item[3].toLowerCase().endsWith("lf") || item[3].toLowerCase().endsWith("dig") 
-                        ? "On-Demand" 
+                      // On-Demand or Pick based on Product Name (ensure it's a string before calling toLowerCase)
+                      const productName = item[3] || ''; // Safely get Product Name (D)
+                      const productType = (productName.toLowerCase().endsWith("lf") || productName.toLowerCase().endsWith("dig"))
+                        ? "On-Demand"
                         : "Pick";
                       return `<li>${item[3] || ''} | ${item[4] || ''} | ${item[5] || ''} | ${productType}</li>`;
                     })
