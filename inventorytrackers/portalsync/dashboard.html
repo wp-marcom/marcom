@@ -1692,9 +1692,8 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 }
 
 function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
- const client = "Westpress Inventory";
-
-  const range1 = `${sheetName}!A2:F`; // Load columns A–F (order and line item details)
+const client = "Westpress Inventory";
+  const range1 = `${sheetName}!A2:F`; // Columns A to F (includes Order Number, Date, etc.)
   const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
 
   fetch(url)
@@ -1702,7 +1701,7 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
     .then((response) => {
       const rawData = response.values;
 
-      // Group full data by Order Number (Column A)
+      // Group full data by Order Number
       const groupedOrders = rawData.reduce((acc, row) => {
         const orderNumber = row[0];
         if (!acc[orderNumber]) acc[orderNumber] = [];
@@ -1710,26 +1709,32 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
         return acc;
       }, {});
 
-      // Get unique rows (one per order, for the parent row)
+      // Get unique display rows (first entry per order)
       const uniqueData = Array.from(
         new Map(
-          rawData.map((row) => [row[0], row]) // Group by order number (Column A)
+          rawData.map((row) => [row[0], row])
         ).values()
       );
 
-      // Prepare processed data (for the main table and accordion rows)
-      const processedData = uniqueData.map((row) => ({
-        orderNumber: row[0],
-        data: [row[0], row[1], row[2], row[5]], // Parent row: Order #, Date, Client, Status (from F)
-        details: groupedOrders[row[0]] || [], // Line items for this order
-      }));
+      // Process each order row and format the status
+      const processedData = uniqueData.map((row) => {
+        // Format Status
+        const formattedStatus = row[6] && row[6].toLowerCase().includes("received") 
+          ? "<span class='badge bg-warning'>Order Received</span>" 
+          : "<span class='badge bg-success'>Order Shipped</span>";
+
+        return {
+          orderNumber: row[0],
+          data: [row[0], row[1], row[2], formattedStatus], // Parent row: Order #, Date, PO Placed By, Status (formatted)
+          details: groupedOrders[row[0]] || [],
+        };
+      });
 
       console.log("Processed Data:", processedData);
 
-      // Initialize DataTable with parent row
       const datatable = new window.simpleDatatables.DataTable(targetElement, {
         data: {
-          headings: ["Order #", "Date", "Client", "Status"],
+          headings: ["Order #", "Order Date", "PO Placed By", "Status"],
           data: processedData.map((row) => row.data),
         },
         columns: [
@@ -1737,27 +1742,26 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
         ],
       });
 
-      // Enable accordion functionality for row clicks
+      // Enable clickable row accordion for line items
       datatable.on("click", (event) => {
         const tr = event.target.closest("tr");
         if (!tr || tr.classList.contains("details-row")) return;
 
         const rowIndex = tr.rowIndex - 1;
         const clickedOrder = datatable.data.data[rowIndex][0];
-        const clickedData = processedData.find((d) => d.orderNumber === clickedOrder);
-        const lineItems = clickedData?.details || [];
+        const lineItems = processedData.find((d) => d.orderNumber === clickedOrder)?.details || [];
 
         const nextRow = tr.nextSibling;
         if (nextRow && nextRow.classList.contains("details-row")) {
-          nextRow.remove(); // Toggle off accordion row
+          nextRow.remove(); // Toggle close
           return;
         }
 
-        // Close any open accordion rows
+        // Remove any open accordion rows
         document.querySelectorAll(".details-row").forEach((el) => el.remove());
 
-        // Build the accordion row
-        const detailsHTML = `
+        // Inject detail row with Product Name, SKU, Qty, and On-Demand/Pick value
+        const detailHTML = `
           <tr class="details-row">
             <td colspan="4">
               <div class="accordion-content">
@@ -1765,10 +1769,11 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
                 <ul>
                   ${lineItems
                     .map((item) => {
-                      // Determine "On-Demand" or "Pick" status based on Column D (Product)
-                      const product = item[3] || ''; // Column D
-                      const type = product.trim().match(/LF|DIG/i) ? "On-Demand" : "Pick";
-                      return `<li>${item[3] || ''} | ${item[4] || ''} | ${item[5] || ''} | ${type}</li>`;
+                      // On-Demand or Pick based on Product Name
+                      const productType = item[3].toLowerCase().endsWith("lf") || item[3].toLowerCase().endsWith("dig") 
+                        ? "On-Demand" 
+                        : "Pick";
+                      return `<li>${item[3] || ''} | ${item[4] || ''} | ${item[5] || ''} | ${productType}</li>`;
                     })
                     .join("")}
                 </ul>
@@ -1776,9 +1781,7 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
             </td>
           </tr>
         `;
-
-        // Insert accordion row after clicked row
-        tr.insertAdjacentHTML("afterend", detailsHTML);
+        tr.insertAdjacentHTML("afterend", detailHTML);
       });
 
       console.log("DataTable initialized with clickable rows.");
