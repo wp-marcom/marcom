@@ -1694,81 +1694,81 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 
 function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
   const client = "Westpress Inventory";
+ const range1 = `${sheetName}!A2:C`;
+  const range2 = `${sheetName}!G2:G`;
 
-const range1 = `${sheetName}!A2:C`;
-const range2 = `${sheetName}!G2:G`;
+  const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
+  const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
 
-const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
-const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
+  Promise.all([
+    fetch(url1).then((res) => res.json()),
+    fetch(url2).then((res) => res.json()),
+  ])
+    .then(([response1, response2]) => {
+      const combinedData = response1.values.map((row, index) => {
+        const colGValue = response2.values[index]?.[0] || '';
+        return [...row, colGValue];
+      });
 
-Promise.all([
-  fetch(url1).then((res) => res.json()),
-  fetch(url2).then((res) => res.json()),
-])
-  .then(([response1, response2]) => {
-    const combinedData = response1.values.map((row, index) => {
-      const colGValue = response2.values[index]?.[0] || '';
-      return [...row, colGValue];
+      const uniqueData = Array.from(
+        new Map(combinedData.map((row) => [row.slice(0, 3).join('|'), row])).values()
+      );
+
+      const tableData = uniqueData.map((row) => [
+        '', // Expand icon cell
+        row[0] || '', // Job #
+        row[1] || '', // Order Date
+        row[2] || '', // Customer
+        row[3] || '', // Status (column G)
+      ]);
+
+      const table = $(targetElement).DataTable({
+        data: tableData,
+        columns: [
+          {
+            className: 'dt-control',
+            orderable: false,
+            data: null,
+            defaultContent: '',
+          },
+          { title: "Job #" },
+          { title: "Order Date" },
+          { title: "Customer" },
+          { title: "Status" },
+        ],
+        order: [[1, 'asc']],
+      });
+
+      // Expandable row click handler
+      $(`${targetElement} tbody`).on('click', 'td.dt-control', function () {
+        const tr = $(this).closest('tr');
+        const row = table.row(tr);
+
+        if (row.child.isShown()) {
+          row.child.hide();
+          tr.removeClass('shown');
+        } else {
+          row.child('<div>Loading line items...</div>').show(); // Will replace with real data later
+          tr.addClass('shown');
+        }
+      });
+
+      console.log(`Expandable table loaded for sheet: ${sheetName}`);
+    })
+    .catch((error) => {
+      console.error("Error loading tracker data:", error);
     });
-
-    const uniqueData = Array.from(
-      new Map(combinedData.map((row) => [row.slice(0, 3).join('|'), row])).values()
-    );
-
-    // Create table rows with blank first column for expand control
-    const tableData = uniqueData.map((row) => [
-      '', // Placeholder for expand control
-      row[0] || '',
-      row[1] || '',
-      row[2] || '',
-      row[3] || '', // Status (already formatted HTML)
-    ]);
-
-    const table = $('#feed-table-first').DataTable({
-      data: tableData,
-      columns: [
-        {
-          className: 'dt-control',
-          orderable: false,
-          data: null,
-          defaultContent: '',
-        },
-        { title: "Job #" },
-        { title: "Order Date" },
-        { title: "Customer" },
-        { title: "Status" },
-      ],
-      order: [[1, 'asc']],
-    });
-
-    // Set up the row expansion
-    $('#feed-table-first tbody').on('click', 'td.dt-control', function () {
-      const tr = $(this).closest('tr');
-      const row = table.row(tr);
-
-      if (row.child.isShown()) {
-        row.child.hide();
-        tr.removeClass('shown');
-      } else {
-        row.child('<div>Loading line items...</div>').show(); // Placeholder for now
-        tr.addClass('shown');
-      }
-    });
-
-    console.log("Expandable DataTable initialized.");
-  })
-  .catch((error) => {
-    console.error("Error loading tracker data:", error);
-  });
 }
-
 
 
 
 // Iterate over the trackers array and load each tracker
 //recentSales.forEach(loadRecentSalesData);
 
+ // Wait for DOM ready, then run all
+$(document).ready(function () {
   recentSales.forEach(loadRecentSalesDataRows);
+});
 
   // THIS IS AN ATTEMPT AT FILTERING BASED ON TIME Your Google Sheets ID
 
