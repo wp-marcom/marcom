@@ -173,8 +173,8 @@ updateLastModifiedTime();
 
 function sendRefillEmail(productName) {
     // Extract SKU from productName
-    var sku = extractSkuFromProductName(productName);
-
+    //var sku = extractSkuFromProductName(productName);
+    var sku = skuName;
     // Construct the email body with labels only
     var emailBody = "Product Name: " + productName + "\n\n" +
                     "SKU: " + sku + "\n\n" +
@@ -199,8 +199,8 @@ function sendRefillEmail(productName) {
 
 function sendLocationEmail(productName) {
     // Extract SKU from productName
-    var sku = extractSkuFromProductName(productName);
-
+    //var sku = extractSkuFromProductName(productName);
+    var sku = skuName;
     // Construct the email body with labels only
     var emailBody = "Product Name: " + productName + "\n\n" +
                     "SKU: " + sku + "\n\n" +
@@ -229,8 +229,8 @@ if (currentUrl.includes("mister")) {
 
   
     // Extract SKU from productName
-    var sku = extractSkuFromProductName(productName);
-
+    //var sku = extractSkuFromProductName(productName);
+    var sku = skuName;
     // Construct the email body with labels only
     var emailBody = "On shelf inventory is currently low on:" + "\n\n" +
                     "Product Name: " + productName + "\n\n" +
