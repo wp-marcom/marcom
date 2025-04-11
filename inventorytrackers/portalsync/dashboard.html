@@ -1696,20 +1696,9 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 // Iterate over the trackers array and load each tracker
 //recentSales.forEach(loadRecentSalesData);
 
-function format(row) {
-  return `
-    <dl style="margin:0;padding:10px">
-      <dt>Job #:</dt><dd>${row[0]}</dd>
-      <dt>Order Date:</dt><dd>${row[1]}</dd>
-      <dt>Customer:</dt><dd>${row[2]}</dd>
-      <dt>Status:</dt><dd>${row[3]}</dd>
-    </dl>
-  `;
-}
-
-function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
-  const client = "Westpress Inventory";
-   const range1 = `${sheetName}!A2:C`;
+    function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
+        const client = "Westpress Inventory";
+        const range1 = `${sheetName}!A2:C`;
   const range2 = `${sheetName}!G2:G`;
 
   const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
@@ -1720,35 +1709,48 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
     fetch(url2).then((res) => res.json()),
   ])
     .then(([response1, response2]) => {
-      const combinedData = response1.values.map((row, index) => {
+      const rawData = response1.values.map((row, index) => {
         const status = response2.values[index]?.[0] || '';
-        return [...row, status];
+        return [...row, status]; // [Job, Order Date, Customer, Status]
       });
 
-      const tableData = combinedData.map(row => ({
-        job: row[0] || '',
-        orderDate: row[1] || '',
-        customer: row[2] || '',
-        status: row[3] || '',
-        raw: row // keep full raw array for formatting
+      // Group rows by Job # (column 0)
+      const groupedData = {};
+      rawData.forEach(row => {
+        const job = row[0] || 'UNKNOWN';
+        if (!groupedData[job]) groupedData[job] = [];
+        groupedData[job].push(row);
+      });
+
+      // Convert to array of parent row objects
+      const parentRows = Object.entries(groupedData).map(([job, rows]) => ({
+        job,
+        orderDate: rows[0][1] || '',
+        customer: rows[0][2] || '',
+        status: rows[0][3] || '',
+        children: rows, // All matching line items
       }));
 
+      // Initialize DataTable with only parent rows
       const table = $(targetElement).DataTable({
-        data: tableData,
+        data: parentRows,
         columns: [
           {
             className: 'dt-control',
             orderable: false,
             data: null,
             defaultContent: '',
+            title: '', // <- ADD THIS!
           },
           { data: 'job', title: 'Job #' },
           { data: 'orderDate', title: 'Order Date' },
           { data: 'customer', title: 'Customer' },
           { data: 'status', title: 'Status' },
         ],
-        order: [[1, 'asc']],
+        //order: [[1, 'asc']],
+        destroy: true
       });
+      table.draw();
 
       // Expand/collapse listener
       $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
@@ -1759,7 +1761,17 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
           row.child.hide();
           tr.removeClass('shown');
         } else {
-          row.child(format(row.data().raw)).show();
+          const childRowsHtml = row.data().children.map(child => `
+            <tr>
+              <td colspan="5" style="padding-left:30px;">
+                <b>Job #:</b> ${child[0]} |
+                <b>Date:</b> ${child[1]} |
+                <b>Customer:</b> ${child[2]} |
+                <b>Status:</b> ${child[3]}
+              </td>
+            </tr>
+          `).join('');
+          row.child(`<table class="table">${childRowsHtml}</table>`).show();
           tr.addClass('shown');
         }
       });
@@ -1767,7 +1779,18 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
     .catch((error) => {
       console.error("Error loading tracker data:", error);
     });
-}
+    }
+
+    function format(row) {
+      return `
+        <dl style="margin:0;padding:10px">
+          <dt>Job #:</dt><dd>${row[0]}</dd>
+          <dt>Order Date:</dt><dd>${row[1]}</dd>
+          <dt>Customer:</dt><dd>${row[2]}</dd>
+          <dt>Status:</dt><dd>${row[3]}</dd>
+        </dl>
+      `;
+    }
 
 // Call it for each sheet config
 recentSales.forEach(loadRecentSalesDataRows);
