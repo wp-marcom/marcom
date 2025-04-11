@@ -13,20 +13,16 @@
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-<!-- jQuery <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- DataTables CSS-->
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 
-<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-<!-- DataTables CSS <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">-->
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 
-<link rel="stylesheet" href="https://cdn.datatables.net/s/ju/dt-1.10.10,b-1.1.0,fc-3.2.0,fh-3.1.0,r-2.0.0,sc-1.4.0/datatables.min.css">
-<!-- DataTables JS <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>-->
-
-
- <!-- Include DataTables library <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> -->
- <!-- Single bundled version from CodePen -->
-<script src="https://cdn.datatables.net/s/ju/dt-1.10.10,b-1.1.0,fc-3.2.0,fh-3.1.0,r-2.0.0,sc-1.4.0/datatables.min.js"></script>
-
-
+ <!-- Include DataTables library </script> -->
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js">
 
 
   <!-- Google Fonts -->
@@ -1727,11 +1723,11 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
 
 
 // Iterate over the trackers array and load each tracker
-//recentSales.forEach(loadRecentSalesData);
+recentSales.forEach(loadRecentSalesData);
 
  // Wait for DOM ready, then run all
 
-  recentSales.forEach(loadRecentSalesDataRows);
+  //recentSales.forEach(loadRecentSalesDataRows);
 
   // THIS IS AN ATTEMPT AT FILTERING BASED ON TIME Your Google Sheets ID
 
