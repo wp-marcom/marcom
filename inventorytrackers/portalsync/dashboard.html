@@ -1728,7 +1728,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
         job,
         orderDate: rows[0][1] || '',
         customer: rows[0][2] || '',
-        status: rows[0][3] || '',
+        status: rows[0][6] || '',
         children: rows, // All matching line items
       }));
 
@@ -1765,7 +1765,6 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
           const childRowsHtml = row.data().children.map(child => `
             <tr>
               <td colspan="5" style="padding-left:30px;">
-                <b>Job #:</b> ${child[0]} |
                 <b>Product Name:</b> ${child[3]} |
                 <b>SKU:</b> ${child[4]} |
                 <b>Qty:</b> ${child[5]}
