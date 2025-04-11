@@ -839,6 +839,7 @@
               <table class="table table-striped" id="feed-table-first">
                 <thead>
                     <tr>
+                      <th></th> <!-- Expand control -->
                       <th><b>J</b>ob #</th>
                       <th>Order Date</th>
                       <th>Customer</th>
@@ -1692,108 +1693,73 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 }
 
 function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
-   const client = "Westpress Inventory";
-  const range = `${sheetName}!A2:G`;
-  const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
+  const client = "Westpress Inventory";
 
-  fetch(url)
-    .then((res) => res.json())
-    .then((response) => {
-      const rawData = response.values || [];
+const range1 = `${sheetName}!A2:C`;
+const range2 = `${sheetName}!G2:G`;
 
-      // Group all rows by Order Number
-      const groupedOrders = rawData.reduce((acc, row) => {
-        const orderNumber = row[0];
-        if (!acc[orderNumber]) acc[orderNumber] = [];
-        acc[orderNumber].push(row);
-        return acc;
-      }, {});
+const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
+const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
 
-      const uniqueData = Object.entries(groupedOrders).map(([orderNum, rows]) => {
-        const firstRow = rows[0];
-        const rawStatus = (firstRow[6] || "").toLowerCase();
-        let statusHTML = firstRow[6] || "";
-
-        if (rawStatus.includes("received")) {
-          statusHTML = `<span class='badge bg-warning'>${firstRow[6]}</span>`;
-        } else if (rawStatus.includes("shipped")) {
-          statusHTML = `<span class='badge bg-success'>${firstRow[6]}</span>`;
-        } else if (rawStatus.includes("cancelled")) {
-          statusHTML = `<span class='badge bg-danger'>${firstRow[6]}</span>`;
-        }
-
-        return {
-          orderNumber: orderNum,
-          data: [firstRow[0], firstRow[1], firstRow[2], statusHTML],
-          details: rows,
-        };
-      });
-
-      console.log("Processed Data:", uniqueData);
-
-      const datatable = new window.simpleDatatables.DataTable(targetElement, {
-        data: {
-          headings: ["Order #", "Date", "Client", "Status"],
-          data: uniqueData.map((row) => row.data),
-        },
-        columns: [
-          { select: 3, render: (data) => data }, // Render raw HTML in status column
-        ],
-      });
-
-      datatable.on("click", (event) => {
-        const tr = event.target.closest("tr");
-        if (!tr || tr.classList.contains("details-row")) return;
-
-        const rowIndex = tr.rowIndex - 1;
-        const clickedOrder = datatable.data.data[rowIndex][0];
-        const orderData = uniqueData.find((d) => d.orderNumber === clickedOrder);
-        if (!orderData) return;
-
-        const nextRow = tr.nextSibling;
-        if (nextRow && nextRow.classList.contains("details-row")) {
-          nextRow.remove(); // Toggle closed
-          return;
-        }
-
-        // Close any open detail rows
-        document.querySelectorAll(".details-row").forEach((el) => el.remove());
-
-        const lineItemsHTML = orderData.details.map((item) => {
-          const productName = item[3] || '';
-          const sku = item[4] || '';
-          const qty = item[5] || '';
-          const fulfillment = /LF$|DIG$/i.test(productName.trim()) ? "On-Demand" : "Pick";
-          return `<tr>
-              <td>${productName}</td>
-              <td>${sku}</td>
-              <td>${qty}</td>
-              <td>${fulfillment}</td>
-          </tr>`;
-        }).join("");
-
-        const detailRowHTML = `
-          <tr class="details-row">
-            <td colspan="4">
-              <div class="accordion-content">
-                <table class="accordion-table">
-                  <thead>
-                    <tr><th>Product Name</th><th>SKU</th><th>Qty</th><th>Fulfillment</th></tr>
-                  </thead>
-                  <tbody>${lineItemsHTML}</tbody>
-                </table>
-              </div>
-            </td>
-          </tr>`;
-
-        tr.insertAdjacentHTML("afterend", detailRowHTML);
-      });
-
-      console.log("✅ DataTable initialized with inline status formatting and accordion.");
-    })
-    .catch((error) => {
-      console.error("❌ Error loading tracker data:", error);
+Promise.all([
+  fetch(url1).then((res) => res.json()),
+  fetch(url2).then((res) => res.json()),
+])
+  .then(([response1, response2]) => {
+    const combinedData = response1.values.map((row, index) => {
+      const colGValue = response2.values[index]?.[0] || '';
+      return [...row, colGValue];
     });
+
+    const uniqueData = Array.from(
+      new Map(combinedData.map((row) => [row.slice(0, 3).join('|'), row])).values()
+    );
+
+    // Create table rows with blank first column for expand control
+    const tableData = uniqueData.map((row) => [
+      '', // Placeholder for expand control
+      row[0] || '',
+      row[1] || '',
+      row[2] || '',
+      row[3] || '', // Status (already formatted HTML)
+    ]);
+
+    const table = $('#feed-table-first').DataTable({
+      data: tableData,
+      columns: [
+        {
+          className: 'dt-control',
+          orderable: false,
+          data: null,
+          defaultContent: '',
+        },
+        { title: "Job #" },
+        { title: "Order Date" },
+        { title: "Customer" },
+        { title: "Status" },
+      ],
+      order: [[1, 'asc']],
+    });
+
+    // Set up the row expansion
+    $('#feed-table-first tbody').on('click', 'td.dt-control', function () {
+      const tr = $(this).closest('tr');
+      const row = table.row(tr);
+
+      if (row.child.isShown()) {
+        row.child.hide();
+        tr.removeClass('shown');
+      } else {
+        row.child('<div>Loading line items...</div>').show(); // Placeholder for now
+        tr.addClass('shown');
+      }
+    });
+
+    console.log("Expandable DataTable initialized.");
+  })
+  .catch((error) => {
+    console.error("Error loading tracker data:", error);
+  });
 }
 
 
