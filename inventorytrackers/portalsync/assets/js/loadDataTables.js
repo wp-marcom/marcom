@@ -171,7 +171,7 @@ updateLastModifiedTime();
 
 
 
-function sendRefillEmail(productName) {
+function sendRefillEmail(productName, skuName) {
     // Extract SKU from productName
     //var sku = extractSkuFromProductName(productName);
     var sku = skuName;
@@ -197,7 +197,7 @@ function sendRefillEmail(productName) {
     window.location.href = emailLink;
 }
 
-function sendLocationEmail(productName) {
+function sendLocationEmail(productName, skuName) {
     // Extract SKU from productName
     //var sku = extractSkuFromProductName(productName);
     var sku = skuName;
@@ -219,7 +219,7 @@ function sendLocationEmail(productName) {
     window.location.href = emailLink;
 }
 
-function sendGetLowEmail(productName) {
+function sendGetLowEmail(productName, skuName) {
 var currentUrl = window.location.href;
 var salesEmail = "";
 if (currentUrl.includes("mister")) {
