@@ -54,9 +54,13 @@ async function adminData(dataArray,client) {
         
         if(userRole === "warehouse" || userRole === "admin")
           {
-          refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
-          locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
-          getLowLink = `<a href="#" onclick="sendGetLowEmail('${emailProductName}'); return false;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>`;
+          //refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
+          refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}', '${skuName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
+          //locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
+          locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}', '${skuName}'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
+          //getLowLink = `<a href="#" onclick="sendGetLowEmail('${emailProductName}'); return false;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>`;
+          getLowLink = `<a href="#" onclick="sendGetLowEmail('${emailProductName}', '${skuName}'); return false;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>`;
+
           }
         else{
           refillLink = ``;
