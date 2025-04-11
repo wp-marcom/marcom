@@ -1762,15 +1762,23 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
           row.child.hide();
           tr.removeClass('shown');
         } else {
-          const childRowsHtml = row.data().children.map(child => `
-            <tr>
-              <td colspan="5" style="padding-left:30px;">
-                <b>Product Name:</b> ${child[3]} |
-                <b>SKU:</b> ${child[4]} |
-                <b>Qty:</b> ${child[5]}
-              </td>
-            </tr>
-          `).join('');
+                    const childRowsHtml = row.data().children.map(child => {
+  const product = child[3] || ''; // This is the Product Name
+  const sku = child[4] || '';
+  const qty = child[5] || '';
+  const label = getLabelForProduct(product); // Call your label function
+
+  return `
+    <tr>
+      <td colspan="5" style="padding-left:30px;">
+        <b>Product Name:</b> ${product} |
+        <b>SKU:</b> ${sku} |
+        <b>Qty:</b> ${qty} |
+        <b>Item Type:</b> ${label}
+      </td>
+    </tr>
+  `;
+}).join('');
           row.child(`<table class="table">${childRowsHtml}</table>`).show();
           tr.addClass('shown');
         }
@@ -1781,16 +1789,10 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
     });
     }
 
-    function format(row) {
-      return `
-        <dl style="margin:0;padding:10px">
-          <dt>Job #:</dt><dd>${row[0]}</dd>
-          <dt>Order Date:</dt><dd>${row[1]}</dd>
-          <dt>Customer:</dt><dd>${row[2]}</dd>
-          <dt>Status:</dt><dd>${row[3]}</dd>
-        </dl>
-      `;
-    }
+      function getLabelForProduct(productName) {
+  if (!productName) return 'Pick'; // default if empty
+  return /(?:DIG|LF)$/i.test(productName.trim()) ? 'On-Demand' : 'Pick';
+}
 
 // Call it for each sheet config
 recentSales.forEach(loadRecentSalesDataRows);
