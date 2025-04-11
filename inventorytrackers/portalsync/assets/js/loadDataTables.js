@@ -28,6 +28,8 @@ async function adminData(dataArray,client) {
       let rowClass = ""; // Default: No special class
 
       const originalProductName = row[0];
+      const skuName = row[1];
+      console.log("HEY HERE IS THE SKU:", skuName);
       let productName = originalProductName;
 
       // Truncate productName to 67 characters
