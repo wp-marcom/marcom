@@ -23,7 +23,7 @@
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 
  <!-- Include DataTables library -->
- <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+ 
 
 
 
@@ -1696,97 +1696,77 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 // Iterate over the trackers array and load each tracker
 //recentSales.forEach(loadRecentSalesData);
 
-function format(orderGroup) {
-  // Format expanded row
+function format(row) {
   return `
-    <table class="table child-table">
-      <thead>
-        <tr>
-          <th>Job #</th><th>Order Date</th><th>Customer</th><th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${orderGroup.items.map(item => `
-          <tr>
-            <td>${item[0]}</td>
-            <td>${item[1]}</td>
-            <td>${item[2]}</td>
-            <td>${item[3]}</td>
-          </tr>
-        `).join('')}
-      </tbody>
-    </table>
+    <dl style="margin:0;padding:10px">
+      <dt>Job #:</dt><dd>${row[0]}</dd>
+      <dt>Order Date:</dt><dd>${row[1]}</dd>
+      <dt>Customer:</dt><dd>${row[2]}</dd>
+      <dt>Status:</dt><dd>${row[3]}</dd>
+    </dl>
   `;
 }
 
 function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
-  const range1 = `${sheetName}!A2:C`;
+  const client = "Westpress Inventory";
+   const range1 = `${sheetName}!A2:C`;
   const range2 = `${sheetName}!G2:G`;
 
   const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
   const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
 
   Promise.all([
-    fetch(url1).then(res => res.json()),
-    fetch(url2).then(res => res.json()),
+    fetch(url1).then((res) => res.json()),
+    fetch(url2).then((res) => res.json()),
   ])
-    .then(([res1, res2]) => {
-      const combined = res1.values.map((row, i) => {
-        const colG = res2.values[i]?.[0] || '';
-        return [...row, colG]; // [Job #, Order Date, Customer, Status]
+    .then(([response1, response2]) => {
+      const combinedData = response1.values.map((row, index) => {
+        const status = response2.values[index]?.[0] || '';
+        return [...row, status];
       });
 
-      // Group by Job # + Order Date + Customer
-      const groups = {};
-      for (const row of combined) {
-        const key = row.slice(0, 3).join('|'); // group by first 3 cols
-        if (!groups[key]) groups[key] = [];
-        groups[key].push(row);
-      }
+      const tableData = combinedData.map(row => ({
+        job: row[0] || '',
+        orderDate: row[1] || '',
+        customer: row[2] || '',
+        status: row[3] || '',
+        raw: row // keep full raw array for formatting
+      }));
 
-      const finalData = Object.entries(groups).map(([key, items]) => {
-        const [job, date, customer] = key.split('|');
-        const status = items[0][3];
-        return {
-          job,
-          date,
-          customer,
-          status,
-          items, // full row list for expansion
-        };
-      });
-
-      const table = new DataTable(targetElement, {
-        data: finalData,
+      const table = $(targetElement).DataTable({
+        data: tableData,
         columns: [
           {
             className: 'dt-control',
             orderable: false,
             data: null,
-            defaultContent: ''
+            defaultContent: '',
           },
-          { data: 'job' },
-          { data: 'date' },
-          { data: 'customer' },
-          { data: 'status' },
+          { data: 'job', title: 'Job #' },
+          { data: 'orderDate', title: 'Order Date' },
+          { data: 'customer', title: 'Customer' },
+          { data: 'status', title: 'Status' },
         ],
         order: [[1, 'asc']],
       });
 
-      table.on('click', 'td.dt-control', function (e) {
-        const tr = e.target.closest('tr');
+      // Expand/collapse listener
+      $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
+        const tr = $(this).closest('tr');
         const row = table.row(tr);
 
         if (row.child.isShown()) {
           row.child.hide();
+          tr.removeClass('shown');
         } else {
-          row.child(format(row.data())).show();
+          row.child(format(row.data().raw)).show();
+          tr.addClass('shown');
         }
       });
-
-      console.log("Expandable DataTable loaded.");
     })
-    .catch((err) => console.error("Error loading tracker data:", err));
+    .catch((error) => {
+      console.error("Error loading tracker data:", error);
+    });
 }
 
 // Call it for each sheet config
