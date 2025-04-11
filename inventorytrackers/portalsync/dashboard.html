@@ -1695,9 +1695,8 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 }
 
 function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
-  const client = "Westpress Inventory";
- const range1 = `${sheetName}!A2:C`;
-  const range2 = `${sheetName}!G2:G`;
+ const range1 = `${sheetName}!A2:C`; // Order Number, Order Date, Customer
+  const range2 = `${sheetName}!G2:G`; // Status
 
   const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
   const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
@@ -1708,57 +1707,20 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
   ])
     .then(([response1, response2]) => {
       const combinedData = response1.values.map((row, index) => {
-        const colGValue = response2.values[index]?.[0] || '';
-        return [...row, colGValue];
+        const status = response2.values[index]?.[0] || '';
+        return [...row, status];
       });
 
-      const uniqueData = Array.from(
-        new Map(combinedData.map((row) => [row.slice(0, 3).join('|'), row])).values()
-      );
-
-      const tableData = uniqueData.map((row) => [
-        '', // Expand icon cell
-        row[0] || '', // Job #
-        row[1] || '', // Order Date
-        row[2] || '', // Customer
-        row[3] || '', // Status (column G)
-      ]);
-
-      const table = $(targetElement).DataTable({
-        data: tableData,
-        columns: [
-          {
-            className: 'dt-control',
-            orderable: false,
-            data: null,
-            defaultContent: '',
-          },
-          { title: "Job #" },
-          { title: "Order Date" },
-          { title: "Customer" },
-          { title: "Status" },
-        ],
-        order: [[1, 'asc']],
+      // Initialize DataTable using your pre-defined HTML table (keeping your column titles)
+      $(targetElement).DataTable({
+        data: combinedData, // Use combined data from Google Sheets
+        destroy: true, // Destroy any existing table instance before reinitializing
       });
 
-      // Expandable row click handler
-      $(`${targetElement} tbody`).on('click', 'td.dt-control', function () {
-        const tr = $(this).closest('tr');
-        const row = table.row(tr);
-
-        if (row.child.isShown()) {
-          row.child.hide();
-          tr.removeClass('shown');
-        } else {
-          row.child('<div>Loading line items...</div>').show(); // Will replace with real data later
-          tr.addClass('shown');
-        }
-      });
-
-      console.log(`Expandable table loaded for sheet: ${sheetName}`);
+      console.log("✅ Raw Google Sheet data loaded into existing HTML table.");
     })
     .catch((error) => {
-      console.error("Error loading tracker data:", error);
+      console.error("❌ Error loading tracker data:", error);
     });
 }
 
@@ -1768,9 +1730,8 @@ function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
 //recentSales.forEach(loadRecentSalesData);
 
  // Wait for DOM ready, then run all
-$(document).ready(function () {
+
   recentSales.forEach(loadRecentSalesDataRows);
-});
 
   // THIS IS AN ATTEMPT AT FILTERING BASED ON TIME Your Google Sheets ID
 
