@@ -1694,8 +1694,104 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 
 
 // Iterate over the trackers array and load each tracker
-recentSales.forEach(loadRecentSalesData);
+//recentSales.forEach(loadRecentSalesData);
 
+function format(orderGroup) {
+  // Format expanded row
+  return `
+    <table class="table child-table">
+      <thead>
+        <tr>
+          <th>Job #</th><th>Order Date</th><th>Customer</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${orderGroup.items.map(item => `
+          <tr>
+            <td>${item[0]}</td>
+            <td>${item[1]}</td>
+            <td>${item[2]}</td>
+            <td>${item[3]}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
+  const range1 = `${sheetName}!A2:C`;
+  const range2 = `${sheetName}!G2:G`;
+
+  const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
+  const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
+
+  Promise.all([
+    fetch(url1).then(res => res.json()),
+    fetch(url2).then(res => res.json()),
+  ])
+    .then(([res1, res2]) => {
+      const combined = res1.values.map((row, i) => {
+        const colG = res2.values[i]?.[0] || '';
+        return [...row, colG]; // [Job #, Order Date, Customer, Status]
+      });
+
+      // Group by Job # + Order Date + Customer
+      const groups = {};
+      for (const row of combined) {
+        const key = row.slice(0, 3).join('|'); // group by first 3 cols
+        if (!groups[key]) groups[key] = [];
+        groups[key].push(row);
+      }
+
+      const finalData = Object.entries(groups).map(([key, items]) => {
+        const [job, date, customer] = key.split('|');
+        const status = items[0][3];
+        return {
+          job,
+          date,
+          customer,
+          status,
+          items, // full row list for expansion
+        };
+      });
+
+      const table = new DataTable(targetElement, {
+        data: finalData,
+        columns: [
+          {
+            className: 'dt-control',
+            orderable: false,
+            data: null,
+            defaultContent: ''
+          },
+          { data: 'job' },
+          { data: 'date' },
+          { data: 'customer' },
+          { data: 'status' },
+        ],
+        order: [[1, 'asc']],
+      });
+
+      table.on('click', 'td.dt-control', function (e) {
+        const tr = e.target.closest('tr');
+        const row = table.row(tr);
+
+        if (row.child.isShown()) {
+          row.child.hide();
+        } else {
+          row.child(format(row.data())).show();
+        }
+      });
+
+      console.log("Expandable DataTable loaded.");
+    })
+    .catch((err) => console.error("Error loading tracker data:", err));
+}
+
+// Call it for each sheet config
+recentSales.forEach(loadRecentSalesDataRows);
+  
   // THIS IS AN ATTEMPT AT FILTERING BASED ON TIME Your Google Sheets ID
 
 let currentSheetName = 'VWCU-KPI'; // Default sheet for the initial tab
