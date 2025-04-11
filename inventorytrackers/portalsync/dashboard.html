@@ -1699,7 +1699,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 
     function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
         const client = "Westpress Inventory";
-        const range1 = `${sheetName}!A2:C`;
+        const range1 = `${sheetName}!A2:F`;
   const range2 = `${sheetName}!G2:G`;
 
   const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
@@ -1766,9 +1766,9 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
             <tr>
               <td colspan="5" style="padding-left:30px;">
                 <b>Job #:</b> ${child[0]} |
-                <b>Date:</b> ${child[1]} |
-                <b>Customer:</b> ${child[2]} |
-                <b>Status:</b> ${child[3]}
+                <b>Product Name:</b> ${child[3]} |
+                <b>SKU:</b> ${child[4]} |
+                <b>Qty:</b> ${child[5]}
               </td>
             </tr>
           `).join('');
