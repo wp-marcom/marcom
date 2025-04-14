@@ -1761,40 +1761,25 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
         destroy: true
       });
       table.draw();
-// Pack slip button click 8:46am
+// Pack slip button click 8:58am
 $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
-  const jobNumber = $(this).data('job');
   const parentRow = table.row($(this).closest('tr')).data();
 
   const payload = {
     job: parentRow.job,
-    orderDate: parentRow.orderDate,
     customer: parentRow.customer,
-    status: parentRow.status,
     children: parentRow.children
   };
 
-  console.log("Sending payload:", payload);
+  const query = new URLSearchParams({
+    job: payload.job,
+    customer: payload.customer,
+    children: JSON.stringify(payload.children)
+  });
 
-  fetch('https://script.google.com/macros/s/AKfycbzeeliLiIZO4y2_qa8WY_grVg6z90uZXysrJSLxeDHjqmsnrFJkmpi4LY1Vg2p3BBtP/exec', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: `data=${encodeURIComponent(JSON.stringify(payload))}`
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        alert(`Pack slip created! View it here: ${data.url}`);
-      } else {
-        alert(`Error: ${data.error || 'Unknown error'}`);
-      }
-    })
-    .catch(err => {
-      console.error("Pack slip creation failed", err);
-      alert("Something went wrong creating the pack slip.");
-    });
+  const url = `https://script.google.com/macros/s/AKfycbzeeliLiIZO4y2_qa8WY_grVg6z90uZXysrJSLxeDHjqmsnrFJkmpi4LY1Vg2p3BBtP/exec?${query.toString()}`;
+
+  window.open(url, '_blank');
 });
 
 // Expand/collapse logic
