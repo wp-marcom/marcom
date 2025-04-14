@@ -1774,8 +1774,9 @@ $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
     children: parentRow.children
   };
 
+  console.log("Sending payload:", payload);
+
   fetch('https://script.google.com/macros/s/AKfycbzeeliLiIZO4y2_qa8WY_grVg6z90uZXysrJSLxeDHjqmsnrFJkmpi4LY1Vg2p3BBtP/exec', {
-    
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -1784,10 +1785,11 @@ $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
   })
     .then(res => res.json())
     .then(data => {
+      console.log("Pack slip response:", data);
       if (data.success) {
-        alert(`Pack slip created! View it here: ${data.docUrl}`);
+        alert(`Pack slip created! View it here: ${data.url}`);
       } else {
-        alert(`Error: ${data.message}`);
+        alert(`Error: ${data.error || 'Unknown error'}`);
       }
     })
     .catch(err => {
@@ -1795,6 +1797,7 @@ $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
       alert("Something went wrong creating the pack slip.");
     });
 });
+
       // Expand/collapse listener
       $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
         const tr = $(this).closest('tr');
