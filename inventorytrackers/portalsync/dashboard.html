@@ -81,13 +81,27 @@
         <button type="submit" title="Search"><i class="bi bi-search"></i></button>
       </form>
     </div><!-- End Search Bar -->
-<button id="create-doc-btn">Create Google Doc 10:26</button>
+<button id="create-doc-btn">Create Google Doc 11:03</button>
 
     <script>
-        document.getElementById('create-doc-btn').addEventListener('click', function () {
-    // Replace with your Web App URL
-    window.open('https://script.google.com/macros/s/AKfycbzYgFPUVeB7ovNP_oc7TfhurLRrUd_UdCb83xoZp8o/dev', '_blank');
+document.getElementById('create-doc-btn').addEventListener('click', function () {
+  // Example dynamic content (replace with real values if needed)
+  const job = 'Job #123';
+  const customer = 'Customer ABC';
+
+  // Encode the query string
+  const query = new URLSearchParams({
+    job: job,
+    customer: customer
   });
+
+  // ✅ Use your current script URL
+  const url = `https://script.google.com/macros/s/AKfycbz7QX4lJnlmBGriyobMU9HsN06I87EAzmlz3UVb1wQ1XVYCfEdM_eNXWUWGO-TAkH69/exec?${query.toString()}`;
+
+  // Open in new tab
+  window.open(url, '_blank');
+});
+
     </script>
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
