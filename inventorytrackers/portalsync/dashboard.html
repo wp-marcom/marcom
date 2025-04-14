@@ -81,7 +81,7 @@
         <button type="submit" title="Search"><i class="bi bi-search"></i></button>
       </form>
     </div><!-- End Search Bar -->
-
+<button id="create-doc-btn">Create Blank Google Doc</button>
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
@@ -1761,7 +1761,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
         destroy: true
       });
       table.draw();
-// Pack slip button click 8:58am
+// Pack slip button click 9:25am
 $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
   const parentRow = table.row($(this).closest('tr')).data();
 
@@ -1825,6 +1825,10 @@ $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
 
 // Call it for each sheet config
 recentSales.forEach(loadRecentSalesDataRows);
+
+document.getElementById('create-doc-btn').addEventListener('click', function () {
+  window.open('https://script.google.com/macros/s/AKfycbwlHZT7EF5xOt_zlrkkH4MTRfVU2pbBHeLEAvmpm2Pm-h7DOBdUkz7zhvmz4GySu1-j/exec', '_blank');
+});
   
   // THIS IS AN ATTEMPT AT FILTERING BASED ON TIME Your Google Sheets ID
 
