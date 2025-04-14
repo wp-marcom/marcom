@@ -1777,27 +1777,24 @@ $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
   console.log("Sending payload:", payload);
 
   fetch('https://script.google.com/macros/s/AKfycbzeeliLiIZO4y2_qa8WY_grVg6z90uZXysrJSLxeDHjqmsnrFJkmpi4LY1Vg2p3BBtP/exec', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+  },
+  body: `data=${encodeURIComponent(JSON.stringify(payload))}`
+})
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      alert(`Pack slip created! View it here: ${data.url}`);
+    } else {
+      alert(`Error: ${data.error || 'Unknown error'}`);
+    }
   })
-    .then(res => res.json())
-    .then(data => {
-      console.log("Pack slip response:", data);
-      if (data.success) {
-        alert(`Pack slip created! View it here: ${data.url}`);
-      } else {
-        alert(`Error: ${data.error || 'Unknown error'}`);
-      }
-    })
-    .catch(err => {
-      console.error("Pack slip creation failed", err);
-      alert("Something went wrong creating the pack slip.");
-    });
-});
-
+  .catch(err => {
+    console.error("Pack slip creation failed", err);
+    alert("Something went wrong creating the pack slip.");
+  });
       // Expand/collapse listener
       $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
         const tr = $(this).closest('tr');
