@@ -1748,7 +1748,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
     title: 'Actions',
     orderable: false,
     render: function(data, type, row) {
-      return `<button class="btn btn-sm btn-primary create-pack-slip" data-job="${row.job}">Create Pack Slip 1:04</button>`;
+      return `<button class="btn btn-sm btn-primary create-pack-slip" data-job="${row.job}">Create Pack Slip 1:23</button>`;
     }
   },
           { data: 'job', title: 'Job #' },
@@ -1760,7 +1760,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
         destroy: true
       });
       table.draw();
-// Pack slip button click 1:04pm
+// Pack slip button click 1:23pm
 $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
   const parentRow = table.row($(this).closest('tr')).data();
 
@@ -1780,7 +1780,7 @@ $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
     children: JSON.stringify(payload.children)
   });
 
-  const url = `https://script.google.com/macros/s/AKfycbyDxZV_OEk7dtJbXUkn95LJ1pWW96N8bS9KV3t0DNy9N96iMaU5h__IIfE1jPxSprvd/exec?${query.toString()}`;
+  const url = `https://script.google.com/macros/s/AKfycbw-HGca0-VyKck20XQTUZgF4c8au-5ohYbxNb3VUF3JBK7FRFjkG6BORC2apRDgVSu5/exec?${query.toString()}`;
 
   window.open(url, '_blank');
 });
