@@ -1761,7 +1761,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
         destroy: true
       });
       table.draw();
-// Pack slip button click
+      //make packing slip listener
 $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
   const jobNumber = $(this).data('job');
   const parentRow = table.row($(this).closest('tr')).data();
@@ -1779,12 +1779,13 @@ $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
   fetch('https://script.google.com/macros/s/AKfycbzeeliLiIZO4y2_qa8WY_grVg6z90uZXysrJSLxeDHjqmsnrFJkmpi4LY1Vg2p3BBtP/exec', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/json',
     },
-    body: `data=${encodeURIComponent(JSON.stringify(payload))}`
+    body: JSON.stringify(payload),
   })
     .then(res => res.json())
     .then(data => {
+      console.log("Pack slip response:", data);
       if (data.success) {
         alert(`Pack slip created! View it here: ${data.url}`);
       } else {
@@ -1797,36 +1798,41 @@ $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
     });
 });
 
-// Expand/collapse logic
-$(targetElement + ' tbody').on('click', 'td.dt-control', function () {
-  const tr = $(this).closest('tr');
-  const row = table.row(tr);
+      // Expand/collapse listener
+      $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
+        const tr = $(this).closest('tr');
+        const row = table.row(tr);
 
-  if (row.child.isShown()) {
-    row.child.hide();
-    tr.removeClass('shown');
-  } else {
-    const childRowsHtml = row.data().children.map(child => {
-      const product = child[3] || '';
-      const sku = child[4] || '';
-      const qty = child[5] || '';
-      const label = getLabelForProduct(product);
+        if (row.child.isShown()) {
+          row.child.hide();
+          tr.removeClass('shown');
+        } else {
+                    const childRowsHtml = row.data().children.map(child => {
+  const product = child[3] || ''; // This is the Product Name
+  const sku = child[4] || '';
+  const qty = child[5] || '';
+  const label = getLabelForProduct(product); // Call your label function
 
-      return `
-        <tr>
-          <td colspan="5" style="padding-left:30px;">
-            <b>Product Name:</b> ${product} |
-            <b>SKU:</b> ${sku} |
-            <b>Qty:</b> ${qty} |
-            <b>Item Type:</b> ${label}
-          </td>
-        </tr>
-      `;
-    }).join('');
-    row.child(`<table class="table">${childRowsHtml}</table>`).show();
-    tr.addClass('shown');
-  }
-});
+  return `
+    <tr>
+      <td colspan="5" style="padding-left:30px;">
+        <b>Product Name:</b> ${product} |
+        <b>SKU:</b> ${sku} |
+        <b>Qty:</b> ${qty} |
+        <b>Item Type:</b> ${label}
+      </td>
+    </tr>
+  `;
+}).join('');
+          row.child(`<table class="table">${childRowsHtml}</table>`).show();
+          tr.addClass('shown');
+        }
+      });
+    })
+    .catch((error) => {
+      console.error("Error loading tracker data:", error);
+    });
+    }
 
       function getLabelForProduct(productName) {
   if (!productName) return 'Pick'; // default if empty
