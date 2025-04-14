@@ -81,28 +81,6 @@
         <button type="submit" title="Search"><i class="bi bi-search"></i></button>
       </form>
     </div><!-- End Search Bar -->
-<button id="create-doc-btn">Create Google Doc 11:19</button>
-
-    <script>
-document.getElementById('create-doc-btn').addEventListener('click', function () {
-  // Example dynamic content (replace with real values if needed)
-  const job = 'Job #123';
-  const customer = 'Customer ABC';
-
-  // Encode the query string
-  const query = new URLSearchParams({
-    job: job,
-    customer: customer
-  });
-
-  // ✅ Use your current script URL
-  const url = `https://script.google.com/macros/s/AKfycbyhpffEklCz0YsWLuU_EMl5mlOzYdtKspfS1MQwIVSCQMmtiRqj8tlquxcB1pdWA1tK/exec?${query.toString()}`;
-
-  // Open in new tab
-  window.open(url, '_blank');
-});
-
-    </script>
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
@@ -1770,7 +1748,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
     title: 'Actions',
     orderable: false,
     render: function(data, type, row) {
-      return `<button class="btn btn-sm btn-primary create-pack-slip" data-job="${row.job}">Create Pack Slip 11:59</button>`;
+      return `<button class="btn btn-sm btn-primary create-pack-slip" data-job="${row.job}">Create Pack Slip 12:44</button>`;
     }
   },
           { data: 'job', title: 'Job #' },
@@ -1782,7 +1760,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
         destroy: true
       });
       table.draw();
-// Pack slip button click 11:59am
+// Pack slip button click 12:44pm
 $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
   const parentRow = table.row($(this).closest('tr')).data();
 
@@ -1802,7 +1780,7 @@ $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
     children: JSON.stringify(payload.children)
   });
 
-  const url = `https://script.google.com/macros/s/AKfycbxw0QLdrPhJtWFhLyfuW2AZjBpV4Iw9rCSvkYtvGTaH5B3yvb7WMNeZPY8UbRkSbyo0/exec?${query.toString()}`;
+  const url = `https://script.google.com/macros/s/AKfycbz0aAQXfV8MFMz8V4LawBjDzCU0CHGjgjemi1iKlrJbhkWPlC1c_44dk-pzxcRLEDU/exec?${query.toString()}`;
 
   window.open(url, '_blank');
 });
