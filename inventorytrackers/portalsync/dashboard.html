@@ -840,6 +840,7 @@
                 <thead>
                     <tr>
                       <th></th> <!-- for dt-control -->
+                       <th></th> <!-- for packslip button -->
                       <th><b>J</b>ob #</th>
                       <th>Order Date</th>
                       <th>Customer</th>
@@ -1743,6 +1744,14 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
             defaultContent: '',
             title: '', // <- ADD THIS!
           },
+          { 
+    data: null,
+    title: 'Actions',
+    orderable: false,
+    render: function(data, type, row) {
+      return `<button class="btn btn-sm btn-primary create-pack-slip" data-job="${row.job}">Create Pack Slip</button>`;
+    }
+  },
           { data: 'job', title: 'Job #' },
           { data: 'orderDate', title: 'Order Date' },
           { data: 'customer', title: 'Customer' },
@@ -1752,7 +1761,39 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
         destroy: true
       });
       table.draw();
+      //make packing slip listener
+$(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
+  const jobNumber = $(this).data('job');
+  const parentRow = table.row($(this).closest('tr')).data();
 
+  const payload = {
+    job: parentRow.job,
+    orderDate: parentRow.orderDate,
+    customer: parentRow.customer,
+    status: parentRow.status,
+    children: parentRow.children
+  };
+
+  fetch('https://script.google.com/macros/s/AKfycbzeeliLiIZO4y2_qa8WY_grVg6z90uZXysrJSLxeDHjqmsnrFJkmpi4LY1Vg2p3BBtP/exec', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        alert(`Pack slip created! View it here: ${data.docUrl}`);
+      } else {
+        alert(`Error: ${data.message}`);
+      }
+    })
+    .catch(err => {
+      console.error("Pack slip creation failed", err);
+      alert("Something went wrong creating the pack slip.");
+    });
+});
       // Expand/collapse listener
       $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
         const tr = $(this).closest('tr');
