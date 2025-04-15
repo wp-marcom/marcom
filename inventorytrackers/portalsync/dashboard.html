@@ -1749,7 +1749,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
     title: 'Actions',
     orderable: false,
     render: function(data, type, row) {
-      return `<button class="btn btn-sm btn-primary create-pack-slip" data-job="${row.job}">Create Pack Slip 10:31am</button>`;
+      return `<button class="btn btn-sm btn-primary create-pack-slip" data-job="${row.job}">Create Pack Slip 10:36am</button>`;
     }
   },
           { data: 'job', title: 'Job #' },
@@ -1768,6 +1768,7 @@ $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
   const payload = {
     job: parentRow.job,
     customer: parentRow.customer,
+    shippingAddress: parentRow.shippingAddress,
     children: parentRow.children.map(child => ({
       product: child[3],
       sku: child[4],
@@ -1778,6 +1779,7 @@ $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
   const query = new URLSearchParams({
     job: payload.job,
     customer: payload.customer,
+    shippingAddress: payload.shippingAddress,
     children: JSON.stringify(payload.children)
   });
 
