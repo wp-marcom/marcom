@@ -584,28 +584,28 @@
                 <li class="nav-item" role="presentation" data-role="warehouse,admin,acharles">
                   <button class="nav-link active" id="pills-vwcu-tab" data-bs-toggle="pill" data-bs-target="#pills-vwcu" type="button" role="tab" aria-controls="pills-vwcu" aria-selected="true" onclick="changeClient(this.id)">Vantage West</button>
                 </li>
-                <li class="nav-item" role="presentation" data-role="admin">
+                <li class="nav-item" role="presentation">
                   <button class="nav-link" id="pills-tmcforms-tab" data-bs-toggle="pill" data-bs-target="#pills-tmcforms" type="button" role="tab" aria-controls="pills-tmcforms" aria-selected="false" onclick="changeClient(this.id)">TMC Forms</button>
                 </li>
-                <li class="nav-item" role="presentation" data-role="admin">
+                <li class="nav-item" role="presentation">
                   <button class="nav-link" id="pills-tmccommprint-tab" data-bs-toggle="pill" data-bs-target="#pills-tmccommprint" type="button" role="tab" aria-controls="pills-tmccommprint" aria-selected="false">TMC Comm Outreach PRINT</button>
                 </li>
-                <li class="nav-item" role="presentation" data-role="admin">
+                <li class="nav-item" role="presentation">
                   <button class="nav-link" id="pills-tmccommpromo-tab" data-bs-toggle="pill" data-bs-target="#pills-tmccommpromo" type="button" role="tab" aria-controls="pills-tmccommpromo" aria-selected="false">TMC Comm Outreach PROMO</button>
                 </li>
-                <li class="nav-item" role="presentation" data-role="admin">
+                <li class="nav-item" role="presentation">
                   <button class="nav-link" id="pills-tmccomm-tab" data-bs-toggle="pill" data-bs-target="#pills-tmccomm" type="button" role="tab" aria-controls="pills-tmccomm" aria-selected="false">TMC Communications</button>
                 </li>
-                <li class="nav-item" role="presentation" data-role="admin">
+                <li class="nav-item" role="presentation">
                   <button class="nav-link" id="pills-tmcfound-tab" data-bs-toggle="pill" data-bs-target="#pills-tmcfound" type="button" role="tab" aria-controls="pills-tmcfound" aria-selected="false">TMC Foundation</button>
                 </li>
-                  <li class="nav-item" role="presentation" data-role="admin">
+                  <li class="nav-item" role="presentation">
                   <button class="nav-link" id="pills-tmcseniors-tab" data-bs-toggle="pill" data-bs-target="#pills-tmcseniors" type="button" role="tab" aria-controls="pills-tmcseniors" aria-selected="false">TMC Seniors</button>
                 </li>
-                <li class="nav-item" role="presentation" data-role="admin">
+                <li class="nav-item" role="presentation">
                   <button class="nav-link" id="pills-tmcwell-tab" data-bs-toggle="pill" data-bs-target="#pills-tmcwell" type="button" role="tab" aria-controls="pills-tmcwell" aria-selected="false">TMC Wellness</button>
                 </li>
-                <li class="nav-item" role="presentation" data-role="admin">
+                <li class="nav-item" role="presentation">
                   <button class="nav-link" id="pills-tmcwomenchild-tab" data-bs-toggle="pill" data-bs-target="#pills-tmcwomenchild" type="button" role="tab" aria-controls="pills-tmcwomenchild" aria-selected="false">TMC Women & Child</button>
                 </li>
               </ul>
@@ -624,7 +624,7 @@
           <div class="row">
 
   <!-- Sales Card -->
-<div class="col-xxl-4 col-md-6" data-role="admin">
+<div class="col-xxl-4 col-md-6">
   <div class="card info-card sales-card">
     <div class="filter">
       <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -696,7 +696,7 @@
             </div><!-- End Revenue Card -->
 
             <!-- Customers Card -->
-            <div class="col-xxl-4 col-xl-12" data-role="admin">
+            <div class="col-xxl-4 col-xl-12">
 
               <div class="card info-card customers-card">
 
@@ -854,7 +854,7 @@
             </div><!-- End Recent Sales -->
 
             <!-- Top Selling -->
-            <div class="col-12" data-role="admin">
+            <div class="col-12">
               <div class="card top-selling overflow-auto">
 
                 <div class="filter">
@@ -931,7 +931,7 @@
         </div><!-- End Left side columns -->
 
         <!-- Right side columns -->
-        <div class="col-lg-4" data-role="admin">
+        <div class="col-lg-4">
 
           <!-- Recent Activity -->
           <div class="card">
@@ -1699,7 +1699,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 
     function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
         const client = "Westpress Inventory";
-        const range1 = `${sheetName}!A2:H`;
+        const range1 = `${sheetName}!A2:F`;
   const range2 = `${sheetName}!G2:G`;
 
   const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
@@ -1712,7 +1712,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
     .then(([response1, response2]) => {
       const rawData = response1.values.map((row, index) => {
         const status = response2.values[index]?.[0] || '';
-        return [...row, status]; // [Job, Order Date, Customer, Status, Shipping Address]
+        return [...row, status]; // [Job, Order Date, Customer, Status]
       });
 
       // Group rows by Job # (column 0)
@@ -1729,7 +1729,6 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
         orderDate: rows[0][1] || '',
         customer: rows[0][2] || '',
         status: rows[0][6] || '',
-        shippingAddress: rows[0][7] || '',
         children: rows, // All matching line items
       }));
 
@@ -1749,7 +1748,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
     title: 'Actions',
     orderable: false,
     render: function(data, type, row) {
-      return `<button class="btn btn-sm btn-primary create-pack-slip" data-job="${row.job}">Create Pack Slip 9:19am</button>`;
+      return `<button class="btn btn-sm btn-primary create-pack-slip" data-job="${row.job}">Create Pack Slip 9:25am</button>`;
     }
   },
           { data: 'job', title: 'Job #' },
@@ -1761,7 +1760,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
         destroy: true
       });
       table.draw();
-// Pack slip button click 9:19am
+// Pack slip button click 9:25am
 $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
   const parentRow = table.row($(this).closest('tr')).data();
 
@@ -1781,7 +1780,7 @@ $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
     children: JSON.stringify(payload.children)
   });
 
-  const url = `https://script.google.com/macros/s/AKfycbyeK5w82Mtl6UK6OzcgYhL1Oz6o7CK1NJ9WdFg5TCzf2fyNrnq5MYifU9UHtmfFhJEI/exec?${query.toString()}`;
+  const url = `https://script.google.com/macros/s/AKfycbyNCbLZhsPqqIurxepOpXQhRtlGY3g6Fa-nZkz5VHYzxFh-yIQu6p3S5FeonzRDMa7v/exec?${query.toString()}`;
 
   window.open(url, '_blank');
 });
@@ -1801,7 +1800,7 @@ $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
       const qty = child[5] || '';
       const label = getLabelForProduct(product);
 
-      return 
+      return `
         <tr>
           <td colspan="5" style="padding-left:30px;">
             <b>Product Name:</b> ${product} |
@@ -1810,9 +1809,9 @@ $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
             <b>Item Type:</b> ${label}
           </td>
         </tr>
-      ;
+      `;
     }).join('');
-    row.child(<table class="table">${childRowsHtml}</table>).show();
+    row.child(`<table class="table">${childRowsHtml}</table>`).show();
     tr.addClass('shown');
   }
 });
