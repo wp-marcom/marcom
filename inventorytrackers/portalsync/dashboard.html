@@ -1749,7 +1749,7 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
     title: 'Actions',
     orderable: false,
     render: function(data, type, row) {
-      return `<button class="btn btn-sm btn-primary create-pack-slip" data-job="${row.job}">Create Pack Slip 10:43am</button>`;
+      return `<button class="btn btn-sm btn-primary create-pack-slip" data-job="${row.job}">Create Pack Slip 11:09am</button>`;
     }
   },
           { data: 'job', title: 'Job #' },
@@ -1783,7 +1783,7 @@ $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
     children: JSON.stringify(payload.children)
   });
 
-  const url = `https://script.google.com/macros/s/AKfycbzN_ljdu7UkKh3IiUOOFX7eatjs_UJ_swc-Gh7ejpZsXvE7New6OOm1DovWlcLknS7J/exec?${query.toString()}`;
+  const url = `https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?${query.toString()}`;
 
   window.open(url, '_blank');
 });
