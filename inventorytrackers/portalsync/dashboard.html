@@ -833,15 +833,12 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Recent Sales</h5>
-<button onclick="triggerDataUpdate()">Run Import1:37</button>
-<div id="statusMessage"></div>
-
-<button onclick="triggerDataUpdate()">Run Import</button>
+<button onclick="triggerDataUpdate()">Run Import1:41</button>
 <div id="statusMessage"></div>
 
 <script>
   function triggerDataUpdate() {
-    fetch("https://script.google.com/macros/s/AKfycbyYEcugGWR1a5a0cd5hfJupKrBAuyNWbVz6ryPf-8XDPw_YJ3YDKlD3Y6J-qX1dO8K2/exec", {
+    fetch("https://script.google.com/macros/s/PASTE-YOUR-NEW-DEPLOYMENT-URL-HERE/exec", {
       method: "POST"
     })
     .then(res => res.text())
@@ -855,6 +852,7 @@
     });
   }
 </script>
+
 
                    <!-- Table with stripped rows -->
               <table class="table table-striped" id="feed-table-first">
