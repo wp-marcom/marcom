@@ -833,19 +833,18 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Recent Sales</h5>
-<button onclick="triggerDataUpdate()">Run Import1:28</button>
+<button onclick="triggerDataUpdate()">Run Import1:37</button>
+<div id="statusMessage"></div>
+
+<button onclick="triggerDataUpdate()">Run Import</button>
 <div id="statusMessage"></div>
 
 <script>
-  // Function that gets triggered when the button is clicked
   function triggerDataUpdate() {
-    fetch("https://script.google.com/macros/s/AKfycbyFysZpXbYUc0-sFK231HQPgYt4sfC5QOnIVn5cGlvps58dD-7zjItasaHPhNedn-R7/exec", {
-      method: "POST",  // Ensure POST method is used
-      headers: {
-        'Content-Type': 'application/json',  // Ensure correct content type
-      },
+    fetch("https://script.google.com/macros/s/AKfycbyYEcugGWR1a5a0cd5hfJupKrBAuyNWbVz6ryPf-8XDPw_YJ3YDKlD3Y6J-qX1dO8K2/exec", {
+      method: "POST"
     })
-    .then(res => res.json())  // Parse the response as JSON
+    .then(res => res.text())
     .then(data => {
       console.log("✅ Success:", data);
       document.getElementById("statusMessage").textContent = "Import completed successfully!";
@@ -856,6 +855,7 @@
     });
   }
 </script>
+
                    <!-- Table with stripped rows -->
               <table class="table table-striped" id="feed-table-first">
                 <thead>
