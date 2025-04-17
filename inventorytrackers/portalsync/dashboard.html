@@ -833,19 +833,19 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Recent Sales</h5>
-<button onclick="triggerDataUpdate()">Run Import1:15</button>
+<button onclick="triggerDataUpdate()">Run Import1:28</button>
 <div id="statusMessage"></div>
 
 <script>
+  // Function that gets triggered when the button is clicked
   function triggerDataUpdate() {
-    fetch("https://script.google.com/macros/s/AKfycbydlZXk-X0Arz5_mXCcehx34WJAx2Z8FTTgHeg4wjYC0q-XKziCC7Yxx5JiNvn2gj4A/exec", {
-      method: "POST",
+    fetch("https://script.google.com/macros/s/AKfycbyFysZpXbYUc0-sFK231HQPgYt4sfC5QOnIVn5cGlvps58dD-7zjItasaHPhNedn-R7/exec", {
+      method: "POST",  // Ensure POST method is used
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json',  // Ensure correct content type
       },
-      body: JSON.stringify({}),  // Send empty JSON object if no data needs to be posted
     })
-    .then(res => res.json())
+    .then(res => res.json())  // Parse the response as JSON
     .then(data => {
       console.log("✅ Success:", data);
       document.getElementById("statusMessage").textContent = "Import completed successfully!";
