@@ -833,13 +833,17 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Recent Sales</h5>
-<button onclick="triggerDataUpdate()">Run Import</button>
+<button onclick="triggerDataUpdate()">Run Import12:31</button>
 <div id="statusMessage"></div>
 
 <script>
   function triggerDataUpdate() {
-    fetch("https://script.google.com/macros/s/AKfycbxgrYjmtE3bcM_rBwlM2eNgqUS0rRA4-sWBPMYJIerJAwVCfshr_9uY5VDgQPQLFQgkrQ/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbwiEsYSycv86MOE6_W18Vu7mISCknE8EdNdP7g69zU09OaTeWI_pMe9J5B4OGkP4WitXQ/exec", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ trigger: true }) // Can be anything
     })
     .then(response => response.json())
     .then(data => {
