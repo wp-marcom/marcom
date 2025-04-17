@@ -833,12 +833,12 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Recent Sales</h5>
-button onclick="triggerDataUpdate()">Run Import</button>
+<button onclick="triggerDataUpdate()">Run Import</button>
 <div id="statusMessage"></div>
 
 <script>
   function triggerDataUpdate() {
-    fetch("YOUR_WEB_APP_URL", {
+    fetch("https://script.google.com/macros/s/AKfycbxgrYjmtE3bcM_rBwlM2eNgqUS0rRA4-sWBPMYJIerJAwVCfshr_9uY5VDgQPQLFQgkrQ/exec", {
       method: "POST",
     })
     .then(response => response.json())
