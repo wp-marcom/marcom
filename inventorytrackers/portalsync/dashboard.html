@@ -833,26 +833,28 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Recent Sales</h5>
-<button onclick="triggerDataUpdate()">Run Import12:47</button>
+<button onclick="triggerDataUpdate()">Run Import1:15</button>
 <div id="statusMessage"></div>
 
 <script>
   function triggerDataUpdate() {
-  const formData = new FormData(); // create empty or add fields as needed
-
-  fetch("https://script.google.com/macros/s/AKfycbwTAQQStnocBrG0E1e5vT_p-lqY8zdjPqaYcKAheyBIEFHoMs9N-8sSOtN9RDmOtzl7Cg/exec", {
-    method: "POST",
-    body: formData,
-    // ⚠️ NO headers! This avoids preflight OPTIONS and CORS rejection.
-  })
-  .then(res => res.json())
-  .then(data => {
-    console.log("✅ Success:", data);
-  })
-  .catch(err => {
-    console.error("❌ Error:", err);
-  });
-}
+    fetch("https://script.google.com/macros/s/AKfycbydlZXk-X0Arz5_mXCcehx34WJAx2Z8FTTgHeg4wjYC0q-XKziCC7Yxx5JiNvn2gj4A/exec", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({}),  // Send empty JSON object if no data needs to be posted
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log("✅ Success:", data);
+      document.getElementById("statusMessage").textContent = "Import completed successfully!";
+    })
+    .catch(err => {
+      console.error("❌ Error:", err);
+      document.getElementById("statusMessage").textContent = "Error during import.";
+    });
+  }
 </script>
                    <!-- Table with stripped rows -->
               <table class="table table-striped" id="feed-table-first">
