@@ -833,7 +833,25 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Recent Sales</h5>
+button onclick="triggerDataUpdate()">Run Import</button>
+<div id="statusMessage"></div>
 
+<script>
+  function triggerDataUpdate() {
+    fetch("YOUR_WEB_APP_URL", {
+      method: "POST",
+    })
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('statusMessage').textContent = "✅ Import complete!";
+      console.log(data);
+    })
+    .catch(error => {
+      document.getElementById('statusMessage').textContent = "❌ Error running script.";
+      console.error(error);
+    });
+  }
+</script>
                    <!-- Table with stripped rows -->
               <table class="table table-striped" id="feed-table-first">
                 <thead>
