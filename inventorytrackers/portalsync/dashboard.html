@@ -833,19 +833,18 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Recent Sales</h5>
-<button onclick="triggerDataUpdate()">Run Import1:51</button>
+<button onclick="triggerDataUpdate()">Run Import2:05</button>
 <div id="statusMessage"></div>
 
 <script>
   function triggerDataUpdate() {
-    fetch("https://script.google.com/macros/s/AKfycbwpP9K8IGtp9KNjFNlREiRzxNWQ0BZx5yRITqT2Lqar1NRbdbo0qi2uJPtKl6BaWopb/exec", {
+    const formData = new FormData(); // no body needed, just a POST
+
+    fetch("https://script.google.com/macros/s/AKfycbyfRpZMq_5LUnPKi8-P8tQsS9ETeNNHw1Ik5uX0Qt5rFqdOsPE6mXL-ig-e2eAAbsPE/exec", {
       method: "POST",
-  body: JSON.stringify({}), // ⬅️ This tiny change triggers doPost and CORS headers
-  headers: {
-    'Content-Type': 'application/json'
-  }
+      body: formData // triggers doPost, no preflight
     })
-    .then(res => res.text())
+    .then(res => res.text()) // use .text() to read raw response
     .then(data => {
       console.log("✅ Success:", data);
       document.getElementById("statusMessage").textContent = "Import completed successfully!";
