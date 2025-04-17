@@ -833,28 +833,31 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Recent Sales</h5>
-<button onclick="triggerDataUpdate()">Run Import2:05</button>
-<div id="statusMessage"></div>
-
 <script>
   function triggerDataUpdate() {
-    const formData = new FormData(); // no body needed, just a POST
+    const payload = { message: "Hello from Frontend!" }; // Just a simple payload
 
-    fetch("https://script.google.com/macros/s/AKfycbyfRpZMq_5LUnPKi8-P8tQsS9ETeNNHw1Ik5uX0Qt5rFqdOsPE6mXL-ig-e2eAAbsPE/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbw5_y7kbXoKIfslv15E4rZ2ua5sovp-IXXLzjsuOPjzIXO7Yr241peCGdY_NPJ18TRh0w/exec", { // Replace with your Web App URL
       method: "POST",
-      body: formData // triggers doPost, no preflight
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
     })
-    .then(res => res.text()) // use .text() to read raw response
+    .then(res => res.json())
     .then(data => {
       console.log("✅ Success:", data);
-      document.getElementById("statusMessage").textContent = "Import completed successfully!";
+      document.getElementById("statusMessage").textContent = "Request completed!";
     })
     .catch(err => {
       console.error("❌ Error:", err);
-      document.getElementById("statusMessage").textContent = "Error during import.";
+      document.getElementById("statusMessage").textContent = "Error during request.";
     });
   }
 </script>
+
+<button onclick="triggerDataUpdate()">Trigger Request 2:18</button>
+<p id="statusMessage"></p>
 
 
                    <!-- Table with stripped rows -->
