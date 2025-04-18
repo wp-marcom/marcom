@@ -834,7 +834,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Recent Sales</h5>
 
-<button class="btn btn-sm btn-primary" onclick="openPopup()">Import Recent Orders 10:57</button>
+<button class="btn btn-sm btn-primary" onclick="openPopup()">Import Recent Orders 11:04</button>
 
 <script>
   let popupWindow;
@@ -848,12 +848,12 @@
 
     // Listen for message from popup
     window.addEventListener("message", function (event) {
-      if (event.origin.includes("script.googleusercontent.com")) {
+      
         if (event.data === "done") {
           console.log("✅ Message received from popup: done");
           popupWindow.close();
         }
-      }
+      
     }, { once: true }); // Listen only once
   }
 </script>             
