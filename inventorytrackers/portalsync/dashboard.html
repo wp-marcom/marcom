@@ -834,31 +834,25 @@
                 <div class="card-body">
                   <h5 class="card-title">Recent Sales</h5>
 
-<button class="btn btn-sm btn-primary" onclick="openPopup()">Import Recent Orders 11:12</button>
+<button class="btn btn-sm btn-primary" onclick="openPopup()">Import Recent Orders</button>
 
 <script>
-  let popupWindow;
-
   function openPopup() {
-    popupWindow = window.open(
+    const popupWindow = window.open(
       "https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec",
       "_blank",
       "width=500,height=400"
     );
 
-    // Important: wait until popup is ready, then listen
-    window.addEventListener("message", function (event) {
-      console.log("📨 Message received:", event.origin, event.data);
-
-      if (event.data === "done") {
-        console.log("✅ Task complete, closing popup");
-        if (popupWindow && !popupWindow.closed) {
-          popupWindow.close();
-        }
+    // Close the popup after 3 seconds
+    setTimeout(() => {
+      if (popupWindow && !popupWindow.closed) {
+        popupWindow.close();
+        console.log("✅ Popup closed after timeout.");
       }
-    });
+    }, 3000); // Adjust timing as needed
   }
-</script>             
+</script>
 
 <p id="statusMessage"></p>
 
