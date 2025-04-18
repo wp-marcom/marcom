@@ -857,7 +857,7 @@
 </script>
 
 <button onclick="triggerDataUpdate()">Trigger Request 2:50</button>
-<button onclick="openPopup()">Send to Google 8:53am</button>
+<button onclick="openPopup()">Send to Google 10:12am</button>
 
 <script>
   function openPopup() {
@@ -866,8 +866,15 @@
       "_blank",
       "width=500,height=400"
     );
+
+    // Try to close it after 2 seconds
+    setTimeout(() => {
+      if (win && !win.closed) {
+        win.close();
+      }
+    }, 2000); // adjust this delay to match how long the script takes to finish
   }
-</script>                
+</script>               
 <a href="https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec" target="_blank">
   <button>Send to Google normal</button>
 </a>
