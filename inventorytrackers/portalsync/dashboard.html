@@ -833,48 +833,30 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Recent Sales</h5>
-<script>
-  function triggerDataUpdate() {
-    const payload = { message: "Hello from Frontend!" }; // Just a simple payload
 
-    fetch("https://script.google.com/macros/s/AKfycbxYyIz51sq-UElp3Nal8zOBTSAPAgIQRSDz7SSKBQu23ycrYlYBIqEV1fIgsYj6n09OJA/exec", { // Replace with your Web App URL
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log("✅ Success:", data);
-      document.getElementById("statusMessage").textContent = "Request completed!";
-    })
-    .catch(err => {
-      console.error("❌ Error:", err);
-      document.getElementById("statusMessage").textContent = "Error during request.";
-    });
-  }
-</script>
-
-<button onclick="triggerDataUpdate()">Trigger Request 2:50</button>
-<button onclick="openPopup()">Import Recent Orders</button>
+<button onclick="openPopup()">Import Recent Orders 10:32</button>
 
 <script>
+  let popupWindow;
+
   function openPopup() {
-    const win = window.open(
-      "https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec",
+    popupWindow = window.open(
+      "https://script.google.com/macros/s/PASTE_YOUR_DEPLOYED_URL_HERE/exec",
       "_blank",
       "width=500,height=400"
     );
 
-    // Try to close it after 2 seconds
-    setTimeout(() => {
-      if (win && !win.closed) {
-        win.close();
+    // Listen for message from popup
+    window.addEventListener("message", function (event) {
+      if (event.origin.includes("script.google.com")) {
+        if (event.data === "done") {
+          console.log("✅ Message received from popup: done");
+          popupWindow.close();
+        }
       }
-    }, 10000); // adjust this delay to match how long the script takes to finish
+    }, { once: true }); // Listen only once
   }
-</script>               
+</script>             
 
 <p id="statusMessage"></p>
 
