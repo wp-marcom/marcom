@@ -857,8 +857,19 @@
 </script>
 
 <button onclick="triggerDataUpdate()">Trigger Request 2:50</button>
+<button onclick="openPopup()">Send to Google 8:53am</button>
+
+<script>
+  function openPopup() {
+    const win = window.open(
+      "https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec",
+      "_blank",
+      "width=500,height=400"
+    );
+  }
+</script>                
 <a href="https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec" target="_blank">
-  <button>Send to Google 8:47am</button>
+  <button>Send to Google normal</button>
 </a>
 
 
