@@ -616,6 +616,67 @@
                 <!-- Start of First Tab -->
                 <div class="tab-pane fade show active" id="pills-vwcu" role="tabpanel" aria-labelledby="vwcu-tab">
                  <!-- Start of First Tab CONTENT -->
+                  <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Recent Sales</h5>
+
+<button class="btn btn-sm btn-primary" onclick="openPopup()">Import Recent Orders</button>
+
+<script>
+  function openPopup() {
+    const popupWindow = window.open(
+      "https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec",
+      "_blank",
+      "width=500,height=400"
+    );
+
+    // Close the popup after 3 seconds
+    setTimeout(() => {
+      if (popupWindow && !popupWindow.closed) {
+        popupWindow.close();
+        console.log("✅ Popup closed after timeout.");
+      }
+    }, 3000); // Adjust timing as needed
+  }
+</script>
+
+<p id="statusMessage"></p>
+
+
+                   <!-- Table with stripped rows -->
+              <table class="table table-striped" id="feed-table-first">
+                <thead>
+                    <tr>
+                      <th></th> <!-- for dt-control -->
+                       <th></th> <!-- for packslip button -->
+                      <th><b>J</b>ob #</th>
+                      <th>Order Date</th>
+                      <th>Customer</th>
+                      <th>Status</th>     
+                    </tr>
+                  </thead>
+              </table>
+ <!-- END OF Table with stripped rows -->
+                </div>
+
+              </div>
+            </div>
+                  <!-- End of First Tab CONTENT -->
     <section class="section dashboard">
       <div class="row">
 
