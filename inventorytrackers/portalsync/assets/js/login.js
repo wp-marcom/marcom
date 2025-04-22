@@ -2,10 +2,10 @@
 const rolePermissions = {
   admin: ["admin", "warehouse", "mister-admin", "tmc"], // Admin sees everything
   warehouse: ["warehouse", "mister-admin", "molson"], // Warehouse sees specific roles
-  mister-admin: ["mister-admin"]
-  //lprice: ["lprice"], // Sees only what’s assigned to "lprice"
-  //acharles: ["acharles"], // Sees only what’s assigned to "lprice"
-  //molson: ["molson"] // Sees only what’s assigned to "molson"
+  mister-admin: ["mister-admin"],
+  lprice: ["lprice"], // Sees only what’s assigned to "lprice"
+  acharles: ["acharles"], // Sees only what’s assigned to "lprice"
+  molson: ["molson"] // Sees only what’s assigned to "molson"
 };
 
 // Define users array
