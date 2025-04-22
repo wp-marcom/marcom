@@ -1798,14 +1798,16 @@ $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
       product: child[3],
       sku: child[4],
       qty: child[5]
-    }))
+    })),
+    status: 'Pack Slip Generated' // Add status update
   };
 
   const query = new URLSearchParams({
     job: payload.job,
     customer: payload.customer,
     shippingAddress: payload.shippingAddress,
-    children: JSON.stringify(payload.children)
+    children: JSON.stringify(payload.children),
+    status: payload.status // Send the new status to the Apps Script
   });
 
   const url = `https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?${query.toString()}`;
