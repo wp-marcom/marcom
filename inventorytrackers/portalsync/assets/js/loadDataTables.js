@@ -47,24 +47,45 @@ async function adminData(dataArray,client) {
 
         // Create links for the product
         const productNameLink = `<a href="${imageUrl}" target="_blank">${strippedProductName}</a>`;
-        //const refillLink = `<a href="#" onclick="sendRefillEmail('${strippedProductName}'); return false;">Refill</a>`;
-        const userRole = sessionStorage.getItem("userRole");
-        let refillLink = "";
-        let locationLink = "";
         
-        if(userRole === "warehouse" || userRole === "admin")
-          {
+        //const userRole = sessionStorage.getItem("userRole");
+        //let refillLink = "";
+       // let locationLink = "";
+        //let getLowLink = "";
+        
+        //if(userRole === "warehouse" || userRole === "admin")
+        //  {
           //refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
-          refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}', '${skuName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
+         // refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}', '${skuName}'); return false;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
           //locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
-          locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}', '${skuName}'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
+         // locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}', '${skuName}'); return false;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
           //getLowLink = `<a href="#" onclick="sendGetLowEmail('${emailProductName}'); return false;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>`;
-          getLowLink = `<a href="#" onclick="sendGetLowEmail('${emailProductName}', '${skuName}'); return false;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>`;
+        //  getLowLink = `<a href="#" onclick="sendGetLowEmail('${emailProductName}', '${skuName}'); return false;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>`;
 
-          }
+        //  }
+const userRoles = JSON.parse(sessionStorage.getItem("userRoles") || "[]"); // Fetch the roles from sessionStorage
+let refillLink = "";
+let locationLink = "";
+let getLowLink = "";
+
+// Check if the user has any of the roles that should have access
+if (userRoles.includes("warehouse") || userRoles.includes("admin")) {
+  refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}', '${skuName}'); return false;">
+    <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
+
+  locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}', '${skuName}'); return false;">
+    <i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
+
+  getLowLink = `<a href="#" onclick="sendGetLowEmail('${emailProductName}', '${skuName}'); return false;">
+    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>`;
+}
+
+        
+        
         else{
           refillLink = ``;
           locationLink = ``;
+          getLowLink = ``;
         }
 
         return { 
