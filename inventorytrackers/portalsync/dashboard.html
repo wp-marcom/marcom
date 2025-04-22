@@ -1773,10 +1773,14 @@ const table = $(targetElement).DataTable({
       data: null,
       title: 'Actions',
       orderable: false,
-      render: function(data, type, row) {
-        return `<button class="btn btn-sm btn-primary create-pack-slip" data-job="${row.job}">Create Pack Slip</button>`;
-      }
-    },
+    render: function(data, type, row) {
+    const alreadyGenerated = row.status.includes('Pack Slip Generated');
+    const buttonClass = alreadyGenerated ? 'btn-danger unpack-slip' : 'btn-primary create-pack-slip';
+    const buttonLabel = alreadyGenerated ? 'Unpack' : 'Create Pack Slip';
+
+    return `<button class="btn btn-sm ${buttonClass}" data-job="${row.job}">${buttonLabel}</button>`;
+  }
+},
     { data: 'job', title: 'Job #' },
     { data: 'orderDate', title: 'Order Date' },
     { data: 'customer', title: 'Customer' },
@@ -1794,33 +1798,53 @@ const table = $(targetElement).DataTable({
   destroy: true
 });
       table.draw();
-// Pack slip button click 9:25am
-$(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
-  const parentRow = table.row($(this).closest('tr')).data();
+// Pack slip button click
+$(targetElement + ' tbody').on('click', 'button', function () {
+  const $button = $(this);
+  const parentRow = table.row($button.closest('tr')).data();
+  const job = parentRow.job;
 
-  const payload = {
-    job: parentRow.job,
-    customer: parentRow.customer,
-    shippingAddress: parentRow.shippingAddress,
-    children: parentRow.children.map(child => ({
-      product: child[3],
-      sku: child[4],
-      qty: child[5]
-    })),
-    status: 'Pack Slip Generated' // Add status update
-  };
+  if ($button.hasClass('create-pack-slip')) {
+    // === CREATE PACK SLIP ===
+    const payload = {
+      job: parentRow.job,
+      customer: parentRow.customer,
+      shippingAddress: parentRow.shippingAddress,
+      children: parentRow.children.map(child => ({
+        product: child[3],
+        sku: child[4],
+        qty: child[5]
+      })),
+      status: 'Pack Slip Generated'
+    };
 
-  const query = new URLSearchParams({
-    job: payload.job,
-    customer: payload.customer,
-    shippingAddress: payload.shippingAddress,
-    children: JSON.stringify(payload.children),
-    status: payload.status // Send the new status to the Apps Script
-  });
+    const query = new URLSearchParams({
+      job: payload.job,
+      customer: payload.customer,
+      shippingAddress: payload.shippingAddress,
+      children: JSON.stringify(payload.children),
+      status: payload.status
+    });
 
-  const url = `https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?${query.toString()}`;
+    const url = `https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?${query.toString()}`;
+    window.open(url, '_blank');
 
-  window.open(url, '_blank');
+  } else if ($button.hasClass('unpack-slip')) {
+    // === UNPACK ===
+    if (!confirm(`Delete the pack slip and reset status for job ${job}?`)) return;
+
+    fetch(`https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?job=${encodeURIComponent(job)}&unpack=true`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          // Update the table row status and switch button
+          parentRow.status = 'Order Received';
+          table.row($button.closest('tr')).data(parentRow).invalidate().draw(false);
+        } else {
+          alert('Unpack failed: ' + data.message);
+        }
+      });
+  }
 });
 
 // Expand/collapse logic
