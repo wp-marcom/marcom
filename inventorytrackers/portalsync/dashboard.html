@@ -1759,32 +1759,40 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 }));
 
       // Initialize DataTable with only parent rows
-      const table = $(targetElement).DataTable({
-        data: parentRows,
-        columns: [
-          {
-            className: 'dt-control',
-            orderable: false,
-            data: null,
-            defaultContent: '',
-            title: '', // <- ADD THIS!
-          },
-          { 
-    data: null,
-    title: 'Actions',
-    orderable: false,
-    render: function(data, type, row) {
-      return `<button class="btn btn-sm btn-primary create-pack-slip" data-job="${row.job}">Create Pack Slip</button>`;
-    }
-  },
-          { data: 'job', title: 'Job #' },
-          { data: 'orderDate', title: 'Order Date' },
-          { data: 'customer', title: 'Customer' },
-          { data: 'status', title: 'Status' },
-        ],
-        //order: [[1, 'asc']],
-        destroy: true
-      });
+const table = $(targetElement).DataTable({
+  data: parentRows,
+  columns: [
+    {
+      className: 'dt-control',
+      orderable: false,
+      data: null,
+      defaultContent: '',
+      title: '',
+    },
+    { 
+      data: null,
+      title: 'Actions',
+      orderable: false,
+      render: function(data, type, row) {
+        return `<button class="btn btn-sm btn-primary create-pack-slip" data-job="${row.job}">Create Pack Slip</button>`;
+      }
+    },
+    { data: 'job', title: 'Job #' },
+    { data: 'orderDate', title: 'Order Date' },
+    { data: 'customer', title: 'Customer' },
+    { 
+      data: 'status', 
+      title: 'Status',
+      render: function(data, type, row) {
+        if (type === 'display') {
+          return data;
+        }
+        return data;
+      }
+    },
+  ],
+  destroy: true
+});
       table.draw();
 // Pack slip button click 9:25am
 $(targetElement + ' tbody').on('click', '.create-pack-slip', function () {
