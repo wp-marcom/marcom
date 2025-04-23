@@ -3,6 +3,7 @@ const rolePermissions = {
   admin: ["admin", "warehouse", "misterAdmin", "tmc"], // Admin sees everything
   warehouse: ["warehouse", "misterAdmin", "molson"], // Warehouse sees specific roles
   misterAdmin: ["misterAdmin"],
+  sierraTucsonAdmin: ["misterAdmin"],
   lprice: ["lprice"], // Sees only what’s assigned to "lprice"
   acharles: ["acharles"], // Sees only what’s assigned to "lprice"
   molson: ["molson"] // Sees only what’s assigned to "molson"
@@ -26,8 +27,8 @@ const users = [
   { username: "eastwarehouse", password: "eastwarehouse", roles: ["warehouse"], fullName: "East Warehouse" },
   { username: "east1", password: "east1", roles: ["warehouse"], fullName: "East Warehouse 1" },
   { username: "east2", password: "east2", roles: ["warehouse"], fullName: "East Warehouse 2" },
-  { username: "linda", password: "Charlie1", roles: ["misterAdmin"], fullName: "Linda" },
-  { username: "dave", password: "dave", roles: ["lprice"], fullName: "Dave" },
+  { username: "linda", password: "Charlie1", roles: ["misterAdmin", "sierraTucsonAdmin"], fullName: "Linda" },
+  { username: "dave", password: "dave", roles: ["sierraTucsonAdmin"], fullName: "Dave" },
   { username: "acharles", password: "acharles", roles: ["acharles"], fullName: "Andy" },
   { username: "molson", password: "molson", roles: ["molson"], fullName: "Marlo" }
 ];
@@ -35,14 +36,14 @@ const users = [
 // Define page permissions
 const pagePermissions = {
   "tracker-mister.html": ["admin", "warehouse", "misterAdmin"], // Admin and lprice roles
-  "tracker-siet.html": ["admin", "warehouse", "lprice"], // Admin and lprice roles
+  "tracker-siet.html": ["admin", "warehouse", "sierraTucsonAdmin"], // Admin and lprice roles
   "tracker-tmc.html": ["admin", "warehouse", "molson"], // Admin and molson roles
   "tracker-nmc.html": ["admin", "warehouse", "ctapia"], // Admin and 
   "tracker-vwcu.html": ["admin", "warehouse", "acharles"], // Admin and 
   "tracker-pfcu.html": ["admin", "warehouse", "acharles"], // Admin and
   "tracker-uafoundation.html": ["admin", "warehouse", "acharles"], // Admin and
   "tracker-uofa.html": ["admin", "warehouse", "gnelson"], // Admin and
-  "dashboard.html": ["admin", "warehouse", "misterAdmin"], // Only admin can access
+  "dashboard.html": ["admin", "warehouse", "misterAdmin", "sierraTucsonAdmin"], // Only admin can access
   "warehouse-page.html": ["admin", "warehouse"], // Admin and warehouse roles
 };
 
