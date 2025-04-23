@@ -1,6 +1,6 @@
 // Define role permissions
 const rolePermissions = {
-  admin: ["admin", "warehouse", "misterAdmin", "tmc"], // Admin sees everything
+  admin: ["admin", "warehouse", "misterAdmin", "tmcAdmin"], // Admin sees everything
   warehouse: ["warehouse", "misterAdmin", "tmcAdmin"], // Warehouse sees specific roles
   misterAdmin: ["misterAdmin"],
   sierraTucsonAdmin: ["sierraTucsonAdmin"],
