@@ -1724,8 +1724,9 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 
     function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
         const client = "Westpress Inventory";
-        const range1 = `${sheetName}!A2:H`;
-  const range2 = `${sheetName}!G2:G`;
+        const range1 = `${sheetName}!A2:J`;
+  //const range2 = `${sheetName}!G2:G`;
+  const range2 = `${sheetName}!K2:K`;
 
   const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
   const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
@@ -1753,8 +1754,8 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
   job,
   orderDate: rows[0][1] || '',
   customer: rows[0][2] || '',
-  status: rows[0][6] || '',
-  shippingAddress: rows[0][7] || '',
+  status: rows[0][10] || '',
+  shippingAddress: rows[0][8] || '',
   children: rows,
 }));
 
@@ -1812,8 +1813,8 @@ $(targetElement + ' tbody').on('click', 'button', function () {
       shippingAddress: parentRow.shippingAddress,
       children: parentRow.children.map(child => ({
         product: child[3],
-        sku: child[4],
-        qty: child[5]
+        sku: child[5],
+        qty: child[7]
       })),
       status: 'Pack Slip Generated'
     };
@@ -1838,7 +1839,7 @@ $(targetElement + ' tbody').on('click', 'button', function () {
       .then(data => {
         if (data.success) {
           // Update the table row status and switch button
-          parentRow.status = 'Order Received';
+          parentRow.status = 'Pending';
           table.row($button.closest('tr')).data(parentRow).invalidate().draw(false);
         } else {
           alert('Unpack failed: ' + data.message);
@@ -1859,8 +1860,8 @@ $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
     // Generate child line items
     const childRowsHtml = row.data().children.map(child => {
       const product = child[3] || '';
-      const sku = child[4] || '';
-      const qty = child[5] || '';
+      const sku = child[5] || '';
+      const qty = child[7] || '';
       const label = getLabelForProduct(product);
 
       return `
