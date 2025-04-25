@@ -1736,7 +1736,9 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
     fetch(url2).then((res) => res.json()),
   ])
     .then(([response1, response2]) => {
+      const expectedColumns = 10; // Columns A to J (0–9), then you append K separately as status
       const rawData = response1.values.map((row, index) => {
+        while (row.length < expectedColumns) row.push(''); // Pad missing cells
         const status = response2.values[index]?.[0] || '';
         return [...row, status]; // [Job, Order Date, Customer, Status]
       });
