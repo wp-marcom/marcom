@@ -1876,8 +1876,9 @@ $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
     const childRowsHtml = row.data().children.map(child => {
       const product = child[3] || '';
       const sku = child[5] || '';
+      const skuDesc = child[6] || '';
       const qty = child[7] || '';
-      const label = getLabelForProduct(product);
+      const label = getLabelForProduct(product, skuDesc);
 
       return `
         <tr>
@@ -1918,9 +1919,11 @@ $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
     });
     }
 
-      function getLabelForProduct(productName) {
+      function getLabelForProduct(productName, skuDesc) {
   if (!productName) return 'Pick'; // default if empty
-  return /(?:DIG|LF)$/i.test(productName.trim()) ? 'On-Demand' : 'Pick';
+  if(!skuDesc.includes("EXTERNAL FULFILLMENT");)
+    {return 'EXTERNAL FULFILLMENT';}
+  else{return /(?:DIG|LF)$/i.test(productName.trim()) ? 'On-Demand' : 'Pick';}
 }
 
 // Call it for each sheet config
