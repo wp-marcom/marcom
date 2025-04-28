@@ -1919,11 +1919,14 @@ $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
     });
     }
 
-      function getLabelForProduct(productName, skuDesc) {
+  function getLabelForProduct(productName, skuDesc) {
   if (!productName) return 'Pick'; // default if empty
-  if(!skuDesc.includes("EXTERNAL FULFILLMENT");)
-    {return 'EXTERNAL FULFILLMENT';}
-  else{return /(?:DIG|LF)$/i.test(productName.trim()) ? 'On-Demand' : 'Pick';}
+  
+  if (skuDesc && skuDesc.toUpperCase().includes("EXTERNAL FULFILLMENT")) {
+    return 'External Fulfillment'; // when skuDesc mentions external fulfillment
+  }
+  
+  return /(?:DIG|LF)$/i.test(productName.trim()) ? 'On-Demand' : 'Pick'; // otherwise based on productName
 }
 
 // Call it for each sheet config
