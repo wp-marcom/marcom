@@ -1809,15 +1809,28 @@ $(targetElement + ' tbody').on('click', 'button', function () {
 
   if ($button.hasClass('create-pack-slip')) {
     // === CREATE PACK SLIP ===
+
+// Filter out children with "EXTERNAL FULFILLMENT" in SKU Description
+  const filteredChildren = parentRow.children.filter(child => {
+    const skuDescription = child[6] || ''; // column 6 is skuDescription
+    return !skuDescription.toUpperCase().includes("EXTERNAL FULFILLMENT");
+  }).map(child => ({
+    product: child[3],
+    sku: child[5],
+    qty: child[7]
+  }));
+
+    
     const payload = {
       job: parentRow.job,
       customer: parentRow.customer,
       shippingAddress: parentRow.shippingAddress,
-      children: parentRow.children.map(child => ({
-        product: child[3],
-        sku: child[5],
-        qty: child[7]
-      })),
+      children: filteredChildren,
+      //children: parentRow.children.map(child => ({
+      //  product: child[3],
+     //   sku: child[5],
+    //    qty: child[7]
+    //  })),
       status: 'Pack Slip Generated'
     };
 
