@@ -1788,7 +1788,7 @@ const table = $(targetElement).DataTable({
   const hasPack = row.status.includes('Pack Slip Generated');
 
   const pickButton = !hasPick
-    ? `<button class="btn btn-info create-pick-slip">Create Pick Slip</button>`
+    ? `<button class="btn btn-primary create-pick-slip">Create Pick Slip</button>`
     : (!hasPack
         ? `<button class="btn btn-warning unpick-slip">Unpick</button>`
         : `<button class="btn btn-secondary" disabled>Picked</button>`);
@@ -1796,7 +1796,7 @@ const table = $(targetElement).DataTable({
   const packButton = hasPick
     ? (hasPack
         ? `<button class="btn btn-danger unpack-slip">Unpack</button>`
-        : `<button class="btn btn-primary create-pack-slip">Create Pack Slip</button>`)
+        : `<button class="btn btn-success create-pack-slip">Create Pack Slip</button>`)
     : `<button class="btn btn-secondary" disabled>Pick Pending</button>`;
 
   return pickButton + ' ' + packButton;
