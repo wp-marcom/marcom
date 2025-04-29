@@ -1761,9 +1761,19 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
   children: rows,
 }));
 
+ // Filter out parent rows where ALL children have "EXTERNAL FULFILLMENT" in SKU Description
+const visibleParentRows = parentRows.filter(parent => {
+  return parent.children.some(child => {
+    const skuDescription = (child[6] || '').toUpperCase();
+    return !skuDescription.includes("EXTERNAL FULFILLMENT");
+  });
+});     
+      
+
       // Initialize DataTable with only parent rows
 const table = $(targetElement).DataTable({
-  data: parentRows,
+  //data: parentRows,
+  data: visibleParentRows,
   columns: [
     {
       className: 'dt-control',
