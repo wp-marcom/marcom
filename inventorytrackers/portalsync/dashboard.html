@@ -1776,13 +1776,31 @@ const table = $(targetElement).DataTable({
       data: null,
       title: 'Actions',
       orderable: false,
-    render: function(data, type, row) {
-    const alreadyGenerated = row.status.includes('Pack Slip Generated');
-    const buttonClass = alreadyGenerated ? 'btn-danger unpack-slip' : 'btn-primary create-pack-slip';
-    const buttonLabel = alreadyGenerated ? 'Unpack' : 'Create Pack Slip';
+   // render: function(data, type, row) {
+   // const alreadyGenerated = row.status.includes('Pack Slip Generated');
+   // const buttonClass = alreadyGenerated ? 'btn-danger unpack-slip' : 'btn-primary create-pack-slip';
+   // const buttonLabel = alreadyGenerated ? 'Unpack' : 'Create Pack Slip';
 
-    return `<button class="btn btn-sm ${buttonClass}" data-job="${row.job}">${buttonLabel}</button>`;
-  }
+   // return `<button class="btn btn-sm ${buttonClass}" data-job="${row.job}">${buttonLabel}</button>`;
+ // }
+  render: function(data, type, row) {
+  const hasPick = row.status.includes('Pick Slip Generated');
+  const hasPack = row.status.includes('Pack Slip Generated');
+
+  const pickButton = !hasPick
+    ? `<button class="btn btn-info create-pick-slip">Create Pick Slip</button>`
+    : (!hasPack
+        ? `<button class="btn btn-warning unpick-slip">Unpick</button>`
+        : `<button class="btn btn-secondary" disabled>Picked</button>`);
+
+  const packButton = hasPick
+    ? (hasPack
+        ? `<button class="btn btn-danger unpack-slip">Unpack</button>`
+        : `<button class="btn btn-primary create-pack-slip">Create Pack Slip</button>`)
+    : `<button class="btn btn-secondary" disabled>Pack Slip (Needs Pick)</button>`;
+
+  return pickButton + ' ' + packButton;
+}    
 },
     { data: 'job', title: 'Job #' },
     { data: 'orderDate', title: 'Order Date' },
@@ -1801,37 +1819,26 @@ const table = $(targetElement).DataTable({
   destroy: true
 });
       table.draw();
-// Pack slip button click
+//PACK & PICK SLIP DATA TO SEND TO GOOGLE SCRIPT      
 $(targetElement + ' tbody').on('click', 'button', function () {
   const $button = $(this);
   const parentRow = table.row($button.closest('tr')).data();
   const job = parentRow.job;
 
-  if ($button.hasClass('create-pack-slip')) {
-    // === CREATE PACK SLIP ===
-
-// Filter out children with "EXTERNAL FULFILLMENT" in SKU Description
-  const filteredChildren = parentRow.children.filter(child => {
-    const skuDescription = child[6] || ''; // column 6 is skuDescription
-    return !skuDescription.toUpperCase().includes("EXTERNAL FULFILLMENT");
-  }).map(child => ({
-    product: child[3],
-    sku: child[5],
-    qty: child[7]
-  }));
-
-    
+  // === CREATE PICK SLIP ===
+  if ($button.hasClass('create-pick-slip')) {
     const payload = {
       job: parentRow.job,
       customer: parentRow.customer,
       shippingAddress: parentRow.shippingAddress,
-      children: filteredChildren,
-      //children: parentRow.children.map(child => ({
-      //  product: child[3],
-     //   sku: child[5],
-    //    qty: child[7]
-    //  })),
-      status: 'Pack Slip Generated'
+      children: parentRow.children.map(child => ({
+        product: child[3],
+        sku: child[5],
+        skuDescription: child[6],
+        qty: child[7]
+      })),
+      status: 'Pick Slip Generated',
+      type: 'pick'
     };
 
     const query = new URLSearchParams({
@@ -1839,22 +1846,70 @@ $(targetElement + ' tbody').on('click', 'button', function () {
       customer: payload.customer,
       shippingAddress: payload.shippingAddress,
       children: JSON.stringify(payload.children),
-      status: payload.status
+      status: payload.status,
+      type: payload.type
     });
 
     const url = `https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?${query.toString()}`;
     window.open(url, '_blank');
 
+  // === UNPICK ===
+  } else if ($button.hasClass('unpick-slip')) {
+    if (!confirm(`Delete the pick slip and reset status for job ${job}?`)) return;
+
+    fetch(`https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?job=${encodeURIComponent(job)}&unpick=true`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          parentRow.status = 'Pending';
+          table.row($button.closest('tr')).data(parentRow).invalidate().draw(false);
+        } else {
+          alert('Unpick failed: ' + data.message);
+        }
+      });
+
+  // === CREATE PACK SLIP ===
+  } else if ($button.hasClass('create-pack-slip')) {
+    const filteredChildren = parentRow.children.filter(child => {
+      const skuDescription = (child[6] || '').toUpperCase();
+      return !skuDescription.includes("EXTERNAL FULFILLMENT");
+    }).map(child => ({
+      product: child[3],
+      sku: child[5],
+      skuDescription: child[6],
+      qty: child[7]
+    }));
+
+    const payload = {
+      job: parentRow.job,
+      customer: parentRow.customer,
+      shippingAddress: parentRow.shippingAddress,
+      children: filteredChildren,
+      status: 'Pack Slip Generated',
+      type: 'pack'
+    };
+
+    const query = new URLSearchParams({
+      job: payload.job,
+      customer: payload.customer,
+      shippingAddress: payload.shippingAddress,
+      children: JSON.stringify(payload.children),
+      status: payload.status,
+      type: payload.type
+    });
+
+    const url = `https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?${query.toString()}`;
+    window.open(url, '_blank');
+
+  // === UNPACK ===
   } else if ($button.hasClass('unpack-slip')) {
-    // === UNPACK ===
     if (!confirm(`Delete the pack slip and reset status for job ${job}?`)) return;
 
     fetch(`https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?job=${encodeURIComponent(job)}&unpack=true`)
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          // Update the table row status and switch button
-          parentRow.status = 'Pending';
+          parentRow.status = 'Pick Slip Generated'; // fallback status after unpack
           table.row($button.closest('tr')).data(parentRow).invalidate().draw(false);
         } else {
           alert('Unpack failed: ' + data.message);
@@ -1862,6 +1917,7 @@ $(targetElement + ' tbody').on('click', 'button', function () {
       });
   }
 });
+
 
 // Expand/collapse logic
 $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
