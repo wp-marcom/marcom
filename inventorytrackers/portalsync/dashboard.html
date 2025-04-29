@@ -1835,21 +1835,28 @@ $(targetElement + ' tbody').on('click', 'button', function () {
   const parentRow = table.row($button.closest('tr')).data();
   const job = parentRow.job;
 
-  // === CREATE PICK SLIP ===
-  if ($button.hasClass('create-pick-slip')) {
+     // === CREATE PICK SLIP ===
+if ($button.hasClass('create-pick-slip')) {
+    const filteredChildren = parentRow.children.filter(child => {
+      const skuDescription = (child[6] || '').toUpperCase();
+      return !skuDescription.includes("EXTERNAL FULFILLMENT");
+    }).map(child => ({
+      product: child[3],
+      sku: child[5],
+      skuDescription: child[6],
+      qty: child[7]
+    }));
+
     const payload = {
       job: parentRow.job,
       customer: parentRow.customer,
       shippingAddress: parentRow.shippingAddress,
-      children: parentRow.children.map(child => ({
-        product: child[3],
-        sku: child[5],
-        skuDescription: child[6],
-        qty: child[7]
-      })),
+      children: filteredChildren,
       status: 'Pick Slip Generated',
       type: 'pick'
     };
+
+    
 
     const query = new URLSearchParams({
       job: payload.job,
