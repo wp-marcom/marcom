@@ -1842,9 +1842,11 @@ if ($button.hasClass('create-pick-slip')) {
       return !skuDescription.includes("EXTERNAL FULFILLMENT");
     }).map(child => ({
       product: child[3],
+      productDescription: child[4],
       sku: child[5],
       skuDescription: child[6],
-      qty: child[7]
+      qty: child[7],
+      shippingInstructions: child[9] || ''
     }));
 
     const payload = {
