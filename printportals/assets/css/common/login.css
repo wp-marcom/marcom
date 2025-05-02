@@ -20,15 +20,27 @@ body {
     color: var(--primary-color);
 }
 
-/* Tint overlay that ONLY affects the background */
+/* Tint overlay using ::before */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: var(--primary-color); /* Tint color */
-  opacity: 0.1; /* Adjust intensity */
-  pointer-events: none; /* Prevents interaction */
-  z-index: -1; /* Keeps it behind all content */
+  pointer-events: none;
+  z-index: -2;
+  background: rgba(var(--primary-color-rgb), 0.2); /* Tint */
+}
+
+/* Image background using ::after */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -3;
+  background: url('../../img/common/halftone.jpg') no-repeat center center;
+   background-size: cover;
+background-position: center center;
+  opacity: 0.1; /* Adjust background image visibility */
 }
 
 
