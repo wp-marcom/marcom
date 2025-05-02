@@ -27,7 +27,7 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: -2;
-  background: rgba(var(--primary-color-rgb), 0.2); /* Tint */
+  background: rgba(var(--primary-color-rgb), 0.1); /* Tint */
 }
 
 /* Image background using ::after */
