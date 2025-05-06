@@ -17,6 +17,34 @@ body:has(div.Vantage.West) .navbar-brand {
   margin-left: 25px;
 }
 
+/* Adjust logo size in NavBar */
+/* Extra small devices (phones, <576px) */
+@media (max-width: 575.98px) {
+  body:has(div.Vantage.West) .navbar-brand {
+    width: 175px;
+    height: 40px;
+    margin-left: 80px;
+  }
+}
+
+/* Small devices (landscape phones, ≥576px and <768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  body:has(div.Vantage.West) .navbar-brand {
+    width: 220px;
+    height: 45px;
+   margin-left:150px ;
+  }
+}
+
+/* Medium devices (tablets, ≥768px and <992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  body:has(div.Vantage.West) .navbar-brand {
+    width: 300px;
+    height: 40px;
+    margin-left:150px ;
+  }
+}
+
 /* Apply styles only when body has a div with class "Vantage West" */
 body:has(div.Vantage.West) [class*="mcc-folder-"] .category-card .card-img-holder:before {
     background-image: url(../../img/common/vantage-folder.svg);
