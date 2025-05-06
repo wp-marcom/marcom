@@ -25,6 +25,7 @@ body:has(div.Cochise.College) .navbar-brand {
     height: 40px;
     margin-left: 80px;
   }
+    #user-name{display:none}
 }
 
 /* Small devices (landscape phones, ≥576px and <768px) */
@@ -34,6 +35,7 @@ body:has(div.Cochise.College) .navbar-brand {
     height: 45px;
    margin-left:150px ;
   }
+    #user-name{display:none}
 }
 
 /* Medium devices (tablets, ≥768px and <992px) */
@@ -43,6 +45,7 @@ body:has(div.Cochise.College) .navbar-brand {
     height: 40px;
     margin-left:150px ;
   }
+    #user-name{display:none}
 }
 
 /* Apply styles only when body has a div with class "Cochise College" */
