@@ -408,8 +408,8 @@ mcc-category-card .category-card {
 }
 
 .card-image-holder img,
-.card-img-holder img,
-.image-holder img {
+.card-img-holder img
+{
   z-index: 1;
   width: auto;
   object-fit: contain;
