@@ -1190,9 +1190,9 @@ site-section .card-body-sku,
 /* Extra small devices (phones, <576px) */
 @media (max-width: 575.98px) {
   .navbar-brand {
-    width: 180px;
+    width: 175px;
     height: 40px;
-    margin-left: 125px;
+    margin-left: 80px;
   }
 }
 
