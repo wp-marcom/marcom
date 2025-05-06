@@ -239,3 +239,96 @@ footer.page-footer > a {
     display: none;
 }
 
+/* LOGIN FOOTER STYLES BELOW */
+.heavy {
+  font-weight: 900;
+}
+
+.rotating-color {
+  animation: colorCycle 12s infinite;
+}
+
+/* Animate through colors with 3s solid + 1s transition */
+@keyframes colorCycle {
+  0%   { color: #58b947; }   /* green - hold */
+  25%  { color: #58b947; }   /* green - done holding */
+  33.33% { color: #faab4f; } /* orange - finish transition */
+  58.33% { color: #faab4f; } /* orange - hold */
+  66.66% { color: #e9509c; } /* pink - finish transition */
+  91.66% { color: #e9509c; } /* pink - hold */
+  100%  { color: #58b947; }  /* green again - transition back */
+}
+
+
+
+
+.custom-footer {
+  position: absolute !important;
+  bottom: -385px !important;  /* adjust this value as needed */
+  left: -370px;
+  width: 100vw;
+  color: #333;
+  padding: 20px;
+  font-size: 0.875rem;
+  z-index: 9999;
+}
+
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap; /* prevents wrapping */
+  gap: 20px;
+  text-align: left;
+}
+
+.footer-logo {
+  flex-shrink: 0;
+  width: 125px;
+  height: auto;
+}
+
+.footer-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+}
+
+.tagline,
+.contact-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.built {
+  letter-spacing: 2px;
+}
+
+.divider {
+  margin: 0 6px;
+  color: #aaa;
+}
+
+.custom-footer a {
+  color: #333;
+  text-decoration: none;
+}
+
+.custom-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Hide the built-in footer if desired */
+footer.page-footer {
+  display: none !important;
+}
+
+/* LOGIN FOOTER STYLES ABOVE */
+
