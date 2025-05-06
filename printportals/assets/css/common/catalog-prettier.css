@@ -954,6 +954,51 @@ carousel.categories-carousel {
 }
 /* CATALOG FOOTER STYLES ABOVE */
 
+/* Styles for the product pricing grid at the product level below */
+.list-group {
+    list-style: none; /* Removes default bullet points */
+    padding: 0;
+    margin: 0;
+    display: table; /* Makes the list behave like a table */
+    border-collapse: collapse; /* Ensures borders collapse like a real table */
+    font-size: 12px; /* Small font for a compact layout */
+    width: max-content; /* Scales to fit content without expanding unnecessarily */
+}
+
+/* Defines each row in the product pricing grid */
+.dl {
+    display: table-row; /* Ensures each item is aligned like a table row */
+}
+
+/* Styles for both columns: product count and price */
+.dt, .dd {
+    display: table-cell; /* Aligns elements into table columns */
+    padding: 2px 4px; /* Tight padding for a compact look */
+    border: 1px solid #ddd; /* Adds a subtle border for readability */
+    text-align: right; /* Aligns numbers properly */
+    white-space: nowrap; /* Prevents text wrapping for consistent column sizing */
+}
+
+/* Styles for the product count column */
+.dt {
+    font-weight: bold; /* Makes item counts stand out */
+}
+
+/* Styles for the pricing column */
+.dd {
+    text-align: left; /* Ensures prices align for easy reading */
+}
+
+/* Change "1 items" to "Qty 1" using CSS */
+.dt-span {
+    display: none; /* Hides the original "items" text */
+}
+
+.dt::before {
+    content: "Qty "; /* Adds "Qty " before the number */
+}
+/* Styles for the product pricing grid at the product level above */
+
 /* LIVE category card photo image backgrounds and icons */
 /* acquire */
 .mcc-folder-3156991 .category-card {
