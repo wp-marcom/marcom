@@ -873,6 +873,87 @@ carousel.categories-carousel {
 
 }
 
+/* CATALOG FOOTER STYLES BELOW */
+.heavy {
+  font-weight: 900;
+  font-family: Segoe UI;
+}
+
+.rotating-color {
+  animation: colorCycle 12s infinite;
+}
+
+@keyframes colorCycle {
+  0%   { color: #58b947; }
+  25%  { color: #58b947; }
+  33.33% { color: #faab4f; }
+  58.33% { color: #faab4f; }
+  66.66% { color: #e9509c; }
+  91.66% { color: #e9509c; }
+  100%  { color: #58b947; }
+}
+
+.custom-footer {
+  background: transparent;
+  color: #333;
+  padding: 1.5rem 1rem;
+  font-size: 0.875rem;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: nowrap;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  width: 125px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.footer-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.tagline,
+.contact-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.built {
+  letter-spacing: 2px;
+}
+
+.divider {
+  margin: 0 6px;
+  color: #aaa;
+}
+
+.custom-footer a {
+  color: #333;
+  text-decoration: none;
+}
+
+.custom-footer a:hover {
+  text-decoration: underline;
+}
+/* CATALOG FOOTER STYLES ABOVE */
+
 /* LIVE category card photo image backgrounds and icons */
 /* acquire */
 .mcc-folder-3156991 .category-card {
