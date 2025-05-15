@@ -69,6 +69,11 @@ body:has(div.Dependable.Health) div.mt-4:nth-child(6){
   display:none;
 }
 
+/* HIDE THE DELIVERY METHOD BOX DURING CHECKOUT*/
+body:has(div.Dependable.Health) div.mt-4:nth-child(5){
+  display:none;
+}
+
 /* HIDE THIS TEXT DURING CHECKOUT "(Does not include shipping and sales tax)"*/
 
 body:has(div.Dependable.Health) .product-price-note {
