@@ -218,19 +218,16 @@ form-signin {
 
 /* Style the Login Header Element - the HTML for this exists in the Custom Content section */
 
-LogoDiv {
-background:url(https://wp-marcom.github.io/marcom/westpress/images/wp-login-header.svg);
-background-repeat: no-repeat;
-background-size: cover;
-background-position: center;
-border-radius: 8px 8px 0px 0px!important;
-
-margin-left: -45px !important;
-margin-top: -205px !important;
-position: absolute !important;
-width: 390px !important;
-height: 125px !important;
-z-index:99 !important;
+#LogoDiv {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 60px;
+  background: url("https://wp-marcom.github.io/marcom/printportals/assets/img/common/westpress_login_logo.svg") no-repeat center / contain;
+  z-index: 10;
 }
 
 /* I do not know what this does */
