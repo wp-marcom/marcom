@@ -11,6 +11,10 @@
   --titlefont: 'Figtree';
 }
 
+#ENUSmain{
+  border-radius:0px!important;
+}
+
 /*Body Text and Heading Defaults*/
 #ENUSmain > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1){
   background: rgba(var(--primary-color-rgb), 0.1); /* Tint */
