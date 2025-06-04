@@ -1798,8 +1798,8 @@ const table = $(targetElement).DataTable({
    // return `<button class="btn btn-sm ${buttonClass}" data-job="${row.job}">${buttonLabel}</button>`;
  // }
   render: function(data, type, row) {
-  const hasPick = row.status.includes('Pick Slip Generated');
-  const hasPack = row.status.includes('Pack Slip Generated');
+  const hasPick = row.status.includes('Pick Slip');
+  const hasPack = row.status.includes('Pack Slip');
 
   const pickButton = !hasPick
     ? `<button class="btn btn-primary create-pick-slip">Create Pick Slip</button>`
@@ -1858,7 +1858,7 @@ if ($button.hasClass('create-pick-slip')) {
       customer: parentRow.customer,
       shippingAddress: parentRow.shippingAddress,
       children: filteredChildren,
-      status: 'Pick Slip Generated',
+      status: 'Pick Slip',
       type: 'pick'
     };
 
@@ -1908,7 +1908,7 @@ if ($button.hasClass('create-pick-slip')) {
       customer: parentRow.customer,
       shippingAddress: parentRow.shippingAddress,
       children: filteredChildren,
-      status: 'Pack Slip Generated',
+      status: 'Pack Slip',
       type: 'pack'
     };
 
@@ -1932,7 +1932,7 @@ if ($button.hasClass('create-pick-slip')) {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          parentRow.status = 'Pick Slip Generated'; // fallback status after unpack
+          parentRow.status = 'Pick Slip'; // fallback status after unpack
           table.row($button.closest('tr')).data(parentRow).invalidate().draw(false);
         } else {
           alert('Unpack failed: ' + data.message);
