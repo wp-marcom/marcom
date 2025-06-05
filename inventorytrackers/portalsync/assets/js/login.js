@@ -28,6 +28,7 @@ const users = [
   { username: "east1", password: "east1", roles: ["warehouse"], fullName: "East Warehouse 1" },
   { username: "east2", password: "east2", roles: ["warehouse"], fullName: "East Warehouse 2" },
   { username: "quietbindery", password: "quietbindery", roles: ["warehouse"], fullName: "Quiet Bindery" },
+  { username: "becky", password: "becky", roles: ["warehouse"], fullName: "Becky Wigginton-Colón" },
   { username: "cruz", password: "cruz", roles: ["warehouse"], fullName: "Cruz" },
   { username: "linda", password: "Charlie1", roles: ["misterAdmin", "sierraTucsonAdmin"], fullName: "Linda" },
   { username: "dave", password: "dave", roles: ["sierraTucsonAdmin"], fullName: "Dave" },
