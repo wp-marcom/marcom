@@ -1862,20 +1862,40 @@ if ($button.hasClass('create-pick-slip')) {
       type: 'pick'
     };
 
+    // Create a hidden form and submit it to open in new tab
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec';
+    form.target = '_blank';
     
-
-    const query = new URLSearchParams({
-      job: payload.job,
-      customer: payload.customer,
-      shippingAddress: payload.shippingAddress,
-      children: JSON.stringify(payload.children),
-      status: payload.status,
-      type: payload.type
+    // Add each payload property as a hidden input
+    Object.keys(payload).forEach(key => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = key === 'children' ? JSON.stringify(payload[key]) : payload[key];
+        form.appendChild(input);
     });
+    
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
 
-    const url = `https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?${query.toString()}`;
-    window.open(url, '_blank');
 
+    
+//Restore below here if POST DOESNT WORK
+ //   const query = new URLSearchParams({
+ //     job: payload.job,
+  //    customer: payload.customer,
+ //     shippingAddress: payload.shippingAddress,
+  //    children: JSON.stringify(payload.children),
+ //     status: payload.status,
+ //    type: payload.type
+//    });
+
+   // const url = `https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?${query.toString()}`;
+  //  window.open(url, '_blank');
+//Restore above here if POST DOEST WORK
   // === UNPICK ===
   } else if ($button.hasClass('unpick-slip')) {
     if (!confirm(`Delete the pick slip and reset status for job ${job}?`)) return;
