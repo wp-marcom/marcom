@@ -585,7 +585,7 @@
                   <button class="nav-link active" id="pills-vwcu-tab" data-bs-toggle="pill" data-bs-target="#pills-vwcu" type="button" role="tab" aria-controls="pills-vwcu" aria-selected="true" onclick="changeClient(this.id)">Vantage West</button>
                 </li>
                 <li class="nav-item" role="presentation" data-role="admin">
-                  <button class="nav-link" id="pills-tmcforms-tab" data-bs-toggle="pill" data-bs-target="#pills-tmcforms" type="button" role="tab" aria-controls="pills-tmcforms" aria-selected="false" onclick="changeClient(this.id)">TMC Forms</button>
+                  <button class="nav-link" id="pills-pfcu-tab" data-bs-toggle="pill" data-bs-target="#pills-pfcu" type="button" role="tab" aria-controls="pills-pfcu" aria-selected="false" onclick="changeClient(this.id)">Pima Federal CU</button>
                 </li>
                 <li class="nav-item" role="presentation" data-role="admin">
                   <button class="nav-link" id="pills-tmccommprint-tab" data-bs-toggle="pill" data-bs-target="#pills-tmccommprint" type="button" role="tab" aria-controls="pills-tmccommprint" aria-selected="false">TMC Comm Outreach PRINT</button>
@@ -636,9 +636,6 @@
                   <h5 class="card-title">Recent Online Orders</h5>
 
 <button class="btn btn-sm btn-primary" onclick="openPopup('VWCU')">Import Recent VWCU Orders</button>
-<button class="btn btn-sm btn-primary" data-role="admin" onclick="openPopup('PFCU')">
-  Import Recent PFCU Orders
-</button>
 <script>
   function openPopup(sheetName) {
     const popupWindow = window.open(
@@ -1250,49 +1247,71 @@
                 </div>
                 <!-- End of First Tab -->
                 <!-- Start of Second Tab -->
-                <div class="tab-pane fade" id="pills-tmcforms" role="tabpanel" aria-labelledby="tmcforms-tab">
+                <div class="tab-pane fade" id="pills-pfcu" role="tabpanel" aria-labelledby="pfcu-tab" data-role="admin">
                   <!-- Start of Second Tab CONTENT -->
-                 <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px;">
-   <!-- Header Image -->
-   <a href="#" onclick="return false;" style="margin: 0;">
-   <img src="assets/img/tmc-inventory-tracker.svg" 
-      alt="Header Image" 
-      style="height: 109px;">
-   </a>
-   <!-- Last Modified and Button -->
-   <div style="display: flex; flex-direction: column; align-items: flex-end; text-align: right;">
-      <!-- Last Modified -->
-      <p class="last-modified" style="margin: 0; margin-bottom: 5px;">
-         <!-- Element to display last modified date -->
-      </p>
-      <!-- Download Button -->
-      <button type="button" class="btn btn-primary">
-      <i class="fa fa-download"></i>
-      <a href="https://docs.google.com/spreadsheets/d/1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU/export?format=xlsx&gid=1026501966" 
-         style="color: white; text-decoration: none;">
-      Download
-      </a>
+                  <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
+      
+                       <!-- <div class="filter">
+                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                          <li class="dropdown-header text-start">
+                              <h6>Filter</h6>
+                          </li>
+      
+                          <li><a class="dropdown-item" href="#">Today</a></li>
+                          <li><a class="dropdown-item" href="#">This Month</a></li>
+                          <li><a class="dropdown-item" href="#">This Year</a></li>
+                        </ul>
+                      </div>-->
+      
+                      <div class="card-body">
+                        <h5 class="card-title">Recent Online Orders</h5>
+      
+      <button class="btn btn-sm btn-primary" data-role="admin" onclick="openPopup('PFCU')">
+        Import Recent PFCU Orders
       </button>
-   </div>
-</div>
-<!-- Table with stripped rows -->
-<table class="table table-striped" id="tracker-table-second">
-   <thead>
-      <tr>
-         <th><b>P</b>roduct Name</th>
-         <th>SKU</th>
-         <th>Location</th>
-         <th>Unit</th>
-         <th>Unit Qty</th>
-         <th>Min Qty</th>
-         <th>Refill Qty</th>
-         <th>QOS</th>
-         <th>Status</th>
-         <th>Notes</th>
-      </tr>
-   </thead>
-</table>
-<!-- End Table with stripped rows -->
+      <script>
+        function openPopup(sheetName) {
+          const popupWindow = window.open(
+           
+            `https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec?sheetName=${encodeURIComponent(sheetName)}`,
+            //"https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec",
+            "_blank",
+            "width=500,height=400"
+          );
+      
+          // Close the popup after 3 seconds
+          setTimeout(() => {
+            if (popupWindow && !popupWindow.closed) {
+              popupWindow.close();
+              console.log("✅ Popup closed after timeout.");
+            }
+          }, 3000); // Adjust timing as needed
+        }
+      </script>
+      
+      <p id="statusMessage"></p>
+      
+      
+                         <!-- Table with stripped rows -->
+                    <table class="table table-striped" id="feed-table-second">
+                      <thead>
+                          <tr>
+                            <th></th> <!-- for dt-control -->
+                             <th></th> <!-- for packslip button -->
+                            <th><b>J</b>ob #</th>
+                            <th>Order Date</th>
+                            <th>Customer</th>
+                            <th>Status</th>     
+                          </tr>
+                        </thead>
+                    </table>
+       <!-- END OF Table with stripped rows -->
+                      </div>
+      
+                    </div>
+                  </div>
                 <!-- End of Second Tab CONTENT -->
                 </div>
                 <!-- End of Second Tab -->
@@ -1670,6 +1689,11 @@ const recentSales = [
     spreadsheetId: "1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM",
     sheetName: "VWCU",
     targetElement: "#feed-table-first",
+  },
+  {
+  spreadsheetId: "1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM",
+    sheetName: "PFCU",
+    targetElement: "#feed-table-second",
   },
   
   // Add more configurations as needed
