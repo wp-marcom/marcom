@@ -585,7 +585,7 @@
                   <button class="nav-link active" id="pills-vwcu-tab" data-bs-toggle="pill" data-bs-target="#pills-vwcu" type="button" role="tab" aria-controls="pills-vwcu" aria-selected="true" onclick="changeClient(this.id)">Vantage West</button>
                 </li>
                 <li class="nav-item" role="presentation" data-role="admin">
-                  <button class="nav-link" id="pills-pfcu-tab" data-bs-toggle="pill" data-bs-target="#pills-pfcu" type="button" role="tab" aria-controls="pills-pfcu" aria-selected="false" onclick="changeClient(this.id)">Pima Federal β</button>
+                  <button class="nav-link" id="pills-pfcu-tab" data-bs-toggle="pill" data-bs-target="#pills-pfcu" type="button" role="tab" aria-controls="pills-pfcu" aria-selected="false" onclick="changeClient(this.id)">Pima Federal CU β</button>
                 </li>
                 <li class="nav-item" role="presentation" data-role="admin">
                   <button class="nav-link" id="pills-tmccommprint-tab" data-bs-toggle="pill" data-bs-target="#pills-tmccommprint" type="button" role="tab" aria-controls="pills-tmccommprint" aria-selected="false">TMC Comm Outreach PRINT</button>
@@ -2531,18 +2531,38 @@ if ($button.hasClass('create-pick-slip')) {
       type: 'pack'
     };
 
-    const query = new URLSearchParams({
-      job: payload.job,
-      customer: payload.customer,
-      shippingAddress: payload.shippingAddress,
-      children: JSON.stringify(payload.children),
-      status: payload.status,
-      type: payload.type
+    // Create a hidden form and submit it to open in new tab
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec';
+    form.target = '_blank';
+    
+    // Add each payload property as a hidden input
+    Object.keys(payload).forEach(key => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = key === 'children' ? JSON.stringify(payload[key]) : payload[key];
+        form.appendChild(input);
     });
+    
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
 
-    const url = `https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?${query.toString()}`;
-    window.open(url, '_blank');
+//Restore below here if POST DOESNT WORK
+   // const query = new URLSearchParams({
+      //job: payload.job,
+      //customer: payload.customer,
+     // shippingAddress: payload.shippingAddress,
+     // children: JSON.stringify(payload.children),
+    //  status: payload.status,
+    //  type: payload.type
+   // });
 
+   // const url = `https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?${query.toString()}`;
+   // window.open(url, '_blank');
+//Restore above here if POST DOEST WORK
   // === UNPACK ===
   } else if ($button.hasClass('unpack-slip')) {
     if (!confirm(`Delete the pack slip and reset status for job ${job}?`)) return;
