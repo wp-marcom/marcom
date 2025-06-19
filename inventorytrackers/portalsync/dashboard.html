@@ -2437,6 +2437,8 @@ $(targetElement + ' tbody').on('click', 'button', function () {
   const $button = $(this);
   const parentRow = table.row($button.closest('tr')).data();
   const job = parentRow.job;
+  //new attempt to pass customer param
+  const customer = parentRow.customer;
 
      // === CREATE PICK SLIP ===
 if ($button.hasClass('create-pick-slip')) {
@@ -2567,7 +2569,8 @@ if ($button.hasClass('create-pick-slip')) {
   } else if ($button.hasClass('unpack-slip')) {
     if (!confirm(`Delete the pack slip and reset status for job ${job}?`)) return;
 
-    fetch(`https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?job=${encodeURIComponent(job)}&unpack=true`)
+fetch(`https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?job=${encodeURIComponent(job)}&ordcustomer=${encodeURIComponent(customer)}&unpack=true`)
+    //fetch(`https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?job=${encodeURIComponent(job)}&unpack=true`)
       .then(res => res.json())
       .then(data => {
         if (data.success) {
