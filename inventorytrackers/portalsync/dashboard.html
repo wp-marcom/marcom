@@ -2233,7 +2233,7 @@
 const recentSales = [
   {
     spreadsheetId: "1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM",
-    sheetName: "VWCU",
+    sheetName: "WestPressInventory",
     targetElement: "#feed-table-first",
   },
   {
@@ -2248,48 +2248,6 @@ const recentSales = [
 // Base URL and API key for Google Sheets API
 const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
 const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
-
-function loadRecentSalesData({ spreadsheetId, sheetName, targetElement }) {
-  const client = "Westpress Inventory";
-
-  const range1 = `${sheetName}!A2:C`;
-  const range2 = `${sheetName}!G2:G`;
-
-const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
-const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
-
-
-  return Promise.all([
-    fetch(url1).then((res) => res.json()),
-    fetch(url2).then((res) => res.json()),
-  ])
-    .then(([response1, response2]) => {
-      const combinedData = response1.values.map((row, index) => {
-        const colGValue = response2.values[index]?.[0] || '';
-        return [...row, colGValue];
-      });
-
-      const uniqueData = Array.from(
-        new Map(
-          combinedData.map((row) => [row.slice(0, 3).join('|'), row])
-        ).values()
-      );
-
-      return recentSalesData(uniqueData, client);
-    })
-    .then((processedData) => {
-      const datatable = new window.simpleDatatables.DataTable(targetElement, {
-        data: {
-          data: processedData.map((row) => row.data),
-        },
-      });
-
-      console.log("DataTable initialized with processed data.");
-    })
-    .catch((error) => {
-      console.error("Error loading tracker data:", error);
-    });
-}
 
 
 
@@ -2625,6 +2583,48 @@ $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
       console.error("Error loading tracker data:", error);
     });
     }
+
+    function loadRecentSalesData({ spreadsheetId, sheetName, targetElement }) {
+  const client = "Westpress Inventory";
+
+  const range1 = `${sheetName}!A2:C`;
+  const range2 = `${sheetName}!G2:G`;
+
+const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
+const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
+
+
+  return Promise.all([
+    fetch(url1).then((res) => res.json()),
+    fetch(url2).then((res) => res.json()),
+  ])
+    .then(([response1, response2]) => {
+      const combinedData = response1.values.map((row, index) => {
+        const colGValue = response2.values[index]?.[0] || '';
+        return [...row, colGValue];
+      });
+
+      const uniqueData = Array.from(
+        new Map(
+          combinedData.map((row) => [row.slice(0, 3).join('|'), row])
+        ).values()
+      );
+
+      return recentSalesData(uniqueData, client);
+    })
+    .then((processedData) => {
+      const datatable = new window.simpleDatatables.DataTable(targetElement, {
+        data: {
+          data: processedData.map((row) => row.data),
+        },
+      });
+
+      console.log("DataTable initialized with processed data.");
+    })
+    .catch((error) => {
+      console.error("Error loading tracker data:", error);
+    });
+}
 
   function getLabelForProduct(productName, skuDesc) {
   if (!productName) return 'Pick'; // default if empty
