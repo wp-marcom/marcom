@@ -2443,6 +2443,7 @@ $(targetElement + ' tbody').on('click', 'button', function () {
      // === CREATE PICK SLIP ===
 if ($button.hasClass('create-pick-slip')) {
     const filteredChildren = parentRow.children.filter(child => {
+      const skuDescription = (child[6] || '').toUpperCase();
       const productName = (child[3] || '').toUpperCase();
 return !skuDescription.includes("EXTERNAL FULFILLMENT") && 
        !productName.includes("PFCU BUSINESS CARDS");
