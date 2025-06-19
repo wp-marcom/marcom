@@ -637,23 +637,23 @@
 
 <button class="btn btn-sm btn-primary" onclick="openPopup('VWCU')">Import Recent VWCU Orders</button>
 <script>
-  function openPopup(sheetName) {
-    const popupWindow = window.open(
+  //function openPopup(sheetName) {
+  //  const popupWindow = window.open(
      
-      `https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec?sheetName=${encodeURIComponent(sheetName)}`,
+   //   `https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec?sheetName=${encodeURIComponent(sheetName)}`,
       //"https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec",
-      "_blank",
-      "width=500,height=400"
-    );
+    //  "_blank",
+    //  "width=500,height=400"
+   // );
 
     // Close the popup after 3 seconds
-    setTimeout(() => {
-      if (popupWindow && !popupWindow.closed) {
-        popupWindow.close();
-        console.log("✅ Popup closed after timeout.");
-      }
-    }, 3000); // Adjust timing as needed
-  }
+   // setTimeout(() => {
+    //  if (popupWindow && !popupWindow.closed) {
+   //     popupWindow.close();
+     //   console.log("✅ Popup closed after timeout.");
+    //  }
+    //}, 3000); // Adjust timing as needed
+ // }
 </script>
 
 <p id="statusMessage"></p>
@@ -1269,25 +1269,7 @@
                    <h5 class="card-title">Recent Online Orders</h5>
  
  <button class="btn btn-sm btn-primary" onclick="openPopup('PFCU')">Import Recent PFCU Orders</button>
- <script>
-   function openPopup(sheetName) {
-     const popupWindow = window.open(
-      
-       `https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec?sheetName=${encodeURIComponent(sheetName)}`,
-       //"https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec",
-       "_blank",
-       "width=500,height=400"
-     );
  
-     // Close the popup after 3 seconds
-     setTimeout(() => {
-       if (popupWindow && !popupWindow.closed) {
-         popupWindow.close();
-         console.log("✅ Popup closed after timeout.");
-       }
-     }, 3000); // Adjust timing as needed
-   }
- </script>
  
  <p id="statusMessage"></p>
  
@@ -2765,6 +2747,26 @@ function capitalize(string) {
     sessionStorage.clear(); // Clear user session
     window.location.href = "login.html"; // Redirect to login page
   });
+</script>
+
+<script>
+  function openPopup(sheetName) {
+    const popupWindow = window.open(
+     
+      `https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec?sheetName=${encodeURIComponent(sheetName)}`,
+      //"https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec",
+      "_blank",
+      "width=500,height=400"
+    );
+
+    // Close the popup after 3 seconds
+    setTimeout(() => {
+      if (popupWindow && !popupWindow.closed) {
+        popupWindow.close();
+        console.log("✅ Popup closed after timeout.");
+      }
+    }, 3000); // Adjust timing as needed
+  }
 </script>
 
 <script>
