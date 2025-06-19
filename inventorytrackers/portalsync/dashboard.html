@@ -585,7 +585,7 @@
                   <button class="nav-link active" id="pills-vwcu-tab" data-bs-toggle="pill" data-bs-target="#pills-vwcu" type="button" role="tab" aria-controls="pills-vwcu" aria-selected="true" onclick="changeClient(this.id)">Vantage West</button>
                 </li>
                 <li class="nav-item" role="presentation" data-role="admin">
-                  <button class="nav-link" id="pills-pfcu-tab" data-bs-toggle="pill" data-bs-target="#pills-pfcu" type="button" role="tab" aria-controls="pills-pfcu" aria-selected="false" onclick="changeClient(this.id)">Pima Federal β</button>
+                  <button class="nav-link" id="pills-pfcu-tab" data-bs-toggle="pill" data-bs-target="#pills-pfcu" type="button" role="tab" aria-controls="pills-pfcu" aria-selected="false" onclick="changeClient(this.id)">Pima Federal CU β</button>
                 </li>
                 <li class="nav-item" role="presentation" data-role="admin">
                   <button class="nav-link" id="pills-tmccommprint-tab" data-bs-toggle="pill" data-bs-target="#pills-tmccommprint" type="button" role="tab" aria-controls="pills-tmccommprint" aria-selected="false">TMC Comm Outreach PRINT</button>
@@ -2500,8 +2500,8 @@ if ($button.hasClass('create-pick-slip')) {
   // === UNPICK ===
   } else if ($button.hasClass('unpick-slip')) {
     if (!confirm(`Delete the pick slip and reset status for job ${job}?`)) return;
-
-    fetch(`https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?job=${encodeURIComponent(job)}&unpick=true`)
+    fetch(`https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?job=${encodeURIComponent(job)}&ordcustomer=${encodeURIComponent(customer)}&unpick=true`)
+    //fetch(`https://script.google.com/macros/s/AKfycbxWj7SccVBcEIsI5JgHGDpDw5qBmrKMSXr0ciXBTqro04UrkQGxoldEnya7PWivkY2g/exec?job=${encodeURIComponent(job)}&unpick=true`)
       .then(res => res.json())
       .then(data => {
         if (data.success) {
