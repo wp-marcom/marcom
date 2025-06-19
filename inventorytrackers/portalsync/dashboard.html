@@ -2354,12 +2354,23 @@ const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?a
 }));
 
  // Filter out parent rows where ALL children have "EXTERNAL FULFILLMENT" in SKU Description
+//const visibleParentRows = parentRows.filter(parent => {
+//  return parent.children.some(child => {
+//    const skuDescription = (child[6] || '').toUpperCase();
+//    return !skuDescription.includes("EXTERNAL FULFILLMENT");
+//  });
+//});
+
+// Filter out parent rows where ALL children have "EXTERNAL FULFILLMENT" in SKU Description && Have ALL entries as PFCU Business Cards
 const visibleParentRows = parentRows.filter(parent => {
   return parent.children.some(child => {
     const skuDescription = (child[6] || '').toUpperCase();
-    return !skuDescription.includes("EXTERNAL FULFILLMENT");
+    const productName = (child[3] || '').toUpperCase();
+    
+    return !skuDescription.includes("EXTERNAL FULFILLMENT") && 
+           !productName.includes("PFCU Business Cards");
   });
-});     
+});
       
 
       // Initialize DataTable with only parent rows
