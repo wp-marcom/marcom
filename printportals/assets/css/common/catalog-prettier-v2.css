@@ -638,6 +638,7 @@ mcc-sorting-and-paging:last-child > .site-section-header {
     line-height: 1.2 !important;
     margin-bottom: 4px !important;
     font-weight: 600;
+    color:var(--primary-color);
 }
 
 /* SKU - reduce spacing */
