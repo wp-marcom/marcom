@@ -563,10 +563,9 @@ mcc-sorting-and-paging:last-child > .site-section-header {
 
 /* Styling for Checkout Grid Below */
 
-
-
-
-
+.site-section .list-group {
+  width: 100%;
+}
 
 /* Product details container */
 .site-section.site-section-checkout-items .card-body {
@@ -614,7 +613,6 @@ mcc-sorting-and-paging:last-child > .site-section-header {
 .checkout-card .card-img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;
     border-radius: 4px;
 }
 
