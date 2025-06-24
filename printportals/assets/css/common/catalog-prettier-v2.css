@@ -286,6 +286,55 @@ a.text-muted {
   height: 8.28571rem;
 }
 
+/* Shopping Cart View Mods below */
+
+.site-section .card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Vertically Center Product Image in Shopping Cart */
+.site-section .card-image-holder {
+  flex: 0 1 200px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Allow Product Detail to Spread out in Shopping Cart */
+.site-section .card-body-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+/* Product Detail Sizing Adjustments in Shopping Cart */
+.site-section .card-title,
+.site-section .product-price {
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+}
+/* Hide Some Product Details in Shopping Cart */
+site-section .card-body-sku,
+.site-section .card-body-sku-description {
+  display: none;
+}
+
+.site-section .form-select {
+  flex: 1;
+  max-width: 150px;
+}
+
+.site-section .custom-link {
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.site-section .product-price-note {
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
 /* ==========================================================================
    CATEGORY CARDS
    ========================================================================== */
