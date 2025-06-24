@@ -273,6 +273,10 @@ a.text-muted {
   display: none;
 }
 
+.product-card:after {
+  background:linear-gradient(to bottom,rgba(0,0,0,0) 0%,transparent 100%)
+}
+
 /* ==========================================================================
    CATEGORY CARDS
    ========================================================================== */
