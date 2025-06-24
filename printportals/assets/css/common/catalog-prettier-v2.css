@@ -57,6 +57,7 @@ body::after {
 }
 
 .card-title {
+  color: #fff;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
@@ -355,6 +356,10 @@ mcc-category-card .category-card:hover:after {
   height: 0;
   width: 0;
   background: url(../images/categories/blank_img.svg) no-repeat center / contain;
+}
+
+mcc-category-card .card-body {
+  z-index: 1;
 }
 
 /* ==========================================================================
