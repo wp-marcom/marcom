@@ -277,6 +277,10 @@ a.text-muted {
   background:linear-gradient(to bottom,rgba(0,0,0,0) 0%,transparent 100%)
 }
 
+.product-card.list {
+  height: 8.28571rem;
+}
+
 /* ==========================================================================
    CATEGORY CARDS
    ========================================================================== */
