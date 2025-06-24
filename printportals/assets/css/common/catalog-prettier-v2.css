@@ -548,6 +548,84 @@ mcc-sorting-and-paging:last-child > .site-section-header {
   display: none;
 }
 
+/* Styling for Checkout Grid Below */
+.site-section.site-section-checkout-items .checkout-card.custom-card {
+  display: grid;
+  grid-template-columns: 100px 3fr 1fr; /* Image | Product Details | Shipping */
+  gap: 50px;
+  align-items: start;
+  padding: 10px;
+  max-width: 1175px; /* Set the max width */
+  width: 100%;
+  margin: 0 auto; /* Center the card */
+  box-sizing: border-box;
+}
+
+/* Image container */
+.site-section.site-section-checkout-items .card-image-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* Product details container */
+.site-section.site-section-checkout-items .card-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Split into two columns */
+  gap: 10px;
+  align-items: start;
+  width: 100%; /* Ensure it takes the full width */
+}
+
+/* SKU, description, and quantity should be grouped */
+.site-section.site-section-checkout-items .card-body-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 10px;
+  width: 100%;
+}
+
+/* Make sure title and pricing take full width */
+.site-section.site-section-checkout-items .card-title {
+  grid-column: span 2; /* Let title take full width */
+  color:var(--primary-color);
+}
+
+/* Delivery & Shipping */
+.site-section.site-section-checkout-items .card-body-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+}
+
+/* Ensure Delivery Method and Shipping Instructions align properly */
+.site-section.site-section-checkout-items .card-body-delivery,
+.site-section.site-section-checkout-items .special-instructions-box {
+  margin: 5px 0;
+  width: 100%;
+}
+
+/* Make sure the table inside card-body-details does not break the layout */
+.site-section.site-section-checkout-items .card-body-details table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.site-section.site-section-checkout-items .card-body-details td {
+  vertical-align: top;
+  padding: 5px;
+  width: 50%; /* Ensure proper spacing */
+}
+
+.site-section.site-section-checkout-items .list-group {
+  width: 100%; /* Ensure it fills the parent width */
+}
+
+
 /* ==========================================================================
    PRICING GRID
    ========================================================================== */
