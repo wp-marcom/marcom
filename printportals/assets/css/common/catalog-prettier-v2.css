@@ -397,6 +397,13 @@ mcc-category-card .card-body {
   border-top: 1px solid var(--border-color);
 }
 
+.product-card .card-infobox {
+  height: 100%;
+  position: relative;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
 /* ==========================================================================
    CATALOG & SIDEBAR
    ========================================================================== */
