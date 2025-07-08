@@ -199,6 +199,33 @@ a.text-muted {
   background-color: var(--secondary-color) !important;
 }
 
+/* Style for the username in the navbar */
+div[mccroutetransformer] {
+  text-align: right;
+  z-index: 10; /* Ensure it appears above breadcrumbs */
+}
+
+#user-name-header {
+  font-size: 13px;
+    color:#fff;
+  position: fixed; /* Take it out of the document flow */
+ top: 95px; /*lign vertically with the avatar */
+  transform: translateY(-50%); /* Adjust for perfect centering */
+  right: 0px; /*lign to the right edge */
+  white-space: nowrap; /* Prevent text from wrapping */
+  width:100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color:var(--secondary-color);
+z-index:-99;
+ padding-top: 6px;
+  padding-right: 385px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px #0000001a;
+}
+
 /* ==========================================================================
    DROPDOWNS
    ========================================================================== */
