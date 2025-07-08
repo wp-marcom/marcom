@@ -61,6 +61,13 @@ body::after {
   opacity: 0.05;
 }
 
+.breadcrumb{font-size:13px}
+
+/* Add some spacing to the breadcrumbs to account for the username above */
+nav[aria-label="breadcrumbs"] {
+  margin-top: 30px; /* Adjust this value as needed for spacing */
+}
+
 /* ==========================================================================
    TYPOGRAPHY
    ========================================================================== */
