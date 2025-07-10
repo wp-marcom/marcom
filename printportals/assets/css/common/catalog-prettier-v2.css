@@ -164,6 +164,7 @@ a.text-muted {
    ========================================================================== */
 .site-header {
   background-color: var(--primary-color);
+  border-bottom: 38px solid var(--secondary-color);
 }
 
 .navbar-hamburger {
@@ -231,6 +232,15 @@ z-index:-99;
   padding-left: 5px;
   border-radius: 2px;
   box-shadow: 0 2px 4px #0000001a;
+}
+
+.fixed-top {
+  top: 81px!important;
+}
+
+.navbar-username {
+  padding-top: .1rem;
+  padding-bottom: .1rem;
 }
 
 /* ==========================================================================
