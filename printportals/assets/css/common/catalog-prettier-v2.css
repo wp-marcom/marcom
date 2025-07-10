@@ -164,7 +164,7 @@ a.text-muted {
    ========================================================================== */
 .site-header {
   background-color: var(--primary-color);
-  border-bottom: 38px solid var(--secondary-color);
+  border-bottom: 30px solid var(--secondary-color);
 }
 
 .navbar-hamburger {
@@ -235,7 +235,7 @@ z-index:-99;
 }
 
 .fixed-top {
-  top: 81px!important;
+  top: 77px!important;
 }
 
 .navbar-username {
