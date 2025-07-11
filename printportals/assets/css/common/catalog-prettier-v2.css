@@ -779,6 +779,11 @@ div.mt-4:nth-child(5) {
   display: none !important;
 }
 
+/* Hide Delivery Method section completely on Confimation */
+article.panel-detail-wrap:nth-child(3){
+  display: none !important;
+}
+
 /* Remove extra spacing from remaining elements */
 .checkout-card .card-body-payment,
 .checkout-card .card-body-clientpo {
