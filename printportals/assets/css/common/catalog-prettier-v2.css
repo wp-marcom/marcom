@@ -68,6 +68,14 @@ nav[aria-label="breadcrumbs"] {
   margin-top: 30px; /* Adjust this value as needed for spacing */
 }
 
+.page-heading-with-subheader {
+  margin: 1.5em;
+}
+
+.page-heading {
+  margin: 1.5em;
+}
+
 /* ==========================================================================
    TYPOGRAPHY
    ========================================================================== */
@@ -1274,6 +1282,14 @@ mcc-sorting-and-paging:last-child > .site-section-header {
      Description: Large devices, desktops, laptops
      ----------------------------------------------------------------------------- */
   @media (min-width: 992px) {
+
+    .col-lg-9 {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+
     /* Shows add to cart button when products viewed as a list */
     .product-card.list .card-body-footer > :not(.card-controls) {
       display: block;
