@@ -25,7 +25,8 @@ body:has(div.Vantage.West) .navbar-brand {
     height: 40px;
     margin-left: 80px;
   }
-    #user-name-header{display:none}
+  .navbar-username{display:none}
+  .site-header{ border-top: 0px;}
 }
 
 /* Small devices (landscape phones, ≥576px and <768px) */
@@ -35,7 +36,8 @@ body:has(div.Vantage.West) .navbar-brand {
     height: 45px;
    margin-left:150px ;
   }
-    #user-name-header{display:none}
+  .navbar-username{display:none}
+  .site-header{ border-top: 0px;}
 }
 
 /* Medium devices (tablets, ≥768px and <992px) */
@@ -45,7 +47,8 @@ body:has(div.Vantage.West) .navbar-brand {
     height: 40px;
     margin-left:150px ;
   }
-    #user-name-header{display:none}
+  .navbar-username{display:none}
+  .site-header{ border-top: 0px;}
 }
 
 /* Apply styles only when body has a div with class "Vantage West" */
