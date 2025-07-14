@@ -618,7 +618,7 @@ mcc-sorting-and-paging:last-child > .site-section-header {
 /* Styling for Checkout Grid Below */
 
 .site-section .list-group {
-  width: fit-content;
+  width: 100%;
 }
 
 /* Product details container */
