@@ -821,6 +821,10 @@ article.panel-detail-wrap:nth-child(3){
   font-size: 12px;
   width: max-content;
 }
+/* Specific adjustments for the list group pricing grid, usually set at 100% for other places */
+:has(.dt) .list-group {
+  width: max-content;
+}
 
 .dl {
   display: table-row;
