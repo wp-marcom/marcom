@@ -272,10 +272,14 @@ footer.page-footer > a {
   bottom: -385px !important;  /* adjust this value as needed */
   left: -370px;
   width: 100vw;
-  color: #333;
+  color: #fff;
   padding: 20px;
   font-size: 0.875rem;
   z-index: 9999;
+}
+
+a .custom-footer{
+  color:#fff;
 }
 
 
@@ -318,11 +322,11 @@ footer.page-footer > a {
 
 .divider {
   margin: 0 6px;
-  color: #aaa;
+  color: #fff;
 }
 
 .custom-footer a {
-  color: #333;
+  color: #fff;
   text-decoration: none;
 }
 
