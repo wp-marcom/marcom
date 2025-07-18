@@ -37,7 +37,7 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: -3;
-  background: url('../../img/common/tucson_2x.jpg') no-repeat center center;
+  background: url('../../img/common/mountainclouds-1920x1080.webp') no-repeat center center;
    background-size: cover;
 background-position: center center;
   opacity: 1.7; /* Adjust background image visibility */
