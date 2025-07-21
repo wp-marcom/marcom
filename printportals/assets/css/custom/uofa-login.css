@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
 :root {
-  --primary-color: #541F46;  /* Change this per client */
-  --primary-color-rgb: 84, 31, 70;  /* RGB version */
-  --secondary-color: #B32025;
-  --secondary-color-rgb: 179, 32, 37;  /* RGB version */
+  --primary-color: #0c234b;  /* Change this per client */
+  --primary-color-rgb: 12, 35, 75;  /* RGB version */
+  --secondary-color: #ab0520;
+  --secondary-color-rgb: 171, 5, 32;  /* RGB version */
 }
 
 
