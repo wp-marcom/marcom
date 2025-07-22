@@ -962,41 +962,49 @@ article.panel-detail-wrap:nth-child(3){
    ========================================================================== */
 /* Business Cards */
 .mcc-folder-2725836 .category-card {
-  background: var(--primary-color) url(../../img/custom/uofa-businesscards.png) no-repeat bottom left / cover;
-}
-.mcc-folder-2725836 .category-card .card-img-holder:before {
-  background-image: url(../../img/common/folder.svg);
-}
-
-/* Letterheads */
-.mcc-folder-2725846 .category-card {
-  background: var(--primary-color) url(../../img/custom/uofa-letterheads.png) no-repeat center / cover;
-}
-.mcc-folder-2725846 .category-card .card-img-holder:before {
-  background-image: url(../../img/common/folder.svg);
-}
-.mcc-folder-2725846 > a:nth-child(1):after {
-  background: rgba(218, 0, 22, 0.6);
-}
-.mcc-folder-2725846 .category-card:focus:after,
-.mcc-folder-2725846 .category-card:hover:after {
-  background: rgba(0, 0, 0, 0.72);
-}
-
-/* Envelopes */
-.mcc-folder-2725847 .category-card {
-  background: var(--primary-color) url(../../img/custom/uofa-envelopes.png) no-repeat top center / cover;
-}
-.mcc-folder-2725847 .category-card .card-img-holder:before {
-  background-image: url(../../img/common/folder.svg);
-}
-.mcc-folder-2725847 > a:nth-child(1):after {
-  background: rgba(153, 27, 65, 0.6);
-}
-.mcc-folder-2725847 .category-card:focus:after,
-.mcc-folder-2725847 .category-card:hover:after {
-  background: rgba(0, 130, 153, 0.72);
-}
+    background: var(--primary-color) url(../../img/custom/uofa-businesscards.png) no-repeat bottom left / cover;
+  }
+  .mcc-folder-2725836 .category-card .card-img-holder:before {
+    background-image: url(../../img/common/folder.svg);
+  }
+  
+  .mcc-folder-2725836 > a:nth-child(1):after {
+    background: rgba(var(--secondary-color-rgb), 0.6);
+  }
+  .mcc-folder-2725836 .category-card:focus:after,
+  .mcc-folder-2725836 .category-card:hover:after {
+    background: rgba(var(--primary-color-rgb), 0.72);
+  }
+  
+  /* Letterheads */
+  .mcc-folder-2725846 .category-card {
+    background: var(--primary-color) url(../../img/custom/uofa-letterheads.png) no-repeat center / cover;
+  }
+  .mcc-folder-2725846 .category-card .card-img-holder:before {
+    background-image: url(../../img/common/folder.svg);
+  }
+  .mcc-folder-2725846 > a:nth-child(1):after {
+    background: rgba(var(--primary-color-rgb), 0.6);
+  }
+  .mcc-folder-2725846 .category-card:focus:after,
+  .mcc-folder-2725846 .category-card:hover:after {
+     background: rgba(var(--secondary-color-rgb), 0.72);
+  }
+  
+  /* Envelopes */
+  .mcc-folder-2725847 .category-card {
+    background: var(--primary-color) url(../../img/custom/uofa-envelopes.png) no-repeat top center / cover;
+  }
+  .mcc-folder-2725847 .category-card .card-img-holder:before {
+    background-image: url(../../img/common/folder.svg);
+  }
+  .mcc-folder-2725847 > a:nth-child(1):after {
+    background: rgba(var(--secondary-color-rgb), 0.6);
+  }
+  .mcc-folder-2725847 .category-card:focus:after,
+  .mcc-folder-2725847 .category-card:hover:after {
+    background: rgba(var(--primary-color-rgb), 0.72);
+  }
 
 /* Flowing Wells */
 .mcc-folder-3378251 .category-card {
