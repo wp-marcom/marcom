@@ -960,41 +960,41 @@ article.panel-detail-wrap:nth-child(3){
 /* ==========================================================================
    CATEGORY BACKGROUNDS (Client-specific)
    ========================================================================== */
-/* Acquire */
-.mcc-folder-3156991 .category-card {
-  background: var(--primary-color) url(../../img/common/acquire-main.jpg) no-repeat bottom left / cover;
+/* Business Cards */
+.mcc-folder-2725836 .category-card {
+  background: var(--primary-color) url(../../img/custom/uofa-businesscards.png) no-repeat bottom left / cover;
 }
-.mcc-folder-3156991 .category-card .card-img-holder:before {
+.mcc-folder-2725836 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folder.svg);
 }
 
-/* Cochise College */
-.mcc-folder-2956766 .category-card {
-  background: var(--primary-color) url(../../img/common/cochisecollege-main.jpg) no-repeat center / cover;
+/* Letterheads */
+.mcc-folder-2725846 .category-card {
+  background: var(--primary-color) url(../../img/custom/uofa-letterheads.png) no-repeat center / cover;
 }
-.mcc-folder-2956766 .category-card .card-img-holder:before {
-  background-image: url(../../img/common/cochisecollege-folder.svg);
+.mcc-folder-2725846 .category-card .card-img-holder:before {
+  background-image: url(../../img/common/folder.svg);
 }
-.mcc-folder-2956766 > a:nth-child(1):after {
+.mcc-folder-2725846 > a:nth-child(1):after {
   background: rgba(218, 0, 22, 0.6);
 }
-.mcc-folder-2956766 .category-card:focus:after,
-.mcc-folder-2956766 .category-card:hover:after {
+.mcc-folder-2725846 .category-card:focus:after,
+.mcc-folder-2725846 .category-card:hover:after {
   background: rgba(0, 0, 0, 0.72);
 }
 
-/* Cochise County */
-.mcc-folder-3158471 .category-card {
-  background: var(--primary-color) url(../../img/common/cochisecounty-main.png) no-repeat top center / cover;
+/* Envelopes */
+.mcc-folder-2725847 .category-card {
+  background: var(--primary-color) url(../../img/custom/uofa-envelopes.png) no-repeat top center / cover;
 }
-.mcc-folder-3158471 .category-card .card-img-holder:before {
+.mcc-folder-2725847 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folder.svg);
 }
-.mcc-folder-3158471 > a:nth-child(1):after {
+.mcc-folder-2725847 > a:nth-child(1):after {
   background: rgba(153, 27, 65, 0.6);
 }
-.mcc-folder-3158471 .category-card:focus:after,
-.mcc-folder-3158471 .category-card:hover:after {
+.mcc-folder-2725847 .category-card:focus:after,
+.mcc-folder-2725847 .category-card:hover:after {
   background: rgba(0, 130, 153, 0.72);
 }
 
