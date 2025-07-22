@@ -1006,66 +1006,80 @@ article.panel-detail-wrap:nth-child(3){
     background: rgba(var(--primary-color-rgb), 0.72);
   }
 
-/* Flowing Wells */
-.mcc-folder-3378251 .category-card {
-  background: var(--primary-color) url(../../img/common/flowingwells-main.png) no-repeat bottom right / cover;
-}
-.mcc-folder-3378251 .category-card .card-img-holder:before {
-  background-image: url(../../img/common/folder.svg);
-}
+/* Notecards */
+.mcc-folder-1749439 .category-card {
+    background: var(--primary-color) url(../../img/custom/uofa-notecards.pngg) no-repeat center / cover;
+  }
+  .mcc-folder-1749439 .category-card .card-img-holder:before {
+    background-image: url(../../img/common/folder.svg);
+  }
+  .mcc-folder-1749439 > a:nth-child(1):after {
+    background: rgba(var(--primary-color-rgb), 0.6);
+  }
+  .mcc-folder-1749439 .category-card:focus:after,
+  .mcc-folder-1749439 .category-card:hover:after {
+     background: rgba(var(--secondary-color-rgb), 0.72);
+  }
 
-/* Mariposa Community */
-.mcc-folder-3341472 .category-card {
-  background: var(--primary-color) url(../../img/common/mchc-main.png) no-repeat center right / cover;
-}
-.mcc-folder-3341472 .category-card .card-img-holder:before {
-  background-image: url(../../img/common/folder.svg);
-}
+/* Pocket Folders */
+.mcc-folder-2904689 .category-card {
+    background: var(--primary-color) url(../../img/custom/uofa-pocketfolders.png) no-repeat top center / cover;
+  }
+  .mcc-folder-2904689 .category-card .card-img-holder:before {
+    background-image: url(../../img/common/folder.svg);
+  }
+  .mcc-folder-2904689 > a:nth-child(1):after {
+    background: rgba(var(--secondary-color-rgb), 0.6);
+  }
+  .mcc-folder-2904689 .category-card:focus:after,
+  .mcc-folder-2904689 .category-card:hover:after {
+    background: rgba(var(--primary-color-rgb), 0.72);
+  }
 
-/* Pima Federal */
-.mcc-folder-1627879 .category-card {
-  background: var(--primary-color) url(../../img/common/pimafederal-main.jpg) no-repeat top center / cover;
-}
-.mcc-folder-1627879 .category-card .card-img-holder:before {
-  background-image: url(../../img/common/pima-folder.svg);
-}
-.mcc-folder-1627879 > a:nth-child(1):after {
-  background: rgba(93, 151, 65, 0.75);
-}
-.mcc-folder-1627879 .category-card:focus:after,
-.mcc-folder-1627879 .category-card:hover:after {
-  background: rgba(123, 193, 67, 0.72);
-}
+  /* Notepads */
+  .mcc-folder-2904715 .category-card {
+    background: var(--primary-color) url(../../img/custom/uofa-notepads.png) no-repeat top center / cover;
+  }
+  .mcc-folder-2904715 .category-card .card-img-holder:before {
+    background-image: url(../../img/common/folder.svg);
+  }
+  .mcc-folder-2904715 > a:nth-child(1):after {
+    background: rgba(var(--primary-color-rgb), 0.6);
+  }
+  .mcc-folder-2904715 .category-card:focus:after,
+  .mcc-folder-2904715 .category-card:hover:after {
+    background: rgba(var(--secondary-color-rgb), 0.72);
+  }
 
-/* Sierra Tucson */
-.mcc-folder-1629938 .category-card {
-  background: var(--primary-color) url(../../img/common/sierratucson-main.png) no-repeat center right / cover;
-}
-.mcc-folder-1629938 .category-card .card-img-holder:before {
-  background-image: url(../../img/common/sierratucson-folder.svg);
-}
-.mcc-folder-1629938 > a:nth-child(1):after {
-  background: rgba(96, 80, 77, 0.75);
-}
-.mcc-folder-1629938 .category-card:focus:after,
-.mcc-folder-1629938 .category-card:hover:after {
-  background: rgba(178, 92, 26, 0.72);
-}
+/* Labels and Nametags */
+.mcc-folder-684642 .category-card {
+    background: var(--primary-color) url(../../img/custom/uofa-labelsnametags.png) no-repeat top center / cover;
+  }
+  .mcc-folder-684642 .category-card .card-img-holder:before {
+    background-image: url(../../img/common/folder.svg);
+  }
+  .mcc-folder-684642 > a:nth-child(1):after {
+    background: rgba(var(--secondary-color-rgb), 0.6);
+  }
+  .mcc-folder-684642 .category-card:focus:after,
+  .mcc-folder-684642 .category-card:hover:after {
+    background: rgba(var(--primary-color-rgb), 0.72);
+  }
 
-/* Vantage West */
-.mcc-folder-2680297 .category-card {
-  background: var(--primary-color) url(../../img/common/vantagewest-main.jpg) no-repeat center right / cover;
-}
-.mcc-folder-2680297 .category-card .card-img-holder:before {
-  background-image: url(../../img/common/vantage-folder.svg);
-}
-.mcc-folder-2680297 > a:nth-child(1):after {
-  background: rgba(2, 46, 74, 0.75);
-}
-.mcc-folder-2680297 .category-card:focus:after,
-.mcc-folder-2680297 .category-card:hover:after {
-  background: rgba(255, 203, 5, 0.72);
-}
+/* Athletics */
+.mcc-folder-684644 .category-card {
+    background: var(--primary-color) url(../../img/custom/uofa-athletics.png) no-repeat top center / cover;
+  }
+  .mcc-folder-684644 .category-card .card-img-holder:before {
+    background-image: url(../../img/common/folder.svg);
+  }
+  .mcc-folder-684644 > a:nth-child(1):after {
+    background: rgba(var(--primary-color-rgb), 0.6);
+  }
+  .mcc-folder-684644 .category-card:focus:after,
+  .mcc-folder-684644 .category-card:hover:after {
+    background: rgba(var(--secondary-color-rgb), 0.72);
+  }
 
 /* =============================================================================
    MEDIA QUERIES EXTRACTED FROM STYLESHEET
