@@ -554,6 +554,11 @@ mcc-category-search .site-sidebar {
   display: none;
 }
 
+/* Hide elements in card view in catalogs that don't have inventory 'sold in packs' of stuff hidden above. This hides the whole text block*/
+.row.product-list:not(.list-view) .card-text{
+  display: none;
+}
+
 /* Button styling in different views */
 .row.product-list:not(.list-view) .card-text .button-orange {
   font-size: 0.7rem;
