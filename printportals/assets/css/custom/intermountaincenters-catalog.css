@@ -76,6 +76,6 @@ body:has(div.Intermountain.Centers) .product-price-note {
 }
 
 /* intermountain centers main */
-.mcc-folder-1627879 .category-card {background: var(--primary-color) url(../../img/common/intermountaincenters-main.jpg) no-repeat center right / cover;}
-.mcc-folder-1627879 .category-card:focus:after, .mcc-folder-1627879 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
+.mcc-folder-3612369 .category-card {background: var(--primary-color) url(../../img/common/intermountaincenters-main.jpg) no-repeat center right / cover;}
+.mcc-folder-3612369 .category-card:focus:after, .mcc-folder-3612369 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
