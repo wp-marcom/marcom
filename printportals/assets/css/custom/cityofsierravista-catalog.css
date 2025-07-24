@@ -1,0 +1,82 @@
+
+body:has(div.City.of.Sierra.Vista) {
+--primary-color: #007db8;  /* Change this per client */
+  --primary-color-rgb: 0, 125, 184;  /* RGB version */
+  --secondary-color: #50b748;
+  --secondary-color-rgb: 80, 183, 72;  /* RGB version */
+}
+
+
+body:has(div.City.of.Sierra.Vista) .navbar-brand {
+  display: block;
+  width: 440px;
+  height: 60px;
+  background-image: url('../../img/custom/cityofsierravista-header-white.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 25px;
+}
+
+/* Adjust logo size in NavBar */
+/* Extra small devices (phones, <576px) */
+@media (max-width: 575.98px) {
+  body:has(div.City.of.Sierra.Vista) .navbar-brand {
+    width: 175px;
+    height: 40px;
+    margin-left: 80px;
+  }
+    #user-name-header{display:none}
+}
+
+/* Small devices (landscape phones, ≥576px and <768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  body:has(div.City.of.Sierra.Vista) .navbar-brand {
+    width: 220px;
+    height: 45px;
+   margin-left:150px ;
+  }
+    #user-name-header{display:none}
+}
+
+/* Medium devices (tablets, ≥768px and <992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  body:has(div.City.of.Sierra.Vista) .navbar-brand {
+    width: 300px;
+    height: 40px;
+    margin-left:150px ;
+  }
+    #user-name-header{display:none}
+}
+
+/* Apply styles only when body has a div with class "City of Sierra Vista" */
+body:has(div.City.of.Sierra.Vista) [class*="mcc-folder-"] .category-card .card-img-holder:before {
+    background-image: url(../../img/common/cityofsierravista-folder.svg);
+}
+
+body:has(div.City.of.Sierra.Vista) [class*="mcc-folder-"] > a:nth-child(1):after {
+    background: rgba(var(--primary-color-rgb), 0.75);
+}
+
+body:has(div.City.of.Sierra.Vista) [class*="mcc-folder-"] .category-card:focus:after, 
+body:has(div.City.of.Sierra.Vista) [class*="mcc-folder-"] .category-card:hover:after {
+    background: rgba(var(--secondary-color-rgb), 1.0);
+}
+
+body:has(div.City.of.Sierra.Vista) .product-price-note{display: none;}
+
+/* HIDE THE SHIPPING INSTRUCTIONS BOX DURING CHECKOUT*/
+body:has(div.City.of.Sierra.Vista) div.mt-4:nth-child(6){
+  display:none;
+}
+
+/* HIDE THIS TEXT DURING CHECKOUT "(Does not include shipping and sales tax)"*/
+
+body:has(div.City.of.Sierra.Vista) .product-price-note {
+  display: none !important;
+}
+
+/* CityofSierraVista main */
+.mcc-folder-3612130 .category-card {background: var(--primary-color) url(../../img/common/cityofsierravista-main.jpg) no-repeat center right / cover;}
+.mcc-folder-3612130 .category-card:focus:after, .mcc-folder-3612130 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
+
