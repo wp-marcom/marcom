@@ -1077,6 +1077,21 @@ article.panel-detail-wrap:nth-child(3){
   background: rgba(81, 49, 45, 0.72);
 }
 
+/* City of Sierra Vista */
+.mcc-folder-3612130 .category-card {
+  background: var(--primary-color) url(../../img/common/cityofsierravista-main.jpg) no-repeat top center / cover;
+}
+.mcc-folder-3612130 .category-card .card-img-holder:before {
+  background-image: url(../../img/common/cityofsierravista-folder.svg);
+}
+.mcc-folder-3612130 > a:nth-child(1):after {
+  background: rgba(0, 125, 184, 0.75);
+}
+.mcc-folder-3612130 .category-card:focus:after,
+.mcc-folder-3612130 .category-card:hover:after {
+  background: rgba(80, 183, 72, 0.72);
+}
+
 /* =============================================================================
    MEDIA QUERIES EXTRACTED FROM STYLESHEET
    Organized by breakpoint with device descriptions
