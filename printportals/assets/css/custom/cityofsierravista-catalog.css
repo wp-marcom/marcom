@@ -70,6 +70,11 @@ body:has(div.City.of.Sierra.Vista) div.mt-4:nth-child(6){
   display:none;
 }
 
+/* HIDE BILLING ADDRESS PANEL DURING CONFIRMATION STEP*/
+body:has(div.City.of.Sierra.Vista) article.panel-detail-wrap:nth-child(5){
+  display: none !important;
+}
+
 /* HIDE THIS TEXT DURING CHECKOUT "(Does not include shipping and sales tax)"*/
 
 body:has(div.City.of.Sierra.Vista) .product-price-note {
