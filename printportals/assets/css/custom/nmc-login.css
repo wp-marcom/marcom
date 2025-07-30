@@ -53,11 +53,11 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .panel-title {
 .floating-logo {
     content: "";
     position: absolute;
-    top: 21px; /* Moves logo above the container */
+    top: 13px; /* Moves logo above the container */
     left: 50%;
     transform: translateX(-50%);
-    width: 250px;  /* Adjust logo size */
-    height: 60px;
+    width: 323px;  /* Adjust logo size */
+    height: 71px;
     background: url("../../img/custom/nmc_login_logo.svg") no-repeat center / contain;
     z-index: 10;
 }
