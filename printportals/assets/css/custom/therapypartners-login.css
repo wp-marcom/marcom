@@ -37,7 +37,7 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: -3;
-  background: url('../../img/custom/nmc-login-background.png') no-repeat center center;
+  background: url('../../img/custom/therapypartners-login-background.png') no-repeat center center;
    background-size: cover;
 background-position: center center;
   opacity: 1.6; /* Adjust background image visibility */
@@ -58,7 +58,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .panel-title {
     transform: translateX(-50%);
     width: 323px;  /* Adjust logo size */
     height: 71px;
-    background: url("../../img/custom/nmc_login_logo.svg") no-repeat center / contain;
+    background: url("../../img/custom/therapypartners_login_logo.svg") no-repeat center / contain;
     z-index: 10;
 }
 
