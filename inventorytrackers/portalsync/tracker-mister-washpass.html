@@ -1093,11 +1093,24 @@ function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
       // Process the row data
       return adminData(data.values, client)
         .then((processedData) => {
+
+            const columnDefs = [
+      { data: 0, defaultContent: 'N/A' }, // Order
+      { data: 1, defaultContent: 'N/A' }, // Pack Sequence
+      { data: 2, defaultContent: 'N/A' }, // Address
+      { data: 3, defaultContent: 'N/A' }, // Total Packs
+      { data: 4, defaultContent: 'N/A' }, // FedEx Tracking-Date Shipped
+      { data: 5, defaultContent: 'N/A' }, // Date Ordered
+      { data: 6, defaultContent: 'N/A' }  // Notes
+    ];        
+
+
           // Initialize the DataTable
           const datatable = new window.simpleDatatables.DataTable(targetElement, {
             data: {
               data: processedData.map((row) => row.data), // Use the processed rows
             },
+            columns: columnDefs // Add column definitions with default content
           });
 
           // Function to apply row classes dynamically
