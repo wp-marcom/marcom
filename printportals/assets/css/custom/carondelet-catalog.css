@@ -1,0 +1,87 @@
+
+body:has(div.Carondelet) {
+--primary-color: #256092;  /* Change this per client */
+  --primary-color-rgb: 37, 96, 146;  /* RGB version */
+  --secondary-color: #f68c2c;
+  --secondary-color-rgb: 246, 140, 44;  /* RGB version */
+}
+/*Main color is #256092 (CarondeletBlue), Secondary Color is #f68c2c(Orange)*/
+
+body:has(div.Carondelet) .navbar-brand {
+  display: block;
+  width: 440px;
+  height: 60px;
+  background-image: url('../../img/custom/carondelet-header-white.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 25px;
+}
+
+/* Adjust logo size in NavBar */
+/* Extra small devices (phones, <576px) */
+@media (max-width: 575.98px) {
+  body:has(div.Carondelet) .navbar-brand {
+    width: 175px;
+    height: 40px;
+    margin-left: 80px;
+  }
+    #user-name-header{display:none}
+}
+
+/* Small devices (landscape phones, ≥576px and <768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  body:has(div.Carondelet) .navbar-brand {
+    width: 220px;
+    height: 45px;
+   margin-left:150px ;
+  }
+    #user-name-header{display:none}
+}
+
+/* Medium devices (tablets, ≥768px and <992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  body:has(div.Carondelet) .navbar-brand {
+    width: 300px;
+    height: 40px;
+    margin-left:150px ;
+  }
+    #user-name-header{display:none}
+}
+
+/* Apply styles only when body has a div with class "Carondelet" */
+body:has(div.Carondelet) [class*="mcc-folder-"] .category-card .card-img-holder:before {
+    background-image: url(../../img/common/carondelet-folder.svg);
+}
+
+body:has(div.Carondelet) [class*="mcc-folder-"] > a:nth-child(1):after {
+    background: rgba(var(--primary-color-rgb), 0.75);
+}
+
+body:has(div.Carondelet) [class*="mcc-folder-"] .category-card:focus:after, 
+body:has(div.Carondelet) [class*="mcc-folder-"] .category-card:hover:after {
+    background: rgba(var(--secondary-color-rgb), 1.0);
+}
+
+body:has(div.Carondelet) .product-price-note{display: none;}
+
+/* HIDE THE SHIPPING INSTRUCTIONS BOX DURING CHECKOUT*/
+body:has(div.Carondelet) div.mt-4:nth-child(6){
+  display:none;
+}
+
+/* HIDE BILLING ADDRESS PANEL DURING CONFIRMATION STEP*/
+body:has(div.Carondelet) article.panel-detail-wrap:nth-child(5){
+  display: none !important;
+}
+
+/* HIDE THIS TEXT DURING CHECKOUT "(Does not include shipping and sales tax)"*/
+
+body:has(div.Carondelet) .product-price-note {
+  display: none !important;
+}
+
+/* Carondelet main */
+.mcc-folder-3612130 .category-card {background: var(--primary-color) url(../../img/common/carondelet-main.jpg) no-repeat center right / cover;}
+.mcc-folder-3612130 .category-card:focus:after, .mcc-folder-3612130 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
+
