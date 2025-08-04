@@ -82,6 +82,6 @@ body:has(div.Carondelet) .product-price-note {
 }
 
 /* Carondelet main */
-.mcc-folder-3612130 .category-card {background: var(--primary-color) url(../../img/common/carondelet-main.jpg) no-repeat center right / cover;}
-.mcc-folder-3612130 .category-card:focus:after, .mcc-folder-3612130 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
+.mcc-folder-3612004 .category-card {background: var(--primary-color) url(../../img/common/carondelet-main.jpg) no-repeat center right / cover;}
+.mcc-folder-3612004 .category-card:focus:after, .mcc-folder-3612004 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
