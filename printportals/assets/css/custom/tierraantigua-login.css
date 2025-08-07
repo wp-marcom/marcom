@@ -3,8 +3,8 @@
 :root {
   --primary-color: #2C2159;  /* Change this per client */
   --primary-color-rgb: 44, 33, 89; /* RGB version */
-  --secondary-color: #000;
-  --secondary-color-rgb: 0, 0, 0;  /* RGB version */
+  --secondary-color: #FFC629;
+  --secondary-color-rgb: 255, 198, 41;  /* RGB version */
 }
 
 
