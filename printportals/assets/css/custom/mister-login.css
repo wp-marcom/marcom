@@ -53,11 +53,11 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .panel-title {
 .floating-logo {
     content: "";
     position: absolute;
-    top: 13px; /* Moves logo above the container */
+    top: 13px;
     left: 50%;
     transform: translateX(-50%);
-    width: 323px;  /* Adjust logo size */
-    height: 71px;
+    width: 400px;
+    height: 81px;
     background: url("../../img/custom/mister_login_logo.svg") no-repeat center / contain;
     z-index: 10;
 }
@@ -116,7 +116,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .panel-title {
     font-size: 2.3rem;
     text-align: center;
     color: var(--primary-color);
-    margin-bottom: 99px;
+    margin-bottom: 21px;
 }
 
 a[href^="/SelfRegistration/"] {
