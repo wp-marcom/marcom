@@ -266,7 +266,8 @@ if (currentUrl.includes("mister")) {
     var subject = encodeURIComponent(productName + " - LOW INVENTORY");
 
   // Build recipient list
-   var recipients = salesEmail ? salesEmail + ",kaleb@westpress.com" : "kaleb@westpress.com";
+   // old version--> var recipients = salesEmail ? salesEmail + ",kaleb@westpress.com" : "kaleb@westpress.com";
+   var recipients = salesEmail ? salesEmail + "; kaleb@westpress.com" : "kaleb@westpress.com";
 
     // Construct the email link with subject and body
     var emailLink = "mailto:" + recipients +
