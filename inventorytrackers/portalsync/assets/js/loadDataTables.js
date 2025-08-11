@@ -251,6 +251,29 @@ if (currentUrl.includes("mister")) {
     // Do something special for the "mister" tracker page
     salesEmail = "lprice@westpress.com";
 }
+else if (currentUrl.includes("siet")) {
+  // Do something special for the "mister" tracker page
+  salesEmail = "lprice@westpress.com";
+}
+
+else if (currentUrl.includes("vwcu")) {
+  // Do something special for the "mister" tracker page
+  salesEmail = "andy@westpress.com";
+}
+else if (currentUrl.includes("pfcu")) {
+  // Do something special for the "mister" tracker page
+  salesEmail = "andy@westpress.com";
+}
+
+else if (currentUrl.includes("tmc")) {
+  // Do something special for the "mister" tracker page
+  salesEmail = "marlo@westpress.com";
+}
+
+else if (currentUrl.includes("nmc")) {
+  // Do something special for the "mister" tracker page
+  salesEmail = "chenoa@westpress.com";
+}
 
   
     // Extract SKU from productName
