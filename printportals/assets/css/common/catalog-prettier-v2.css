@@ -1108,17 +1108,17 @@ article.panel-detail-wrap:nth-child(3){
 }
 
 /* Town of Marana */
-.mcc-folder-3612004 .category-card {
+.mcc-folder-3612150 .category-card {
   background: var(--primary-color) url(../../img/common/townofmarana-main.jpg) no-repeat top center / cover;
 }
-.mcc-folder-3612004 .category-card .card-img-holder:before {
+.mcc-folder-3612150 .category-card .card-img-holder:before {
   background-image: url(../../img/common/townofmarana-folder.svg);
 }
-.mcc-folder-3612004 > a:nth-child(1):after {
+.mcc-folder-3612150 > a:nth-child(1):after {
   background: rgba(0, 145, 157, 0.75);
 }
-.mcc-folder-3612004 .category-card:focus:after,
-.mcc-folder-3612004 .category-card:hover:after {
+.mcc-folder-3612150 .category-card:focus:after,
+.mcc-folder-3612150 .category-card:hover:after {
   background: rgba(0, 0, 0, 0.72);
 }
 

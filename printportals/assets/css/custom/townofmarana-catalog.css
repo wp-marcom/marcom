@@ -78,7 +78,7 @@ body:has(divTown.of.Marana) .product-price-note {
   display: none !important;
 }
 
-/* intermountain centers main */
-.mcc-folder-3612369 .category-card {background: var(--primary-color) url(../../img/common/townofmarana-main.jpg) no-repeat center right / cover;}
-.mcc-folder-3612369 .category-card:focus:after, .mcc-folder-3612369 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
+/* town of marana main */
+.mcc-folder-3612150 .category-card {background: var(--primary-color) url(../../img/common/townofmarana-main.jpg) no-repeat center right / cover;}
+.mcc-folder-3612150 .category-card:focus:after, .mcc-folder-3612150 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
