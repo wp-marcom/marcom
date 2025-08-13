@@ -1332,7 +1332,7 @@ const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
 // Function to fetch and load data for a single tracker
 function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
   const range = `${sheetName}!A2:J`;
-  const client = "TMC";
+  const client = "Mister";
   const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
 
   return fetch(url)
@@ -1354,25 +1354,32 @@ function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
             },
           });
 
-          // Function to apply row classes dynamically
-          function applyRowClasses() {
-            const rows = document.querySelectorAll(`${targetElement} tbody tr`);
-
-            rows.forEach((rowElement) => {
-              // Clear existing row classes
-              rowElement.classList.remove("table-danger", "table-warning");
-
-              // Get the value of the "Status" column (index 8)
-              const status = rowElement.children[8]?.textContent.trim();
-
-              // Apply new classes based on the status
-              if (status === "BACKORDER") {
-                rowElement.classList.add("table-danger");
-              } else if (status === "BELOW OR AT SET MINIMUM") {
-                rowElement.classList.add("table-warning");
-              }
-            });
-          }
+        // Function to apply row classes dynamically based on order number grouping
+function applyRowClasses() {
+  const rows = document.querySelectorAll(`${targetElement} tbody tr`);
+  
+  let currentOrderNumber = null;
+  let currentClass = "table-primary"; // Start with first class
+  let alternateClass = "table-secondary"; // Alternate class
+  
+  rows.forEach((rowElement) => {
+    // Clear existing row classes
+    rowElement.classList.remove("table-primary", "table-secondary", "table-danger", "table-warning");
+    
+    // Get the value of the first column (order number - index 0)
+    const orderNumber = rowElement.children[0]?.textContent.trim();
+    
+    // Check if this is a new order number
+    if (orderNumber !== currentOrderNumber) {
+      // Switch to the alternate class for the new order group
+      [currentClass, alternateClass] = [alternateClass, currentClass];
+      currentOrderNumber = orderNumber;
+    }
+    
+    // Apply the current class to this row
+    rowElement.classList.add(currentClass);
+  });
+}
 
           // Reapply classes after any update in the DataTable
           datatable.on("datatable.page", applyRowClasses);
