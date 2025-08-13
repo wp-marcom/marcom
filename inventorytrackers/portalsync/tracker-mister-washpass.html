@@ -1359,12 +1359,12 @@ function applyRowClasses() {
   const rows = document.querySelectorAll(`${targetElement} tbody tr`);
   
   let currentOrderNumber = null;
-  let currentClass = "table-primary"; // Start with first class
-  let alternateClass = "table-secondary"; // Alternate class
+  let currentClass = "table-light"; // Start with first class
+  let alternateClass = "table-dark"; // Alternate class
   
   rows.forEach((rowElement) => {
     // Clear existing row classes
-    rowElement.classList.remove("table-primary", "table-secondary", "table-danger", "table-warning");
+    rowElement.classList.remove("table-light", "table-dark", "table-danger", "table-warning");
     
     // Get the value of the first column (order number - index 0)
     const orderNumber = rowElement.children[0]?.textContent.trim();
