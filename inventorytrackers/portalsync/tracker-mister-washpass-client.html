@@ -847,6 +847,11 @@ function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
             data: {
               data: processedData.map((row) => row.data), // Use the processed rows
             },
+            perPage: 50,  // Set default rows per page to 50
+      perPageSelect: [25, 50, 100, 200],  // Customize dropdown options
+      // Optional: if you want to disable the per-page selector entirely:
+      // perPageSelect: false,
+    
           });
 
         // Function to apply row classes dynamically based on order number grouping
