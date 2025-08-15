@@ -970,11 +970,11 @@ article.panel-detail-wrap:nth-child(3){
 }
 
 .mcc-folder-3639958 > a:nth-child(1):after {
-  background: rgba(var(--secondary-color-rgb), 0.6);
+  background: rgba(var(--primary-color-rgb), 0.6);
 }
 .mcc-folder-3639958 .category-card:focus:after,
 .mcc-folder-3639958 .category-card:hover:after {
-  background: rgba(var(--primary-color-rgb), 0.72);
+  background: rgba(var(--secondary-color-rgb), 0.72);
 }
   
   /* Letterheads */
