@@ -961,21 +961,21 @@ article.panel-detail-wrap:nth-child(3){
 /* ==========================================================================
    CATEGORY BACKGROUNDS (Client-specific)
    ========================================================================== */
-/* Business Cards */
-.mcc-folder-2725836 .category-card {
-    background: var(--primary-color) url(../../img/custom/uofa-businesscards.png) no-repeat bottom left / cover;
-  }
-  .mcc-folder-2725836 .category-card .card-img-holder:before {
-    background-image: url(../../img/common/folder.svg);
-  }
-  
-  .mcc-folder-2725836 > a:nth-child(1):after {
-    background: rgba(var(--secondary-color-rgb), 0.6);
-  }
-  .mcc-folder-2725836 .category-card:focus:after,
-  .mcc-folder-2725836 .category-card:hover:after {
-    background: rgba(var(--primary-color-rgb), 0.72);
-  }
+/* Signature Towel Program */
+.mcc-folder-3639958 .category-card {
+  background: var(--primary-color) url(../../img/custom/mister-sigtowelprogram.png) no-repeat bottom left / cover;
+}
+.mcc-folder-3639958 .category-card .card-img-holder:before {
+  background-image: url(../../img/common/folder.svg);
+}
+
+.mcc-folder-3639958 > a:nth-child(1):after {
+  background: rgba(var(--secondary-color-rgb), 0.6);
+}
+.mcc-folder-3639958 .category-card:focus:after,
+.mcc-folder-3639958 .category-card:hover:after {
+  background: rgba(var(--primary-color-rgb), 0.72);
+}
   
   /* Letterheads */
   .mcc-folder-2725846 .category-card {
