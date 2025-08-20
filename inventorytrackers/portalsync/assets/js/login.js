@@ -5,7 +5,8 @@ const rolePermissions = {
   misterAdmin: ["misterAdmin"],
   sierraTucsonAdmin: ["sierraTucsonAdmin"],
   lprice: ["lprice"], // Sees only what’s assigned to "lprice"
-  acharles: ["acharles"], // Sees only what’s assigned to "lprice"
+  pfcuAdmin: ["pfcuAdmin"], // Sees only what’s assigned to
+  vwcuAdmin: ["vwcuAdmin"], // Sees only what’s assigned to
   tmcAdmin: ["tmcAdmin"] // Sees only what’s assigned to "molson"
 };
 
@@ -32,7 +33,7 @@ const users = [
   { username: "cruz", password: "cruz", roles: ["warehouse"], fullName: "Cruz" },
   { username: "linda", password: "Charlie1", roles: ["misterAdmin", "sierraTucsonAdmin"], fullName: "Linda" },
   { username: "dave", password: "dave", roles: ["sierraTucsonAdmin"], fullName: "Dave" },
-  { username: "acharles", password: "acharles", roles: ["acharles"], fullName: "Andy" },
+  { username: "acharles", password: "acharles", roles: ["pfcuAdmin", "vwcuAdmin"], fullName: "Andy" },
   { username: "molson", password: "molson", roles: ["tmcAdmin"], fullName: "Marlo" }
 ];
 
