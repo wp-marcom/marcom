@@ -48,7 +48,7 @@ const pagePermissions = {
   "tracker-pfcu.html": ["admin", "warehouse", "acharles"], // Admin and
   "tracker-uafoundation.html": ["admin", "warehouse", "acharles"], // Admin and
   "tracker-uofa.html": ["admin", "warehouse", "gnelson"], // Admin and
-  "dashboard.html": ["admin", "warehouse", "misterAdmin", "sierraTucsonAdmin", "tmcAdmin"], // Only admin can access
+  "dashboard.html": ["admin", "warehouse", "misterAdmin", "sierraTucsonAdmin", "tmcAdmin", "acharles"], // Only admin can access
   "warehouse-page.html": ["admin", "warehouse"], // Admin and warehouse roles
 };
 
