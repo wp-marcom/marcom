@@ -1394,14 +1394,44 @@ function applyRowClasses() {
   });
 }
 
+function applyFedExTrackingLinks() {
+  const rows = document.querySelectorAll(`${targetElement} tbody tr`);
+  
+  rows.forEach((rowElement) => {
+    // Check column index 4 for tracking number and create link if found
+    const trackingCell = rowElement.children[4];
+    if (trackingCell) {
+      const cellContent = trackingCell.textContent.trim();
+      
+      // Look for a 12+ character string at the beginning
+      const trackingMatch = cellContent.match(/^(\d{12,})/);
+      
+      if (trackingMatch) {
+        const trackingNumber = trackingMatch[1];
+        const remainingContent = cellContent.substring(trackingNumber.length);
+        
+        // Create the clickable link
+        const trackingLink = `<a href="https://www.fedex.com/fedextrack/?trknbr=${trackingNumber}" target="_blank" rel="noopener">${trackingNumber}</a>`;
+        
+        // Update the cell content with the link + remaining content
+        trackingCell.innerHTML = trackingLink + remainingContent;
+      }
+    }
+  });
+}
+// Wrapper function to apply both functions together
+function applyTableEnhancements() {
+  applyRowClasses();
+  applyFedExTrackingLinks();
+}
           // Reapply classes after any update in the DataTable
-          datatable.on("datatable.page", applyRowClasses);
-          datatable.on("datatable.sort", applyRowClasses);
-          datatable.on("datatable.search", applyRowClasses);
-          datatable.on("datatable.update", applyRowClasses);
+          datatable.on("datatable.page", applyTableEnhancements);
+          datatable.on("datatable.sort", applyTableEnhancements);
+          datatable.on("datatable.search", applyTableEnhancements);
+          datatable.on("datatable.update", applyTableEnhancements);
 
           // Initial application of row classes
-          applyRowClasses();
+          applyTableEnhancements();
         })
         .catch((error) => {
           console.error(`Error processing data for ${sheetName}:`, error);
