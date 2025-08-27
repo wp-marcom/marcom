@@ -445,7 +445,7 @@ mcc-category-card .category-card:after {
 
 mcc-category-card .category-card:focus:after,
 mcc-category-card .category-card:hover:after {
-  background: rgba(var(--secondary-color-rgb), 0.72);
+  background: rgba(var(--secondary-color-rgb), 1.0);
 }
 
 /* Category card images */
@@ -466,7 +466,7 @@ mcc-category-card .category-card:hover:after {
   position: absolute;
   top: 15px;
   left: 15px;
-  background: url(../../img/common/standard-folder.svg) no-repeat center / contain;
+  background: url(../../img/custom/therapypartners-folder.svg) no-repeat center / contain;
   transform: scale(0.8);
   transform-origin: top left;
 }
