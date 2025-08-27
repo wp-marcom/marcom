@@ -480,7 +480,7 @@ mcc-category-card .category-card:hover:after {
   visibility: hidden;
 }
 
-.category-card .card-img-holder img.card-img[src="https://images.printable.com/application/folder.png"],
+.category-card .card-img-holder img.card-img[src="../../img/custom/therapypartners-folder.png"],
 .category-card .card-img-holder img.card-img[src="https://images.printable.com/application/default_product_image.jpg"] {
   padding: 50%;
   height: 0;
@@ -1257,7 +1257,7 @@ article.panel-detail-wrap:nth-child(3){
       max-height: 130px;
       margin: 0;
     }
-    .category-card .card-img-holder img.card-img[src="https://images.printable.com/application/folder.png"], 
+    .category-card .card-img-holder img.card-img[src="../../img/custom/therapypartners-folder.png"], 
     .category-card .card-img-holder img.card-img[src="https://images.printable.com/application/default_product_image.jpg"] {
       padding: 60px 45%;
     }
