@@ -1274,6 +1274,15 @@ article.panel-detail-wrap:nth-child(3){
       font-size: 1rem;
     }
   }
+/* Adjust the text of the realPerformance named directory so the directories don't line break*/
+  .mcc-folder-3527417 .card-title {
+    display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 86px; /* Adjust this value */
+      width: 100%; /* Ensure it takes full width up to max-width */
+  }  
   
   /* -----------------------------------------------------------------------------
      MEDIUM DEVICES RANGE - Tablets (768px - 992px)
