@@ -614,7 +614,7 @@
               <div class="tab-content pt-2" id="myTabContent">
                 <!-- End of Tab Content, Do Not Copy for New Tab -->
                 <!-- Start of First Tab -->
-                <div class="tab-pane fade show active" id="pills-vwcu" role="tabpanel" aria-labelledby="vwcu-tab" data-role="warehouse,admin">
+                <div class="tab-pane fade show active" id="pills-vwcu" role="tabpanel" aria-labelledby="vwcu-tab" data-role="warehouse,admin,sierraTucsonAdmin,pfcuAdmin,vwcuAdmin">
                  <!-- Start of First Tab CONTENT -->
                   <div class="col-12">
               <div class="card recent-sales overflow-auto">
@@ -635,9 +635,9 @@
                 <div class="card-body">
                   <h5 class="card-title">Recent Online Orders</h5>
 
-<button class="btn btn-sm btn-primary" onclick="openPopup('VWCU')">Import Recent VWCU Orders</button>
-<button class="btn btn-sm btn-primary" onclick="openPopup('PFCU')">Import Recent PFCU Orders</button>
-<button class="btn btn-sm btn-primary" onclick="openPopup('SierraTucson')">Import Recent Sierra Tucson Ordersβ</button>
+<button class="btn btn-sm btn-primary" data-role="warehouse,admin" onclick="openPopup('VWCU')">Import Recent VWCU Orders</button>
+<button class="btn btn-sm btn-primary" data-role="warehouse,admin" onclick="openPopup('PFCU')">Import Recent PFCU Orders</button>
+<button class="btn btn-sm btn-primary" data-role="warehouse,admin" onclick="openPopup('SierraTucson')">Import Recent Sierra Tucson Orders</button>
 <script>
   //function openPopup(sheetName) {
   //  const popupWindow = window.open(
@@ -2343,17 +2343,15 @@ const table = $(targetElement).DataTable({
   const hasPack = row.status.includes('Pack Slip');
 
   const pickButton = !hasPick
-    ? `<button class="btn btn-primary create-pick-slip">Create Pick Slip</button>`
+    ? `<button class="btn btn-primary create-pick-slip" data-role="warehouse,admin">Create Pick Slip</button>`
     : (!hasPack
-        ? `<button class="btn btn-warning unpick-slip">Unpick</button>`
-        : `<button class="btn btn-secondary" disabled>Picked</button>`);
-
+        ? `<button class="btn btn-warning unpick-slip" data-role="warehouse,admin">Unpick</button>`
+        : `<button class="btn btn-secondary" data-role="warehouse,admin" disabled>Picked</button>`);
   const packButton = hasPick
     ? (hasPack
-        ? `<button class="btn btn-warning unpack-slip">Unpack</button>`
-        : `<button class="btn btn-primary create-pack-slip">Create Pack Slip</button>`)
-    : `<button class="btn btn-secondary" disabled>Pick Pending</button>`;
-
+        ? `<button class="btn btn-warning unpack-slip" data-role="warehouse,admin">Unpack</button>`
+        : `<button class="btn btn-primary create-pack-slip" data-role="warehouse,admin">Create Pack Slip</button>`)
+    : `<button class="btn btn-secondary" data-role="warehouse,admin" disabled>Pick Pending</button>`;
   return pickButton + ' ' + packButton;
 }    
 },
