@@ -45,8 +45,8 @@ const pagePermissions = {
   "tracker-siet.html": ["admin", "warehouse", "sierraTucsonAdmin"], // Admin and lprice roles
   "tracker-tmc.html": ["admin", "warehouse", "tmcAdmin"], // Admin and molson roles
   "tracker-nmc.html": ["admin", "warehouse", "ctapia"], // Admin and 
-  "tracker-vwcu.html": ["admin", "warehouse", "acharles"], // Admin and 
-  "tracker-pfcu.html": ["admin", "warehouse", "acharles"], // Admin and
+  "tracker-vwcu.html": ["admin", "warehouse", "vwcuAdmin"], // Admin and 
+  "tracker-pfcu.html": ["admin", "warehouse", "pfcuAdmin"], // Admin and
   "tracker-uafoundation.html": ["admin", "warehouse", "acharles"], // Admin and
   "tracker-uofa.html": ["admin", "warehouse", "gnelson"], // Admin and
   "dashboard.html": ["admin", "warehouse", "misterAdmin", "sierraTucsonAdmin", "tmcAdmin", "pfcuAdmin", "vwcuAdmin"], // Only admin can access
