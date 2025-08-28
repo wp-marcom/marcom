@@ -34,7 +34,7 @@ const users = [
   { username: "linda", password: "Charlie1", roles: ["misterAdmin", "sierraTucsonAdmin"], fullName: "Linda" },
   { username: "dave", password: "dave", roles: ["sierraTucsonAdmin"], fullName: "Dave" },
   { username: "acharles", password: "acharles", roles: ["pfcuAdmin", "vwcuAdmin"], fullName: "Andy" },
-  { username: "wayne", password: "wayne", roles: ["pfcuAdmin", "vwcuAdmin"], fullName: "Andy" },
+  { username: "wayne", password: "wayne", roles: ["pfcuAdmin", "vwcuAdmin"], fullName: "Wayne" },
   { username: "molson", password: "molson", roles: ["tmcAdmin"], fullName: "Marlo" }
 ];
 
