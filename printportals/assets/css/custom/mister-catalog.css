@@ -978,19 +978,19 @@ article.panel-detail-wrap:nth-child(3){
 }
 
 
-/* Titanium Price of Retail */
-.mcc-folder-3649722 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-titanium.png) no-repeat bottom left / cover;
+/* Evergreen */
+.mcc-folder-3667788 .category-card {
+  background: var(--primary-color) url(../../img/custom/mister-evergreen.png) no-repeat bottom left / cover;
 }
-.mcc-folder-3649722 .category-card .card-img-holder:before {
+.mcc-folder-3667788 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
 }
 
-.mcc-folder-3649722 > a:nth-child(1):after {
+.mcc-folder-3667788 > a:nth-child(1):after {
   background: rgba(var(--primary-color-rgb), 0.6);
 }
-.mcc-folder-3649722 .category-card:focus:after,
-.mcc-folder-3649722 .category-card:hover:after {
+.mcc-folder-3667788 .category-card:focus:after,
+.mcc-folder-3667788 .category-card:hover:after {
   background: rgba(var(--secondary-color-rgb), 1.0);
 }
 
