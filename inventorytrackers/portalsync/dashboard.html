@@ -2372,6 +2372,8 @@ const table = $(targetElement).DataTable({
   destroy: true
 });
       table.draw();
+      // Apply role-based visibility after DataTable is drawn
+applyRoleBasedVisibility();
 //PACK & PICK SLIP DATA TO SEND TO GOOGLE SCRIPT      
 $(targetElement + ' tbody').on('click', 'button', function () {
   const $button = $(this);
