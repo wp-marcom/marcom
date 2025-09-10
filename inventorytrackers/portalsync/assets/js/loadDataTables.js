@@ -31,6 +31,7 @@ async function adminData(dataArray,client) {
       const skuName = row[1];
       console.log("HEY HERE IS THE SKU:", skuName);
       let productName = originalProductName;
+      console.log("Original product name:", originalProductName);
 
       // Truncate productName to 67 characters
       if (productName.length > 67) {
