@@ -39,7 +39,10 @@ async function adminData(dataArray,client) {
       }
 
       // Find the matching record in the JSON data
-      const matchingRecord = jsonData.rows.find(record => record.cell[4] === originalProductName);
+      //const matchingRecord = jsonData.rows.find(record => record.cell[4] === originalProductName);
+
+      // Find the matching record in the JSON data while making sure product names with inches symbol load correctly
+      const matchingRecord = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"') === originalProductName);
 
       if (matchingRecord) {
         const imageUrl = "https://images.printable.com" + matchingRecord.cell[2];
