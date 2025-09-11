@@ -31,7 +31,7 @@ async function adminData(dataArray,client) {
       const skuName = row[1];
       console.log("HEY HERE IS THE SKU:", skuName);
       let productName = originalProductName;
-      console.log("Original product name:", originalProductName);
+      
 
       // Truncate productName to 67 characters
       if (productName.length > 67) {
@@ -43,6 +43,9 @@ async function adminData(dataArray,client) {
 
       // Find the matching record in the JSON data while making sure product names with inches symbol load correctly
       const matchingRecord = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"') === originalProductName);
+      const recordtoMatch = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"'));
+      console.log("Original product name:", originalProductName);
+      console.log("Record to match:", recordtoMatch);
 
       if (matchingRecord) {
         const imageUrl = "https://images.printable.com" + matchingRecord.cell[2];
