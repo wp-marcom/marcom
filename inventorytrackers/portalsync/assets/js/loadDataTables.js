@@ -44,11 +44,17 @@ async function adminData(dataArray,client) {
       // Find the matching record in the JSON data while making sure product names with inches symbol load correctly
       const matchingRecord = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"') === originalProductName);
       let recordtoMatch = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"'));
-      console.log("Original product name:", originalProductName);
-      jsonData.rows.forEach((record, index) => {
-        const normalizedName = record.cell[4].replace(/\\"/g, '"');
-        console.log(`${index}: ${JSON.stringify(record.cell[4])} -> ${JSON.stringify(normalizedName)}`);
-      });
+      // Simple debug - just log what we're looking for and if we found it
+console.log("Looking for:", JSON.stringify(originalProductName));
+if (matchingRecord) {
+  console.log("Found match:", JSON.stringify(matchingRecord.cell[4].replace(/\\"/g, '"')));
+} else {
+  console.log("No match found");
+  // Only if no match, show a few examples to debug
+  console.log("First 3 available names:", 
+    jsonData.rows.slice(0, 3).map(r => JSON.stringify(r.cell[4].replace(/\\"/g, '"')))
+  );
+}
 
       if (matchingRecord) {
         const imageUrl = "https://images.printable.com" + matchingRecord.cell[2];
