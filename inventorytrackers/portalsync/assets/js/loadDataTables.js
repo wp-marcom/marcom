@@ -45,7 +45,10 @@ async function adminData(dataArray,client) {
       const matchingRecord = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"') === originalProductName);
       let recordtoMatch = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"'));
       console.log("Original product name:", originalProductName);
-      console.log("Record to match:", recordtoMatch);
+      jsonData.rows.forEach((record, index) => {
+        const normalizedName = record.cell[4].replace(/\\"/g, '"');
+        console.log(`${index}: ${JSON.stringify(record.cell[4])} -> ${JSON.stringify(normalizedName)}`);
+      });
 
       if (matchingRecord) {
         const imageUrl = "https://images.printable.com" + matchingRecord.cell[2];
