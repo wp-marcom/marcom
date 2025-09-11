@@ -43,7 +43,7 @@ async function adminData(dataArray,client) {
 
       // Find the matching record in the JSON data while making sure product names with inches symbol load correctly
       const matchingRecord = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"') === originalProductName);
-      const recordtoMatch = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"'));
+      let recordtoMatch = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"'));
       console.log("Original product name:", originalProductName);
       console.log("Record to match:", recordtoMatch);
 
