@@ -42,6 +42,7 @@ const users = [
 const pagePermissions = {
   "tracker-mister.html": ["admin", "warehouse", "misterAdmin"], // Admin and lprice roles
   "tracker-mister-washpass.html": ["admin", "warehouse", "misterAdmin"], // Admin and lprice roles
+  "tracker-mister-fedex.html": ["admin", "warehouse", "misterAdmin"], // Admin and lprice roles
   "tracker-mister-washpass-client.html": ["admin", "warehouse", "misterAdmin"], // Admin and lprice roles
   "tracker-siet.html": ["admin", "warehouse", "sierraTucsonAdmin"], // Admin and lprice roles
   "tracker-tmc.html": ["admin", "warehouse", "tmcAdmin"], // Admin and molson roles
