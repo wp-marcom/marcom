@@ -721,7 +721,7 @@ fetch(url)
         }
 
         function applyFedExTrackingLinks() {
-  const rows = document.querySelectorAll(`${targetElement} tbody tr`);
+  const rows = document.querySelectorAll(`#tracker-table tbody tr`);
   
   rows.forEach((rowElement) => {
     // Check column index 2 for tracking number and create link if found
