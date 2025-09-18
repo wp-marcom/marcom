@@ -683,57 +683,28 @@ const client = "Mister"
 const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
 
 fetch(url)
-//fetch("https://sheets.googleapis.com/v4/spreadsheets/14JGNtRb-hxjKowzYMEQe0UObFE2sED5KUCYhnaIX1jI/values/Inventory%20Status%201.02!A2:J?alt=json&key=AIzaSyD6pzfDZqNZNcwmj3wNlyJ-oXmVXFL93fI")
-  .then(response => response.json())
-  .then(data => {
-    if (!data || !data.values || data.values.length === 0) {
-      return; // Return if there's no data to display
-    }
-
-    // Process the row data with the adminData function
-   // adminData(data.values, client)
-     // .then(processedData => {
-       // Initialize the DataTable using simpleDatatables
-const datatable = new window.simpleDatatables.DataTable("#tracker-table", {
-  data: {
-    //data: processedData.map(row => row.data), // Use the processed rows
-    data: data.values,
-  },
-  columns: [
-    {
-      select: 0, // Order Number column
-      type: "string",
-      sortable: true,
-      sort: function(a, b) {
-        // Extract the numeric part after "MCW Online - " and before "/"
-        const getOrderNumber = (str) => {
-          const match = str.match(/MCW Online - (\d+)/);
-          return match ? parseInt(match[1], 10) : 0;
-        };
-        
-        const numA = getOrderNumber(a);
-        const numB = getOrderNumber(b);
-        
-        return numB - numA; // Higher numbers first (newest orders first)
+    .then((response) => response.json())
+    .then((data) => {
+      if (!data || !data.values || data.values.length === 0) {
+        console.warn(`No data found for ${sheetName}`);
+        return;
       }
-    },
-    {
-      select: 1, // Date column
-      type: "date",
-      sortable: true
-    },
-    {
-      select: 2, // Tracking column
-      type: "string", 
-      sortable: true
-    },
-    {
-      select: 3, // Status column
-      type: "string",
-      sortable: true
-    }
-  ]
-});
+
+     // Process the row data
+     return adminData(data.values, client)
+        .then((processedData) => {
+
+          // Initialize the DataTable
+          const datatable = new window.simpleDatatables.DataTable(targetElement, {
+            data: {
+              data: processedData.map((row) => row.data), // Use the processed rows
+            },
+            perPage: 50,  // Set default rows per page to 50
+      perPageSelect: [25, 50, 100, 200],  // Customize dropdown options
+      // Optional: if you want to disable the per-page selector entirely:
+      // perPageSelect: false,
+    
+          });
 
         // Function to apply row classes dynamically
         function applyRowClasses() {
@@ -796,10 +767,10 @@ function applyTableEnhancements() {
           // Initial application of row classes
           applyTableEnhancements();
         })
-       // .catch((error) => {
-      //      console.error("Error processing data:", error);
-      //  });
-   // })
+        .catch((error) => {
+            console.error("Error processing data:", error);
+        });
+    })
     .catch((error) => {
         console.error("Error fetching data from Google Sheets:", error);
     });
