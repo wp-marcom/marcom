@@ -694,12 +694,13 @@ fetch(url)
     }
 
     // Process the row data with the adminData function
-    adminData(data.values, client)
-      .then(processedData => {
+   // adminData(data.values, client)
+     // .then(processedData => {
        // Initialize the DataTable using simpleDatatables
 const datatable = new window.simpleDatatables.DataTable("#tracker-table", {
   data: {
-    data: processedData.map(row => row.data), // Use the processed rows
+    //data: processedData.map(row => row.data), // Use the processed rows
+    data: data.values,
   },
   columns: [
     {
@@ -798,14 +799,14 @@ function applyTableEnhancements() {
           // Initial application of row classes
           applyTableEnhancements();
         })
-        .catch((error) => {
-            console.error("Error processing data:", error);
-        });
-    })
+       // .catch((error) => {
+      //      console.error("Error processing data:", error);
+      //  });
+   // })
     .catch((error) => {
         console.error("Error fetching data from Google Sheets:", error);
     });
-
+ 
 
   </script>
     
