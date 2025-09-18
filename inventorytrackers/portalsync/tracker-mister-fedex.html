@@ -694,6 +694,9 @@ fetch(url)
      return adminData(data.values, client)
         .then((processedData) => {
 
+            console.log("Raw data structure:", processedData);
+console.log("Mapped data:", processedData.map((row) => row.data));
+
           // Initialize the DataTable
           const datatable = new window.simpleDatatables.DataTable("#tracker-table", {
             data: {
@@ -759,13 +762,13 @@ function applyTableEnhancements() {
 }
 
  // Reapply classes after any update in the DataTable
- datatable.on("datatable.page", applyTableEnhancements);
-          datatable.on("datatable.sort", applyTableEnhancements);
-          datatable.on("datatable.search", applyTableEnhancements);
-          datatable.on("datatable.update", applyTableEnhancements);
+ //datatable.on("datatable.page", applyTableEnhancements);
+       //   datatable.on("datatable.sort", applyTableEnhancements);
+       //   datatable.on("datatable.search", applyTableEnhancements);
+        //  datatable.on("datatable.update", applyTableEnhancements);
 
           // Initial application of row classes
-          applyTableEnhancements();
+          //applyTableEnhancements();
         })
         .catch((error) => {
             console.error("Error processing data:", error);
