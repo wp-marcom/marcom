@@ -695,7 +695,7 @@ fetch(url)
         .then((processedData) => {
 
           // Initialize the DataTable
-          const datatable = new window.simpleDatatables.DataTable(targetElement, {
+          const datatable = new window.simpleDatatables.DataTable("#tracker-table", {
             data: {
               data: processedData.map((row) => row.data), // Use the processed rows
             },
