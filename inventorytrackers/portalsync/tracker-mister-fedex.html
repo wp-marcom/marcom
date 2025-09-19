@@ -705,7 +705,17 @@ console.log("Mapped data:", processedData.map((row) => row.data));
             perPage: 50,  // Set default rows per page to 50
       perPageSelect: [25, 50, 100, 200],  // Customize dropdown options
       columns: [
-      {
+    {
+      select: 0, // Order Number column
+      type: "string",
+      sortable: true
+    },
+    {
+      select: 1, // Date column
+      type: "date",
+      sortable: true
+    },
+    {
       select: 2, // Tracking column with FedEx links
       type: "string", 
       sortable: true,
@@ -722,8 +732,13 @@ console.log("Mapped data:", processedData.map((row) => row.data));
     
         return data; // Return original data if no tracking number found
       }
-      }
-    ]
+    },
+    {
+      select: 3, // Status column
+      type: "string",
+      sortable: true
+    }
+  ]
       // Optional: if you want to disable the per-page selector entirely:
       // perPageSelect: false,
     
@@ -778,7 +793,7 @@ console.log("Mapped data:", processedData.map((row) => row.data));
 // Wrapper function to apply both functions together
 function applyTableEnhancements() {
   applyRowClasses();
-  
+
 }
 
  // Reapply classes after any update in the DataTable
