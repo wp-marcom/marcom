@@ -704,6 +704,26 @@ console.log("Mapped data:", processedData.map((row) => row.data));
             },
             perPage: 50,  // Set default rows per page to 50
       perPageSelect: [25, 50, 100, 200],  // Customize dropdown options
+      columns: [
+      {
+      select: 2, // Tracking column with FedEx links
+      type: "string", 
+      sortable: true,
+      render: function(data, cell, row) {
+        // Apply FedEx tracking link logic here
+        const trackingMatch = data.match(/^(\d{12,})/);
+        
+        if (trackingMatch) {
+          const trackingNumber = trackingMatch[1];
+          const remainingContent = data.substring(trackingNumber.length);
+          
+          return `<a href="https://www.fedex.com/fedextrack/?trknbr=${trackingNumber}" target="_blank" rel="noopener">${trackingNumber}</a>${remainingContent}`;
+        }
+    
+        return data; // Return original data if no tracking number found
+      }
+      }
+    ]
       // Optional: if you want to disable the per-page selector entirely:
       // perPageSelect: false,
     
@@ -758,17 +778,17 @@ console.log("Mapped data:", processedData.map((row) => row.data));
 // Wrapper function to apply both functions together
 function applyTableEnhancements() {
   applyRowClasses();
-  applyFedExTrackingLinks();
+  
 }
 
  // Reapply classes after any update in the DataTable
- //datatable.on("datatable.page", applyTableEnhancements);
-       //   datatable.on("datatable.sort", applyTableEnhancements);
-       //   datatable.on("datatable.search", applyTableEnhancements);
-        //  datatable.on("datatable.update", applyTableEnhancements);
+datatable.on("datatable.page", applyTableEnhancements);
+          datatable.on("datatable.sort", applyTableEnhancements);
+          datatable.on("datatable.search", applyTableEnhancements);
+          datatable.on("datatable.update", applyTableEnhancements);
 
           // Initial application of row classes
-          //applyTableEnhancements();
+          applyTableEnhancements();
         })
         .catch((error) => {
             console.error("Error processing data:", error);
