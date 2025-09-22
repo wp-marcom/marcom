@@ -3,7 +3,21 @@ const orderSelector= "WP Inventory - ";
 
 const primeDirectory = "C:\\projects\\";
 const puppeteer = require(`${primeDirectory}node_modules\\puppeteer`);
-const keys = require(`${primeDirectory}\\chrome_marcom_keys.json`);
+
+// Grab the local PC username to match to chrome key file
+const os = require('os');
+
+const userInfo = os.userInfo();
+const userName = userInfo.username;
+
+console.log(`Current username: ${userName}`);
+
+// Relative link to keys directory before looking for username match
+const keys = require(`${__dirname}\\..\\keys\\chrome_marcom_keys_${userName}.json`);
+
+
+
+//const keys = require(`${primeDirectory}\\chrome_marcom_keys.json`);
 
 (async () => {
     const wsChromeEndpointurl = keys.jsonURL;
