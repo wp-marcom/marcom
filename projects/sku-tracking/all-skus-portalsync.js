@@ -11,8 +11,8 @@ const { google } = require(`${primeDirectory}node_modules\\googleapis`);
 
 // Import Google API keys
 //const googleKeys = require(`${primeDirectory}\\googleapi_keys.json`);
-const googleKeys = require(`${primeDirectory}\\googleapi_keys_portalsync.json`);
-
+//const googleKeys = require(`${primeDirectory}\\googleapi_keys_portalsync.json`);
+const googleKeys = require(`${__dirname}\\..\\keys\\googleapi_keys_portalsync.json`);
 // Import Chrome marcom keys
 //const keys = require(`${primeDirectory}\\chrome_marcom_keys.json`);
 
@@ -594,7 +594,10 @@ let portalCount = 0;
       console.log(`Processing portal: ${portalName}`);
   
       const clientPortal = portalName;
-      const downloadPath = `${primeDirectory}sku-tracking\\${clientPortal}\\raw-data`;
+      //const downloadPath = `${primeDirectory}sku-tracking\\${clientPortal}\\raw-data`;
+      //const downloadPath = require(`${__dirname}\\${clientPortal}\\raw-data`);
+      const downloadPath = `${__dirname}\\${clientPortal}\\raw-data`;
+
       const newFilename = `${clientPortal}-SKUs.xlsx`;
       try {
         // Login to Marcom Page
