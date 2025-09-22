@@ -14,9 +14,19 @@ const { google } = require(`${primeDirectory}node_modules\\googleapis`);
 const googleKeys = require(`${primeDirectory}\\googleapi_keys_portalsync.json`);
 
 // Import Chrome marcom keys
-const keys = require(`${primeDirectory}\\chrome_marcom_keys.json`);
+//const keys = require(`${primeDirectory}\\chrome_marcom_keys.json`);
+
+const os = require('os');
+
+const userInfo = os.userInfo();
+const userName = userInfo.username;
+
+console.log(`Current username: ${userName}`);
 
 
+const keys = require(`${__dirname}\\..\\keys\\chrome_marcom_keys_${userName}.json`);
+
+console.log(`Current keys: ${keys}`);
 
 // Import path module for file paths
 const path = require('path');
