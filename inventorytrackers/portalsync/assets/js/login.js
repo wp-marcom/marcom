@@ -36,6 +36,7 @@ const users = [
   { username: "acharles", password: "acharles", roles: ["pfcuAdmin", "vwcuAdmin"], fullName: "Andy" },
   { username: "wayne", password: "wayne", roles: ["pfcuAdmin", "vwcuAdmin"], fullName: "Wayne" },
   { username: "molson", password: "molson", roles: ["tmcAdmin"], fullName: "Marlo" }
+  { username: "rick", password: "rick", roles: ["tmcAdmin"], fullName: "Rick Pritchett" }
 ];
 
 // Define page permissions
