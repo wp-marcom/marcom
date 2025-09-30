@@ -6,6 +6,7 @@ const Excel = require(`${primeDirectory}node_modules\\exceljs`);
 const reader = require(`${primeDirectory}node_modules\\xlsx`)
 const AGAdirectory = __dirname + `\\incomingLists`;
 const CSVdirectory = __dirname + `\\incomingLists`;
+const path = require('path');
 
 
 
@@ -123,7 +124,7 @@ if(mailDateJobfolderNames[i]!="Could Not Process"){
 //fs.mkdir(__dirname+`\\${mailDateJobfolderNames[i]}`, { recursive: true }, (err) => {
   if (err) throw err;});
 }
-  fs.mkdir(__dirname+`\\processedLists\\${mailDateDBFfolderNames[i]}`, { recursive: true }, (err) => {
+  fs.mkdirSync(__dirname+`\\processedLists\\${mailDateDBFfolderNames[i]}`, { recursive: true }, (err) => {
   //fs.mkdir(__dirname+`\\${mailDateDBFfolderNames[i]}`, { recursive: true }, (err) => {
     if (err) throw err;
   });
@@ -152,19 +153,26 @@ let DBFPath = __dirname+`\\processedLists\\${mailDateDBFfolderNames[i]}\\${csvTo
 //console.log(`old path is ${oldPath}, job path is ${jobPath}`);
 //console.log(`old path is ${oldPath}, DBFPath path is ${DBFPath}`);
 
-fs.copyFile(oldPath,jobPath, (err) => {
-  if (err) throw "CSV File copy error to Job Number Directory"+jobList[i]+oldPath+"cannot be moved or doesnot exist";
-  console.log('CSV file copy complete to Job Number Directory!'+jobList[i]);
-});
 
-fs.rename(oldPath,DBFPath, (err) => {
-  if (err) throw "CSV File move error to DBF Directory"+jobList[i]+oldPath+"cannot be moved or doesnot exist";
-  console.log('CSV file move complete to DBF Directory!'+jobList[i]);
+
+fs.copyFile(oldPath, jobPath, (err) => {
+  if (err) {
+    console.error("CSV File copy error:", err);
+    throw err;
+  }
+  console.log('CSV file copy complete to Job Number Directory!' + jobList[i]);
+  
+  // NOW rename/move the file after copy is complete
+  fs.rename(oldPath, DBFPath, (err) => {
+    if (err) {
+      console.error("CSV File move error:", err);
+      throw err;
+    }
+    console.log('CSV file move complete to DBF Directory!' + jobList[i]);
+  });
 });
 
 }
-
-
 
 
 for(m=0;m<mailDatesNoDupes.length;m++){
@@ -186,7 +194,7 @@ let dateCompare = function (datefromNoDupes) {
 
 const file = reader.utils.book_new();
 //make the sheet
-file.SheetNames.push("Sheet 1");
+//file.SheetNames.push("Sheet 1");
 
 //Create the header row inside the excel sheet...//assign the header row to the existing sheet
 let ws_data = [[`first`,`last`,`company`,`a1`,`city`,`st`,`zip`,`code`]];
@@ -208,9 +216,22 @@ ws_data.push([`Becky`,`Wigginton-Colon`,`West Press`,`1663 W Grant Rd`,`Tucson`,
 
 //Take the completed version of the data array (header row+ all seed rows) and write it to the generated excel file
 let arraysheet = reader.utils.aoa_to_sheet(ws_data);
-file.Sheets["Sheet 1"] = arraysheet;
+
+// 4. Append the worksheet to the workbook
+reader.utils.book_append_sheet(file, arraysheet, 'Sheet1');
+
+
+//file.Sheets["Sheet 1"] = arraysheet;
 //save the file in the correct directory
-reader.writeFile(file,__dirname+`\\processedLists\\${directoryName}\\BeckyRaySeed.xls`)
+let directoryNamestatic = '9-30 DBF';
+let fullPathtoSeed = `\\\\DataKing1\\homes\\kaleb\\Github Repos\\marcom\\projects\\aga-builder\\processedLists\\${directoryName}`;
+console.log(fullPathtoSeed)
+// 5. Define the output file path
+const outputPath = path.join(fullPathtoSeed, 'BeckyRaySeed.xls');
+//let fullPathtoSeed = __dirname+`\\processedLists\\${directoryName}\\BeckyRaySeed.xls`;
+reader.writeFile(file,outputPath)
+//reader.writeFile(file,__dirname+`\\processedLists\\${directoryName}\\BeckyRaySeed.xls`)
+console.log(`Seed file written to: ${outputPath}`);
 }
 //}
     // let renamePath = __dirname+`\\undefined DBF`;
