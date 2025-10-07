@@ -440,12 +440,12 @@ mcc-category-card .category-card:after {
   height: 100%;
   max-height: 100%;
   border-radius: var(--border-radius);
-  background: rgba(var(--primary-color-rgb), 0.72);
+  background: rgba(var(--primary-color-rgb), 1.0);
 }
 
 mcc-category-card .category-card:focus:after,
 mcc-category-card .category-card:hover:after {
-  background: rgba(var(--secondary-color-rgb), 0.72);
+  background: rgba(var(--secondary-color-rgb), 1.0);
 }
 
 /* Category card images */
