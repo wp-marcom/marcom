@@ -77,6 +77,11 @@ nav[aria-label="breadcrumbs"] {
   margin: 1.5em;
 }
 
+/* Modify top margin on links on the "Awesome, your item has been customized successfully." page */
+.mt-3{
+  margin-top: 2rem !important;
+}
+
 /* ==========================================================================
    TYPOGRAPHY
    ========================================================================== */
