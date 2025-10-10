@@ -48,8 +48,20 @@ async function adminData(dataArray,client) {
       
       if (client === "Mister") {
         const matchingRecord = jsonData.rows.find(record => record.cell[15].replace(/\\"/g, '"') === externalID);
-    }
-    else{const matchingRecord = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"') === originalProductName);}
+        let recordtoMatch = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"'));
+        // Simple debug - just log what we're looking for and if we found it
+  console.log("Looking for:", JSON.stringify(externalID));
+  if (matchingRecord) {
+    console.log("Found match:", JSON.stringify(matchingRecord.cell[15].replace(/\\"/g, '"')));
+  } else {
+    console.log("No match found");
+    // Only if no match, show a few examples to debug
+    console.log("First 3 available names:", 
+      jsonData.rows.slice(0, 3).map(r => JSON.stringify(r.cell[4].replace(/\\"/g, '"')))
+    );
+  }
+  }
+    else{const matchingRecord = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"') === originalProductName);
       
       let recordtoMatch = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"'));
       // Simple debug - just log what we're looking for and if we found it
@@ -63,7 +75,7 @@ if (matchingRecord) {
     jsonData.rows.slice(0, 3).map(r => JSON.stringify(r.cell[4].replace(/\\"/g, '"')))
   );
 }
-
+}
       if (matchingRecord) {
         const imageUrl = "https://images.printable.com" + matchingRecord.cell[2];
         const strippedProductName = productName.replace(/<[^>]*>/g, "").replace(/[^\w\s()-\.]/g, "");
