@@ -45,9 +45,10 @@ async function adminData(dataArray,client) {
 
       // Find the matching record in the JSON data while making sure product names with inches symbol load correctly
 
+      let matchingRecord; // Declare outside the if/else
       
       if (client === "Mister") {
-        const matchingRecord = jsonData.rows.find(record => record.cell[15].replace(/\\"/g, '"') === externalID);
+        matchingRecord = jsonData.rows.find(record => record.cell[15].replace(/\\"/g, '"') === externalID);
         let recordtoMatch = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"'));
         // Simple debug - just log what we're looking for and if we found it
   console.log("Looking for:", JSON.stringify(externalID));
@@ -61,7 +62,7 @@ async function adminData(dataArray,client) {
     );
   }
   }
-    else{const matchingRecord = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"') === originalProductName);
+    else{matchingRecord = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"') === originalProductName);
       
       let recordtoMatch = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"'));
       // Simple debug - just log what we're looking for and if we found it
