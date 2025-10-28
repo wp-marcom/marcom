@@ -29,7 +29,7 @@ async function adminData(dataArray,client) {
 
       const originalProductName = row[0];
       const skuName = row[1];
-      console.log("HEY HERE IS THE SKU:", skuName);
+     // console.log("HEY HERE IS THE SKU:", skuName);
       let productName = originalProductName;
       let externalID = 'MCW'+skuName;
 
@@ -51,30 +51,30 @@ async function adminData(dataArray,client) {
         matchingRecord = jsonData.rows.find(record => record.cell[15].replace(/\\"/g, '"') === externalID);
         let recordtoMatch = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"'));
         // Simple debug - just log what we're looking for and if we found it
-  console.log("Looking for:", JSON.stringify(externalID));
+  //console.log("Looking for:", JSON.stringify(externalID));
   if (matchingRecord) {
-    console.log("Found match:", JSON.stringify(matchingRecord.cell[15].replace(/\\"/g, '"')));
+  //  console.log("Found match:", JSON.stringify(matchingRecord.cell[15].replace(/\\"/g, '"')));
   } else {
-    console.log("No match found");
+  //  console.log("No match found");
     // Only if no match, show a few examples to debug
-    console.log("First 3 available names:", 
-      jsonData.rows.slice(0, 3).map(r => JSON.stringify(r.cell[4].replace(/\\"/g, '"')))
-    );
+  //  console.log("First 3 available names:", 
+  //    jsonData.rows.slice(0, 3).map(r => JSON.stringify(r.cell[4].replace(/\\"/g, '"')))
+   // );
   }
   }
     else{matchingRecord = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"') === originalProductName);
       
       let recordtoMatch = jsonData.rows.find(record => record.cell[4].replace(/\\"/g, '"'));
       // Simple debug - just log what we're looking for and if we found it
-console.log("Looking for:", JSON.stringify(originalProductName));
+//console.log("Looking for:", JSON.stringify(originalProductName));
 if (matchingRecord) {
-  console.log("Found match:", JSON.stringify(matchingRecord.cell[4].replace(/\\"/g, '"')));
+//  console.log("Found match:", JSON.stringify(matchingRecord.cell[4].replace(/\\"/g, '"')));
 } else {
-  console.log("No match found");
+  //console.log("No match found");
   // Only if no match, show a few examples to debug
-  console.log("First 3 available names:", 
-    jsonData.rows.slice(0, 3).map(r => JSON.stringify(r.cell[4].replace(/\\"/g, '"')))
-  );
+  //console.log("First 3 available names:", 
+   // jsonData.rows.slice(0, 3).map(r => JSON.stringify(r.cell[4].replace(/\\"/g, '"')))
+  //);
 }
 }
       if (matchingRecord) {
