@@ -196,7 +196,7 @@ async function recentSalesData(dataArray, client) {
 
 // Function to get and display the last modified time
 async function updateLastModifiedTime() {
-    const spreadsheetId = "14JGNtRb-hxjKowzYMEQe0UObFE2sED5KUCYhnaIX1jI";
+    const spreadsheetId = "1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU";
     const apiKey = "AIzaSyD6pzfDZqNZNcwmj3wNlyJ-oXmVXFL93fI";
     const url = `https://www.googleapis.com/drive/v3/files/${spreadsheetId}?fields=modifiedTime&key=${apiKey}`;
 
