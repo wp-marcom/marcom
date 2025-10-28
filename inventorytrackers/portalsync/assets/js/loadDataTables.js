@@ -33,7 +33,7 @@ async function adminData(dataArray,client) {
       let productName = originalProductName;
       let externalID = 'MCW'+skuName;
 
-      console.log("externalID:", externalID);
+      //console.log("externalID:", externalID);
 
       // Truncate productName to 67 characters
       if (productName.length > 67) {
