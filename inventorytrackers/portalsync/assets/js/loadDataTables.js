@@ -23,7 +23,7 @@ async function adminData(dataArray,client) {
 
     // Process the dataArray (Google Sheets data)
     return dataArray.map(row => {
-      console.log("Data Array before processing:", dataArray);
+    //  console.log("Data Array before processing:", dataArray);
 
       let rowClass = ""; // Default: No special class
 
