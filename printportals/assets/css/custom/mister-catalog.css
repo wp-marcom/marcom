@@ -998,7 +998,24 @@ article.panel-detail-wrap:nth-child(3){
 /* ==========================================================================
    CATEGORY BACKGROUNDS (Client-specific)
    ========================================================================== */
-/* Signature Towel Program */
+/* Holiday */
+.mcc-folder-3404906 .category-card {
+  background: var(--primary-color) url(../../img/custom/mister-holiday.png) no-repeat bottom left / cover;
+}
+.mcc-folder-3404906 .category-card .card-img-holder:before {
+  background-image: url(../../img/common/folde.svg);
+}
+
+.mcc-folder-3404906 > a:nth-child(1):after {
+  background: rgba(var(--primary-color-rgb), 0.6);
+}
+.mcc-folder-3404906 .category-card:focus:after,
+.mcc-folder-3404906 .category-card:hover:after {
+  background: rgba(var(--secondary-color-rgb), 1.0);
+}
+
+
+   /* Signature Towel Program */
 .mcc-folder-3639958 .category-card {
   background: var(--primary-color) url(../../img/custom/mister-sigtowelprogram.png) no-repeat bottom left / cover;
 }
