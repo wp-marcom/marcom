@@ -32,6 +32,7 @@ const conditions = [
   { name: 'Marana', col: 'A', contains: 'TOM Online' },
   { name: 'TMC', col: 'A', contains: 'TMC Online' },
   { name: 'Intermountain', col: 'A', contains: 'ICHD Online' },
+  { name: 'Intermountain', col: 'C', contains: 'Intermountain Centers' },
   { name: 'City of Sierra Vista', col: 'A', contains: 'COSV Online' },
   { name: 'City of Sierra Vista', col: 'C', contains: 'City of Sierra Vista' },
   { name: 'Safari Club', col: 'A', contains: 'SCI Online' },
@@ -170,7 +171,7 @@ Object.keys(sheetSummaries).forEach(sheetName => {
   // Write summary to summary file
   const summaryWorkbook = new ExcelJS.Workbook();
   const summarySheet = summaryWorkbook.addWorksheet('Summary');
-  summarySheet.addRow(['Tab', 'Number of Orders', 'Number of Customers (Active Users)']);
+  summarySheet.addRow(['PRINT PORTAL CLIENT', 'Number of Orders', 'Number of Customers (Active Users)']);
   summary.forEach(s => {
     summarySheet.addRow([s.tab, s.uniqueA, s.uniqueC]);
   });
