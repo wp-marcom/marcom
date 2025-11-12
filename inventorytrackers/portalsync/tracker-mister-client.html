@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Mister Car Wash Inventory Tracker</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+
+ <!-- Include DataTables library -->
+ <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   <!-- INCLUDE REQUIRED EXTERNAL JAVASCRIPT AND CSS LIBRARIES -->
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+   <!-- INCLUDE Link to loadData js FILE -->
+   <script src="assets/js/loadDataTables.js"></script>
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Jan 29 2024 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Mister Inventory Tracker</h1>
+      
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+             
+                     
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+                <!-- Header Image -->
+                <a href="#" onclick="return false;" style="margin: 0;">
+                  <img src="assets/img/mister-inventory-tracker.svg" 
+                       alt="Header Image" 
+                       style="height: 109px;">
+                </a>
+              
+                <!-- Last Modified and Button -->
+                <div style="display: flex; flex-direction: column; align-items: flex-end; text-align: right;">
+                  <!-- Last Modified -->
+                  <p class="last-modified" style="margin: 0; margin-bottom: 5px;">
+                    <!-- Element to display last modified date -->
+                  </p>
+                  <!-- Download Button -->
+                  <button type="button" class="btn btn-primary">
+                    <i class="fa fa-download"></i>
+                    <a href="https://docs.google.com/spreadsheets/d/1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU/export?format=xlsx&amp;gid=904075607" 
+                       style="color: white; text-decoration: none;">
+                      Download
+                    </a>
+                  </button>
+                </div>
+              </div>
+              
+              
+                        
+              <!-- Table with stripped rows -->
+              <table class="table table-striped" id="tracker-table">
+                <thead>
+                    <tr>
+                      <th><b>P</b>roduct Name</th>
+                      <th>SKU</th>
+                      <th>Location</th>
+                      <th>Unit</th>
+                      <th>Unit Qty</th>
+                      <th>Min Qty</th>
+                      <th>Refill Qty</th>
+                      <th>QOS</th>
+                      <th>Status</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+   <!-- <script src="assets/vendor/tinymce/tinymce.min.js"></script>-->
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <script>
+// Input values for the spreadsheet ID, sheet name, and API key
+const spreadsheetId = "1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU";
+const sheetName = "Mister Car Wash";
+const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
+
+// Construct the fetch URL dynamically
+const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
+const range = `${sheetName}!A2:J`; // Define the range
+const client = "Mister"
+const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
+
+fetch(url)
+//fetch("https://sheets.googleapis.com/v4/spreadsheets/14JGNtRb-hxjKowzYMEQe0UObFE2sED5KUCYhnaIX1jI/values/Inventory%20Status%201.02!A2:J?alt=json&key=AIzaSyD6pzfDZqNZNcwmj3wNlyJ-oXmVXFL93fI")
+  .then(response => response.json())
+  .then(data => {
+    if (!data || !data.values || data.values.length === 0) {
+      return; // Return if there's no data to display
+    }
+
+    // Process the row data with the adminData function
+    adminData(data.values, client)
+      .then(processedData => {
+        // Initialize the DataTable using simpleDatatables
+        const datatable = new window.simpleDatatables.DataTable("#tracker-table", {
+          data: {
+            data: processedData.map(row => row.data), // Use the processed rows
+          },
+        });
+
+        // Function to apply row classes dynamically
+        function applyRowClasses() {
+          const rows = document.querySelectorAll("#tracker-table tbody tr");
+
+          rows.forEach((rowElement) => {
+            // Clear existing row classes
+            rowElement.classList.remove("table-danger", "table-warning");
+
+            // Get the value of the "Status" column (index 8)
+            const status = rowElement.children[8]?.textContent.trim();
+
+            // Apply new classes based on the status
+            if (status === "BACKORDER") {
+              rowElement.classList.add("table-danger");
+            } else if (status === "BELOW OR AT SET MINIMUM") {
+              rowElement.classList.add("table-warning");
+            }
+          });
+        }
+
+        // Reapply classes after any update in the DataTable
+        datatable.on("datatable.page", applyRowClasses);
+        datatable.on("datatable.sort", applyRowClasses);
+        datatable.on("datatable.search", applyRowClasses);
+        datatable.on("datatable.update", applyRowClasses); // Trigger during filtering
+
+        // Initial application of row classes
+        applyRowClasses();
+      })
+      .catch((error) => {
+        console.error("Error processing data:", error);
+      });
+  })
+  .catch((error) => {
+    console.error("Error fetching data from Google Sheets:", error);
+  });
+
+
+
+
+
+
+
+  </script>
+    
+  
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+<script src="assets/js/mainADDON.js"></script>
+
+  <script src="assets/js/login.js"></script>
+
+  <script>
+  document.getElementById("logoutButton").addEventListener("click", () => {
+    sessionStorage.clear(); // Clear user session
+    window.location.href = "login.html"; // Redirect to login page
+  });
+
+     document.getElementById("logoutButtonSidebar").addEventListener("click", () => {
+    sessionStorage.clear(); // Clear user session
+    window.location.href = "login.html"; // Redirect to login page
+  });
+</script>
+
+  
+
+</body>
+
+</html>
