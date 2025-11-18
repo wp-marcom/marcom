@@ -673,6 +673,50 @@ mcc-sorting-and-paging:last-child > .site-section-header {
 /* ==========================================================================
    CHECKOUT & ORDERS
    ========================================================================== */
+
+ /* Disclaimer for CHECKOUT page - same styling as shopping cart page */
+.row.site-section-checkout::before {
+    content: "ℹ️ Please allow a minimum of 3 business days production time and 5 business days for shipping for all orders placed through this portal." !important;
+    display: block !important;
+    background: #00b1fe !important;
+    color: #fff !important;
+    padding: 12px 175px !important;
+    margin-top: 5px !important;
+    margin-left:15px;
+    margin-bottom: 5px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    text-align: center !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    animation: slideIn 0.9s forwards;
+    animation-delay: 1.5s;
+    border-left: 5px solid rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 0.75;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .row.site-section-checkout::before {
+        padding: 10px 15px !important;
+        font-size: 12px !important;
+        margin-left: 5px !important;
+        margin-right: 5px !important;
+    }
+}
+
+/* End of Disclaimer for CHECKOUT page - same styling as shopping cart page */  
+
 .checkout-card,
 .panel-detail-header,
 .panel-detail-info-total {
