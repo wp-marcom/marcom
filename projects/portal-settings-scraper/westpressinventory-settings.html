@@ -1,0 +1,80 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Settings Table</title>
+      <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+      </style>
+    </head>
+    <body>
+      <h1>WestPressInventory Settings Table</h1>
+      <table>
+        <tr>
+          <th>Setting</th>
+          <th>Description</th>
+        </tr>
+    
+          <tr>
+            <td>Purchaser Order Accepted Notification</td>
+            <td>This feature will send an Email Notification to the Purchaser when the order that was placed has been accepted by the Sales or Supplier.</td>
+          </tr>
+        
+          <tr>
+            <td>Requisition Approved Notification</td>
+            <td>Sends the Requisitioner an email notification that their Requisition has been approved. This is triggered by the Purchaser using the "Approve Selected Requisitions" choice on the Process Requisitions page.</td>
+          </tr>
+        
+          <tr>
+            <td>Requisition Denied Notification</td>
+            <td>Sends an email notification to the Requisitioner when a Req is denied. Also includes the description of denial, if entered.</td>
+          </tr>
+        
+          <tr>
+            <td>Downsampling</td>
+            <td>The MarcomCentral Low Resolution Proofing feature downsamples uploaded template and images assets to deliver a 72dpi proof in the Portal.</td>
+          </tr>
+        
+          <tr>
+            <td>Publish Template Override</td>
+            <td>Allows the Manager User to Publish a template even though outstanding orders using the previously published version of the template exist. Note: This should be used with caution -- if the new version of the template being Published does not have the same variables as the previous one used in outstanding orders, you will be unable to process those orders.</td>
+          </tr>
+        
+          <tr>
+            <td>Retain Form Data on Timeout</td>
+            <td>Automatically saves the information filled in to a product form by the portal user in the event that they timeout prior to adding the product to the cart.</td>
+          </tr>
+        
+          <tr>
+            <td>Remove Flash Upload in Admin Tool</td>
+            <td>This feature removes Flash from being used in the Admin Tool for Library Image uploads and Template uploads. It should be enabled if admin users are using a browser version which no longer supports Flash.</td>
+          </tr>
+        
+          <tr>
+            <td>New Portal Catalog: Skip Versioned Product Details page</td>
+            <td>For New Portal only. When active, Users will go directly to the customize product page for Versioned products when clicking the link in the catalog or in search results.</td>
+          </tr>
+        
+          <tr>
+            <td>New Portal Catalog: Increase Folder Display</td>
+            <td>For New Portal only. Expands the maximum number of folders visible on catalog page to 16. The default display is only 4.</td>
+          </tr>
+        
+          <tr>
+            <td>New Portal login redirect</td>
+            <td>When active, users clicking on classic portal URLs will be redirected to the New Portal login page when New Portal is enabled.</td>
+          </tr>
+        
+          <tr>
+            <td>Hide Self Registration Link on Login</td>
+            <td>Hides the Self Registration link on the Login page.</td>
+          </tr>
+        
+      </table>
+    </body>
+    </html>
+    
