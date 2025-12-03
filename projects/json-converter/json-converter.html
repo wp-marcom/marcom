@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON to Google Sheets Converter</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <script type="text/babel">
+    const { useState } = React;
+
+    // Lucide React icons as inline SVG components
+    const Upload = () => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="17 8 12 3 7 8"></polyline>
+        <line x1="12" y1="3" x2="12" y2="15"></line>
+      </svg>
+    );
+
+    const Download = ({ className }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+    );
+
+    const ImageIcon = ({ className }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+        <polyline points="21 15 16 10 5 21"></polyline>
+      </svg>
+    );
+
+    function JsonToSheetsConverter() {
+      const [jsonData, setJsonData] = useState(null);
+      const [selectedIndices, setSelectedIndices] = useState([0, 2, 4, 6]);
+      const [imageIndex, setImageIndex] = useState(2);
+      const [baseDomain, setBaseDomain] = useState('https://images.printable.com');
+      const [imageSize, setImageSize] = useState('3');
+      const [filterValues, setFilterValues] = useState('');
+      const [output, setOutput] = useState('');
+
+      const handleFileUpload = async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        try {
+          const text = await file.text();
+          const data = JSON.parse(text);
+          setJsonData(data);
+          
+          if (data.rows && data.rows.length > 0) {
+            const firstRow = data.rows[0];
+            if (firstRow.cell) {
+              alert(`File loaded! Found ${data.rows.length} records with ${firstRow.cell.length} columns each.`);
+            }
+          }
+        } catch (error) {
+          alert('Error parsing JSON file: ' + error.message);
+        }
+      };
+
+      const generateOutput = () => {
+        if (!jsonData || !jsonData.rows) {
+          alert('Please upload a JSON file first');
+          return;
+        }
+
+        const filterList = filterValues
+          .split(',')
+          .map(v => v.trim())
+          .filter(v => v !== '');
+
+        let result = '';
+        let filteredCount = 0;
+        
+        jsonData.rows.forEach((row, rowIndex) => {
+          if (filterList.length > 0) {
+            const valueAtIndex3 = String(row.cell[3] || '').trim();
+            if (!filterList.includes(valueAtIndex3)) {
+              return;
+            }
+          }
+          
+          filteredCount++;
+          const rowData = [];
+          
+          selectedIndices.forEach((colIndex) => {
+            if (colIndex < row.cell.length) {
+              let value = row.cell[colIndex];
+              
+              if (colIndex === imageIndex && value) {
+                const path = value.startsWith('/') ? value.substring(1) : value;
+                value = `=IMAGE("${baseDomain}/${path}",${imageSize})`;
+              } else {
+                value = String(value).replace(/"/g, '""');
+              }
+              
+              rowData.push(value);
+            }
+          });
+          
+          result += rowData.join('\t') + '\n';
+        });
+
+        setOutput(result);
+        
+        if (filterList.length > 0) {
+          alert(`Filtered to ${filteredCount} rows matching your criteria (from ${jsonData.rows.length} total)`);
+        }
+      };
+
+      const copyToClipboard = () => {
+        navigator.clipboard.writeText(output);
+        alert('Copied to clipboard! You can now paste directly into Google Sheets.');
+      };
+
+      const downloadAsTSV = () => {
+        const blob = new Blob([output], { type: 'text/tab-separated-values' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'data.tsv';
+        a.click();
+        URL.revokeObjectURL(url);
+      };
+
+      const sampleRow = jsonData?.rows?.[0]?.cell || [];
+
+      return (
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 p-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <h1 className="text-3xl font-bold text-gray-800 mb-2">JSON to Google Sheets Converter</h1>
+              <p className="text-gray-600 mb-6">Convert your JSON data to a Google Sheets-friendly format with image support</p>
+
+              <div className="mb-6">
+                <label className="flex items-center justify-center w-full h-32 px-4 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-indigo-500 hover:bg-indigo-50 transition">
+                  <div className="text-center">
+                    <Upload />
+                    <span className="mt-2 block text-sm text-gray-600">
+                      Click to upload your JSON file
+                    </span>
+                  </div>
+                  <input type="file" accept=".json" onChange={handleFileUpload} className="hidden" />
+                </label>
+              </div>
+
+              {jsonData && (
+                <>
+                  <div className="bg-gray-50 rounded-lg p-6 mb-6">
+                    <h2 className="text-lg font-semibold mb-4">Configuration</h2>
+                    
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Base Domain (for images)
+                      </label>
+                      <input
+                        type="text"
+                        value={baseDomain}
+                        onChange={(e) => setBaseDomain(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        placeholder="https://yourdomain.com"
+                      />
+                    </div>
+
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Filter by values at index 3 (optional)
+                      </label>
+                      <input
+                        type="text"
+                        value={filterValues}
+                        onChange={(e) => setFilterValues(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        placeholder="11, 25, 42"
+                      />
+                      <p className="text-xs text-gray-500 mt-1">
+                        Enter comma-separated values. Only rows where column index 3 matches these values will be included. Leave blank to include all rows.
+                      </p>
+                    </div>
+
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Select 4 columns to import (enter column indices 0-{sampleRow.length - 1})
+                      </label>
+                      <p className="text-xs text-gray-500 mb-2">The order you enter them is the order they'll appear in the output</p>
+                      <div className="grid grid-cols-4 gap-2">
+                        {selectedIndices.map((idx, i) => (
+                          <div key={i}>
+                            <label className="text-xs text-gray-500 block mb-1">Column {i + 1}</label>
+                            <input
+                              type="number"
+                              min="0"
+                              max={sampleRow.length - 1}
+                              value={idx}
+                              onChange={(e) => {
+                                const newIndices = [...selectedIndices];
+                                newIndices[i] = parseInt(e.target.value) || 0;
+                                setSelectedIndices(newIndices);
+                              }}
+                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
+                        <ImageIcon className="w-4 h-4" />
+                        Which column contains the image URL?
+                      </label>
+                      <select
+                        value={imageIndex}
+                        onChange={(e) => setImageIndex(parseInt(e.target.value))}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                      >
+                        {selectedIndices.map((idx, i) => (
+                          <option key={i} value={idx}>
+                            Column {idx}: {sampleRow[idx]?.substring(0, 50)}...
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Image Display Size
+                      </label>
+                      <select
+                        value={imageSize}
+                        onChange={(e) => setImageSize(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                      >
+                        <option value="1">Size 1 - Fit to cell (default)</option>
+                        <option value="2">Size 2 - Stretch to fit cell</option>
+                        <option value="3">Size 3 - Original size (may overflow)</option>
+                        <option value="4">Size 4 - Custom size (use cell dimensions)</option>
+                      </select>
+                      <p className="text-xs text-gray-500 mt-1">
+                        Size 3 is recommended for thumbnails. You can also resize rows/columns in Sheets after pasting.
+                      </p>
+                    </div>
+
+                    <div className="bg-white rounded p-4 border border-gray-200">
+                      <p className="text-sm font-medium text-gray-700 mb-2">Preview of selected columns:</p>
+                      <div className="text-sm text-gray-600 space-y-1">
+                        {selectedIndices.map((idx, i) => (
+                          <div key={i} className="flex gap-2">
+                            <span className="font-semibold">Col {idx}:</span>
+                            <span className="truncate">{String(sampleRow[idx])}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={generateOutput}
+                    className="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition font-medium mb-6"
+                  >
+                    Generate Output ({jsonData.rows.length} rows total)
+                  </button>
+
+                  {output && (
+                    <div className="bg-gray-50 rounded-lg p-6">
+                      <h2 className="text-lg font-semibold mb-4">Output</h2>
+                      <textarea
+                        value={output}
+                        readOnly
+                        className="w-full h-64 px-3 py-2 border border-gray-300 rounded-md font-mono text-xs mb-4"
+                      />
+                      <div className="flex gap-3">
+                        <button
+                          onClick={copyToClipboard}
+                          className="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
+                        >
+                          Copy to Clipboard
+                        </button>
+                        <button
+                          onClick={downloadAsTSV}
+                          className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2"
+                        >
+                          <Download className="w-4 h-4" />
+                          Download TSV
+                        </button>
+                      </div>
+                      <p className="text-sm text-gray-600 mt-4">
+                        💡 Tip: Copy the output and paste it directly into Google Sheets. The IMAGE formulas will automatically render as images!
+                      </p>
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<JsonToSheetsConverter />, document.getElementById('root'));
+  </script>
+</body>
+</html>
