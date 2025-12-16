@@ -7,7 +7,7 @@ const path = require('path');
 const ExcelJS = require(`${primeDirectory}node_modules\\exceljs`);
 
 // The specific clientPortal value you want to search for
-const targetClientPortal = "westpressmarketingpromo";
+const targetClientPortal = "westpressinventory";
 
 // Directory where individual HTML files are stored
 //const outputDir = __dirname;

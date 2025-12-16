@@ -21,7 +21,7 @@ console.log(`Current username: ${userName}`);
 // Relative link to keys directory before looking for username match
 const keys = require(`${__dirname}\\..\\keys\\chrome_marcom_keys_${userName}.json`);
 
-const clientPortal="westpressmarketingpromo";
+const clientPortal="westpressinventory";
 
 //const outputDir = __dirname; // Set output directory to the script's running directory
 const outputDir = `${__dirname}/${clientPortal}`; // Creates subfolder with clientPortal name
