@@ -56,7 +56,7 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: -3;
-  background: url('../../img/common/halftone.jpg') no-repeat center center;
+  background: url('../../img/common/halftone.webp') no-repeat center center;
   background-size: cover;
   opacity: 0.05;
 }
