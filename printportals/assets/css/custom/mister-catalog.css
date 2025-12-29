@@ -1086,7 +1086,7 @@ article.panel-detail-wrap:nth-child(3){
    ========================================================================== */
 /* Holiday */
 .mcc-folder-3404906 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-holiday.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-holiday.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-3404906 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1102,7 +1102,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* IC Awareness */
 .mcc-folder-3700585 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-icawareness.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-icawareness.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-3700585 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1119,7 +1119,7 @@ article.panel-detail-wrap:nth-child(3){
 
    /* Signature Towel Program */
 .mcc-folder-3639958 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-sigtowelprogram.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-sigtowelprogram.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-3639958 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1136,7 +1136,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Evergreen */
 .mcc-folder-3667788 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-evergreen.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-evergreen.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-3667788 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1187,7 +1187,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Interior Clean */
 .mcc-folder-3404832 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-interiorclean.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-interiorclean.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-3404832 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1204,7 +1204,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* CSA */
 .mcc-folder-2286555 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-csa.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-csa.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-2286555 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1221,7 +1221,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Kiosk */
 .mcc-folder-1395547 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-kiosk.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-kiosk.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-1395547 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1238,7 +1238,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* UWC */
 .mcc-folder-2285437 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-uwc.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-uwc.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-2285437 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1255,7 +1255,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Windscreens */
 .mcc-folder-1686910 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-windscreens.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-windscreens.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-1686910 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1272,7 +1272,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Break Room */
 .mcc-folder-2285008 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-breakroom.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-breakroom.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-2285008 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1289,7 +1289,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Vacuum Area */
 .mcc-folder-3404835 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-vacuumarea.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-vacuumarea.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-3404835 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1306,7 +1306,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Outdoor Signs */
 .mcc-folder-2285010 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-outdoorsigns.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-outdoorsigns.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-2285010 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1323,7 +1323,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Decals & Window Clings */
 .mcc-folder-2285015 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-decalswindowclings.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-decalswindowclings.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-2285015 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1340,7 +1340,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Closure Materials */
 .mcc-folder-3404842 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-closurematerials.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-closurematerials.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-3404842 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1357,7 +1357,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Comp Pass */
 .mcc-folder-2285453 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-comppass.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-comppass.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-2285453 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1374,7 +1374,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Gift Cards */
 .mcc-folder-555642 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-giftcards.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-giftcards.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-555642 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1391,7 +1391,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Brochures */
 .mcc-folder-2401159 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-brochures.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-brochures.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-2401159 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1408,7 +1408,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Office Supplies */
 .mcc-folder-1116509 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-officesupplies.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-officesupplies.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-1116509 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1425,7 +1425,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Recruiting */
 .mcc-folder-2286286 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-warehouse.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-recruiting.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-2286286 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1442,7 +1442,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Mister Learn */
 .mcc-folder-2913512 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-learn.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-learn.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-2913512 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1459,7 +1459,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Shaker Arrows */
 .mcc-folder-2286293 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-shakerarrows.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-shakerarrows.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-2286293 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1476,7 +1476,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Coupons */
 .mcc-folder-555630 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-coupons.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-coupons.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-555630 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1493,7 +1493,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Chemical & Equipment */
 .mcc-folder-1476807 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-chemicals.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-chemicals.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-1476807 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1510,7 +1510,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Training Tools, Guide, & Workbooks */
 .mcc-folder-2346554 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-trainingtools.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-trainingtools.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-2346554 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1527,7 +1527,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* R & D/AZ Warehouse */
 .mcc-folder-2206532 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-recruiting.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-warehouse.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-2206532 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
@@ -1544,7 +1544,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Corporate Only */
 .mcc-folder-2286300 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-corporateonly.png) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-corporateonly.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-2286300 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
