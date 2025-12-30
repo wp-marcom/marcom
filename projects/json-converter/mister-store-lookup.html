@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store Number Lookup Tool</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <script type="text/babel">
+    const { useState } = React;
+
+    const Upload = () => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="17 8 12 3 7 8"></polyline>
+        <line x1="12" y1="3" x2="12" y2="15"></line>
+      </svg>
+    );
+
+    const Download = ({ className }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+    );
+
+    const Search = ({ className }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+    );
+
+    function StoreNumberLookup() {
+      const [jsonData, setJsonData] = useState(null);
+      const [storeNumbers, setStoreNumbers] = useState('');
+      const [results, setResults] = useState([]);
+      const [notFound, setNotFound] = useState([]);
+
+      const handleFileUpload = async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        try {
+          const text = await file.text();
+          const data = JSON.parse(text);
+          setJsonData(data);
+          
+          if (data.rows && data.rows.length > 0) {
+            alert(`File loaded! Found ${data.rows.length} records.`);
+          } else if (Array.isArray(data) && data.length > 0) {
+            alert(`File loaded! Found ${data.length} records.`);
+          }
+        } catch (error) {
+          alert('Error parsing JSON file: ' + error.message);
+        }
+      };
+
+      const performLookup = () => {
+        if (!jsonData) {
+          alert('Please upload a JSON file first');
+          return;
+        }
+
+        const searchNumbers = storeNumbers
+          .split(',')
+          .map(v => v.trim())
+          .filter(v => v !== '');
+
+        if (searchNumbers.length === 0) {
+          alert('Please enter at least one store number');
+          return;
+        }
+
+        const rows = jsonData.rows ? jsonData.rows.map(r => r.cell || r) : jsonData;
+
+        const foundResults = [];
+        const notFoundNumbers = [];
+
+        searchNumbers.forEach(searchNum => {
+          let found = false;
+          
+          rows.forEach(row => {
+            if (Array.isArray(row) && row.length >= 2) {
+              const cellValue = String(row[1] || '');
+              
+              if (cellValue.includes(searchNum)) {
+                foundResults.push({
+                  searchNumber: searchNum,
+                  matchedIn: cellValue,
+                  resultValue: row[0]
+                });
+                found = true;
+              }
+            }
+          });
+
+          if (!found) {
+            notFoundNumbers.push(searchNum);
+          }
+        });
+
+        setResults(foundResults);
+        setNotFound(notFoundNumbers);
+      };
+
+      const getCSVOutput = () => {
+        return results.map(r => r.resultValue).join(',');
+      };
+
+      const copyToClipboard = () => {
+        const csv = getCSVOutput();
+        navigator.clipboard.writeText(csv);
+        alert('CSV copied to clipboard!');
+      };
+
+      const downloadCSV = () => {
+        const csv = getCSVOutput();
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'store-lookup-results.csv';
+        a.click();
+        URL.revokeObjectURL(url);
+      };
+
+      return (
+        <div className="min-h-screen bg-gradient-to-br from-green-50 to-teal-50 p-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <h1 className="text-3xl font-bold text-gray-800 mb-2">Store Number Lookup Tool</h1>
+              <p className="text-gray-600 mb-6">Search for store numbers and extract matching values</p>
+
+              <div className="mb-6">
+                <label className="flex items-center justify-center w-full h-32 px-4 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-teal-500 hover:bg-teal-50 transition">
+                  <div className="text-center">
+                    <Upload />
+                    <span className="mt-2 block text-sm text-gray-600">
+                      Click to upload your JSON file
+                    </span>
+                  </div>
+                  <input type="file" accept=".json" onChange={handleFileUpload} className="hidden" />
+                </label>
+              </div>
+
+              {jsonData && (
+                <>
+                  <div className="bg-gray-50 rounded-lg p-6 mb-6">
+                    <h2 className="text-lg font-semibold mb-4">Store Numbers</h2>
+                    
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Enter store numbers (comma-separated)
+                      </label>
+                      <textarea
+                        value={storeNumbers}
+                        onChange={(e) => setStoreNumbers(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                        placeholder="723, 801, 456"
+                        rows="3"
+                      />
+                      <p className="text-xs text-gray-500 mt-1">
+                        The tool will search for these numbers in the second cell of each row
+                      </p>
+                    </div>
+
+                    <button
+                      onClick={performLookup}
+                      className="w-full bg-teal-600 text-white py-3 rounded-lg hover:bg-teal-700 transition font-medium flex items-center justify-center gap-2"
+                    >
+                      <Search className="w-5 h-5" />
+                      Search for Matches
+                    </button>
+                  </div>
+
+                  {results.length > 0 && (
+                    <div className="bg-gray-50 rounded-lg p-6 mb-6">
+                      <h2 className="text-lg font-semibold mb-4">Results ({results.length} found)</h2>
+                      
+                      <div className="bg-white rounded border border-gray-200 mb-4 overflow-hidden">
+                        <table className="w-full text-sm">
+                          <thead className="bg-gray-100">
+                            <tr>
+                              <th className="px-4 py-2 text-left font-medium text-gray-700">Search #</th>
+                              <th className="px-4 py-2 text-left font-medium text-gray-700">Matched In</th>
+                              <th className="px-4 py-2 text-left font-medium text-gray-700">Result Value</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {results.map((result, idx) => (
+                              <tr key={idx} className="border-t border-gray-200">
+                                <td className="px-4 py-2">{result.searchNumber}</td>
+                                <td className="px-4 py-2 text-gray-600">{result.matchedIn}</td>
+                                <td className="px-4 py-2 font-mono font-semibold text-teal-700">{result.resultValue}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          CSV Output (values from cell 1)
+                        </label>
+                        <textarea
+                          value={getCSVOutput()}
+                          readOnly
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md font-mono text-sm bg-white"
+                          rows="3"
+                        />
+                      </div>
+
+                      <div className="flex gap-3">
+                        <button
+                          onClick={copyToClipboard}
+                          className="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
+                        >
+                          Copy CSV
+                        </button>
+                        <button
+                          onClick={downloadCSV}
+                          className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2"
+                        >
+                          <Download className="w-4 h-4" />
+                          Download CSV
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {notFound.length > 0 && (
+                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                      <h3 className="text-sm font-semibold text-yellow-800 mb-2">
+                        Not Found ({notFound.length})
+                      </h3>
+                      <p className="text-sm text-yellow-700">
+                        {notFound.join(', ')}
+                      </p>
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<StoreNumberLookup />, document.getElementById('root'));
+  </script>
+</body>
+</html>

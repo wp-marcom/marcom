@@ -1,6 +1,6 @@
-const groupName = ["2643-Slide Road", "2642-Milwaukee", "2641-Mac Davis", "2644-Loop 289", "2645-74th Street"];
-const storeNum = ["2643", "2642", "2641", "2644", "2645"];
-const ccNum = ["806", "806", "806", "806", "806"];
+const groupName = ["2554-Waterford", "847-Carver Lane"];
+const storeNum = ["2554", "847"];
+const ccNum = ["810", "816"];
 
 
 
