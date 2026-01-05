@@ -64,7 +64,23 @@ body::after {
 
 /* HIDE THE SHIPPING INSTRUCTIONS BOX DURING CHECKOUT*/
 div.mt-4:nth-child(6){
-  display:none;
+  isplay:none;
+}
+
+.panel-divider .delivery-method-header {
+  display: none;
+}
+
+.panel-divider:has(.delivery-method-header) {
+  display: none;
+}
+
+.panel-divider .shipping-instructions-header {
+  display: none;
+}
+
+.panel-divider:has(.shipping-instructions-header) {
+  display: none;
 }
 
 .breadcrumb{font-size:13px}

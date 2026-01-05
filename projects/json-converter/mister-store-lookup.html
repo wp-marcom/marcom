@@ -41,6 +41,7 @@
     function StoreNumberLookup() {
       const [jsonData, setJsonData] = useState(null);
       const [storeNumbers, setStoreNumbers] = useState('');
+      const [searchMode, setSearchMode] = useState('forward');
       const [results, setResults] = useState([]);
       const [notFound, setNotFound] = useState([]);
 
@@ -58,6 +59,12 @@
           } else if (Array.isArray(data) && data.length > 0) {
             alert(`File loaded! Found ${data.length} records.`);
           }
+          
+          // Log first row for debugging
+          const testRows = data.rows ? data.rows.map(r => r.cell || r) : data;
+          if (testRows.length > 0) {
+            console.log('First row sample:', testRows[0]);
+          }
         } catch (error) {
           alert('Error parsing JSON file: ' + error.message);
         }
@@ -69,46 +76,75 @@
           return;
         }
 
-        const searchNumbers = storeNumbers
+        const searchValues = storeNumbers
           .split(',')
           .map(v => v.trim())
           .filter(v => v !== '');
 
-        if (searchNumbers.length === 0) {
-          alert('Please enter at least one store number');
+        if (searchValues.length === 0) {
+          alert('Please enter at least one value to search for');
           return;
         }
 
         const rows = jsonData.rows ? jsonData.rows.map(r => r.cell || r) : jsonData;
 
         const foundResults = [];
-        const notFoundNumbers = [];
+        const notFoundValues = [];
 
-        searchNumbers.forEach(searchNum => {
-          let found = false;
-          
-          rows.forEach(row => {
-            if (Array.isArray(row) && row.length >= 2) {
-              const cellValue = String(row[1] || '');
-              
-              if (cellValue.includes(searchNum)) {
-                foundResults.push({
-                  searchNumber: searchNum,
-                  matchedIn: cellValue,
-                  resultValue: row[0]
-                });
-                found = true;
+        if (searchMode === 'forward') {
+          // Search in cell[1], return cell[0]
+          searchValues.forEach(searchVal => {
+            let found = false;
+            
+            rows.forEach(row => {
+              if (Array.isArray(row) && row.length >= 2) {
+                const cellValue = String(row[1] || '');
+                
+                if (cellValue.includes(searchVal)) {
+                  foundResults.push({
+                    searchValue: searchVal,
+                    matchedIn: cellValue,
+                    resultValue: row[0]
+                  });
+                  found = true;
+                }
               }
+            });
+
+            if (!found) {
+              notFoundValues.push(searchVal);
             }
           });
+        } else {
+          // Reverse: Search in cell[0], return cell[1]
+          searchValues.forEach(searchVal => {
+            let found = false;
+            
+            rows.forEach(row => {
+              if (Array.isArray(row) && row.length >= 2) {
+                const cellValue = String(row[0] || '').trim();
+                const searchValTrimmed = searchVal.trim();
+                
+                // Try exact match first, then partial match
+                if (cellValue === searchValTrimmed || cellValue.includes(searchValTrimmed)) {
+                  foundResults.push({
+                    searchValue: searchVal,
+                    matchedIn: cellValue,
+                    resultValue: row[1]
+                  });
+                  found = true;
+                }
+              }
+            });
 
-          if (!found) {
-            notFoundNumbers.push(searchNum);
-          }
-        });
+            if (!found) {
+              notFoundValues.push(searchVal);
+            }
+          });
+        }
 
         setResults(foundResults);
-        setNotFound(notFoundNumbers);
+        setNotFound(notFoundValues);
       };
 
       const getCSVOutput = () => {
@@ -154,22 +190,52 @@
               {jsonData && (
                 <>
                   <div className="bg-gray-50 rounded-lg p-6 mb-6">
-                    <h2 className="text-lg font-semibold mb-4">Store Numbers</h2>
+                    <h2 className="text-lg font-semibold mb-4">Search Configuration</h2>
                     
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Enter store numbers (comma-separated)
+                        Search Mode
+                      </label>
+                      <div className="flex flex-col gap-2">
+                        <label className="flex items-center">
+                          <input
+                            type="radio"
+                            value="forward"
+                            checked={searchMode === 'forward'}
+                            onChange={(e) => setSearchMode(e.target.value)}
+                            className="mr-2"
+                          />
+                          <span className="text-sm">Forward: Search cell[1] → Return cell[0]</span>
+                        </label>
+                        <label className="flex items-center">
+                          <input
+                            type="radio"
+                            value="reverse"
+                            checked={searchMode === 'reverse'}
+                            onChange={(e) => setSearchMode(e.target.value)}
+                            className="mr-2"
+                          />
+                          <span className="text-sm">Reverse: Search cell[0] → Return cell[1]</span>
+                        </label>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-2">
+                        {searchMode === 'forward' 
+                          ? 'Example: Enter "723" to find "723-Cedar Rapids" in cell[1] and get "1457737" from cell[0]'
+                          : 'Example: Enter "1457737" to find exact match in cell[0] and get "723-Cedar Rapids" from cell[1]'}
+                      </p>
+                    </div>
+                    
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Enter values to search for (comma-separated)
                       </label>
                       <textarea
                         value={storeNumbers}
                         onChange={(e) => setStoreNumbers(e.target.value)}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                        placeholder="723, 801, 456"
+                        placeholder={searchMode === 'forward' ? '723, 801, 456' : '1457737, 2345678, 9876543'}
                         rows="3"
                       />
-                      <p className="text-xs text-gray-500 mt-1">
-                        The tool will search for these numbers in the second cell of each row
-                      </p>
                     </div>
 
                     <button
@@ -189,7 +255,7 @@
                         <table className="w-full text-sm">
                           <thead className="bg-gray-100">
                             <tr>
-                              <th className="px-4 py-2 text-left font-medium text-gray-700">Search #</th>
+                              <th className="px-4 py-2 text-left font-medium text-gray-700">Searched For</th>
                               <th className="px-4 py-2 text-left font-medium text-gray-700">Matched In</th>
                               <th className="px-4 py-2 text-left font-medium text-gray-700">Result Value</th>
                             </tr>
@@ -197,7 +263,7 @@
                           <tbody>
                             {results.map((result, idx) => (
                               <tr key={idx} className="border-t border-gray-200">
-                                <td className="px-4 py-2">{result.searchNumber}</td>
+                                <td className="px-4 py-2">{result.searchValue}</td>
                                 <td className="px-4 py-2 text-gray-600">{result.matchedIn}</td>
                                 <td className="px-4 py-2 font-mono font-semibold text-teal-700">{result.resultValue}</td>
                               </tr>
@@ -208,7 +274,7 @@
 
                       <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          CSV Output (values from cell 1)
+                          CSV Output (result values from cell {searchMode === 'forward' ? '[0]' : '[1]'})
                         </label>
                         <textarea
                           value={getCSVOutput()}
