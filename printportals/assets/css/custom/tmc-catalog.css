@@ -320,7 +320,7 @@ z-index:-99;
    SEARCH AUTOFILL DROPDOWN
    ========================================================================== */
 .search-dropdown-section .list-group {
-  width: auto;
+  width: auto!important;
 }
 /* ==========================================================================
    DROPDOWNS
