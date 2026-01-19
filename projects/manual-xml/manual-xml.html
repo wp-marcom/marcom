@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cXML Order Generator</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <script type="text/babel">
+    const { useState } = React;
+
+    function CXMLGenerator() {
+      const [orderData, setOrderData] = useState({
+        orderNumber: 'MCW Online - 83949',
+        orderDate: '20260119',
+        orderTime: '08:07:50',
+        customerID: 'MISTER CAR WASH',
+        companyName: 'Mister Car Wash',
+        webUserID: 'co1341@mistercarwash.com',
+        webUserName: '1341 Academy Blvd',
+        userEmail: 'co1341@mistercarwash.com',
+        orderTotal: '70.74',
+        shippingMethod: 'Standard',
+        paymentMethod: 'Purchase Order',
+        billToCompany: 'Mister Car Wash North Campus HQ',
+        billToAddress2: '222 East 5th Street',
+        billToCity: 'Tucson',
+        billToState: 'AZ',
+        billToZip: '85705-8412',
+        shipToName: 'April Jaramillo',
+        shipToCompany: 'Mister Car Wash #1341',
+        shipToAddress1: 'CC 810',
+        shipToAddress2: '4275 N Academy Blvd',
+        shipToCity: 'Colorado Springs',
+        shipToState: 'CO',
+        shipToZip: '80918'
+      });
+
+      const [products, setProducts] = useState([
+        {
+          productCode: 'MCW11294',
+          entryType: 'V',
+          productName: 'Barrel Measuring Stick - 2025 Revision (11294)',
+          sku: '11294',
+          quantity: '1',
+          price: '0.00',
+          costCenterNumber: '810',
+          vendor: 'West Press',
+          promiseDate: '20260120'
+        }
+      ]);
+
+      const addProduct = () => {
+        setProducts([...products, {
+          productCode: '',
+          entryType: '',
+          productName: '',
+          sku: '',
+          quantity: '1',
+          price: '0.00',
+          costCenterNumber: '810',
+          vendor: 'West Press',
+          promiseDate: ''
+        }]);
+      };
+
+      const removeProduct = (index) => {
+        setProducts(products.filter((_, i) => i !== index));
+      };
+
+      const updateProduct = (index, field, value) => {
+        const newProducts = [...products];
+        newProducts[index][field] = value;
+        setProducts(newProducts);
+      };
+
+      const generateCXML = () => {
+        const timestamp = new Date().toISOString().replace(/\.\d{3}Z$/, '');
+        
+        return `<?xml version="1.0" encoding="utf-8"?>
+<cXML timestamp="${timestamp}" payloadID="JT@printable.com">
+  <Header>
+    <From>
+      <Credential domain="NetworkID">
+        <Identity>PrintableGateway</Identity>
+      </Credential>
+    </From>
+    <To>
+      <Credential domain="NetworkID">
+        <Identity>895-14715</Identity>
+      </Credential>
+    </To>
+    <Sender>
+      <Credential domain="NetworkID">
+        <Identity>gateway@printable.com</Identity>
+        <SharedSecret>sharedsecret</SharedSecret>
+      </Credential>
+      <UserAgent>Dashboard</UserAgent>
+    </Sender>
+  </Header>
+  <Request deploymentMode="production">
+    <Order>
+      <OrderNumber>${orderData.orderNumber}</OrderNumber>
+      <OrderDate>${orderData.orderDate}</OrderDate>
+      <OrderTime>${orderData.orderTime}</OrderTime>
+      <PromiseDate></PromiseDate>
+      <CustomerID>${orderData.customerID}</CustomerID>
+      <CompanyName>${orderData.companyName}</CompanyName>
+      <WebUserID>${orderData.webUserID}</WebUserID>
+      <WebUserName>${orderData.webUserName}</WebUserName>
+      <UserEmail>${orderData.userEmail}</UserEmail>
+      <RequisitionUserID></RequisitionUserID>
+      <RequisitionUserName> </RequisitionUserName>
+      <RequisitionUserEmail></RequisitionUserEmail>
+      <AvantiOrderedbyWebUser>${orderData.webUserName}</AvantiOrderedbyWebUser>
+      <AvantiOrderedbyWebUserEmail>${orderData.userEmail}</AvantiOrderedbyWebUserEmail>
+      <AvantiOrderedbyWebUserLoginID>${orderData.webUserID}</AvantiOrderedbyWebUserLoginID>
+      <UserGenericField1></UserGenericField1>
+      <UserGenericField2></UserGenericField2>
+      <UserGenericField3></UserGenericField3>
+      <UserGenericField4></UserGenericField4>
+      <UserGenericField5></UserGenericField5>
+      <UserGenericField6></UserGenericField6>
+      <UserGenericField7></UserGenericField7>
+      <UserGenericField8></UserGenericField8>
+      <UserGenericField9></UserGenericField9>
+      <UserGenericField10></UserGenericField10>
+      <RequisitionUserGenericField1></RequisitionUserGenericField1>
+      <RequisitionUserGenericField2></RequisitionUserGenericField2>
+      <RequisitionUserGenericField3></RequisitionUserGenericField3>
+      <RequisitionUserGenericField4></RequisitionUserGenericField4>
+      <RequisitionUserGenericField5></RequisitionUserGenericField5>
+      <RequisitionUserGenericField6></RequisitionUserGenericField6>
+      <RequisitionUserGenericField7></RequisitionUserGenericField7>
+      <RequisitionUserGenericField8></RequisitionUserGenericField8>
+      <RequisitionUserGenericField9></RequisitionUserGenericField9>
+      <RequisitionUserGenericField10></RequisitionUserGenericField10>
+      <OrderQuantity>${products.reduce((sum, p) => sum + parseInt(p.quantity || 0), 0)}</OrderQuantity>
+      <CustomerPO></CustomerPO>
+      <ShippingMethod>${orderData.shippingMethod}</ShippingMethod>
+      <OrderTotal>${orderData.orderTotal}</OrderTotal>
+      <TaxAmount1>0.00</TaxAmount1>
+      <OrderTotalShippingAmount>0.00</OrderTotalShippingAmount>
+      <PaymentMethod>${orderData.paymentMethod}</PaymentMethod>
+      <AuthorizationDate></AuthorizationDate>
+      <BillTo>
+        <BillToName></BillToName>
+        <BillToCompany>${orderData.billToCompany}</BillToCompany>
+        <BillToAddress1>None</BillToAddress1>
+        <BillToAddress2>${orderData.billToAddress2}</BillToAddress2>
+        <BillToAddress3></BillToAddress3>
+        <BillToAddress4></BillToAddress4>
+        <BillToCity>${orderData.billToCity}</BillToCity>
+        <BillToState>${orderData.billToState}</BillToState>
+        <BillToZip>${orderData.billToZip}</BillToZip>
+        <BillToCountry>United States</BillToCountry>
+        <BillToAttention></BillToAttention>
+      </BillTo>
+      <ShipTo>
+        <ShipToName>${orderData.shipToName}</ShipToName>
+        <ShipToCompany>${orderData.shipToCompany}</ShipToCompany>
+        <ShipToAddress1>${orderData.shipToAddress1}</ShipToAddress1>
+        <ShipToAddress2>${orderData.shipToAddress2}</ShipToAddress2>
+        <ShipToAddress3></ShipToAddress3>
+        <ShipToAddress4></ShipToAddress4>
+        <ShipToCity>${orderData.shipToCity}</ShipToCity>
+        <ShipToState>${orderData.shipToState}</ShipToState>
+        <ShipToZip>${orderData.shipToZip}</ShipToZip>
+        <ShipToCountry>United States</ShipToCountry>
+        <ShipToAttention>${orderData.shipToName}</ShipToAttention>
+      </ShipTo>
+      <Products>
+${products.map((product, idx) => `        <Product>
+          <ProductCode>${product.productCode}</ProductCode>
+          <EntryType>${product.entryType}</EntryType>
+          <ProductName>${product.productName}</ProductName>
+          <ProductDescription></ProductDescription>
+          <SkuPrefix></SkuPrefix>
+          <Sku>${product.sku}</Sku>
+          <SkuExternalID></SkuExternalID>
+          <Quantity>${product.quantity}</Quantity>
+          <ShipCost>0.00</ShipCost>
+          <Price>${product.price}</Price>
+          <PriceLessShip>${product.price}</PriceLessShip>
+          <PriceLessTaxandShip>${product.price}</PriceLessTaxandShip>
+          <ContentFile></ContentFile>
+          <OrderLineItemID>5742967${idx + 1}</OrderLineItemID>
+          <CostCenterNumber>${product.costCenterNumber}</CostCenterNumber>
+          <CostCenterName>${product.costCenterNumber}</CostCenterName>
+          <CostCenterExternalID></CostCenterExternalID>
+          <SpecialInstructions></SpecialInstructions>
+          <ShipTo>
+            <ShipToName>${orderData.shipToName}</ShipToName>
+            <ShipToCompany>${orderData.shipToCompany}</ShipToCompany>
+            <ShipToAddress1>${orderData.shipToAddress1}</ShipToAddress1>
+            <ShipToAddress2>${orderData.shipToAddress2}</ShipToAddress2>
+            <ShipToAddress3></ShipToAddress3>
+            <ShipToAddress4></ShipToAddress4>
+            <ShipToCity>${orderData.shipToCity}</ShipToCity>
+            <ShipToState>${orderData.shipToState}</ShipToState>
+            <ShipToZip>${orderData.shipToZip}</ShipToZip>
+            <ShipToCountry>United States</ShipToCountry>
+            <ShipToAttention></ShipToAttention>
+          </ShipTo>
+          <Finishing>
+            <GeneralDescription></GeneralDescription>
+            <PaperDescription></PaperDescription>
+            <PrePressInstructions></PrePressInstructions>
+            <PressInstructions></PressInstructions>
+            <BinderyInstructions></BinderyInstructions>
+            <ShipInstructions></ShipInstructions>
+          </Finishing>
+          <Vendor>${product.vendor}</Vendor>
+          <PromiseDate>${product.promiseDate}</PromiseDate>
+        </Product>`).join('\n')}
+      </Products>
+    </Order>
+  </Request>
+</cXML>`;
+      };
+
+      const downloadXML = () => {
+        const xml = generateCXML();
+        const blob = new Blob([xml], { type: 'text/xml' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `order_${orderData.orderNumber.replace(/\s/g, '_')}.xml`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      };
+
+      const copyToClipboard = () => {
+        navigator.clipboard.writeText(generateCXML());
+        alert('cXML copied to clipboard!');
+      };
+
+      return (
+        <div className="min-h-screen bg-gray-50 p-6">
+          <div className="max-w-6xl mx-auto">
+            <h1 className="text-3xl font-bold text-gray-900 mb-6">cXML Order Generator</h1>
+            
+            <div className="bg-white rounded-lg shadow p-6 mb-6">
+              <h2 className="text-xl font-semibold mb-4">Order Information</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Order Number"
+                  value={orderData.orderNumber}
+                  onChange={(e) => setOrderData({...orderData, orderNumber: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Order Date (YYYYMMDD)"
+                  value={orderData.orderDate}
+                  onChange={(e) => setOrderData({...orderData, orderDate: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Customer ID"
+                  value={orderData.customerID}
+                  onChange={(e) => setOrderData({...orderData, customerID: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Company Name"
+                  value={orderData.companyName}
+                  onChange={(e) => setOrderData({...orderData, companyName: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Web User ID"
+                  value={orderData.webUserID}
+                  onChange={(e) => setOrderData({...orderData, webUserID: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Order Total"
+                  value={orderData.orderTotal}
+                  onChange={(e) => setOrderData({...orderData, orderTotal: e.target.value})}
+                />
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow p-6 mb-6">
+              <h2 className="text-xl font-semibold mb-4">Shipping Address</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Ship To Name"
+                  value={orderData.shipToName}
+                  onChange={(e) => setOrderData({...orderData, shipToName: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Ship To Company"
+                  value={orderData.shipToCompany}
+                  onChange={(e) => setOrderData({...orderData, shipToCompany: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Address Line 1"
+                  value={orderData.shipToAddress1}
+                  onChange={(e) => setOrderData({...orderData, shipToAddress1: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Address Line 2"
+                  value={orderData.shipToAddress2}
+                  onChange={(e) => setOrderData({...orderData, shipToAddress2: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="City"
+                  value={orderData.shipToCity}
+                  onChange={(e) => setOrderData({...orderData, shipToCity: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="State"
+                  value={orderData.shipToState}
+                  onChange={(e) => setOrderData({...orderData, shipToState: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Zip Code"
+                  value={orderData.shipToZip}
+                  onChange={(e) => setOrderData({...orderData, shipToZip: e.target.value})}
+                />
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow p-6 mb-6">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-semibold">Products</h2>
+                <button
+                  onClick={addProduct}
+                  className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                  Add Product
+                </button>
+              </div>
+              
+              {products.map((product, index) => (
+                <div key={index} className="border rounded p-4 mb-4">
+                  <div className="flex justify-between items-center mb-3">
+                    <h3 className="font-semibold">Product {index + 1}</h3>
+                    {products.length > 1 && (
+                      <button
+                        onClick={() => removeProduct(index)}
+                        className="text-red-600 hover:text-red-800"
+                      >
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <polyline points="3 6 5 6 21 6"></polyline>
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                      </button>
+                    )}
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <input
+                      className="border rounded px-3 py-2"
+                      placeholder="Product Code"
+                      value={product.productCode}
+                      onChange={(e) => updateProduct(index, 'productCode', e.target.value)}
+                    />
+                    <input
+                      className="border rounded px-3 py-2"
+                      placeholder="Product Name"
+                      value={product.productName}
+                      onChange={(e) => updateProduct(index, 'productName', e.target.value)}
+                    />
+                    <input
+                      className="border rounded px-3 py-2"
+                      placeholder="SKU"
+                      value={product.sku}
+                      onChange={(e) => updateProduct(index, 'sku', e.target.value)}
+                    />
+                    <input
+                      className="border rounded px-3 py-2"
+                      placeholder="Quantity"
+                      type="number"
+                      value={product.quantity}
+                      onChange={(e) => updateProduct(index, 'quantity', e.target.value)}
+                    />
+                    <input
+                      className="border rounded px-3 py-2"
+                      placeholder="Price"
+                      value={product.price}
+                      onChange={(e) => updateProduct(index, 'price', e.target.value)}
+                    />
+                    <input
+                      className="border rounded px-3 py-2"
+                      placeholder="Promise Date (YYYYMMDD)"
+                      value={product.promiseDate}
+                      onChange={(e) => updateProduct(index, 'promiseDate', e.target.value)}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex gap-4">
+              <button
+                onClick={downloadXML}
+                className="flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download XML
+              </button>
+              <button
+                onClick={copyToClipboard}
+                className="flex items-center gap-2 bg-gray-600 text-white px-6 py-3 rounded hover:bg-gray-700"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copy to Clipboard
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<CXMLGenerator />, document.getElementById('root'));
+  </script>
+</body>
+</html>
