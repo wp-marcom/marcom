@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PO to Google Sheets Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .header p {
+            opacity: 0.9;
+        }
+        .content {
+            padding: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 8px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+        textarea, input[type="file"], input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            transition: border-color 0.3s;
+        }
+        textarea:focus, input[type="file"]:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+        input[type="text"] {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        button {
+            flex: 1;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .btn-success {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+            color: white;
+        }
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(86, 171, 47, 0.4);
+        }
+        .preview {
+            margin-top: 20px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .preview-header {
+            background: #f5f5f5;
+            padding: 12px;
+            font-weight: 600;
+            border-bottom: 2px solid #ddd;
+        }
+        .preview-content {
+            max-height: 400px;
+            overflow: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background: #f9f9f9;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        tr:hover {
+            background: #f5f5ff;
+        }
+        .status {
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 15px;
+            display: none;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
+        }
+        .file-input-wrapper {
+            position: relative;
+            margin-bottom: 10px;
+        }
+        .small-text {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .instructions {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .instructions h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .instructions ol {
+            margin-left: 20px;
+        }
+        .instructions li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .instructions code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+        .sheet-link {
+            margin-top: 15px;
+            padding: 15px;
+            background: #e7f3ff;
+            border-radius: 6px;
+            border: 2px solid #2196F3;
+        }
+        .sheet-link a {
+            color: #2196F3;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .sheet-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📦 Purchase Order to Google Sheets</h1>
+            <p>Convert email purchase orders into Google Sheets with embedded product images</p>
+        </div>
+        
+        <div class="content">
+            <div class="instructions">
+                <h3>📋 Setup Instructions</h3>
+                <ol>
+                    <li>Click "Authorize Google Sheets" below and grant permissions</li>
+                    <li>Upload your product JSON database</li>
+                    <li>Paste your purchase order email</li>
+                    <li>Click "Create Google Sheet" - it will open automatically with images!</li>
+                </ol>
+            </div>
+
+            <div class="section">
+                <h2>Step 1: Authorize Google Sheets</h2>
+                <button class="btn-success" onclick="authorizeGoogleSheets()" id="authBtn">🔐 Authorize Google Sheets</button>
+                <div id="authStatus" class="status"></div>
+            </div>
+
+            <div class="section">
+                <h2>Step 2: Upload JSON Product Database</h2>
+                <label for="jsonFile">Upload your product JSON file:</label>
+                <div class="file-input-wrapper">
+                    <input type="file" id="jsonFile" accept=".json">
+                    <p class="small-text">The JSON file should contain product records with image paths</p>
+                </div>
+                <div id="jsonStatus" class="status"></div>
+            </div>
+
+            <div class="section">
+                <h2>Step 3: Paste Purchase Order Email</h2>
+                <label for="emailBody">Paste the email body here:</label>
+                <textarea id="emailBody" placeholder="Paste your purchase order email content here..."></textarea>
+            </div>
+
+            <div class="button-group">
+                <button class="btn-primary" onclick="parseAndPreview()">Parse & Preview</button>
+                <button class="btn-primary" onclick="createGoogleSheet()" id="createBtn" disabled>📊 Create Google Sheet</button>
+            </div>
+
+            <div id="status" class="status"></div>
+
+            <div id="sheetLink" class="sheet-link" style="display: none;">
+                <a id="sheetUrl" href="#" target="_blank">🔗 Open your Google Sheet</a>
+            </div>
+
+            <div id="preview" class="preview" style="display: none;">
+                <div class="preview-header">📋 Preview (scroll to see all items)</div>
+                <div class="preview-content">
+                    <table id="previewTable">
+                        <thead>
+                            <tr>
+                                <th>Box #</th>
+                                <th>Product Name</th>
+                                <th>SKU</th>
+                                <th>Quantity</th>
+                                <th>Image URL</th>
+                            </tr>
+                        </thead>
+                        <tbody id="previewBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+        let productDatabase = [];
+        let parsedData = [];
+        let isAuthorized = false;
+        let tokenClient;
+        let gapiInited = false;
+        let gisInited = false;
+
+        const CLIENT_ID = 'YOUR_CLIENT_ID_HERE';
+        const API_KEY = 'YOUR_API_KEY_HERE';
+        const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
+        const SCOPES = 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.file';
+
+        // Load JSON file
+        document.getElementById('jsonFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                try {
+                    const json = JSON.parse(event.target.result);
+                    
+                    if (json.rows) {
+                        productDatabase = json.rows;
+                    } else if (Array.isArray(json)) {
+                        productDatabase = json;
+                    } else {
+                        throw new Error('Unexpected JSON format');
+                    }
+                    
+                    showStatus('jsonStatus', `✓ Loaded ${productDatabase.length} products`, 'success');
+                } catch (error) {
+                    showStatus('jsonStatus', `✗ Error loading JSON: ${error.message}`, 'error');
+                    productDatabase = [];
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        function gapiLoaded() {
+            gapi.load('client', initializeGapiClient);
+        }
+
+        async function initializeGapiClient() {
+            await gapi.client.init({
+                apiKey: API_KEY,
+                discoveryDocs: [DISCOVERY_DOC],
+            });
+            gapiInited = true;
+        }
+
+        function gisLoaded() {
+            tokenClient = google.accounts.oauth2.initTokenClient({
+                client_id: CLIENT_ID,
+                scope: SCOPES,
+                callback: '',
+            });
+            gisInited = true;
+        }
+
+        function authorizeGoogleSheets() {
+            if (!gapiInited || !gisInited) {
+                showStatus('authStatus', '⚠ Google APIs are still loading. Please wait and try again.', 'info');
+                return;
+            }
+
+            tokenClient.callback = async (resp) => {
+                if (resp.error !== undefined) {
+                    showStatus('authStatus', `✗ Authorization failed: ${resp.error}`, 'error');
+                    return;
+                }
+                isAuthorized = true;
+                showStatus('authStatus', '✓ Successfully authorized! You can now create Google Sheets.', 'success');
+                document.getElementById('authBtn').textContent = '✓ Authorized';
+                document.getElementById('authBtn').disabled = true;
+            };
+
+            if (gapi.client.getToken() === null) {
+                tokenClient.requestAccessToken({prompt: 'consent'});
+            } else {
+                tokenClient.requestAccessToken({prompt: ''});
+            }
+        }
+
+        function extractSKU(productName) {
+            const match = productName.match(/\(([^)]+)\)/);
+            return match ? match[1] : '';
+        }
+
+        function findProductImage(productName, sku) {
+            for (let product of productDatabase) {
+                const dbProductName = Array.isArray(product.cell) ? product.cell[4] : product.productName || product.name;
+                if (dbProductName && dbProductName.trim() === productName.trim()) {
+                    const imagePath = Array.isArray(product.cell) ? product.cell[2] : product.image || product.imagePath;
+                    return imagePath ? `https://images.printable.com${imagePath}` : '';
+                }
+            }
+            
+            if (sku) {
+                for (let product of productDatabase) {
+                    const dbSKU = Array.isArray(product.cell) ? product.cell[15] : product.sku;
+                    if (dbSKU && dbSKU.includes(sku)) {
+                        const imagePath = Array.isArray(product.cell) ? product.cell[2] : product.image || product.imagePath;
+                        return imagePath ? `https://images.printable.com${imagePath}` : '';
+                    }
+                }
+            }
+            
+            return '';
+        }
+
+        function parseEmail(emailText) {
+            const products = [];
+            const lines = emailText.split('\n');
+            
+            let i = 0;
+            while (i < lines.length) {
+                const line = lines[i].trim();
+                
+                if (line.startsWith('*Quantity:*')) {
+                    let quantity = '';
+                    let productName = '';
+                    
+                    const qtyMatch = line.match(/\*Quantity:\*\s*(\d+)/);
+                    if (qtyMatch) {
+                        quantity = qtyMatch[1];
+                    }
+                    
+                    for (let j = i + 1; j < Math.min(i + 10, lines.length); j++) {
+                        const nextLine = lines[j].trim();
+                        if (nextLine.startsWith('*Product Name:*')) {
+                            const nameMatch = nextLine.match(/\*Product Name:\*\s*(.+)/);
+                            if (nameMatch) {
+                                productName = nameMatch[1].trim();
+                                break;
+                            }
+                        }
+                    }
+                    
+                    if (quantity && productName) {
+                        const sku = extractSKU(productName);
+                        const imageUrl = findProductImage(productName, sku);
+                        
+                        products.push({
+                            quantity: quantity,
+                            productName: productName,
+                            sku: sku,
+                            imageUrl: imageUrl
+                        });
+                    }
+                }
+                
+                i++;
+            }
+            
+            return products;
+        }
+
+        function parseAndPreview() {
+            const emailText = document.getElementById('emailBody').value;
+            
+            if (!emailText.trim()) {
+                showStatus('status', '⚠ Please paste an email body first', 'error');
+                return;
+            }
+            
+            parsedData = parseEmail(emailText);
+            
+            if (parsedData.length === 0) {
+                showStatus('status', '⚠ No products found in the email. Please check the format.', 'error');
+                document.getElementById('preview').style.display = 'none';
+                document.getElementById('createBtn').disabled = true;
+                return;
+            }
+            
+            const tbody = document.getElementById('previewBody');
+            tbody.innerHTML = '';
+            
+            parsedData.forEach((item, index) => {
+                const row = tbody.insertRow();
+                row.insertCell(0).textContent = '';
+                row.insertCell(1).textContent = item.productName;
+                row.insertCell(2).textContent = item.sku;
+                row.insertCell(3).textContent = item.quantity;
+                row.insertCell(4).textContent = item.imageUrl || 'Not found';
+            });
+            
+            document.getElementById('preview').style.display = 'block';
+            document.getElementById('createBtn').disabled = false;
+            showStatus('status', `✓ Found ${parsedData.length} products. Ready to create Google Sheet!`, 'success');
+        }
+
+        async function createGoogleSheet() {
+            if (!isAuthorized) {
+                showStatus('status', '⚠ Please authorize Google Sheets first', 'error');
+                return;
+            }
+
+            if (parsedData.length === 0) {
+                showStatus('status', '⚠ Please parse the email first', 'error');
+                return;
+            }
+
+            showStatus('status', '⏳ Creating Google Sheet with images...', 'info');
+
+            try {
+                // Create a new spreadsheet
+                const createResponse = await gapi.client.sheets.spreadsheets.create({
+                    properties: {
+                        title: `Purchase Order - ${new Date().toLocaleDateString()}`
+                    }
+                });
+
+                const spreadsheetId = createResponse.result.spreadsheetId;
+
+                // Prepare the data
+                const values = [
+                    ['Box #', 'Product Name', 'SKU', 'Quantity', 'Image']
+                ];
+
+                parsedData.forEach(item => {
+                    values.push([
+                        '',
+                        item.productName,
+                        item.sku,
+                        item.quantity,
+                        item.imageUrl
+                    ]);
+                });
+
+                // Write the data
+                await gapi.client.sheets.spreadsheets.values.update({
+                    spreadsheetId: spreadsheetId,
+                    range: 'A1',
+                    valueInputOption: 'RAW',
+                    resource: { values: values }
+                });
+
+                // Format the sheet
+                const requests = [];
+
+                // Header formatting
+                requests.push({
+                    repeatCell: {
+                        range: {
+                            sheetId: 0,
+                            startRowIndex: 0,
+                            endRowIndex: 1
+                        },
+                        cell: {
+                            userEnteredFormat: {
+                                backgroundColor: { red: 0.4, green: 0.49, blue: 0.92 },
+                                textFormat: {
+                                    foregroundColor: { red: 1, green: 1, blue: 1 },
+                                    bold: true
+                                }
+                            }
+                        },
+                        fields: 'userEnteredFormat(backgroundColor,textFormat)'
+                    }
+                });
+
+                // Set column widths
+                requests.push({
+                    updateDimensionProperties: {
+                        range: { sheetId: 0, dimension: 'COLUMNS', startIndex: 0, endIndex: 1 },
+                        properties: { pixelSize: 80 },
+                        fields: 'pixelSize'
+                    }
+                });
+                requests.push({
+                    updateDimensionProperties: {
+                        range: { sheetId: 0, dimension: 'COLUMNS', startIndex: 1, endIndex: 2 },
+                        properties: { pixelSize: 350 },
+                        fields: 'pixelSize'
+                    }
+                });
+                requests.push({
+                    updateDimensionProperties: {
+                        range: { sheetId: 0, dimension: 'COLUMNS', startIndex: 2, endIndex: 3 },
+                        properties: { pixelSize: 120 },
+                        fields: 'pixelSize'
+                    }
+                });
+                requests.push({
+                    updateDimensionProperties: {
+                        range: { sheetId: 0, dimension: 'COLUMNS', startIndex: 3, endIndex: 4 },
+                        properties: { pixelSize: 100 },
+                        fields: 'pixelSize'
+                    }
+                });
+                requests.push({
+                    updateDimensionProperties: {
+                        range: { sheetId: 0, dimension: 'COLUMNS', startIndex: 4, endIndex: 5 },
+                        properties: { pixelSize: 200 },
+                        fields: 'pixelSize'
+                    }
+                });
+
+                // Set row heights for data rows (make them taller for images)
+                requests.push({
+                    updateDimensionProperties: {
+                        range: { sheetId: 0, dimension: 'ROWS', startIndex: 1, endIndex: parsedData.length + 1 },
+                        properties: { pixelSize: 150 },
+                        fields: 'pixelSize'
+                    }
+                });
+
+                // Add IMAGE formulas
+                for (let i = 0; i < parsedData.length; i++) {
+                    if (parsedData[i].imageUrl) {
+                        requests.push({
+                            updateCells: {
+                                range: {
+                                    sheetId: 0,
+                                    startRowIndex: i + 1,
+                                    endRowIndex: i + 2,
+                                    startColumnIndex: 4,
+                                    endColumnIndex: 5
+                                },
+                                rows: [{
+                                    values: [{
+                                        userEnteredValue: {
+                                            formulaValue: `=IMAGE("${parsedData[i].imageUrl}")`
+                                        }
+                                    }]
+                                }],
+                                fields: 'userEnteredValue'
+                            }
+                        });
+                    }
+                }
+
+                // Apply all formatting
+                await gapi.client.sheets.spreadsheets.batchUpdate({
+                    spreadsheetId: spreadsheetId,
+                    resource: { requests: requests }
+                });
+
+                const sheetUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}`;
+                document.getElementById('sheetUrl').href = sheetUrl;
+                document.getElementById('sheetLink').style.display = 'block';
+                
+                showStatus('status', '✓ Google Sheet created successfully with embedded images!', 'success');
+                
+                // Open the sheet
+                window.open(sheetUrl, '_blank');
+
+            } catch (error) {
+                console.error('Error creating sheet:', error);
+                showStatus('status', `✗ Error: ${error.message}`, 'error');
+            }
+        }
+
+        function showStatus(elementId, message, type) {
+            const statusEl = document.getElementById(elementId);
+            statusEl.textContent = message;
+            statusEl.className = `status ${type}`;
+        }
+
+        // Load Google APIs
+        window.onload = function() {
+            const script1 = document.createElement('script');
+            script1.src = 'https://apis.google.com/js/api.js';
+            script1.onload = gapiLoaded;
+            document.head.appendChild(script1);
+
+            const script2 = document.createElement('script');
+            script2.src = 'https://accounts.google.com/gsi/client';
+            script2.onload = gisLoaded;
+            document.head.appendChild(script2);
+        };
+    </script>
+</body>
+</html>
