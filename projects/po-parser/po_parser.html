@@ -291,6 +291,18 @@
       color: #6b7280;
       margin-top: 0.5rem;
     }
+
+    .debug-box {
+      background: #1f2937;
+      color: #10b981;
+      padding: 1rem;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.75rem;
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -322,6 +334,7 @@
       const [imageSize, setImageSize] = useState('3');
       const [output, setOutput] = useState('');
       const [parsedData, setParsedData] = useState([]);
+      const [debugLog, setDebugLog] = useState([]);
 
       const handleFileUpload = async (event) => {
         const file = event.target.files[0];
@@ -372,53 +385,114 @@
       const parseEmail = (emailText) => {
         const products = [];
         const lines = emailText.split('\n');
+        const logs = [];
         
+        logs.push(`Total lines: ${lines.length}`);
+        let quantityCount = 0;
+
         let i = 0;
         while (i < lines.length) {
           const line = lines[i].trim();
-          
+
           if (line.startsWith('*Quantity:*')) {
+            quantityCount++;
+            logs.push(`\nFound Quantity #${quantityCount} at line ${i}: "${line.substring(0, 60)}..."`);
+            
             let quantity = '';
             let productName = '';
+
+            const inlineMatch = line.match(/\*Quantity:\*\s*(\d+)\s+of\s+\d+.*\(Product Name:/);
             
-            const qtyMatch = line.match(/\*Quantity:\*\s*(\d+)/);
-            if (qtyMatch) {
-              quantity = qtyMatch[1];
-            }
-            
-            for (let j = i + 1; j < Math.min(i + 10, lines.length); j++) {
-              const nextLine = lines[j].trim();
-              if (nextLine.startsWith('*Product Name:*')) {
-                const nameMatch = nextLine.match(/\*Product Name:\*\s*(.+)/);
-                if (nameMatch) {
-                  productName = nameMatch[1].trim();
+            if (inlineMatch) {
+              logs.push('  -> INLINE FORMAT detected');
+              quantity = inlineMatch[1];
+
+              let nameBuffer = line.split('(Product Name:')[1].trim();
+
+              // Keep reading until we find a line that ends with ")"
+              let k = i + 1;
+              while (k < lines.length) {
+                const nextLine = lines[k].trim();
+                // Stop if we hit another field marker (next product)
+                if (nextLine.startsWith('*')) {
+                  break;
+                }
+                // Skip empty lines
+                if (!nextLine) {
+                  k++;
+                  continue;
+                }
+                nameBuffer += ' ' + nextLine;
+                // Check if this line ends with ")" - if so, we're done
+                if (nextLine.endsWith(')')) {
+                  break;
+                }
+                k++;
+              }
+
+              productName = nameBuffer.replace(/\)\s*$/, '').trim();
+              logs.push(`  -> Product: "${productName}" | Qty: ${quantity}`);
+
+            } else {
+              logs.push('  -> STANDARD FORMAT detected');
+              const qtyMatch = line.match(/\*Quantity:\*\s*(\d+)/);
+              if (qtyMatch) {
+                quantity = qtyMatch[1];
+              }
+
+              for (let j = i + 1; j < Math.min(i + 15, lines.length); j++) {
+                const nextLine = lines[j].trim();
+                if (nextLine.startsWith('*Product Name:*')) {
+                  let nameBuffer = nextLine.replace('*Product Name:*', '').trim();
+                  
+                  let k = j + 1;
+                  while (k < lines.length) {
+                    const followLine = lines[k].trim();
+                    if (followLine.startsWith('*')) {
+                      break;
+                    }
+                    if (followLine) {
+                      nameBuffer += ' ' + followLine;
+                    }
+                    k++;
+                  }
+                  
+                  productName = nameBuffer.trim();
+                  logs.push(`  -> Product: "${productName}" | Qty: ${quantity}`);
                   break;
                 }
               }
             }
-            
+
             if (quantity && productName) {
               const sku = extractSKU(productName);
               const imagePath = findProductImage(productName, sku);
-              
+
               products.push({
                 quantity: quantity,
                 productName: productName,
                 sku: sku,
                 imagePath: imagePath
               });
+            } else {
+              logs.push('  -> SKIPPED (missing qty or name)');
             }
           }
-          
+
           i++;
         }
         
+        logs.push(`\n=== SUMMARY ===`);
+        logs.push(`Total Quantity lines found: ${quantityCount}`);
+        logs.push(`Total products extracted: ${products.length}`);
+        
+        setDebugLog(logs);
         return products;
       };
 
       const encodeImageUrl = (url) => {
-  return url.replace(/ /g, '%20');
-};
+        return url.replace(/ /g, '%20');
+      };
 
       const generateOutput = () => {
         if (!emailBody.trim()) {
@@ -430,7 +504,7 @@
         setParsedData(parsed);
 
         if (parsed.length === 0) {
-          alert('No products found in the email. Please check the format.');
+          alert('No products found in the email. Please check the DEBUG LOG below.');
           setOutput('');
           return;
         }
@@ -450,12 +524,12 @@
           rowData.push(item.quantity);
           
           if (item.imagePath) {
-  const path = item.imagePath.startsWith('/') ? item.imagePath.substring(1) : item.imagePath;
-  const fullUrl = `${baseDomain}/${path}`;
-  const encodedUrl = encodeImageUrl(fullUrl);
-  const imageFormula = `=IMAGE("${encodedUrl}",${imageSize})`;
-  rowData.push(imageFormula);
-} else {
+            const path = item.imagePath.startsWith('/') ? item.imagePath.substring(1) : item.imagePath;
+            const fullUrl = `${baseDomain}/${path}`;
+            const encodedUrl = encodeImageUrl(fullUrl);
+            const imageFormula = `=IMAGE("${encodedUrl}",${imageSize})`;
+            rowData.push(imageFormula);
+          } else {
             rowData.push('');
           }
           
@@ -463,7 +537,7 @@
         });
 
         setOutput(result);
-        alert(`Found ${parsed.length} products! Copy the output and paste into Google Sheets.`);
+        alert(`Found ${parsed.length} products! Check DEBUG LOG for details.`);
       };
 
       const copyToClipboard = () => {
@@ -548,6 +622,17 @@
             >
               Generate Output
             </button>
+
+            {debugLog.length > 0 && (
+              <div className="section">
+                <h2>🐛 DEBUG LOG (Check Console for Details)</h2>
+                <div className="debug-box">
+                  {debugLog.map((log, idx) => (
+                    <div key={idx}>{log}</div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {output && (
               <>
