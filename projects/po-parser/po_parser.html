@@ -1,672 +1,625 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PO to Google Sheets Generator</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        .header h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        .header p {
-            opacity: 0.9;
-        }
-        .content {
-            padding: 30px;
-        }
-        .section {
-            margin-bottom: 30px;
-        }
-        .section h2 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 20px;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 8px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: 500;
-        }
-        textarea, input[type="file"], input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            transition: border-color 0.3s;
-        }
-        textarea:focus, input[type="file"]:focus, input[type="text"]:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        textarea {
-            min-height: 200px;
-            resize: vertical;
-        }
-        input[type="text"] {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-        }
-        .button-group {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        button {
-            flex: 1;
-            padding: 14px 28px;
-            font-size: 16px;
-            font-weight: 600;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-        }
-        .btn-primary:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-        .btn-success {
-            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
-            color: white;
-        }
-        .btn-success:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(86, 171, 47, 0.4);
-        }
-        .preview {
-            margin-top: 20px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-        .preview-header {
-            background: #f5f5f5;
-            padding: 12px;
-            font-weight: 600;
-            border-bottom: 2px solid #ddd;
-        }
-        .preview-content {
-            max-height: 400px;
-            overflow: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-        th {
-            background: #f9f9f9;
-            font-weight: 600;
-            position: sticky;
-            top: 0;
-        }
-        tr:hover {
-            background: #f5f5ff;
-        }
-        .status {
-            padding: 12px;
-            border-radius: 6px;
-            margin-top: 15px;
-            display: none;
-        }
-        .status.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            display: block;
-        }
-        .status.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-            display: block;
-        }
-        .status.info {
-            background: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
-            display: block;
-        }
-        .file-input-wrapper {
-            position: relative;
-            margin-bottom: 10px;
-        }
-        .small-text {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-        }
-        .instructions {
-            background: #f8f9fa;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
-        .instructions h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-        .instructions ol {
-            margin-left: 20px;
-        }
-        .instructions li {
-            margin-bottom: 8px;
-            color: #555;
-        }
-        .instructions code {
-            background: #e9ecef;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 12px;
-        }
-        .sheet-link {
-            margin-top: 15px;
-            padding: 15px;
-            background: #e7f3ff;
-            border-radius: 6px;
-            border: 2px solid #2196F3;
-        }
-        .sheet-link a {
-            color: #2196F3;
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        .sheet-link a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purchase Order to Google Sheets</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #1f2937;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+
+    .upload-area {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 128px;
+      padding: 1rem;
+      border: 2px dashed #d1d5db;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+    }
+
+    .upload-area:hover {
+      border-color: #6366f1;
+      background-color: #eef2ff;
+    }
+
+    .upload-area svg {
+      color: #6b7280;
+    }
+
+    .upload-text {
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+
+    .upload-success {
+      color: #059669;
+      font-weight: 500;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    textarea {
+      width: 100%;
+      height: 256px;
+      padding: 0.75rem;
+      border: 2px solid #d1d5db;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      resize: vertical;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    input[type="text"], select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 0.875rem;
+    }
+
+    input[type="text"]:focus, select:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 0.5rem;
+    }
+
+    .help-text {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+
+    .config-box {
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: #6366f1;
+      color: white;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: #4f46e5;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+    }
+
+    .btn-success {
+      background: #10b981;
+      color: white;
+      flex: 1;
+    }
+
+    .btn-success:hover {
+      background: #059669;
+    }
+
+    .btn-info {
+      background: #3b82f6;
+      color: white;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-info:hover {
+      background: #2563eb;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .alert {
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      border-left: 4px solid;
+    }
+
+    .alert-success {
+      background: #d1fae5;
+      border-color: #10b981;
+      color: #065f46;
+    }
+
+    .alert-warning {
+      background: #fef3c7;
+      border-color: #f59e0b;
+      color: #92400e;
+    }
+
+    .preview-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+    }
+
+    .preview-table th {
+      background: #f3f4f6;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      border: 1px solid #d1d5db;
+    }
+
+    .preview-table td {
+      padding: 0.75rem 1rem;
+      border: 1px solid #d1d5db;
+    }
+
+    .preview-table tbody tr:hover {
+      background: #f9fafb;
+    }
+
+    .output-box {
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .output-box textarea {
+      height: 256px;
+      font-size: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .instructions {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      border-radius: 6px;
+    }
+
+    .instructions p {
+      font-size: 0.875rem;
+      color: #92400e;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .instructions ol {
+      font-size: 0.875rem;
+      color: #92400e;
+      margin-left: 1.5rem;
+    }
+
+    .instructions li {
+      margin-bottom: 0.25rem;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 0.5rem;
+    }
+
+    .small-text {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-top: 0.5rem;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📦 Purchase Order to Google Sheets</h1>
-            <p>Convert email purchase orders into Google Sheets with embedded product images</p>
-        </div>
+  <div id="root"></div>
+  
+  <script type="text/babel">
+    const { useState } = React;
+
+    const Upload = () => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="17 8 12 3 7 8"></polyline>
+        <line x1="12" y1="3" x2="12" y2="15"></line>
+      </svg>
+    );
+
+    const Download = () => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+    );
+
+    function POConverter() {
+      const [jsonData, setJsonData] = useState(null);
+      const [emailBody, setEmailBody] = useState('');
+      const [baseDomain, setBaseDomain] = useState('https://images.printable.com');
+      const [imageSize, setImageSize] = useState('3');
+      const [output, setOutput] = useState('');
+      const [parsedData, setParsedData] = useState([]);
+
+      const handleFileUpload = async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        try {
+          const text = await file.text();
+          const data = JSON.parse(text);
+          setJsonData(data);
+          
+          if (data.rows && data.rows.length > 0) {
+            alert(`JSON loaded! Found ${data.rows.length} product records.`);
+          }
+        } catch (error) {
+          alert('Error parsing JSON file: ' + error.message);
+        }
+      };
+
+      const extractSKU = (productName) => {
+        const match = productName.match(/\(([^)]+)\)/);
+        return match ? match[1] : '';
+      };
+
+      const findProductImage = (productName, sku) => {
+        if (!jsonData || !jsonData.rows) return '';
+
+        for (let product of jsonData.rows) {
+          const dbProductName = product.cell[4];
+          if (dbProductName && dbProductName.trim() === productName.trim()) {
+            const imagePath = product.cell[2];
+            return imagePath || '';
+          }
+        }
         
-        <div class="content">
-            <div class="instructions">
-                <h3>📋 Setup Instructions</h3>
-                <ol>
-                    <li>Click "Authorize Google Sheets" below and grant permissions</li>
-                    <li>Upload your product JSON database</li>
-                    <li>Paste your purchase order email</li>
-                    <li>Click "Create Google Sheet" - it will open automatically with images!</li>
-                </ol>
-            </div>
+        if (sku) {
+          for (let product of jsonData.rows) {
+            const dbSKU = product.cell[15];
+            if (dbSKU && dbSKU.includes(sku)) {
+              const imagePath = product.cell[2];
+              return imagePath || '';
+            }
+          }
+        }
+        
+        return '';
+      };
 
-            <div class="section">
-                <h2>Step 1: Authorize Google Sheets</h2>
-                <button class="btn-success" onclick="authorizeGoogleSheets()" id="authBtn">🔐 Authorize Google Sheets</button>
-                <div id="authStatus" class="status"></div>
-            </div>
-
-            <div class="section">
-                <h2>Step 2: Upload JSON Product Database</h2>
-                <label for="jsonFile">Upload your product JSON file:</label>
-                <div class="file-input-wrapper">
-                    <input type="file" id="jsonFile" accept=".json">
-                    <p class="small-text">The JSON file should contain product records with image paths</p>
-                </div>
-                <div id="jsonStatus" class="status"></div>
-            </div>
-
-            <div class="section">
-                <h2>Step 3: Paste Purchase Order Email</h2>
-                <label for="emailBody">Paste the email body here:</label>
-                <textarea id="emailBody" placeholder="Paste your purchase order email content here..."></textarea>
-            </div>
-
-            <div class="button-group">
-                <button class="btn-primary" onclick="parseAndPreview()">Parse & Preview</button>
-                <button class="btn-primary" onclick="createGoogleSheet()" id="createBtn" disabled>📊 Create Google Sheet</button>
-            </div>
-
-            <div id="status" class="status"></div>
-
-            <div id="sheetLink" class="sheet-link" style="display: none;">
-                <a id="sheetUrl" href="#" target="_blank">🔗 Open your Google Sheet</a>
-            </div>
-
-            <div id="preview" class="preview" style="display: none;">
-                <div class="preview-header">📋 Preview (scroll to see all items)</div>
-                <div class="preview-content">
-                    <table id="previewTable">
-                        <thead>
-                            <tr>
-                                <th>Box #</th>
-                                <th>Product Name</th>
-                                <th>SKU</th>
-                                <th>Quantity</th>
-                                <th>Image URL</th>
-                            </tr>
-                        </thead>
-                        <tbody id="previewBody"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://apis.google.com/js/api.js"></script>
-    <script>
-        let productDatabase = [];
-        let parsedData = [];
-        let isAuthorized = false;
-        let tokenClient;
-        let gapiInited = false;
-        let gisInited = false;
-
-        const CLIENT_ID = 'YOUR_CLIENT_ID_HERE';
-        const API_KEY = 'YOUR_API_KEY_HERE';
-        const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
-        const SCOPES = 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.file';
-
-        // Load JSON file
-        document.getElementById('jsonFile').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                try {
-                    const json = JSON.parse(event.target.result);
-                    
-                    if (json.rows) {
-                        productDatabase = json.rows;
-                    } else if (Array.isArray(json)) {
-                        productDatabase = json;
-                    } else {
-                        throw new Error('Unexpected JSON format');
-                    }
-                    
-                    showStatus('jsonStatus', `✓ Loaded ${productDatabase.length} products`, 'success');
-                } catch (error) {
-                    showStatus('jsonStatus', `✗ Error loading JSON: ${error.message}`, 'error');
-                    productDatabase = [];
+      const parseEmail = (emailText) => {
+        const products = [];
+        const lines = emailText.split('\n');
+        
+        let i = 0;
+        while (i < lines.length) {
+          const line = lines[i].trim();
+          
+          if (line.startsWith('*Quantity:*')) {
+            let quantity = '';
+            let productName = '';
+            
+            const qtyMatch = line.match(/\*Quantity:\*\s*(\d+)/);
+            if (qtyMatch) {
+              quantity = qtyMatch[1];
+            }
+            
+            for (let j = i + 1; j < Math.min(i + 10, lines.length); j++) {
+              const nextLine = lines[j].trim();
+              if (nextLine.startsWith('*Product Name:*')) {
+                const nameMatch = nextLine.match(/\*Product Name:\*\s*(.+)/);
+                if (nameMatch) {
+                  productName = nameMatch[1].trim();
+                  break;
                 }
-            };
-            reader.readAsText(file);
+              }
+            }
+            
+            if (quantity && productName) {
+              const sku = extractSKU(productName);
+              const imagePath = findProductImage(productName, sku);
+              
+              products.push({
+                quantity: quantity,
+                productName: productName,
+                sku: sku,
+                imagePath: imagePath
+              });
+            }
+          }
+          
+          i++;
+        }
+        
+        return products;
+      };
+
+      const encodeImageUrl = (url) => {
+  return url.replace(/ /g, '%20');
+};
+
+      const generateOutput = () => {
+        if (!emailBody.trim()) {
+          alert('Please paste an email body first');
+          return;
+        }
+
+        const parsed = parseEmail(emailBody);
+        setParsedData(parsed);
+
+        if (parsed.length === 0) {
+          alert('No products found in the email. Please check the format.');
+          setOutput('');
+          return;
+        }
+
+        let result = '';
+        
+        parsed.forEach((item) => {
+          const rowData = [];
+          
+          rowData.push('');
+          
+          const productName = String(item.productName).replace(/"/g, '""');
+          rowData.push(productName);
+          
+          rowData.push(item.sku);
+          
+          rowData.push(item.quantity);
+          
+          if (item.imagePath) {
+  const path = item.imagePath.startsWith('/') ? item.imagePath.substring(1) : item.imagePath;
+  const fullUrl = `${baseDomain}/${path}`;
+  const encodedUrl = encodeImageUrl(fullUrl);
+  const imageFormula = `=IMAGE("${encodedUrl}",${imageSize})`;
+  rowData.push(imageFormula);
+} else {
+            rowData.push('');
+          }
+          
+          result += rowData.join('\t') + '\n';
         });
 
-        function gapiLoaded() {
-            gapi.load('client', initializeGapiClient);
-        }
+        setOutput(result);
+        alert(`Found ${parsed.length} products! Copy the output and paste into Google Sheets.`);
+      };
 
-        async function initializeGapiClient() {
-            await gapi.client.init({
-                apiKey: API_KEY,
-                discoveryDocs: [DISCOVERY_DOC],
-            });
-            gapiInited = true;
-        }
+      const copyToClipboard = () => {
+        navigator.clipboard.writeText(output);
+        alert('Copied to clipboard! You can now paste directly into Google Sheets.');
+      };
 
-        function gisLoaded() {
-            tokenClient = google.accounts.oauth2.initTokenClient({
-                client_id: CLIENT_ID,
-                scope: SCOPES,
-                callback: '',
-            });
-            gisInited = true;
-        }
+      const downloadAsTSV = () => {
+        const blob = new Blob([output], { type: 'text/tab-separated-values' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `PurchaseOrder_${new Date().toISOString().split('T')[0]}.tsv`;
+        a.click();
+        URL.revokeObjectURL(url);
+      };
 
-        function authorizeGoogleSheets() {
-            if (!gapiInited || !gisInited) {
-                showStatus('authStatus', '⚠ Google APIs are still loading. Please wait and try again.', 'info');
-                return;
-            }
+      return (
+        <div className="container">
+          <div className="card">
+            <h1>📦 Purchase Order to Google Sheets</h1>
+            <p className="subtitle">Convert email purchase orders into Google Sheets format with embedded product images</p>
 
-            tokenClient.callback = async (resp) => {
-                if (resp.error !== undefined) {
-                    showStatus('authStatus', `✗ Authorization failed: ${resp.error}`, 'error');
-                    return;
-                }
-                isAuthorized = true;
-                showStatus('authStatus', '✓ Successfully authorized! You can now create Google Sheets.', 'success');
-                document.getElementById('authBtn').textContent = '✓ Authorized';
-                document.getElementById('authBtn').disabled = true;
-            };
+            <div className="section">
+              <h2>Step 1: Upload JSON Product Database</h2>
+              <label className="upload-area">
+                <div>
+                  <Upload />
+                  <span className="upload-text">
+                    {jsonData ? <span className="upload-success">✓ Loaded {jsonData.rows.length} products</span> : 'Click to upload your JSON file'}
+                  </span>
+                </div>
+                <input type="file" accept=".json" onChange={handleFileUpload} />
+              </label>
+            </div>
 
-            if (gapi.client.getToken() === null) {
-                tokenClient.requestAccessToken({prompt: 'consent'});
-            } else {
-                tokenClient.requestAccessToken({prompt: ''});
-            }
-        }
+            <div className="section">
+              <h2>Step 2: Paste Purchase Order Email</h2>
+              <textarea
+                value={emailBody}
+                onChange={(e) => setEmailBody(e.target.value)}
+                placeholder="Paste your purchase order email content here..."
+              />
+            </div>
 
-        function extractSKU(productName) {
-            const match = productName.match(/\(([^)]+)\)/);
-            return match ? match[1] : '';
-        }
-
-        function findProductImage(productName, sku) {
-            for (let product of productDatabase) {
-                const dbProductName = Array.isArray(product.cell) ? product.cell[4] : product.productName || product.name;
-                if (dbProductName && dbProductName.trim() === productName.trim()) {
-                    const imagePath = Array.isArray(product.cell) ? product.cell[2] : product.image || product.imagePath;
-                    return imagePath ? `https://images.printable.com${imagePath}` : '';
-                }
-            }
-            
-            if (sku) {
-                for (let product of productDatabase) {
-                    const dbSKU = Array.isArray(product.cell) ? product.cell[15] : product.sku;
-                    if (dbSKU && dbSKU.includes(sku)) {
-                        const imagePath = Array.isArray(product.cell) ? product.cell[2] : product.image || product.imagePath;
-                        return imagePath ? `https://images.printable.com${imagePath}` : '';
-                    }
-                }
-            }
-            
-            return '';
-        }
-
-        function parseEmail(emailText) {
-            const products = [];
-            const lines = emailText.split('\n');
-            
-            let i = 0;
-            while (i < lines.length) {
-                const line = lines[i].trim();
+            {jsonData && (
+              <div className="config-box">
+                <h2>Configuration</h2>
                 
-                if (line.startsWith('*Quantity:*')) {
-                    let quantity = '';
-                    let productName = '';
-                    
-                    const qtyMatch = line.match(/\*Quantity:\*\s*(\d+)/);
-                    if (qtyMatch) {
-                        quantity = qtyMatch[1];
-                    }
-                    
-                    for (let j = i + 1; j < Math.min(i + 10, lines.length); j++) {
-                        const nextLine = lines[j].trim();
-                        if (nextLine.startsWith('*Product Name:*')) {
-                            const nameMatch = nextLine.match(/\*Product Name:\*\s*(.+)/);
-                            if (nameMatch) {
-                                productName = nameMatch[1].trim();
-                                break;
-                            }
-                        }
-                    }
-                    
-                    if (quantity && productName) {
-                        const sku = extractSKU(productName);
-                        const imageUrl = findProductImage(productName, sku);
-                        
-                        products.push({
-                            quantity: quantity,
-                            productName: productName,
-                            sku: sku,
-                            imageUrl: imageUrl
-                        });
-                    }
-                }
-                
-                i++;
-            }
-            
-            return products;
-        }
+                <div className="section">
+                  <label>Base Domain (for images)</label>
+                  <input
+                    type="text"
+                    value={baseDomain}
+                    onChange={(e) => setBaseDomain(e.target.value)}
+                    placeholder="https://images.printable.com"
+                  />
+                </div>
 
-        function parseAndPreview() {
-            const emailText = document.getElementById('emailBody').value;
-            
-            if (!emailText.trim()) {
-                showStatus('status', '⚠ Please paste an email body first', 'error');
-                return;
-            }
-            
-            parsedData = parseEmail(emailText);
-            
-            if (parsedData.length === 0) {
-                showStatus('status', '⚠ No products found in the email. Please check the format.', 'error');
-                document.getElementById('preview').style.display = 'none';
-                document.getElementById('createBtn').disabled = true;
-                return;
-            }
-            
-            const tbody = document.getElementById('previewBody');
-            tbody.innerHTML = '';
-            
-            parsedData.forEach((item, index) => {
-                const row = tbody.insertRow();
-                row.insertCell(0).textContent = '';
-                row.insertCell(1).textContent = item.productName;
-                row.insertCell(2).textContent = item.sku;
-                row.insertCell(3).textContent = item.quantity;
-                row.insertCell(4).textContent = item.imageUrl || 'Not found';
-            });
-            
-            document.getElementById('preview').style.display = 'block';
-            document.getElementById('createBtn').disabled = false;
-            showStatus('status', `✓ Found ${parsedData.length} products. Ready to create Google Sheet!`, 'success');
-        }
+                <div className="section">
+                  <label>Image Display Size</label>
+                  <select
+                    value={imageSize}
+                    onChange={(e) => setImageSize(e.target.value)}
+                  >
+                    <option value="1">Size 1 - Fit to cell (default)</option>
+                    <option value="2">Size 2 - Stretch to fit cell</option>
+                    <option value="3">Size 3 - Original size (recommended)</option>
+                    <option value="4">Size 4 - Custom size (use cell dimensions)</option>
+                  </select>
+                  <p className="help-text">
+                    Size 3 is recommended. You can resize rows/columns in Sheets after pasting.
+                  </p>
+                </div>
+              </div>
+            )}
 
-        async function createGoogleSheet() {
-            if (!isAuthorized) {
-                showStatus('status', '⚠ Please authorize Google Sheets first', 'error');
-                return;
-            }
+            <button
+              onClick={generateOutput}
+              disabled={!jsonData}
+              className="btn-primary"
+            >
+              Generate Output
+            </button>
 
-            if (parsedData.length === 0) {
-                showStatus('status', '⚠ Please parse the email first', 'error');
-                return;
-            }
+            {output && (
+              <>
+                <div className="alert alert-success">
+                  ✓ Found {parsedData.length} products! Copy the output below and paste directly into Google Sheets.
+                </div>
 
-            showStatus('status', '⏳ Creating Google Sheet with images...', 'info');
+                <div className="config-box">
+                  <h2>Preview</h2>
+                  <div className="table-wrapper">
+                    <table className="preview-table">
+                      <thead>
+                        <tr>
+                          <th>Box #</th>
+                          <th>Product Name</th>
+                          <th>SKU</th>
+                          <th>Quantity</th>
+                          <th>Image</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {parsedData.slice(0, 5).map((item, idx) => (
+                          <tr key={idx}>
+                            <td></td>
+                            <td>{item.productName}</td>
+                            <td>{item.sku}</td>
+                            <td>{item.quantity}</td>
+                            <td>{item.imagePath ? '✓ Found' : '✗ Not found'}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  {parsedData.length > 5 && (
+                    <p className="small-text">Showing first 5 of {parsedData.length} items</p>
+                  )}
+                </div>
 
-            try {
-                // Create a new spreadsheet
-                const createResponse = await gapi.client.sheets.spreadsheets.create({
-                    properties: {
-                        title: `Purchase Order - ${new Date().toLocaleDateString()}`
-                    }
-                });
+                <div className="output-box">
+                  <h2>Output (Tab-Separated)</h2>
+                  <textarea
+                    value={output}
+                    readOnly
+                  />
+                  <div className="button-group">
+                    <button onClick={copyToClipboard} className="btn-success">
+                      📋 Copy to Clipboard
+                    </button>
+                    <button onClick={downloadAsTSV} className="btn-info">
+                      <Download />
+                      Download TSV
+                    </button>
+                  </div>
+                  <div className="instructions">
+                    <p>💡 How to use in Google Sheets:</p>
+                    <ol>
+                      <li>Click "Copy to Clipboard" above</li>
+                      <li>Open Google Sheets and select cell A1</li>
+                      <li>Paste (Ctrl+V or Cmd+V)</li>
+                      <li>The IMAGE formulas will automatically render as images!</li>
+                      <li>Resize the Image column and rows to see images better</li>
+                    </ol>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      );
+    }
 
-                const spreadsheetId = createResponse.result.spreadsheetId;
-
-                // Prepare the data
-                const values = [
-                    ['Box #', 'Product Name', 'SKU', 'Quantity', 'Image']
-                ];
-
-                parsedData.forEach(item => {
-                    values.push([
-                        '',
-                        item.productName,
-                        item.sku,
-                        item.quantity,
-                        item.imageUrl
-                    ]);
-                });
-
-                // Write the data
-                await gapi.client.sheets.spreadsheets.values.update({
-                    spreadsheetId: spreadsheetId,
-                    range: 'A1',
-                    valueInputOption: 'RAW',
-                    resource: { values: values }
-                });
-
-                // Format the sheet
-                const requests = [];
-
-                // Header formatting
-                requests.push({
-                    repeatCell: {
-                        range: {
-                            sheetId: 0,
-                            startRowIndex: 0,
-                            endRowIndex: 1
-                        },
-                        cell: {
-                            userEnteredFormat: {
-                                backgroundColor: { red: 0.4, green: 0.49, blue: 0.92 },
-                                textFormat: {
-                                    foregroundColor: { red: 1, green: 1, blue: 1 },
-                                    bold: true
-                                }
-                            }
-                        },
-                        fields: 'userEnteredFormat(backgroundColor,textFormat)'
-                    }
-                });
-
-                // Set column widths
-                requests.push({
-                    updateDimensionProperties: {
-                        range: { sheetId: 0, dimension: 'COLUMNS', startIndex: 0, endIndex: 1 },
-                        properties: { pixelSize: 80 },
-                        fields: 'pixelSize'
-                    }
-                });
-                requests.push({
-                    updateDimensionProperties: {
-                        range: { sheetId: 0, dimension: 'COLUMNS', startIndex: 1, endIndex: 2 },
-                        properties: { pixelSize: 350 },
-                        fields: 'pixelSize'
-                    }
-                });
-                requests.push({
-                    updateDimensionProperties: {
-                        range: { sheetId: 0, dimension: 'COLUMNS', startIndex: 2, endIndex: 3 },
-                        properties: { pixelSize: 120 },
-                        fields: 'pixelSize'
-                    }
-                });
-                requests.push({
-                    updateDimensionProperties: {
-                        range: { sheetId: 0, dimension: 'COLUMNS', startIndex: 3, endIndex: 4 },
-                        properties: { pixelSize: 100 },
-                        fields: 'pixelSize'
-                    }
-                });
-                requests.push({
-                    updateDimensionProperties: {
-                        range: { sheetId: 0, dimension: 'COLUMNS', startIndex: 4, endIndex: 5 },
-                        properties: { pixelSize: 200 },
-                        fields: 'pixelSize'
-                    }
-                });
-
-                // Set row heights for data rows (make them taller for images)
-                requests.push({
-                    updateDimensionProperties: {
-                        range: { sheetId: 0, dimension: 'ROWS', startIndex: 1, endIndex: parsedData.length + 1 },
-                        properties: { pixelSize: 150 },
-                        fields: 'pixelSize'
-                    }
-                });
-
-                // Add IMAGE formulas
-                for (let i = 0; i < parsedData.length; i++) {
-                    if (parsedData[i].imageUrl) {
-                        requests.push({
-                            updateCells: {
-                                range: {
-                                    sheetId: 0,
-                                    startRowIndex: i + 1,
-                                    endRowIndex: i + 2,
-                                    startColumnIndex: 4,
-                                    endColumnIndex: 5
-                                },
-                                rows: [{
-                                    values: [{
-                                        userEnteredValue: {
-                                            formulaValue: `=IMAGE("${parsedData[i].imageUrl}")`
-                                        }
-                                    }]
-                                }],
-                                fields: 'userEnteredValue'
-                            }
-                        });
-                    }
-                }
-
-                // Apply all formatting
-                await gapi.client.sheets.spreadsheets.batchUpdate({
-                    spreadsheetId: spreadsheetId,
-                    resource: { requests: requests }
-                });
-
-                const sheetUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}`;
-                document.getElementById('sheetUrl').href = sheetUrl;
-                document.getElementById('sheetLink').style.display = 'block';
-                
-                showStatus('status', '✓ Google Sheet created successfully with embedded images!', 'success');
-                
-                // Open the sheet
-                window.open(sheetUrl, '_blank');
-
-            } catch (error) {
-                console.error('Error creating sheet:', error);
-                showStatus('status', `✗ Error: ${error.message}`, 'error');
-            }
-        }
-
-        function showStatus(elementId, message, type) {
-            const statusEl = document.getElementById(elementId);
-            statusEl.textContent = message;
-            statusEl.className = `status ${type}`;
-        }
-
-        // Load Google APIs
-        window.onload = function() {
-            const script1 = document.createElement('script');
-            script1.src = 'https://apis.google.com/js/api.js';
-            script1.onload = gapiLoaded;
-            document.head.appendChild(script1);
-
-            const script2 = document.createElement('script');
-            script2.src = 'https://accounts.google.com/gsi/client';
-            script2.onload = gisLoaded;
-            document.head.appendChild(script2);
-        };
-    </script>
+    ReactDOM.render(<POConverter />, document.getElementById('root'));
+  </script>
 </body>
 </html>
