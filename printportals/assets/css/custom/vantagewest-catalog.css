@@ -157,3 +157,7 @@ body:has(div.Vantage.West) .col-md-4:nth-child(1) > mcc-shipping-info:nth-child(
 .mcc-folder-3691640 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-coltoncarnahan.jpg) no-repeat center right / cover;}
 .mcc-folder-3691640 .category-card:focus:after, .mcc-folder-3691640 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
+/* shanesholl.jpg */
+.mcc-folder-3719474 .category-card {background: var(--primary-color) url(../../img/custom/vantagewest-shanesholl.jpg) no-repeat center right / cover;}
+.mcc-folder-3719474 .category-card:focus:after, .mcc-folder-3719474 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
+
