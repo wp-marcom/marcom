@@ -35,9 +35,9 @@ function splitRange(rangeStart, rangeEnd, numIntervals) {
 }
 
 // Parameters
-const firstCardNum = 1;
-const lastCardNum = 25000;
-const howManyPacks = 1000;
+const firstCardNum = 25001;
+const lastCardNum = 40000;
+const howManyPacks = 600;
 
 // Create workbook and worksheet
 const workbook = new Excel.Workbook();
