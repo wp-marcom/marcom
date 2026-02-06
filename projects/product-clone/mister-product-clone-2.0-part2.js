@@ -1,39 +1,13 @@
 // Product Groups Configuration
 // Each group has one "mother" product that will be copied to create the "children"
 const productGroups = [
-  {
-    mother: '50% Off UWC Promo Scan Cards (111807)',
-    children: [
-       'UWC First Month Scan Cards (1230)',
-      'UWC First 2 Months Scan Cards (1250)',
-      'UWC 9.99|1 Month Scan Cards (1153)',
-      'UWC 9.99|2 Month Scan Cards (1173)',
-      'UWC 50% Off|1 Month Scan Cards (1113)',
-      'UWC 50% Off|2 Month Scan Cards (1133)',
-      'UWC 14.99|1 Month Scan Cards (1193)',
-      'UWC $10 Off Premium|3 Months Scan Cards (1286)',
-      'UWC Titanium|2 Months Scan Cards (1266)'
-    ]
-  },
-  {
-    mother: 'UWC 9.99|1 Month Promo Banner (1140) LF',
-    children: [
-      'UWC $10 Off Premium|3 Months Promo Banner (1280) LF',
-      'UWC Titanium|2 Months Promo Banner (1260) LF',
-      'UWC 2 Months|$8 Promo Promo Banner (1240) LF',
-      'UWC 2 Months|$10 Promo Promo Banner (1241) LF',
-      'UWC First Month Promo Promo Banner (1220) LF',
-    ]
-  },
+  
   {
     mother: 'UWC Mister Kiosk 9.99|1 Month Promo Decal (1150)',
     children: [
-      'UWC Mister Kiosk First Month|$10 Promo Decal (1226)',
-      'UWC Mister Kiosk First Month|$8 Promo Decal (1222)',
-      'UWC Mister Kiosk First 2 Months|$10 Promo Decal (1246)',
       'UWC Mister Kiosk First 2 Months|$8 Promo Decal (1242)',
-      'UWC Mister Kiosk $10 Off Premium|3 Months Promo Decal (1246)',
-      'UWC Mister Kiosk First Titanium|2 Months Promo Decal (1242)'
+      'UWC Mister Kiosk $10 Off Premium|3 Months Promo Decal (1282)',
+      'UWC Mister Kiosk First Titanium|2 Months Promo Decal (1262)'
     ]
   },
   {
