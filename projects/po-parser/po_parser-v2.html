@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purchase Order to Google Sheets</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #1f2937;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+
+    .upload-area {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 128px;
+      padding: 1rem;
+      border: 2px dashed #d1d5db;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+    }
+
+    .upload-area:hover {
+      border-color: #6366f1;
+      background-color: #eef2ff;
+    }
+
+    .upload-area svg {
+      color: #6b7280;
+    }
+
+    .upload-text {
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+
+    .upload-success {
+      color: #059669;
+      font-weight: 500;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    textarea {
+      width: 100%;
+      height: 256px;
+      padding: 0.75rem;
+      border: 2px solid #d1d5db;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      resize: vertical;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    input[type="text"], select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 0.875rem;
+    }
+
+    input[type="text"]:focus, select:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 0.5rem;
+    }
+
+    .help-text {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+
+    .config-box {
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: #6366f1;
+      color: white;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: #4f46e5;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+    }
+
+    .btn-success {
+      background: #10b981;
+      color: white;
+      flex: 1;
+    }
+
+    .btn-success:hover {
+      background: #059669;
+    }
+
+    .btn-info {
+      background: #3b82f6;
+      color: white;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-info:hover {
+      background: #2563eb;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .alert {
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      border-left: 4px solid;
+    }
+
+    .alert-success {
+      background: #d1fae5;
+      border-color: #10b981;
+      color: #065f46;
+    }
+
+    .alert-warning {
+      background: #fef3c7;
+      border-color: #f59e0b;
+      color: #92400e;
+    }
+
+    .preview-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+    }
+
+    .preview-table th {
+      background: #f3f4f6;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      border: 1px solid #d1d5db;
+    }
+
+    .preview-table td {
+      padding: 0.75rem 1rem;
+      border: 1px solid #d1d5db;
+    }
+
+    .preview-table tbody tr:hover {
+      background: #f9fafb;
+    }
+
+    .output-box {
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .output-box textarea {
+      height: 256px;
+      font-size: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .instructions {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      border-radius: 6px;
+    }
+
+    .instructions p {
+      font-size: 0.875rem;
+      color: #92400e;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .instructions ol {
+      font-size: 0.875rem;
+      color: #92400e;
+      margin-left: 1.5rem;
+    }
+
+    .instructions li {
+      margin-bottom: 0.25rem;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 0.5rem;
+    }
+
+    .small-text {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-top: 0.5rem;
+    }
+
+    .debug-box {
+      background: #1f2937;
+      color: #10b981;
+      padding: 1rem;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.75rem;
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <script type="text/babel">
+    const { useState } = React;
+
+    const Upload = () => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="17 8 12 3 7 8"></polyline>
+        <line x1="12" y1="3" x2="12" y2="15"></line>
+      </svg>
+    );
+
+    const Download = () => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+    );
+
+    function POConverter() {
+      const [jsonData, setJsonData] = useState(null);
+      const [emailBody, setEmailBody] = useState('');
+      const [baseDomain, setBaseDomain] = useState('https://images.printable.com');
+      const [imageSize, setImageSize] = useState('3');
+      const [output, setOutput] = useState('');
+      const [parsedData, setParsedData] = useState([]);
+      const [debugLog, setDebugLog] = useState([]);
+
+      const handleFileUpload = async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        try {
+          const text = await file.text();
+          const data = JSON.parse(text);
+          setJsonData(data);
+          
+          if (data.rows && data.rows.length > 0) {
+            alert(`JSON loaded! Found ${data.rows.length} product records.`);
+          }
+        } catch (error) {
+          alert('Error parsing JSON file: ' + error.message);
+        }
+      };
+
+      const extractSKU = (productName) => {
+        const match = productName.match(/\(([^)]+)\)/);
+        return match ? match[1] : '';
+      };
+
+      const findProductImage = (productName, sku) => {
+        if (!jsonData || !jsonData.rows) return '';
+
+        for (let product of jsonData.rows) {
+          const dbProductName = product.cell[4];
+          if (dbProductName && dbProductName.trim() === productName.trim()) {
+            const imagePath = product.cell[2];
+            return imagePath || '';
+          }
+        }
+        
+        if (sku) {
+          for (let product of jsonData.rows) {
+            const dbSKU = product.cell[15];
+            if (dbSKU && dbSKU.includes(sku)) {
+              const imagePath = product.cell[2];
+              return imagePath || '';
+            }
+          }
+        }
+        
+        return '';
+      };
+
+      const parseEmail = (emailText) => {
+        const products = [];
+        const lines = emailText.split('\n');
+        const logs = [];
+        
+        logs.push(`Total lines: ${lines.length}`);
+        let quantityCount = 0;
+
+        let i = 0;
+        while (i < lines.length) {
+          const line = lines[i].trim();
+
+          if (line.startsWith('*Quantity:*')) {
+            quantityCount++;
+            logs.push(`\nFound Quantity #${quantityCount} at line ${i}: "${line.substring(0, 60)}..."`);
+            
+            let quantity = '';
+            let productName = '';
+
+            //const inlineMatch = line.match(/\*Quantity:\*\s*(\d+)\s+of\s+\d+.*\(Product Name:/);
+            const inlineMatch = line.match(/\*Quantity:\*\s*(\d+)\s+of\s+.*?\(Product Name:/);
+            if (inlineMatch) {
+              logs.push('  -> INLINE FORMAT detected');
+              quantity = inlineMatch[1];
+
+              let nameBuffer = line.split('(Product Name:')[1].trim();
+
+              // Keep reading until we find a line that ends with ")"
+              let k = i + 1;
+              while (k < lines.length) {
+                const nextLine = lines[k].trim();
+                // Stop if we hit another field marker (next product)
+                if (nextLine.startsWith('*')) {
+                  break;
+                }
+                // Skip empty lines
+                if (!nextLine) {
+                  k++;
+                  continue;
+                }
+                nameBuffer += ' ' + nextLine;
+                // Check if this line ends with ")" - if so, we're done
+                if (nextLine.endsWith(')')) {
+                  break;
+                }
+                k++;
+              }
+
+              productName = nameBuffer.replace(/\)\s*$/, '').trim();
+              logs.push(`  -> Product: "${productName}" | Qty: ${quantity}`);
+
+            } else {
+              logs.push('  -> STANDARD FORMAT detected');
+              const qtyMatch = line.match(/\*Quantity:\*\s*(\d+)/);
+              if (qtyMatch) {
+                quantity = qtyMatch[1];
+              }
+
+              for (let j = i + 1; j < Math.min(i + 15, lines.length); j++) {
+                const nextLine = lines[j].trim();
+                if (nextLine.startsWith('*Product Name:*')) {
+                  let nameBuffer = nextLine.replace('*Product Name:*', '').trim();
+                  
+                  let k = j + 1;
+                  while (k < lines.length) {
+                    const followLine = lines[k].trim();
+                    if (followLine.startsWith('*')) {
+                      break;
+                    }
+                    if (followLine) {
+                      nameBuffer += ' ' + followLine;
+                    }
+                    k++;
+                  }
+                  
+                  productName = nameBuffer.trim();
+                  logs.push(`  -> Product: "${productName}" | Qty: ${quantity}`);
+                  break;
+                }
+              }
+            }
+
+            if (quantity && productName) {
+              const sku = extractSKU(productName);
+              const imagePath = findProductImage(productName, sku);
+
+              products.push({
+                quantity: quantity,
+                productName: productName,
+                sku: sku,
+                imagePath: imagePath
+              });
+            } else {
+              logs.push('  -> SKIPPED (missing qty or name)');
+            }
+          }
+
+          i++;
+        }
+        
+        logs.push(`\n=== SUMMARY ===`);
+        logs.push(`Total Quantity lines found: ${quantityCount}`);
+        logs.push(`Total products extracted: ${products.length}`);
+        
+        setDebugLog(logs);
+        return products;
+      };
+
+      const encodeImageUrl = (url) => {
+        return url.replace(/ /g, '%20');
+      };
+
+      const generateOutput = () => {
+        if (!emailBody.trim()) {
+          alert('Please paste an email body first');
+          return;
+        }
+
+        const parsed = parseEmail(emailBody);
+        setParsedData(parsed);
+
+        if (parsed.length === 0) {
+          alert('No products found in the email. Please check the DEBUG LOG below.');
+          setOutput('');
+          return;
+        }
+
+        let result = '';
+        
+        parsed.forEach((item) => {
+          const rowData = [];
+          
+          rowData.push('');
+          
+          const productName = String(item.productName).replace(/"/g, '""');
+          rowData.push(productName);
+          
+          rowData.push(item.sku);
+          
+          rowData.push(item.quantity);
+          
+          if (item.imagePath) {
+            const path = item.imagePath.startsWith('/') ? item.imagePath.substring(1) : item.imagePath;
+            const fullUrl = `${baseDomain}/${path}`;
+            const encodedUrl = encodeImageUrl(fullUrl);
+            const imageFormula = `=IMAGE("${encodedUrl}",${imageSize})`;
+            rowData.push(imageFormula);
+          } else {
+            rowData.push('');
+          }
+          
+          result += rowData.join('\t') + '\n';
+        });
+
+        setOutput(result);
+        alert(`Found ${parsed.length} products! Check DEBUG LOG for details.`);
+      };
+
+      const copyToClipboard = () => {
+        navigator.clipboard.writeText(output);
+        alert('Copied to clipboard! You can now paste directly into Google Sheets.');
+      };
+
+      const downloadAsTSV = () => {
+        const blob = new Blob([output], { type: 'text/tab-separated-values' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `PurchaseOrder_${new Date().toISOString().split('T')[0]}.tsv`;
+        a.click();
+        URL.revokeObjectURL(url);
+      };
+
+      return (
+        <div className="container">
+          <div className="card">
+            <h1>📦 Purchase Order to Google Sheets</h1>
+            <p className="subtitle">Convert email purchase orders into Google Sheets format with embedded product images</p>
+
+            <div className="section">
+              <h2>Step 1: Upload JSON Product Database</h2>
+              <label className="upload-area">
+                <div>
+                  <Upload />
+                  <span className="upload-text">
+                    {jsonData ? <span className="upload-success">✓ Loaded {jsonData.rows.length} products</span> : 'Click to upload your JSON file'}
+                  </span>
+                </div>
+                <input type="file" accept=".json" onChange={handleFileUpload} />
+              </label>
+            </div>
+
+            <div className="section">
+              <h2>Step 2: Paste Purchase Order Email</h2>
+              <textarea
+                value={emailBody}
+                onChange={(e) => setEmailBody(e.target.value)}
+                placeholder="Paste your purchase order email content here..."
+              />
+            </div>
+
+            {jsonData && (
+              <div className="config-box">
+                <h2>Configuration</h2>
+                
+                <div className="section">
+                  <label>Base Domain (for images)</label>
+                  <input
+                    type="text"
+                    value={baseDomain}
+                    onChange={(e) => setBaseDomain(e.target.value)}
+                    placeholder="https://images.printable.com"
+                  />
+                </div>
+
+                <div className="section">
+                  <label>Image Display Size</label>
+                  <select
+                    value={imageSize}
+                    onChange={(e) => setImageSize(e.target.value)}
+                  >
+                    <option value="1">Size 1 - Fit to cell (default)</option>
+                    <option value="2">Size 2 - Stretch to fit cell</option>
+                    <option value="3">Size 3 - Original size (recommended)</option>
+                    <option value="4">Size 4 - Custom size (use cell dimensions)</option>
+                  </select>
+                  <p className="help-text">
+                    Size 3 is recommended. You can resize rows/columns in Sheets after pasting.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <button
+              onClick={generateOutput}
+              disabled={!jsonData}
+              className="btn-primary"
+            >
+              Generate Output
+            </button>
+
+            {debugLog.length > 0 && (
+              <div className="section">
+                <h2>🐛 DEBUG LOG (Check Console for Details)</h2>
+                <div className="debug-box">
+                  {debugLog.map((log, idx) => (
+                    <div key={idx}>{log}</div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {output && (
+              <>
+                <div className="alert alert-success">
+                  ✓ Found {parsedData.length} products! Copy the output below and paste directly into Google Sheets.
+                </div>
+
+                <div className="config-box">
+                  <h2>Preview</h2>
+                  <div className="table-wrapper">
+                    <table className="preview-table">
+                      <thead>
+                        <tr>
+                          <th>Box #</th>
+                          <th>Product Name</th>
+                          <th>SKU</th>
+                          <th>Quantity</th>
+                          <th>Image</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {parsedData.slice(0, 5).map((item, idx) => (
+                          <tr key={idx}>
+                            <td></td>
+                            <td>{item.productName}</td>
+                            <td>{item.sku}</td>
+                            <td>{item.quantity}</td>
+                            <td>{item.imagePath ? '✓ Found' : '✗ Not found'}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  {parsedData.length > 5 && (
+                    <p className="small-text">Showing first 5 of {parsedData.length} items</p>
+                  )}
+                </div>
+
+                <div className="output-box">
+                  <h2>Output (Tab-Separated)</h2>
+                  <textarea
+                    value={output}
+                    readOnly
+                  />
+                  <div className="button-group">
+                    <button onClick={copyToClipboard} className="btn-success">
+                      📋 Copy to Clipboard
+                    </button>
+                    <button onClick={downloadAsTSV} className="btn-info">
+                      <Download />
+                      Download TSV
+                    </button>
+                  </div>
+                  <div className="instructions">
+                    <p>💡 How to use in Google Sheets:</p>
+                    <ol>
+                      <li>Click "Copy to Clipboard" above</li>
+                      <li>Open Google Sheets and select cell A1</li>
+                      <li>Paste (Ctrl+V or Cmd+V)</li>
+                      <li>The IMAGE formulas will automatically render as images!</li>
+                      <li>Resize the Image column and rows to see images better</li>
+                    </ol>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<POConverter />, document.getElementById('root'));
+  </script>
+</body>
+</html>
