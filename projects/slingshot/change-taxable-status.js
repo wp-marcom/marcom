@@ -87,8 +87,8 @@ const wsChromeEndpointurl = keys.jsonURL;
         console.log('Screenshot saved as error-screenshot.png');
     } finally {
         // Close browser
-        await delay(2000);
-        await browser.close();
+        //await delay(2000);
+        //await browser.close();
     }
 }
 
@@ -143,11 +143,40 @@ async function processProduct(page, productName) {
         await delay(4000); // Wait for page to load
         
         // Step 4: Select "Taxable" from the dropdown
+        // Note: The dropdown's name attribute changes dynamically (e.g., name="39" or name="1831")
+        // So we search for any select.field element that contains the tax-related options
         console.log('  Step 6: Selecting "Taxable" from dropdown...');
-        await page.waitForSelector('select[name="39"]', { timeout: 30000 });
+        
+        // Wait for any select element with the field class that contains the Taxable option
+        await page.waitForFunction(() => {
+            const selects = document.querySelectorAll('select.field');
+            for (let select of selects) {
+                const options = Array.from(select.options);
+                if (options.some(opt => opt.value === 'T' && opt.textContent.includes('Taxable'))) {
+                    return true;
+                }
+            }
+            return false;
+        }, { timeout: 30000 });
+        
         await delay(1000);
         
-        await page.select('select[name="39"]', 'T'); // 'T' is the value for Taxable
+        // Find and select from the correct dropdown
+        await page.evaluate(() => {
+            const selects = document.querySelectorAll('select.field');
+            for (let select of selects) {
+                const options = Array.from(select.options);
+                // Look for the select that has the tax-related options
+                if (options.some(opt => opt.value === 'T' && opt.textContent.includes('Taxable'))) {
+                    select.value = 'T'; // Set to Taxable
+                    // Trigger the onchange event
+                    const event = new Event('change', { bubbles: true });
+                    select.dispatchEvent(event);
+                    break;
+                }
+            }
+        });
+        
         await delay(2000); // Wait for selection to process
         
         // Step 5: Click the save button (span with id id122_lb)
