@@ -5,8 +5,8 @@ const fs = require('fs');
 
 // Configuration
 const quotesDir = `\\\\DataKing1\\homes\\kaleb\\Github Repos\\marcom\\projects\\printsmith-quote-scraper\\quotes`;
-const pricingSheetPath = `\\\\DataKing1\\homes\\kaleb\\Github Repos\\marcom\\projects\\printsmith-quote-scraper\\pricing_sheet.xlsx`; // UPDATE THIS PATH
-const outputPath = `\\\\DataKing1\\homes\\kaleb\\Github Repos\\marcom\\projects\\printsmith-quote-scraper\\pricing_sheet_updated.xlsx`;
+const pricingSheetPath = `\\\\DataKing1\\homes\\kaleb\\Github Repos\\marcom\\projects\\printsmith-quote-scraper\\pricing_sheet_with_inactive.xlsx`; // UPDATE THIS PATH
+const outputPath = `\\\\DataKing1\\homes\\kaleb\\Github Repos\\marcom\\projects\\printsmith-quote-scraper\\pricing_sheet_updated_with_inactive.xlsx`;
 
 // Helper function to normalize quantities (remove commas, convert to string)
 const normalizeQty = (qty) => {

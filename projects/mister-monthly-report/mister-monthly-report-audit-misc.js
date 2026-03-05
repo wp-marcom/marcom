@@ -3,10 +3,10 @@ const ExcelJS = require(`${primeDirectory}node_modules\\exceljs`);
 const path = require('path');
 
 // Define the file paths
-const inputFilePath = path.join(__dirname, 'MCW_Monthly_Report_2YTD-Frames.xlsx');
-const outputFilePath = path.join(__dirname, 'MCW_Monthly_Report_2YTD-FramesAudit.xlsx');
+const inputFilePath = path.join(__dirname, 'MCW_Monthly_Report_1-1-25 to Date.xlsx');
+const outputFilePath = path.join(__dirname, 'MCW_Monthly_Report_1-1-25toDate_CardSKUAudit.xlsx');
 
-const allowedSkus = ["1418", "2436", "2228", "2024", "1824"];
+const allowedSkus = ["11212", "11213", "11214", "11215"];
 
 // Load the workbook
 const workbook = new ExcelJS.Workbook();
