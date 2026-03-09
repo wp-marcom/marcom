@@ -54,12 +54,22 @@ const keys = require(`${__dirname}\\..\\keys\\chrome_marcom_keys_${userName}.jso
 
     // Setting the navigation timeout and viewport
     page.setDefaultNavigationTimeout(0);
+    //await page.setViewport({
+     //   width: 1920,
+     //   height: 1080,
+    //    deviceScaleFactor: 1,
+   // });
+
+    // With this (safe wrapper):
+try {
     await page.setViewport({
         width: 1920,
         height: 1080,
-       deviceScaleFactor: 1,
-   });
-   
+        deviceScaleFactor: 1,
+    });
+} catch (e) {
+    console.log('Viewport override not supported on this target, skipping.');
+}
 //Login to Marcom Distrib Shipping Page
   //await page.goto('https://admin.marcomcentral.app.pti.com/Distribution/Index?section=4',{timeout: 0});
   await page.goto('https://admin.marcomcentral.app.pti.com/Account/LogOn?ReturnUrl=%2f',{timeout: 0});

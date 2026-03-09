@@ -23,7 +23,8 @@ const keys = require(`${__dirname}\\..\\keys\\chrome_marcom_keys_${userName}.jso
     const wsChromeEndpointurl = keys.jsonURL;
     const browser = await puppeteer.connect({
         browserWSEndpoint: wsChromeEndpointurl,
-        slowMo: 100 // Slows down Puppeteer operations by 100ms
+        slowMo: 100, // Slows down Puppeteer operations by 100ms
+        defaultViewport: null
     });
 
     // Get all open pages (tabs)
@@ -42,11 +43,17 @@ const keys = require(`${__dirname}\\..\\keys\\chrome_marcom_keys_${userName}.jso
             await marcomPages[i].close();
             console.log(`Closed tab with URL: ${marcomPages[i].url()}`);
         }
-        page = await browser.newPage();
+        page = await browser.newPage().catch(async () => {
+    const pages = await browser.pages();
+    return pages[pages.length - 1];
+});
         console.log('Opened a new tab.');
     } else {
         // If only one matching tab or no matching tabs are found, open a new tab
-        page = await browser.newPage();
+        page = await browser.newPage().catch(async () => {
+    const pages = await browser.pages();
+    return pages[pages.length - 1];
+});
         console.log('Opened a new tab.');
     }
 
@@ -54,17 +61,27 @@ const keys = require(`${__dirname}\\..\\keys\\chrome_marcom_keys_${userName}.jso
 
     // Setting the navigation timeout and viewport
     page.setDefaultNavigationTimeout(0);
+    //await page.setViewport({
+     //   width: 1920,
+     //   height: 1080,
+    //    deviceScaleFactor: 1,
+   // });
+
+    // With this (safe wrapper):
+try {
     await page.setViewport({
         width: 1920,
         height: 1080,
-       deviceScaleFactor: 1,
-   });
-   
+        deviceScaleFactor: 1,
+    });
+} catch (e) {
+    console.log('Viewport override not supported on this target, skipping.');
+}
 //Login to Marcom Distrib Shipping Page
   //await page.goto('https://admin.marcomcentral.app.pti.com/Distribution/Index?section=4',{timeout: 0});
   await page.goto('https://admin.marcomcentral.app.pti.com/Account/LogOn?ReturnUrl=%2f',{timeout: 0});
-  await page.waitForSelector('.ui-button');
-  await page.click(".ui-button")
+  await page.waitForSelector('.primary-submit');
+  await page.click('.primary-submit');
   
 await page.goto('https://admin.marcomcentral.app.pti.com/Distribution/Index?section=4',{timeout: 0});
     
@@ -314,9 +331,27 @@ await page.waitForFunction(() => document.readyState === 'complete');
             await page.click("#distModalSave");
         }
 
-        await page.waitForTimeout(4000);
-        await page.click("#distModalClose");
-        await page.waitForTimeout(4000);
+        //await page.waitForTimeout(4000);
+        //await page.click("#distModalClose");
+        //await page.waitForTimeout(4000);
+
+await page.waitForTimeout(4000);
+await page.click("#distModalClose");
+// Wait for the modal to fully disappear before moving on
+try {
+    await page.waitForSelector("#distModalClose", { hidden: true, timeout: 10000 });
+    console.log('Modal fully closed, moving to next order.');
+} catch(e) {
+    console.log('Modal did not fully close, forcing removal and moving on...');
+    // Force remove the modal from the page entirely
+    await page.evaluate(() => {
+        const modal = document.querySelector('#distModal');
+        if (modal) modal.remove();
+    });
+}
+await page.waitForTimeout(2000);
+
+
     } else {
         break; // Break out of the loop if no orders to process
     }

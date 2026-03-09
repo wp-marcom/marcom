@@ -75,7 +75,11 @@ const keys = require(`${__dirname}\\..\\keys\\chrome_marcom_keys_${userName}.jso
   //Click on button that will select store Address and Corporate North
   await page.click("#VisiAddressearch");
   await page.waitForTimeout(4000);
-  await page.waitForSelector("#ui-dialog-title-modalGridListDialogBox");
+  //await page.waitForSelector("#ui-id-3");
+  //await page.waitForSelector("#ui-id-3");
+  await page.waitForSelector('.ui-dialog-titlebar-close');
+  //*[@id="ui-id-3"]
+  
   await page.waitForTimeout(4000);
   await page.click("#gs_CompanyName");
   //search store Address
@@ -109,7 +113,8 @@ const keys = require(`${__dirname}\\..\\keys\\chrome_marcom_keys_${userName}.jso
   //Select Default Bill To and Select North
   await page.click("#DefBillAddressSearch");
   await page.waitForTimeout(4000);
-  await page.waitForSelector("#ui-dialog-title-modalGridListDialogBox");
+  //await page.waitForSelector("#ui-id-1");
+  await page.waitForSelector('.ui-dialog-titlebar-close');
   await page.waitForTimeout(4000);
   await page.click("#gs_Description");
   await page.keyboard.type("000 - North")
@@ -132,7 +137,9 @@ await page.waitForTimeout(4000);
 //Click on Visible Cost Centers and Type Search and Select store CC
   await page.click("#VisiCostCentersSearch");
   await page.waitForTimeout(4000);
-  await page.waitForSelector("#ui-dialog-title-modalGridListDialogBox");
+  //await page.waitForSelector("#ui-id-3");
+  //await page.waitForSelector('[id^="ui-id-"]');
+  await page.waitForSelector('.ui-dialog-titlebar-close');
   await page.waitForTimeout(4000);
   await page.click("#gs_Name");
   await page.keyboard.type(ccNum[i])
@@ -150,7 +157,8 @@ await page.waitForTimeout(4000);
 //Click on Default Cost Centers and Type Search and Select store CC
    await page.click("#DefCostCentersSearch");
   await page.waitForTimeout(4000);
-  await page.waitForSelector("#ui-dialog-title-modalGridListDialogBox");
+  //await page.waitForSelector("#ui-id-3");
+  await page.waitForSelector('.ui-dialog-titlebar-close');
   await page.waitForTimeout(4000);
   await page.click("#gs_Name");
   await page.keyboard.type(ccNum[i])
@@ -175,7 +183,8 @@ await page.waitForTimeout(4000);
 //Search and Select Store Address
   await page.click("#DefShipAddressSearch");
   await page.waitForTimeout(4000);
-  await page.waitForSelector("#ui-dialog-title-modalGridListDialogBox");
+  //await page.waitForSelector("#ui-id-3");
+  await page.waitForSelector('.ui-dialog-titlebar-close');
   await page.waitForTimeout(4000);
   await page.click("#gs_CompanyName");
   await page.keyboard.type(storeNum[i])
@@ -214,7 +223,8 @@ await page.waitForTimeout(4000);
 //Set the see orders for for the group
 await page.click("#SeeOrdersSearch");
     await page.waitForTimeout(4000);
-    await page.waitForSelector("#ui-dialog-title-modalGridListDialogBox");
+    //await page.waitForSelector("#ui-id-3");
+    await page.waitForSelector('.ui-dialog-titlebar-close');
     await page.waitForTimeout(4000);
     await page.click("#gs_Name");
     await page.keyboard.type(groupName[i]);
