@@ -82,6 +82,9 @@ nav[aria-label="breadcrumbs"] {
   margin-top: 2rem !important;
 }
 
+/* Hide the "Add to Cart" button in the icon view for digital download (needs a westpress external link to file) */
+.card-body:has(a[href*="westpress.com"]) .fa-cart-plus { display: none !important; }
+
 /* Option 1: Adjust product image container to keep thumbnail sized proportionally but not giant */
 .product-image-container {
   display: flex;
