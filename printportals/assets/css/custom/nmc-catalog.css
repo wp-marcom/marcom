@@ -134,6 +134,14 @@ nav[aria-label="breadcrumbs"] {
   line-height: 1.2rem;
 }
 
+/* HIDE PRICING GRIDS AND ADD TO CART BUTTON FOR SPECIFIC PRODUCTS */
+
+/* Hide buttons for products with "Sahuarita DVD (NMC-632) - DMD" in the title */
+.product-card:has(.card-title a[aria-label*="Sahuarita DVD (NMC-632) - DMD"]) .card-controls button,
+.product-card:has(.card-title a[href*=">Sahuarita DVD (NMC-632) - DMD"]) .card-controls button {
+  display: none !important;
+}
+
 /* ==========================================================================
    BUTTONS
    ========================================================================== */
