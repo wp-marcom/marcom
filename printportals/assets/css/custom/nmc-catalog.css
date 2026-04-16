@@ -143,6 +143,24 @@ DONT FORGET TO ADD PRODUCT PAGE CSS TO HIDE GRID ETC ON THAT PAGE TOO*/
   display: none !important;
 }
 
+/* Hide buttons for products with "OVH Logo Stickers (NMC-682)" in the title */
+.product-card:has(.card-title a[aria-label*="OVH Logo Stickers (NMC-682)"]) .card-controls button,
+.product-card:has(.card-title a[href*=">OVH Logo Stickers (NMC-682)"]) .card-controls button {
+  display: none !important;
+}
+
+/* Hide buttons for products with "Women's Center Postpartum Magnets (NMC-684) - DMD" in the title */
+.product-card:has(.card-title a[aria-label*="Women's Center Postpartum Magnets (NMC-684) - DMD"]) .card-controls button,
+.product-card:has(.card-title a[href*=">Women's Center Postpartum Magnets (NMC-684) - DMD"]) .card-controls button {
+  display: none !important;
+}
+
+/* Hide buttons for products with "Curved Sign Holder (NMC-727) - DMD" in the title */
+.product-card:has(.card-title a[aria-label*="Curved Sign Holder (NMC-727) - DMD"]) .card-controls button,
+.product-card:has(.card-title a[href*=">Curved Sign Holder (NMC-727) - DMD"]) .card-controls button {
+  display: none !important;
+}
+
 
 /* ==========================================================================
    BUTTONS
