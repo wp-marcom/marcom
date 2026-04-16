@@ -161,6 +161,36 @@ DONT FORGET TO ADD PRODUCT PAGE CSS TO HIDE GRID ETC ON THAT PAGE TOO*/
   display: none !important;
 }
 
+/* Hide buttons for products with "Northwest Cardiology DVD (NMC-624) - DMD" in the title */
+.product-card:has(.card-title a[aria-label*="Northwest Cardiology DVD (NMC-624) - DMD"]) .card-controls button,
+.product-card:has(.card-title a[href*=">Northwest Cardiology DVD (NMC-624) - DMD"]) .card-controls button {
+  display: none !important;
+}
+
+/* Hide buttons for products with "NMC Women's Imaging DVD (NMC-640) - DMD" in the title */
+.product-card:has(.card-title a[aria-label*="NMC Women's Imaging DVD (NMC-640) - DMD"]) .card-controls button,
+.product-card:has(.card-title a[href*=">NMC Women's Imaging DVD (NMC-640) - DMD"]) .card-controls button {
+  display: none !important;
+}
+
+/* Hide buttons for products with "Oro Valley DVD (NMC-642) - DMD" in the title */
+.product-card:has(.card-title a[aria-label*="Oro Valley DVD (NMC-642) - DMD"]) .card-controls button,
+.product-card:has(.card-title a[href*=">Oro Valley DVD (NMC-642) - DMD"]) .card-controls button {
+  display: none !important;
+}
+
+/* Hide buttons for products with "Houghton Women's Imaging DVD (NMC-781) - DMD" in the title */
+.product-card:has(.card-title a[aria-label*="Houghton Women's Imaging DVD (NMC-781) - DMD"]) .card-controls button,
+.product-card:has(.card-title a[href*=">Houghton Women's Imaging DVD (NMC-781) - DMD"]) .card-controls button {
+  display: none !important;
+}
+
+/* Hide buttons for products with "Houghton Women's Imaging DVD (NMC-781) - DMD" in the title */
+.product-card:has(.card-title a[aria-label*="Houghton Diagnostic Imaging DVD (NMC-785) - DMD"]) .card-controls button,
+.product-card:has(.card-title a[href*=">Houghton Diagnostic Imaging DVD (NMC-785) - DMD"]) .card-controls button {
+  display: none !important;
+}
+
 
 /* ==========================================================================
    BUTTONS
