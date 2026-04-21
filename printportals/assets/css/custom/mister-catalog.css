@@ -1156,7 +1156,7 @@ article.panel-detail-wrap:nth-child(3){
 
 /* Shine Together */
 .mcc-folder-3629843 .category-card {
-  background: var(--primary-color) url(../../img/custom/mister-shinetogether.jpg) no-repeat bottom left / cover;
+  background: var(--primary-color) url(../../img/custom/mister-shinetogether.webp) no-repeat bottom left / cover;
 }
 .mcc-folder-3629843 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
