@@ -1170,6 +1170,22 @@ article.panel-detail-wrap:nth-child(3){
   background: rgba(var(--secondary-color-rgb), 1.0);
 }
 
+/* Shine Together */
+.mcc-folder-3629843 .category-card {
+  background: var(--primary-color) url(../../img/custom/mister-promocollateral.webp) no-repeat bottom left / cover;
+}
+.mcc-folder-3629843 .category-card .card-img-holder:before {
+  background-image: url(../../img/common/folde.svg);
+}
+
+.mcc-folder-3629843 > a:nth-child(1):after {
+  background: rgba(var(--primary-color-rgb), 0.6);
+}
+.mcc-folder-3629843 .category-card:focus:after,
+.mcc-folder-3629843 .category-card:hover:after {
+  background: rgba(var(--secondary-color-rgb), 1.0);
+}
+
 
 /* Google Review */
 .mcc-folder-3519714 .category-card {
