@@ -95,7 +95,8 @@ const sheetSummaries = {}; // Track summaries by sheet name
 
       let match = false;
       if (condition.onlyDigits) {
-        match = /^\d+$/.test(colA); // Check if only digits
+        //match = /^\d+$/.test(colA); // Check if only digits
+        match = /^\d{1,12}$/.test(colA); // Check if only digits and 12 or fewer
       } else if (condition.contains) {
         match = row.getCell(condition.col).value && row.getCell(condition.col).value.includes(condition.contains);
       }
