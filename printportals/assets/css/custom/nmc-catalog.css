@@ -137,6 +137,12 @@ nav[aria-label="breadcrumbs"] {
 /* HIDE PRICING GRIDS AND ADD TO CART BUTTON FOR SPECIFIC PRODUCTS 
 DONT FORGET TO ADD PRODUCT PAGE CSS TO HIDE GRID ETC ON THAT PAGE TOO*/
 
+/* Hide buttons for products with "Vision of Excellence Pull Up Banner (NMC-977) - DMD" in the title */
+.product-card:has(.card-title a[aria-label*="Vision of Excellence Pull Up Banner (NMC-977) - DMD"]) .card-controls button,
+.product-card:has(.card-title a[href*=">Vision of Excellence Pull Up Banner (NMC-977) - DMD"]) .card-controls button {
+  display: none !important;
+}
+
 /* Hide buttons for products with "Sahuarita DVD (NMC-632) - DMD" in the title */
 .product-card:has(.card-title a[aria-label*="Sahuarita DVD (NMC-632) - DMD"]) .card-controls button,
 .product-card:has(.card-title a[href*=">Sahuarita DVD (NMC-632) - DMD"]) .card-controls button {
