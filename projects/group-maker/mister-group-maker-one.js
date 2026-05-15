@@ -1,7 +1,6 @@
-
-const groupName = ["2546-Justice"];
-const storeNum = ["2546"];
-const ccNum = ["806"];
+const groupName = ["2619-Okemos"];
+const storeNum = ["2619"];
+const ccNum = ["810"];
 
 const primeDirectory = "C:\\projects\\";
 const puppeteer = require(`${primeDirectory}node_modules\\puppeteer`);

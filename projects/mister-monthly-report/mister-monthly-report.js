@@ -97,9 +97,13 @@ async function processExcel() {
         let total = 0;
 
         if (orderNumber !== previousOrderNumber) {
-            price = 6.95;
-            tax = 0.52;
-            total = 7.47;
+            //price = 6.95;
+            //tax = 0.60465;
+            //total = 7.55;
+
+    price = 6.95;
+    tax = price * 0.087;
+    total = price + tax;
 
             totalPriceSum += price;
             totalTaxSum += tax;
