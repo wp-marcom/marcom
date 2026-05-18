@@ -56,7 +56,9 @@ const keys = require(`${__dirname}\\..\\keys\\chrome_marcom_keys_${userName}.jso
   await page.waitForSelector("#ProductAndFolderVisibilityId");
   await page.select('#ProductAndFolderVisibilityId', 'None')
   //Hit Save
+  await page.waitForSelector("#GroupSubmit")
   await page.click("#GroupSubmit")
+  await page.waitForTimeout(4000);
   await page.waitForTimeout(4000);
   await page.waitForTimeout(4000);
   //Nav to General Tab
@@ -75,11 +77,21 @@ const keys = require(`${__dirname}\\..\\keys\\chrome_marcom_keys_${userName}.jso
   //Click on button that will select store Address and Corporate North
   await page.click("#VisiAddressearch");
   await page.waitForTimeout(4000);
-  await page.waitForSelector("#ui-dialog-title-modalGridListDialogBox");
-  await page.waitForTimeout(4000);
-  await page.click("#gs_CompanyName");
-  //search store Address
-  await page.keyboard.type(storeNum[i])
+ // Wait for the dialog content div (this ID actually exists)
+await page.waitForSelector("#modalGridListDialogBox", { visible: true });
+
+// Wait for the grid to finish initializing — the table body is the safest signal
+await page.waitForSelector("#Locations tbody tr.jqgrow", { visible: true });
+
+// The search input may be in a hidden toolbar, so force-show it and use JS click
+await page.evaluate(() => {
+  document.querySelector('.ui-search-toolbar').style.display = '';
+});
+
+// Now wait for the input to be visible before clicking
+await page.waitForSelector("#gs_CompanyName", { visible: true });
+await page.click("#gs_CompanyName");
+await page.keyboard.type(storeNum[i]);
   await page.waitForTimeout(4000);
   
   
@@ -109,7 +121,16 @@ const keys = require(`${__dirname}\\..\\keys\\chrome_marcom_keys_${userName}.jso
   //Select Default Bill To and Select North
   await page.click("#DefBillAddressSearch");
   await page.waitForTimeout(4000);
-  await page.waitForSelector("#ui-dialog-title-modalGridListDialogBox");
+  // Wait for the dialog content div (this ID actually exists)
+await page.waitForSelector("#modalGridListDialogBox", { visible: true });
+
+// Wait for the grid to finish initializing — the table body is the safest signal
+await page.waitForSelector("#Locations tbody tr.jqgrow", { visible: true });
+
+// The search input may be in a hidden toolbar, so force-show it and use JS click
+await page.evaluate(() => {
+  document.querySelector('.ui-search-toolbar').style.display = '';
+});
   await page.waitForTimeout(4000);
   await page.click("#gs_Description");
   await page.keyboard.type("000 - North")
@@ -132,7 +153,16 @@ await page.waitForTimeout(4000);
 //Click on Visible Cost Centers and Type Search and Select store CC
   await page.click("#VisiCostCentersSearch");
   await page.waitForTimeout(4000);
-  await page.waitForSelector("#ui-dialog-title-modalGridListDialogBox");
+  // Wait for the dialog content to be present
+await page.waitForSelector("#modalGridListDialogBox", { visible: true });
+
+// Wait for the grid rows to confirm it's loaded
+await page.waitForSelector("#CostCenterGrid tbody tr.jqgrow", { visible: true });
+
+// Force the search toolbar visible in case hideUiSearchToolbar is true
+await page.evaluate(() => {
+  document.querySelector('.ui-search-toolbar').style.display = '';
+});
   await page.waitForTimeout(4000);
   await page.click("#gs_Name");
   await page.keyboard.type(ccNum[i])
@@ -150,7 +180,16 @@ await page.waitForTimeout(4000);
 //Click on Default Cost Centers and Type Search and Select store CC
    await page.click("#DefCostCentersSearch");
   await page.waitForTimeout(4000);
-  await page.waitForSelector("#ui-dialog-title-modalGridListDialogBox");
+    // Wait for the dialog content to be present
+await page.waitForSelector("#modalGridListDialogBox", { visible: true });
+
+// Wait for the grid rows to confirm it's loaded
+await page.waitForSelector("#CostCenterGrid tbody tr.jqgrow", { visible: true });
+
+// Force the search toolbar visible in case hideUiSearchToolbar is true
+await page.evaluate(() => {
+  document.querySelector('.ui-search-toolbar').style.display = '';
+});
   await page.waitForTimeout(4000);
   await page.click("#gs_Name");
   await page.keyboard.type(ccNum[i])
@@ -175,7 +214,16 @@ await page.waitForTimeout(4000);
 //Search and Select Store Address
   await page.click("#DefShipAddressSearch");
   await page.waitForTimeout(4000);
-  await page.waitForSelector("#ui-dialog-title-modalGridListDialogBox");
+    // Wait for the dialog content div (this ID actually exists)
+await page.waitForSelector("#modalGridListDialogBox", { visible: true });
+
+// Wait for the grid to finish initializing — the table body is the safest signal
+await page.waitForSelector("#Locations tbody tr.jqgrow", { visible: true });
+
+// The search input may be in a hidden toolbar, so force-show it and use JS click
+await page.evaluate(() => {
+  document.querySelector('.ui-search-toolbar').style.display = '';
+});
   await page.waitForTimeout(4000);
   await page.click("#gs_CompanyName");
   await page.keyboard.type(storeNum[i])
@@ -214,7 +262,16 @@ await page.waitForTimeout(4000);
 //Set the see orders for for the group
 await page.click("#SeeOrdersSearch");
     await page.waitForTimeout(4000);
-    await page.waitForSelector("#ui-dialog-title-modalGridListDialogBox");
+    // Wait for the dialog content to be present
+await page.waitForSelector("#modalGridListDialogBox", { visible: true });
+
+// Wait for the grid rows to confirm data has loaded
+await page.waitForSelector("#CostCenterGrid tbody tr.jqgrow", { visible: true });
+
+// Force the search toolbar visible in case hideUiSearchToolbar is true
+await page.evaluate(() => {
+  document.querySelector('.ui-search-toolbar').style.display = '';
+});
     await page.waitForTimeout(4000);
     await page.click("#gs_Name");
     await page.keyboard.type(groupName[i]);
