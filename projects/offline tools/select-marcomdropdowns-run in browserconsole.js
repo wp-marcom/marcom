@@ -9,3 +9,55 @@ Array.from(selectElement.options).forEach(option => {
 
 // Trigger change event
 selectElement.dispatchEvent(new Event('change', { bubbles: true }));
+
+function selectAllGroups() {
+  var all = $('input[name="AllVisibletoGroupGrids"]').val();
+  $('input[name="VisibletoGroupGrids"]').val(all);
+  
+  var count = $('input[name="VisibletoGroupGrids"]').val().split(',').length;
+  console.log('✅ All groups set:', count);
+  
+  if (confirm('Apply all ' + count + ' groups and save?')) {
+    $('#catNodeProductInfoSave').submit();
+    console.log('✅ Saved!');
+  } else {
+    console.log('❌ Cancelled - no changes saved');
+  }
+}
+
+selectAllGroups();
+
+// ============================================
+// Group Selector Tool
+// Paste your group IDs below, then run this
+// ============================================
+
+var groupIds = [
+  // Paste your IDs here, comma separated
+  // Example:
+  4110784,
+  4013439,
+  1460641,
+  1460663
+];
+
+// ============================================
+// Don't edit below this line
+// ============================================
+function applyGroups(ids) {
+  var idString = ids.join(', ');
+  $('input[name="VisibletoGroupGrids"]').val(idString);
+  
+  var count = $('input[name="VisibletoGroupGrids"]').val().split(',').length;
+  console.log('✅ Groups set:', count);
+  console.log('📋 IDs:', idString);
+  
+  if (confirm('Apply ' + count + ' groups and save?')) {
+    $('#catNodeProductInfoSave').submit();
+    console.log('✅ Saved!');
+  } else {
+    console.log('❌ Cancelled - no changes saved');
+  }
+}
+
+applyGroups(groupIds);

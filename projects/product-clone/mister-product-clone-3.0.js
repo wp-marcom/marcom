@@ -1,20 +1,23 @@
 // Product Groups Configuration
 // Each group has one "mother" product that will be copied to create the "children"
 const productGroups = [
-  
   {
-    mother: '36"x96" Vinyl "Shine Together" White & Blue Banner (2013)',
-    children: ['36"x96" Vinyl UWC 50% Off|1 Month Promo Banner-L (2100)', '36"x96" Vinyl UWC 75% Off|1 Month Promo Banner-N (2124)', '36"x96" Vinyl UWC 9.99|1 Month Promo Banner-I (2148)', '36"x96" Vinyl UWC All Plans Promo Banner-B (2164)']
+    mother: 'UWC 50% Off|1 Month Awareness Flyer-L6 (110-L6)',
+    children: ['UWC 50% Off|1 Month Promo Awareness Flyer-L15 (2106)', 'UWC 50% Off|1 Month Promo Awareness Flyer-L13 (2108)', 'UWC 50% Off|1 Month Promo Awareness Flyer-L18 (2110)', 'UWC 75% Off|1 Month Promo Awareness Flyer-N17 (2130)', 'UWC 75% Off|1 Month Promo Awareness Flyer-N14 (2132)', 'UWC 75% Off|1 Month Promo Awareness Flyer-N15 (2134)', 'UWC 9.99|1 Month Promo Awareness Flyer-I15 (2154)', 'UWC All Plans Promo Awareness Flyer-B10 (2170)', 'UWC All Plans Promo Awareness Flyer-B6 (2172)', 'UWC All Plans Promo Awareness Flyer-B11 (2174)']
   },
   {
-    mother: '50% Off UWC Promo Scan Cards (111807)',
-    children: ['UWC 50% Off|1 Month Scan Cards-L (2118)', 'UWC 75% Off|1 Month Scan Cards-N (2142)', 'UWC 9.99|1 Month Scan Cards-I (2158)', 'UWC All Plans Scan Cards-B (2182)']
-    
-  }
+    mother: 'UWC Mister Kiosk 9.99|1 Month Promo Decal (1150)',
+    children: ['UWC Mister Kiosk 50% Off|1 Month Promo Decal-L (2104)', 'UWC Mister Kiosk 75% Off|1 Month Promo Decal-N (2128)', 'UWC Mister Kiosk 9.99|1 Month Promo Decal-I (2152)', 'UWC Mister Kiosk All Plans Promo Decal-B (2168)']
+  },
+   {
+    mother: 'UWC Pegasus Gen 2 Kiosk 9.99|1 Month Promo Decal (1152)',
+    children: ['UWC Pegasus Gen 2 Kiosk 50% Off|1 Month Promo Decal-L (2102)', 'UWC Pegasus Gen 2 Kiosk 75% Off|1 Month Promo Decal-N (2126)', 'UWC Pegasus Gen 2 Kiosk 9.99|1 Month Promo Decal-I (2150)', 'UWC Pegasus Gen 2 Kiosk All Plans Promo Decal-B (2166)']
+  },
+
 ];
 
 // Client Portal Configuration
-const clientPortal = 'Mister';
+const clientPortal = 'Mister Car Wash';
 const clientPortalId = '14715'; // Mister portal ID
 
 // Directory Configuration
@@ -74,7 +77,10 @@ async function processChildProduct(page, motherProduct, childProduct) {
   // Search for mother product
   await page.click("#ProductsSearch");
   await page.waitForTimeout(4000);
-  await page.waitForSelector("#ui-dialog-title-modalGridListDialogBox");
+  //await page.waitForSelector("#ui-dialog-title-modalGridListDialogBox");
+  await page.waitForSelector("#modalGridListDialogBox");
+// Then also wait for at least one grid row to confirm data loaded
+await page.waitForSelector("#Products tr.jqgrow");
   await page.waitForTimeout(4000);
   await page.click("#gs_ProductName");
   await page.keyboard.type(motherProduct);
@@ -151,7 +157,9 @@ async function processChildProduct(page, motherProduct, childProduct) {
 
   // Add SKU
   await page.click("#SKUGridTrue");
-  await page.waitForSelector("#ui-dialog-title-dialogWindow");
+ // await page.waitForSelector("#ui-dialog-title-dialogWindow");
+  // Or wait for the SKU form specifically (most precise - unique to this dialog)
+await page.waitForSelector("#SkuSave");
   await page.waitForTimeout(4000);
   await page.click("#SKU");
   await page.keyboard.type(newSKU);
@@ -216,7 +224,8 @@ async function processProductGroup(page, group, groupIndex) {
   console.log('Logging into Marcom...');
   await page.goto('https://admin.marcomcentral.app.pti.com/Account/LogOn?ReturnUrl=%2f', {timeout: 0});
   await page.waitForTimeout(4000);
-  await page.click(".ui-button");
+  //await page.click(".ui-button");
+  await page.click('.primary-submit')
   await page.waitForTimeout(4000);
 
   // Navigate to portal
