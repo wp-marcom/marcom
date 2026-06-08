@@ -26,7 +26,7 @@ const summaryOutputFilePath = path.join(fullPathtoOutput, `MarcomOrders_PortalDa
 // Define the conditions for each tab
 const conditions = [
   { name: 'Mister', col: 'A', contains: 'MCW Online' },
-  { name: 'YMCA', col: 'A', contains: 'PO-' },
+  //{ name: 'YMCA', col: 'A', contains: 'PO-' },
   { name: 'Carondelet', col: 'A', contains: 'CHN Online' },
   { name: 'Carondelet', col: 'C', contains: 'Carondelet Health Network' },
   { name: 'Tierra Antigua', col: 'A', contains: 'TA Online' },
@@ -37,7 +37,7 @@ const conditions = [
   { name: 'Intermountain', col: 'C', contains: 'Intermountain Centers' },
   { name: 'City of Sierra Vista', col: 'A', contains: 'COSV Online' },
   { name: 'City of Sierra Vista', col: 'C', contains: 'City of Sierra Vista' },
-  { name: 'Safari Club', col: 'A', contains: 'SCI Online' },
+  //{ name: 'Safari Club', col: 'A', contains: 'SCI Online' },
   { name: 'Therapy Partners', col: 'A', contains: 'TP Online' },
   { name: 'Northwest Healthcare', col: 'A', contains: 'NWH Online' },
   { name: 'UofA', col: 'A', onlyDigits: true },
