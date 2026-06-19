@@ -28,12 +28,12 @@ const products = PRODUCT_NAMES.map((name, index) => ({
 
 // OPTION 2: Extract external ID from product name (cleaner - only one array needed)
 // Extracts number from parentheses and adds 'MCW' prefix
-const PRODUCT_NAMES = ['28"x44" 50% Off|1 Month Promo Windscreen-L (2101)', 'UWC Pegasus Gen 2 Kiosk 50% Off|1 Month Promo Decal-L (2102)', 'UWC Mister Kiosk 50% Off|1 Month Promo Decal-L (2104)', 'UWC 50% Off|1 Month Promo Awareness Flyer-L15 (2106)', 'UWC 50% Off|1 Month Promo Awareness Flyer-L13 (2108)', 'UWC 50% Off|1 Month Promo Awareness Flyer-L18 (2110)', 'UWC 50% Off|1 Month CSA Price Menu-L15 (2112)', 'UWC 50% Off|1 Month CSA Price Menu-L13 (2114)', 'UWC 50% Off|1 Month CSA Price Menu-L18 (2116)', 'UWC 50% Off|1 Month Scan Cards-L (2118)', 'UWC Pegasus Gen 1 Kiosk 50% Off|1 Month Promo Decal-L (2120)', 'UWC DRB Kiosk 50% Off|1 Month Promo Decal-L (2122)', '28"x44" 75% Off|1 Month Promo Windscreen-N (2125)', 'UWC Pegasus Gen 2 Kiosk 75% Off|1 Month Promo Decal-N (2126)', 'UWC Mister Kiosk 75% Off|1 Month Promo Decal-N (2128)', 'UWC 75% Off|1 Month Promo Awareness Flyer-N17 (2130)', 'UWC 75% Off|1 Month Promo Awareness Flyer-N14 (2132)', 'UWC 75% Off|1 Month Promo Awareness Flyer-N15 (2134)', 'UWC 75% Off|1 Month Promo Awareness Flyer-N22 (2135)', 'UWC 75% Off|1 Month CSA Price Menu-N17 (2136)', 'UWC 75% Off|1 Month CSA Price Menu-N14 (2138)', 'UWC 75% Off|1 Month CSA Price Menu-N15 (2140)', 'UWC 75% Off|1 Month CSA Price Menu-N22 (2141)', 'UWC 75% Off|1 Month Scan Cards-N (2142)', 'UWC DRB Kiosk 75% Off|1 Month Promo Decal-N (2146)', '28"x44" 9.99|1 Month Promo Windscreen-I (2149)', 'UWC Pegasus Gen 2 Kiosk 9.99|1 Month Promo Decal-I (2150)', 'UWC Mister Kiosk 9.99|1 Month Promo Decal-I (2152)', 'UWC 9.99|1 Month Promo Awareness Flyer-I15 (2154)', 'UWC 9.99|1 Month Promo Awareness Flyer-I22 (2155)', 'UWC 9.99|1 Month CSA Price Menu-I15 (2156)', 'UWC 9.99|1 Month CSA Price Menu-I22 (2157)', 'UWC 9.99|1 Month Scan Cards-I (2158)', 'UWC Pegasus Gen 1 Kiosk 9.99|1 Month Promo Decal-I (2160)', 'UWC DRB Kiosk 9.99|1 Month Promo Decal-I (2162)', '36"x96" Vinyl UWC All Plans Promo Banner-B (2164)', '28"x44" All Plans Promo Windscreen-B (2165)', 'UWC Pegasus Gen 2 Kiosk All Plans Promo Decal-B (2166)', 'UWC Mister Kiosk All Plans Promo Decal-B (2168)', 'UWC All Plans Promo Awareness Flyer-B10 (2170)', 'UWC All Plans Promo Awareness Flyer-B6 (2172)', 'UWC All Plans Promo Awareness Flyer-B11 (2174)', 'UWC All Plans CSA Price Menu-B10 (2176)', 'UWC All Plans CSA Price Menu-B6 (2178)', 'UWC All Plans CSA Price Menu-B11 (2180)', 'UWC All Plans Scan Cards-B (2182)', 'UWC DRB Kiosk All Plans Promo Decal-B (2186)', 'UWC All Plans Promo Awareness Flyer-A8 (2192)', 'UWC All Plans CSA Price Menu-A8 (2194)', '28"x44" All Plans Promo Windscreen-A (2196)', 'UWC Pegasus Gen 2 Kiosk All Plans Promo Decal-A (2198)'];
+const PRODUCT_NAMES = ['28"x44" Please No Parking Or Stopping Windscreen (111448) LF', '28"x44" $3 Phase 3 Towel Program Windscreen (553) LF', '28"x44" $4 Phase 3 Towel Program Windscreen (555) LF', '28"x44" Closed for Renovation Windscreen (111452) LF', '28"x44" Free Vacuums Windscreen (199) LF', '28"x44" Free Vacuums Windscreen - Spanish (201) LF', '28"x44" Free Vacuums Windscreen - Bilingual (203) LF', '28"x44" Towel Program UWC Windscreen (437) LF', '28"x44" Google Review Windscreen (23062) LF', '28"x44" Closing Soon for Renovation Windscreen (111454) LF', '28"x44" \'Enter\' Windscreen (1625) LF', '28"x44" Clean Truck Beds Windscreen - Bilingual (40072) LF', '28"x44" Load On Windscreen - Bilingual (14007) LF', '28"x44" \'We\'re Open\' Windscreen (9028) LF', '28"x44" Closed Due to Weather Windscreen (14000) LF', '28"x44" Disclaimer Windscreen (14001) LF', '28"x44" Sorry Closed Windscreen (14006) LF', '28"x44" Clean Truck Beds Windscreen (40071) LF', '28"x44" Closed for Employee Appreciation Windscreen (12036) LF', '28"x44" UWC 9.99|1 Month Promo Windscreen (1144) LF', '28"x44" UWC 9.99|2 Month Promo Windscreen (1164) LF', '28"x44" UWC 50% Off|1 Month Promo Windscreen (1104) LF', '28"x44" UWC 50% Off|2 Month Promo Windscreen (1124) LF', '28"x44" UWC 14.99|1 Month Promo Windscreen (1184) LF'];
 
 const products = PRODUCT_NAMES.map(name => {
-    // Extract number from parentheses at end: (2100) -> 2100
-    const match = name.match(/\((\d+)\)$/);
-    const externalId = match ? 'MCW' + match[1] : 'UNKNOWN';
+    // Base Price for all items
+    //const match = name.match(/\((\d+)\)$/);
+    const externalId = '24.89';
     
     return {
         productName: name,
@@ -98,7 +98,7 @@ function sleep(ms) {
             await page.keyboard.up('Control');
             await page.keyboard.press('Backspace');
             await sleep(100);
-            await page.keyboard.type('(167)');
+            await page.keyboard.type(product.productName);
             await sleep(200);
             await page.keyboard.press('Enter');
             await sleep(5000);
@@ -108,29 +108,34 @@ function sleep(ms) {
             await page.mouse.click(186, 244);
             await sleep(5000);
             
-            // Click Copy button
-            console.log("3. Clicking Copy button...");
-            await page.mouse.click(286, 82);
+            // Click Edit button
+            console.log("3. Clicking Edit button...");
+            await page.mouse.click(219, 82);
+            await sleep(8000);
+
+             // Click Selling Units Tab
+            console.log("4. Selling Units Tab...");
+            await page.mouse.click(311, 286);
             await sleep(8000);
             
             // OK on popup - Approach 3 (Focus and Press Enter)
-            console.log("4. Confirming duplicate via OK button...");
-            await page.evaluate(() => {
-                const buttons = document.querySelectorAll('button.button');
-                for (let btn of buttons) {
-                    if (btn.textContent.trim() === 'OK') {
-                        btn.focus();
-                        return true;
-                    }
-                }
-                return false;
-            });
-            await page.keyboard.press('Enter');
-            await sleep(3000);
+           // console.log("4. Confirming duplicate via OK button...");
+          //  await page.evaluate(() => {
+             //   const buttons = document.querySelectorAll('button.button');
+             //   for (let btn of buttons) {
+            //        if (btn.textContent.trim() === 'OK') {
+             //           btn.focus();
+              //          return true;
+             //       }
+             //   }
+            //    return false;
+          //  });
+          //  await page.keyboard.press('Enter');
+           // await sleep(3000);
             
-            // External ID field
-            console.log("5. Entering External ID: " + product.externalId);
-            await page.mouse.click(350, 147);
+            // List Price field
+            console.log("5. Entering New List Price: " + product.externalId);
+            await page.mouse.click(611, 364);
             await sleep(200);
             await page.keyboard.down('Control');
             await page.keyboard.press('A');
@@ -141,16 +146,16 @@ function sleep(ms) {
             await sleep(500);
             
             // Product Name field
-            console.log("6. Entering Product Name: " + product.productName);
-            await page.mouse.click(334, 173);
-            await sleep(200);
-            await page.keyboard.down('Control');
-            await page.keyboard.press('A');
-            await page.keyboard.up('Control');
-            await page.keyboard.press('Backspace');
-            await sleep(100);
-            await page.keyboard.type(product.productName);
-            await sleep(500);
+            //console.log("6. Entering Product Name: " + product.productName);
+            //await page.mouse.click(334, 173);
+            //await sleep(200);
+            //await page.keyboard.down('Control');
+            //await page.keyboard.press('A');
+            //await page.keyboard.up('Control');
+            //await page.keyboard.press('Backspace');
+            //await sleep(100);
+            //await page.keyboard.type(product.productName);
+            //await sleep(500);
             
             // Save
             console.log("7. Saving...");
@@ -162,7 +167,7 @@ function sleep(ms) {
             await page.mouse.click(1637, 84);
             await sleep(5000);
             
-            console.log(`✓ Successfully created clone for: ${product.productName}`);
+            console.log(`✓ Successfully changed price for: ${product.productName}`);
             
         } catch (error) {
             console.error(`✗ Error processing product ${productIndex + 1}: ${error.message}`);

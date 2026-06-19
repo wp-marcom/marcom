@@ -1527,19 +1527,19 @@ article.panel-detail-wrap:nth-child(3){
 }
 
 
-/* Training Tools, Guide, & Workbooks */
-.mcc-folder-2346554 .category-card {
+/* Training Materials */
+.mcc-folder-3756297 .category-card {
   background: var(--primary-color) url(../../img/custom/mister-trainingtools.webp) no-repeat bottom left / cover;
 }
-.mcc-folder-2346554 .category-card .card-img-holder:before {
+.mcc-folder-3756297 .category-card .card-img-holder:before {
   background-image: url(../../img/common/folde.svg);
 }
 
-.mcc-folder-2346554 > a:nth-child(1):after {
+.mcc-folder-3756297 > a:nth-child(1):after {
   background: rgba(var(--primary-color-rgb), 0.6);
 }
-.mcc-folder-2346554 .category-card:focus:after,
-.mcc-folder-2346554 .category-card:hover:after {
+.mcc-folder-3756297 .category-card:focus:after,
+.mcc-folder-3756297 .category-card:hover:after {
   background: rgba(var(--secondary-color-rgb), 1.0);
 }
 
