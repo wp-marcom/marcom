@@ -1,7 +1,7 @@
 {
   "page": 1,
   "total": 1,
-  "records": 812,
+  "records": 813,
   "rows": [
     {
       "id": "1010189",
@@ -20297,6 +20297,31 @@
         "7/6/2026 2:44:16 PM",
         "7/6/2026 2:40:40 PM",
         "MCW6066",
+        "1",
+        "false",
+        "1",
+        "Admin Tool"
+      ]
+    },
+    {
+      "id": "5316579",
+      "cell": [
+        "5316579",
+        "False",
+        "/printonelogos/images/895/14715/thumbnails/5316579/406f9a2f-aa6e-4d63-ab25-2930cd529ce7.png",
+        "5475",
+        "Mister Tablet Strap (1300)",
+        "Pick",
+        "Mister Tablet Strap \u003Cdiv class=\"button button-orange\"\u003E                  \u003Ci class=\"fa fa-exclamation-triangle\"\u003E\u003C/i\u003E                  \u003Cstrong\u003ESold individually\u003C/strong\u003E\u003C/div\u003E",
+        "",
+        "",
+        "Standard",
+        "No",
+        "None",
+        "Store Default",
+        "7/13/2026 7:24:26 AM",
+        "7/13/2026 7:22:04 AM",
+        "MCW1300",
         "1",
         "false",
         "1",
