@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cXML Order Generator</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    const UploadIcon = () => (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="17 8 12 3 7 8"></polyline>
+        <line x1="12" y1="3" x2="12" y2="15"></line>
+      </svg>
+    );
+
+    function CXMLGenerator() {
+      const [orderData, setOrderData] = useState({
+        orderNumber: 'MCW Online - 83949',
+        orderDate: '20260119',
+        orderTime: '08:07:50',
+        customerID: 'MISTER CAR WASH',
+        companyName: 'Mister Car Wash',
+        webUserID: 'co1341@mistercarwash.com',
+        webUserName: '1341 Academy Blvd',
+        userEmail: 'co1341@mistercarwash.com',
+        orderTotal: '70.74',
+        shippingMethod: 'Standard',
+        paymentMethod: 'Purchase Order',
+        billToCompany: 'Mister Car Wash North Campus HQ',
+        billToAddress2: '222 East 5th Street',
+        billToCity: 'Tucson',
+        billToState: 'AZ',
+        billToZip: '85705-8412',
+        shipToName: 'April Jaramillo',
+        shipToCompany: 'Mister Car Wash #1341',
+        shipToAddress1: 'CC 810',
+        shipToAddress2: '4275 N Academy Blvd',
+        shipToCity: 'Colorado Springs',
+        shipToState: 'CO',
+        shipToZip: '80918'
+      });
+
+      const [products, setProducts] = useState([]);
+
+      // --- Product data source state (po_parser-style) ---
+      const [jsonData, setJsonData] = useState(null);
+      const [emailBody, setEmailBody] = useState('');
+      const [nameColumn, setNameColumn] = useState('4');
+      const [skuColumn, setSkuColumn] = useState('15');
+      const [productCodeColumn, setProductCodeColumn] = useState('');
+      const [priceColumn, setPriceColumn] = useState('');
+      const [globalEntryType, setGlobalEntryType] = useState('V');
+      const [globalCostCenter, setGlobalCostCenter] = useState('810');
+      const [globalVendor, setGlobalVendor] = useState('West Press');
+      const [globalPromiseDate, setGlobalPromiseDate] = useState('');
+      const [debugLog, setDebugLog] = useState([]);
+
+      // --- Manual product list editing (fallback / fine-tuning) ---
+      const addProduct = () => {
+        setProducts([...products, {
+          productCode: '',
+          entryType: globalEntryType,
+          productName: '',
+          sku: '',
+          quantity: '1',
+          price: '0.00',
+          costCenterNumber: globalCostCenter,
+          vendor: globalVendor,
+          promiseDate: globalPromiseDate
+        }]);
+      };
+
+      const removeProduct = (index) => {
+        setProducts(products.filter((_, i) => i !== index));
+      };
+
+      const updateProduct = (index, field, value) => {
+        const newProducts = [...products];
+        newProducts[index][field] = value;
+        setProducts(newProducts);
+      };
+
+      // --- File upload for product database JSON ---
+      const handleFileUpload = async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        try {
+          const text = await file.text();
+          const data = JSON.parse(text);
+          setJsonData(data);
+
+          if (data.rows && data.rows.length > 0) {
+            alert(`JSON loaded! Found ${data.rows.length} product records.`);
+          }
+        } catch (error) {
+          alert('Error parsing JSON file: ' + error.message);
+        }
+      };
+
+      const extractSKU = (productName) => {
+        const match = productName.match(/\(([^)]+)\)/);
+        return match ? match[1] : '';
+      };
+
+      // Look up a full row in the product database by name (exact/trim match),
+      // falling back to SKU match. Returns the row's cell array, or null.
+      const findProductRow = (productName, sku) => {
+        if (!jsonData || !jsonData.rows) return null;
+        const nameIdx = parseInt(nameColumn, 10);
+
+        if (!isNaN(nameIdx)) {
+          for (let product of jsonData.rows) {
+            const dbProductName = product.cell[nameIdx];
+            if (dbProductName && dbProductName.trim() === productName.trim()) {
+              return product.cell;
+            }
+          }
+          // case-insensitive fallback
+          for (let product of jsonData.rows) {
+            const dbProductName = product.cell[nameIdx];
+            if (dbProductName && dbProductName.trim().toLowerCase() === productName.trim().toLowerCase()) {
+              return product.cell;
+            }
+          }
+        }
+
+        const skuIdx = parseInt(skuColumn, 10);
+        if (sku && !isNaN(skuIdx)) {
+          for (let product of jsonData.rows) {
+            const dbSKU = product.cell[skuIdx];
+            if (dbSKU && dbSKU.includes(sku)) {
+              return product.cell;
+            }
+          }
+        }
+
+        return null;
+      };
+
+      // --- Email parsing logic (ported from po_parser) ---
+      const parseEmail = (emailText) => {
+        const items = [];
+        const lines = emailText.split('\n');
+        const logs = [];
+
+        logs.push(`Total lines: ${lines.length}`);
+        let quantityCount = 0;
+
+        let i = 0;
+        while (i < lines.length) {
+          const line = lines[i].trim();
+
+          if (line.startsWith('*Quantity:*')) {
+            quantityCount++;
+            logs.push(`\nFound Quantity #${quantityCount} at line ${i}: "${line.substring(0, 60)}..."`);
+
+            let quantity = '';
+            let productName = '';
+
+            const inlineMatch = line.match(/\*Quantity:\*\s*(\d+)\s+of\s+\d+.*\(Product Name:/);
+
+            if (inlineMatch) {
+              logs.push('  -> INLINE FORMAT detected');
+              quantity = inlineMatch[1];
+
+              let nameBuffer = line.split('(Product Name:')[1].trim();
+
+              let k = i + 1;
+              while (k < lines.length) {
+                const nextLine = lines[k].trim();
+                if (nextLine.startsWith('*')) {
+                  break;
+                }
+                if (!nextLine) {
+                  k++;
+                  continue;
+                }
+                nameBuffer += ' ' + nextLine;
+                if (nextLine.endsWith(')')) {
+                  break;
+                }
+                k++;
+              }
+
+              productName = nameBuffer.replace(/\)\s*$/, '').trim();
+              logs.push(`  -> Product: "${productName}" | Qty: ${quantity}`);
+
+            } else {
+              logs.push('  -> STANDARD FORMAT detected');
+              const qtyMatch = line.match(/\*Quantity:\*\s*(\d+)/);
+              if (qtyMatch) {
+                quantity = qtyMatch[1];
+              }
+
+              for (let j = i + 1; j < Math.min(i + 15, lines.length); j++) {
+                const nextLine = lines[j].trim();
+                if (nextLine.startsWith('*Product Name:*')) {
+                  let nameBuffer = nextLine.replace('*Product Name:*', '').trim();
+
+                  let k = j + 1;
+                  while (k < lines.length) {
+                    const followLine = lines[k].trim();
+                    if (followLine.startsWith('*')) {
+                      break;
+                    }
+                    if (followLine) {
+                      nameBuffer += ' ' + followLine;
+                    }
+                    k++;
+                  }
+
+                  productName = nameBuffer.trim();
+                  logs.push(`  -> Product: "${productName}" | Qty: ${quantity}`);
+                  break;
+                }
+              }
+            }
+
+            if (quantity && productName) {
+              const sku = extractSKU(productName);
+              items.push({ quantity, productName, sku });
+            } else {
+              logs.push('  -> SKIPPED (missing qty or name)');
+            }
+          }
+
+          i++;
+        }
+
+        logs.push(`\n=== SUMMARY ===`);
+        logs.push(`Total Quantity lines found: ${quantityCount}`);
+        logs.push(`Total products extracted: ${items.length}`);
+
+        setDebugLog(logs);
+        return items;
+      };
+
+      const parseAndBuildProducts = () => {
+        if (!emailBody.trim()) {
+          alert('Please paste an email body first');
+          return;
+        }
+
+        const parsedItems = parseEmail(emailBody);
+
+        if (parsedItems.length === 0) {
+          alert('No products found in the email. Check the debug log below.');
+          return;
+        }
+
+        const codeIdx = productCodeColumn !== '' ? parseInt(productCodeColumn, 10) : null;
+        const priceIdx = priceColumn !== '' ? parseInt(priceColumn, 10) : null;
+
+        let matchedCount = 0;
+
+        const newProducts = parsedItems.map((item) => {
+          const row = findProductRow(item.productName, item.sku);
+          if (row) matchedCount++;
+
+          return {
+            productCode: (row && codeIdx !== null && !isNaN(codeIdx) && row[codeIdx]) ? row[codeIdx] : '',
+            entryType: globalEntryType,
+            productName: item.productName,
+            sku: item.sku,
+            quantity: item.quantity,
+            price: (row && priceIdx !== null && !isNaN(priceIdx) && row[priceIdx]) ? row[priceIdx] : '0.00',
+            costCenterNumber: globalCostCenter,
+            vendor: globalVendor,
+            promiseDate: globalPromiseDate
+          };
+        });
+
+        setProducts(newProducts);
+        setDebugLog(prev => [...prev, `\nMatched ${matchedCount} of ${parsedItems.length} products against the uploaded database.`]);
+        alert(`Parsed ${newProducts.length} products (${matchedCount} matched against the database). Review the Products list below before generating XML.`);
+      };
+
+      // --- cXML generation (unchanged from original manual-xml) ---
+      const generateCXML = () => {
+        const timestamp = new Date().toISOString().replace(/\.\d{3}Z$/, '');
+
+        return `<?xml version="1.0" encoding="utf-8"?>
+<cXML timestamp="${timestamp}" payloadID="JT@printable.com">
+  <Header>
+    <From>
+      <Credential domain="NetworkID">
+        <Identity>PrintableGateway</Identity>
+      </Credential>
+    </From>
+    <To>
+      <Credential domain="NetworkID">
+        <Identity>895-14715</Identity>
+      </Credential>
+    </To>
+    <Sender>
+      <Credential domain="NetworkID">
+        <Identity>gateway@printable.com</Identity>
+        <SharedSecret>sharedsecret</SharedSecret>
+      </Credential>
+      <UserAgent>Dashboard</UserAgent>
+    </Sender>
+  </Header>
+  <Request deploymentMode="production">
+    <Order>
+      <OrderNumber>${orderData.orderNumber}</OrderNumber>
+      <OrderDate>${orderData.orderDate}</OrderDate>
+      <OrderTime>${orderData.orderTime}</OrderTime>
+      <PromiseDate></PromiseDate>
+      <CustomerID>${orderData.customerID}</CustomerID>
+      <CompanyName>${orderData.companyName}</CompanyName>
+      <WebUserID>${orderData.webUserID}</WebUserID>
+      <WebUserName>${orderData.webUserName}</WebUserName>
+      <UserEmail>${orderData.userEmail}</UserEmail>
+      <RequisitionUserID></RequisitionUserID>
+      <RequisitionUserName> </RequisitionUserName>
+      <RequisitionUserEmail></RequisitionUserEmail>
+      <AvantiOrderedbyWebUser>${orderData.webUserName}</AvantiOrderedbyWebUser>
+      <AvantiOrderedbyWebUserEmail>${orderData.userEmail}</AvantiOrderedbyWebUserEmail>
+      <AvantiOrderedbyWebUserLoginID>${orderData.webUserID}</AvantiOrderedbyWebUserLoginID>
+      <UserGenericField1></UserGenericField1>
+      <UserGenericField2></UserGenericField2>
+      <UserGenericField3></UserGenericField3>
+      <UserGenericField4></UserGenericField4>
+      <UserGenericField5></UserGenericField5>
+      <UserGenericField6></UserGenericField6>
+      <UserGenericField7></UserGenericField7>
+      <UserGenericField8></UserGenericField8>
+      <UserGenericField9></UserGenericField9>
+      <UserGenericField10></UserGenericField10>
+      <RequisitionUserGenericField1></RequisitionUserGenericField1>
+      <RequisitionUserGenericField2></RequisitionUserGenericField2>
+      <RequisitionUserGenericField3></RequisitionUserGenericField3>
+      <RequisitionUserGenericField4></RequisitionUserGenericField4>
+      <RequisitionUserGenericField5></RequisitionUserGenericField5>
+      <RequisitionUserGenericField6></RequisitionUserGenericField6>
+      <RequisitionUserGenericField7></RequisitionUserGenericField7>
+      <RequisitionUserGenericField8></RequisitionUserGenericField8>
+      <RequisitionUserGenericField9></RequisitionUserGenericField9>
+      <RequisitionUserGenericField10></RequisitionUserGenericField10>
+      <OrderQuantity>${products.reduce((sum, p) => sum + parseInt(p.quantity || 0), 0)}</OrderQuantity>
+      <CustomerPO></CustomerPO>
+      <ShippingMethod>${orderData.shippingMethod}</ShippingMethod>
+      <OrderTotal>${orderData.orderTotal}</OrderTotal>
+      <TaxAmount1>0.00</TaxAmount1>
+      <OrderTotalShippingAmount>0.00</OrderTotalShippingAmount>
+      <PaymentMethod>${orderData.paymentMethod}</PaymentMethod>
+      <AuthorizationDate></AuthorizationDate>
+      <BillTo>
+        <BillToName></BillToName>
+        <BillToCompany>${orderData.billToCompany}</BillToCompany>
+        <BillToAddress1>None</BillToAddress1>
+        <BillToAddress2>${orderData.billToAddress2}</BillToAddress2>
+        <BillToAddress3></BillToAddress3>
+        <BillToAddress4></BillToAddress4>
+        <BillToCity>${orderData.billToCity}</BillToCity>
+        <BillToState>${orderData.billToState}</BillToState>
+        <BillToZip>${orderData.billToZip}</BillToZip>
+        <BillToCountry>United States</BillToCountry>
+        <BillToAttention></BillToAttention>
+      </BillTo>
+      <ShipTo>
+        <ShipToName>${orderData.shipToName}</ShipToName>
+        <ShipToCompany>${orderData.shipToCompany}</ShipToCompany>
+        <ShipToAddress1>${orderData.shipToAddress1}</ShipToAddress1>
+        <ShipToAddress2>${orderData.shipToAddress2}</ShipToAddress2>
+        <ShipToAddress3></ShipToAddress3>
+        <ShipToAddress4></ShipToAddress4>
+        <ShipToCity>${orderData.shipToCity}</ShipToCity>
+        <ShipToState>${orderData.shipToState}</ShipToState>
+        <ShipToZip>${orderData.shipToZip}</ShipToZip>
+        <ShipToCountry>United States</ShipToCountry>
+        <ShipToAttention>${orderData.shipToName}</ShipToAttention>
+      </ShipTo>
+      <Products>
+${products.map((product, idx) => `        <Product>
+          <ProductCode>${product.productCode}</ProductCode>
+          <EntryType>${product.entryType}</EntryType>
+          <ProductName>${product.productName}</ProductName>
+          <ProductDescription></ProductDescription>
+          <SkuPrefix></SkuPrefix>
+          <Sku>${product.sku}</Sku>
+          <SkuExternalID></SkuExternalID>
+          <Quantity>${product.quantity}</Quantity>
+          <ShipCost>0.00</ShipCost>
+          <Price>${product.price}</Price>
+          <PriceLessShip>${product.price}</PriceLessShip>
+          <PriceLessTaxandShip>${product.price}</PriceLessTaxandShip>
+          <ContentFile></ContentFile>
+          <OrderLineItemID>5742967${idx + 1}</OrderLineItemID>
+          <CostCenterNumber>${product.costCenterNumber}</CostCenterNumber>
+          <CostCenterName>${product.costCenterNumber}</CostCenterName>
+          <CostCenterExternalID></CostCenterExternalID>
+          <SpecialInstructions></SpecialInstructions>
+          <ShipTo>
+            <ShipToName>${orderData.shipToName}</ShipToName>
+            <ShipToCompany>${orderData.shipToCompany}</ShipToCompany>
+            <ShipToAddress1>${orderData.shipToAddress1}</ShipToAddress1>
+            <ShipToAddress2>${orderData.shipToAddress2}</ShipToAddress2>
+            <ShipToAddress3></ShipToAddress3>
+            <ShipToAddress4></ShipToAddress4>
+            <ShipToCity>${orderData.shipToCity}</ShipToCity>
+            <ShipToState>${orderData.shipToState}</ShipToState>
+            <ShipToZip>${orderData.shipToZip}</ShipToZip>
+            <ShipToCountry>United States</ShipToCountry>
+            <ShipToAttention></ShipToAttention>
+          </ShipTo>
+          <Finishing>
+            <GeneralDescription></GeneralDescription>
+            <PaperDescription></PaperDescription>
+            <PrePressInstructions></PrePressInstructions>
+            <PressInstructions></PressInstructions>
+            <BinderyInstructions></BinderyInstructions>
+            <ShipInstructions></ShipInstructions>
+          </Finishing>
+          <Vendor>${product.vendor}</Vendor>
+          <PromiseDate>${product.promiseDate}</PromiseDate>
+        </Product>`).join('\n')}
+      </Products>
+    </Order>
+  </Request>
+</cXML>`;
+      };
+
+      const downloadXML = () => {
+        const xml = generateCXML();
+        const blob = new Blob([xml], { type: 'text/xml' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `order_${orderData.orderNumber.replace(/\s/g, '_')}.xml`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      };
+
+      const copyToClipboard = () => {
+        navigator.clipboard.writeText(generateCXML());
+        alert('cXML copied to clipboard!');
+      };
+
+      return (
+        <div className="min-h-screen bg-gray-50 p-6">
+          <div className="max-w-6xl mx-auto">
+            <h1 className="text-3xl font-bold text-gray-900 mb-6">cXML Order Generator</h1>
+
+            <div className="bg-white rounded-lg shadow p-6 mb-6">
+              <h2 className="text-xl font-semibold mb-4">Order Information</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Order Number"
+                  value={orderData.orderNumber}
+                  onChange={(e) => setOrderData({...orderData, orderNumber: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Order Date (YYYYMMDD)"
+                  value={orderData.orderDate}
+                  onChange={(e) => setOrderData({...orderData, orderDate: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Customer ID"
+                  value={orderData.customerID}
+                  onChange={(e) => setOrderData({...orderData, customerID: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Company Name"
+                  value={orderData.companyName}
+                  onChange={(e) => setOrderData({...orderData, companyName: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Web User ID"
+                  value={orderData.webUserID}
+                  onChange={(e) => setOrderData({...orderData, webUserID: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Order Total"
+                  value={orderData.orderTotal}
+                  onChange={(e) => setOrderData({...orderData, orderTotal: e.target.value})}
+                />
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow p-6 mb-6">
+              <h2 className="text-xl font-semibold mb-4">Shipping Address</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Ship To Name"
+                  value={orderData.shipToName}
+                  onChange={(e) => setOrderData({...orderData, shipToName: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Ship To Company"
+                  value={orderData.shipToCompany}
+                  onChange={(e) => setOrderData({...orderData, shipToCompany: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Address Line 1"
+                  value={orderData.shipToAddress1}
+                  onChange={(e) => setOrderData({...orderData, shipToAddress1: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Address Line 2"
+                  value={orderData.shipToAddress2}
+                  onChange={(e) => setOrderData({...orderData, shipToAddress2: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="City"
+                  value={orderData.shipToCity}
+                  onChange={(e) => setOrderData({...orderData, shipToCity: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="State"
+                  value={orderData.shipToState}
+                  onChange={(e) => setOrderData({...orderData, shipToState: e.target.value})}
+                />
+                <input
+                  className="border rounded px-3 py-2"
+                  placeholder="Zip Code"
+                  value={orderData.shipToZip}
+                  onChange={(e) => setOrderData({...orderData, shipToZip: e.target.value})}
+                />
+              </div>
+            </div>
+
+            {/* --- Product data source (po_parser-style) --- */}
+            <div className="bg-white rounded-lg shadow p-6 mb-6">
+              <h2 className="text-xl font-semibold mb-4">Product List (Auto-Generated)</h2>
+
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Step 1: Upload Product Database (JSON)</label>
+                <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-indigo-400 hover:bg-indigo-50 transition">
+                  <UploadIcon />
+                  <span className="text-sm text-gray-500 mt-1">
+                    {jsonData ? <span className="text-green-600 font-medium">✓ Loaded {jsonData.rows ? jsonData.rows.length : 0} products</span> : 'Click to upload your JSON product database'}
+                  </span>
+                  <input type="file" accept=".json" className="hidden" onChange={handleFileUpload} />
+                </label>
+              </div>
+
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Step 2: Paste Order Email Body</label>
+                <textarea
+                  className="w-full border rounded px-3 py-2 font-mono text-sm"
+                  rows="10"
+                  placeholder="Paste the plain text email body here..."
+                  value={emailBody}
+                  onChange={(e) => setEmailBody(e.target.value)}
+                />
+              </div>
+
+              <div className="mb-4 bg-gray-50 rounded-lg p-4">
+                <h3 className="font-semibold mb-3 text-sm">Database Column Mapping</h3>
+                <p className="text-xs text-gray-500 mb-3">
+                  Your product database is a JSON file shaped like <code>{'{ rows: [{ cell: [...] }] }'}</code>.
+                  Tell me which cell index (0-based) holds each field. Leave Product Code / Price blank to skip auto-fill for that field.
+                </p>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <div>
+                    <label className="block text-xs text-gray-600 mb-1">Product Name column #</label>
+                    <input className="border rounded px-2 py-1 w-full text-sm" value={nameColumn} onChange={(e) => setNameColumn(e.target.value)} />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-gray-600 mb-1">SKU column #</label>
+                    <input className="border rounded px-2 py-1 w-full text-sm" value={skuColumn} onChange={(e) => setSkuColumn(e.target.value)} />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-gray-600 mb-1">Product Code column # (optional)</label>
+                    <input className="border rounded px-2 py-1 w-full text-sm" value={productCodeColumn} onChange={(e) => setProductCodeColumn(e.target.value)} />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-gray-600 mb-1">Price column # (optional)</label>
+                    <input className="border rounded px-2 py-1 w-full text-sm" value={priceColumn} onChange={(e) => setPriceColumn(e.target.value)} />
+                  </div>
+                </div>
+              </div>
+
+              <div className="mb-4 bg-gray-50 rounded-lg p-4">
+                <h3 className="font-semibold mb-3 text-sm">Defaults Applied to Every Parsed Product</h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <div>
+                    <label className="block text-xs text-gray-600 mb-1">Entry Type</label>
+                    <input className="border rounded px-2 py-1 w-full text-sm" value={globalEntryType} onChange={(e) => setGlobalEntryType(e.target.value)} />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-gray-600 mb-1">Cost Center Number</label>
+                    <input className="border rounded px-2 py-1 w-full text-sm" value={globalCostCenter} onChange={(e) => setGlobalCostCenter(e.target.value)} />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-gray-600 mb-1">Vendor</label>
+                    <input className="border rounded px-2 py-1 w-full text-sm" value={globalVendor} onChange={(e) => setGlobalVendor(e.target.value)} />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-gray-600 mb-1">Promise Date (YYYYMMDD)</label>
+                    <input className="border rounded px-2 py-1 w-full text-sm" value={globalPromiseDate} onChange={(e) => setGlobalPromiseDate(e.target.value)} />
+                  </div>
+                </div>
+              </div>
+
+              <button
+                onClick={parseAndBuildProducts}
+                className="w-full bg-indigo-600 text-white px-4 py-3 rounded font-semibold hover:bg-indigo-700"
+              >
+                Parse Email & Build Product List
+              </button>
+
+              {debugLog.length > 0 && (
+                <div className="mt-4">
+                  <h3 className="font-semibold mb-2 text-sm">Debug Log</h3>
+                  <div className="bg-gray-900 text-green-400 rounded p-3 font-mono text-xs max-h-64 overflow-y-auto">
+                    {debugLog.map((log, idx) => (
+                      <div key={idx} style={{whiteSpace: 'pre-wrap'}}>{log}</div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-white rounded-lg shadow p-6 mb-6">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-semibold">Products ({products.length})</h2>
+                <button
+                  onClick={addProduct}
+                  className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                  Add Product
+                </button>
+              </div>
+
+              {products.length === 0 && (
+                <p className="text-gray-500 text-sm">No products yet. Upload a database and paste an email above, then click "Parse Email & Build Product List" — or add one manually.</p>
+              )}
+
+              {products.map((product, index) => (
+                <div key={index} className={`border rounded p-4 mb-4 ${!product.productCode ? 'border-amber-300 bg-amber-50' : ''}`}>
+                  <div className="flex justify-between items-center mb-3">
+                    <h3 className="font-semibold">
+                      Product {index + 1}
+                      {!product.productCode && <span className="ml-2 text-xs text-amber-600 font-normal">(no Product Code matched — check manually)</span>}
+                    </h3>
+                    <button
+                      onClick={() => removeProduct(index)}
+                      className="text-red-600 hover:text-red-800"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                      </svg>
+                    </button>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <input
+                      className="border rounded px-3 py-2"
+                      placeholder="Product Code"
+                      value={product.productCode}
+                      onChange={(e) => updateProduct(index, 'productCode', e.target.value)}
+                    />
+                    <input
+                      className="border rounded px-3 py-2"
+                      placeholder="Product Name"
+                      value={product.productName}
+                      onChange={(e) => updateProduct(index, 'productName', e.target.value)}
+                    />
+                    <input
+                      className="border rounded px-3 py-2"
+                      placeholder="SKU"
+                      value={product.sku}
+                      onChange={(e) => updateProduct(index, 'sku', e.target.value)}
+                    />
+                    <input
+                      className="border rounded px-3 py-2"
+                      placeholder="Quantity"
+                      type="number"
+                      value={product.quantity}
+                      onChange={(e) => updateProduct(index, 'quantity', e.target.value)}
+                    />
+                    <input
+                      className="border rounded px-3 py-2"
+                      placeholder="Price"
+                      value={product.price}
+                      onChange={(e) => updateProduct(index, 'price', e.target.value)}
+                    />
+                    <input
+                      className="border rounded px-3 py-2"
+                      placeholder="Promise Date (YYYYMMDD)"
+                      value={product.promiseDate}
+                      onChange={(e) => updateProduct(index, 'promiseDate', e.target.value)}
+                    />
+                    <input
+                      className="border rounded px-3 py-2"
+                      placeholder="Entry Type"
+                      value={product.entryType}
+                      onChange={(e) => updateProduct(index, 'entryType', e.target.value)}
+                    />
+                    <input
+                      className="border rounded px-3 py-2"
+                      placeholder="Cost Center Number"
+                      value={product.costCenterNumber}
+                      onChange={(e) => updateProduct(index, 'costCenterNumber', e.target.value)}
+                    />
+                    <input
+                      className="border rounded px-3 py-2"
+                      placeholder="Vendor"
+                      value={product.vendor}
+                      onChange={(e) => updateProduct(index, 'vendor', e.target.value)}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex gap-4">
+              <button
+                onClick={downloadXML}
+                className="flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download XML
+              </button>
+              <button
+                onClick={copyToClipboard}
+                className="flex items-center gap-2 bg-gray-600 text-white px-6 py-3 rounded hover:bg-gray-700"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copy to Clipboard
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<CXMLGenerator />, document.getElementById('root'));
+  </script>
+</body>
+</html>
