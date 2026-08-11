@@ -96,21 +96,31 @@ async function processExcel() {
         let tax = 0;
         let total = 0;
 
-        if (orderNumber !== previousOrderNumber) {
+        //if (orderNumber !== previousOrderNumber) {
             //price = 6.95;
             //tax = 0.60465;
             //total = 7.55;
 
+    //price = 6.95;
+    //tax = price * 0.087;
+    //total = price + tax;
+
+            //totalPriceSum += price;
+            //totalTaxSum += tax;
+            //totalTotalSum += total;
+
+            //uniqueFulfillmentItems++;
+       // }
+        if (orderNumber !== previousOrderNumber) {
     price = 6.95;
-    tax = price * 0.087;
-    total = price + tax;
+    tax = Math.round(price * 0.087 * 100) / 100;  // rounds to 2 decimal places
+    total = Math.round((price + tax) * 100) / 100;
 
-            totalPriceSum += price;
-            totalTaxSum += tax;
-            totalTotalSum += total;
-
-            uniqueFulfillmentItems++;
-        }
+    totalPriceSum += price;
+    totalTaxSum += tax;
+    totalTotalSum += total;
+    uniqueFulfillmentItems++;
+}
 
         previousOrderNumber = orderNumber;
 

@@ -1,5 +1,5 @@
-const groupName = ["2615-Oneida"];
-const storeNum = ["2615"];
+const groupName = ["2513-Whitehall"];
+const storeNum = ["2513"];
 const ccNum = ["810"];
 
 
