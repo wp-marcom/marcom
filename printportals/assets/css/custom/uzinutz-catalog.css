@@ -95,3 +95,11 @@ body:has(div.Uzin.Utz) .product-price-note {
   background-image: url(../../img/common/pallmann-folder.svg);
 }
 
+/* UZIN-UTZ secondary */
+.mcc-folder-3778220 .category-card {background: var(--primary-color) url(../../img/common/uzinutz-main.jpg) no-repeat center right / cover;}
+.mcc-folder-3778220 .category-card:focus:after, .mcc-folder-3778220 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
+
+.mcc-folder-3778220 .category-card .card-img-holder:before {
+  background-image: url(../../img/common/uzin-folder.svg);
+}
+
