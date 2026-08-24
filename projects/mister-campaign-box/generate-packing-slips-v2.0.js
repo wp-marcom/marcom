@@ -16,7 +16,7 @@ const fs = require('fs');
 //const ExcelJS = require('exceljs');
 const PDFDocument = require(`${primeDirectory}node_modules\\pdfkit`);
 const { PDFDocument: PDFLibDocument } = require(`${primeDirectory}node_modules\\pdf-lib`);
-const config = require('./config');
+const config = require('./config-v2.0');
 
 // ---------- column letter helpers ----------
 function colLetterToNumber(letters) {
@@ -85,11 +85,13 @@ function parseProducts(ws) {
 
 // ---------- parse stores (rows) ----------
 function parseStores(ws) {
-  const { numberCol, nameCol, stateCol, shipDaysCol, dataStartRow, dataEndRow } = config.store;
+  const { numberCol, nameCol, stateCol, addressCol, shipDaysCol, dataStartRow, dataEndRow } = config.store;
   const numCol = colLetterToNumber(numberCol);
   const nmCol = colLetterToNumber(nameCol);
   const stCol = colLetterToNumber(stateCol);
-  const shipCol = shipDaysCol ? colLetterToNumber(shipDaysCol) : null;
+  const addrCol = addressCol ? colLetterToNumber(addressCol) : null;
+  // Legacy ship-days column is only read when the TransitTimes.xlsx lookup is off.
+  const shipCol = !config.transitTimes.enabled && shipDaysCol ? colLetterToNumber(shipDaysCol) : null;
 
   const stores = [];
   let row = dataStartRow;
@@ -103,6 +105,7 @@ function parseStores(ws) {
     if (storeNumStr !== '') {
       const nameRaw = ws.getCell(row, nmCol).value;
       const stateRaw = ws.getCell(row, stCol).value;
+      const addressRaw = addrCol ? ws.getCell(row, addrCol).value : null;
       let shipDays = null;
       if (shipCol) {
         const shipRaw = ws.getCell(row, shipCol).value;
@@ -114,7 +117,9 @@ function parseStores(ws) {
         storeNum: storeNumStr,
         storeName: nameRaw != null ? String(nameRaw).trim() : '',
         state: stateRaw != null ? String(stateRaw).trim().toUpperCase() : '',
+        address: addressRaw != null ? String(addressRaw).trim() : null,
         shipDays,
+        deliveryTicketNeeded: false, // filled in from TransitTimes.xlsx if enabled
       });
     }
     row++;
@@ -122,6 +127,73 @@ function parseStores(ws) {
     if (row - dataStartRow > 20000) break; // safety valve
   }
   return stores;
+}
+
+// ---------- transit time / delivery ticket lookup ----------
+function parseYesNo(value) {
+  if (value == null) return false;
+  const s = String(value).trim().toLowerCase();
+  return s === 'yes' || s === 'y' || s === 'true' || s === '1';
+}
+
+async function loadTransitTimes() {
+  const { file, sheetName, dataStartRow, storeNumberCol, transitDaysCol, deliveryTicketCol } = config.transitTimes;
+
+  if (!fs.existsSync(file)) {
+    throw new Error(
+      `transitTimes.enabled is true but "${file}" was not found. ` +
+      `Create it (columns: store number, transit days, optional Yes/No delivery-ticket flag) ` +
+      `or set config.transitTimes.enabled to false to use the legacy shipDaysCol instead.`
+    );
+  }
+
+  const workbook = new ExcelJS.Workbook();
+  await workbook.xlsx.readFile(file);
+  const ws = sheetName ? workbook.getWorksheet(sheetName) : workbook.worksheets[0];
+  if (!ws) throw new Error(`Worksheet not found in ${file} (sheetName: ${sheetName})`);
+
+  const numCol = colLetterToNumber(storeNumberCol);
+  const daysCol = colLetterToNumber(transitDaysCol);
+  const ticketCol = deliveryTicketCol ? colLetterToNumber(deliveryTicketCol) : null;
+
+  const lookup = new Map(); // storeNumStr -> { shipDays, deliveryTicketNeeded }
+  let row = dataStartRow;
+  while (true) {
+    const storeNumRaw = ws.getCell(row, numCol).value;
+    const storeNumStr = storeNumRaw != null ? String(storeNumRaw).trim() : '';
+    if (storeNumStr === '') break; // auto-detect end
+
+    const daysRaw = ws.getCell(row, daysCol).value;
+    const parsed = typeof daysRaw === 'number' ? daysRaw : parseFloat(daysRaw);
+    const shipDays = Number.isFinite(parsed) ? parsed : null;
+
+    const deliveryTicketNeeded = ticketCol ? parseYesNo(ws.getCell(row, ticketCol).value) : false;
+
+    lookup.set(storeNumStr, { shipDays, deliveryTicketNeeded });
+    row++;
+
+    if (row - dataStartRow > 20000) break; // safety valve
+  }
+  return lookup;
+}
+
+// Applies the TransitTimes.xlsx lookup to already-parsed stores. Logs a
+// warning (not a hard failure) for any store missing from the lookup file,
+// since a silently-null ship time would otherwise be easy to miss.
+function applyTransitTimes(stores, lookup) {
+  const missing = [];
+  for (const store of stores) {
+    const entry = lookup.get(store.storeNum);
+    if (!entry) {
+      missing.push(store.storeNum);
+      continue;
+    }
+    store.shipDays = entry.shipDays;
+    store.deliveryTicketNeeded = entry.deliveryTicketNeeded;
+  }
+  if (missing.length > 0) {
+    console.warn(`Warning: ${missing.length} store(s) not found in TransitTimes.xlsx (no ship time applied): ${missing.join(', ')}`);
+  }
 }
 
 // ---------- pull quantities for each store ----------
@@ -233,6 +305,11 @@ function drawHeader(doc, store, boxLabel, groupSize) {
   doc.moveDown(0.3);
   doc.font('Helvetica-Bold').fontSize(14)
     .text(`Store #${store.storeNum} — ${store.storeName}`, { continued: false });
+
+  if (store.address) {
+    doc.font('Helvetica').fontSize(10).fillColor('#444').text(store.address, { width: CONTENT_WIDTH });
+  }
+
   doc.font('Helvetica').fontSize(11).fillColor('#444');
   const shipLabel = store.shipDays != null ? `${store.shipDays} day(s)` : 'unknown';
   doc.text(`State: ${store.state}   |   Ship time: ${shipLabel}`);
@@ -314,6 +391,26 @@ function drawPackedByLine(doc, y) {
     .strokeColor('#000').stroke();
 }
 
+// Two-field signature line for LocalDeliveryTickets.pdf: a long blank for
+// the name, a shorter blank for the date, on the same row.
+function drawReceivedByLine(doc, y) {
+  if (!config.slip.receivedByLine.enabled) return;
+  const lineY = y + 30;
+  const { label1, label2 } = config.slip.receivedByLine;
+
+  doc.font('Helvetica').fontSize(11).fillColor('black').text(label1, MARGIN, lineY);
+  const label1Width = doc.widthOfString(label1 + ' ');
+  const blank1End = MARGIN + 300;
+  doc.moveTo(MARGIN + label1Width, lineY + 10).lineTo(blank1End, lineY + 10).strokeColor('#000').stroke();
+
+  const label2X = blank1End + 20;
+  doc.text(label2, label2X, lineY);
+  const label2Width = doc.widthOfString(label2 + ' ');
+  doc.moveTo(label2X + label2Width, lineY + 10)
+    .lineTo(MARGIN + CONTENT_WIDTH, lineY + 10)
+    .strokeColor('#000').stroke();
+}
+
 function drawStorePage(doc, store, boxLabel, items, groupSize) {
   doc.addPage();
   const startY = drawHeader(doc, store, boxLabel, groupSize);
@@ -386,6 +483,63 @@ function drawSummaryPage(doc, boxLabel, shipLabel, campaignName, groups) {
     }
     y += 14;
   }
+}
+
+// Measures one box's block on a delivery ticket (heading + its item lines).
+function measureDeliveryBoxBlockHeight(doc, boxLabel, items) {
+  doc.font('Helvetica-Bold').fontSize(SUMMARY_HEADER_FONT);
+  let h = doc.heightOfString(`Box ${boxLabel}`, { width: CONTENT_WIDTH }) + 4;
+
+  doc.font('Helvetica').fontSize(SUMMARY_FONT);
+  for (const item of items) {
+    const text = `\u2022 ${item.name} (${item.code}) — Qty ${item.qty}`;
+    h += doc.heightOfString(text, { width: CONTENT_WIDTH - 12 }) + 2;
+  }
+  return h + 12;
+}
+
+// One page (or more, if it overflows) per store in LocalDeliveryTickets.pdf.
+// Shows every box the store needs, all in one place, ending in a
+// Received By / Date signature line instead of Packed By.
+function drawLocalDeliveryTicketPage(doc, store, boxEntries) {
+  doc.addPage();
+  let y = TOP_MARGIN;
+
+  doc.font('Helvetica-Bold').fontSize(20).fillColor('black').text('Local Delivery Ticket', MARGIN, y);
+  y = doc.y + 4;
+
+  doc.font('Helvetica-Bold').fontSize(14).text(`Store #${store.storeNum} — ${store.storeName}`, MARGIN, y);
+  y = doc.y + 2;
+
+  if (store.address) {
+    doc.font('Helvetica').fontSize(10).fillColor('#444').text(store.address, MARGIN, y, { width: CONTENT_WIDTH });
+    y = doc.y + 4;
+  }
+  doc.fillColor('black');
+  y += 12;
+
+  for (const { boxLabel, items } of boxEntries) {
+    const blockHeight = measureDeliveryBoxBlockHeight(doc, boxLabel, items);
+    const reserve = config.slip.receivedByLine.enabled ? PACKED_BY_HEIGHT : 0;
+    if (y + blockHeight > PAGE.height - MARGIN - reserve) {
+      doc.addPage();
+      y = TOP_MARGIN;
+    }
+
+    doc.font('Helvetica-Bold').fontSize(SUMMARY_HEADER_FONT).fillColor('black')
+      .text(`Box ${boxLabel}`, MARGIN, y, { width: CONTENT_WIDTH });
+    y = doc.y + 4;
+
+    doc.font('Helvetica').fontSize(SUMMARY_FONT);
+    for (const item of items) {
+      const text = `\u2022 ${item.name} (${item.code}) — Qty ${item.qty}`;
+      doc.text(text, MARGIN + 12, y, { width: CONTENT_WIDTH - 12 });
+      y = doc.y + 2;
+    }
+    y += 14;
+  }
+
+  drawReceivedByLine(doc, y);
 }
 
 // Wraps a pdfkit doc + its file stream so callers can await the file
@@ -499,6 +653,30 @@ async function renderPerBoxAndLeadTimePdfs(stores, products, outputDir, fileName
   return outputPaths;
 }
 
+// LocalDeliveryTickets.pdf — one page (or more, if it overflows) per store
+// flagged deliveryTicketNeeded, showing every box that store needs in one
+// place, in original spreadsheet order. Returns null if no store qualifies
+// (so callers can skip it rather than write an empty file).
+async function renderLocalDeliveryTickets(stores, outputDir, fileName) {
+  const flagged = stores.filter((s) => s.deliveryTicketNeeded);
+  if (flagged.length === 0) return null;
+
+  const outputPath = path.join(outputDir, fileName);
+  const doc = new PDFDocument({ size: 'LETTER', margin: MARGIN, autoFirstPage: false });
+
+  for (const store of flagged) {
+    const boxEntries = [...store.itemsByBox.keys()]
+      .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+      .map((boxLabel) => ({ boxLabel, items: store.itemsByBox.get(boxLabel) }));
+    if (boxEntries.length === 0) continue; // flagged but ordered nothing this run
+
+    drawLocalDeliveryTicketPage(doc, store, boxEntries);
+  }
+
+  await finishPdf(doc, outputPath);
+  return outputPath;
+}
+
 // Stamps every page of a generated PDF on top of a header/letterhead
 // template PDF (its first page is reused as the background for every page).
 async function applyHeaderTemplate(contentPdfPath, headerPdfPath) {
@@ -537,6 +715,12 @@ async function main() {
   const stores = parseStores(ws);
   console.log(`Found ${stores.length} stores (rows ${stores[0]?.row} - ${stores[stores.length - 1]?.row})`);
 
+  if (config.transitTimes.enabled) {
+    console.log(`Reading transit times: ${config.transitTimes.file}`);
+    const lookup = await loadTransitTimes();
+    applyTransitTimes(stores, lookup);
+  }
+
   attachItems(ws, stores, products);
 
   const totalPages = stores.reduce((sum, s) => sum + s.itemsByBox.size, 0);
@@ -555,6 +739,12 @@ async function main() {
     console.log(`Generating ${totalPages} pages (one combined PDF)...`);
     await renderCombinedPdf(stores, products, outputFile);
     outputPaths = [outputFile];
+  }
+
+  const localDeliveryPath = await renderLocalDeliveryTickets(stores, config.output.dir, config.output.localDeliveryTicketsFileName);
+  if (localDeliveryPath) {
+    console.log(`Generated local delivery tickets: ${localDeliveryPath}`);
+    outputPaths.push(localDeliveryPath);
   }
 
   if (config.header.enabled) {

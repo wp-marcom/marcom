@@ -1,38 +1,11 @@
 // Product Groups Configuration
 // Each group has one "mother" product that will be copied to create the "children"
 const productGroups = [
-    {
-    mother: 'Titanium POR First Month Scan Cards (6022)',
-    children: [
-      'UWC $10|3 Month Scan Cards-A5 (1311)', 'UWC Save $15|First Month Scan Cards-B7 (1327)', 'UWC $9.99|First Month Scan Cards-D9 (1356)', 'UWC 50% Off|First Month Scan Cards-E12 (1381)', 'UWC All Plans Scan Cards-F (1407)'
-    ]
-  },
-  {
-    mother: '36"x96" Vinyl UWC Titanium POR First Month Promo Banner (6020)',
-    children: [
-     '36"x96" Vinyl UWC Save $15|First Month Promo Banner-B (1315)', '36"x96" Vinyl UWC $9.99|First Month Promo Banner-D (1342)', '36"x96" Vinyl UWC 50% Off|First Month Promo Banner-E (1370)', '36"x96" Vinyl UWC $10|First Month Promo Banner-10F (1395)'
-    ]
-  },
-  {
-    mother: 'Mister Kiosk Titanium POR First Month Promo Decal (6026)',
-    children: [
-      'UWC Mister Kiosk $9.99|First Month Promo Decal-D (1345)', 'UWC Mister Kiosk $10|First Month Promo Decal-10F (1398)'
-    ]
-  },
-  {
-    mother: 'Pegasus Gen 2 Kiosk Titanium POR First Month Promo Decal (6030)',
-    children: [
-      'UWC Pegasus Gen 2 Kiosk $9.99|First Month Less Than 1 Wash Promo Decal-D (1347)', 'UWC Pegasus Gen 2 Kiosk 50% Off|First Month Promo Decal-E (1374)', 'UWC Pegasus Gen 2 Kiosk $10|First Month Promo Decal-10F (1400)'
-    ]
-  },
-  {
-    mother: '$26 Titanium POR First Month CSA Price Menu-Q20 (6040)',
-    children: ['UWC $10|3 Month CSA Price Menu-A01 (1310)', 'UWC Save $15|First Month CSA Price Menu-B05 (1325)', 'UWC $9.99|First Month CSA Price Menu-D01 (1352)', 'UWC $9.99|First Month CSA Price Menu-D02 (1353)', 'UWC 50% Off|First Month CSA Price Menu-E01 (1378)', 'UWC 50% Off|First Month CSA Price Menu-E03 (1379)', 'UWC $8|First Month CSA Price Menu-8F-304 (1391)', 'UWC $10|First Month CSA Price Menu-10F-101 (1404)', 'UWC $10|First Month CSA Price Menu-10F-201 (1406)']
-  },
+    
    {
     mother: 'UWC All Plans Promo Awareness Flyer-A8 (2192)',
     children: ['UWC $10|3 Month Promo Awareness Flyer-A01 (1309)', 'UWC Save $15|First Month Promo Awareness Flyer-B05 (1322)', 'UWC Starts at $5|First Month Promo Awareness Flyer-C01 (1334)', 'UWC $9.99|First Month Promo Awareness Flyer-D01 (1348)', 'UWC $9.99|First Month Promo Awareness Flyer-D02 (1349)', 'UWC $9.99|First Month Promo Awareness Flyer-D03 (1350)', 'UWC $9.99|First Month Promo Awareness Flyer-8D-05 (1364)', 'UWC 50% Off|First Month Promo Awareness Flyer-E01 (1375)', 'UWC 50% Off|First Month Promo Awareness Flyer-E03 (1376)', 'UWC $8|First Month Promo Awareness Flyer-8F-304 (1390)', 'UWC $10|First Month Promo Awareness Flyer-10F-101 (1401)', 'UWC $10|First Month Promo Awareness Flyer-10F-104 (1402)', 'UWC $10|First Month Promo Awareness Flyer-10F-201 (1403)']
-  },
+  }
 
 ];
 

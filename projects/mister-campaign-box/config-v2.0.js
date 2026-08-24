@@ -7,7 +7,7 @@
 
 module.exports = {
   // Path to the input spreadsheet (can be overridden with a CLI arg)
-  inputFile: './IncomingKeys/Shipping Key NB Blitz sorted-prepped.xlsx',
+ inputFile: './IncomingKeys/Shipping Key NB Blitz sorted-prepped.xlsx',
 
   // Worksheet name to read from. Set to null to just use the first sheet.
   sheetName: null,
@@ -17,8 +17,12 @@ module.exports = {
     numberCol: 'D',
     nameCol: 'E',
     stateCol: 'I',
-    // Number of days it takes to ship to this store. Within each box's PDF,
-    // stores with a HIGHER number here are listed first (pack those first).
+        // Optional. Set to a column letter to print the store's address under
+    // the "Store #..." line on every page. Set to null to omit it.
+    addressCol: 'G',
+    // Legacy fallback: only used when transitTimes.enabled (below) is false.
+    // Number of days it takes to ship to this store.
+
     shipDaysCol: 'J',
     // First row containing actual store data
     dataStartRow: 5,
@@ -41,6 +45,24 @@ module.exports = {
     codeRow: 4,  // row containing the product code
   },
 
+  // ---- Transit time lookup (separate workbook) ----
+  // When enabled, ship-days AND local-delivery-ticket eligibility come from
+  // this file instead of a column in the master spreadsheet — look up each
+  // store number in storeNumberCol, read the matching row.
+  transitTimes: {
+    enabled: true,
+    file: './TransitTimes.xlsx',
+    sheetName: null, // null = first sheet
+    dataStartRow: 2, // row 1 assumed to be a header row
+    storeNumberCol: 'A',
+    transitDaysCol: 'B',
+    // Optional. 'Yes'/'No' (case-insensitive; y/true/1 also count as yes).
+    // Stores marked Yes get an EXTRA page in LocalDeliveryTickets.pdf,
+    // on top of their normal packing-slip pages. Set to null if you don't
+    // use this column.
+    deliveryTicketCol: 'C',
+  },
+
   // ---- Campaign ----
   // Used in the {campaign} placeholder in output.leadTimeFileNamePattern.
   // Override per-run with a CLI arg: node generate-packing-slips.js input.xlsx "Campaign Name"
@@ -50,7 +72,7 @@ module.exports = {
 
   // ---- Output ----
   output: {
-    dir: './output/NewBuildBlitzWave4-SignatureClusters-location',
+    dir: './output/NewBuildBlitzWave4-SignatureClusters-deliverytickets',
     // 'perBoxAndLeadTime': one PDF per (box, ship-days) combo — e.g. all
     //     4-day-transit stores that need Box 1 go in one file. Stores stay
     //     in the same order they appear in the spreadsheet.
@@ -65,6 +87,10 @@ module.exports = {
     boxFileNamePattern: 'box-{box}.pdf',
     // Used when mode is 'combined'.
     combinedFileName: 'packing-slips.pdf',
+
+    // Written whenever transitTimes.deliveryTicketCol flags any stores Yes,
+    // regardless of output.mode. One page per flagged store, in config.output.dir.
+    localDeliveryTicketsFileName: 'LocalDeliveryTickets-Print2copies.pdf',
   },
 
   // ---- Packing slip page elements ----
@@ -85,6 +111,13 @@ module.exports = {
     // even if that toggle's badge/reordering is turned off.
     summaryPage: {
       enabled: true,
+    },
+    // Signature block at the bottom of each LocalDeliveryTickets.pdf page
+    // (replaces packedByLine on those pages).
+    receivedByLine: {
+      enabled: true,
+      label1: 'Received By:',
+      label2: 'Date:',
     },
   },
 

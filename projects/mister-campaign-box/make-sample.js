@@ -1,4 +1,5 @@
-const ExcelJS = require('exceljs');
+const primeDirectory = "C:\\projects\\";
+const ExcelJS = require(`${primeDirectory}node_modules\\exceljs`);
 
 async function main() {
   const wb = new ExcelJS.Workbook();
