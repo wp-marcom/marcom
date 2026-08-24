@@ -75,7 +75,7 @@ body:has(div.Uzin.Utz) .product-price-note {
 .mcc-folder-3778217 .category-card {background: var(--primary-color) url(../../img/common/uzinutz-main.jpg) no-repeat center right / cover;}
 .mcc-folder-3778217 .category-card:focus:after, .mcc-folder-3778217 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
-.mcc-folder-3778219 .category-card .card-img-holder:before {
+.mcc-folder-3778217 .category-card .card-img-holder:before {
   background-image: url(../../img/common/uzin-folder.svg);
 }
 
