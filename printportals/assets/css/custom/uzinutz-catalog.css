@@ -49,20 +49,6 @@ body:has(div.Uzin.Utz) .navbar-brand {
     #user-name-header{display:none}
 }
 
-/* Apply styles only when body has a div with class "Uzin.Utz" */
-body:has(div.Uzin.Utz) [class*="mcc-folder-"] .category-card .card-img-holder:before {
-    background-image: url(../../img/common/uzinutz-folder.svg);
-}
-
-body:has(div.Uzin.Utz) [class*="mcc-folder-"] > a:nth-child(1):after {
-    background: rgba(var(--primary-color-rgb), 0.75);
-}
-
-body:has(div.Uzin.Utz) [class*="mcc-folder-"] .category-card:focus:after, 
-body:has(div.Uzin.Utz) [class*="mcc-folder-"] .category-card:hover:after {
-    background: rgba(var(--secondary-color-rgb), 1.0);
-}
-
 body:has(div.Uzin.Utz) .product-price-note{display: none;}
 
 /* HIDE THE SHIPPING INSTRUCTIONS BOX DURING CHECKOUT*/
@@ -90,8 +76,12 @@ body:has(div.Uzin.Utz) .product-price-note {
 .mcc-folder-3778217 .category-card:focus:after, .mcc-folder-3778217 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
 /* WOLFF secondary */
-.mcc-folder-3778218 .category-card {background: #324b55 url(../../img/common/uzinutz-main.jpg) no-repeat center right / cover;}
-.mcc-folder-3778218 .category-card:focus:after, .mcc-folder-3778218 .category-card:hover:after {background: rgba(65, 110, 120, 0.72)!important;}
+.mcc-folder-3778218 > a:nth-child(1):after {background: #324b55;}
+.mcc-folder-3778218 .category-card:focus:after, .mcc-folder-3778218 .category-card:hover:after {background: rgba(65, 110, 120, 1.0)!important;}
+
+.mcc-folder-3778218 .category-card .card-img-holder:before {
+  background-image: url(../../img/common/wolff-folder.svg);
+}
 
 /* PALLMANN secondary */
 .mcc-folder-3778219 > a:nth-child(1):after {background: #f90;}
