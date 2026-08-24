@@ -93,3 +93,9 @@ body:has(div.Uzin.Utz) .product-price-note {
 .mcc-folder-3778218 .category-card {background: #324b55 url(../../img/common/uzinutz-main.jpg) no-repeat center right / cover;}
 .mcc-folder-3778218 .category-card:focus:after, .mcc-folder-3778218 .category-card:hover:after {background: rgba(65, 110, 120, 0.72)!important;}
 
+/* PALLMANN secondary */
+.mcc-folder-3778219 > a:nth-child(1):after {background: #f90;}
+.mcc-folder-3778219 .category-card:focus:after, .mcc-folder-3778219 .category-card:hover:after {background: rgba(240, 195, 0, 1.0)!important;}
+
+
+
