@@ -75,6 +75,10 @@ body:has(div.Uzin.Utz) .product-price-note {
 .mcc-folder-3778217 .category-card {background: var(--primary-color) url(../../img/common/uzinutz-main.jpg) no-repeat center right / cover;}
 .mcc-folder-3778217 .category-card:focus:after, .mcc-folder-3778217 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
 
+.mcc-folder-3778217 .category-card .card-img-holder:before {
+  background-image: url(../../img/common/uzin-folder.svg);
+}
+
 /* WOLFF secondary */
 .mcc-folder-3778218 > a:nth-child(1):after {background: #324b55;}
 .mcc-folder-3778218 .category-card:focus:after, .mcc-folder-3778218 .category-card:hover:after {background: rgba(65, 110, 120, 1.0)!important;}
@@ -87,5 +91,15 @@ body:has(div.Uzin.Utz) .product-price-note {
 .mcc-folder-3778219 > a:nth-child(1):after {background: #f90;}
 .mcc-folder-3778219 .category-card:focus:after, .mcc-folder-3778219 .category-card:hover:after {background: rgba(240, 195, 0, 1.0)!important;}
 
+.mcc-folder-3778219 .category-card .card-img-holder:before {
+  background-image: url(../../img/common/pallmann-folder.svg);
+}
 
+/* UZIN-UTZ secondary */
+.mcc-folder-3778220 .category-card {background: var(--primary-color) url(../../img/common/uzinutz-main.jpg) no-repeat center right / cover;}
+.mcc-folder-3778220 .category-card:focus:after, .mcc-folder-3778220 .category-card:hover:after {background: rgba(var(--secondary-color-rgb), 0.72)!important;}
+
+.mcc-folder-3778220 .category-card .card-img-holder:before {
+  background-image: url(../../img/common/uzin-folder.svg);
+}
 
