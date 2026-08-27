@@ -32,6 +32,7 @@ const users = [
   { username: "becky", password: "becky", roles: ["warehouse"], fullName: "Becky Wigginton-Colón" },
   { username: "cruz", password: "cruz", roles: ["warehouse"], fullName: "Cruz" },
   { username: "linda", password: "Charlie1", roles: ["misterAdmin", "sierraTucsonAdmin"], fullName: "Linda" },
+  { username: "hector", password: "hector", roles: ["misterAdmin"], fullName: "Hector" },
   { username: "dave", password: "dave", roles: ["sierraTucsonAdmin"], fullName: "Dave" },
   { username: "acharles", password: "acharles", roles: ["pfcuAdmin", "vwcuAdmin"], fullName: "Andy" },
   { username: "wayne", password: "wayne", roles: ["pfcuAdmin", "vwcuAdmin"], fullName: "Wayne" },
