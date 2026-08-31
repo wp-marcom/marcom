@@ -3,8 +3,8 @@
 const productGroups = [
     
    {
-    mother: 'UWC All Plans Promo Awareness Flyer-A8 (2192)',
-    children: ['UWC $10|3 Month Promo Awareness Flyer-A01 (1309)', 'UWC Save $15|First Month Promo Awareness Flyer-B05 (1322)', 'UWC Starts at $5|First Month Promo Awareness Flyer-C01 (1334)', 'UWC $9.99|First Month Promo Awareness Flyer-D01 (1348)', 'UWC $9.99|First Month Promo Awareness Flyer-D02 (1349)', 'UWC $9.99|First Month Promo Awareness Flyer-D03 (1350)', 'UWC $9.99|First Month Promo Awareness Flyer-8D-05 (1364)', 'UWC 50% Off|First Month Promo Awareness Flyer-E01 (1375)', 'UWC 50% Off|First Month Promo Awareness Flyer-E03 (1376)', 'UWC $8|First Month Promo Awareness Flyer-8F-304 (1390)', 'UWC $10|First Month Promo Awareness Flyer-10F-101 (1401)', 'UWC $10|First Month Promo Awareness Flyer-10F-104 (1402)', 'UWC $10|First Month Promo Awareness Flyer-10F-201 (1403)']
+    mother: '28"x44" 75% Off|1 Month Promo Windscreen-N (2125)',
+    children: ['28"x44" UWC $8 | First Month Promo Windscreen-8F (1377)', '28"x44" UWC $10 | First Month Promo Windscreen-10F (1384)', '28"x44" UWC Save $15 | First Month Promo Windscreen-B (1322)', '28"x44" UWC 50% Off | First Month Promo Windscreen-E (1365)', '28"x44" UWC $9.99 | First Month Promo Windscreen-8D (1357)']
   }
 
 ];

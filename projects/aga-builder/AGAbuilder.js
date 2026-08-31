@@ -188,7 +188,7 @@ let dateCompare = function (datefromNoDupes) {
   }
   return jobGroup;
 };
-//Create a BeckyRay seed file with code column that list the job number for every job number in the dbf folder
+//Create a BeckySam seed file with code column that list the job number for every job number in the dbf folder
 //make the SEED workbook for each due date in the NonDupes Array
 
 
@@ -210,7 +210,7 @@ console.log(curJobList);
 
 //Push a seed row for each job number that matches the current due date
 for(n=0;n<curJobList.length;n++){
-ws_data.push([`Becky`,`Wigginton-Colon`,`West Press`,`1663 W Grant Rd`,`Tucson`,`AZ`,`85745-1433`,`${curJobList[n]}`],[`Ray`,`Wcisel`,`Acquire Direct Marketing`,`12620 Race Track Road`,`Tampa`,`FL`,`33626`,`${curJobList[n]}`],[`Gabrielle`,`Rascon`,`Applied General Agency`,`19584 Lanfranca Drive`,`Santa Clarita`,`CA`,`91350`,`${curJobList[n]}`])
+ws_data.push([`Becky`,`Wigginton-Colon`,`West Press`,`1663 W Grant Rd`,`Tucson`,`AZ`,`85745-1433`,`${curJobList[n]}`],[`Sam`,`Veltman`,`Acquire Direct Marketing`,`12620 Race Track Road`,`Tampa`,`FL`,`33626`,`${curJobList[n]}`],[`Gabrielle`,`Rascon`,`Applied General Agency`,`19584 Lanfranca Drive`,`Santa Clarita`,`CA`,`91350`,`${curJobList[n]}`])
 }
 //testing output console.log (`data to write is ${ws_data}`)
 
@@ -227,10 +227,10 @@ let directoryNamestatic = '9-30 DBF';
 let fullPathtoSeed = `\\\\DataKing1\\homes\\kaleb\\Github Repos\\marcom\\projects\\aga-builder\\processedLists\\${directoryName}`;
 console.log(fullPathtoSeed)
 // 5. Define the output file path
-const outputPath = path.join(fullPathtoSeed, 'BeckyRaySeed.xls');
-//let fullPathtoSeed = __dirname+`\\processedLists\\${directoryName}\\BeckyRaySeed.xls`;
+const outputPath = path.join(fullPathtoSeed, 'BeckySamSeed.xls');
+//let fullPathtoSeed = __dirname+`\\processedLists\\${directoryName}\\BeckySamSeed.xls`;
 reader.writeFile(file,outputPath)
-//reader.writeFile(file,__dirname+`\\processedLists\\${directoryName}\\BeckyRaySeed.xls`)
+//reader.writeFile(file,__dirname+`\\processedLists\\${directoryName}\\BeckySamSeed.xls`)
 console.log(`Seed file written to: ${outputPath}`);
 }
 //}
