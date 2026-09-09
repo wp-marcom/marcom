@@ -38,9 +38,9 @@ const avgOrders = row[10];
 let avgOrdersIcon = "";
 
 if (avgOrders !== undefined && avgOrders !== "") {
-  avgOrdersIcon = `<i class="fa fa-chart-line" aria-hidden="true"
-    data-bs-toggle="tooltip" data-bs-placement="top"
-    title="Orders in last year: ${avgOrders}"></i>`;
+  avgOrdersIcon = `<i class="fa fa-line-chart" aria-hidden="true"
+  data-bs-toggle="tooltip" data-bs-placement="top"
+  title="Orders in last year: ${avgOrders}"></i>`;
 }
 
 
