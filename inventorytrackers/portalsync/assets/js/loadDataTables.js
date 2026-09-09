@@ -39,6 +39,7 @@ let avgOrdersIcon = "";
 
 if (avgOrders !== undefined && avgOrders !== "") {
   avgOrdersIcon = `<i class="fa fa-line-chart" aria-hidden="true"
+  style="color: #4154f1;"
   data-bs-toggle="tooltip" data-bs-placement="top"
   title="Orders in last year: ${avgOrders}"></i>`;
 }
