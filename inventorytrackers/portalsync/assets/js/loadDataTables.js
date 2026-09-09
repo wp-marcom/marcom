@@ -40,7 +40,7 @@ const [d30, d60, d90, d365] = metricsRaw.split("|");
 let avgOrdersIcon = "";
 
 if (metricsRaw) {
-  const tooltipContent = `30 days: ${d30 || 0}<br>60 days: ${d60 || 0}<br>90 days: ${d90 || 0}<br>1 year: ${d365 || 0}`;
+  const tooltipContent = `30 days: ${d30 || 0}, 60 days: ${d60 || 0}, 90 days: ${d90 || 0}, 1 year: ${d365 || 0}`;
   avgOrdersIcon = `<i class="fa fa-line-chart" aria-hidden="true" style="color: #4154f1;"
     data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top"
     title="${tooltipContent}"></i>`;
