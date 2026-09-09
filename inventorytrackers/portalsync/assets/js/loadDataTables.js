@@ -34,14 +34,16 @@ async function adminData(dataArray,client) {
       let externalID = 'MCW'+skuName;
 
 // Column K = index 10 in the row array (A=0, B=1, C=2 ... K=10)
-const avgOrders = row[10];
+
+const metricsRaw = row[10] || "";
+const [d30, d60, d90, d365] = metricsRaw.split("|");
 let avgOrdersIcon = "";
 
-if (avgOrders !== undefined && avgOrders !== "") {
-  avgOrdersIcon = `<i class="fa fa-line-chart" aria-hidden="true"
-  style="color: #4154f1;"
-  data-bs-toggle="tooltip" data-bs-placement="top"
-  title="Orders in last year: ${avgOrders}"></i>`;
+if (metricsRaw) {
+  const tooltipContent = `30 days: ${d30 || 0}<br>60 days: ${d60 || 0}<br>90 days: ${d90 || 0}<br>1 year: ${d365 || 0}`;
+  avgOrdersIcon = `<i class="fa fa-line-chart" aria-hidden="true" style="color: #4154f1;"
+    data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top"
+    title="${tooltipContent}"></i>`;
 }
 
 
