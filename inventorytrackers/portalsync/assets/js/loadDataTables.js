@@ -110,13 +110,22 @@ if (userRoles.includes("warehouse") || userRoles.includes("admin")) {
   refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}', '${skuName}'); return false;">
     <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
 
-  locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}', '${skuName}'); return false;">
+  locationLink = `<a href="#" onclick="('${emailProductName}', '${skuName}'); return false;">
     <i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
 
   getLowLink = `<a href="#" onclick="sendGetLowEmail('${emailProductName}', '${skuName}'); return false;">
     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>`;
 }
 
+// Column K = index 10 in the row array (A=0, B=1, C=2 ... K=10)
+const avgOrders = row[10];
+let avgOrdersIcon = "";
+
+if (avgOrders !== undefined && avgOrders !== "") {
+  avgOrdersIcon = `<i class="fa fa-chart-line" aria-hidden="true"
+    data-bs-toggle="tooltip" data-bs-placement="top"
+    title="Orders in last year: ${avgOrders}"></i>`;
+}
         
         
         else{
@@ -126,13 +135,15 @@ if (userRoles.includes("warehouse") || userRoles.includes("admin")) {
         }
 
         return { 
-          data: [productNameLink + " " + refillLink + " " + locationLink + " " + getLowLink, ...row.slice(1)], 
+          //data: [productNameLink + " " + refillLink + " " + locationLink + " " + getLowLink, ...row.slice(1)],
+          data: [productNameLink + " " + refillLink + " " + locationLink + " " + getLowLink + " " + avgOrdersIcon, ...row.slice(1)], 
           rowClass 
         };
       } else {
         // If no match found, return the truncated Product Name
         return { 
-          data: [productName, ...row.slice(1)], 
+          //data: [productName, ...row.slice(1)], 
+          data: [productName + " " + avgOrdersIcon, ...row.slice(1)],
           rowClass 
         };
       }
