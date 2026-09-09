@@ -621,7 +621,7 @@
                       <th>QOS</th>
                       <th>Status</th>
                       <th>Notes</th>
-                      <!-- <th>Metrixcs</th>-->
+                      <th>Metrics (hidden)</th>
                     </tr>
                   </thead>
               </table>
@@ -690,6 +690,9 @@ fetch(url)
           data: {
             data: processedData.map(row => row.data), // Use the processed rows
           },
+          columns: [
+    { select: 10, hidden: true }
+  ],
         });
 
         // Function to apply row classes dynamically
