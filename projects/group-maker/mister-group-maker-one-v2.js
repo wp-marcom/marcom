@@ -1,6 +1,6 @@
-const groupName = ["2513-Whitehall"];
-const storeNum = ["2513"];
-const ccNum = ["810"];
+const groupName = ["2558-Silverado"];
+const storeNum = ["2558"];
+const ccNum = ["806"];
 
 
 

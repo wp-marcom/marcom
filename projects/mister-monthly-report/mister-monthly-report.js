@@ -15,7 +15,7 @@ const currentYear = currentDate.getFullYear();
 
 
 // Define the file paths
-const inputFilePath = path.join(fullPathtoRaw, `MCW_Monthly_Report_${currentMonth}_RAW.xlsx`);
+const inputFilePath = path.join(fullPathtoRaw, `MCW_Monthly_Report_${currentMonth}_RAW-withinactive.xlsx`);
 //const outputFilePath = path.join(fullPathtoOutput, 'MCW_Monthly_Report_Sept2025.xlsx');
 const outputFilePath = path.join(fullPathtoOutput, `MCW_Monthly_Report_${currentMonth}${currentYear}.xlsx`);
 
@@ -252,7 +252,7 @@ function processCostCenter(value) {
 const skuSets = [
     {
         groupName: "OLPKits_Items",
-        skus: ["11050", "11052", "11053"]
+        skus: ["11050", "11052", "11053", "21053", "21050", "111507"]
     },
     {
         groupName: "RFID",

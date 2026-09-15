@@ -3,9 +3,13 @@
 const productGroups = [
     
    {
-    mother: '28"x44" 75% Off|1 Month Promo Windscreen-N (2125)',
-    children: ['28"x44" UWC $8 | First Month Promo Windscreen-8F (1377)', '28"x44" UWC $10 | First Month Promo Windscreen-10F (1384)', '28"x44" UWC Save $15 | First Month Promo Windscreen-B (1322)', '28"x44" UWC 50% Off | First Month Promo Windscreen-E (1365)', '28"x44" UWC $9.99 | First Month Promo Windscreen-8D (1357)']
-  }
+    mother: '96"x48" 9.99|1 Month Promo Windscreen-I (2161)',
+    children: ['96"x48" UWC 50% Off | First Month Promo Windscreen-E (1405)', '96"x48" UWC $10 | First Month Promo Windscreen-10F (1409)', '96"x48" UWC $8 | First Month Promo Windscreen-8F (1407)', '96"x48" UWC 90 Days for $30 Promo Windscreen-G (1411)']
+  },
+   {
+    mother: '55"x41" 9.99|1 Month Promo Windscreen-I (2159)',
+    children: ['55"x41" UWC $10 | 3 Month Promo Windscreen-A (1396)', '55"x41" UWC Save $15 | First Month Promo Windscreen-B (1398)', '55"x41" UWC Starts at $5 | First Month Promo Windscreen-C (1400)', '55"x41" UWC 50% Off | First Month Promo Windscreen-E (1404)', '55"x41" UWC $10 | First Month Promo Windscreen-10F (1408)', '55"x41" UWC $8 | First Month Promo Windscreen-8F (1406)', '55"x41" UWC 90 Days for $30 Promo Windscreen-G (1410)']
+  },
 
 ];
 

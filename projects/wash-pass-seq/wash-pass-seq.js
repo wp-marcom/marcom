@@ -29,8 +29,8 @@ function splitRange(rangeStart, rangeEnd, numIntervals) {
 }
 
 // Parameters
-const firstCardNum = 625475;
-const lastCardNum = 627974;
+const firstCardNum = 627975;
+const lastCardNum = 630474;
 const howManyPacks = 100;
 
 // Create workbook and worksheet

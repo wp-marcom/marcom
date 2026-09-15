@@ -3,25 +3,53 @@
 // Edit this file when the master spreadsheet layout changes
 // (more/fewer stores, more/fewer products, different columns).
 // Everything the generator needs to know lives here.
+//
+// Start with INPUT FILE VARIATIONS below — those are the "this
+// particular file is a bit different" switches. Everything after
+// that assumes a normal, fully-populated master file.
 // ============================================================
 
 module.exports = {
   // Path to the input spreadsheet (can be overridden with a CLI arg)
-  inputFile: './IncomingKeys/Shipping Key NB Blitz sorted-prepped.xlsx',
+  inputFile: './IncomingKeys/Quarter Life Crisis/QLC-Shipping Key 25_ Off Onsite Oct2026-1.xlsx',
 
   // Worksheet name to read from. Set to null to just use the first sheet.
   sheetName: null,
 
+  // ============================================================
+  // INPUT FILE VARIATIONS
+  // Flip these based on what THIS master file actually contains.
+  // A printout of these settings (and what they mean for this run)
+  // prints at the top of every run — check it before you send files out.
+  // ============================================================
+  inputVariations: {
+    // false: this file has no product-code row. The Code column
+    // disappears from every packing slip, summary, and delivery ticket,
+    // and identical-order grouping falls back to product name only.
+    // (config.product.codeRow below is simply ignored when this is false.)
+    hasProductCodes: false,
+
+    // true: skip reading a box-number row entirely — every product is
+    // treated as belonging to a single box. Use this instead of adding
+    // a fake "everything is Box 1" row to the spreadsheet.
+    // (config.product.boxRow below is ignored when this is true.)
+    singleBox: true,
+    singleBoxLabel: '1', // the box label used for every product when singleBox is true
+  },
+
   // ---- Store info (one row per store) ----
   store: {
-    numberCol: 'D',
-    nameCol: 'E',
-    stateCol: 'I',
-    // Number of days it takes to ship to this store. Within each box's PDF,
-    // stores with a HIGHER number here are listed first (pack those first).
+    numberCol: 'C',
+    nameCol: 'F',
+    stateCol: 'J',
+    // Optional. Set to a column letter to print the store's address under
+    // the "Store #..." line on every page. Set to null to omit it.
+    addressCol: 'H',
+    // Legacy fallback: only used when transitTimes.enabled (below) is false.
+    // Number of days it takes to ship to this store.
     shipDaysCol: 'J',
     // First row containing actual store data
-    dataStartRow: 5,
+    dataStartRow: 4,
     // If null, the script auto-detects the last row by stopping at the
     // first row where numberCol is blank. Set a number to hard-cap it.
     dataEndRow: null,
@@ -36,21 +64,39 @@ module.exports = {
     // to hard-cap it instead.
     endCol: null,
 
-    boxRow: 1,   // row containing the box number for each product column
+    boxRow: 2,   // row containing the box number for each product column — ignored if inputVariations.singleBox is true
     nameRow: 3,  // row containing the product name
-    codeRow: 4,  // row containing the product code
+    codeRow: 4,  // row containing the product code — ignored if inputVariations.hasProductCodes is false
+  },
+
+  // ---- Transit time lookup (separate workbook) ----
+  // When enabled, ship-days AND local-delivery-ticket eligibility come from
+  // this file instead of a column in the master spreadsheet — look up each
+  // store number in storeNumberCol, read the matching row.
+  transitTimes: {
+    enabled: true,
+    file: './TransitTimes.xlsx',
+    sheetName: null, // null = first sheet
+    dataStartRow: 2, // row 1 assumed to be a header row
+    storeNumberCol: 'A',
+    transitDaysCol: 'B',
+    // Optional. 'Yes'/'No' (case-insensitive; y/true/1 also count as yes).
+    // Stores marked Yes get an EXTRA page in LocalDeliveryTickets.pdf,
+    // on top of their normal packing-slip pages. Set to null if you don't
+    // use this column.
+    deliveryTicketCol: 'C',
   },
 
   // ---- Campaign ----
   // Used in the {campaign} placeholder in output.leadTimeFileNamePattern.
   // Override per-run with a CLI arg: node generate-packing-slips.js input.xlsx "Campaign Name"
   campaign: {
-    name: 'NewBuildBlitzWave4',
+    name: 'QuarterLifeCrisis-TEST',
   },
 
   // ---- Output ----
   output: {
-    dir: './output/NewBuildBlitzWave4-SignatureClusters-location',
+    dir: './output/QuarterLifeCrisis-TEST',
     // 'perBoxAndLeadTime': one PDF per (box, ship-days) combo — e.g. all
     //     4-day-transit stores that need Box 1 go in one file. Stores stay
     //     in the same order they appear in the spreadsheet.
@@ -65,6 +111,10 @@ module.exports = {
     boxFileNamePattern: 'box-{box}.pdf',
     // Used when mode is 'combined'.
     combinedFileName: 'packing-slips.pdf',
+
+    // Written whenever transitTimes.deliveryTicketCol flags any stores Yes,
+    // regardless of output.mode. One page per flagged store, in config.output.dir.
+    localDeliveryTicketsFileName: 'LocalDeliveryTickets-Print2copies.pdf',
   },
 
   // ---- Packing slip page elements ----
@@ -77,7 +127,7 @@ module.exports = {
     // same products and quantities so the team can batch-pack them.
     groupIdenticalOrders: {
       enabled: true,
-      showBadge: true, // print a note on the page when a store is part of an identical-order group
+      showBadge: false, // print a note on the page when a store is part of an identical-order group
     },
     // Adds a summary page as the first page of each box+ship-days PDF,
     // listing every identical-order cluster ("make 15 of this exact
@@ -86,9 +136,18 @@ module.exports = {
     summaryPage: {
       enabled: true,
     },
+    // Signature block at the bottom of each LocalDeliveryTickets.pdf page
+    // (replaces packedByLine on those pages).
+    receivedByLine: {
+      enabled: true,
+      label1: 'Received By:',
+      label2: 'Date:',
+    },
   },
 
   // ---- Table layout (points; Letter page is 612x792 with 50pt margins) ----
+  // codeColWidth is only used when inputVariations.hasProductCodes is true —
+  // the Name column automatically expands to fill the space when it's off.
   table: {
     codeColWidth: 110,
     qtyColWidth: 50,

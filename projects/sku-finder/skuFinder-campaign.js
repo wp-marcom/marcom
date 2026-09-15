@@ -111,22 +111,15 @@ function reserveCampaignSkuBlocks(values, chunks, options = {}) {
 //   node skuFinder-v3.js
 // ============================================================
 
-const skuPrefix = 1;    // leading digit(s) SKUs should start with
-const skuLength = 4;    // total digit length of each SKU
-const skuBuffer = 3;    // digits reserved between chunk blocks
+const skuPrefix = 14;    // leading digit(s) SKUs should start with
+const skuLength = 5;    // total digit length of each SKU
+const skuBuffer = 0;    // digits reserved between chunk blocks
 
 // One entry per chunk, IN THE ORDER you want them laid out on the number line.
 // totalItems = that chunk's worst case (all product types in the chunk).
 // neededNow  = how many of those currently have inventory requested.
 const chunks = [
-    { name: 'A',   totalItems: 8, neededNow: 3 },
-    { name: 'B',   totalItems: 13,  neededNow: 4 },
-    { name: 'C',   totalItems: 8,  neededNow: 1 },
-    { name: 'D',   totalItems: 15, neededNow: 9 },
-    { name: '8D',  totalItems: 7,  neededNow: 1 },
-    { name: 'E',   totalItems: 12, neededNow: 7 },
-    { name: '8F',  totalItems: 7,  neededNow: 2 },
-    { name: '10F', totalItems: 13,  neededNow: 9 },
+    { name: 'A',   totalItems: 7, neededNow: 6 },
 ];
 
 // Existing SKUs already in use (paste your live export in here)
