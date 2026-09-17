@@ -51,7 +51,7 @@ body:has(div.CODAC) .navbar-brand {
 
 /* Apply styles only when body has a div with class "Codac" */
 body:has(div.CODAC) [class*="mcc-folder-"] .category-card .card-img-holder:before {
-    background-image: url(../../img/common/Codac-folder.svg);
+    background-image: url(../../img/common/codac-folder.svg);
 }
 
 body:has(div.CODAC) [class*="mcc-folder-"] > a:nth-child(1):after {
