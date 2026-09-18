@@ -124,7 +124,7 @@ if (userRoles.includes("warehouse") || userRoles.includes("admin")) {
   refillLink = `<a href="#" onclick="sendRefillEmail('${emailProductName}', '${skuName}'); return false;">
     <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>`;
 
-  locationLink = `<a href="#" onclick="('${emailProductName}', '${skuName}'); return false;">
+  locationLink = `<a href="#" onclick="sendLocationEmail('${emailProductName}', '${skuName}'); return false;">
     <i class="fa fa-map-marker" aria-hidden="true"></i></a>`;
 
   getLowLink = `<a href="#" onclick="sendGetLowEmail('${emailProductName}', '${skuName}'); return false;">
