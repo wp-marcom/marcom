@@ -1,0 +1,36 @@
+[2026-09-22T14:44:55.857Z] ======================================================================
+[2026-09-22T14:44:55.861Z] RUN START  mode=SEND  limit=5  portal=all  order=all  includeBackorders=false
+[2026-09-22T14:44:55.864Z] Up to 5 order(s). Press Ctrl+C in the next 5 seconds to cancel.
+[2026-09-22T14:45:01.828Z] On https://admin.marcomcentral.app.pti.com/Distribution/Index?section=4
+[2026-09-22T14:45:01.832Z] 
+[2026-09-22T14:45:01.832Z] === Mister ===
+[2026-09-22T14:45:09.244Z] 18 line items in the grid, 0 order(s) eligible to ship.
+[2026-09-22T14:45:09.250Z]   By order type -> Backorder: 18. Order numbers containing "MCW Online - ": 18.
+[2026-09-22T14:45:09.258Z]   Nothing is eligible. Sample of what the grid returned:
+[2026-09-22T14:45:09.262Z]     MCW Online - 91211 | line item 59403225 | Customer Care Card (21011) | Backorder
+[2026-09-22T14:45:09.264Z]     MCW Online - 91226 | line item 59406760 | Employee Access Cards (11151) | Backorder
+[2026-09-22T14:45:09.267Z]     MCW Online - 91232 | line item 59408882 | Towel Program Litter Bag (439) | Backorder
+[2026-09-22T14:45:09.269Z]     MCW Online - 91247 | line item 59414571 | Employee Access Cards (11151) | Backorder
+[2026-09-22T14:45:09.271Z]     MCW Online - 91255 | line item 59418021 | Customer Care Card (21011) | Backorder
+[2026-09-22T14:45:09.274Z]   (Only "Standard" lines ship unless you use --include-backorders.)
+[2026-09-22T14:45:09.276Z] 
+[2026-09-22T14:45:09.276Z] === WestPressInventory ===
+[2026-09-22T14:45:10.380Z] 1 line items in the grid, 0 order(s) eligible to ship.
+[2026-09-22T14:45:10.386Z]   By order type -> Backorder: 1. Order numbers containing "WP Inventory - ": 1.
+[2026-09-22T14:45:10.390Z]   Nothing is eligible. Sample of what the grid returned:
+[2026-09-22T14:45:10.393Z]     WP Inventory - 05816 | line item 59403590 | PFCU - Consumer Brochure (PFCU-440) | Backorder
+[2026-09-22T14:45:10.396Z]   (Only "Standard" lines ship unless you use --include-backorders.)
+[2026-09-22T14:45:10.398Z] 
+[2026-09-22T14:45:10.398Z] === TMC ===
+[2026-09-22T14:45:10.813Z] Warning: grid said undefined records but 0 rows were read.
+[2026-09-22T14:45:10.818Z] 0 line items in the grid, 0 order(s) eligible to ship.
+[2026-09-22T14:45:10.824Z]   By order type -> none. Order numbers containing "TMC Online - ": 0.
+[2026-09-22T14:45:10.829Z] 
+[2026-09-22T14:45:10.829Z] === NorthwestMedicalCenter ===
+[2026-09-22T14:45:11.168Z] Warning: grid said undefined records but 0 rows were read.
+[2026-09-22T14:45:11.173Z] 0 line items in the grid, 0 order(s) eligible to ship.
+[2026-09-22T14:45:11.177Z]   By order type -> none. Order numbers containing "NWH Online - ": 0.
+[2026-09-22T14:45:11.181Z] 
+[2026-09-22T14:45:11.181Z] Done. 0 packing slip(s) created.
+[2026-09-22T14:45:11.184Z] RUN END  result=OK  slipsCreated=0
+[2026-09-22T14:45:11.187Z] ======================================================================
