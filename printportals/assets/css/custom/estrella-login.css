@@ -30,18 +30,31 @@ body::before {
   background: rgba(var(--primary-color-rgb), 0.1); /* Tint */
 }
 
-/* Image background using ::after */
+/* Black-and-white background image */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -4;
+
+  background: url('../../img/custom/estrella-login-background.jpg')
+    no-repeat center center;
+  background-size: cover;
+  filter: grayscale(100%);
+}
+
+/* Blue-gray tint overlay */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -3;
-  background: url('../../img/custom/estrella-login-background.jpg') no-repeat center center;
-   background-size: cover;
-background-position: center center;
-  opacity: 1.6; /* Adjust background image visibility */
+
+  background: rgba(91, 115, 143, 0.75);
 }
+
 
 
 /*site headings*/
