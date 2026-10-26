@@ -60,7 +60,7 @@ body::after {
   background: url('../../img/custom/estrella-login-background.jpg') no-repeat center center;
   background-size: cover;
   filter: grayscale(100%);
-  opacity: 1;
+  opacity: .3;
 }
 
 .breadcrumb{font-size:13px}
