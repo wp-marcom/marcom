@@ -1,0 +1,505 @@
+
+<!DOCTYPE html>
+<html>
+<!-- Machine name = LVPADT01 -->
+
+<head>
+    <title>Reports</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- The Css Site-wide settings -->
+    <link href="/Content/themes/jquery-ui.css?v=20260929060204" rel="stylesheet" type="text/css" />
+    <link href="/Content/themes/ui.jqgrid.css?v=20260929060204" rel="stylesheet" type="text/css" />
+    <link href="/Content/themes/jquery.metro.css?v=20260929060204" rel="stylesheet" type="text/css" />
+    <link href="/Content/MetaMenuFlat1.css?v=20260929060204" rel="stylesheet" type="text/css" />
+    <link href="/Content/Site.css?v=20260929060204" rel="stylesheet" type="text/css" />
+    <link href="/Content/toastr.min.css?v=20260929060204" rel="stylesheet" type="text/css" />
+    
+    <link href="/Content/Images/favicon.ico?v=20260929060204" rel="shortcut icon" type="image/x-icon" />
+    <link href="/Content/bs/bootstrap-icons.css?v=20260929060204" rel="stylesheet" type="text/css" />
+
+    
+
+    <!-- Copy this script into your html file to enable Application Insights -->
+        <script type="text/javascript" nonce="NskPGrUkhAhvVUWDX+2Lu+RJPOCSwKIuVRhwF+tW7j0=">
+            var aiKey = "e61dc693-b656-49be-b180-cac8e1fde263";
+            var aiRole = "adminTool";
+            var appInsights = window.appInsights || function (config) {function i(config) {t[config] = function () {var i = arguments; t.queue.push(function () {t[config].apply(t, i)})}}var t = { config: config },u = document,e = window,o = "script",s = "AuthenticatedUserContext",h = "start",c = "stop",l = "Track",a = l + "Event",v = l + "Page",y = u.createElement(o),r,f;y.src = config.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(y);try {t.cookie = u.cookie} catch (p) { }for (t.queue = [], t.version = "1.0", r = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"];r.length;)i("track" + r.pop());return i("set" + s),i("clear" + s),i(h + a), i(c + a), i(h + v), i(c + v), i("flush"), config.disableExceptionTracking || (r = "onerror", i("_" + r), f = e[r], e[r] = function (config, i, u, e, o) { var s = f && f(config, i, u, e, o); return s !== !0 && t["_" + r](config, i, u, e, o), s }), t}({instrumentationKey: aiKey});appInsights.queue.push(function () {appInsights.context.addTelemetryInitializer(function (envelope) {var telemetryItem = envelope.data.baseDataenvelope.tags["ai.cloud.role"] = aiRole;if (typeof screen !== "undefined") {telemetryItem.properties = telemetryItem.properties || {};telemetryItem.properties["ai.device.screenResolution"] = screen.width + "X" + screen.height;telemetryItem.properties["ai.device.locale"] = navigator.language || navigator.browserLanguage || "unknown";}});});
+            window.appInsights = appInsights;
+                var appUserId = 'kbadger'; // the id of the logged-in user
+                var portalId = '5696';
+                appInsights.setAuthenticatedUserContext(appUserId, portalId);
+            appInsights.trackPageView();
+        </script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3707811-3"></script>
+        <script nonce="NskPGrUkhAhvVUWDX+2Lu+RJPOCSwKIuVRhwF+tW7j0=">
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-3707811-3');
+        </script>
+
+    <!-- Site wide scripts -->
+    <script src="/bundles/ptiLayout?v=Mtusnrsu06_-2rRw9KTQ69iwjLGGJFU4GW-On_cEM4U1"></script>
+
+    <script src="/Scripts/jquery-ui.js?v=20260929060204"></script>
+
+     
+
+
+
+<div id="jqgrid-locale-data" style="display:none;"
+     data-thousands-separator=","
+     data-decimal-separator="."
+     data-currency-data="{&amp;quot;SAR&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1585;.&amp;#1587;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;TWD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;NT$&amp;quot;,&amp;#32;0],&amp;quot;CZK&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;Kč&amp;quot;,&amp;#32;0],&amp;quot;DKK&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;kr.&amp;quot;,&amp;#32;0],&amp;quot;USD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;$&amp;quot;,&amp;#32;0],&amp;quot;EUR&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8364;&amp;quot;,&amp;#32;0],&amp;quot;ILS&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8362;&amp;quot;,&amp;#32;0],&amp;quot;HUF&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;Ft&amp;quot;,&amp;#32;0],&amp;quot;ISK&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;kr&amp;quot;,&amp;#32;0],&amp;quot;JPY&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;¥&amp;quot;,&amp;#32;0],&amp;quot;KRW&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8361;&amp;quot;,&amp;#32;0],&amp;quot;NOK&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;kr&amp;quot;,&amp;#32;0],&amp;quot;PLN&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;zł&amp;quot;,&amp;#32;0],&amp;quot;BRL&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;R$&amp;quot;,&amp;#32;0],&amp;quot;HRK&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8364;&amp;quot;,&amp;#32;0],&amp;quot;ALL&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;Lekë&amp;quot;,&amp;#32;0],&amp;quot;SEK&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;kr&amp;quot;,&amp;#32;0],&amp;quot;THB&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#3647;&amp;quot;,&amp;#32;0],&amp;quot;TRY&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8378;&amp;quot;,&amp;#32;0],&amp;quot;PKR&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;Rs&amp;quot;,&amp;#32;0],&amp;quot;IDR&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;Rp&amp;quot;,&amp;#32;0],&amp;quot;UAH&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8372;&amp;quot;,&amp;#32;0],&amp;quot;LVL&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8364;&amp;quot;,&amp;#32;0],&amp;quot;LTL&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8364;&amp;quot;,&amp;#32;0],&amp;quot;IRR&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1585;&amp;#1610;&amp;#1575;&amp;#1604;&amp;quot;,&amp;#32;0],&amp;quot;VND&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8363;&amp;quot;,&amp;#32;0],&amp;quot;AMD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1423;&amp;quot;,&amp;#32;0],&amp;quot;MKD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1076;&amp;#1077;&amp;#1085;&amp;quot;,&amp;#32;0],&amp;quot;ZAR&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;R&amp;quot;,&amp;#32;0],&amp;quot;GEL&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8382;&amp;quot;,&amp;#32;0],&amp;quot;INR&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8377;&amp;quot;,&amp;#32;0],&amp;quot;MYR&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;RM&amp;quot;,&amp;#32;0],&amp;quot;KZT&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8376;&amp;quot;,&amp;#32;0],&amp;quot;KGS&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1089;&amp;#1086;&amp;#1084;&amp;quot;,&amp;#32;0],&amp;quot;KES&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;Ksh&amp;quot;,&amp;#32;0],&amp;quot;UZS&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;soʻm&amp;quot;,&amp;#32;0],&amp;quot;MNT&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8366;&amp;quot;,&amp;#32;0],&amp;quot;SYP&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1824;.&amp;#1827;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;MVR&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1923;.&amp;quot;,&amp;#32;0],&amp;quot;IQD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1583;.&amp;#1593;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;CNY&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;¥&amp;quot;,&amp;#32;0],&amp;quot;CHF&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;CHF&amp;quot;,&amp;#32;0],&amp;quot;GBP&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;£&amp;quot;,&amp;#32;0],&amp;quot;MXN&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;$&amp;quot;,&amp;#32;0],&amp;quot;BND&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;$&amp;quot;,&amp;#32;0],&amp;quot;EGP&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1580;.&amp;#1605;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;HKD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;HK$&amp;quot;,&amp;#32;0],&amp;quot;AUD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;$&amp;quot;,&amp;#32;0],&amp;quot;LYD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1583;.&amp;#1604;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;SGD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;$&amp;quot;,&amp;#32;0],&amp;quot;CAD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;$&amp;quot;,&amp;#32;0],&amp;quot;GTQ&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;Q&amp;quot;,&amp;#32;0],&amp;quot;DZD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1583;.&amp;#1580;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;MOP&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;MOP&amp;quot;,&amp;#32;0],&amp;quot;NZD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;$&amp;quot;,&amp;#32;0],&amp;quot;CRC&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8353;&amp;quot;,&amp;#32;0],&amp;quot;MAD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1583;.&amp;#1605;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;PAB&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;B/.&amp;quot;,&amp;#32;0],&amp;quot;TND&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1583;.&amp;#1578;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;DOP&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;$&amp;quot;,&amp;#32;0],&amp;quot;BAM&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1050;&amp;#1052;&amp;quot;,&amp;#32;0],&amp;quot;OMR&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1585;.&amp;#1593;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;JMD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;$&amp;quot;,&amp;#32;0],&amp;quot;YER&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1585;.&amp;#1610;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;COP&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;$&amp;quot;,&amp;#32;0],&amp;quot;BZD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;$&amp;quot;,&amp;#32;0],&amp;quot;PEN&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;S/&amp;quot;,&amp;#32;0],&amp;quot;JOD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1583;.&amp;#1575;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;TTD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;$&amp;quot;,&amp;#32;0],&amp;quot;ARS&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;$&amp;quot;,&amp;#32;0],&amp;quot;LBP&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1604;.&amp;#1604;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;KWD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1583;.&amp;#1603;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;PHP&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8369;&amp;quot;,&amp;#32;0],&amp;quot;CLP&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;$&amp;quot;,&amp;#32;0],&amp;quot;AED&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1583;.&amp;#1573;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;UYU&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;$&amp;quot;,&amp;#32;0],&amp;quot;BHD&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1583;.&amp;#1576;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;PYG&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#8370;&amp;quot;,&amp;#32;0],&amp;quot;QAR&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;&amp;#1585;.&amp;#1602;.&amp;#8207;&amp;quot;,&amp;#32;0],&amp;quot;BOB&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;Bs&amp;quot;,&amp;#32;0],&amp;quot;HNL&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;L&amp;quot;,&amp;#32;0],&amp;quot;NIO&amp;quot;&amp;#32;:&amp;#32;[&amp;quot;C$&amp;quot;,&amp;#32;0]}"
+     data-record-text="Displaying {0} - {1} of {2}"
+     data-empty-records="No records to view"
+     data-loading-records="Loading..."
+     data-grid-paging="Page {0} / {1}"
+     data-search="Search"
+     data-find="Find"
+     data-reset="Reset"
+     data-add-record="Add Record"
+     data-edit-record="Edit Record"
+     data-submit="Submit"
+     data-cancel="Cancel"
+     data-close="Close"
+     data-save-data="Data has been changed! Save changes?"
+     data-yes="Yes"
+     data-no="No"
+     data-required="Field is required"
+     data-number="Please, enter valid number"
+     data-min-value="value must be greater than or equal to"
+     data-max-value="value must be less than or equal to"
+     data-email="is not a valid e-mail"
+     data-integer="Please, enter valid integer value"
+     data-date="Please, enter valid date value"
+     data-url="is not a valid URL. Prefix required (&#8216;http://&#8217; or &#8216;https://&#8217;)"
+     data-not-defined="is not defined!"
+     data-no-value="return value is required!"
+     data-custom-array="Custom function should return array!"
+     data-custom-function-check="Custom function should be present in case of custom checking!"
+     data-delete="Delete"
+     data-edit-title="Edit selected row"
+     data-add-title="Add new row"
+     data-delete-title="Delete selected row"
+     data-search-title="Find records"
+     data-refresh-title="Reload Grid"
+     data-alert-caption="Warning"
+     data-alert-text="Please, select row"
+     data-view-title="View selected row"
+     data-select-columns="Select columns"
+     data-ok="OK"
+     data-errors="Error"
+     data-no-url="No url is set"
+     data-no-records="No records to process"
+     data-model="Length of colNames &lt;&gt; colModel!"
+     data-day-sun="Sun"
+     data-day-mon="Mon"
+     data-day-tue="Tue"
+     data-day-wed="Wed"
+     data-day-thr="***NotReg[CSC.Thr]***"
+     data-day-fri="Fri"
+     data-day-sat="Sat"
+     data-day-sunday="Sunday"
+     data-day-monday="Monday"
+     data-day-tuesday="Tuesday"
+     data-day-wednesday="Wednesday"
+     data-day-thursday="Thursday"
+     data-day-friday="Friday"
+     data-day-saturday="Saturday"
+     data-month-jan="Jan"
+     data-month-feb="Feb"
+     data-month-mar="Mar"
+     data-month-apr="Apr"
+     data-month-may="May"
+     data-month-jun="Jun"
+     data-month-jul="Jul"
+     data-month-aug="Aug"
+     data-month-sep="Sep"
+     data-month-oct="Oct"
+     data-month-nov="Nov"
+     data-month-dec="Dec"
+     data-month-january="January"
+     data-month-february="February"
+     data-month-march="March"
+     data-month-april="April"
+     data-month-may-full="May"
+     data-month-june="June"
+     data-month-july="July"
+     data-month-august="August"
+     data-month-september="September"
+     data-month-october="October"
+     data-month-november="November"
+     data-month-december="December"></div>
+<script type="text/javascript" src="/Scripts/Views/Shared/jqGridLocale.js"></script>
+    <script src="/bundles/ptiGrid?v=P3S0i6qdM_N6PkN1LQGHLMo0MVSesJ2Z3F1Y2pTwBqI1"></script>
+
+    <script src="/Scripts/Views/Shared/EditorTemplates/DateTime.js?v=20260929060204"></script>
+
+    <!-- Data attributes for Layout JS -->
+    <div id="layout-session-data" style="display:none;"
+         data-remaining-ms="42944637"
+         data-inactivity-min="60"
+         data-ok-text="OK">
+    </div>
+    <div id="layout-page-data" style="display:none;"
+         data-adv-search-enabled=""
+         data-adv-search-primary="The Advanced Search Index must be updated in order to display these changes in the portal search. This may take a short amount of time to complete. To see a status, go to the Advanced Search History under Product Setup. Each time the Advanced Search must be published, you will see a message appear that says: Queuing Advance Search Index Update"
+         data-adv-search-secondary="Queuing Advance Search Index Update"
+         data-ok-text="OK"
+         data-file-upload-text="File exceeds the maximum size of 85.8 MB"
+         data-size-text="Size"
+         data-catalog-publish-text="This update has published your catalog. Portal Users may see slowness as the cache is refreshed.">
+    </div>
+
+
+    <style type="text/css">
+        html {
+            height: 100%
+        }
+
+        body {
+            background-image: none !important;
+            background: white linear-gradient(163deg, rgba(255,255,255,1) 58%, rgba(240,245,255,1) 0%) !important;
+            background-position: left !important;
+            color: #000;
+        }
+    </style>
+
+    <!-- External Layout JS -->
+    <script src="/Scripts/Views/Shared/_Layout.js?v=20260929060204"></script>
+</head>
+<body theme="light">
+
+<style>
+    #breadcrumb {
+        display: none;
+    }
+</style>
+<script type="text/javascript" src="/Scripts/jquery.pti.accountsubmenu.js?v=20260929060204"></script>
+<script type="text/javascript" src="/Scripts/jquery.menu-aim.js?v=20260929060204"></script>
+
+<!-- Data attributes for MetroHeader JS -->
+
+<script type="application/json" id="metro-header-account-nav">[{"DisplayText":"Account Users","Url":"/Home/Ignored-%3ENavigateAdminUser","Name":"AdministratorUsers","OpenUrl":false,"OpenInModal":false,"Children":[{"DisplayText":"Users","Url":"/AdminUser/List","Name":"Users","OpenUrl":false,"OpenInModal":false,"Children":[]},{"DisplayText":"Roles","Url":"/Role/List","Name":"Roles","OpenUrl":false,"OpenInModal":false,"Children":[]}]},{"DisplayText":"Email Notifications","Url":"/EmailNotificationDetail/List","Name":"EmailNotifications","OpenUrl":false,"OpenInModal":false,"Children":[]},{"DisplayText":"Transaction Numbering","Url":"/TransactionNumbering/List","Name":"TransactionNumbering","OpenUrl":false,"OpenInModal":false,"Children":[]},{"DisplayText":"Shipping Setup","Url":"/Home/Ignored-%3ENavigateShippingSetup","Name":"Shipping","OpenUrl":false,"OpenInModal":false,"Children":[{"DisplayText":"Custom Shipping Methods","Url":"/CustomShippingMethod/List","Name":"CustomShipping","OpenUrl":false,"OpenInModal":false,"Children":[]},{"DisplayText":"Carrier Shipping Methods","Url":"/CarrierShippingMethod/List","Name":"CarrierShippingMethods","OpenUrl":false,"OpenInModal":false,"Children":[]},{"DisplayText":"Carrier Shipping Cartons","Url":"/Carton/AccountCartonsList","Name":"CarrierShippingCartons","OpenUrl":false,"OpenInModal":false,"Children":[]},{"DisplayText":"Carrier Shipping Carton Bulk Ops","Url":"/CartonBulkOps/CartonBulkOps","Name":"CartonBulkOperations","OpenUrl":false,"OpenInModal":false,"Children":[]},{"DisplayText":"Carrier Shipping Accounts","Url":"/CarrierShippingAccounts/List","Name":"CarrierShippingAccounts","OpenUrl":false,"OpenInModal":false,"Children":[]},{"DisplayText":"Test Carrier Shipping","Url":"/CarrierShippingMethod/TestShipping","Name":"TestCarrierShipping","OpenUrl":false,"OpenInModal":false,"Children":[]}]},{"DisplayText":"Credit Card/Tax Setup","Url":"/Home/Ignored-%3ENavigateTaxSetup","Name":"TaxSetup","OpenUrl":false,"OpenInModal":false,"Children":[{"DisplayText":"Merchants","Url":"/CybersourceMerchant/List","Name":"CyberSourceMerchants","OpenUrl":false,"OpenInModal":false,"Children":[]},{"DisplayText":"Cybersource Merchant Mapping","Url":"/CybersourceMerchantMapping","Name":"CyberSourceAccounts","OpenUrl":false,"OpenInModal":false,"Children":[]},{"DisplayText":"Supplier Nexus","Url":"/SupplierNexusDetail/List","Name":"SupplierNexus","OpenUrl":false,"OpenInModal":false,"Children":[]},{"DisplayText":"VAT Registration","Url":"/VATRegistrationDetail/List","Name":"VatRegistration","OpenUrl":false,"OpenInModal":false,"Children":[]},{"DisplayText":"Test Tax Calculation","Url":"/TestTaxCalculation/Edit","Name":"TestTaxCalculation","OpenUrl":false,"OpenInModal":false,"Children":[]}]}]</script>
+<div id="metro-header-data" style="display:none;"
+     data-set-language-url="/ChildAction/SetLanguage"
+     data-ok-text="OK">
+</div>
+
+<!-- External MetroHeader JS -->
+<script type="text/javascript" src="/Scripts/Views/Shared/_metroHeader.js?v=20260929060204"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            initNoAccessMarcomAcademyDialog('OK');
+        });
+    </script>
+    <div id="dialog-noAccessToMarcomAcademy" style="display:none">
+        <p>Contact your MarcomCentral Representative to obtain access to MarcomCentral Academy</p>
+    </div>
+
+<div id="metaContainer">
+    <div class="metaHead">
+        <ul class="metamenu">
+            <li class="metaMenuHeader">
+                <a id="logo" href="/Home/Index">
+                    
+
+                        <img src="/Content/Images/FusionPro_Central-Logo.png?v=20260929060204" class="logo" />
+
+
+
+                </a>
+            </li>
+            
+                <li class="metaMenuHeader">
+                    <a id="accBtn" href="#">Account Settings</a>
+                    
+                    <ul id="accMenu" class="metaDropDown"></ul>
+                </li>
+        </ul>
+
+
+
+
+
+        <ul class="metamenu right">
+                <li class='metaMenuHeader'>
+        <a id="langBtn" href="#">English (English – United States)</a>
+        <ul id="langMenu" class="metaDropDown">
+        </ul>
+    </li>
+
+
+
+            <li class="metaMenuHeader">
+                <a id="helpBtn" href="#">Help</a>
+                <ul id="helpMenu" class="metaDropDown">
+                    <li><a href=/SalesforceHelp?PageName=BrowseHelp target="_blank" rel="noopener noreferrer">Knowledge Center</a></li>
+                    
+                    <li><a id="marcomAcademyLink" href=/MarcomAcademy target="_blank" rel="noopener noreferrer">MarcomCentral Academy</a></li>
+                    <li><a href="https://marcomcentral.atlassian.net/servicedesk/" target="_blank" rel="noopener noreferrer">Contact Support</a></li>
+                    <li><a href="https://marcom.com/legal/terms-and-conditions-dm/" target="_blank" rel="noopener noreferrer">Terms of Use</a></li>
+                    <li><a href="https://marcom.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+                </ul>
+            </li>
+            <li class="metaMenuHeader">
+                    <a id="userBtn" href="#"><img src="/Content/Images/anon_avatar25px.png" class="avatar"/>kbadger</a>
+    <ul id="userMenu" class="metaDropDown">
+        <li><a href="/AdminUser/EditProfile/6160583">User Profile</a></li>
+        <li><a href="/Account/LogOff">Log Off</a></li>
+    </ul>
+
+
+            </li>
+        </ul>
+
+    </div>
+    <div id="breadCrumbContainer">
+        
+    </div>
+    <span id="copyright" style="position: absolute;top: 60px;right: 15px;color: #C0C0C0;font-size: 9px;"></span>
+</div>
+<style>
+    #languageSelector {
+        padding: 20px;
+    }
+
+        #languageSelector ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin-top: 0px
+        }
+
+        #languageSelector .col {
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 0px;
+            margin-right: 5px
+        }
+</style>
+<div id="languageSelector" title="Select Language" style="display: none;">
+    <div class="col">
+        <h3>Europe</h3>
+        <ul>
+            <li><a data-lcid="2057" href="#">English (English &#8211; United Kingdom)</a></li>
+            <li><a data-lcid="1036" href="#">Français (French - France)</a></li>
+            <li><a data-lcid="1031" href="#">Deutsch (German - Germany)</a></li>
+            <li><a data-lcid="1040" href="#">Italiano (Italian - Italy)</a></li>
+            <li><a data-lcid="3082" href="#">Español (Spanish - Spain)</a></li>
+            <li><a data-lcid="1027" href="#">Català (Catalan - Spain)</a></li>
+            <li><a data-lcid="1043" href="#">Nederlands (Dutch - Netherlands)</a></li>
+            <li><a data-lcid="1030" href="#">Dansk (Danish - Denmark)</a></li>
+            <li><a data-lcid="1053" href="#">Svenska (Swedish - Sweden)</a></li>
+            <li><a data-lcid="1035" href="#">suomi (Finnish - Finland)</a></li>
+            <li><a data-lcid="1045" href="#">Polski (Polish - Poland)</a></li>
+            <li><a data-lcid="1026" href="#">&#1041;&#1098;&#1083;&#1075;&#1072;&#1088;&#1089;&#1082;&#1080; (Bulgarian - Bulgaria)</a></li>
+            <li><a data-lcid="1055" href="#">Türkçe (Turkish  - Turkey)</a></li>
+            <li><a data-lcid="1044" href="#">Norsk (Norwegian - Norway)</a></li>
+            <li><a data-lcid="1029" href="#">čeština (Czech - Czech Republic)</a></li>
+            <li><a data-lcid="2067" href="#">Vlaams (Nederlands) (Flemish (Dutch) - Belgian)</a></li>
+            <li><a data-lcid="1032" href="#">&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940; (Greek - Greece)</a></li>
+            <li><a data-lcid="1038" href="#">Magyar (Hungarian - Hungary)</a></li>
+            <li><a data-lcid="1039" href="#">Íslenska (Icelandic - Iceland)</a></li>
+            <li><a data-lcid="1048" href="#">Română România (Romanian - Romania)</a></li>
+            <li><a data-lcid="1051" href="#">Slovenčina (Slovak - Slovak Republic)</a></li>
+        </ul>
+    </div>
+    <div class="col">
+        <h3>North America</h3>
+        <ul>
+            <li><a data-lcid="1033" href="#">English (English &#8211; United States)</a></li>
+            <li><a data-lcid="2058" href="#">español (Spanish - Latin America)</a></li>
+            <li><a data-lcid="3084" href="#">français (French - Canadian)</a></li>
+        </ul>
+        <h3>South America</h3>
+        <ul>
+            <li><a data-lcid="2058" href="#">español (Spanish - Latin America)</a></li>
+            <li><a data-lcid="1046" href="#">Português (Portuguese - Brazil)</a></li>
+        </ul>
+        <h3>Asia/Pacific</h3>
+        <ul>
+            <li><a data-lcid="1041" href="#">&#26085;&#26412;&#35486; (Japanese - Japan)</a></li>
+            <li><a data-lcid="4" href="#">&#31616;&#20307;&#20013;&#25991; (Chinese - Simplified)</a></li>
+            <li><a data-lcid="31748" href="#">&#32321;&#39636;&#20013;&#25991; (Chinese - Traditional)</a></li>
+            <li><a data-lcid="1042" href="#">&#54620;&#44397;&#50612; (Korean - Korea)</a></li>
+            <li><a data-lcid="1054" href="#">&#3652;&#3607;&#3618; (Thai - Thailand)</a></li>
+            <li><a data-lcid="1066" href="#">Ti&#7871;ng Vi&#7879;t (Vietnamese - Vietnam)</a></li>
+            <li><a data-lcid="3073" href="#">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577; (International - Arabic)</a></li>
+            <li><a data-lcid="1037" href="#">&#1506;&#1489;&#1512;&#1497;&#1514; (Israeli - Hebrew)</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="page" dir='ltr'>
+        <div class="main" style="padding-top:80px;">
+            <div id='breadcrumb'><ul><li class='breadcrumbHeader nolist' style='min-width: 180px;'><h2>5696 - West Press                                                                                          </h2></ul></div>
+                    <script type="text/javascript" src="/Scripts/jquery.hammer.js?v=20260929060204"></script>
+
+
+<script type="text/javascript" src="/Scripts/jquery.metro.js?v=20260929060204"></script>
+
+<div id="pivotHeader" class="pivotHeader">
+        <div id="pivotBackIcon"><a href="/"><img src="/Content/Images/metro-arrowreturn30px.png?v=20260929060204" /></a></div>
+    <div id="pivotImageSmall" class="pivotImageSmall">
+    </div>
+    <div class="pivotTitle"><h1>Reports</h1></div>
+
+    <div style="position: relative; z-index: inherit">
+        
+        <div id="headerButtonContainer" class="headerButtonContainer"></div>
+
+        
+        <div id="pivotButtonContainer" class="pivotButtonContainer"></div>
+    </div>
+    
+    <div id="pivotNavHeaderContainer" class="headerContainer"></div>
+</div>
+
+
+
+<!-- Data attributes for PivotHeader JS -->
+<div id="pivot-header-data" style="display:none;"
+     data-section-index-limit="null"
+     data-pivot-display-mode="false"
+     data-start-section=""
+     data-return-url=""
+     data-blank-value-text="No Entry"
+     data-yes-text="Yes"
+     data-no-text="No"
+     data-show-errors-text="Show Errors"
+     data-error-summary-title="Error Summary"
+     data-ok-text="OK"
+     data-yes-save-text="Yes, Save"
+     data-no-dont-save-text="No, Do not Save">
+</div>
+
+<!-- External PivotHeader JS -->
+<script type="text/javascript" src="/Scripts/Views/Shared/_PivotHeader.js?v=20260929060204"></script>
+
+<div id="dialog-confirm" title='Save Changes?' style="display:none">
+    <p>You have unsaved information on this page. Do you want to save it before you leave?</p>
+</div>
+
+<div id="dialog-confirm-link" title='Confirmation Required' style="display:none">
+    This link will navigate you away from the current section, do you wish to continue?
+</div>
+
+<div id="dialog-confirm-redirect" title='Confirmation Required' style="display:none">
+    Are you sure you want to navigate away from this page? Any unsaved changes will be lost.
+</div>
+
+<style type="text/css">
+    .subTitle {
+        display: flex;
+        align-items: center;
+        max-width: 100%;
+        gap: 6px;
+    }
+
+    .subTitle .navArrow {
+        flex-shrink: 0; /* arrows never shrink */
+        display: flex; /* keeps image aligned */
+        align-items: center;
+    }
+
+    .subTitle .productTitle {
+        flex: 1; /* take remaining space */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; /* truncate instead of wrapping */
+    }
+</style>
+
+
+            
+
+
+<form action="/Product/Edit" enctype="multipart/form-data" id="ProductEditor" method="post"><input name="__RequestVerificationToken" type="hidden" value="5Bi-jxyv6-VPBiugQTMDmX8n2OwNI1KaFO9GexKydWv97CAP3JLHxhMtdGyMiBAdwXUHWKFt5bcmtGOvHRfu-k0wBUikVPyElWGGxzxsRtM1" /><div class="validation-summary-valid" data-valmsg-summary="true"><ul><li style="display:none"></li>
+</ul></div>    <div>
+            <script type="text/javascript" src="/Scripts/jquery.metro.js?v=20260929060204"></script>
+    <div class="metro-pivot">
+            <div class="pivotLine ">
+                <div class="pivotEditorPrompt">
+                    <span class="promptText">
+                                            </span>
+                    
+                </div>
+                    <div class="pivotEditorField alwaysShow">
+                                <span>
+                                    <script language='javascript' type='text/javascript'>$(function () {    $('#Reports').width($('div.metro-pivot').width())});</script> <iframe allowTransparency="true" class="frame" data-url="https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&amp;entity_type=2&amp;entity_id=895&amp;token=6ef4e45f-8ebb-41b4-830c-c84720443208&amp;language=en-US&amp;lcid=1033" id="Reports" src=""></iframe>
+                                </span>
+                    </div> 
+                </div> 
+        </div>
+
+    </div>
+</form><script src="/Scripts/Views/Reports/Edit.js?v=20260929060204"></script>
+
+        </div>
+    </div>
+    <div id="processingSpinner" style="display:none">
+        <div id="spinnerBackGround"></div>
+        <div id="spinnerImage"></div>
+    </div>
+
+
+
+
+
+
+<div data-notification-modal-container=""></div>
+
+<style type="text/css">
+<!--
+[data-notif-pdf] {
+	width: 600px;
+	height: 400px;	
+	border: 10px solid #FFF;
+}
+
+[data-notif-pdf] object {
+   display: inline-block;
+   border: solid 1px #666;
+}
+
+#AppNotificationModalForm {
+    margin-right: 3em;
+    margin-bottom: 1em;
+}
+
+#AppNotificationModalForm .metro-pivot
+{
+    display: inline-block !important;
+    margin-bottom: 5px !important;
+}
+-->
+</style>
+
+<div id="appnotification-data" style="display:none;"
+     data-i-agree-text="I Agree"
+     data-i-agree-and-continue-text="I Agree and Continue"
+     data-previous-text="Previous"
+     data-read-and-agree-text="I have read and agree to the contents above">
+</div>
+<script src="/Scripts/Views/Shared/AppNotification.js?v=20260929060204"></script>
+  
+        <div id="layout-notification-data" style="display:none;"
+             data-notification-types="UserAgreement,PrivacyPolicy,TermsOfUse,ReleaseNotes,"
+             data-url-referrer="https://admin.marcomcentral.app.pti.com/Home/Index">
+        </div>
+        <script src="/Scripts/Views/Shared/_LayoutNotifications.js?v=20260929060204"></script>
+
+    
+
+
+    
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/45212431.js"></script>
+    
+</body>
+</html>

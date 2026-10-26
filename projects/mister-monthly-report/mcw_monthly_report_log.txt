@@ -1,0 +1,216 @@
+[2026-10-01T18:51:08.328Z] ======================================================================
+[2026-10-01T18:51:08.332Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=true
+[2026-10-01T18:51:14.133Z] Signing in...
+[2026-10-01T18:51:19.134Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-01T18:51:19.138Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=9c9e8ae8-d357-4d78-a033-d328b07fad1c&language=en-US&lcid=1033
+[2026-10-01T18:51:19.142Z] Read starting session state from the iframe.
+[2026-10-01T18:51:19.278Z] Step 1/5: opened the Saved tab.
+[2026-10-01T18:51:20.049Z] Step 2/5: selected "MCW Monthly Report".
+[2026-10-01T18:51:20.426Z] Step 3/5: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-01T18:51:21.272Z] ERROR: STOPPED: Clicking Export did not reveal an ExportReport.aspx URL. The response format may have changed.
+[2026-10-01T18:51:21.275Z] RUN END  result=CRASHED
+[2026-10-01T18:51:21.277Z] ======================================================================
+[2026-10-01T18:52:59.233Z] ======================================================================
+[2026-10-01T18:52:59.236Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=true
+[2026-10-01T18:53:04.473Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-01T18:53:04.477Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=04854696-15d3-43e6-859b-b3511b8f3399&language=en-US&lcid=1033
+[2026-10-01T18:53:04.481Z] Read starting session state from the iframe.
+[2026-10-01T18:53:05.011Z] Step 1/5: opened the Saved tab.
+[2026-10-01T18:53:05.452Z] Step 2/5: selected "MCW Monthly Report".
+[2026-10-01T18:53:05.841Z] Step 3/5: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-01T18:53:06.171Z] ERROR: STOPPED: Clicking Export did not reveal an ExportReport.aspx URL. The response format may have changed.
+[2026-10-01T18:53:06.174Z] RUN END  result=CRASHED
+[2026-10-01T18:53:06.177Z] ======================================================================
+[2026-10-01T18:53:39.763Z] ======================================================================
+[2026-10-01T18:53:39.766Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=true
+[2026-10-01T18:53:45.402Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-01T18:53:45.406Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=8f88ef3f-479c-4575-97be-3123e956a23d&language=en-US&lcid=1033
+[2026-10-01T18:53:45.410Z] Read starting session state from the iframe.
+[2026-10-01T18:53:46.558Z] Step 1/5: opened the Saved tab.
+[2026-10-01T18:53:47.327Z] Step 2/5: selected "MCW Monthly Report".
+[2026-10-01T18:53:47.876Z] Step 3/5: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-01T18:53:48.189Z] ERROR: STOPPED: Clicking Export did not reveal an ExportReport.aspx URL. The response format may have changed.
+[2026-10-01T18:53:48.192Z] RUN END  result=CRASHED
+[2026-10-01T18:53:48.195Z] ======================================================================
+[2026-10-01T19:03:02.540Z] ======================================================================
+[2026-10-01T19:03:02.546Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=true
+[2026-10-01T19:03:08.028Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-01T19:03:08.034Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=9c3bd161-7e14-4d7c-8edf-f3d909fee5c2&language=en-US&lcid=1033
+[2026-10-01T19:03:08.039Z] Read starting session state from the iframe.
+[2026-10-01T19:03:08.269Z] Step 1/5: opened the Saved tab.
+[2026-10-01T19:03:08.599Z] Step 2/5: selected "MCW Monthly Report".
+[2026-10-01T19:03:08.975Z] Step 3/5: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-01T19:03:09.254Z] ERROR: STOPPED: Clicking Export did not reveal an ExportReport.aspx URL. Saved the actual response to Z:\Github Repos\marcom\projects\mister-monthly-report\export_click_response_1790881389249.txt for diagnosis.
+[2026-10-01T19:03:09.256Z] RUN END  result=CRASHED
+[2026-10-01T19:03:09.259Z] ======================================================================
+[2026-10-01T19:25:04.327Z] ======================================================================
+[2026-10-01T19:25:04.330Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=true
+[2026-10-01T19:25:14.055Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-01T19:25:14.063Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=64e4c375-9be7-41ed-9df8-2c8419e13d09&language=en-US&lcid=1033
+[2026-10-01T19:25:14.069Z] Read starting session state from the iframe.
+[2026-10-01T19:25:14.282Z] Step 1/5: opened the Saved tab.
+[2026-10-01T19:25:14.634Z] Step 2/5: selected "MCW Monthly Report".
+[2026-10-01T19:25:14.984Z] Step 3/5: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-01T19:25:14.987Z] ERROR: STOPPED: frame.locator is not a function
+[2026-10-01T19:25:14.989Z] RUN END  result=CRASHED
+[2026-10-01T19:25:14.992Z] ======================================================================
+[2026-10-01T19:27:01.725Z] ======================================================================
+[2026-10-01T19:27:01.728Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=true
+[2026-10-01T19:27:06.788Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-01T19:27:06.793Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=0aabc291-c9e0-4885-b175-215328c92ee1&language=en-US&lcid=1033
+[2026-10-01T19:27:06.796Z] Read starting session state from the iframe.
+[2026-10-01T19:27:07.101Z] Step 1/5: opened the Saved tab.
+[2026-10-01T19:27:07.758Z] Step 2/5: selected "MCW Monthly Report".
+[2026-10-01T19:27:08.197Z] Step 3/5: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-01T19:27:08.201Z] ERROR: STOPPED: No node found for selector: #ctl00_content_ReportFooter_btnExport
+[2026-10-01T19:27:08.205Z] RUN END  result=CRASHED
+[2026-10-01T19:27:08.208Z] ======================================================================
+[2026-10-01T19:34:38.047Z] ======================================================================
+[2026-10-01T19:34:38.050Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=true
+[2026-10-01T19:34:43.725Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-01T19:34:43.729Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=ab03bb68-b02a-4f63-b362-7b1707999e25&language=en-US&lcid=1033
+[2026-10-01T19:34:43.733Z] Read starting session state from the iframe.
+[2026-10-01T19:34:44.540Z] Step 1/5: opened the Saved tab.
+[2026-10-01T19:34:44.920Z] Step 2/5: selected "MCW Monthly Report".
+[2026-10-01T19:34:45.846Z] Step 3/5: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-01T19:34:51.165Z] ERROR: STOPPED: Clicking Export did not reveal an ExportReport.aspx URL. Saved the actual response to Z:\Github Repos\marcom\projects\mister-monthly-report\export_click_response_1790883291159.txt for diagnosis.
+[2026-10-01T19:34:51.168Z] RUN END  result=CRASHED
+[2026-10-01T19:34:51.171Z] ======================================================================
+[2026-10-01T19:35:11.029Z] ======================================================================
+[2026-10-01T19:35:11.032Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=true
+[2026-10-01T19:35:12.332Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-01T19:35:12.335Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=f57ca481-3843-4b05-a841-e31acf19b137&language=en-US&lcid=1033
+[2026-10-01T19:35:12.340Z] Read starting session state from the iframe.
+[2026-10-01T19:35:12.490Z] Step 1/5: opened the Saved tab.
+[2026-10-01T19:35:12.757Z] Step 2/5: selected "MCW Monthly Report".
+[2026-10-01T19:35:13.050Z] Step 3/5: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-01T19:35:18.856Z] ERROR: STOPPED: Clicking Export did not reveal an ExportReport.aspx URL. Saved the actual response to Z:\Github Repos\marcom\projects\mister-monthly-report\export_click_response_1790883318840.txt for diagnosis.
+[2026-10-01T19:35:18.860Z] RUN END  result=CRASHED
+[2026-10-01T19:35:18.862Z] ======================================================================
+[2026-10-01T19:35:24.497Z] ======================================================================
+[2026-10-01T19:35:24.500Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=true
+[2026-10-01T19:35:26.249Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-01T19:35:26.252Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=04880135-bc52-4bbb-ac10-2089db86434d&language=en-US&lcid=1033
+[2026-10-01T19:35:26.256Z] Read starting session state from the iframe.
+[2026-10-01T19:35:26.466Z] Step 1/5: opened the Saved tab.
+[2026-10-01T19:35:26.879Z] Step 2/5: selected "MCW Monthly Report".
+[2026-10-01T19:35:27.552Z] Step 3/5: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-01T19:35:34.191Z] ERROR: STOPPED: Protocol error (Runtime.callFunctionOn): Execution context was destroyed.
+[2026-10-01T19:35:34.196Z] RUN END  result=CRASHED
+[2026-10-01T19:35:34.200Z] ======================================================================
+[2026-10-01T19:35:59.699Z] ======================================================================
+[2026-10-01T19:35:59.702Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=true
+[2026-10-01T19:36:00.717Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-01T19:36:00.721Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=bbd8a409-b6ed-4b4c-8e21-0b8e28496121&language=en-US&lcid=1033
+[2026-10-01T19:36:00.724Z] Read starting session state from the iframe.
+[2026-10-01T19:36:00.898Z] Step 1/5: opened the Saved tab.
+[2026-10-01T19:36:01.333Z] Step 2/5: selected "MCW Monthly Report".
+[2026-10-01T19:36:01.701Z] Step 3/5: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-01T19:36:10.425Z] ERROR: STOPPED: Protocol error (Runtime.callFunctionOn): Execution context was destroyed.
+[2026-10-01T19:36:10.429Z] RUN END  result=CRASHED
+[2026-10-01T19:36:10.434Z] ======================================================================
+[2026-10-01T19:36:31.172Z] ======================================================================
+[2026-10-01T19:36:31.175Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=true
+[2026-10-01T19:36:36.196Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-01T19:36:36.200Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=b6b95786-2fb5-4bb7-8348-2a059da15526&language=en-US&lcid=1033
+[2026-10-01T19:36:36.204Z] Read starting session state from the iframe.
+[2026-10-01T19:36:37.282Z] Step 1/5: opened the Saved tab.
+[2026-10-01T19:36:38.209Z] Step 2/5: selected "MCW Monthly Report".
+[2026-10-01T19:36:38.579Z] Step 3/5: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-01T19:36:49.277Z] ERROR: STOPPED: Protocol error (Runtime.callFunctionOn): Execution context was destroyed.
+[2026-10-01T19:36:49.282Z] RUN END  result=CRASHED
+[2026-10-01T19:36:49.287Z] ======================================================================
+[2026-10-01T19:36:53.994Z] ======================================================================
+[2026-10-01T19:36:53.996Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=true
+[2026-10-01T19:36:55.169Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-01T19:36:55.174Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=4d4bd7e0-0e09-41ed-bfa8-24f012f15798&language=en-US&lcid=1033
+[2026-10-01T19:36:55.177Z] Read starting session state from the iframe.
+[2026-10-01T19:36:55.337Z] Step 1/5: opened the Saved tab.
+[2026-10-01T19:36:55.574Z] Step 2/5: selected "MCW Monthly Report".
+[2026-10-01T19:36:55.842Z] Step 3/5: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-01T19:37:01.255Z] ERROR: STOPPED: Clicking Export did not reveal an ExportReport.aspx URL. Saved the actual response to Z:\Github Repos\marcom\projects\mister-monthly-report\export_click_response_1790883421250.txt for diagnosis.
+[2026-10-01T19:37:01.258Z] RUN END  result=CRASHED
+[2026-10-01T19:37:01.261Z] ======================================================================
+[2026-10-08T21:36:11.637Z] ======================================================================
+[2026-10-08T21:36:11.669Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=false
+[2026-10-08T21:36:17.875Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-08T21:36:17.881Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=1dbe3c08-c311-4c6e-a7bf-53671b20a959&language=en-US&lcid=1033
+[2026-10-08T21:36:17.888Z] Read starting session state from the iframe.
+[2026-10-08T21:36:18.143Z] Step 1/5: opened the Saved tab.
+[2026-10-08T21:36:19.017Z] Step 2/5: selected "MCW Monthly Report".
+[2026-10-08T21:36:19.410Z] Step 3/5: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-08T21:36:19.710Z] ERROR: STOPPED: Clicking Export did not reveal an ExportReport.aspx URL. Saved the actual response to Z:\Github Repos\marcom\projects\mister-monthly-report\export_click_response_1791495379705.txt for diagnosis.
+[2026-10-08T21:36:19.713Z] RUN END  result=CRASHED
+[2026-10-08T21:36:19.716Z] ======================================================================
+[2026-10-08T21:43:51.483Z] ======================================================================
+[2026-10-08T21:43:51.499Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=false
+[2026-10-08T21:43:57.242Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-08T21:43:57.247Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=f3bfd2f4-d81f-4877-840d-70aa83d21332&language=en-US&lcid=1033
+[2026-10-08T21:43:57.253Z] Read starting session state from the iframe.
+[2026-10-08T21:43:57.463Z] Step 1/6: opened the Saved tab.
+[2026-10-08T21:43:57.831Z] Step 2/6: selected "MCW Monthly Report".
+[2026-10-08T21:43:58.124Z] Step 3/6: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-08T21:44:05.925Z] Step 4/6: ran the report.
+[2026-10-08T21:44:07.279Z] ERROR: STOPPED: Clicking Export did not reveal an ExportReport.aspx URL. Saved the actual response to Z:\Github Repos\marcom\projects\mister-monthly-report\export_click_response_1791495847268.txt for diagnosis.
+[2026-10-08T21:44:07.282Z] RUN END  result=CRASHED
+[2026-10-08T21:44:07.284Z] ======================================================================
+[2026-10-08T21:49:58.116Z] ======================================================================
+[2026-10-08T21:49:58.140Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=false
+[2026-10-08T21:50:04.200Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-08T21:50:04.208Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=27d89187-70a4-415f-8bb9-eed2597b6a1d&language=en-US&lcid=1033
+[2026-10-08T21:50:04.213Z] Read starting session state from the iframe.
+[2026-10-08T21:50:04.428Z] Step 1/6: opened the Saved tab.
+[2026-10-08T21:50:04.720Z] Step 2/6: selected "MCW Monthly Report".
+[2026-10-08T21:50:05.124Z] Step 3/6: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-08T21:50:16.127Z] Step 4/6: ran the report.
+[2026-10-08T21:50:17.156Z] Step 4b/6: closed the Results tab.
+[2026-10-08T21:50:17.663Z] Step 4c/6: re-confirmed the date range.
+[2026-10-08T21:50:18.095Z] ERROR: STOPPED: Clicking Export did not reveal an ExportReport.aspx URL. Saved the actual response to Z:\Github Repos\marcom\projects\mister-monthly-report\export_click_response_1791496218090.txt for diagnosis.
+[2026-10-08T21:50:18.098Z] RUN END  result=CRASHED
+[2026-10-08T21:50:18.100Z] ======================================================================
+[2026-10-09T21:18:12.915Z] ======================================================================
+[2026-10-09T21:18:12.935Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=false
+[2026-10-09T21:18:18.494Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-09T21:18:18.498Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=ec49cb49-2d6d-4281-af96-b6da18a6f7de&language=en-US&lcid=1033
+[2026-10-09T21:18:18.501Z] Read starting session state from the iframe.
+[2026-10-09T21:18:18.629Z] Step 1/6: opened the Saved tab.
+[2026-10-09T21:18:18.901Z] Step 2/6: selected "MCW Monthly Report".
+[2026-10-09T21:18:19.198Z] Step 3/6: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-09T21:18:28.058Z] Step 4/6: ran the report.
+[2026-10-09T21:18:28.766Z] Step 4b/6: closed the Results tab.
+[2026-10-09T21:18:29.074Z] Step 4c/6: re-confirmed the date range.
+[2026-10-09T21:18:29.354Z] ERROR: STOPPED: Clicking Export did not reveal an ExportReport.aspx URL. Saved the actual response to Z:\Github Repos\marcom\projects\mister-monthly-report\export_click_response_1791580709350.txt for diagnosis.
+[2026-10-09T21:18:29.357Z] RUN END  result=CRASHED
+[2026-10-09T21:18:29.359Z] ======================================================================
+[2026-10-09T21:22:20.305Z] ======================================================================
+[2026-10-09T21:22:20.308Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=false
+[2026-10-09T21:22:26.069Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-09T21:22:26.072Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=277acbec-aa46-4190-b4c9-c5d2ba68f388&language=en-US&lcid=1033
+[2026-10-09T21:22:26.076Z] Read starting session state from the iframe.
+[2026-10-09T21:22:26.335Z] Step 1/6: opened the Saved tab.
+[2026-10-09T21:22:26.729Z] Step 2/6: selected "MCW Monthly Report".
+[2026-10-09T21:22:27.085Z] Step 3/6: set date range 9/1/2026 - 9/30/2026, portal 14715.
+[2026-10-09T21:22:33.901Z] Step 4/6: ran the report.
+[2026-10-09T21:22:41.429Z] Step 4b/6: closed the Results tab.
+[2026-10-09T21:22:42.068Z] Step 4c/6: re-confirmed the date range.
+[2026-10-09T21:22:50.502Z] ERROR: STOPPED: Clicking Export did not reveal an ExportReport.aspx URL. Saved every step's response in Z:\Github Repos\marcom\projects\mister-monthly-report\run_1791580946312 for diagnosis.
+[2026-10-09T21:22:50.506Z] Every step's response up to the failure was saved in Z:\Github Repos\marcom\projects\mister-monthly-report\run_1791580946312
+[2026-10-09T21:22:50.510Z] RUN END  result=CRASHED
+[2026-10-09T21:22:50.514Z] ======================================================================
+[2026-10-09T21:32:15.588Z] ======================================================================
+[2026-10-09T21:32:15.591Z] RUN START  from=9/1/2026  to=9/30/2026  portal=14715  saveXlsx=false
+[2026-10-09T21:32:21.343Z] On https://admin.marcomcentral.app.pti.com/Reports/Edit
+[2026-10-09T21:32:21.348Z] Found the report iframe: https://global.marcomcentral.app.pti.com/GlobalApps/Reports/ReportMain.aspx?user_id=6160583&entity_type=2&entity_id=895&token=87b436b7-1c7c-4d08-8f3f-cad1a3c9bb47&language=en-US&lcid=1033
+[2026-10-09T21:32:21.352Z] Read starting session state from the iframe.
+[2026-10-09T21:32:21.626Z] Step 1/6: opened the Saved tab.
+[2026-10-09T21:32:22.011Z] Step 2/6: selected "MCW Monthly Report".
+[2026-10-09T21:32:22.312Z] Step 3a/6: set dateFrom = 9/1/2026.
+[2026-10-09T21:32:22.561Z] Step 3b/6: set dateTo = 9/30/2026, portal 14715.
+[2026-10-09T21:32:29.698Z] Step 4/6: ran the report.
+[2026-10-09T21:32:36.220Z] Step 4b/6: closed the Results tab.
+[2026-10-09T21:32:36.698Z] Step 4c/6: re-confirmed dateFrom.
+[2026-10-09T21:32:36.934Z] Step 4d/6: re-confirmed dateTo.
+[2026-10-09T21:32:45.194Z] ERROR: STOPPED: Clicking Export did not reveal an ExportReport.aspx URL. Saved every step's response in Z:\Github Repos\marcom\projects\mister-monthly-report\run_1791581541619 for diagnosis.
+[2026-10-09T21:32:45.196Z] Every step's response up to the failure was saved in Z:\Github Repos\marcom\projects\mister-monthly-report\run_1791581541619
+[2026-10-09T21:32:45.198Z] RUN END  result=CRASHED
+[2026-10-09T21:32:45.201Z] ======================================================================

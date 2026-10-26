@@ -11,7 +11,7 @@
 
 module.exports = {
   // Path to the input spreadsheet (can be overridden with a CLI arg)
-  inputFile: './IncomingKeys/Quarter Life Crisis/QLC-Shipping Key 25_ Off Onsite Oct2026-1.xlsx',
+  inputFile: './IncomingKeys/QuarterLifeCrisis-REDO/Shipping Key 25_ Off Oct26 57 stores - v100226 2.19pm-Final.xlsx',
 
   // Worksheet name to read from. Set to null to just use the first sheet.
   sheetName: null,
@@ -28,20 +28,25 @@ module.exports = {
     // and identical-order grouping falls back to product name only.
     // (config.product.codeRow below is simply ignored when this is false.)
     hasProductCodes: false,
+    showBox: true,
 
     // true: skip reading a box-number row entirely — every product is
     // treated as belonging to a single box. Use this instead of adding
     // a fake "everything is Box 1" row to the spreadsheet.
     // (config.product.boxRow below is ignored when this is true.)
-    singleBox: true,
+    singleBox: false,
     singleBoxLabel: '1', // the box label used for every product when singleBox is true
   },
 
   // ---- Store info (one row per store) ----
   store: {
-    numberCol: 'C',
+    numberCol: 'D',
     nameCol: 'F',
     stateCol: 'J',
+    managerCol: 'G',
+    cityCol: 'I',
+    zipCol: 'K',
+    phoneCol:'L',
     // Optional. Set to a column letter to print the store's address under
     // the "Store #..." line on every page. Set to null to omit it.
     addressCol: 'H',
@@ -49,7 +54,7 @@ module.exports = {
     // Number of days it takes to ship to this store.
     shipDaysCol: 'J',
     // First row containing actual store data
-    dataStartRow: 4,
+    dataStartRow: 6,
     // If null, the script auto-detects the last row by stopping at the
     // first row where numberCol is blank. Set a number to hard-cap it.
     dataEndRow: null,
@@ -64,8 +69,8 @@ module.exports = {
     // to hard-cap it instead.
     endCol: null,
 
-    boxRow: 2,   // row containing the box number for each product column — ignored if inputVariations.singleBox is true
-    nameRow: 3,  // row containing the product name
+    boxRow: 1,   // row containing the box number for each product column — ignored if inputVariations.singleBox is true
+    nameRow: 5,  // row containing the product name
     codeRow: 4,  // row containing the product code — ignored if inputVariations.hasProductCodes is false
   },
 
@@ -75,7 +80,7 @@ module.exports = {
   // store number in storeNumberCol, read the matching row.
   transitTimes: {
     enabled: true,
-    file: './TransitTimes.xlsx',
+    file: './DEMOTransitTimes.xlsx',
     sheetName: null, // null = first sheet
     dataStartRow: 2, // row 1 assumed to be a header row
     storeNumberCol: 'A',
@@ -91,12 +96,17 @@ module.exports = {
   // Used in the {campaign} placeholder in output.leadTimeFileNamePattern.
   // Override per-run with a CLI arg: node generate-packing-slips.js input.xlsx "Campaign Name"
   campaign: {
-    name: 'QuarterLifeCrisis-TEST',
+    name: 'Quarter-Life Crisis',
   },
+
+orderSummary: {
+  enabled: true,
+  fileName: 'Shipment Order Summary.xlsx',
+},
 
   // ---- Output ----
   output: {
-    dir: './output/QuarterLifeCrisis-TEST',
+    dir: './output/Quarter-Life Crisis-v100226 2.19pm-Final',
     // 'perBoxAndLeadTime': one PDF per (box, ship-days) combo — e.g. all
     //     4-day-transit stores that need Box 1 go in one file. Stores stay
     //     in the same order they appear in the spreadsheet.
@@ -126,7 +136,7 @@ module.exports = {
     // Within each box+ship-days file, cluster stores that need the exact
     // same products and quantities so the team can batch-pack them.
     groupIdenticalOrders: {
-      enabled: true,
+      enabled: false,
       showBadge: false, // print a note on the page when a store is part of an identical-order group
     },
     // Adds a summary page as the first page of each box+ship-days PDF,

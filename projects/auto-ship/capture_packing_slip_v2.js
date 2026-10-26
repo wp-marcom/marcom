@@ -28,7 +28,7 @@ const userName = os.userInfo().username;
 const keys = require(`${__dirname}\\..\\keys\\chrome_marcom_keys_${userName}.json`);
 
 const OUT = `${__dirname}\\marcom_capture_v2.jsonl`;
-const BODY_DIR = `${__dirname}\\marcom_capture_bodies`;
+const BODY_DIR = `${__dirname}\\marcom_capture_bodies_sku`;
 fs.mkdirSync(BODY_DIR, { recursive: true });
 
 const WANTED_TYPES = ['xhr', 'fetch', 'document'];

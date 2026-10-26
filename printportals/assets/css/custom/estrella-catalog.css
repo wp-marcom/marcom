@@ -50,7 +50,7 @@ body::before {
   background: rgba(91, 115, 143, 0.5);
 }
 
-/* Black-and-white background image */
+/* Black-and-white BG image */
 body::after {
   content: "";
   position: fixed;

@@ -30,7 +30,7 @@ const currentMonth = monthNames[currentDate.getMonth()];
 const currentYear = currentDate.getFullYear();
 
 // Adjust these filename patterns to match your actual export/report naming
-const inputPath = path.join(fullPathToInput, `MCW_Monthly_Report_${currentMonth}_RAW.xlsx`);
+const inputPath = path.join(fullPathToInput, `MCW_Monthly_Report_${currentMonth}_RAW-withinactive.xlsx`);
 const outputPath = path.join(fullPathToOutput, `MCW_Monthly_Report_${currentMonth}${currentYear}_grouped.xlsx`);
 // ─────────────────────────────────────────────────────────────────────────
 
