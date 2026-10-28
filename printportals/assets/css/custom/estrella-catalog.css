@@ -6,8 +6,8 @@
 :root {
     --primary-color: #002e5d;  /* Change this per client */
     --primary-color-rgb: 0, 46, 93;  /* RGB version */
-    --secondary-color: #000;
-    --secondary-color-rgb: 255, 255, 255;  /* RGB version */
+    --secondary-color: #607994;
+    --secondary-color-rgb: 96, 121, 148;  /* RGB version */
   --text-color: #242424;
   --text-muted: #616771;
   --border-color: #ebebeb;
