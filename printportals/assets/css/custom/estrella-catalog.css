@@ -30,7 +30,8 @@ body {
 
 /* Background image */
 body {
-  background: none;
+  background: url("") repeat; /* Replace with your actual image URL */
+  background-size: 400px 400px; /* Ensures the pattern repeats properly */
   position: relative;
   padding-top: 0;
   padding-bottom: 0;
@@ -40,27 +41,25 @@ body {
   color: var(--primary-color);
 }
 
-/* Blue-gray tint overlay */
+/* Background with overlay */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -2;
-  background: rgba(91, 115, 143, 0.5);
+  background: rgba(var(--primary-color-rgb), 0.1);
 }
 
-/* Black-and-white BG image */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -3;
-  background: url('../../img/custom/estrella-login-background.jpg') no-repeat center center;
+  background: url('../../img/common/halftone.webp') no-repeat center center;
   background-size: cover;
-  filter: grayscale(100%);
-  opacity: .2;
+  opacity: 0.05;
 }
 
 .breadcrumb{font-size:13px}
