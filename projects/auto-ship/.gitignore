@@ -1,3 +1,5 @@
 # Ignore a specific folder directory
 legacy/
 marcom_capture_bodies/
+old/
+logs/

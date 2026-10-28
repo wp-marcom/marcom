@@ -29,13 +29,19 @@
 //   3. Repeat step 1 (the server drops line items that already have a packing
 //      slip, so the next entry comes up first) until nothing is left.
 // Any surprise stops the whole run. It never retries a Create automatically.
+//
+// LOGGING: every console line is also written, timestamped, to
+// auto_ship_replay_log.txt (plain text, newest run appended at the bottom,
+// bounded by "RUN START"/"RUN END" markers — the easy file to read after the
+// fact). A separate auto_ship_replay_log.jsonl gets one structured JSON
+// event per created slip / failure / warning, meant for scripts, not eyes.
 
 const path = require('path');
 const fs = require('fs');
 
 const PRIME = 'C:\\projects\\';
 const BASE = 'https://admin.marcomcentral.app.pti.com';
-const LOG_FILE = path.join(__dirname, 'auto_ship_replay_log.jsonl');
+const LOG_FILE = path.join(__dirname, 'logs\\auto_ship_replay_log.jsonl');
 
 const PORTALS = [
     { portalName: 'Mister', orderSelector: 'MCW Online - ' },
@@ -91,6 +97,21 @@ function parseModalInPage(html) {
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const log = (obj) => fs.appendFileSync(LOG_FILE, JSON.stringify({ t: new Date().toISOString(), ...obj }) + '\n');
 
+// Human-readable run log: mirrors the console, one line per event, newest run
+// appended at the bottom. Use this to check "what did it do" without parsing JSON.
+const TEXT_LOG_FILE = path.join(__dirname, 'logs\\auto_ship_replay_log.txt');
+function report(msg) {
+    console.log(msg);
+    const plain = String(msg).replace(/\x1b\[[0-9;]*m/g, ''); // strip color codes if any get added later
+    const stamped = plain.split('\n').map((line) => `[${new Date().toISOString()}] ${line}`).join('\n');
+    fs.appendFileSync(TEXT_LOG_FILE, stamped + '\n');
+}
+function reportErr(msg) {
+    console.error(msg);
+    const stamped = `[${new Date().toISOString()}] ERROR: ${String(msg)}`;
+    fs.appendFileSync(TEXT_LOG_FILE, stamped + '\n');
+}
+
 // Entries in the workflow that still need a packing slip
 function pendingEntries(wf) {
     return (wf && wf.Data ? wf.Data : []).filter((d) => d.Id === null && Array.isArray(d.Items) && d.Items.length > 0);
@@ -120,7 +141,7 @@ function guardSession(res, what) {
 function dumpError(name, text) {
     const file = path.join(__dirname, `auto_ship_replay_error_${name}_${Date.now()}.html`);
     fs.writeFileSync(file, text);
-    console.log(`Saved the server's response to ${file} (contains ship-to details).`);
+    report(`Saved the server's response to ${file} (contains ship-to details).`);
 }
 
 // ---------- talking to Marcom ----------
@@ -141,11 +162,15 @@ async function fetchGrid(page, portalName) {
         const data = JSON.parse(res.text);
         totalPages = data.total;
         records = data.records;
-        all.push(...data.rows);
+        if (Array.isArray(data.rows)) {
+            all.push(...data.rows);
+        } else if (data.rows != null) {
+            throw new Error(`Grid response for ${portalName} had a "rows" field that wasn't a list: ${JSON.stringify(data.rows).slice(0, 200)}`);
+        } // else: no rows field at all -> treat as zero orders for this portal, not an error
         pageNo++;
     } while (pageNo <= totalPages);
     if (records !== null && all.length !== records) {
-        console.log(`Warning: grid said ${records} records but ${all.length} rows were read.`);
+        report(`Warning: grid said ${records} records but ${all.length} rows were read.`);
     }
     return all;
 }
@@ -184,7 +209,7 @@ function buildOrders(rows, orderSelector) {
 
 async function shipOrder(page, order) {
     const ids = order.lines.map((l) => l.id);
-    const productById = new Map(order.lines.map((l) => [Number(l.id), l.product]));
+    const productById = new Map(order.lines.map((l) => [Number(l.id), `${l.product}  x ${l.qty}`]));
     const slips = [];
     let firstPending = null;
 
@@ -214,15 +239,15 @@ async function shipOrder(page, order) {
 
         const field = (name) => (modal.fields.find(([k]) => k === name) || [null, ''])[1];
         const entryItems = wf.Data[0].Items;
-        console.log(`  Packing slip ${slips.length + 1} of ${firstPending}: ` +
+        report(`  Packing slip ${slips.length + 1} of ${firstPending}: ` +
             `${field('ShipName')}${field('ShipAttn') ? ' / ' + field('ShipAttn') : ''}, ` +
             `${field('ShipAddr2') || field('ShipAddr1')}, ${field('ShipCity')} ${field('ShipState')}`);
-        for (const id of entryItems) console.log(`     line item ${id}: ${productById.get(id) || '(not in grid list)'}`);
-        console.log(`     ship date ${field('ShipDate')}, cost ${field('ShipCost')}, carrier "${field('ShipVia').trim()}"`);
+        for (const id of entryItems) report(`     line item ${id}: ${productById.get(id) || '(not in grid list)'}`);
+        report(`     ship date ${field('ShipDate')}, cost ${field('ShipCost')}, carrier "${field('ShipVia').trim()}"`);
 
         if (!SEND) {
             if (pending.length > 1) {
-                console.log(`  (dry run) ${pending.length} packing slips would be made for this order; only the first is shown.`);
+                report(`  (dry run) ${pending.length} packing slips would be made for this order; only the first is shown.`);
             }
             log({ event: 'dry_run', order: order.orderNumber, entries: pending.length });
             return { created: 0, planned: pending.length, dryRun: true };
@@ -248,7 +273,7 @@ async function shipOrder(page, order) {
             throw new Error(`Order ${order.orderNumber}: Create did not return a packing slip Id. Check this order in the admin before running again.`);
         }
         slips.push({ slipId, items: entryItems });
-        console.log(`     -> created packing slip ${slipId}`);
+        report(`     -> created packing slip ${slipId}`);
         log({ event: 'created', order: order.orderNumber, slipId, items: entryItems });
         await sleep(PAUSE_MS);
     }
@@ -265,7 +290,7 @@ async function gotoSafe(page, url) {
             return;
         } catch (e) {
             if (!/ERR_ABORTED/.test(e.message) || attempt === 3) throw e;
-            console.log(`Navigation was interrupted (attempt ${attempt}); retrying...`);
+            report(`Navigation was interrupted (attempt ${attempt}); retrying...`);
             await sleep(2000);
         }
     }
@@ -278,12 +303,12 @@ async function openDistribution(page) {
     await gotoSafe(page, target);
 
     if (/\/Account\/LogOn/i.test(page.url())) {
-        console.log('Signing in...');
+        report('Signing in...');
         try {
             await page.waitForSelector('.primary-submit', { timeout: 10000 });
             await page.click('.primary-submit');
         } catch (e) {
-            console.log('Could not find the sign-in button.');
+            report('Could not find the sign-in button.');
         }
         // Wait (up to 45s) until the browser has left the login page
         const t0 = Date.now();
@@ -298,7 +323,7 @@ async function openDistribution(page) {
     if (/\/Account\/LogOn/i.test(page.url())) {
         throw new Error('Still on the login page after signing in. Sign in manually in that tab and run again.');
     }
-    console.log(`On ${page.url()}`);
+    report(`On ${page.url()}`);
 }
 
 // ---------- main ----------
@@ -309,9 +334,12 @@ async function main() {
     const userName = os.userInfo().username;
     const keys = require(`${__dirname}\\..\\keys\\chrome_marcom_keys_${userName}.json`);
 
-    console.log(SEND ? 'MODE: SEND (real packing slips will be created)' : 'MODE: DRY RUN (nothing will be created)');
+    report('='.repeat(70));
+    report(`RUN START  mode=${SEND ? 'SEND' : 'DRY RUN'}  limit=${LIMIT}` +
+        `  portal=${ONLY_PORTAL || 'all'}  order=${ONLY_ORDER || 'all'}` +
+        `  includeBackorders=${INCLUDE_BACKORDERS}`);
     if (SEND) {
-        console.log(`Up to ${LIMIT} order(s). Press Ctrl+C in the next 5 seconds to cancel.`);
+        report(`Up to ${LIMIT} order(s). Press Ctrl+C in the next 5 seconds to cancel.`);
         await sleep(5000);
     }
 
@@ -327,57 +355,72 @@ async function main() {
     let remaining = LIMIT;
     let totalSlips = 0;
     const portals = PORTALS.filter((p) => !ONLY_PORTAL || p.portalName === ONLY_PORTAL);
+    const failedPortals = [];
 
     for (const { portalName, orderSelector } of portals) {
         if (remaining <= 0) break;
-        console.log(`\n=== ${portalName} ===`);
-        const rows = await fetchGrid(page, portalName);
-        const orders = buildOrders(rows, orderSelector);
-        console.log(`${rows.length} line items in the grid, ${orders.length} order(s) eligible to ship.`);
-        const info = describeGrid(rows, orderSelector);
-        console.log(`  ${info.text}`);
-        if (orders.length === 0 && rows.length > 0) {
-            console.log('  Nothing is eligible. Sample of what the grid returned:');
-            for (const r of rows.slice(0, 5)) {
-                const c = r.cell;
-                console.log(`    ${c[COL.ORDER_NUMBER]} | line item ${r.id} | ${c[COL.PRODUCT]} | ${c[COL.ORDER_TYPE]}`);
+        report(`\n=== ${portalName} ===`);
+        try {
+            const rows = await fetchGrid(page, portalName);
+            const orders = buildOrders(rows, orderSelector);
+            report(`${rows.length} line items in the grid, ${orders.length} order(s) eligible to ship.`);
+            const info = describeGrid(rows, orderSelector);
+            report(`  ${info.text}`);
+            if (orders.length === 0 && rows.length > 0) {
+                report('  Nothing is eligible. Sample of what the grid returned:');
+                for (const r of rows.slice(0, 5)) {
+                    const c = r.cell;
+                    report(`    ${c[COL.ORDER_NUMBER]} | line item ${r.id} | ${c[COL.PRODUCT]} | ${c[COL.ORDER_TYPE]}`);
+                }
+                report('  (Only "Standard" lines ship unless you use --include-backorders.)');
             }
-            console.log('  (Only "Standard" lines ship unless you use --include-backorders.)');
-        }
 
-        const shippedIds = [];
-        for (const order of orders) {
-            if (remaining <= 0) break;
-            console.log(`\nOrder ${order.orderNumber} (${order.lines.length} line item(s))`);
-            const result = await shipOrder(page, order);
-            remaining--;
-            if (!result.dryRun) {
-                totalSlips += result.created;
-                shippedIds.push(...order.lines.map((l) => l.id));
+            const shippedIds = [];
+            for (const order of orders) {
+                if (remaining <= 0) break;
+                report(`\nOrder ${order.orderNumber} (${order.lines.length} line item(s))`);
+                const result = await shipOrder(page, order);
+                remaining--;
+                if (!result.dryRun) {
+                    totalSlips += result.created;
+                    shippedIds.push(...order.lines.map((l) => l.id));
+                }
             }
-        }
 
-        // Check that what we shipped is gone from the grid
-        if (SEND && shippedIds.length) {
-            const after = await fetchGrid(page, portalName);
-            const stillThere = after.filter((r) => shippedIds.includes(String(r.id))).map((r) => r.id);
-            if (stillThere.length) {
-                console.log(`WARNING: these line items are still in the grid: ${stillThere.join(', ')}`);
-                log({ event: 'still_in_grid', portalName, ids: stillThere });
-            } else {
-                console.log(`Verified: all shipped line items have left the ${portalName} grid.`);
+            // Check that what we shipped is gone from the grid
+            if (SEND && shippedIds.length) {
+                const after = await fetchGrid(page, portalName);
+                const stillThere = after.filter((r) => shippedIds.includes(String(r.id))).map((r) => r.id);
+                if (stillThere.length) {
+                    report(`WARNING: these line items are still in the grid: ${stillThere.join(', ')}`);
+                    log({ event: 'still_in_grid', portalName, ids: stillThere });
+                } else {
+                    report(`Verified: all shipped line items have left the ${portalName} grid.`);
+                }
             }
+        } catch (e) {
+            reportErr(`  ${portalName} FAILED: ${e.message}`);
+            log({ event: 'portal_failed', portalName, error: e.message });
+            failedPortals.push(portalName);
+            // fall through to the next portal instead of stopping the whole run
         }
     }
 
-    console.log(`\nDone. ${SEND ? `${totalSlips} packing slip(s) created.` : 'Dry run only, nothing created.'}`);
+    report(`\nDone. ${SEND ? `${totalSlips} packing slip(s) created.` : 'Dry run only, nothing created.'}`);
+    if (failedPortals.length) {
+        report(`WARNING: these portals failed and were skipped: ${failedPortals.join(', ')}. See ${LOG_FILE}.`);
+    }
+    report(`RUN END  result=${failedPortals.length ? 'PARTIAL FAILURE' : 'OK'}  slipsCreated=${totalSlips}`);
+    report('='.repeat(70));
     await browser.disconnect();
-    process.exit(0);
+    process.exit(failedPortals.length ? 1 : 0);
 }
 
 if (require.main === module) {
     main().catch((e) => {
-        console.error('\nSTOPPED:', e.message);
+        reportErr('STOPPED: ' + e.message);
+        report(`RUN END  result=CRASHED`);
+        report('='.repeat(70));
         process.exit(1);
     });
 } else {

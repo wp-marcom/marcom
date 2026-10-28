@@ -42726,3 +42726,1336 @@
 [2026-10-26T18:35:25.751Z] Done. All portals succeeded.
 [2026-10-26T18:35:25.756Z] RUN END  result=OK
 [2026-10-26T18:35:25.761Z] ======================================================================
+[2026-10-26T19:35:04.016Z] ======================================================================
+[2026-10-26T19:35:04.021Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-26T19:35:04.182Z] Connected to Google Sheets.
+[2026-10-26T19:35:05.890Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-26T19:35:05.900Z] 
+[2026-10-26T19:35:05.900Z] === Mister (portal 14715) ===
+[2026-10-26T19:35:09.807Z] Fetched "SKUs" export for Mister: 87775 bytes.
+[2026-10-26T19:35:09.820Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-26T19:35:09.830Z] Worksheet "SKUs" has 606 data row(s) (before the header-strip your transform does).
+[2026-10-26T19:35:13.001Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-26T19:35:13.307Z] Mister: pushed 599 row(s).
+[2026-10-26T19:35:13.318Z] 
+[2026-10-26T19:35:13.318Z] === WestPressInventory (portal 5913) ===
+[2026-10-26T19:35:16.376Z] Fetched "SKUs" export for WestPressInventory: 47436 bytes.
+[2026-10-26T19:35:16.390Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-26T19:35:16.398Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-26T19:35:16.599Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-26T19:35:16.785Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-26T19:35:16.966Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-26T19:35:17.130Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-26T19:35:17.310Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-26T19:35:17.526Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-26T19:35:17.716Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-26T19:35:17.887Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-26T19:35:18.185Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-26T19:35:18.413Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-26T19:35:18.424Z] 
+[2026-10-26T19:35:18.424Z] === TMC (portal 23660) ===
+[2026-10-26T19:35:20.735Z] Fetched "SKUs" export for TMC: 24920 bytes.
+[2026-10-26T19:35:20.748Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-26T19:35:20.754Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-26T19:35:20.947Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-26T19:35:21.355Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-26T19:35:21.529Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-26T19:35:22.016Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-26T19:35:23.870Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-26T19:35:24.033Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-26T19:35:24.211Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-26T19:35:24.373Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-26T19:35:24.723Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-26T19:35:25.470Z] TMC / TMC: pushed 92 row(s).
+[2026-10-26T19:35:26.389Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-26T19:35:26.763Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-26T19:35:27.049Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-26T19:35:27.778Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-26T19:35:28.020Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-26T19:35:28.526Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-26T19:35:28.722Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-26T19:35:30.283Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-26T19:35:30.292Z] 
+[2026-10-26T19:35:30.292Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-26T19:35:32.294Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13906 bytes.
+[2026-10-26T19:35:32.307Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-26T19:35:32.322Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-26T19:35:32.677Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-26T19:35:33.754Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-26T19:35:33.768Z] 
+[2026-10-26T19:35:33.768Z] Done. All portals succeeded.
+[2026-10-26T19:35:33.773Z] RUN END  result=OK
+[2026-10-26T19:35:33.778Z] ======================================================================
+[2026-10-26T20:35:04.340Z] ======================================================================
+[2026-10-26T20:35:04.368Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-26T20:35:04.534Z] Connected to Google Sheets.
+[2026-10-26T20:35:06.239Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-26T20:35:06.250Z] 
+[2026-10-26T20:35:06.250Z] === Mister (portal 14715) ===
+[2026-10-26T20:35:09.109Z] Fetched "SKUs" export for Mister: 87776 bytes.
+[2026-10-26T20:35:09.122Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-26T20:35:09.134Z] Worksheet "SKUs" has 606 data row(s) (before the header-strip your transform does).
+[2026-10-26T20:35:11.180Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-26T20:35:11.455Z] Mister: pushed 599 row(s).
+[2026-10-26T20:35:11.490Z] 
+[2026-10-26T20:35:11.490Z] === WestPressInventory (portal 5913) ===
+[2026-10-26T20:35:14.513Z] Fetched "SKUs" export for WestPressInventory: 47435 bytes.
+[2026-10-26T20:35:14.526Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-26T20:35:14.535Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-26T20:35:14.703Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-26T20:35:14.895Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-26T20:35:15.045Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-26T20:35:15.195Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-26T20:35:15.351Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-26T20:35:15.538Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-26T20:35:15.693Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-26T20:35:15.847Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-26T20:35:16.035Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-26T20:35:16.228Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-26T20:35:16.238Z] 
+[2026-10-26T20:35:16.238Z] === TMC (portal 23660) ===
+[2026-10-26T20:35:18.591Z] Fetched "SKUs" export for TMC: 24919 bytes.
+[2026-10-26T20:35:18.604Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-26T20:35:18.609Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-26T20:35:18.960Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-26T20:35:19.379Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-26T20:35:19.783Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-26T20:35:19.956Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-26T20:35:20.175Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-26T20:35:20.542Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-26T20:35:20.691Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-26T20:35:20.870Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-26T20:35:22.233Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-26T20:35:22.392Z] TMC / TMC: pushed 92 row(s).
+[2026-10-26T20:35:22.563Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-26T20:35:22.716Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-26T20:35:22.882Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-26T20:35:24.217Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-26T20:35:24.376Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-26T20:35:24.529Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-26T20:35:24.650Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-26T20:35:24.801Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-26T20:35:24.811Z] 
+[2026-10-26T20:35:24.811Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-26T20:35:26.934Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13905 bytes.
+[2026-10-26T20:35:26.948Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-26T20:35:26.954Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-26T20:35:29.153Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-26T20:35:30.127Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-26T20:35:30.136Z] 
+[2026-10-26T20:35:30.136Z] Done. All portals succeeded.
+[2026-10-26T20:35:30.142Z] RUN END  result=OK
+[2026-10-26T20:35:30.148Z] ======================================================================
+[2026-10-26T21:35:04.351Z] ======================================================================
+[2026-10-26T21:35:04.366Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-26T21:35:04.549Z] Connected to Google Sheets.
+[2026-10-26T21:35:06.113Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-26T21:35:06.119Z] 
+[2026-10-26T21:35:06.119Z] === Mister (portal 14715) ===
+[2026-10-26T21:35:08.918Z] Fetched "SKUs" export for Mister: 87792 bytes.
+[2026-10-26T21:35:08.931Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-26T21:35:08.940Z] Worksheet "SKUs" has 606 data row(s) (before the header-strip your transform does).
+[2026-10-26T21:35:11.429Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-26T21:35:11.791Z] Mister: pushed 599 row(s).
+[2026-10-26T21:35:11.801Z] 
+[2026-10-26T21:35:11.801Z] === WestPressInventory (portal 5913) ===
+[2026-10-26T21:35:14.425Z] Fetched "SKUs" export for WestPressInventory: 47435 bytes.
+[2026-10-26T21:35:14.441Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-26T21:35:14.449Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-26T21:35:14.696Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-26T21:35:14.915Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-26T21:35:15.181Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-26T21:35:15.417Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-26T21:35:15.645Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-26T21:35:15.914Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-26T21:35:16.157Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-26T21:35:16.431Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-26T21:35:18.031Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-26T21:35:18.321Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-26T21:35:18.331Z] 
+[2026-10-26T21:35:18.331Z] === TMC (portal 23660) ===
+[2026-10-26T21:35:20.732Z] Fetched "SKUs" export for TMC: 24919 bytes.
+[2026-10-26T21:35:20.746Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-26T21:35:20.752Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-26T21:35:21.022Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-26T21:35:21.202Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-26T21:35:21.624Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-26T21:35:21.861Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-26T21:35:22.090Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-26T21:35:22.373Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-26T21:35:22.623Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-26T21:35:23.040Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-26T21:35:23.271Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-26T21:35:23.750Z] TMC / TMC: pushed 92 row(s).
+[2026-10-26T21:35:24.123Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-26T21:35:24.401Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-26T21:35:26.670Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-26T21:35:26.947Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-26T21:35:27.172Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-26T21:35:27.600Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-26T21:35:27.771Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-26T21:35:27.990Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-26T21:35:28.000Z] 
+[2026-10-26T21:35:28.000Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-26T21:35:30.072Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13906 bytes.
+[2026-10-26T21:35:30.086Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-26T21:35:30.101Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-26T21:35:30.667Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-26T21:35:30.878Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-26T21:35:31.126Z] 
+[2026-10-26T21:35:31.126Z] Done. All portals succeeded.
+[2026-10-26T21:35:31.133Z] RUN END  result=OK
+[2026-10-26T21:35:31.139Z] ======================================================================
+[2026-10-26T22:35:04.599Z] ======================================================================
+[2026-10-26T22:35:04.620Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-26T22:35:04.789Z] Connected to Google Sheets.
+[2026-10-26T22:35:11.145Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-26T22:35:11.154Z] 
+[2026-10-26T22:35:11.154Z] === Mister (portal 14715) ===
+[2026-10-26T22:35:14.609Z] Fetched "SKUs" export for Mister: 87785 bytes.
+[2026-10-26T22:35:14.622Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-26T22:35:14.633Z] Worksheet "SKUs" has 606 data row(s) (before the header-strip your transform does).
+[2026-10-26T22:35:16.611Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-26T22:35:16.889Z] Mister: pushed 599 row(s).
+[2026-10-26T22:35:16.898Z] 
+[2026-10-26T22:35:16.898Z] === WestPressInventory (portal 5913) ===
+[2026-10-26T22:35:19.487Z] Fetched "SKUs" export for WestPressInventory: 47435 bytes.
+[2026-10-26T22:35:19.502Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-26T22:35:19.510Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-26T22:35:19.672Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-26T22:35:19.833Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-26T22:35:19.986Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-26T22:35:20.148Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-26T22:35:20.310Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-26T22:35:20.490Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-26T22:35:20.689Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-26T22:35:20.847Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-26T22:35:21.017Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-26T22:35:21.236Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-26T22:35:21.246Z] 
+[2026-10-26T22:35:21.246Z] === TMC (portal 23660) ===
+[2026-10-26T22:35:23.561Z] Fetched "SKUs" export for TMC: 24917 bytes.
+[2026-10-26T22:35:23.574Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-26T22:35:23.580Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-26T22:35:23.764Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-26T22:35:25.476Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-26T22:35:25.639Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-26T22:35:25.802Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-26T22:35:26.130Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-26T22:35:26.434Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-26T22:35:26.617Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-26T22:35:26.817Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-26T22:35:27.023Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-26T22:35:27.309Z] TMC / TMC: pushed 92 row(s).
+[2026-10-26T22:35:28.888Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-26T22:35:29.118Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-26T22:35:29.322Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-26T22:35:29.910Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-26T22:35:30.103Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-26T22:35:30.421Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-26T22:35:30.539Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-26T22:35:30.698Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-26T22:35:30.708Z] 
+[2026-10-26T22:35:30.708Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-26T22:35:32.825Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13905 bytes.
+[2026-10-26T22:35:32.838Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-26T22:35:32.854Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-26T22:35:33.044Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-26T22:35:33.230Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-26T22:35:33.239Z] 
+[2026-10-26T22:35:33.239Z] Done. All portals succeeded.
+[2026-10-26T22:35:33.243Z] RUN END  result=OK
+[2026-10-26T22:35:33.248Z] ======================================================================
+[2026-10-26T23:35:04.541Z] ======================================================================
+[2026-10-26T23:35:04.564Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-26T23:35:04.748Z] Connected to Google Sheets.
+[2026-10-26T23:35:06.574Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-26T23:35:06.581Z] 
+[2026-10-26T23:35:06.581Z] === Mister (portal 14715) ===
+[2026-10-26T23:35:10.516Z] Fetched "SKUs" export for Mister: 87790 bytes.
+[2026-10-26T23:35:10.528Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-26T23:35:10.538Z] Worksheet "SKUs" has 606 data row(s) (before the header-strip your transform does).
+[2026-10-26T23:35:12.503Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-26T23:35:13.120Z] Mister: pushed 599 row(s).
+[2026-10-26T23:35:13.155Z] 
+[2026-10-26T23:35:13.155Z] === WestPressInventory (portal 5913) ===
+[2026-10-26T23:35:15.660Z] Fetched "SKUs" export for WestPressInventory: 47439 bytes.
+[2026-10-26T23:35:15.673Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-26T23:35:15.682Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-26T23:35:15.912Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-26T23:35:16.096Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-26T23:35:16.276Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-26T23:35:16.447Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-26T23:35:16.641Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-26T23:35:16.851Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-26T23:35:17.035Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-26T23:35:17.627Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-26T23:35:17.846Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-26T23:35:18.061Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-26T23:35:18.072Z] 
+[2026-10-26T23:35:18.072Z] === TMC (portal 23660) ===
+[2026-10-26T23:35:20.274Z] Fetched "SKUs" export for TMC: 24919 bytes.
+[2026-10-26T23:35:20.288Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-26T23:35:20.294Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-26T23:35:20.528Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-26T23:35:20.710Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-26T23:35:20.899Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-26T23:35:21.105Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-26T23:35:21.507Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-26T23:35:21.689Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-26T23:35:21.940Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-26T23:35:22.227Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-26T23:35:22.765Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-26T23:35:23.006Z] TMC / TMC: pushed 92 row(s).
+[2026-10-26T23:35:23.446Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-26T23:35:23.982Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-26T23:35:24.205Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-26T23:35:24.435Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-26T23:35:24.629Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-26T23:35:24.827Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-26T23:35:25.002Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-26T23:35:25.201Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-26T23:35:25.211Z] 
+[2026-10-26T23:35:25.211Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-26T23:35:27.399Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13905 bytes.
+[2026-10-26T23:35:27.412Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-26T23:35:27.422Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-26T23:35:27.688Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-26T23:35:27.865Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-26T23:35:27.875Z] 
+[2026-10-26T23:35:27.875Z] Done. All portals succeeded.
+[2026-10-26T23:35:27.880Z] RUN END  result=OK
+[2026-10-26T23:35:27.885Z] ======================================================================
+[2026-10-27T00:35:04.265Z] ======================================================================
+[2026-10-27T00:35:04.295Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T00:35:04.512Z] Connected to Google Sheets.
+[2026-10-27T00:35:06.297Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-27T00:35:06.309Z] 
+[2026-10-27T00:35:06.309Z] === Mister (portal 14715) ===
+[2026-10-27T00:35:09.739Z] Fetched "SKUs" export for Mister: 87784 bytes.
+[2026-10-27T00:35:09.753Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-27T00:35:09.763Z] Worksheet "SKUs" has 606 data row(s) (before the header-strip your transform does).
+[2026-10-27T00:35:12.567Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-27T00:35:13.180Z] Mister: pushed 599 row(s).
+[2026-10-27T00:35:13.199Z] 
+[2026-10-27T00:35:13.199Z] === WestPressInventory (portal 5913) ===
+[2026-10-27T00:35:15.984Z] Fetched "SKUs" export for WestPressInventory: 47430 bytes.
+[2026-10-27T00:35:15.999Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-27T00:35:16.010Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-27T00:35:16.275Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-27T00:35:16.519Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-27T00:35:16.754Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-27T00:35:16.996Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-27T00:35:17.229Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-27T00:35:17.629Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-27T00:35:17.915Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-27T00:35:18.247Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-27T00:35:18.671Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-27T00:35:19.086Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-27T00:35:19.095Z] 
+[2026-10-27T00:35:19.095Z] === TMC (portal 23660) ===
+[2026-10-27T00:35:21.442Z] Fetched "SKUs" export for TMC: 24920 bytes.
+[2026-10-27T00:35:21.460Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-27T00:35:21.465Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-27T00:35:21.701Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-27T00:35:21.929Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-27T00:35:22.245Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-27T00:35:22.479Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-27T00:35:22.741Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-27T00:35:24.748Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-27T00:35:25.000Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-27T00:35:25.256Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-27T00:35:25.492Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-27T00:35:25.750Z] TMC / TMC: pushed 92 row(s).
+[2026-10-27T00:35:26.362Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-27T00:35:26.648Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-27T00:35:26.914Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-27T00:35:27.581Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-27T00:35:28.011Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-27T00:35:28.265Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-27T00:35:28.654Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-27T00:35:28.907Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-27T00:35:28.917Z] 
+[2026-10-27T00:35:28.917Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-27T00:35:31.058Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13906 bytes.
+[2026-10-27T00:35:31.072Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-27T00:35:31.085Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-27T00:35:31.296Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-27T00:35:33.476Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-27T00:35:33.490Z] 
+[2026-10-27T00:35:33.490Z] Done. All portals succeeded.
+[2026-10-27T00:35:33.495Z] RUN END  result=OK
+[2026-10-27T00:35:33.500Z] ======================================================================
+[2026-10-27T01:35:29.318Z] ======================================================================
+[2026-10-27T01:35:29.341Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T01:35:29.612Z] Connected to Google Sheets.
+[2026-10-27T01:35:31.518Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-27T01:35:31.525Z] 
+[2026-10-27T01:35:31.525Z] === Mister (portal 14715) ===
+[2026-10-27T01:35:35.027Z] Fetched "SKUs" export for Mister: 87782 bytes.
+[2026-10-27T01:35:35.041Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-27T01:35:35.050Z] Worksheet "SKUs" has 606 data row(s) (before the header-strip your transform does).
+[2026-10-27T01:35:37.453Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-27T01:35:37.759Z] Mister: pushed 599 row(s).
+[2026-10-27T01:35:37.770Z] 
+[2026-10-27T01:35:37.770Z] === WestPressInventory (portal 5913) ===
+[2026-10-27T01:35:40.541Z] Fetched "SKUs" export for WestPressInventory: 47431 bytes.
+[2026-10-27T01:35:40.556Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-27T01:35:40.563Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-27T01:35:40.758Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-27T01:35:40.954Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-27T01:35:41.137Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-27T01:35:41.340Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-27T01:35:41.521Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-27T01:35:41.801Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-27T01:35:41.997Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-27T01:35:42.190Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-27T01:35:42.391Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-27T01:35:42.604Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-27T01:35:42.615Z] 
+[2026-10-27T01:35:42.615Z] === TMC (portal 23660) ===
+[2026-10-27T01:35:44.955Z] Fetched "SKUs" export for TMC: 24921 bytes.
+[2026-10-27T01:35:44.969Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-27T01:35:44.980Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-27T01:35:45.182Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-27T01:35:45.373Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-27T01:35:45.548Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-27T01:35:45.942Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-27T01:35:46.177Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-27T01:35:46.491Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-27T01:35:46.702Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-27T01:35:46.918Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-27T01:35:48.704Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-27T01:35:48.901Z] TMC / TMC: pushed 92 row(s).
+[2026-10-27T01:35:49.123Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-27T01:35:49.319Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-27T01:35:52.466Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-27T01:35:52.674Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-27T01:35:52.880Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-27T01:35:53.083Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-27T01:35:53.218Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-27T01:35:53.506Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-27T01:35:53.517Z] 
+[2026-10-27T01:35:53.517Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-27T01:35:55.713Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13905 bytes.
+[2026-10-27T01:35:55.726Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-27T01:35:55.742Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-27T01:35:56.285Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-27T01:35:56.480Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-27T01:35:56.767Z] 
+[2026-10-27T01:35:56.767Z] Done. All portals succeeded.
+[2026-10-27T01:35:56.773Z] RUN END  result=OK
+[2026-10-27T01:35:56.778Z] ======================================================================
+[2026-10-27T02:35:04.077Z] ======================================================================
+[2026-10-27T02:35:04.094Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T02:35:04.284Z] Connected to Google Sheets.
+[2026-10-27T02:35:06.172Z] Signing in...
+[2026-10-27T02:35:55.360Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-27T02:35:55.402Z] RUN END  result=CRASHED
+[2026-10-27T02:35:55.414Z] ======================================================================
+[2026-10-27T03:35:03.995Z] ======================================================================
+[2026-10-27T03:35:04.017Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T03:35:04.187Z] Connected to Google Sheets.
+[2026-10-27T03:35:10.108Z] Signing in...
+[2026-10-27T03:35:58.345Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-27T03:35:58.355Z] RUN END  result=CRASHED
+[2026-10-27T03:35:58.361Z] ======================================================================
+[2026-10-27T04:35:04.132Z] ======================================================================
+[2026-10-27T04:35:04.153Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T04:35:04.341Z] Connected to Google Sheets.
+[2026-10-27T04:35:05.513Z] Signing in...
+[2026-10-27T04:35:53.970Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-27T04:35:53.979Z] RUN END  result=CRASHED
+[2026-10-27T04:35:53.993Z] ======================================================================
+[2026-10-27T05:35:29.612Z] ======================================================================
+[2026-10-27T05:35:29.662Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T05:35:29.890Z] Connected to Google Sheets.
+[2026-10-27T05:35:31.228Z] Signing in...
+[2026-10-27T05:36:19.328Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-27T05:36:19.371Z] RUN END  result=CRASHED
+[2026-10-27T05:36:19.378Z] ======================================================================
+[2026-10-27T06:35:04.407Z] ======================================================================
+[2026-10-27T06:35:04.437Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T06:35:04.611Z] Connected to Google Sheets.
+[2026-10-27T06:35:06.055Z] Signing in...
+[2026-10-27T06:35:54.007Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-27T06:35:54.015Z] RUN END  result=CRASHED
+[2026-10-27T06:35:54.022Z] ======================================================================
+[2026-10-27T07:35:04.076Z] ======================================================================
+[2026-10-27T07:35:04.096Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T07:35:04.283Z] Connected to Google Sheets.
+[2026-10-27T07:35:10.724Z] Signing in...
+[2026-10-27T07:36:09.341Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-27T07:36:09.354Z] RUN END  result=CRASHED
+[2026-10-27T07:36:09.372Z] ======================================================================
+[2026-10-27T08:35:03.985Z] ======================================================================
+[2026-10-27T08:35:04.015Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T08:35:04.252Z] Connected to Google Sheets.
+[2026-10-27T08:35:04.370Z] ======================================================================
+[2026-10-27T08:35:04.376Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T08:35:04.518Z] Connected to Google Sheets.
+[2026-10-27T08:35:35.200Z] Signing in...
+[2026-10-27T08:35:35.193Z] Signing in...
+[2026-10-27T08:36:22.470Z] Navigation was interrupted (attempt 1); retrying...
+[2026-10-27T08:36:52.916Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-27T08:36:52.916Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-27T08:36:52.925Z] RUN END  result=CRASHED
+[2026-10-27T08:36:52.926Z] RUN END  result=CRASHED
+[2026-10-27T08:36:52.933Z] ======================================================================
+[2026-10-27T08:36:52.934Z] ======================================================================
+[2026-10-27T09:35:04.576Z] ======================================================================
+[2026-10-27T09:35:04.605Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T09:35:04.824Z] Connected to Google Sheets.
+[2026-10-27T09:35:35.821Z] Signing in...
+[2026-10-27T09:36:53.578Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-27T09:36:53.586Z] RUN END  result=CRASHED
+[2026-10-27T09:36:53.601Z] ======================================================================
+[2026-10-27T10:35:04.030Z] ======================================================================
+[2026-10-27T10:35:04.049Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T10:35:04.255Z] Connected to Google Sheets.
+[2026-10-27T10:35:35.319Z] Signing in...
+[2026-10-27T10:36:53.185Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-27T10:36:53.202Z] RUN END  result=CRASHED
+[2026-10-27T10:36:53.217Z] ======================================================================
+[2026-10-27T11:35:04.032Z] ======================================================================
+[2026-10-27T11:35:04.050Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T11:35:04.277Z] Connected to Google Sheets.
+[2026-10-27T11:35:35.629Z] Signing in...
+[2026-10-27T11:36:53.599Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-27T11:36:53.606Z] RUN END  result=CRASHED
+[2026-10-27T11:36:53.747Z] ======================================================================
+[2026-10-27T12:35:04.222Z] ======================================================================
+[2026-10-27T12:35:04.243Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T12:35:04.436Z] Connected to Google Sheets.
+[2026-10-27T12:35:35.581Z] Signing in...
+[2026-10-27T12:36:53.482Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-27T12:36:53.489Z] RUN END  result=CRASHED
+[2026-10-27T12:36:53.508Z] ======================================================================
+[2026-10-27T13:35:04.093Z] ======================================================================
+[2026-10-27T13:35:04.112Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T13:35:04.359Z] Connected to Google Sheets.
+[2026-10-27T13:35:36.013Z] Signing in...
+[2026-10-27T13:36:24.106Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-27T13:36:24.112Z] RUN END  result=CRASHED
+[2026-10-27T13:36:24.119Z] ======================================================================
+[2026-10-27T13:48:38.585Z] ======================================================================
+[2026-10-27T13:48:38.605Z] RUN START  mode=PUSH TO SHEETS  portal=all  saveXlsx=false
+[2026-10-27T13:48:38.838Z] Connected to Google Sheets.
+[2026-10-27T13:48:39.971Z] Signing in...
+[2026-10-27T13:48:43.604Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-27T13:48:43.608Z] 
+[2026-10-27T13:48:43.608Z] === Mister (portal 14715) ===
+[2026-10-27T13:48:46.030Z] Fetched SKU export for Mister: 87767 bytes.
+[2026-10-27T13:48:46.036Z] Worksheet "SKUs" has 606 data row(s) (before the header-strip your transform does).
+[2026-10-27T13:48:46.599Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-27T13:48:47.100Z] Mister: pushed 599 row(s).
+[2026-10-27T13:48:47.125Z] 
+[2026-10-27T13:48:47.125Z] === WestPressInventory (portal 5913) ===
+[2026-10-27T13:48:48.538Z] Fetched SKU export for WestPressInventory: 47431 bytes.
+[2026-10-27T13:48:48.543Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-27T13:48:48.994Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-27T13:48:49.320Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-27T13:48:49.599Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-27T13:48:49.984Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-27T13:48:50.393Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-27T13:48:50.732Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-27T13:48:51.398Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-27T13:48:51.760Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-27T13:48:52.092Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-27T13:48:52.666Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-27T13:48:52.673Z] 
+[2026-10-27T13:48:52.673Z] === TMC (portal 23660) ===
+[2026-10-27T13:48:53.859Z] Fetched SKU export for TMC: 24920 bytes.
+[2026-10-27T13:48:53.862Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-27T13:48:54.172Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-27T13:48:54.489Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-27T13:48:54.801Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-27T13:48:55.128Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-27T13:48:55.466Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-27T13:48:55.946Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-27T13:48:58.379Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-27T13:48:59.332Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-27T13:48:59.624Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-27T13:49:00.017Z] TMC / TMC: pushed 92 row(s).
+[2026-10-27T13:49:00.426Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-27T13:49:00.751Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-27T13:49:01.149Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-27T13:49:01.400Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-27T13:49:01.686Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-27T13:49:02.035Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-27T13:52:50.561Z] ======================================================================
+[2026-10-27T13:52:50.583Z] RUN START  mode=PUSH TO SHEETS  portal=Mister  saveXlsx=false
+[2026-10-27T13:52:50.670Z] Connected to Google Sheets.
+[2026-10-27T13:52:52.532Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-27T13:52:52.536Z] 
+[2026-10-27T13:52:52.536Z] === Mister (portal 14715) ===
+[2026-10-27T13:52:54.802Z] Fetched SKU export for Mister: 87767 bytes.
+[2026-10-27T13:52:54.807Z] Worksheet "SKUs" has 606 data row(s) (before the header-strip your transform does).
+[2026-10-27T13:52:57.166Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-27T13:52:59.623Z] Mister: pushed 599 row(s).
+[2026-10-27T13:52:59.635Z] 
+[2026-10-27T13:52:59.635Z] Done. All portals succeeded.
+[2026-10-27T13:52:59.641Z] RUN END  result=OK
+[2026-10-27T13:52:59.646Z] ======================================================================
+[2026-10-27T13:55:08.828Z] ======================================================================
+[2026-10-27T13:55:08.831Z] RUN START  mode=PUSH TO SHEETS  portal=all  saveXlsx=false
+[2026-10-27T13:55:08.960Z] Connected to Google Sheets.
+[2026-10-27T13:55:35.675Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-27T13:55:35.780Z] 
+[2026-10-27T13:55:35.780Z] === Mister (portal 14715) ===
+[2026-10-27T13:55:38.088Z] Fetched SKU export for Mister: 87768 bytes.
+[2026-10-27T13:55:38.096Z] Worksheet "SKUs" has 606 data row(s) (before the header-strip your transform does).
+[2026-10-27T13:55:38.592Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-27T13:55:39.099Z] Mister: pushed 599 row(s).
+[2026-10-27T13:55:39.129Z] 
+[2026-10-27T13:55:39.129Z] === WestPressInventory (portal 5913) ===
+[2026-10-27T13:55:40.863Z] Fetched SKU export for WestPressInventory: 47431 bytes.
+[2026-10-27T13:55:40.867Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-27T13:55:41.185Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-27T13:55:41.502Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-27T13:55:41.833Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-27T13:55:44.710Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-27T13:55:45.026Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-27T13:55:45.310Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-27T13:55:46.406Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-27T13:55:46.736Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-27T13:55:47.101Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-27T13:55:47.502Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-27T13:55:47.509Z] 
+[2026-10-27T13:55:47.509Z] === TMC (portal 23660) ===
+[2026-10-27T13:55:49.247Z] Fetched SKU export for TMC: 24920 bytes.
+[2026-10-27T13:55:49.251Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-27T13:55:49.507Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-27T13:55:49.858Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-27T13:55:50.139Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-27T13:55:52.399Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-27T13:55:52.761Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-27T13:55:53.301Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-27T13:55:53.822Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-27T13:55:54.165Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-27T13:55:54.630Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-27T13:55:54.977Z] TMC / TMC: pushed 92 row(s).
+[2026-10-27T13:55:55.251Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-27T13:55:55.689Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-27T13:55:56.026Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-27T13:55:56.566Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-27T13:55:56.890Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-27T13:55:57.383Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-27T13:55:57.663Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-27T13:55:57.980Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-27T13:55:57.988Z] 
+[2026-10-27T13:55:57.988Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-27T13:55:59.652Z] Fetched SKU export for NorthwestMedicalCenter: 13906 bytes.
+[2026-10-27T13:55:59.655Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-27T13:55:59.977Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-27T13:56:00.308Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-27T13:56:00.318Z] 
+[2026-10-27T13:56:00.318Z] Done. All portals succeeded.
+[2026-10-27T13:56:00.322Z] RUN END  result=OK
+[2026-10-27T13:56:00.327Z] ======================================================================
+[2026-10-27T14:02:51.454Z] ======================================================================
+[2026-10-27T14:02:51.473Z] RUN START  mode=EXPORT Catalog  portal=Mister  operation=Catalog  saveXlsx=false
+[2026-10-27T14:02:51.623Z] Connected to Google Sheets.
+[2026-10-27T14:03:22.763Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-27T14:03:22.768Z] 
+[2026-10-27T14:03:22.768Z] === Mister (portal 14715) ===
+[2026-10-27T14:03:31.330Z] Fetched "Catalog" export for Mister: 240218 bytes.
+[2026-10-27T14:03:31.335Z]   Worksheet "Catalog": 1128 total row(s) (incl. header/template rows), dataStartRow=8.
+[2026-10-27T14:03:31.341Z]   After slicing from row 8: 1121 row(s).
+[2026-10-27T14:03:31.888Z] Cleared range Mister Car Wash Catalog!A2:F in Google Sheet.
+[2026-10-27T14:03:34.447Z] Catalog / Mister: pushed 1121 row(s) to "Mister Car Wash Catalog!A2".
+[2026-10-27T14:03:34.459Z] 
+[2026-10-27T14:03:34.459Z] Done. All portals succeeded.
+[2026-10-27T14:03:34.467Z] RUN END  result=OK
+[2026-10-27T14:03:34.475Z] ======================================================================
+[2026-10-27T16:58:51.413Z] ======================================================================
+[2026-10-27T16:58:51.452Z] RUN START  mode=EXPORT Catalog  portal=Mister  operation=Catalog  saveXlsx=false
+[2026-10-27T16:58:51.633Z] Connected to Google Sheets.
+[2026-10-27T16:58:52.643Z] Signing in...
+[2026-10-27T16:58:56.462Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-27T16:58:56.467Z] 
+[2026-10-27T16:58:56.467Z] === Mister (portal 14715) ===
+[2026-10-27T16:59:07.724Z] Fetched "Catalog" export for Mister: 250443 bytes.
+[2026-10-27T16:59:07.730Z]   Worksheet "Catalog": 1120 total row(s) (incl. header/template rows), dataStartRow=8.
+[2026-10-27T16:59:07.735Z]   After slicing from row 8: 1113 row(s).
+[2026-10-27T16:59:08.237Z] Cleared range Mister Car Wash Catalog!A2:F in Google Sheet.
+[2026-10-27T16:59:10.666Z] Catalog / Mister: pushed 1113 row(s) to "Mister Car Wash Catalog!A2".
+[2026-10-27T16:59:10.691Z] 
+[2026-10-27T16:59:10.691Z] Done. All portals succeeded.
+[2026-10-27T16:59:10.696Z] RUN END  result=OK
+[2026-10-27T16:59:10.701Z] ======================================================================
+[2026-10-27T17:19:52.147Z] ======================================================================
+[2026-10-27T17:19:52.150Z] RUN START  mode=EXPORT Catalog  portal=Mister  operation=Catalog  saveXlsx=false
+[2026-10-27T17:19:52.293Z] Connected to Google Sheets.
+[2026-10-27T17:19:53.511Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-27T17:19:53.514Z] 
+[2026-10-27T17:19:53.514Z] === Mister (portal 14715) ===
+[2026-10-27T17:20:01.744Z] Fetched "Catalog" export for Mister: 247659 bytes.
+[2026-10-27T17:20:01.750Z]   Worksheet "Catalog": 1120 total row(s) (incl. header/template rows), dataStartRow=8.
+[2026-10-27T17:20:01.756Z]   After slicing from row 8: 1113 row(s).
+[2026-10-27T17:20:02.196Z] Cleared range Mister Car Wash Catalog!A2:F in Google Sheet.
+[2026-10-27T17:20:04.445Z] Catalog / Mister: pushed 1113 row(s) to "Mister Car Wash Catalog!A2".
+[2026-10-27T17:20:04.456Z] 
+[2026-10-27T17:20:04.456Z] Done. All portals succeeded.
+[2026-10-27T17:20:04.462Z] RUN END  result=OK
+[2026-10-27T17:20:04.467Z] ======================================================================
+[2026-10-27T19:35:26.145Z] ======================================================================
+[2026-10-27T19:35:26.152Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T19:35:26.339Z] Connected to Google Sheets.
+[2026-10-27T19:35:29.298Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-27T19:35:29.306Z] 
+[2026-10-27T19:35:29.306Z] === Mister (portal 14715) ===
+[2026-10-27T19:35:34.583Z] Fetched "SKUs" export for Mister: 87739 bytes.
+[2026-10-27T19:35:34.604Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-27T19:35:34.614Z] Worksheet "SKUs" has 606 data row(s) (before the header-strip your transform does).
+[2026-10-27T19:35:37.261Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-27T19:35:37.600Z] Mister: pushed 599 row(s).
+[2026-10-27T19:35:37.610Z] 
+[2026-10-27T19:35:37.610Z] === WestPressInventory (portal 5913) ===
+[2026-10-27T19:35:39.962Z] Fetched "SKUs" export for WestPressInventory: 47432 bytes.
+[2026-10-27T19:35:39.978Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-27T19:35:39.987Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-27T19:35:40.211Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-27T19:35:40.423Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-27T19:35:40.622Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-27T19:35:40.871Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-27T19:35:41.067Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-27T19:35:41.417Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-27T19:35:41.686Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-27T19:35:41.897Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-27T19:35:42.123Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-27T19:35:42.436Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-27T19:35:42.446Z] 
+[2026-10-27T19:35:42.446Z] === TMC (portal 23660) ===
+[2026-10-27T19:35:44.465Z] Fetched "SKUs" export for TMC: 24921 bytes.
+[2026-10-27T19:35:44.479Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-27T19:35:44.484Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-27T19:35:44.679Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-27T19:35:44.870Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-27T19:35:45.059Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-27T19:35:45.269Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-27T19:35:45.471Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-27T19:35:45.985Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-27T19:35:46.197Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-27T19:35:46.549Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-27T19:35:46.732Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-27T19:35:46.968Z] TMC / TMC: pushed 92 row(s).
+[2026-10-27T19:35:47.529Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-27T19:35:47.742Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-27T19:35:50.687Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-27T19:35:50.887Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-27T19:35:51.070Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-27T19:35:51.260Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-27T19:35:51.419Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-27T19:35:51.602Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-27T19:35:51.611Z] 
+[2026-10-27T19:35:51.611Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-27T19:35:53.446Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13905 bytes.
+[2026-10-27T19:35:53.459Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-27T19:35:53.464Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-27T19:35:53.723Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-27T19:35:53.939Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-27T19:35:53.949Z] 
+[2026-10-27T19:35:53.949Z] Done. All portals succeeded.
+[2026-10-27T19:35:53.955Z] RUN END  result=OK
+[2026-10-27T19:35:53.960Z] ======================================================================
+[2026-10-27T20:30:05.375Z] ======================================================================
+[2026-10-27T20:30:05.398Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T20:30:05.566Z] Connected to Google Sheets.
+[2026-10-27T20:30:07.203Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-27T20:30:07.213Z] 
+[2026-10-27T20:30:07.213Z] === Mister (portal 14715) ===
+[2026-10-27T20:30:10.349Z] Fetched "SKUs" export for Mister: 87735 bytes.
+[2026-10-27T20:30:10.362Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-27T20:30:10.374Z] Worksheet "SKUs" has 606 data row(s) (before the header-strip your transform does).
+[2026-10-27T20:30:11.843Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-27T20:30:12.251Z] Mister: pushed 599 row(s).
+[2026-10-27T20:30:12.278Z] 
+[2026-10-27T20:30:12.278Z] === WestPressInventory (portal 5913) ===
+[2026-10-27T20:30:14.924Z] Fetched "SKUs" export for WestPressInventory: 47431 bytes.
+[2026-10-27T20:30:14.945Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-27T20:30:14.954Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-27T20:30:15.165Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-27T20:30:15.348Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-27T20:30:15.548Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-27T20:30:15.736Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-27T20:30:16.211Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-27T20:30:16.490Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-27T20:30:16.687Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-27T20:30:16.899Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-27T20:30:17.113Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-27T20:30:17.495Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-27T20:30:17.504Z] 
+[2026-10-27T20:30:17.504Z] === TMC (portal 23660) ===
+[2026-10-27T20:30:19.672Z] Fetched "SKUs" export for TMC: 24920 bytes.
+[2026-10-27T20:30:19.687Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-27T20:30:19.692Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-27T20:30:19.901Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-27T20:30:20.105Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-27T20:30:20.303Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-27T20:30:20.533Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-27T20:30:20.721Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-27T20:30:20.911Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-27T20:30:21.117Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-27T20:30:21.305Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-27T20:30:22.794Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-27T20:30:23.677Z] TMC / TMC: pushed 92 row(s).
+[2026-10-27T20:30:24.411Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-27T20:30:24.601Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-27T20:30:24.807Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-27T20:30:25.033Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-27T20:30:26.114Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-27T20:30:26.344Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-27T20:30:26.507Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-27T20:30:27.049Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-27T20:30:27.057Z] 
+[2026-10-27T20:30:27.057Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-27T20:30:29.101Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13906 bytes.
+[2026-10-27T20:30:29.114Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-27T20:30:29.119Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-27T20:30:29.960Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-27T20:30:30.144Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-27T20:30:30.154Z] 
+[2026-10-27T20:30:30.154Z] Done. All portals succeeded.
+[2026-10-27T20:30:30.160Z] RUN END  result=OK
+[2026-10-27T20:30:30.166Z] ======================================================================
+[2026-10-27T20:35:03.304Z] ======================================================================
+[2026-10-27T20:35:03.309Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T20:35:03.434Z] Connected to Google Sheets.
+[2026-10-27T20:35:05.116Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-27T20:35:05.143Z] 
+[2026-10-27T20:35:05.143Z] === Mister (portal 14715) ===
+[2026-10-27T20:35:09.325Z] Fetched "SKUs" export for Mister: 87739 bytes.
+[2026-10-27T20:35:09.338Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-27T20:35:09.348Z] Worksheet "SKUs" has 606 data row(s) (before the header-strip your transform does).
+[2026-10-27T20:35:09.903Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-27T20:35:10.932Z] Mister: pushed 599 row(s).
+[2026-10-27T20:35:10.942Z] 
+[2026-10-27T20:35:10.942Z] === WestPressInventory (portal 5913) ===
+[2026-10-27T20:35:13.458Z] Fetched "SKUs" export for WestPressInventory: 47430 bytes.
+[2026-10-27T20:35:13.476Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-27T20:35:13.485Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-27T20:35:14.161Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-27T20:35:16.173Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-27T20:35:16.345Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-27T20:35:16.537Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-27T20:35:16.718Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-27T20:35:16.962Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-27T20:35:17.184Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-27T20:35:17.442Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-27T20:35:17.907Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-27T20:35:18.194Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-27T20:35:18.203Z] 
+[2026-10-27T20:35:18.203Z] === TMC (portal 23660) ===
+[2026-10-27T20:35:20.291Z] Fetched "SKUs" export for TMC: 24920 bytes.
+[2026-10-27T20:35:20.304Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-27T20:35:20.310Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-27T20:35:20.499Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-27T20:35:20.682Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-27T20:35:20.911Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-27T20:35:21.349Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-27T20:35:21.521Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-27T20:35:21.696Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-27T20:35:22.118Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-27T20:35:22.292Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-27T20:35:22.784Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-27T20:35:23.137Z] TMC / TMC: pushed 92 row(s).
+[2026-10-27T20:35:23.931Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-27T20:35:24.124Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-27T20:35:24.317Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-27T20:35:26.893Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-27T20:35:27.073Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-27T20:35:27.259Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-27T20:35:27.614Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-27T20:35:27.806Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-27T20:35:27.819Z] 
+[2026-10-27T20:35:27.819Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-27T20:35:29.726Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13906 bytes.
+[2026-10-27T20:35:29.740Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-27T20:35:29.745Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-27T20:35:29.926Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-27T20:35:30.116Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-27T20:35:30.125Z] 
+[2026-10-27T20:35:30.125Z] Done. All portals succeeded.
+[2026-10-27T20:35:30.129Z] RUN END  result=OK
+[2026-10-27T20:35:30.134Z] ======================================================================
+[2026-10-27T21:35:03.451Z] ======================================================================
+[2026-10-27T21:35:03.456Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T21:35:03.617Z] Connected to Google Sheets.
+[2026-10-27T21:35:05.283Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-27T21:35:05.294Z] 
+[2026-10-27T21:35:05.294Z] === Mister (portal 14715) ===
+[2026-10-27T21:35:08.061Z] Fetched "SKUs" export for Mister: 87549 bytes.
+[2026-10-27T21:35:08.076Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-27T21:35:08.086Z] Worksheet "SKUs" has 605 data row(s) (before the header-strip your transform does).
+[2026-10-27T21:35:08.557Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-27T21:35:09.159Z] Mister: pushed 598 row(s).
+[2026-10-27T21:35:09.169Z] 
+[2026-10-27T21:35:09.169Z] === WestPressInventory (portal 5913) ===
+[2026-10-27T21:35:11.758Z] Fetched "SKUs" export for WestPressInventory: 47431 bytes.
+[2026-10-27T21:35:11.775Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-27T21:35:11.783Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-27T21:35:11.967Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-27T21:35:12.161Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-27T21:35:12.351Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-27T21:35:12.538Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-27T21:35:12.729Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-27T21:35:13.145Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-27T21:35:13.374Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-27T21:35:13.590Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-27T21:35:16.489Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-27T21:35:16.830Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-27T21:35:16.844Z] 
+[2026-10-27T21:35:16.844Z] === TMC (portal 23660) ===
+[2026-10-27T21:35:18.980Z] Fetched "SKUs" export for TMC: 24920 bytes.
+[2026-10-27T21:35:18.994Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-27T21:35:18.999Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-27T21:35:19.192Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-27T21:35:19.828Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-27T21:35:22.948Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-27T21:35:23.142Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-27T21:35:23.325Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-27T21:35:23.507Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-27T21:35:23.714Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-27T21:35:23.902Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-27T21:35:24.094Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-27T21:35:24.371Z] TMC / TMC: pushed 92 row(s).
+[2026-10-27T21:35:24.593Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-27T21:35:24.794Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-27T21:35:24.997Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-27T21:35:25.590Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-27T21:35:25.843Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-27T21:35:26.381Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-27T21:35:26.595Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-27T21:35:26.976Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-27T21:35:26.985Z] 
+[2026-10-27T21:35:26.985Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-27T21:35:29.073Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13906 bytes.
+[2026-10-27T21:35:29.086Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-27T21:35:29.090Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-27T21:35:29.552Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-27T21:35:30.099Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-27T21:35:30.108Z] 
+[2026-10-27T21:35:30.108Z] Done. All portals succeeded.
+[2026-10-27T21:35:30.114Z] RUN END  result=OK
+[2026-10-27T21:35:30.119Z] ======================================================================
+[2026-10-27T22:35:03.373Z] ======================================================================
+[2026-10-27T22:35:03.397Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T22:35:03.580Z] Connected to Google Sheets.
+[2026-10-27T22:35:05.245Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-27T22:35:05.254Z] 
+[2026-10-27T22:35:05.254Z] === Mister (portal 14715) ===
+[2026-10-27T22:35:08.619Z] Fetched "SKUs" export for Mister: 87557 bytes.
+[2026-10-27T22:35:08.636Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-27T22:35:08.647Z] Worksheet "SKUs" has 605 data row(s) (before the header-strip your transform does).
+[2026-10-27T22:35:09.415Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-27T22:35:09.810Z] Mister: pushed 598 row(s).
+[2026-10-27T22:35:09.820Z] 
+[2026-10-27T22:35:09.820Z] === WestPressInventory (portal 5913) ===
+[2026-10-27T22:35:12.433Z] Fetched "SKUs" export for WestPressInventory: 47430 bytes.
+[2026-10-27T22:35:12.447Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-27T22:35:12.454Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-27T22:35:13.443Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-27T22:35:13.643Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-27T22:35:13.871Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-27T22:35:14.074Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-27T22:35:14.270Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-27T22:35:14.511Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-27T22:35:14.716Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-27T22:35:14.939Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-27T22:35:15.149Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-27T22:35:15.396Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-27T22:35:15.406Z] 
+[2026-10-27T22:35:15.406Z] === TMC (portal 23660) ===
+[2026-10-27T22:35:17.857Z] Fetched "SKUs" export for TMC: 24918 bytes.
+[2026-10-27T22:35:17.870Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-27T22:35:17.876Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-27T22:35:19.086Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-27T22:35:19.281Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-27T22:35:19.470Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-27T22:35:19.653Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-27T22:35:19.847Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-27T22:35:20.025Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-27T22:35:20.223Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-27T22:35:20.449Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-27T22:35:21.003Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-27T22:35:22.695Z] TMC / TMC: pushed 92 row(s).
+[2026-10-27T22:35:23.626Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-27T22:35:23.831Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-27T22:35:24.291Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-27T22:35:27.326Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-27T22:35:27.872Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-27T22:35:28.916Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-27T22:35:31.545Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-27T22:35:31.934Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-27T22:35:31.944Z] 
+[2026-10-27T22:35:31.944Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-27T22:35:34.059Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13902 bytes.
+[2026-10-27T22:35:34.073Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-27T22:35:34.077Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-27T22:35:34.376Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-27T22:35:35.448Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-27T22:35:35.458Z] 
+[2026-10-27T22:35:35.458Z] Done. All portals succeeded.
+[2026-10-27T22:35:35.464Z] RUN END  result=OK
+[2026-10-27T22:35:35.469Z] ======================================================================
+[2026-10-27T23:35:03.537Z] ======================================================================
+[2026-10-27T23:35:03.556Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-27T23:35:03.706Z] Connected to Google Sheets.
+[2026-10-27T23:35:05.466Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-27T23:35:05.476Z] 
+[2026-10-27T23:35:05.476Z] === Mister (portal 14715) ===
+[2026-10-27T23:35:08.338Z] Fetched "SKUs" export for Mister: 87543 bytes.
+[2026-10-27T23:35:08.351Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-27T23:35:08.361Z] Worksheet "SKUs" has 605 data row(s) (before the header-strip your transform does).
+[2026-10-27T23:35:08.985Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-27T23:35:09.584Z] Mister: pushed 598 row(s).
+[2026-10-27T23:35:09.594Z] 
+[2026-10-27T23:35:09.594Z] === WestPressInventory (portal 5913) ===
+[2026-10-27T23:35:11.696Z] Fetched "SKUs" export for WestPressInventory: 47431 bytes.
+[2026-10-27T23:35:11.717Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-27T23:35:11.725Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-27T23:35:12.593Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-27T23:35:12.766Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-27T23:35:13.205Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-27T23:35:14.274Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-27T23:35:14.468Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-27T23:35:14.756Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-27T23:35:14.985Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-27T23:35:15.165Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-27T23:35:15.440Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-27T23:35:15.810Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-27T23:35:15.819Z] 
+[2026-10-27T23:35:15.819Z] === TMC (portal 23660) ===
+[2026-10-27T23:35:17.652Z] Fetched "SKUs" export for TMC: 24919 bytes.
+[2026-10-27T23:35:17.668Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-27T23:35:17.673Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-27T23:35:17.849Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-27T23:35:18.028Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-27T23:35:18.238Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-27T23:35:18.418Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-27T23:35:18.614Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-27T23:35:18.786Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-27T23:35:19.011Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-27T23:35:19.212Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-27T23:35:19.428Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-27T23:35:19.624Z] TMC / TMC: pushed 92 row(s).
+[2026-10-27T23:35:20.634Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-27T23:35:20.826Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-27T23:35:21.076Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-27T23:35:21.539Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-27T23:35:21.725Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-27T23:35:22.097Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-27T23:35:22.215Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-27T23:35:22.410Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-27T23:35:22.419Z] 
+[2026-10-27T23:35:22.419Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-27T23:35:24.099Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13905 bytes.
+[2026-10-27T23:35:24.113Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-27T23:35:24.117Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-27T23:35:24.300Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-27T23:35:24.483Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-27T23:35:24.493Z] 
+[2026-10-27T23:35:24.493Z] Done. All portals succeeded.
+[2026-10-27T23:35:24.497Z] RUN END  result=OK
+[2026-10-27T23:35:24.504Z] ======================================================================
+[2026-10-28T00:35:03.314Z] ======================================================================
+[2026-10-28T00:35:03.336Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T00:35:03.509Z] Connected to Google Sheets.
+[2026-10-28T00:35:05.182Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-28T00:35:05.218Z] 
+[2026-10-28T00:35:05.218Z] === Mister (portal 14715) ===
+[2026-10-28T00:35:08.156Z] Fetched "SKUs" export for Mister: 87540 bytes.
+[2026-10-28T00:35:08.169Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-28T00:35:08.183Z] Worksheet "SKUs" has 605 data row(s) (before the header-strip your transform does).
+[2026-10-28T00:35:08.740Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-28T00:35:09.385Z] Mister: pushed 598 row(s).
+[2026-10-28T00:35:09.396Z] 
+[2026-10-28T00:35:09.396Z] === WestPressInventory (portal 5913) ===
+[2026-10-28T00:35:11.919Z] Fetched "SKUs" export for WestPressInventory: 47440 bytes.
+[2026-10-28T00:35:11.937Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-28T00:35:11.945Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-28T00:35:12.808Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-28T00:35:12.988Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-28T00:35:13.160Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-28T00:35:13.327Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-28T00:35:13.497Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-28T00:35:13.887Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-28T00:35:14.096Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-28T00:35:14.478Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-28T00:35:14.673Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-28T00:35:15.187Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-28T00:35:15.197Z] 
+[2026-10-28T00:35:15.197Z] === TMC (portal 23660) ===
+[2026-10-28T00:35:17.360Z] Fetched "SKUs" export for TMC: 24919 bytes.
+[2026-10-28T00:35:17.373Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-28T00:35:17.378Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-28T00:35:17.626Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-28T00:35:18.070Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-28T00:35:18.503Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-28T00:35:18.701Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-28T00:35:21.205Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-28T00:35:21.532Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-28T00:35:21.690Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-28T00:35:21.856Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-28T00:35:22.020Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-28T00:35:22.330Z] TMC / TMC: pushed 92 row(s).
+[2026-10-28T00:35:22.562Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-28T00:35:23.028Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-28T00:35:23.664Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-28T00:35:24.090Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-28T00:35:24.292Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-28T00:35:24.479Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-28T00:35:24.839Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-28T00:35:25.033Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-28T00:35:25.042Z] 
+[2026-10-28T00:35:25.042Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-28T00:35:26.934Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13905 bytes.
+[2026-10-28T00:35:26.948Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-28T00:35:26.953Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-28T00:35:29.705Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-28T00:35:29.901Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-28T00:35:29.911Z] 
+[2026-10-28T00:35:29.911Z] Done. All portals succeeded.
+[2026-10-28T00:35:29.915Z] RUN END  result=OK
+[2026-10-28T00:35:29.921Z] ======================================================================
+[2026-10-28T01:35:34.644Z] ======================================================================
+[2026-10-28T01:35:34.667Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T01:35:34.815Z] Connected to Google Sheets.
+[2026-10-28T01:35:36.755Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-28T01:35:36.763Z] 
+[2026-10-28T01:35:36.763Z] === Mister (portal 14715) ===
+[2026-10-28T01:35:40.673Z] Fetched "SKUs" export for Mister: 87543 bytes.
+[2026-10-28T01:35:40.690Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-28T01:35:40.700Z] Worksheet "SKUs" has 605 data row(s) (before the header-strip your transform does).
+[2026-10-28T01:35:41.308Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-28T01:35:42.288Z] Mister: pushed 598 row(s).
+[2026-10-28T01:35:42.312Z] 
+[2026-10-28T01:35:42.312Z] === WestPressInventory (portal 5913) ===
+[2026-10-28T01:35:44.774Z] Fetched "SKUs" export for WestPressInventory: 47441 bytes.
+[2026-10-28T01:35:44.788Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-28T01:35:44.797Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-28T01:35:45.357Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-28T01:35:45.543Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-28T01:35:45.844Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-28T01:35:46.023Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-28T01:35:46.214Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-28T01:35:46.608Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-28T01:35:46.881Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-28T01:35:47.277Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-28T01:35:47.512Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-28T01:35:47.952Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-28T01:35:47.962Z] 
+[2026-10-28T01:35:47.962Z] === TMC (portal 23660) ===
+[2026-10-28T01:35:50.016Z] Fetched "SKUs" export for TMC: 24919 bytes.
+[2026-10-28T01:35:50.030Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-28T01:35:50.036Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-28T01:35:51.341Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-28T01:35:51.527Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-28T01:35:51.707Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-28T01:35:51.908Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-28T01:35:52.095Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-28T01:35:52.279Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-28T01:35:52.468Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-28T01:35:52.669Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-28T01:35:52.893Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-28T01:35:53.405Z] TMC / TMC: pushed 92 row(s).
+[2026-10-28T01:35:53.989Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-28T01:35:54.187Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-28T01:35:54.827Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-28T01:35:55.016Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-28T01:35:55.223Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-28T01:35:55.401Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-28T01:35:55.536Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-28T01:35:55.973Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-28T01:35:55.983Z] 
+[2026-10-28T01:35:55.983Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-28T01:35:57.861Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13905 bytes.
+[2026-10-28T01:35:57.878Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-28T01:35:57.886Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-28T01:35:58.111Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-28T01:35:58.294Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-28T01:35:58.304Z] 
+[2026-10-28T01:35:58.304Z] Done. All portals succeeded.
+[2026-10-28T01:35:58.309Z] RUN END  result=OK
+[2026-10-28T01:35:58.318Z] ======================================================================
+[2026-10-28T02:35:03.353Z] ======================================================================
+[2026-10-28T02:35:03.371Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T02:35:03.608Z] Connected to Google Sheets.
+[2026-10-28T02:35:09.878Z] On https://admin.marcomcentral.app.pti.com/PortalInformation/List
+[2026-10-28T02:35:09.888Z] 
+[2026-10-28T02:35:09.888Z] === Mister (portal 14715) ===
+[2026-10-28T02:35:13.230Z] Fetched "SKUs" export for Mister: 87542 bytes.
+[2026-10-28T02:35:13.244Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\Mister\raw-data\Mister-SKUs.xlsx
+[2026-10-28T02:35:13.253Z] Worksheet "SKUs" has 605 data row(s) (before the header-strip your transform does).
+[2026-10-28T02:35:13.735Z] Cleared range Mister Car Wash!A2:H in Google Sheet.
+[2026-10-28T02:35:14.121Z] Mister: pushed 598 row(s).
+[2026-10-28T02:35:14.130Z] 
+[2026-10-28T02:35:14.130Z] === WestPressInventory (portal 5913) ===
+[2026-10-28T02:35:16.587Z] Fetched "SKUs" export for WestPressInventory: 47439 bytes.
+[2026-10-28T02:35:16.601Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\WestPressInventory\raw-data\WestPressInventory-SKUs.xlsx
+[2026-10-28T02:35:16.609Z] Worksheet "SKUs" has 276 data row(s) (before the header-strip your transform does).
+[2026-10-28T02:35:17.350Z] Cleared range West Press Inventory!A2:H in Google Sheet.
+[2026-10-28T02:35:17.562Z] Cleared range Sierra Tucson!A2:H in Google Sheet.
+[2026-10-28T02:35:17.752Z] Cleared range OPPM!A2:H in Google Sheet.
+[2026-10-28T02:35:17.963Z] Cleared range PFCU!A2:H in Google Sheet.
+[2026-10-28T02:35:18.179Z] Cleared range VWCU!A2:H in Google Sheet.
+[2026-10-28T02:35:18.633Z] WestPressInventory / West Press Inventory: pushed 269 row(s).
+[2026-10-28T02:35:21.292Z] WestPressInventory / Sierra Tucson: pushed 44 row(s).
+[2026-10-28T02:35:21.500Z] WestPressInventory / OPPM: pushed 4 row(s).
+[2026-10-28T02:35:21.717Z] WestPressInventory / PFCU: pushed 29 row(s).
+[2026-10-28T02:35:22.076Z] WestPressInventory / VWCU: pushed 189 row(s).
+[2026-10-28T02:35:22.086Z] 
+[2026-10-28T02:35:22.086Z] === TMC (portal 23660) ===
+[2026-10-28T02:35:24.224Z] Fetched "SKUs" export for TMC: 24918 bytes.
+[2026-10-28T02:35:24.237Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\TMC\raw-data\TMC-SKUs.xlsx
+[2026-10-28T02:35:24.242Z] Worksheet "SKUs" has 99 data row(s) (before the header-strip your transform does).
+[2026-10-28T02:35:27.340Z] Cleared range TMC!A2:H in Google Sheet.
+[2026-10-28T02:35:27.515Z] Cleared range TMC Forms!A2:H in Google Sheet.
+[2026-10-28T02:35:27.695Z] Cleared range TMC Comm Outreach PRINT!A2:H in Google Sheet.
+[2026-10-28T02:35:27.877Z] Cleared range TMC Comm Outreach PROMO!A2:H in Google Sheet.
+[2026-10-28T02:35:28.069Z] Cleared range TMC Communications!A2:H in Google Sheet.
+[2026-10-28T02:35:28.257Z] Cleared range TMC Foundation!A2:H in Google Sheet.
+[2026-10-28T02:35:28.440Z] Cleared range TMC Seniors!A2:H in Google Sheet.
+[2026-10-28T02:35:28.635Z] Cleared range TMC Wellness!A2:H in Google Sheet.
+[2026-10-28T02:35:28.826Z] Cleared range TMC Women & Children!A2:H in Google Sheet.
+[2026-10-28T02:35:29.114Z] TMC / TMC: pushed 92 row(s).
+[2026-10-28T02:35:30.566Z] TMC / TMC Forms: pushed 29 row(s).
+[2026-10-28T02:35:30.772Z] TMC / TMC Comm Outreach PRINT: pushed 22 row(s).
+[2026-10-28T02:35:31.201Z] TMC / TMC Comm Outreach PROMO: pushed 17 row(s).
+[2026-10-28T02:35:31.406Z] TMC / TMC Communications: pushed 4 row(s).
+[2026-10-28T02:35:31.616Z] TMC / TMC Foundation: pushed 2 row(s).
+[2026-10-28T02:35:31.897Z] TMC / TMC Seniors: pushed 10 row(s).
+[2026-10-28T02:35:32.284Z] TMC / TMC Wellness: pushed 0 row(s).
+[2026-10-28T02:35:35.003Z] TMC / TMC Women & Children: pushed 8 row(s).
+[2026-10-28T02:35:35.013Z] 
+[2026-10-28T02:35:35.013Z] === NorthwestMedicalCenter (portal 22321) ===
+[2026-10-28T02:35:36.986Z] Fetched "SKUs" export for NorthwestMedicalCenter: 13905 bytes.
+[2026-10-28T02:35:36.999Z] Saved a copy to \\DataKing1\homes\kaleb\Github Repos\marcom\projects\sku-tracking\NorthwestMedicalCenter\raw-data\NorthwestMedicalCenter-SKUs.xlsx
+[2026-10-28T02:35:37.004Z] Worksheet "SKUs" has 16 data row(s) (before the header-strip your transform does).
+[2026-10-28T02:35:38.933Z] Cleared range Northwest Medical Center!A2:H in Google Sheet.
+[2026-10-28T02:35:39.148Z] NorthwestMedicalCenter: pushed 9 row(s).
+[2026-10-28T02:35:39.157Z] 
+[2026-10-28T02:35:39.157Z] Done. All portals succeeded.
+[2026-10-28T02:35:39.163Z] RUN END  result=OK
+[2026-10-28T02:35:39.169Z] ======================================================================
+[2026-10-28T03:35:03.614Z] ======================================================================
+[2026-10-28T03:35:03.629Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T03:35:03.835Z] Connected to Google Sheets.
+[2026-10-28T03:35:05.576Z] Signing in...
+[2026-10-28T03:35:57.840Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T03:35:57.845Z] RUN END  result=CRASHED
+[2026-10-28T03:35:57.849Z] ======================================================================
+[2026-10-28T04:35:25.534Z] ======================================================================
+[2026-10-28T04:35:25.540Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T04:35:25.727Z] Connected to Google Sheets.
+[2026-10-28T04:35:27.457Z] Signing in...
+[2026-10-28T04:36:15.583Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T04:36:15.593Z] RUN END  result=CRASHED
+[2026-10-28T04:36:15.601Z] ======================================================================
+[2026-10-28T05:35:03.269Z] ======================================================================
+[2026-10-28T05:35:03.304Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T05:35:03.451Z] Connected to Google Sheets.
+[2026-10-28T05:35:04.830Z] Signing in...
+[2026-10-28T05:35:52.731Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T05:35:52.803Z] RUN END  result=CRASHED
+[2026-10-28T05:35:52.809Z] ======================================================================
+[2026-10-28T06:35:03.478Z] ======================================================================
+[2026-10-28T06:35:03.509Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T06:35:03.672Z] Connected to Google Sheets.
+[2026-10-28T06:35:12.613Z] Signing in...
+[2026-10-28T06:36:00.556Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T06:36:00.563Z] RUN END  result=CRASHED
+[2026-10-28T06:36:00.570Z] ======================================================================
+[2026-10-28T07:35:03.395Z] ======================================================================
+[2026-10-28T07:35:03.423Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T07:35:03.601Z] Connected to Google Sheets.
+[2026-10-28T07:35:04.895Z] Signing in...
+[2026-10-28T07:35:52.800Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T07:35:52.862Z] RUN END  result=CRASHED
+[2026-10-28T07:35:52.870Z] ======================================================================
+[2026-10-28T08:35:03.907Z] ======================================================================
+[2026-10-28T08:35:03.914Z] ======================================================================
+[2026-10-28T08:35:03.928Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T08:35:03.935Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T08:35:04.113Z] Connected to Google Sheets.
+[2026-10-28T08:35:04.119Z] Connected to Google Sheets.
+[2026-10-28T08:35:04.179Z] Navigation was interrupted (attempt 1); retrying...
+[2026-10-28T08:35:05.498Z] Signing in...
+[2026-10-28T08:35:07.536Z] Signing in...
+[2026-10-28T08:35:54.198Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T08:35:54.206Z] RUN END  result=CRASHED
+[2026-10-28T08:35:54.214Z] ======================================================================
+[2026-10-28T08:35:55.631Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T08:35:55.649Z] RUN END  result=CRASHED
+[2026-10-28T08:35:55.657Z] ======================================================================
+[2026-10-28T09:35:03.325Z] ======================================================================
+[2026-10-28T09:35:03.330Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T09:35:03.496Z] Connected to Google Sheets.
+[2026-10-28T09:35:09.267Z] Signing in...
+[2026-10-28T09:35:57.267Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T09:35:57.274Z] RUN END  result=CRASHED
+[2026-10-28T09:35:57.280Z] ======================================================================
+[2026-10-28T10:35:03.947Z] ======================================================================
+[2026-10-28T10:35:03.952Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T10:35:04.120Z] Connected to Google Sheets.
+[2026-10-28T10:35:05.658Z] Signing in...
+[2026-10-28T10:35:58.077Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T10:35:58.085Z] RUN END  result=CRASHED
+[2026-10-28T10:35:58.091Z] ======================================================================
+[2026-10-28T11:35:03.843Z] ======================================================================
+[2026-10-28T11:35:03.848Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T11:35:04.044Z] Connected to Google Sheets.
+[2026-10-28T11:35:05.710Z] Signing in...
+[2026-10-28T11:35:53.639Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T11:35:53.648Z] RUN END  result=CRASHED
+[2026-10-28T11:35:53.658Z] ======================================================================
+[2026-10-28T12:35:03.944Z] ======================================================================
+[2026-10-28T12:35:03.949Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T12:35:04.141Z] Connected to Google Sheets.
+[2026-10-28T12:35:10.027Z] Signing in...
+[2026-10-28T12:35:58.293Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T12:35:58.300Z] RUN END  result=CRASHED
+[2026-10-28T12:35:58.308Z] ======================================================================
+[2026-10-28T13:35:03.725Z] ======================================================================
+[2026-10-28T13:35:03.731Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T13:35:03.932Z] Connected to Google Sheets.
+[2026-10-28T13:35:05.544Z] Signing in...
+[2026-10-28T13:35:53.458Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T13:35:53.536Z] RUN END  result=CRASHED
+[2026-10-28T13:35:53.549Z] ======================================================================
+[2026-10-28T14:35:03.896Z] ======================================================================
+[2026-10-28T14:35:03.901Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T14:35:04.078Z] Connected to Google Sheets.
+[2026-10-28T14:35:05.777Z] Signing in...
+[2026-10-28T14:35:54.098Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T14:35:54.109Z] RUN END  result=CRASHED
+[2026-10-28T14:35:54.115Z] ======================================================================
+[2026-10-28T15:35:03.904Z] ======================================================================
+[2026-10-28T15:35:03.910Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T15:35:04.082Z] Connected to Google Sheets.
+[2026-10-28T15:35:05.788Z] Signing in...
+[2026-10-28T15:35:54.222Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T15:35:54.229Z] RUN END  result=CRASHED
+[2026-10-28T15:35:54.236Z] ======================================================================
+[2026-10-28T16:35:14.161Z] ======================================================================
+[2026-10-28T16:35:14.167Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T16:35:14.325Z] Connected to Google Sheets.
+[2026-10-28T16:35:15.667Z] Signing in...
+[2026-10-28T16:36:04.321Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T16:36:04.329Z] RUN END  result=CRASHED
+[2026-10-28T16:36:04.342Z] ======================================================================
+[2026-10-28T17:35:26.535Z] ======================================================================
+[2026-10-28T17:35:26.542Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T17:35:26.728Z] Connected to Google Sheets.
+[2026-10-28T17:35:27.952Z] Signing in...
+[2026-10-28T17:36:16.551Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T17:36:16.565Z] RUN END  result=CRASHED
+[2026-10-28T17:36:16.571Z] ======================================================================
+[2026-10-28T18:35:03.731Z] ======================================================================
+[2026-10-28T18:35:03.737Z] RUN START  mode=PUSH TO SHEETS  portal=all  operation=SKUs  saveXlsx=true
+[2026-10-28T18:35:03.929Z] Connected to Google Sheets.
+[2026-10-28T18:35:05.505Z] Signing in...
+[2026-10-28T18:35:57.874Z] ERROR: STOPPED: Still on the login page after signing in. Sign in manually in that tab and run again.
+[2026-10-28T18:35:57.882Z] RUN END  result=CRASHED
+[2026-10-28T18:35:57.888Z] ======================================================================

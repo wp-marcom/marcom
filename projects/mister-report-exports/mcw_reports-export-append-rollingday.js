@@ -14,6 +14,15 @@
 // SKUs/Products/packing-slip scripts, this can't collapse to one request.
 // It's about 5 chained requests instead.
 //
+// KEY DETAIL: not every step is an AJAX postback. Typing into a date field
+// is (the response is a "delta"), but Run, Close and Export are ordinary
+// full-page form posts -- no __ASYNCPOST, no ctl00$ScriptManager -- and the
+// server answers with a whole HTML page. Export's popup-opening script only
+// exists in that full-page response, so sending Export as an AJAX postback
+// quietly returns nothing useful. The script tries Export directly first
+// and only falls back to Run -> Close -> re-enter dates -> Export if that
+// produces no export URL, and logs which path worked.
+//
 // THE CHAIN (each one verified against two real captures before this was
 // written, not guessed):
 //   1. GET  Reports/Edit (admin site) -> its HTML contains the iframe's src,
@@ -59,6 +68,19 @@
 //   node mcw_monthly_report.js --from 9/1/2026 --to 9/30/2026 --save-xlsx
 //   node mcw_monthly_report.js --from 9/1/2026 --to 9/30/2026 --portal 14715
 //
+//   node mcw_monthly_report.js --rolling-year
+//       Date range computed from today: "1 year ago from yesterday" through
+//       "yesterday" (e.g. run on 10/27/2026 -> 10/26/2025 to 10/26/2026).
+//       Can't be combined with --from/--to.
+//   node mcw_monthly_report.js --rolling-year --push
+//       Same, then writes the report's rows (header + data) to a Google Sheet
+//       tab, replacing what was there. Without --push nothing is written to
+//       Sheets. The tab must already exist: "MCW Order History" by default,
+//       or pass --sheet-tab "Name". --spreadsheet-id overrides the
+//       spreadsheet. Which columns are written, and which are treated as
+//       dates, is set by SHEET_COLUMNS / DATE_COLUMNS near the top.
+//   (A report with zero rows never overwrites the sheet.)
+//
 // Dates: M/D/YYYY, no leading zeros, matching the site's own format exactly
 // (that's what was captured; leading zeros are untested).
 // --portal: the store/portal dropdown's ID. Defaults to 14715 (Mister Car
@@ -80,9 +102,9 @@ const fs = require('fs');
 
 const PRIME = 'C:\\projects\\';
 const ADMIN_BASE = 'https://admin.marcomcentral.app.pti.com';
-const REPORT_ID = '25700'; // "MCW Monthly Report" -- fixed, doesn't change with dates/portal
-
-const TEXT_LOG_FILE = path.join(__dirname, 'mcw_monthly_report_log.txt');
+//const REPORT_ID = '25700'; // "MCW Monthly Report" -- fixed, doesn't change with dates/portal
+const REPORT_ID = '27381';
+const TEXT_LOG_FILE = path.join(__dirname, 'logs\\mcw_monthly_report_log.txt');
 function report(msg) {
     console.log(msg);
     const stamped = String(msg).split('\n').map((l) => `[${new Date().toISOString()}] ${l}`).join('\n');
@@ -94,19 +116,87 @@ function reportErr(msg) {
 }
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// Always saves a response, labeled by step -- not just on failure -- so a
+// future problem anywhere in the chain gives the full trail in one run
+// instead of needing another round trip.
+let DUMP_DIR = null;
+function dumpResponse(label, text) {
+    if (!DUMP_DIR) {
+        DUMP_DIR = path.join(__dirname, `logs\\run_${Date.now()}`);
+        fs.mkdirSync(DUMP_DIR, { recursive: true });
+    }
+    fs.writeFileSync(path.join(DUMP_DIR, `${label}.txt`), text);
+}
+
 // ---------- command line ----------
 const args = process.argv.slice(2);
 const has = (f) => args.includes(f);
 const val = (f) => { const i = args.indexOf(f); return i >= 0 ? args[i + 1] : null; };
-const FROM_DATE = val('--from');
-const TO_DATE = val('--to');
 const PORTAL_ID = val('--portal') || '14715'; // Mister Car Wash, this report's own default
 const SAVE_XLSX = has('--save-xlsx');
+const PUSH = has('--push');
+const SHEET_TAB = val('--sheet-tab') || 'MCW Order History';
+const SPREADSHEET_ID = val('--spreadsheet-id') || '1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU';
+
+const ROLLING_YEAR = has('--rolling-year');
+const ROLLING_DAY = has('--rolling-day');
+
+// Dates are M/D/YYYY with no leading zeros -- the site's own format.
+const fmtDate = (d) => `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`;
+
+// Yesterday through yesterday.
+function rollingDayRange() {
+    const now = new Date();
+    const yesterday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+    return [fmtDate(yesterday), fmtDate(yesterday)];
+}
+
+// "1 year ago from yesterday" through "yesterday".
+function rollingYearRange() {
+    const now = new Date();
+    const yesterday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+    let start = new Date(yesterday.getFullYear() - 1, yesterday.getMonth(), yesterday.getDate());
+
+    if (start.getMonth() !== yesterday.getMonth()) {
+        start = new Date(yesterday.getFullYear() - 1, yesterday.getMonth() + 1, 0);
+    }
+
+    return [fmtDate(start), fmtDate(yesterday)];
+}
+
+let FROM_DATE = val('--from');
+let TO_DATE = val('--to');
+
+if (ROLLING_YEAR || ROLLING_DAY) {
+    if (ROLLING_YEAR && ROLLING_DAY) {
+        console.error('Use only one of --rolling-year or --rolling-day.');
+        process.exit(1);
+    }
+
+    if (FROM_DATE || TO_DATE) {
+        console.error('Use --rolling-year or --rolling-day, not together with --from/--to.');
+        process.exit(1);
+    }
+
+    [FROM_DATE, TO_DATE] = ROLLING_DAY
+        ? rollingDayRange()
+        : rollingYearRange();
+}
 
 if (!FROM_DATE || !TO_DATE) {
-    console.error('Usage: node mcw_monthly_report.js --from M/D/YYYY --to M/D/YYYY [--portal ID] [--save-xlsx]');
+    console.error('Usage: node mcw_monthly_report.js (--rolling-year | --rolling-day | --from M/D/YYYY --to M/D/YYYY) [--portal ID] [--push] [--sheet-tab NAME] [--save-xlsx]');
     process.exit(1);
 }
+
+
+// What goes to the Google Sheet: these report columns, matched by their
+// header text in row 1 of the downloaded file (so a reordered report can't
+// silently shift data into the wrong column). Remove a name to drop that
+// column. Columns in DATE_COLUMNS are written as plain dates (M/D/YYYY,
+// time of day dropped) so sheet formulas can compare them to TODAY().
+const SHEET_COLUMNS = ['Order Number', 'Order Date', 'Purchaser', 'Product Name', 'SKU', 'Cost Center',
+    'Qty Ordered', 'Status', 'Product Description', 'Ship Date', 'Qty Shipped'];
+const DATE_COLUMNS = new Set(['Order Date', 'Ship Date']);
 
 // ---------- helpers that run INSIDE the iframe's JS context ----------
 // (page.evaluate/frame.evaluate send these as source text -- each must be
@@ -116,6 +206,24 @@ async function fetchInFrame(method, url, body, accept) {
     const headers = { 'X-Requested-With': 'XMLHttpRequest', Accept: accept };
     if (body !== null) headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
     const res = await fetch(url, { method, headers, body: body === null ? undefined : body, credentials: 'same-origin' });
+    return { status: res.status, finalUrl: res.url, text: await res.text() };
+}
+
+// A plain, non-AJAX form post -- what the browser does for a normal
+// <form> submit. Run, Close and Export are NOT async postbacks in the real
+// page: they carry no __ASYNCPOST / ctl00$ScriptManager, send no
+// X-Requested-With header, and the server answers with a whole HTML page
+// (not the AJAX "delta" format the date fields get).
+async function fullPostInFrame(url, body) {
+    const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        },
+        body,
+        credentials: 'same-origin',
+    });
     return { status: res.status, finalUrl: res.url, text: await res.text() };
 }
 
@@ -165,7 +273,12 @@ function mergeFieldUpdate(state, deltaText) {
 
 function buildReportMainBody(state, scriptManagerTarget, eventTarget, extra) {
     const p = new URLSearchParams();
-    p.append('ctl00$ScriptManager', scriptManagerTarget);
+    // Verified against real captures: panel-scoped postbacks (typing into a
+    // date field) send ctl00$ScriptManager; button clicks (Run, Close,
+    // Export) genuinely omit it entirely -- not just "a different value",
+    // actually absent. Pass null for those. Sending it anyway on a button
+    // click is what made Export silently no-op instead of erroring.
+    if (scriptManagerTarget !== null) p.append('ctl00$ScriptManager', scriptManagerTarget);
     p.append('authenticationString', state.authenticationString);
     for (const [k, v] of Object.entries(extra)) p.append(k, v);
     p.append('__EVENTTARGET', eventTarget);
@@ -175,6 +288,38 @@ function buildReportMainBody(state, scriptManagerTarget, eventTarget, extra) {
     p.append('__VIEWSTATEGENERATOR', state.viewstategenerator);
     p.append('__ASYNCPOST', 'true');
     return p.toString();
+}
+
+// Body for a full (non-async) postback. No ScriptManager, no __ASYNCPOST.
+// Close sends only the bare minimum (no __LASTFOCUS, no report fields);
+// Run and Export send the full report field set plus __LASTFOCUS --
+// both confirmed field-for-field against real captures.
+function buildFullPostBody(state, eventTarget, extra, includeLastFocus) {
+    const p = new URLSearchParams();
+    p.append('authenticationString', state.authenticationString);
+    for (const [k, v] of Object.entries(extra)) p.append(k, v);
+    p.append('__EVENTTARGET', eventTarget);
+    p.append('__EVENTARGUMENT', '');
+    if (includeLastFocus) p.append('__LASTFOCUS', '');
+    p.append('__VIEWSTATE', state.viewstate);
+    p.append('__VIEWSTATEGENERATOR', state.viewstategenerator);
+    return p.toString();
+}
+
+// A full-page response carries its state as ordinary hidden inputs (not the
+// "|hiddenField|" delta segments the async responses use).
+function mergeFullPageState(state, html) {
+    const pick = (id) => {
+        const m = html.match(new RegExp(`id="${id}"[^>]*value="([^"]*)"`));
+        return m ? m[1] : null;
+    };
+    const vs = pick('__VIEWSTATE');
+    const vg = pick('__VIEWSTATEGENERATOR');
+    const auth = pick('authenticationString');
+    if (vs) state.viewstate = vs;
+    if (vg) state.viewstategenerator = vg;
+    if (auth) state.authenticationString = auth.replace(/&amp;/g, '&');
+    return Boolean(vs);
 }
 
 function guardSession(res, what) {
@@ -230,6 +375,82 @@ async function findReportFrame(page) {
     throw new Error('The Reports iframe (ReportMain.aspx) never appeared on the page.');
 }
 
+// ---------- turning the report into sheet rows, and pushing them ----------
+
+// Excel dates arrive as JS Dates holding the file's face value in UTC fields,
+// so read them with the UTC getters (local getters could shift the day).
+const fmtCellDate = (d) => `${d.getUTCMonth() + 1}/${d.getUTCDate()}/${d.getUTCFullYear()}`;
+
+function reportToSheetRows(ws) {
+    const headerRow = ws.getRow(1).values; // 1-based sparse array
+    const colIndex = {};
+    SHEET_COLUMNS.forEach((name) => {
+        const idx = headerRow.findIndex((h) => typeof h === 'string' && h.trim() === name);
+        if (idx < 0) {
+            throw new Error(`The report has no "${name}" column (found: ${headerRow.filter(Boolean).join(', ')}). The report layout may have changed.`);
+        }
+        colIndex[name] = idx;
+    });
+
+    const rows = [];
+    let minOrder = null, maxOrder = null;
+    for (let r = 2; r <= ws.rowCount; r++) {
+        const vals = ws.getRow(r).values;
+        if (!vals || !vals[colIndex['Order Number']]) continue; // blank/stray row
+        rows.push(SHEET_COLUMNS.map((name) => {
+            let v = vals[colIndex[name]];
+            if (v === undefined || v === null) return '';
+            if (v instanceof Date) {
+                if (name === 'Order Date') {
+                    if (!minOrder || v < minOrder) minOrder = v;
+                    if (!maxOrder || v > maxOrder) maxOrder = v;
+                }
+                return DATE_COLUMNS.has(name) ? fmtCellDate(v) : v.toISOString();
+            }
+            if (typeof v === 'object') return v.text || v.result || String(v); // rich text / formula cells
+            return v;
+        }));
+    }
+    return { header: SHEET_COLUMNS.slice(), rows, minOrder, maxOrder };
+}
+
+async function pushToSheet(gsapi, header, rows) {
+    // Make sure the tab exists first, with a clear message instead of an API error.
+    const meta = await gsapi.spreadsheets.get({ spreadsheetId: SPREADSHEET_ID, fields: 'sheets.properties.title' });
+    const tabs = meta.data.sheets.map((sh) => sh.properties.title);
+    if (!tabs.includes(SHEET_TAB)) {
+        throw new Error(`The spreadsheet has no tab named "${SHEET_TAB}". Create it (or pass --sheet-tab "Existing Tab Name"). Tabs found: ${tabs.join(', ')}`);
+    }
+
+    //const values = [header, ...rows];
+    const lastCol = colIndexToLetter(header.length);
+
+    // Write the new data first, THEN clear whatever is left below it, so a
+    // failure part-way never leaves the tab empty.
+    // A year of orders can be tens of thousands of rows -- too much for one
+    // API request -- so write in chunks.
+    const values = rows;
+const CHUNK = 2000;
+
+for (let i = 0; i < values.length; i += CHUNK) {
+    await gsapi.spreadsheets.values.append({
+        spreadsheetId: SPREADSHEET_ID,
+        range: `'${SHEET_TAB}'!A:Z`,
+        valueInputOption: 'USER_ENTERED',
+        insertDataOption: 'INSERT_ROWS',
+        resource: { values: values.slice(i, i + CHUNK) },
+    });
+}
+
+report(`Appended ${rows.length} data row(s) to "${SHEET_TAB}".`);
+}
+
+function colIndexToLetter(n) {
+    let s = '';
+    while (n > 0) { const rem = (n - 1) % 26; s = String.fromCharCode(65 + rem) + s; n = Math.floor((n - 1) / 26); }
+    return s;
+}
+
 // ---------- main ----------
 
 async function main() {
@@ -241,7 +462,7 @@ async function main() {
     const keys = require(`${__dirname}\\..\\keys\\chrome_marcom_keys_${userName}.json`);
 
     report('='.repeat(70));
-    report(`RUN START  from=${FROM_DATE}  to=${TO_DATE}  portal=${PORTAL_ID}  saveXlsx=${SAVE_XLSX}`);
+    report(`RUN START  from=${FROM_DATE}  to=${TO_DATE}${ROLLING_YEAR ? ' (rolling year ending yesterday)' : ''}  portal=${PORTAL_ID}  push=${PUSH ? `yes -> "${SHEET_TAB}"` : 'no'}  saveXlsx=${SAVE_XLSX}`);
 
     const browser = await puppeteer.connect({ browserWSEndpoint: keys.jsonURL, defaultViewport: null });
     const pages = await browser.pages();
@@ -275,10 +496,15 @@ async function main() {
                 'ctl00$content$ReportCreator$CustomParameters1$dateTo$txtInput': TO_DATE,
                 'ctl00$content$ReportCreator$CustomParameters1$ddlStore': '-1',
                 'ctl00$content$ReportCreator$CustomParameters1$ddlSupplier': '-1',
+
+                'ctl00$content$ReportCreator$CustomParameters1$chkShowInactive': 'checked',
+
+
             }),
         '*/*',
     );
     guardSession(res, 'Open Saved tab');
+    dumpResponse('1_open_saved_tab', res.text);
     mergeFieldUpdate(state, res.text);
     report('Step 1/6: opened the Saved tab.');
 
@@ -298,6 +524,7 @@ async function main() {
         '*/*',
     );
     guardSession(res, 'Select MCW Monthly Report');
+    dumpResponse('2_select_report', res.text);
     mergeFieldUpdate(state, res.text);
     report('Step 2/6: selected "MCW Monthly Report".');
 
@@ -317,45 +544,22 @@ async function main() {
         'ctl00$content$ReportCreator$CustomParameters1$ddlStore': PORTAL_ID,
         'ctl00$content$ReportCreator$CustomParameters1$ddlSupplier': '-1',
     };
+    // __EVENTTARGET determines which control's SERVER-SIDE event handler
+    // actually runs in ASP.NET WebForms -- including dateFrom's value in a
+    // postback targeted at dateTo does NOT fire dateFrom's own change
+    // handler. The real session fired these as two separate, individually
+    // targeted postbacks; a single combined one may silently skip whatever
+    // dateFrom's handler does server-side (possibly the thing Export checks).
     res = await frame.evaluate(
         fetchInFrame, 'POST', frame.url(),
-        buildReportMainBody(state, 'ctl00$content$ReportCreator$CustomParameters1$dateTo$pnlContainer|ctl00$content$ReportCreator$CustomParameters1$dateTo$txtInput',
-            'ctl00$content$ReportCreator$CustomParameters1$dateTo$txtInput', reportFields),
+        buildReportMainBody(state, 'ctl00$content$ReportCreator$CustomParameters1$dateFrom$pnlContainer|ctl00$content$ReportCreator$CustomParameters1$dateFrom$txtInput',
+            'ctl00$content$ReportCreator$CustomParameters1$dateFrom$txtInput', reportFields),
         '*/*',
     );
-    guardSession(res, 'Set date range');
+    guardSession(res, 'Set dateFrom');
+    dumpResponse('3a_set_datefrom', res.text);
     mergeFieldUpdate(state, res.text);
-    report(`Step 3/6: set date range ${FROM_DATE} - ${TO_DATE}, portal ${PORTAL_ID}.`);
-
-    // Step 4: click Run. REQUIRED before Export -- confirmed from a real
-    // capture where Export only worked on a report that had already been
-    // run; skipping straight to Export (the first live attempt) produced no
-    // error, just silently re-rendered the selection panel instead of
-    // exporting anything.
-    res = await frame.evaluate(
-        fetchInFrame, 'POST', frame.url(),
-        buildReportMainBody(state, 'ctl00$content$UpdatePanelMain|ctl00$content$ReportFooter$btnRun',
-            'ctl00$content$ReportFooter$btnRun', reportFields),
-        '*/*',
-    );
-    guardSession(res, 'Click Run');
-    mergeFieldUpdate(state, res.text);
-    report('Step 4/6: ran the report.');
-
-    // Close the Results tab Run just opened, then re-submit the dates once
-    // more. Not confirmed to be strictly required, but it's exactly what the
-    // one real session we have proof of doing a successful export did
-    // between Run and Export -- matching it exactly rather than guessing at
-    // a shortcut.
-    res = await frame.evaluate(
-        fetchInFrame, 'POST', frame.url(),
-        buildReportMainBody(state, 'ctl00$content$UpdatePanelMain|ctl00$content$ReportsTab$rptTabLinks$ctl01$btnClose',
-            'ctl00$content$ReportsTab$rptTabLinks$ctl01$btnClose', reportFields),
-        '*/*',
-    );
-    guardSession(res, 'Close Results tab');
-    mergeFieldUpdate(state, res.text);
-    report('Step 4b/6: closed the Results tab.');
+    report(`Step 3a/6: set dateFrom = ${FROM_DATE}.`);
 
     res = await frame.evaluate(
         fetchInFrame, 'POST', frame.url(),
@@ -363,30 +567,78 @@ async function main() {
             'ctl00$content$ReportCreator$CustomParameters1$dateTo$txtInput', reportFields),
         '*/*',
     );
-    guardSession(res, 'Re-confirm dates');
+    guardSession(res, 'Set dateTo');
+    dumpResponse('3b_set_dateto', res.text);
     mergeFieldUpdate(state, res.text);
-    report('Step 4c/6: re-confirmed the date range.');
+    report(`Step 3b/6: set dateTo = ${TO_DATE}, portal ${PORTAL_ID}.`);
 
-    // Step 5: click Export -> response embeds the ExportReport.aspx URL + its own token
-    res = await frame.evaluate(
-        fetchInFrame, 'POST', frame.url(),
-        buildReportMainBody(state, 'ctl00$content$UpdatePanelMain|ctl00$content$ReportFooter$btnExport',
-            'ctl00$content$ReportFooter$btnExport', reportFields),
-        '*/*',
-    );
-    guardSession(res, 'Click Export');
-    const exportUrlMatch = res.text.match(/ExportReport\.aspx\?[^'"]+/);
-    if (!exportUrlMatch) {
-        const dumpPath = path.join(__dirname, `export_click_response_${Date.now()}.txt`);
-        fs.writeFileSync(dumpPath, res.text);
-        throw new Error(`Clicking Export did not reveal an ExportReport.aspx URL. Saved the actual response to ${dumpPath} for diagnosis.`);
+    // Run, Close and Export are full-page postbacks (see fullPostInFrame).
+    // Same report fields as the async steps, minus rdSortBy -- the real Run
+    // and Export requests don't send it.
+    const fullFields = { ...reportFields };
+    delete fullFields.rdSortBy;
+
+    const fullPost = async (label, dumpName, eventTarget, extra, includeLastFocus) => {
+        const r = await frame.evaluate(fullPostInFrame, frame.url(),
+            buildFullPostBody(state, eventTarget, extra, includeLastFocus));
+        guardSession(r, label);
+        dumpResponse(dumpName, r.text);
+        if (!mergeFullPageState(state, r.text)) {
+            report(`  (note: ${label} response had no VIEWSTATE field -- keeping the previous one)`);
+        }
+        return r;
+    };
+
+    // Clicks Export and looks for the ExportReport.aspx URL it embeds.
+    const tryExport = async (dumpName) => {
+        const r = await fullPost('Click Export', dumpName,
+            'ctl00$content$ReportFooter$btnExport', fullFields, true);
+        const m = r.text.match(/ExportReport\.aspx\?[^'"]+/);
+        return m ? new URL(m[0], frame.url()).toString() : null;
+    };
+
+    // Step 4: try Export straight away, as you would in the UI (Run and
+    // Export are separate buttons).
+    let exportReportUrl = await tryExport('4_export_direct');
+    if (exportReportUrl) {
+        report('Step 4/6: Export worked directly, no Run needed.');
+    } else {
+        // Fallback: the sequence the one real working capture followed --
+        // Run, close the Results tab, re-enter the dates, then Export.
+        report('Step 4/6: direct Export gave no URL; falling back to Run -> Close -> re-enter dates -> Export.');
+        await fullPost('Click Run', '4a_run',
+            'ctl00$content$ReportFooter$btnRun', fullFields, true);
+        report('Step 4a: ran the report.');
+
+        await fullPost('Close Results tab', '4b_close',
+            'ctl00$content$ReportsTab$rptTabLinks$ctl01$btnClose', {}, false);
+        report('Step 4b: closed the Results tab.');
+
+        for (const which of ['dateFrom', 'dateTo']) {
+            const r = await frame.evaluate(
+                fetchInFrame, 'POST', frame.url(),
+                buildReportMainBody(state,
+                    `ctl00$content$ReportCreator$CustomParameters1$${which}$pnlContainer|ctl00$content$ReportCreator$CustomParameters1$${which}$txtInput`,
+                    `ctl00$content$ReportCreator$CustomParameters1$${which}$txtInput`, reportFields),
+                '*/*',
+            );
+            guardSession(r, `Re-confirm ${which}`);
+            dumpResponse(`4c_reconfirm_${which}`, r.text);
+            mergeFieldUpdate(state, r.text);
+            report(`Step 4c: re-confirmed ${which}.`);
+        }
+
+        exportReportUrl = await tryExport('4d_export_after_run');
+        if (!exportReportUrl) {
+            throw new Error(`Export did not reveal an ExportReport.aspx URL, even after Run. Every step's response is saved in ${DUMP_DIR} for diagnosis.`);
+        }
     }
-    const exportReportUrl = new URL(exportUrlMatch[0], frame.url()).toString();
     report(`Step 5/6: Export clicked -> ${exportReportUrl}`);
 
     // Step 6a: load the export-format picker page (its own, separate VIEWSTATE)
     res = await frame.evaluate(fetchInFrame, 'GET', exportReportUrl, null, 'text/html');
     guardSession(res, 'GET ExportReport.aspx');
+    dumpResponse('6a_export_format_page', res.text);
     const pick = (name) => { const m = res.text.match(new RegExp(`id="${name}"[^>]*value="([^"]*)"`)); return m ? m[1] : null; };
     const exportState = { viewstate: pick('__VIEWSTATE'), viewstategenerator: pick('__VIEWSTATEGENERATOR'), eventvalidation: pick('__EVENTVALIDATION') };
     if (!exportState.viewstate) throw new Error('Could not read VIEWSTATE from the export-format page.');
@@ -405,6 +657,7 @@ async function main() {
     }).toString();
     res = await frame.evaluate(fetchInFrame, 'POST', exportReportUrl, formBody, 'text/html');
     guardSession(res, 'Confirm Excel export format');
+    dumpResponse('6b_confirm_format', res.text);
     const outputUrlMatch = res.text.match(/ExportOutput\.aspx\?[^'"]+/);
     if (!outputUrlMatch) throw new Error('Confirming the export format did not reveal an ExportOutput.aspx URL.');
     const exportOutputUrl = new URL(outputUrlMatch[0], exportReportUrl).toString();
@@ -429,8 +682,26 @@ async function main() {
     const wb = new Excel.Workbook();
     await wb.xlsx.load(buf);
     report(`Worksheets: ${wb.worksheets.map((w) => `"${w.name}" (${w.rowCount} rows)`).join(', ')}`);
-    report('(This script fetches and saves the report only -- no Google Sheets push yet. ' +
-        'Once there\'s a column spec for what should land in a sheet, that\'s a small follow-up.)');
+
+    const ws = wb.worksheets[0];
+    const { header, rows, minOrder, maxOrder } = reportToSheetRows(ws);
+    report(`Report has ${rows.length} data row(s)` +
+        (minOrder ? `, Order Date from ${fmtCellDate(minOrder)} to ${fmtCellDate(maxOrder)}.` : '.'));
+
+    if (PUSH) {
+        // Never overwrite the sheet with nothing: an empty result for a
+        // whole year almost certainly means something went wrong upstream.
+        if (rows.length === 0) throw new Error('The report came back with zero data rows; not touching the Google Sheet.');
+
+        const { google } = require(`${PRIME}node_modules\\googleapis`);
+        const googleKeys = require(`${__dirname}\\..\\keys\\googleapi_keys_portalsync.json`);
+        const client = new google.auth.JWT(googleKeys.client_email, null, googleKeys.private_key, ['https://www.googleapis.com/auth/spreadsheets']);
+        await new Promise((resolve, reject) => client.authorize((err) => (err ? reject(err) : resolve())));
+        const gsapi = google.sheets({ version: 'v4', auth: client });
+        await pushToSheet(gsapi, header, rows);
+    } else {
+        report('(No --push, so nothing was written to Google Sheets.)');
+    }
 
     report('RUN END  result=OK');
     report('='.repeat(70));
@@ -440,6 +711,7 @@ async function main() {
 
 main().catch((e) => {
     reportErr('STOPPED: ' + e.message);
+    if (DUMP_DIR) report(`Every step's response up to the failure was saved in ${DUMP_DIR}`);
     report('RUN END  result=CRASHED');
     report('='.repeat(70));
     process.exit(1);

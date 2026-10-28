@@ -1,4 +1,4 @@
-// sku_export_replay.js
+// sku_export_replay-exports.js
 //
 // Replaces the click-through-and-download part of all-skus-portalsync-v3.js.
 // Instead of navigating PortalInformation/List -> BulkOps/Edit -> Download and
@@ -28,14 +28,14 @@
 //   -> response is the .xlsx bytes, loaded directly into ExcelJS.
 //node sku_export_replay-exports.js --portal Mister --export Catalog
 // USAGE
-//   node sku_export_replay.js                 all 4 portals, push to Sheets
-//   node sku_export_replay.js --portal Mister  just one portal
-//   node sku_export_replay.js --dry-run        fetch + parse only, no Sheets push
-//   node sku_export_replay.js --save-xlsx      also write each .xlsx to
+//   node sku_export_replay-exports.js                 all 4 portals, push to Sheets
+//   node sku_export_replay-exports.js --portal Mister  just one portal
+//   node sku_export_replay-exports.js --dry-run        fetch + parse only, no Sheets push
+//   node sku_export_replay-exports.js --save-xlsx      also write each .xlsx to
 //                                               <portal>\raw-data\ like the
 //                                               old script did (off by default —
 //                                               nothing touches disk unless asked)
-//   node sku_export_replay.js --operation PortalProducts --portal Mister
+//   node sku_export_replay-exports.js --operation PortalProducts --portal Mister
 //                                               PROBE an untested export type
 //                                               (e.g. the "Products" list).
 //                                               Any --operation besides SKUs
@@ -52,7 +52,7 @@
 //                                               new export's shape before a
 //                                               real transform gets built
 //                                               for it.
-//   node sku_export_replay.js --export Products
+//   node sku_export_replay-exports.js --export Products
 //                                               Run a REAL, configured export
 //                                               from the EXPORTS registry
 //                                               below (once you know its
@@ -65,7 +65,7 @@
 //                                               new EXPORTS entry, not new
 //                                               code — see the comment next
 //                                               to EXPORTS for how to add one.
-//
+//node sku_export_replay-exports.js --export Catalog --portal Mister
 // One portal failing (bad response, sheet push error) is logged and the
 // script moves on to the next portal, same as auto_ship_replay.js.
 //

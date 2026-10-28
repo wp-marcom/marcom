@@ -1,3 +1,4 @@
 # Ignore a specific folder directory
 raw/
 output/
+old/
