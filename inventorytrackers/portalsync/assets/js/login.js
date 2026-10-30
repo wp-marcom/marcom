@@ -54,6 +54,7 @@ const pagePermissions = {
   "tracker-uafoundation.html": ["admin", "warehouse", "acharles"], // Admin and
   "tracker-uofa.html": ["admin", "warehouse", "gnelson"], // Admin and
   "dashboard.html": ["admin", "warehouse", "misterAdmin", "sierraTucsonAdmin", "tmcAdmin", "pfcuAdmin", "vwcuAdmin"], // Only admin can access
+  "mister-dashboard.html": ["admin", "warehouse", "misterAdmin", "sierraTucsonAdmin", "tmcAdmin", "pfcuAdmin", "vwcuAdmin"], // Only admin can access
   "warehouse-page.html": ["admin", "warehouse"], // Admin and warehouse roles
 };
 
