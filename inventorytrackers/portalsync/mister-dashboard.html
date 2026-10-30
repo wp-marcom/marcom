@@ -2276,7 +2276,7 @@ const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
   orderDate: rows[0][1] || '',
   customer: rows[0][2] || '',
   status: rows[0][10] || '',
-  shippingAddress: rows[0][8] || '',
+  shippingAddress: rows[0][2] || '',
   children: rows,
 }));
 
@@ -2499,9 +2499,9 @@ $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
     // Generate child line items
     const childRowsHtml = row.data().children.map(child => {
       const product = child[3] || '';
-      const sku = child[5] || '';
+      const sku = child[4] || '';
       const skuDesc = child[6] || '';
-      const qty = child[7] || '';
+      const qty = child[6] || '';
       const label = getLabelForProduct(product, skuDesc);
 
       return `
