@@ -572,7 +572,7 @@
               <!-- List of All Tab Names Below -->
               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation" data-role="warehouse,admin,pfcuAdmin,vwcuAdmin">
-                  <button class="nav-link active" id="pills-vwcu-tab" data-bs-toggle="pill" data-bs-target="#pills-vwcu" type="button" role="tab" aria-controls="pills-vwcu" aria-selected="true" onclick="changeClient(this.id)">West Press Inventory</button>
+                  <button class="nav-link active" id="pills-mister-tab" data-bs-toggle="pill" data-bs-target="#pills-mister" type="button" role="tab" aria-controls="pills-mister" aria-selected="true" onclick="changeClient(this.id)">Mister Car Wash</button>
                 </li>
                 <li class="nav-item" role="presentation" data-role="admin">
                   <button class="nav-link" id="pills-pfcu-tab" data-bs-toggle="pill" data-bs-target="#pills-pfcu" type="button" role="tab" aria-controls="pills-pfcu" aria-selected="false" onclick="changeClient(this.id)">Pima Federal CU β</button>
@@ -604,7 +604,7 @@
               <div class="tab-content pt-2" id="myTabContent">
                 <!-- End of Tab Content, Do Not Copy for New Tab -->
                 <!-- Start of First Tab -->
-                <div class="tab-pane fade show active" id="pills-vwcu" role="tabpanel" aria-labelledby="vwcu-tab" data-role="warehouse,admin,sierraTucsonAdmin,pfcuAdmin,vwcuAdmin">
+                <div class="tab-pane fade show active" id="pills-mister" role="tabpanel" aria-labelledby="vwcu-tab" data-role="warehouse,admin,sierraTucsonAdmin,pfcuAdmin,vwcuAdmin">
                  <!-- Start of First Tab CONTENT -->
                   <div class="col-12">
               <div class="card recent-sales overflow-auto">
@@ -625,9 +625,9 @@
                 <div class="card-body">
                   <h5 class="card-title">Recent Online Orders</h5>
 
-<button class="btn btn-sm btn-primary" data-role="warehouse,admin" onclick="openPopup('VWCU')">Import Recent VWCU Orders</button>
-<button class="btn btn-sm btn-primary" data-role="warehouse,admin" onclick="openPopup('PFCU')">Import Recent PFCU Orders</button>
-<button class="btn btn-sm btn-primary" data-role="warehouse,admin" onclick="openPopup('SierraTucson')">Import Recent Sierra Tucson Orders</button>
+
+
+
 <script>
   //function openPopup(sheetName) {
   //  const popupWindow = window.open(
@@ -2312,34 +2312,6 @@ const table = $(targetElement).DataTable({
       defaultContent: '',
       title: '',
     },
-    { 
-      data: null,
-      title: 'Actions',
-      orderable: false,
-   // render: function(data, type, row) {
-   // const alreadyGenerated = row.status.includes('Pack Slip Generated');
-   // const buttonClass = alreadyGenerated ? 'btn-danger unpack-slip' : 'btn-primary create-pack-slip';
-   // const buttonLabel = alreadyGenerated ? 'Unpack' : 'Create Pack Slip';
-
-   // return `<button class="btn btn-sm ${buttonClass}" data-job="${row.job}">${buttonLabel}</button>`;
- // }
-  render: function(data, type, row) {
-  const hasPick = row.status.includes('Pick Slip');
-  const hasPack = row.status.includes('Pack Slip');
-
-  const pickButton = !hasPick
-    ? `<button class="btn btn-primary create-pick-slip" data-role="warehouse,admin">Create Pick Slip</button>`
-    : (!hasPack
-        ? `<button class="btn btn-warning unpick-slip" data-role="warehouse,admin">Unpick</button>`
-        : `<button class="btn btn-secondary" data-role="warehouse,admin" disabled>Picked</button>`);
-  const packButton = hasPick
-    ? (hasPack
-        ? `<button class="btn btn-warning unpack-slip" data-role="warehouse,admin">Unpack</button>`
-        : `<button class="btn btn-primary create-pack-slip" data-role="warehouse,admin">Create Pack Slip</button>`)
-    : `<button class="btn btn-secondary" data-role="warehouse,admin" disabled>Pick Pending</button>`;
-  return pickButton + ' ' + packButton;
-}    
-},
     { data: 'job', title: 'Job #' },
     { data: 'orderDate', title: 'Order Date' },
     { data: 'customer', title: 'Customer' },
@@ -2635,7 +2607,7 @@ document.getElementById('create-doc-btn').addEventListener('click', function () 
 let currentSheetName = 'VWCU-KPI'; // Default sheet for the initial tab
 
 const sheetMap = {
-  'pills-vwcu-tab': 'VWCU-KPI',
+  'pills-mister-tab': 'VWCU-KPI',
   'pills-tmcforms-tab': 'TMC-KPI',
   'pills-client3-tab': 'Client3-KPI',
 };
