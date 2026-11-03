@@ -1918,7 +1918,7 @@
 const recentSales = [
   {
     spreadsheetId: "1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM",
-    sheetName: "MisterTest",
+    sheetName: "MCW Order History",
     targetElement: "#feed-table-first",
   },
   
@@ -1967,9 +1967,9 @@ function formatFedexTracking(value) {
 
     function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
         const client = "Mister Car Wash";
-        const range1 = `${sheetName}!A2:J`;
+        const range1 = `${sheetName}!A2:K`;
   //const range2 = `${sheetName}!G2:G`;
-  const range2 = `${sheetName}!K2:K`;
+  const range2 = `${sheetName}!L2:L`;
 
   const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
   const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
@@ -1999,7 +1999,7 @@ function formatFedexTracking(value) {
   job,
   orderDate: rows[0][1] || '',
   customer: rows[0][2] || '',
-  status: rows[0][10] || '',
+  status: rows[0][11] || '',
   shippingAddress: rows[0][2] || '',
   children: rows,
 }));
