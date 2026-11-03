@@ -1930,6 +1930,37 @@ const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
 const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
 
 
+function escapeHtml(str) {
+  return str.replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+// "530781783509, 530781783510" -> one FedEx link per number
+function formatFedexTracking(value) {
+  const text = (value ?? '').toString().trim();
+
+  // Nothing in the cell yet -> show a placeholder
+  if (!text) {
+    return '<span class="">Pending</span>';
+  }
+
+  return text
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .map((num) => {
+      if (/^\d{10,}$/.test(num)) {
+        return `<a href="https://www.fedex.com/fedextrack/?trknbr=${encodeURIComponent(num)}" target="_blank" rel="noopener noreferrer">
+                  <span class="bi bi-archive-fill"> ${num}</span>
+                </a>`;
+      }
+      return escapeHtml(num);
+    })
+    .join(', ');
+}
+
+
 
 // Iterate over the trackers array and load each tracker
 //recentSales.forEach(loadRecentSalesData);
@@ -2004,11 +2035,11 @@ const table = $(targetElement).DataTable({
     { 
       data: 'status', 
       title: 'Tracking',
-      render: function(data, type, row) {
-        if (type === 'display') {
-          return data;
-        }
-        return data;
+        render: function (data, type, row) {
+    if (type === 'display') {
+      return formatFedexTracking(data);
+    }
+    return data;   // sorting/searching/filtering use the raw text
       }
     },
   ],
