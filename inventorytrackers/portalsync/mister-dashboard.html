@@ -1952,7 +1952,7 @@ const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
       const rawData = response1.values.map((row, index) => {
         while (row.length < expectedColumns) row.push(''); // Pad missing cells
         const status = response2.values[index]?.[0] || '';
-        return [...row, status]; // [Job, Order Date, Customer, Status]
+        return [...row, status]; // [Job, Order Date, Customer, Tracking]
       });
 
       // Group rows by Job # (column 0)
@@ -1992,7 +1992,7 @@ const table = $(targetElement).DataTable({
     { data: 'customer', title: 'Customer' },
     { 
       data: 'status', 
-      title: 'Status',
+      title: 'Tracking',
       render: function(data, type, row) {
         if (type === 'display') {
           return data;
