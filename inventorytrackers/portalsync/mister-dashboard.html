@@ -1973,6 +1973,17 @@ const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
   children: rows,
 }));
 
+// Filter out parent rows where ALL children have "EXTERNAL FULFILLMENT" in SKU Description && Have ALL entries as PFCU Business Cards
+const visibleParentRows = parentRows.filter(parent => {
+  return parent.children.some(child => {
+    const skuDescription = (child[6] || '').toUpperCase();
+    const productName = (child[3] || '').toUpperCase();
+    
+    return !skuDescription.includes("EXTERNAL FULFILLMENT") && 
+           !productName.includes("PFCU BUSINESS CARDS");
+  });
+});
+
       
 
       // Initialize DataTable with only parent rows
