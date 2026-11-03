@@ -15,7 +15,7 @@ const currentYear = currentDate.getFullYear();
 
 
 // Define the file paths
-const inputFilePath = path.join(fullPathtoRaw, `MCW_Monthly_Report_${currentMonth}_RAW-withinactive.xlsx`);
+const inputFilePath = path.join(fullPathtoRaw, `MCW_Monthly_Report_${currentMonth}_RAW-withinactive-withShipCompany+Address.xlsx`);
 //const outputFilePath = path.join(fullPathtoOutput, 'MCW_Monthly_Report_Sept2025.xlsx');
 const outputFilePath = path.join(fullPathtoOutput, `MCW_Monthly_Report_${currentMonth}${currentYear}.xlsx`);
 
@@ -134,7 +134,7 @@ async function processExcel() {
             productName: productName,
             sku: row.getCell('E').value,
             shipDate: shipDate,
-            qty: row.getCell('K').value,
+            qty: row.getCell('M').value,
             price: `$${price.toFixed(2)}`,
             tax: `$${tax.toFixed(2)}`,
             total: `$${total.toFixed(2)}`
@@ -301,7 +301,7 @@ async function processSkuSet(groupName, allowedSkus) {
         let productName = row.getCell('D').value;
         let shipDate = row.getCell('J').value;
         let sku = row.getCell('E').value;
-        let qty = row.getCell('K').value;
+        let qty = row.getCell('M').value;
 
         // Check if SKU is in this set's allowed SKUs
         if (!sku || !allowedSkus.includes(sku)) {

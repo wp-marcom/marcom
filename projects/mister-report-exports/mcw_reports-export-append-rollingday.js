@@ -103,7 +103,7 @@ const fs = require('fs');
 const PRIME = 'C:\\projects\\';
 const ADMIN_BASE = 'https://admin.marcomcentral.app.pti.com';
 //const REPORT_ID = '25700'; // "MCW Monthly Report" -- fixed, doesn't change with dates/portal
-const REPORT_ID = '27381';
+const REPORT_ID = '27382';
 const TEXT_LOG_FILE = path.join(__dirname, 'logs\\mcw_monthly_report_log.txt');
 function report(msg) {
     console.log(msg);
