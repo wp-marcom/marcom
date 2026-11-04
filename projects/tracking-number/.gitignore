@@ -1,3 +1,5 @@
 # Ignore a specific folder directory
 fedex-reports-input/
 logs/
+fedex-reports-output/
+raw-data/

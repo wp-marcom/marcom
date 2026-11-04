@@ -18,11 +18,12 @@ const PRIME = 'C:\\projects\\';
 
 const INPUT_DIR = path.join(__dirname, 'fedex-reports-input');
 const PROCESSED_DIR = path.join(INPUT_DIR, 'processed');
+const REPORT_DIR = path.join(__dirname, 'fedex-reports-output');
 
 const BILL_ACCOUNT = '981091558';
 const ORDER_PREFIX = 'MCW Online - ';
 
-const SPREADSHEET_ID = '1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU';
+const SPREADSHEET_ID = '1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM';
 const SHEET_TAB = 'MCWFedexTracking';
 
 const GOOGLE_KEYS = path.join(
@@ -211,8 +212,7 @@ async function generateExcel(shipments) {
         String(now.getSeconds()).padStart(2, '0')
     ].join('');
 
-    const outputFile = path.join(
-        __dirname,
+    const outputFile = path.join(PROCESSED_DIR,
         `FedEx_Report_${timestamp}.xlsx`
     );
 
