@@ -297,18 +297,18 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-item" data-role="warehouse,misterAdmin,sierraTucsonAdmin,tmcAdmin,acharles">
-        <a class="nav-link " href="dashboard.html">
+      <li class="nav-item" data-role="warehouse,misterAdmin,sierraTucsonAdmin,tmcAdmin,pfcuAdmin,vwcuAdmin">
+        <a class="nav-link collapsed" href="dashboard.html">
           <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
+          <span>WP Inventory Orders</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li><!-- End WP Inventory Orders Nav -->
 
       <li class="nav-item" data-role="admin">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link " data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
           <li>
             <a href="components-alerts.html">
               <i class="bi bi-circle"></i><span>Alerts</span>
@@ -410,17 +410,29 @@
         </ul>
       </li><!-- End Forms Nav -->
 
-<li class="nav-item" data-role="warehouse,misterAdmin,sierraTucsonAdmin,tmcAdmin,pfcuAdmin,vwcuAdmin">
-<a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#" aria-expanded="false">
+ <li class="nav-item" data-role="warehouse,misterAdmin,tmcAdmin,acharles">
+<a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
   <i class="bi bi-layout-text-window-reverse"></i><span> Inventory Trackers</span><i class="bi bi-chevron-down ms-auto"></i>
 </a>
-<ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+<ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
   <li data-role="warehouse,misterAdmin">
     <a href="tracker-mister.html">
       <i class="bi bi-circle"></i><span>Mister Car Wash</span>
     </a>
+    <ul class="list-unstyled ps-3">
+      <li>
+        <a href="tracker-mister-washpass.html" class="text-muted">
+          <i class="bi bi-dash"></i><span>Wash Pass Tracker</span>
+        </a>
+      </li>
+      <li>
+        <a href="tracker-mister-fedex.html" class="text-muted active">
+          <i class="bi bi-dash"></i><span>FedEx Tracker</span>
+        </a>
+      </li>
+    </ul>
   </li>
-  <li data-role="warehouse,vwcuAdmin">
+  <li data-role="warehouse,acharles">
     <a href="tracker-vwcu.html">
       <i class="bi bi-circle"></i><span>Vantage West</span>
     </a>
@@ -435,12 +447,12 @@
       <i class="bi bi-circle"></i><span>Northwest Medical Center</span>
     </a>
   </li>
-  <li data-role="warehouse,pfcuAdmin">
+  <li data-role="warehouse">
     <a href="tracker-pfcu.html">
       <i class="bi bi-circle"></i><span>Pima Federal Credit Union</span>
     </a>
   </li>
-  <li data-role="warehouse,sierraTucsonAdmin">
+  <li data-role="warehouse">
     <a href="tracker-siet.html">
       <i class="bi bi-circle"></i><span>Sierra Tucson</span>
     </a>
@@ -494,7 +506,7 @@
         </ul>
       </li><!-- End Icons Nav -->
 
-      <li class="nav-heading" data-role="warehouse,misterAdmin,sierraTucsonAdmin,tmcAdmin">Pages</li>
+      <li class="nav-heading" data-role="warehouse,misterAdmin,tmcAdmin">Pages</li>
 
       <li class="nav-item" data-role="admin">
         <a class="nav-link collapsed" href="users-profile.html">
