@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard</title>
+  <title>WP Inventory Orders</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -300,9 +300,9 @@
       <li class="nav-item" data-role="warehouse,misterAdmin,sierraTucsonAdmin,tmcAdmin,acharles">
         <a class="nav-link " href="dashboard.html">
           <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
+          <span>WP Inventory Orders</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li><!-- End WP Inventory Orders Nav -->
 
       <li class="nav-item" data-role="admin">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
@@ -552,11 +552,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Dashboards</h1>
+      <h1>WP Inventory Orders</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.html">Home</a></li>
-          <li class="breadcrumb-item active">Dashboards</li>
+          <li class="breadcrumb-item active">WP Inventory Orders</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -625,9 +625,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Recent Online Orders</h5>
 
-<button class="btn btn-sm btn-primary" data-role="warehouse,admin" onclick="openPopup('VWCU')">Import Recent VWCU Orders</button>
-<button class="btn btn-sm btn-primary" data-role="warehouse,admin" onclick="openPopup('PFCU')">Import Recent PFCU Orders</button>
-<button class="btn btn-sm btn-primary" data-role="warehouse,admin" onclick="openPopup('SierraTucson')">Import Recent Sierra Tucson Orders</button>
+<button class="btn btn-sm btn-primary" data-role="warehouse,admin" onclick="openPopup()">Import Recent Orders</button>
 <script>
   //function openPopup(sheetName) {
   //  const popupWindow = window.open(
@@ -2742,22 +2740,20 @@ function capitalize(string) {
 </script>
 
 <script>
-  function openPopup(sheetName) {
+  function openPopup() {
     const popupWindow = window.open(
-     
-      `https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec?sheetName=${encodeURIComponent(sheetName)}`,
-      //"https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec",
+      "https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec",
       "_blank",
       "width=500,height=400"
     );
 
-    // Close the popup after 3 seconds
+    // Close the popup after 60 seconds
     setTimeout(() => {
       if (popupWindow && !popupWindow.closed) {
         popupWindow.close();
         console.log("✅ Popup closed after timeout.");
       }
-    }, 60000); // Adjust timing as needed
+    }, 60000);
   }
 </script>
 
