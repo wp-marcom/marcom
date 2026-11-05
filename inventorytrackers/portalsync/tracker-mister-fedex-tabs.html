@@ -1191,8 +1191,119 @@ $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
 // Call it for each sheet config
 recentSales.forEach(loadRecentSalesDataRows);
 
+  // THIS IS AN ATTEMPT AT FILTERING BASED ON TIME Your Google Sheets ID
+
+let currentSheetName = 'VWCU-KPI'; // Default sheet for the initial tab
+
+const sheetMap = {
+  'pills-mister-tab': 'VWCU-KPI',
+  'pills-misterraw-tab': 'TMC-KPI',
+  'pills-client3-tab': 'Client3-KPI',
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  const activeTab = document.querySelector('.nav-pills .active');
+  console.log('Active Tab:', activeTab);
+  if (activeTab) {
+    const sheetName = sheetMap[activeTab.id];
+    console.log('Mapped Sheet Name:', sheetName);
+}
+  currentSheetName = activeTab ? sheetMap[activeTab.id] || 'VWCU-KPI' : 'VWCU-KPI';
+  console.log('Initial Sheet:', currentSheetName);
+  fetchOrderCount('today', currentSheetName);
+});
+
+function changeClient(tabId) {
+  const newSheetName = sheetMap[tabId];
+  console.log('Changing client for tabId:', tabId, 'Sheet Name:', newSheetName);
+  if (!newSheetName) {
+    console.error(`Unknown or missing tab ID: ${tabId}`);
+    return;
+  }
+
+  currentSheetName = newSheetName;
+  fetchOrderCount('today', currentSheetName);
+}
+
+ const SHEET_ID = '1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM';
+ const API_KEY = 'AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs';
+
+async function fetchOrderCount(period, sheetName) {
+  console.log('Fetching for sheetName:', sheetName);
+  const rangeMap = {
+    today: 'B2',
+    thisMonth: 'B3',
+    thisYear: 'B4',
+  };
+
+  const range = rangeMap[period];
+
+  if (!range) {
+    console.error('Invalid period');
+    return;
+  }
+  const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
 
 
+  //const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${sheetName}!${range}?key=${API_KEY}`;
+  const url = `${baseUrl}/${SHEET_ID}/values/${sheetName}!${range}?alt=json&key=${API_KEY}`;
+  try {
+    console.log('Fetching range:', `${sheetName}!${range}`);
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log('Response Data:', data);
+
+    const orderCount = data.values?.[0]?.[0] || '0';
+    document.getElementById('orderCount').innerText = orderCount;
+    updateFilterLabel(period);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+function updateFilterLabel(period) {
+  const periodMap = {
+    today: 'Today',
+    thisMonth: 'This Month',
+    thisYear: 'This Year',
+  };
+
+  const label = periodMap[period] || capitalize(period);
+  document.getElementById('filterLabel').innerText = `| ${label}`;
+}
+
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+</script>
+
+<script>
+  function openPopup(sheetName) {
+    const popupWindow = window.open(
+     
+      `https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec?sheetName=${encodeURIComponent(sheetName)}`,
+      //"https://script.google.com/macros/s/AKfycbw3sJFyTteHfcl2xeFWKA8g2avKlBc9rp84pjUP9Jj_Qf8TAdh5GMWNbtujqUxdnMVvFA/exec",
+      "_blank",
+      "width=500,height=400"
+    );
+
+    // Close the popup after 3 seconds
+    setTimeout(() => {
+      if (popupWindow && !popupWindow.closed) {
+        popupWindow.close();
+        console.log("✅ Popp closed after timeout.");
+      }
+    }, 60000); // Adjust timing as needed
+  }
+</script>
+
+<script>
+  $('a[data-bs-toggle="pill"]').on('shown.bs.tab', function (e) {
+  $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+});
+</script>
+
+<script>
 //OLD FUNCTIONS BELOW HERE
 // Function to fetch and load data for a single tracker
 function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
@@ -1257,7 +1368,7 @@ function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
 }
 
 // Iterate over the trackers array and load each tracker
-trackers.forEach(loadTrackerData);
+//trackers.forEach(loadTrackerData);
 
   </script>
     
