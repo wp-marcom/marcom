@@ -571,6 +571,9 @@
                 <li class="nav-item" role="presentation" data-role="warehouse,admin,pfcuAdmin,vwcuAdmin">
                   <button class="nav-link active" id="pills-mister-tab" data-bs-toggle="pill" data-bs-target="#pills-mister" type="button" role="tab" aria-controls="pills-mister" aria-selected="true" onclick="changeClient(this.id)">Mister Car Wash</button>
                 </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="pills-misterraw-tab" data-bs-toggle="pill" data-bs-target="#pills-misterraw" type="button" role="tab" aria-controls="pills-misterraw" aria-selected="false">Raw Data</button>
+                </li>
               </ul>
               <!-- List of All Tab Names Above -->
               <!-- Start of Tab Content, Do Not Copy for New Tab -->
@@ -610,6 +613,59 @@
 
                    <!-- Table with stripped rows -->
               <table class="table table-striped" id="feed-table-first">
+                <thead>
+                    <tr>
+                      <th></th> <!-- for dt-control -->
+                       <!--<th></th> for packslip button -->
+                      <th><b>J</b>ob #</th>
+                      <th>Order Date</th>
+                      <th>Customer</th>
+                      <th>Tracking</th>     
+                    </tr>
+                  </thead>
+              </table>
+ <!-- END OF Table with stripped rows -->
+                </div>
+
+              </div>
+            </div>
+                  <!-- End of Table with stripped rows -->
+
+
+                  <!-- Start of Second Tab -->
+                <div class="tab-pane fade show active" id="pills-mister" role="tabpanel" aria-labelledby="vwcu-tab" data-role="warehouse,admin,sierraTucsonAdmin,pfcuAdmin,vwcuAdmin">
+                 <!-- Start of Second Tab CONTENT -->
+                  <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+                 <!-- <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                        <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>-->
+
+                <div class="card-body">
+                  <h5 class="card-title">Recent Online Orders (RAW)</h5>
+
+
+
+
+<script>
+  
+</script>
+
+<p id="statusMessage"></p>
+
+
+                   <!-- Table with stripped rows -->
+              <table class="table table-striped" id="feed-table-second">
                 <thead>
                     <tr>
                       <th></th> <!-- for dt-control -->
@@ -1918,6 +1974,11 @@ const recentSales = [
     sheetName: "MCW Order History",
     targetElement: "#feed-table-first",
   },
+   {
+    spreadsheetId: "1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM",
+    sheetName: "MCWFedexTracking",
+    targetElement: "#feed-table-second",
+  },
   
   // Add more configurations as needed
 ];
@@ -2128,7 +2189,7 @@ let currentSheetName = 'VWCU-KPI'; // Default sheet for the initial tab
 
 const sheetMap = {
   'pills-mister-tab': 'VWCU-KPI',
-  'pills-tmcforms-tab': 'TMC-KPI',
+  'pills-misterraw-tab': 'TMC-KPI',
   'pills-client3-tab': 'Client3-KPI',
 };
 
