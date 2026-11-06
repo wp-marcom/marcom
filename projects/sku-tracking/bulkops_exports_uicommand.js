@@ -154,7 +154,7 @@ const EXPORTS = {
         // One Google Sheets range per portal you want this pushed to.
         // A portal with no entry here is simply skipped for this export.
         targets: {
-            Mister: 'Mister Car Wash Catalog!A2',
+            Mister: 'MCW Catalog!A2',
         },
     },
     

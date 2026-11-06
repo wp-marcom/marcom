@@ -22,9 +22,6 @@
 <!-- DataTables JS -->
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 
- <!-- Include DataTables library -->
- <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-
 
 
   <!-- Google Fonts -->
@@ -41,8 +38,8 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-   <!-- INCLUDE REQUIRED EXTERNAL JAVASCRIPT AND CSS LIBRARIES -->
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <!-- jQuery is already loaded once above. Do NOT load it a second time here:
+        a second copy replaces $ and drops the DataTables plugin. -->
 
    <!-- INCLUDE Link to loadData js FILE -->
    <script src="assets/js/loadDataTables.js"></script>
@@ -648,11 +645,11 @@
                 <thead>
                     <tr>
                       <th></th> <!-- for dt-control -->
-                       <!--<th></th> for packslip button -->
-                      <th><b>J</b>ob #</th>
-                      <th>Order Date</th>
-                      <th>Customer</th>
-                      <th>Tracking</th>     
+                      <th>Order</th>
+                      <th>Recipient</th>
+                      <th>Company</th>
+                      <th>Ship To</th>
+                      <th>Tracking</th>
                     </tr>
                   </thead>
               </table>
@@ -987,12 +984,13 @@ const recentSales = [
   {
     spreadsheetId: "1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM",
     sheetName: "MCW Order History",
-    targetElement: "#tracker-table-first",
+    targetElement: "#feed-table-first",
   },
   {
     spreadsheetId: "1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM",
-    sheetName: "MCW Order History",
-    targetElement: "#tracker-table-second",
+    sheetName: "MCWFedexTracking",
+    targetElement: "#feed-table-second",
+    type: "tracking",
   },
 
   // Add more configurations as needed
@@ -1035,25 +1033,30 @@ function formatFedexTracking(value) {
 // Iterate over the trackers array and load each tracker
 //recentSales.forEach(loadRecentSalesData);
 
-    function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
-        const client = "Mister Car Wash";
-        const range1 = `${sheetName}!A2:K`;
-  //const range2 = `${sheetName}!G2:G`;
-  const range2 = `${sheetName}!L2:L`;
+    function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement, type }) {
+  if (type === 'tracking') {
+    return loadFedexTrackingRows({ spreadsheetId, sheetName, targetElement });
+  }
+  // Sheet names with spaces need single quotes in A1 notation
+  const range = `'${sheetName}'!A2:L`;
+  const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
 
-  const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
-  const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((response) => {
+      if (response.error) {
+        throw new Error(`${response.error.code} ${response.error.message} (sheet: ${sheetName})`);
+      }
+      if (!response.values || response.values.length === 0) {
+        console.warn(`No data found for ${sheetName}`);
+        return;
+      }
 
-  Promise.all([
-    fetch(url1).then((res) => res.json()),
-    fetch(url2).then((res) => res.json()),
-  ])
-    .then(([response1, response2]) => {
-      const expectedColumns = 10; // Columns A to J (0–9), then you append K separately as status
-      const rawData = response1.values.map((row, index) => {
-        while (row.length < expectedColumns) row.push(''); // Pad missing cells
-        const status = response2.values[index]?.[0] || '';
-        return [...row, status]; // [Job, Order Date, Customer, Tracking]
+      const expectedColumns = 12; // A..L; column L (index 11) is the tracking/status value
+      const rawData = response.values.map((row) => {
+        const padded = row.slice();
+        while (padded.length < expectedColumns) padded.push('');
+        return padded;
       });
 
       // Group rows by Job # (column 0)
@@ -1178,6 +1181,110 @@ $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
     }
 
 
+
+// MCWFedexTracking columns:
+// A Tracking Number | B Order | C Recipient | D Company | E Address | F City | G State | H ZIP | I BILL ACCT | J References | K Source File
+function loadFedexTrackingRows({ spreadsheetId, sheetName, targetElement }) {
+  const range = `'${sheetName}'!A2:K`;
+  const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((response) => {
+      if (response.error) {
+        throw new Error(`${response.error.code} ${response.error.message} (sheet: ${sheetName})`);
+      }
+      if (!response.values || response.values.length === 0) {
+        console.warn(`No data found for ${sheetName}`);
+        return;
+      }
+
+      // Pad rows so every column index exists
+      const rows = response.values.map((r) => {
+        const p = r.slice();
+        while (p.length < 11) p.push('');
+        return p;
+      });
+
+      // Group by Order so multi-box orders show one row with several tracking links
+      const grouped = {};
+      rows.forEach((r) => {
+        const key = (r[1] || '').toString().trim() || `NO-ORDER-${(r[0] || '').toString().trim()}`;
+        if (!grouped[key]) grouped[key] = [];
+        grouped[key].push(r);
+      });
+
+      const parentRows = Object.entries(grouped).map(([key, children]) => {
+        const first = children[0];
+        const trackingNumbers = [...new Set(
+          children.map((c) => (c[0] || '').toString().trim()).filter(Boolean)
+        )];
+        return {
+          order: key.startsWith('NO-ORDER-') ? '' : key,
+          recipient: first[2] || '',
+          company: first[3] || '',
+          location: [first[5], first[6]].filter(Boolean).join(', '),
+          tracking: trackingNumbers.join(', '),
+          children,
+        };
+      });
+
+      const table = $(targetElement).DataTable({
+        data: parentRows,
+        columns: [
+          { className: 'dt-control', orderable: false, data: null, defaultContent: '', title: '' },
+          { data: 'order', title: 'Order' },
+          { data: 'recipient', title: 'Recipient' },
+          { data: 'company', title: 'Company' },
+          { data: 'location', title: 'Ship To' },
+          {
+            data: 'tracking',
+            title: 'Tracking',
+            render: function (data, type) {
+              // Same FedEx-link formatter the order history tab uses
+              return type === 'display' ? formatFedexTracking(data) : data;
+            },
+          },
+        ],
+        destroy: true,
+      });
+      applyRoleBasedVisibility();
+
+      // Expand/collapse: one block per box with address and reference details
+      $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
+        const tr = $(this).closest('tr');
+        const row = table.row(tr);
+
+        if (row.child.isShown()) {
+          row.child.hide();
+          tr.removeClass('shown');
+          return;
+        }
+
+        const detailsHtml = row.data().children.map((c) => {
+          const address = [c[4], [c[5], c[6]].filter(Boolean).join(', '), c[7]]
+            .filter(Boolean).map((s) => escapeHtml(s.toString())).join('<br>');
+          return `
+            <tr>
+              <td colspan="6" style="padding-left:30px;">
+                <b>Tracking:</b> ${formatFedexTracking(c[0])} |
+                <b>Bill Acct:</b> ${escapeHtml((c[8] || '').toString())} |
+                <b>References:</b> ${escapeHtml((c[9] || '').toString())} |
+                <b>Source File:</b> ${escapeHtml((c[10] || '').toString())}
+                <br><b>Ship To:</b><br>${address || 'N/A'}
+              </td>
+            </tr>`;
+        }).join('');
+
+        row.child(`<table class="table">${detailsHtml}</table>`).show();
+        tr.addClass('shown');
+      });
+    })
+    .catch((error) => {
+      console.error(`Error loading ${sheetName}:`, error);
+    });
+}
+
   function getLabelForProduct(productName, skuDesc) {
   if (!productName) return 'Pick'; // default if empty
   
@@ -1191,90 +1298,6 @@ $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
 // Call it for each sheet config
 recentSales.forEach(loadRecentSalesDataRows);
 
-  // THIS IS AN ATTEMPT AT FILTERING BASED ON TIME Your Google Sheets ID
-
-let currentSheetName = 'VWCU-KPI'; // Default sheet for the initial tab
-
-const sheetMap = {
-  'pills-mister-tab': 'VWCU-KPI',
-  'pills-misterraw-tab': 'TMC-KPI',
-  'pills-client3-tab': 'Client3-KPI',
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-  const activeTab = document.querySelector('.nav-pills .active');
-  console.log('Active Tab:', activeTab);
-  if (activeTab) {
-    const sheetName = sheetMap[activeTab.id];
-    console.log('Mapped Sheet Name:', sheetName);
-}
-  currentSheetName = activeTab ? sheetMap[activeTab.id] || 'VWCU-KPI' : 'VWCU-KPI';
-  console.log('Initial Sheet:', currentSheetName);
-  fetchOrderCount('today', currentSheetName);
-});
-
-function changeClient(tabId) {
-  const newSheetName = sheetMap[tabId];
-  console.log('Changing client for tabId:', tabId, 'Sheet Name:', newSheetName);
-  if (!newSheetName) {
-    console.error(`Unknown or missing tab ID: ${tabId}`);
-    return;
-  }
-
-  currentSheetName = newSheetName;
-  fetchOrderCount('today', currentSheetName);
-}
-
- const SHEET_ID = '1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM';
- const API_KEY = 'AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs';
-
-async function fetchOrderCount(period, sheetName) {
-  console.log('Fetching for sheetName:', sheetName);
-  const rangeMap = {
-    today: 'B2',
-    thisMonth: 'B3',
-    thisYear: 'B4',
-  };
-
-  const range = rangeMap[period];
-
-  if (!range) {
-    console.error('Invalid period');
-    return;
-  }
-  const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
-
-
-  //const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${sheetName}!${range}?key=${API_KEY}`;
-  const url = `${baseUrl}/${SHEET_ID}/values/${sheetName}!${range}?alt=json&key=${API_KEY}`;
-  try {
-    console.log('Fetching range:', `${sheetName}!${range}`);
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log('Response Data:', data);
-
-    const orderCount = data.values?.[0]?.[0] || '0';
-    document.getElementById('orderCount').innerText = orderCount;
-    updateFilterLabel(period);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
-
-function updateFilterLabel(period) {
-  const periodMap = {
-    today: 'Today',
-    thisMonth: 'This Month',
-    thisYear: 'This Year',
-  };
-
-  const label = periodMap[period] || capitalize(period);
-  document.getElementById('filterLabel').innerText = `| ${label}`;
-}
-
-function capitalize(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
 </script>
 
 <script>
@@ -1298,7 +1321,7 @@ function capitalize(string) {
 </script>
 
 <script>
-  $('a[data-bs-toggle="pill"]').on('shown.bs.tab', function (e) {
+  $('button[data-bs-toggle="pill"]').on('shown.bs.tab', function (e) {
   $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
 });
 </script>
