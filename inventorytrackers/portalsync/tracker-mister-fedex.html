@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard</title>
+  <title>Mister Car Wash Fedex Tracker</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -21,9 +21,6 @@
 
 <!-- DataTables JS -->
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-
- <!-- Include DataTables library -->
- 
 
 
 
@@ -41,8 +38,8 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-   <!-- INCLUDE REQUIRED EXTERNAL JAVASCRIPT AND CSS LIBRARIES -->
-
+   <!-- jQuery is already loaded once above. Do NOT load it a second time here:
+        a second copy replaces $ and drops the DataTables plugin. -->
 
    <!-- INCLUDE Link to loadData js FILE -->
    <script src="assets/js/loadDataTables.js"></script>
@@ -81,6 +78,7 @@
         <button type="submit" title="Search"><i class="bi bi-search"></i></button>
       </form>
     </div><!-- End Search Bar -->
+
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
@@ -410,22 +408,15 @@
         </ul>
       </li><!-- End Forms Nav -->
 
- <li class="nav-item" data-role="warehouse,misterAdmin,tmcAdmin,acharles">
+ <li class="nav-item" data-role="warehouse,lprice,tmcAdmin,acharles">
 <a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
   <i class="bi bi-layout-text-window-reverse"></i><span> Inventory Trackers</span><i class="bi bi-chevron-down ms-auto"></i>
 </a>
-<ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-  <li data-role="warehouse,misterAdmin">
+<ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+  <li data-role="warehouse,lprice">
     <a href="tracker-mister.html">
       <i class="bi bi-circle"></i><span>Mister Car Wash</span>
     </a>
-    <ul class="list-unstyled ps-3">
-      <li>
-        <a href="tracker-mister-washpass.html" class="text-muted">
-          <i class="bi bi-dash"></i><span>Wash Pass Tracker</span>
-        </a>
-      </li>
-    </ul>
   </li>
   <li data-role="warehouse,acharles">
     <a href="tracker-vwcu.html">
@@ -461,7 +452,7 @@
 </a>
 <ul id="charts-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
   <li data-role="warehouse,misterAdmin">
-    <a href="tracker-mister-fedex.html"  class="text-muted active">
+    <a href="tracker-mister-fedex.html" class="text-muted active">
       <i class="bi bi-circle"></i><span>Mister Car Wash</span>
     </a>
   </li>
@@ -491,7 +482,7 @@
         </ul>
       </li><!-- End Icons Nav -->
 
-      <li class="nav-heading" data-role="warehouse,misterAdmin,tmcAdmin">Pages</li>
+      <li class="nav-heading" data-role="warehouse,lprice,tmcAdmin">Pages</li>
 
       <li class="nav-item" data-role="admin">
         <a class="nav-link collapsed" href="users-profile.html">
@@ -549,11 +540,12 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Dashboards</h1>
+      <h1>FedEx Trackers</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.html">Home</a></li>
-          <li class="breadcrumb-item active">Dashboards</li>
+          <li class="breadcrumb-item">FedEx Trackers</li>
+          <li class="breadcrumb-item active">Mister</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -569,10 +561,10 @@
               <!-- List of All Tab Names Below -->
               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation" data-role="warehouse,admin,pfcuAdmin,vwcuAdmin">
-                  <button class="nav-link active" id="pills-mister-tab" data-bs-toggle="pill" data-bs-target="#pills-mister" type="button" role="tab" aria-controls="pills-mister" aria-selected="true" onclick="changeClient(this.id)">Mister Car Wash</button>
+                  <button class="nav-link active" id="pills-mister-tab" data-bs-toggle="pill" data-bs-target="#pills-mister" type="button" role="tab" aria-controls="pills-mister" aria-selected="true">Mister Car Wash</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="pills-misterraw-tab" data-bs-toggle="pill" data-bs-target="#pills-misterraw" type="button" role="tab" aria-controls="pills-misterraw" aria-selected="false">Raw Data</button>
+                  <button class="nav-link" id="pills-misterraw-tab" data-bs-toggle="pill" data-bs-target="#pills-misterraw" type="button" role="tab" aria-controls="pills-misterraw" aria-selected="false">Mister Car Wash(RAW)</button>
                 </li>
               </ul>
               <!-- List of All Tab Names Above -->
@@ -580,39 +572,33 @@
               <div class="tab-content pt-2" id="myTabContent">
                 <!-- End of Tab Content, Do Not Copy for New Tab -->
                 <!-- Start of First Tab -->
-                <div class="tab-pane fade show active" id="pills-mister" role="tabpanel" aria-labelledby="vwcu-tab" data-role="warehouse,admin,sierraTucsonAdmin,pfcuAdmin,vwcuAdmin">
+                <div class="tab-pane fade show active" id="pills-mister" role="tabpanel" aria-labelledby="tmc-tab">
                  <!-- Start of First Tab CONTENT -->
-                  <div class="col-12">
-              <div class="card recent-sales overflow-auto">
-
-                 <!-- <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>-->
-
-                <div class="card-body">
-                  <h5 class="card-title">Recent Online Orders</h5>
-
-
-
-
-<script>
-  
-</script>
-
-<p id="statusMessage"></p>
-
-
-                   <!-- Table with stripped rows -->
-              <table class="table table-striped" id="feed-table-first">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+   <!-- Header Image -->
+   <a href="#" onclick="return false;" style="margin: 0;">
+   <img src="assets/img/mister-fedex-tracker.svg" 
+      alt="Header Image" 
+      style="height: 109px;">
+   </a>
+   <!-- Last Modified and Button -->
+   <div style="display: flex; flex-direction: column; align-items: flex-end; text-align: right;">
+      <!-- Last Modified -->
+      <p class="last-modified" style="margin: 0; margin-bottom: 5px;">
+         <!-- Element to display last modified date -->
+      </p>
+      <!-- Download Button -->
+      <button type="button" class="btn btn-primary">
+      <i class="fa fa-download"></i>
+      <a href="https://docs.google.com/spreadsheets/d/1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU/export?format=xlsx&gid=1661672441" 
+         style="color: white; text-decoration: none;">
+      Download
+      </a>
+      </button>
+   </div>
+</div>
+<!-- Table with stripped rows -->
+<table class="table table-striped" id="feed-table-first">
                 <thead>
                     <tr>
                       <th></th> <!-- for dt-control -->
@@ -624,981 +610,53 @@
                     </tr>
                   </thead>
               </table>
- <!-- END OF Table with stripped rows -->
-                </div>
-
-              </div>
-            </div>
-                  <!-- End of Table with stripped rows -->
-
-
-                  <!-- Start of Second Tab -->
-                <div class="tab-pane fade show active" id="pills-mister" role="tabpanel" aria-labelledby="vwcu-tab" data-role="warehouse,admin,sierraTucsonAdmin,pfcuAdmin,vwcuAdmin">
-                 <!-- Start of Second Tab CONTENT -->
-                  <div class="col-12">
-              <div class="card recent-sales overflow-auto">
-
-                 <!-- <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>-->
-
-                <div class="card-body">
-                  <h5 class="card-title">Recent Online Orders (RAW)</h5>
-
-
-
-
-<script>
-  
-</script>
-
-<p id="statusMessage"></p>
-
-
-                   <!-- Table with stripped rows -->
-              <table class="table table-striped" id="feed-table-second">
-                <thead>
-                    <tr>
-                      <th></th> <!-- for dt-control -->
-                       <!--<th></th> for packslip button -->
-                      <th><b>J</b>ob #</th>
-                      <th>Order Date</th>
-                      <th>Customer</th>
-                      <th>Tracking</th>     
-                    </tr>
-                  </thead>
-              </table>
- <!-- END OF Table with stripped rows -->
-                </div>
-
-              </div>
-            </div>
-                  <!-- End of Table with stripped rows -->
-    <section class="section dashboard">
-      <div class="row">
-
-        <!-- Left side columns -->
-        <div class="col-lg-8">
-          <div class="row">
-
-
-          </div>
-        </div><!-- End Left side columns -->
-
-        <!-- Right side columns -->
-        <div class="col-lg-4" data-role="admin">
-
-          <!-- Recent Activity -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Recent Activity <span>| Today</span></h5>
-
-              <div class="activity">
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">32 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                  <div class="activity-content">
-                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">56 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                  <div class="activity-content">
-                    Voluptatem blanditiis blanditiis eveniet
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 hrs</div>
-                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                  <div class="activity-content">
-                    Voluptates corrupti molestias voluptatem
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">1 day</div>
-                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                  <div class="activity-content">
-                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 days</div>
-                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                  <div class="activity-content">
-                    Est sit eum reiciendis exercitationem
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">4 weeks</div>
-                  <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                  <div class="activity-content">
-                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                  </div>
-                </div><!-- End activity item-->
-
-              </div>
-
-            </div>
-          </div><!-- End Recent Activity -->
-
-          <!-- Budget Report -->
-          <div class="card" data-role="admin">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">Budget Report <span>| This Month</span></h5>
-
-              <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
-
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
-                    legend: {
-                      data: ['Allocated Budget', 'Actual Spending']
-                    },
-                    radar: {
-                      // shape: 'circle',
-                      indicator: [{
-                          name: 'Sales',
-                          max: 6500
-                        },
-                        {
-                          name: 'Administration',
-                          max: 16000
-                        },
-                        {
-                          name: 'Information Technology',
-                          max: 30000
-                        },
-                        {
-                          name: 'Customer Support',
-                          max: 38000
-                        },
-                        {
-                          name: 'Development',
-                          max: 52000
-                        },
-                        {
-                          name: 'Marketing',
-                          max: 25000
-                        }
-                      ]
-                    },
-                    series: [{
-                      name: 'Budget vs spending',
-                      type: 'radar',
-                      data: [{
-                          value: [4200, 3000, 20000, 35000, 50000, 18000],
-                          name: 'Allocated Budget'
-                        },
-                        {
-                          value: [5000, 14000, 28000, 26000, 42000, 21000],
-                          name: 'Actual Spending'
-                        }
-                      ]
-                    }]
-                  });
-                });
-              </script>
-
-            </div>
-          </div><!-- End Budget Report -->
-
-          <!-- Website Traffic -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">Website Traffic <span>| Today</span></h5>
-
-              <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  echarts.init(document.querySelector("#trafficChart")).setOption({
-                    tooltip: {
-                      trigger: 'item'
-                    },
-                    legend: {
-                      top: '5%',
-                      left: 'center'
-                    },
-                    series: [{
-                      name: 'Access From',
-                      type: 'pie',
-                      radius: ['40%', '70%'],
-                      avoidLabelOverlap: false,
-                      label: {
-                        show: false,
-                        position: 'center'
-                      },
-                      emphasis: {
-                        label: {
-                          show: true,
-                          fontSize: '18',
-                          fontWeight: 'bold'
-                        }
-                      },
-                      labelLine: {
-                        show: false
-                      },
-                      data: [{
-                          value: 1048,
-                          name: 'Search Engine'
-                        },
-                        {
-                          value: 735,
-                          name: 'Direct'
-                        },
-                        {
-                          value: 580,
-                          name: 'Email'
-                        },
-                        {
-                          value: 484,
-                          name: 'Union Ads'
-                        },
-                        {
-                          value: 300,
-                          name: 'Video Ads'
-                        }
-                      ]
-                    }]
-                  });
-                });
-              </script>
-
-            </div>
-          </div><!-- End Website Traffic -->
-
-          <!-- News & Updates Traffic -->
-          <div class="card" data-role="admin">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
-
-              <div class="news">
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-1.jpg" alt="">
-                  <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                  <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-2.jpg" alt="">
-                  <h4><a href="#">Quidem autem et impedit</a></h4>
-                  <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-3.jpg" alt="">
-                  <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
-                  <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-4.jpg" alt="">
-                  <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-                  <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/news-5.jpg" alt="">
-                  <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
-                </div>
-
-              </div><!-- End sidebar recent posts-->
-
-            </div>
-          </div><!-- End News & Updates -->
-
-        </div><!-- End Right side columns -->
-
-      </div>
-    </section>
-
+<!-- End Table with stripped rows -->
 <!-- End of First Tab CONTENT -->
                 </div>
                 <!-- End of First Tab -->
                 <!-- Start of Second Tab -->
-                <div class="tab-pane fade show" id="pills-pfcu" role="tabpanel" aria-labelledby="pfcu-tab" data-role="admin">
+                <div class="tab-pane fade" id="pills-misterraw" role="tabpanel" aria-labelledby="misterraw-tab">
                   <!-- Start of Second Tab CONTENT -->
-                   <div class="col-12">
-               <div class="card recent-sales overflow-auto">
- 
-                  <!-- <div class="filter">
-                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                     <li class="dropdown-header text-start">
-                         <h6>Filter</h6>
-                     </li>
- 
-                     <li><a class="dropdown-item" href="#">Today</a></li>
-                     <li><a class="dropdown-item" href="#">This Month</a></li>
-                     <li><a class="dropdown-item" href="#">This Year</a></li>
-                   </ul>
-                 </div>-->
- 
-                 <div class="card-body">
-                   <h5 class="card-title">Recent Online Orders</h5>
- 
- <button class="btn btn-sm btn-primary" onclick="openPopup('PFCU')">Import Recent PFCU Orders</button>
- 
- 
- <p id="statusMessage"></p>
- 
- 
-                    <!-- Table with stripped rows -->
-               <table class="table table-striped" id="feed-table-second">
-                 <thead>
-                     <tr>
-                       <th></th> <!-- for dt-control -->
-                        <th></th> <!-- for packslip button -->
-                       <th><b>J</b>ob #</th>
-                       <th>Order Date</th>
-                       <th>Customer</th>
-                       <th>Status</th>     
-                     </tr>
-                   </thead>
-               </table>
-  <!-- END OF Table with stripped rows -->
-                 </div>
- 
-               </div>
-             </div>
-                   <!-- End of Table with stripped rows -->
-     <section class="section dashboard">
-       <div class="row">
- 
-         <!-- Left side columns -->
-         <div class="col-lg-8">
-           <div class="row">
- 
-   <!-- Sales Card -->
- <div class="col-xxl-4 col-md-6" data-role="admin">
-   <div class="card info-card sales-card">
-     <div class="filter">
-       <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-       <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-         <li class="dropdown-header text-start">
-           <h6>Filter</h6>
-         </li>
-         <li><a class="dropdown-item" href="#" onclick="fetchOrderCount('today', currentSheetName)">Today</a></li>
-         <li><a class="dropdown-item" href="#" onclick="fetchOrderCount('thisMonth', currentSheetName)">This Month</a></li>
-         <li><a class="dropdown-item" href="#" onclick="fetchOrderCount('thisYear', currentSheetName)">This Year</a></li>
-         <li>
-           <input type="date" id="startDate" placeholder="Start Date" />
-           <input type="date" id="endDate" placeholder="End Date" />
-           <a class="dropdown-item" href="#" onclick="filterByCustomPeriod()">Apply Custom Period</a>
-         </li>
-         </ul>
-         </div>
-         
-     <div class="card-body">
-       <h5 class="card-title">Sales <span id="filterLabel">| Today</span></h5>
-       <div class="d-flex align-items-center">
-         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-           <i class="bi bi-cart"></i>
-         </div>
-         <div class="ps-3">
-           <h6 id="orderCount">Loading Sales...</h6> <!-- Dynamic order count -->
-           <span class="text-success small pt-1 fw-bold">12%</span> 
-           <span class="text-muted small pt-2 ps-1">increase</span>
-         </div>
-       </div>
-     </div>
+                 <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+   <!-- Header Image -->
+   <a href="#" onclick="return false;" style="margin: 0;">
+   <img src="assets/img/mister-fedex-tracker.svg" 
+      alt="Header Image" 
+      style="height: 109px;">
+   </a>
+   <!-- Last Modified and Button -->
+   <div style="display: flex; flex-direction: column; align-items: flex-end; text-align: right;">
+      <!-- Last Modified -->
+      <p class="last-modified" style="margin: 0; margin-bottom: 5px;">
+         <!-- Element to display last modified date -->
+      </p>
+      <!-- Download Button -->
+      <button type="button" class="btn btn-primary">
+      <i class="fa fa-download"></i>
+      <a href="https://docs.google.com/spreadsheets/d/1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU/export?format=xlsx&gid=1026501966" 
+         style="color: white; text-decoration: none;">
+      Download
+      </a>
+      </button>
    </div>
- </div>
- <!-- End Sales Card -->
- 
-             <!-- Revenue Card -->
-             <div class="col-xxl-4 col-md-6" data-role="admin">
-               <div class="card info-card revenue-card">
- 
-                 <div class="filter">
-                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                     <li class="dropdown-header text-start">
-                       <h6>Filter</h6>
-                     </li>
- 
-                     <li><a class="dropdown-item" href="#">Today</a></li>
-                     <li><a class="dropdown-item" href="#">This Month</a></li>
-                     <li><a class="dropdown-item" href="#">This Year</a></li>
-                   </ul>
-                 </div>
- 
-                 <div class="card-body">
-                   <h5 class="card-title">Revenue <span>| This Month</span></h5>
- 
-                   <div class="d-flex align-items-center">
-                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                       <i class="bi bi-currency-dollar"></i>
-                     </div>
-                     <div class="ps-3">
-                       <h6>$3,264</h6>
-                       <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
- 
-                     </div>
-                   </div>
-                 </div>
- 
-               </div>
-             </div><!-- End Revenue Card -->
- 
-             <!-- Customers Card -->
-             <div class="col-xxl-4 col-xl-12" data-role="admin">
- 
-               <div class="card info-card customers-card">
- 
-                 <div class="filter">
-                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                     <li class="dropdown-header text-start">
-                       <h6>Filter</h6>
-                     </li>
- 
-                     <li><a class="dropdown-item" href="#">Today</a></li>
-                     <li><a class="dropdown-item" href="#">This Month</a></li>
-                     <li><a class="dropdown-item" href="#">This Year</a></li>
-                   </ul>
-                 </div>
- 
-                 <div class="card-body">
-                   <h5 class="card-title">Customers <span>| This Year</span></h5>
- 
-                   <div class="d-flex align-items-center">
-                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                       <i class="bi bi-people"></i>
-                     </div>
-                     <div class="ps-3">
-                       <h6>1244</h6>
-                       <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
- 
-                     </div>
-                   </div>
- 
-                 </div>
-               </div>
- 
-             </div><!-- End Customers Card -->
- 
-             <!-- Reports -->
-             <div class="col-12" data-role="admin">
-               <div class="card">
- 
-                 <div class="filter">
-                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                     <li class="dropdown-header text-start">
-                       <h6>Filter</h6>
-                     </li>
- 
-                     <li><a class="dropdown-item" href="#">Today</a></li>
-                     <li><a class="dropdown-item" href="#">This Month</a></li>
-                     <li><a class="dropdown-item" href="#">This Year</a></li>
-                   </ul>
-                 </div>
- 
-                 <div class="card-body">
-                   <h5 class="card-title">Reports <span>/Today</span></h5>
- 
-                   <!-- Line Chart -->
-                   <div id="reportsChart"></div>
- 
-                   <script>
-                     document.addEventListener("DOMContentLoaded", () => {
-                       new ApexCharts(document.querySelector("#reportsChart"), {
-                         series: [{
-                           name: 'Sales',
-                           data: [31, 40, 28, 51, 42, 82, 56],
-                         }, {
-                           name: 'Revenue',
-                           data: [11, 32, 45, 32, 34, 52, 41]
-                         }, {
-                           name: 'Customers',
-                           data: [15, 11, 32, 18, 9, 24, 11]
-                         }],
-                         chart: {
-                           height: 350,
-                           type: 'area',
-                           toolbar: {
-                             show: false
-                           },
-                         },
-                         markers: {
-                           size: 4
-                         },
-                         colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                         fill: {
-                           type: "gradient",
-                           gradient: {
-                             shadeIntensity: 1,
-                             opacityFrom: 0.3,
-                             opacityTo: 0.4,
-                             stops: [0, 90, 100]
-                           }
-                         },
-                         dataLabels: {
-                           enabled: false
-                         },
-                         stroke: {
-                           curve: 'smooth',
-                           width: 2
-                         },
-                         xaxis: {
-                           type: 'datetime',
-                           categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                         },
-                         tooltip: {
-                           x: {
-                             format: 'dd/MM/yy HH:mm'
-                           },
-                         }
-                       }).render();
-                     });
-                   </script>
-                   <!-- End Line Chart -->
- 
-                 </div>
- 
-               </div>
-             </div><!-- End Reports -->
- 
-             <!-- Recent Sales -->
-            <!-- End Recent Sales -->
- 
-             <!-- Top Selling -->
-             <div class="col-12" data-role="admin">
-               <div class="card top-selling overflow-auto">
- 
-                 <div class="filter">
-                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                     <li class="dropdown-header text-start">
-                       <h6>Filter</h6>
-                     </li>
- 
-                     <li><a class="dropdown-item" href="#">Today</a></li>
-                     <li><a class="dropdown-item" href="#">This Month</a></li>
-                     <li><a class="dropdown-item" href="#">This Year</a></li>
-                   </ul>
-                 </div>
- 
-                 <div class="card-body pb-0">
-                   <h5 class="card-title">Top Selling <span>| Today</span></h5>
- 
-                   <table class="table table-borderless">
-                     <thead>
-                       <tr>
-                         <th scope="col">Preview</th>
-                         <th scope="col">Product</th>
-                         <th scope="col">Price</th>
-                         <th scope="col">Sold</th>
-                         <th scope="col">Revenue</th>
-                       </tr>
-                     </thead>
-                     <tbody>
-                       <tr>
-                         <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""></a></th>
-                         <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                         <td>$64</td>
-                         <td class="fw-bold">124</td>
-                         <td>$5,828</td>
-                       </tr>
-                       <tr>
-                         <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
-                         <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                         <td>$46</td>
-                         <td class="fw-bold">98</td>
-                         <td>$4,508</td>
-                       </tr>
-                       <tr>
-                         <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
-                         <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                         <td>$59</td>
-                         <td class="fw-bold">74</td>
-                         <td>$4,366</td>
-                       </tr>
-                       <tr>
-                         <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
-                         <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                         <td>$32</td>
-                         <td class="fw-bold">63</td>
-                         <td>$2,016</td>
-                       </tr>
-                       <tr>
-                         <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
-                         <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                         <td>$79</td>
-                         <td class="fw-bold">41</td>
-                         <td>$3,239</td>
-                       </tr>
-                     </tbody>
-                   </table>
- 
-                 </div>
- 
-               </div>
-             </div><!-- End Top Selling -->
- 
-           </div>
-         </div><!-- End Left side columns -->
- 
-         <!-- Right side columns -->
-         <div class="col-lg-4" data-role="admin">
- 
-           <!-- Recent Activity -->
-           <div class="card">
-             <div class="filter">
-               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                 <li class="dropdown-header text-start">
-                   <h6>Filter</h6>
-                 </li>
- 
-                 <li><a class="dropdown-item" href="#">Today</a></li>
-                 <li><a class="dropdown-item" href="#">This Month</a></li>
-                 <li><a class="dropdown-item" href="#">This Year</a></li>
-               </ul>
-             </div>
- 
-             <div class="card-body">
-               <h5 class="card-title">Recent Activity <span>| Today</span></h5>
- 
-               <div class="activity">
- 
-                 <div class="activity-item d-flex">
-                   <div class="activite-label">32 min</div>
-                   <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                   <div class="activity-content">
-                     Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
-                   </div>
-                 </div><!-- End activity item-->
- 
-                 <div class="activity-item d-flex">
-                   <div class="activite-label">56 min</div>
-                   <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                   <div class="activity-content">
-                     Voluptatem blanditiis blanditiis eveniet
-                   </div>
-                 </div><!-- End activity item-->
- 
-                 <div class="activity-item d-flex">
-                   <div class="activite-label">2 hrs</div>
-                   <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                   <div class="activity-content">
-                     Voluptates corrupti molestias voluptatem
-                   </div>
-                 </div><!-- End activity item-->
- 
-                 <div class="activity-item d-flex">
-                   <div class="activite-label">1 day</div>
-                   <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                   <div class="activity-content">
-                     Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
-                   </div>
-                 </div><!-- End activity item-->
- 
-                 <div class="activity-item d-flex">
-                   <div class="activite-label">2 days</div>
-                   <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                   <div class="activity-content">
-                     Est sit eum reiciendis exercitationem
-                   </div>
-                 </div><!-- End activity item-->
- 
-                 <div class="activity-item d-flex">
-                   <div class="activite-label">4 weeks</div>
-                   <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                   <div class="activity-content">
-                     Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                   </div>
-                 </div><!-- End activity item-->
- 
-               </div>
- 
-             </div>
-           </div><!-- End Recent Activity -->
- 
-           <!-- Budget Report -->
-           <div class="card" data-role="admin">
-             <div class="filter">
-               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                 <li class="dropdown-header text-start">
-                   <h6>Filter</h6>
-                 </li>
- 
-                 <li><a class="dropdown-item" href="#">Today</a></li>
-                 <li><a class="dropdown-item" href="#">This Month</a></li>
-                 <li><a class="dropdown-item" href="#">This Year</a></li>
-               </ul>
-             </div>
- 
-             <div class="card-body pb-0">
-               <h5 class="card-title">Budget Report <span>| This Month</span></h5>
- 
-               <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
- 
-               <script>
-                 document.addEventListener("DOMContentLoaded", () => {
-                   var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
-                     legend: {
-                       data: ['Allocated Budget', 'Actual Spending']
-                     },
-                     radar: {
-                       // shape: 'circle',
-                       indicator: [{
-                           name: 'Sales',
-                           max: 6500
-                         },
-                         {
-                           name: 'Administration',
-                           max: 16000
-                         },
-                         {
-                           name: 'Information Technology',
-                           max: 30000
-                         },
-                         {
-                           name: 'Customer Support',
-                           max: 38000
-                         },
-                         {
-                           name: 'Development',
-                           max: 52000
-                         },
-                         {
-                           name: 'Marketing',
-                           max: 25000
-                         }
-                       ]
-                     },
-                     series: [{
-                       name: 'Budget vs spending',
-                       type: 'radar',
-                       data: [{
-                           value: [4200, 3000, 20000, 35000, 50000, 18000],
-                           name: 'Allocated Budget'
-                         },
-                         {
-                           value: [5000, 14000, 28000, 26000, 42000, 21000],
-                           name: 'Actual Spending'
-                         }
-                       ]
-                     }]
-                   });
-                 });
-               </script>
- 
-             </div>
-           </div><!-- End Budget Report -->
- 
-           <!-- Website Traffic -->
-           <div class="card">
-             <div class="filter">
-               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                 <li class="dropdown-header text-start">
-                   <h6>Filter</h6>
-                 </li>
- 
-                 <li><a class="dropdown-item" href="#">Today</a></li>
-                 <li><a class="dropdown-item" href="#">This Month</a></li>
-                 <li><a class="dropdown-item" href="#">This Year</a></li>
-               </ul>
-             </div>
- 
-             <div class="card-body pb-0">
-               <h5 class="card-title">Website Traffic <span>| Today</span></h5>
- 
-               <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
- 
-               <script>
-                 document.addEventListener("DOMContentLoaded", () => {
-                   echarts.init(document.querySelector("#trafficChart")).setOption({
-                     tooltip: {
-                       trigger: 'item'
-                     },
-                     legend: {
-                       top: '5%',
-                       left: 'center'
-                     },
-                     series: [{
-                       name: 'Access From',
-                       type: 'pie',
-                       radius: ['40%', '70%'],
-                       avoidLabelOverlap: false,
-                       label: {
-                         show: false,
-                         position: 'center'
-                       },
-                       emphasis: {
-                         label: {
-                           show: true,
-                           fontSize: '18',
-                           fontWeight: 'bold'
-                         }
-                       },
-                       labelLine: {
-                         show: false
-                       },
-                       data: [{
-                           value: 1048,
-                           name: 'Search Engine'
-                         },
-                         {
-                           value: 735,
-                           name: 'Direct'
-                         },
-                         {
-                           value: 580,
-                           name: 'Email'
-                         },
-                         {
-                           value: 484,
-                           name: 'Union Ads'
-                         },
-                         {
-                           value: 300,
-                           name: 'Video Ads'
-                         }
-                       ]
-                     }]
-                   });
-                 });
-               </script>
- 
-             </div>
-           </div><!-- End Website Traffic -->
- 
-           <!-- News & Updates Traffic -->
-           <div class="card" data-role="admin">
-             <div class="filter">
-               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                 <li class="dropdown-header text-start">
-                   <h6>Filter</h6>
-                 </li>
- 
-                 <li><a class="dropdown-item" href="#">Today</a></li>
-                 <li><a class="dropdown-item" href="#">This Month</a></li>
-                 <li><a class="dropdown-item" href="#">This Year</a></li>
-               </ul>
-             </div>
- 
-             <div class="card-body pb-0">
-               <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
- 
-               <div class="news">
-                 <div class="post-item clearfix">
-                   <img src="assets/img/news-1.jpg" alt="">
-                   <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                   <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
-                 </div>
- 
-                 <div class="post-item clearfix">
-                   <img src="assets/img/news-2.jpg" alt="">
-                   <h4><a href="#">Quidem autem et impedit</a></h4>
-                   <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
-                 </div>
- 
-                 <div class="post-item clearfix">
-                   <img src="assets/img/news-3.jpg" alt="">
-                   <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
-                   <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
-                 </div>
- 
-                 <div class="post-item clearfix">
-                   <img src="assets/img/news-4.jpg" alt="">
-                   <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-                   <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
-                 </div>
- 
-                 <div class="post-item clearfix">
-                   <img src="assets/img/news-5.jpg" alt="">
-                   <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
-                   <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
-                 </div>
- 
-               </div><!-- End sidebar recent posts-->
- 
-             </div>
-           </div><!-- End News & Updates -->
- 
-         </div><!-- End Right side columns -->
- 
-       </div>
-     </section>
- 
- <!-- End of Second Tab CONTENT -->
-                 </div>
-                 <!-- End of Second Tab -->
+</div>
+<!-- Table with stripped rows -->
+<table class="table table-striped" id="feed-table-second">
+                <thead>
+                    <tr>
+                      <th></th> <!-- for dt-control -->
+                      <th>Order</th>
+                      <th>Recipient</th>
+                      <th>Company</th>
+                      <th>Ship To</th>
+                      <th>Tracking</th>
+                    </tr>
+                  </thead>
+              </table>
+<!-- End Table with stripped rows -->
+                <!-- End of Second Tab CONTENT -->
+                </div>
+                <!-- End of Second Tab -->
             <!-- Start of Third Tab -->
            <div class="tab-pane fade" id="pills-tmccommprint" role="tabpanel" aria-labelledby="tmccommprint-tab">
              <!-- Start of Third Tab CONTENT -->
@@ -1834,53 +892,7 @@
             <!-- End of Seventh Tab CONTENT -->
            </div>
             <!-- End of Seventh Tab -->
-                <!-- Start of Eighth Tab -->
-           <div class="tab-pane fade" id="pills-tmcwell" role="tabpanel" aria-labelledby="tmcwell-tab">
-             <!-- Start of Eighth Tab CONTENT -->
-                              <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px;">
-   <!-- Header Image -->
-   <a href="#" onclick="return false;" style="margin: 0;">
-   <img src="assets/img/tmc-inventory-tracker.svg" 
-      alt="Header Image" 
-      style="height: 109px;">
-   </a>
-   <!-- Last Modified and Button -->
-   <div style="display: flex; flex-direction: column; align-items: flex-end; text-align: right;">
-      <!-- Last Modified -->
-      <p class="last-modified" style="margin: 0; margin-bottom: 5px;">
-         <!-- Element to display last modified date -->
-      </p>
-      <!-- Download Button -->
-      <button type="button" class="btn btn-primary">
-      <i class="fa fa-download"></i>
-      <a href="https://docs.google.com/spreadsheets/d/1H5s2gpr_tM4sWYAB_j9Tg3w1ohiUNlmmeZoQPLWpjSU/export?format=xlsx&gid=2101441289" 
-         style="color: white; text-decoration: none;">
-      Download
-      </a>
-      </button>
-   </div>
-</div>
-<!-- Table with stripped rows -->
-<table class="table table-striped" id="tracker-table-eighth">
-   <thead>
-      <tr>
-         <th><b>P</b>roduct Name</th>
-         <th>SKU</th>
-         <th>Location</th>
-         <th>Unit</th>
-         <th>Unit Qty</th>
-         <th>Min Qty</th>
-         <th>Refill Qty</th>
-         <th>QOS</th>
-         <th>Status</th>
-         <th>Notes</th>
-      </tr>
-   </thead>
-</table>
-<!-- End Table with stripped rows -->
-            <!-- End of Eighth Tab CONTENT -->
-           </div>
-            <!-- End of Ninth Tab -->
+               
             <!-- Start of Ninth Tab -->
            <div class="tab-pane fade" id="pills-tmcwomenchild" role="tabpanel" aria-labelledby="tmcwomenchild-tab">
              <!-- Start of Ninth Tab CONTENT -->
@@ -1974,19 +986,19 @@ const recentSales = [
     sheetName: "MCW Order History",
     targetElement: "#feed-table-first",
   },
-   {
+  {
     spreadsheetId: "1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM",
     sheetName: "MCWFedexTracking",
     targetElement: "#feed-table-second",
+    type: "tracking",
   },
-  
+
   // Add more configurations as needed
 ];
 
 // Base URL and API key for Google Sheets API
 const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
 const apiKey = "AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs";
-
 
 function escapeHtml(str) {
   return str.replace(/[&<>"']/g, (c) => ({
@@ -2018,30 +1030,33 @@ function formatFedexTracking(value) {
     .join(', ');
 }
 
-
-
 // Iterate over the trackers array and load each tracker
 //recentSales.forEach(loadRecentSalesData);
 
-    function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement }) {
-        const client = "Mister Car Wash";
-        const range1 = `${sheetName}!A2:K`;
-  //const range2 = `${sheetName}!G2:G`;
-  const range2 = `${sheetName}!L2:L`;
+    function loadRecentSalesDataRows({ spreadsheetId, sheetName, targetElement, type }) {
+  if (type === 'tracking') {
+    return loadFedexTrackingRows({ spreadsheetId, sheetName, targetElement });
+  }
+  // Sheet names with spaces need single quotes in A1 notation
+  const range = `'${sheetName}'!A2:L`;
+  const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
 
-  const url1 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range1)}?alt=json&key=${apiKey}`;
-  const url2 = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range2)}?alt=json&key=${apiKey}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((response) => {
+      if (response.error) {
+        throw new Error(`${response.error.code} ${response.error.message} (sheet: ${sheetName})`);
+      }
+      if (!response.values || response.values.length === 0) {
+        console.warn(`No data found for ${sheetName}`);
+        return;
+      }
 
-  Promise.all([
-    fetch(url1).then((res) => res.json()),
-    fetch(url2).then((res) => res.json()),
-  ])
-    .then(([response1, response2]) => {
-      const expectedColumns = 10; // Columns A to J (0–9), then you append K separately as status
-      const rawData = response1.values.map((row, index) => {
-        while (row.length < expectedColumns) row.push(''); // Pad missing cells
-        const status = response2.values[index]?.[0] || '';
-        return [...row, status]; // [Job, Order Date, Customer, Tracking]
+      const expectedColumns = 12; // A..L; column L (index 11) is the tracking/status value
+      const rawData = response.values.map((row) => {
+        const padded = row.slice();
+        while (padded.length < expectedColumns) padded.push('');
+        return padded;
       });
 
       // Group rows by Job # (column 0)
@@ -2101,7 +1116,8 @@ const table = $(targetElement).DataTable({
       }
     },
   ],
-  destroy: true
+  destroy: true,
+  autoWidth: false
 });
       table.draw();
       // Apply role-based visibility after DataTable is drawn
@@ -2166,6 +1182,111 @@ $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
     }
 
 
+
+// MCWFedexTracking columns:
+// A Tracking Number | B Order | C Recipient | D Company | E Address | F City | G State | H ZIP | I BILL ACCT | J References | K Source File
+function loadFedexTrackingRows({ spreadsheetId, sheetName, targetElement }) {
+  const range = `'${sheetName}'!A2:K`;
+  const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((response) => {
+      if (response.error) {
+        throw new Error(`${response.error.code} ${response.error.message} (sheet: ${sheetName})`);
+      }
+      if (!response.values || response.values.length === 0) {
+        console.warn(`No data found for ${sheetName}`);
+        return;
+      }
+
+      // Pad rows so every column index exists
+      const rows = response.values.map((r) => {
+        const p = r.slice();
+        while (p.length < 11) p.push('');
+        return p;
+      });
+
+      // Group by Order so multi-box orders show one row with several tracking links
+      const grouped = {};
+      rows.forEach((r) => {
+        const key = (r[1] || '').toString().trim() || `NO-ORDER-${(r[0] || '').toString().trim()}`;
+        if (!grouped[key]) grouped[key] = [];
+        grouped[key].push(r);
+      });
+
+      const parentRows = Object.entries(grouped).map(([key, children]) => {
+        const first = children[0];
+        const trackingNumbers = [...new Set(
+          children.map((c) => (c[0] || '').toString().trim()).filter(Boolean)
+        )];
+        return {
+          order: key.startsWith('NO-ORDER-') ? '' : key,
+          recipient: first[2] || '',
+          company: first[3] || '',
+          location: [first[5], first[6]].filter(Boolean).join(', '),
+          tracking: trackingNumbers.join(', '),
+          children,
+        };
+      });
+
+      const table = $(targetElement).DataTable({
+        data: parentRows,
+        columns: [
+          { className: 'dt-control', orderable: false, data: null, defaultContent: '', title: '' },
+          { data: 'order', title: 'Order' },
+          { data: 'recipient', title: 'Recipient' },
+          { data: 'company', title: 'Company' },
+          { data: 'location', title: 'Ship To' },
+          {
+            data: 'tracking',
+            title: 'Tracking',
+            render: function (data, type) {
+              // Same FedEx-link formatter the order history tab uses
+              return type === 'display' ? formatFedexTracking(data) : data;
+            },
+          },
+        ],
+        destroy: true,
+        autoWidth: false, // let CSS (Bootstrap .table = 100%) size the table; DataTables must not pin pixel widths measured while the tab was hidden
+      });
+      applyRoleBasedVisibility();
+
+      // Expand/collapse: one block per box with address and reference details
+      $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
+        const tr = $(this).closest('tr');
+        const row = table.row(tr);
+
+        if (row.child.isShown()) {
+          row.child.hide();
+          tr.removeClass('shown');
+          return;
+        }
+
+        const detailsHtml = row.data().children.map((c) => {
+          const address = [c[4], [c[5], c[6]].filter(Boolean).join(', '), c[7]]
+            .filter(Boolean).map((s) => escapeHtml(s.toString())).join('<br>');
+          return `
+            <tr>
+              <td colspan="6" style="padding-left:30px;">
+                <b>Tracking:</b> ${formatFedexTracking(c[0])} |
+                <b>Bill Acct:</b> ${escapeHtml((c[8] || '').toString())} |
+                <b>References:</b> ${escapeHtml((c[9] || '').toString())} |
+                <b>Source File:</b> ${escapeHtml((c[10] || '').toString())}
+                <br><b>Ship To:</b><br>${address || 'N/A'}
+              </td>
+            </tr>`;
+        }).join('');
+
+        row.child(`<table class="table">${detailsHtml}</table>`).show();
+        tr.addClass('shown');
+      });
+    })
+    .catch((error) => {
+      console.error(`Error loading ${sheetName}:`, error);
+    });
+}
+
   function getLabelForProduct(productName, skuDesc) {
   if (!productName) return 'Pick'; // default if empty
   
@@ -2179,114 +1300,6 @@ $(targetElement + ' tbody').on('click', 'td.dt-control', function () {
 // Call it for each sheet config
 recentSales.forEach(loadRecentSalesDataRows);
 
-document.getElementById('create-doc-btn').addEventListener('click', function () {
-  window.open('https://script.google.com/macros/s/AKfycbwlHZT7EF5xOt_zlrkkH4MTRfVU2pbBHeLEAvmpm2Pm-h7DOBdUkz7zhvmz4GySu1-j/exec', '_blank');
-});
-  
-  // THIS IS AN ATTEMPT AT FILTERING BASED ON TIME Your Google Sheets ID
-
-let currentSheetName = 'VWCU-KPI'; // Default sheet for the initial tab
-
-const sheetMap = {
-  'pills-mister-tab': 'VWCU-KPI',
-  'pills-misterraw-tab': 'TMC-KPI',
-  'pills-client3-tab': 'Client3-KPI',
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-  const activeTab = document.querySelector('.nav-pills .active');
-  console.log('Active Tab:', activeTab);
-  if (activeTab) {
-    const sheetName = sheetMap[activeTab.id];
-    console.log('Mapped Sheet Name:', sheetName);
-}
-  currentSheetName = activeTab ? sheetMap[activeTab.id] || 'VWCU-KPI' : 'VWCU-KPI';
-  console.log('Initial Sheet:', currentSheetName);
-  fetchOrderCount('today', currentSheetName);
-});
-
-function changeClient(tabId) {
-  const newSheetName = sheetMap[tabId];
-  console.log('Changing client for tabId:', tabId, 'Sheet Name:', newSheetName);
-  if (!newSheetName) {
-    console.error(`Unknown or missing tab ID: ${tabId}`);
-    return;
-  }
-
-  currentSheetName = newSheetName;
-  fetchOrderCount('today', currentSheetName);
-}
-
- const SHEET_ID = '1lZuCrQ9vy64LEkHAwZe8W16__E-tFIKLxcxHITHA0EM';
- const API_KEY = 'AIzaSyCMFuTpnIGqrFXL2UjbzRVICiEgc-8ySBs';
-
-async function fetchOrderCount(period, sheetName) {
-  console.log('Fetching for sheetName:', sheetName);
-  const rangeMap = {
-    today: 'B2',
-    thisMonth: 'B3',
-    thisYear: 'B4',
-  };
-
-  const range = rangeMap[period];
-
-  if (!range) {
-    console.error('Invalid period');
-    return;
-  }
-  const baseUrl = "https://sheets.googleapis.com/v4/spreadsheets";
-
-
-  //const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${sheetName}!${range}?key=${API_KEY}`;
-  const url = `${baseUrl}/${SHEET_ID}/values/${sheetName}!${range}?alt=json&key=${API_KEY}`;
-  try {
-    console.log('Fetching range:', `${sheetName}!${range}`);
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log('Response Data:', data);
-
-    const orderCount = data.values?.[0]?.[0] || '0';
-    document.getElementById('orderCount').innerText = orderCount;
-    updateFilterLabel(period);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
-
-function updateFilterLabel(period) {
-  const periodMap = {
-    today: 'Today',
-    thisMonth: 'This Month',
-    thisYear: 'This Year',
-  };
-
-  const label = periodMap[period] || capitalize(period);
-  document.getElementById('filterLabel').innerText = `| ${label}`;
-}
-
-function capitalize(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-
-  </script>
-    
-  
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-    <script src="assets/js/login.js"></script>
-
-  <script>
-  document.getElementById("logoutButton").addEventListener("click", () => {
-    sessionStorage.clear(); // Clear user session
-    window.location.href = "login.html"; // Redirect to login page
-  });
-
-    document.getElementById("logoutButtonSidebar").addEventListener("click", () => {
-    sessionStorage.clear(); // Clear user session
-    window.location.href = "login.html"; // Redirect to login page
-  });
 </script>
 
 <script>
@@ -2310,9 +1323,96 @@ function capitalize(string) {
 </script>
 
 <script>
-  $('a[data-bs-toggle="pill"]').on('shown.bs.tab', function (e) {
+  $('button[data-bs-toggle="pill"]').on('shown.bs.tab', function (e) {
   $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
 });
+</script>
+
+<script>
+//OLD FUNCTIONS BELOW HERE
+// Function to fetch and load data for a single tracker
+function loadTrackerData({ spreadsheetId, sheetName, targetElement }) {
+  const range = `${sheetName}!A2:J`;
+  const client = "TMC";
+  const url = `${baseUrl}/${spreadsheetId}/values/${encodeURIComponent(range)}?alt=json&key=${apiKey}`;
+
+  return fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      if (!data || !data.values || data.values.length === 0) {
+        console.warn(`No data found for ${sheetName}`);
+        return;
+      }
+
+      // Process the row data
+      return adminData(data.values, client)
+        .then((processedData) => {
+          // Initialize the DataTable
+          const datatable = new window.simpleDatatables.DataTable(targetElement, {
+            data: {
+              data: processedData.map((row) => row.data), // Use the processed rows
+            },
+          });
+
+          // Function to apply row classes dynamically
+          function applyRowClasses() {
+            const rows = document.querySelectorAll(`${targetElement} tbody tr`);
+
+            rows.forEach((rowElement) => {
+              // Clear existing row classes
+              rowElement.classList.remove("table-danger", "table-warning");
+
+              // Get the value of the "Status" column (index 8)
+              const status = rowElement.children[8]?.textContent.trim();
+
+              // Apply new classes based on the status
+              if (status === "BACKORDER") {
+                rowElement.classList.add("table-danger");
+              } else if (status === "BELOW OR AT SET MINIMUM") {
+                rowElement.classList.add("table-warning");
+              }
+            });
+          }
+
+          // Reapply classes after any update in the DataTable
+          datatable.on("datatable.page", applyRowClasses);
+          datatable.on("datatable.sort", applyRowClasses);
+          datatable.on("datatable.search", applyRowClasses);
+          datatable.on("datatable.update", applyRowClasses);
+
+          // Initial application of row classes
+          applyRowClasses();
+        })
+        .catch((error) => {
+          console.error(`Error processing data for ${sheetName}:`, error);
+        });
+    })
+    .catch((error) => {
+      console.error(`Error fetching data for ${sheetName}:`, error);
+    });
+}
+
+// Iterate over the trackers array and load each tracker
+//trackers.forEach(loadTrackerData);
+
+  </script>
+    
+  
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/login.js"></script>
+
+  <script>
+  document.getElementById("logoutButton").addEventListener("click", () => {
+    sessionStorage.clear(); // Clear user session
+    window.location.href = "login.html"; // Redirect to login page
+  });
+
+    document.getElementById("logoutButtonSidebar").addEventListener("click", () => {
+    sessionStorage.clear(); // Clear user session
+    window.location.href = "login.html"; // Redirect to login page
+  });
 </script>
 
 </body>
