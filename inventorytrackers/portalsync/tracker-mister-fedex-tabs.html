@@ -1116,7 +1116,8 @@ const table = $(targetElement).DataTable({
       }
     },
   ],
-  destroy: true
+  destroy: true,
+  autoWidth: false
 });
       table.draw();
       // Apply role-based visibility after DataTable is drawn
@@ -1247,6 +1248,7 @@ function loadFedexTrackingRows({ spreadsheetId, sheetName, targetElement }) {
           },
         ],
         destroy: true,
+        autoWidth: false, // let CSS (Bootstrap .table = 100%) size the table; DataTables must not pin pixel widths measured while the tab was hidden
       });
       applyRoleBasedVisibility();
 
