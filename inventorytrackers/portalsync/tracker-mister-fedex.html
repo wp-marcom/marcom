@@ -1224,7 +1224,8 @@ function loadFedexTrackingRows({ spreadsheetId, sheetName, targetElement }) {
           order: key.startsWith('NO-ORDER-') ? '' : key,
           recipient: first[2] || '',
           company: first[3] || '',
-          location: [first[5], first[6]].filter(Boolean).join(', '),
+          //location: [first[5], first[6]].filter(Boolean).join(', '),
+          location: first[8] || '',
           tracking: trackingNumbers.join(', '),
           children,
         };
@@ -1237,7 +1238,7 @@ function loadFedexTrackingRows({ spreadsheetId, sheetName, targetElement }) {
           { data: 'order', title: 'Order' },
           { data: 'recipient', title: 'Recipient' },
           { data: 'company', title: 'Company' },
-          { data: 'location', title: 'Ship To' },
+          { data: 'location', title: 'References' },
           {
             data: 'tracking',
             title: 'Tracking',
@@ -1270,8 +1271,8 @@ function loadFedexTrackingRows({ spreadsheetId, sheetName, targetElement }) {
             <tr>
               <td colspan="6" style="padding-left:30px;">
                 <b>Tracking:</b> ${formatFedexTracking(c[0])} |
-                <b>Bill Acct:</b> ${escapeHtml((c[8] || '').toString())} |
-                <b>References:</b> ${escapeHtml((c[9] || '').toString())} |
+                <b>References:</b> ${escapeHtml((c[8] || '').toString())} |
+                <b>Bill Acct:</b> ${escapeHtml((c[9] || '').toString())} |
                 <b>Source File:</b> ${escapeHtml((c[10] || '').toString())}
                 <br><b>Ship To:</b><br>${address || 'N/A'}
               </td>
