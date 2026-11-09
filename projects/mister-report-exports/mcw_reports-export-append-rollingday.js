@@ -414,7 +414,7 @@ function reportToSheetRows(ws) {
     return { header: SHEET_COLUMNS.slice(), rows, minOrder, maxOrder };
 }
 
-async function pushToSheet(gsapi, header, rows) {
+async function pushToSheetAppend(gsapi, header, rows) {
     // Make sure the tab exists first, with a clear message instead of an API error.
     const meta = await gsapi.spreadsheets.get({ spreadsheetId: SPREADSHEET_ID, fields: 'sheets.properties.title' });
     const tabs = meta.data.sheets.map((sh) => sh.properties.title);
@@ -443,6 +443,46 @@ for (let i = 0; i < values.length; i += CHUNK) {
 }
 
 report(`Appended ${rows.length} data row(s) to "${SHEET_TAB}".`);
+}
+
+async function pushToSheet(gsapi, header, rows) {
+    // Make sure the tab exists first, with a clear message instead of an API error.
+    const meta = await gsapi.spreadsheets.get({
+        spreadsheetId: SPREADSHEET_ID,
+        fields: 'sheets.properties.title',
+    });
+    const tabs = meta.data.sheets.map((sh) => sh.properties.title);
+    if (!tabs.includes(SHEET_TAB)) {
+        throw new Error(`The spreadsheet has no tab named "${SHEET_TAB}". Create it (or pass --sheet-tab "Existing Tab Name"). Tabs found: ${tabs.join(', ')}`);
+    }
+
+    const lastCol = colIndexToLetter(header.length);
+    const values = rows;          // header is NOT written; row 1 is left alone
+    const CHUNK = 2000;
+    const FIRST_DATA_ROW = 2;
+
+    // Write the new data first (overwriting from row 2), THEN clear whatever
+    // is left below it, so a failure part-way never leaves the tab empty.
+    for (let i = 0; i < values.length; i += CHUNK) {
+        const chunk = values.slice(i, i + CHUNK);
+        const startRow = FIRST_DATA_ROW + i;
+        const endRow = startRow + chunk.length - 1;
+
+        await gsapi.spreadsheets.values.update({
+            spreadsheetId: SPREADSHEET_ID,
+            range: `'${SHEET_TAB}'!A${startRow}:${lastCol}${endRow}`,
+            valueInputOption: 'USER_ENTERED',
+            resource: { values: chunk },
+        });
+    }
+
+    // Clear any leftover old rows beneath the new data
+    // (only matters if the previous data had more rows than the new data).
+    const firstLeftoverRow = FIRST_DATA_ROW + values.length;
+    await gsapi.spreadsheets.values.clear({
+        spreadsheetId: SPREADSHEET_ID,
+        range: `'${SHEET_TAB}'!A${firstLeftoverRow}:${lastCol}`,
+    });
 }
 
 function colIndexToLetter(n) {
