@@ -11,7 +11,7 @@
 
 module.exports = {
   // Path to the input spreadsheet (can be overridden with a CLI arg)
-  inputFile: './IncomingKeys/December Store Support Promotions/December Store Support Promotions 110426-prepped.xlsx',
+  inputFile: './IncomingKeys/Alloy Pilot Revisions/Shipping Key Alloy Pilot Revisions Round 1 102026.xlsx',
 
   // Worksheet name to read from. Set to null to just use the first sheet.
   sheetName: null,
@@ -27,14 +27,14 @@ module.exports = {
     // disappears from every packing slip, summary, and delivery ticket,
     // and identical-order grouping falls back to product name only.
     // (config.product.codeRow below is simply ignored when this is false.)
-    hasProductCodes: true,
+    hasProductCodes: false,
     showBox: true,
 
     // true: skip reading a box-number row entirely — every product is
     // treated as belonging to a single box. Use this instead of adding
     // a fake "everything is Box 1" row to the spreadsheet.
     // (config.product.boxRow below is ignored when this is true.)
-    singleBox: true,
+    singleBox: false,
     singleBoxLabel: '1', // the box label used for every product when singleBox is true
   },
 
@@ -63,14 +63,14 @@ module.exports = {
   // ---- Product info (one column per product, reading across) ----
   product: {
     // First column containing a product (matches store.dataStartRow's column direction)
-    startCol: 'Q',
+    startCol: 'P',
     // If null, auto-detects the last product column by stopping at the
     // first column where the name row is blank. Set a column letter (e.g. 'DA')
     // to hard-cap it instead.
     endCol: null,
 
     boxRow: 1,   // row containing the box number for each product column — ignored if inputVariations.singleBox is true
-    nameRow: 4,  // row containing the product name
+    nameRow: 5,  // row containing the product name
     codeRow: 5,  // row containing the product code — ignored if inputVariations.hasProductCodes is false
   },
 
@@ -80,7 +80,7 @@ module.exports = {
   // store number in storeNumberCol, read the matching row.
   transitTimes: {
     enabled: true,
-    file: './DEMOTransitTimes.xlsx',
+    file: './TransitTimes.xlsx',
     sheetName: null, // null = first sheet
     dataStartRow: 2, // row 1 assumed to be a header row
     storeNumberCol: 'A',
@@ -96,7 +96,7 @@ module.exports = {
   // Used in the {campaign} placeholder in output.leadTimeFileNamePattern.
   // Override per-run with a CLI arg: node generate-packing-slips.js input.xlsx "Campaign Name"
   campaign: {
-    name: 'December Store Support Promotions',
+    name: 'ONSITE TAKEOVER KIT - REVISIONS',
   },
 
 orderSummary: {
@@ -106,7 +106,7 @@ orderSummary: {
 
   // ---- Output ----
   output: {
-    dir: './output/December Store Support Promotions-TEST',
+    dir: './output/ONSITE TAKEOVER KIT - REVISIONS',
     // 'perBoxAndLeadTime': one PDF per (box, ship-days) combo — e.g. all
     //     4-day-transit stores that need Box 1 go in one file. Stores stay
     //     in the same order they appear in the spreadsheet.
