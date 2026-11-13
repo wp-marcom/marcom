@@ -1,14 +1,29 @@
 // Product Groups Configuration
 // Each group has one "mother" product that will be copied to create the "children"
 const productGroups = [
-    
-   {
-    mother: '96"x48" 9.99|1 Month Promo Windscreen-I (2161)',
-    children: ['96"x48" UWC 50% Off | First Month Promo Windscreen-E (1405)', '96"x48" UWC $10 | First Month Promo Windscreen-10F (1409)', '96"x48" UWC $8 | First Month Promo Windscreen-8F (1407)', '96"x48" UWC 90 Days for $30 Promo Windscreen-G (1411)']
+    {
+    mother: '96"x48" UWC 90 Days for $30 Promo Windscreen-G (1411)',
+    children: ['96"x48" UWC $10 POR | First Month Promo Windscreen-F10 (8140)', '96"x48" UWC $9.99|First Month Promo Windscreen-D (8122)', '96"x48" UWC $5, $10, $15 | First Month Promo Windscreen-C (8103)']
+  },
+  {
+    mother: 'UWC Mister Kiosk $8 | First Month Promo Decal-8F (1379)',
+    children: ['UWC Mister Kiosk $5, $10, $15 | First Month Promo Decal-C (8105)', 'UWC Mister Kiosk $9.99|First Month Promo Decal-D (8124)']
+  },
+  {
+    mother: 'UWC Pegasus Gen 2 Kiosk $9.99 | First Month Promo Decal-8D (1359)',
+    children: ['UWC Pegasus Gen 2 Kiosk $5, $10, $15 | First Month Promo Decal-C (8107)', 'UWC Pegasus Gen 2 Kiosk $9.99|First Month Promo Decal-D (8126)']
   },
    {
-    mother: '55"x41" 9.99|1 Month Promo Windscreen-I (2159)',
-    children: ['55"x41" UWC $10 | 3 Month Promo Windscreen-A (1396)', '55"x41" UWC Save $15 | First Month Promo Windscreen-B (1398)', '55"x41" UWC Starts at $5 | First Month Promo Windscreen-C (1400)', '55"x41" UWC 50% Off | First Month Promo Windscreen-E (1404)', '55"x41" UWC $10 | First Month Promo Windscreen-10F (1408)', '55"x41" UWC $8 | First Month Promo Windscreen-8F (1406)', '55"x41" UWC 90 Days for $30 Promo Windscreen-G (1410)']
+    mother: 'UWC DRB Kiosk $9.99 | First Month Promo Decal-8D (1358)',
+    children: ['UWC DRB Kiosk $9.99|First Month Promo Decal-D (8123)']
+  },
+  {
+    mother: 'UWC 25% Off|First Month CSA Price Menu-H101 (3019)',
+    children: ['UWC $5, $10, $15 | First Month CSA Price Menu-C01 (8113)', 'UWC $9.99|First Month CSA Price Menu-D01 (8130)', 'UWC 50% Off | 2 Months CSA Price Menu-I02 (8164)']
+  },
+   {
+    mother: 'UWC 50% Off | First Month Promo Awareness Flyer-E07 (1371)',
+    children: ['UWC $5, $10, $15 | First Month Promo Awareness Flyer-C01 (8108)', 'UWC $5, $10, $15 | First Month Promo Awareness Flyer-C03 (8109)', 'UWC $5, $10, $15 | First Month Promo Awareness Flyer-C04 (8110)', 'UWC $5, $10, $15 | First Month Promo Awareness Flyer-C05 (8111)', 'UWC $9.99|First Month Promo Awareness Flyer-D01 (8127)', 'UWC $10 POR | First Month Promo Awareness Flyer-F103 (8144)', 'UWC $12 POR | First Month Promo Awareness Flyer-F602 (8152)', 'UWC 50% Off | 2 Months Promo Awareness Flyer-I01 (8163)', 'UWC 50% Off | 3 Months Promo Awareness Flyer-J01 (8173)']
   },
 
 ];

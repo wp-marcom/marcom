@@ -35,8 +35,8 @@ function splitRange(rangeStart, rangeEnd, numIntervals) {
 }
 
 // Parameters
-const firstCardNum = 65001;
-const lastCardNum = 90000;
+const firstCardNum = 1;
+const lastCardNum = 25000;
 const howManyPacks = 1000;
 
 // Create workbook and worksheet

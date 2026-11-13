@@ -1,6 +1,6 @@
-const groupName = ["2525-Bear Canyon"];
-const storeNum = ["2525"];
-const ccNum = ["806"];
+const groupName = ["1449-Fraser"];
+const storeNum = ["1449"];
+const ccNum = ["810"];
 
 
 
