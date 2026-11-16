@@ -22,8 +22,9 @@
 
    /* Corporate Select TEST */
 mcc-root.mc-usergroup-4013439 .col-lg-9 > section:nth-child(1)::before {
-    content: "ℹ️ We appreciate your order! Please allow a minimum of 3 business days production time and 5 business days for shipping for all orders placed through this portal." !important;
+    content: "ℹ️ We appreciate your order! Please allow a minimum of 3 business days production time and 5 business days for shipping for all orders placed through this portal.\A Please note that your order total does not include shipping. Additional shipping costs will apply." !important;
     display: block !important;
+    white-space: pre-line !important;
     background: #00b1fe !important;
     color: #fff !important;
     padding: 12px 25px !important;
