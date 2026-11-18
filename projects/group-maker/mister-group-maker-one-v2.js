@@ -1,6 +1,6 @@
-const groupName = ["1449-Fraser"];
-const storeNum = ["1449"];
-const ccNum = ["810"];
+const groupName = ["2622-Pottstown"];
+const storeNum = ["2622"];
+const ccNum = ["801"];
 
 
 
@@ -250,7 +250,7 @@ await page.evaluate(() => {
   await page.click(".navButtonRight");
   await page.waitForTimeout(4000);
   //Check Remain on Add to Cart
-  await page.click("#RemainInAddToCart");
+  //await page.click("#RemainInAddToCart");
   //Check Skip Billing
   await page.click("#SkipBilling");
   //Check Hide Billing Link
