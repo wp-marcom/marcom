@@ -398,7 +398,7 @@ z-index:-99;
 
 /* Disclaimer for shopping cart page about minimum shipping */
 .col-lg-9 > section:nth-child(1)::before {
-    content: "ℹ️ Please allow a minimum of 3 business days production time and 5 business days for shipping for all orders placed through this portal.\A Please note that your order total does not include shipping. Additional shipping costs will apply." !important;
+    content: "ℹ️ Thank you for your order! Shipping costs are not included and will be charged separately to the store. Shipping fees typically range from $15-$30 per order, so please bundle requests whenever possible. Note: items may display a $0 cost, but associated printing charges will still apply and cannot be reflected in the item pricing shown.\A Please allow a minimum of 3 business days production time and 5 business days for shipping for all orders placed through this portal." !important;
     display: block !important;
     white-space: pre-line !important;
     background: #00b1fe !important;
